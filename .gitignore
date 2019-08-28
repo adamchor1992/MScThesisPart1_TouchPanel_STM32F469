@@ -1,0 +1,5 @@
+*.o
+*.d
+*.log
+/build/*
+/target/IAR8.x/Debug/
