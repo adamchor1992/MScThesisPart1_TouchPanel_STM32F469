@@ -12,7 +12,6 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
-#include "timers.h"
 #include "portmacro.h"
 #include "semphr.h"
 
@@ -41,27 +40,15 @@ static void UART_TxTask(void* params);
 
 /* General stuff begin*/
 UART_HandleTypeDef huart6;
-TIM_HandleTypeDef htim3;
 
 void MX_USART6_UART_Init(void);
-static void MX_TIM3_Init(void);
 
-void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base);
 void Error_Handler(void);
 
 /*Table to which UART interrupt writes*/
 uint8_t UART_ReceivedFrame[FRAME_SIZE] = {0};
 
-static uint32_t RTOS_RunTimeCounter = 0; 
 /* General stuff end*/
-
-/* Timer Interrupt callback function*/
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) 
-{
-  //BSP_LED_Toggle(LED2);
-  //BSP_LED_Toggle(LED3);
-  RTOS_RunTimeCounter++;
-}
 
 /*UART receive interrupt callback function*/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) 
@@ -88,8 +75,6 @@ int main(void)
   
   /*UART init*/
   MX_USART6_UART_Init();
-  /*Timer init*/
-  //MX_TIM3_Init();
   
   static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
   CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
@@ -135,17 +120,11 @@ int main(void)
   
   /*Initial start of UART interrupt receiving*/
   HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE); 
-  
-  /*Timer starters*/
-  //HAL_TIM_Base_Start_IT(&htim3);
-  //HAL_TIMEx_OCN_Start_IT(&htim3, 0);
-  
+    
   vTaskStartScheduler();
   
-  while (1)
-  {
-    
-  }
+  /*Control never reaches here*/
+  return 0;
 }
 
 /* Task definitions begin */
@@ -273,7 +252,6 @@ static void UART_TxTask(void* params)
     }
   }
 }
-
 /* Task definitions end */
 
 /**
@@ -294,69 +272,6 @@ void MX_USART6_UART_Init(void)
   if (HAL_UART_Init(&huart6) != HAL_OK)
   {
     Error_Handler();
-  }
-}
-
-/**
-* @brief TIM3 Initialization Function
-* @param None
-* @retval None
-*/
-static void MX_TIM3_Init(void)
-{
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-  TIM_OC_InitTypeDef sConfigOC = {0};
-
-  htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 0;
-  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 2315;
-  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_TIM_OC_Init(&htim3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sConfigOC.OCMode = TIM_OCMODE_TIMING;
-  sConfigOC.Pulse = 0;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_OC_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-/**
-* @brief TIM_Base MSP Initialization
-* This function configures the hardware resources used in this example
-* @param htim_base: TIM_Base handle pointer
-* @retval None
-*/
-void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
-{
-  if(htim_base->Instance==TIM3)
-  {
-    /* Peripheral clock enable */
-    __HAL_RCC_TIM3_CLK_ENABLE();
-    /* TIM3 interrupt Init */
-    HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(TIM3_IRQn);
   }
 }
 
