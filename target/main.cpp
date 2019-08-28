@@ -17,11 +17,14 @@
 
 /* Defines */
 #define FRAME_SIZE 16
+#define FRAME_NO_CRC 12
 #define QUEUES_SIZE 1
+#define DEBUG_UART_WAITING 50
 #define NO_WAITING 0
 #define LOW_PRIORITY 1
 #define MEDIUM_PRIORITY 2
 #define HIGH_PRIORITY 3
+#define DEBUG
 
 /* FreeRTOS stuff begin*/
 #define configGUI_TASK_STK_SIZE ( 1200 )
@@ -39,8 +42,10 @@ static void UART_TxTask(void* params);
 /* FreeRTOS stuff end*/
 
 /* General stuff begin*/
+UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart6;
 
+void MX_USART3_UART_Init(void);
 void MX_USART6_UART_Init(void);
 
 void Error_Handler(void);
@@ -74,6 +79,7 @@ int main(void)
   touchgfx_init();
   
   /*UART init*/
+  MX_USART3_UART_Init();
   MX_USART6_UART_Init();
   
   static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
@@ -120,7 +126,10 @@ int main(void)
   
   /*Initial start of UART interrupt receiving*/
   HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE); 
-    
+  
+  char str[] = "System initialized, starting FreeRTOS Scheduler\n";
+  HAL_UART_Transmit(&huart3, str, strlen(str), DEBUG_UART_WAITING);
+  
   vTaskStartScheduler();
   
   /*Control never reaches here*/
@@ -154,8 +163,9 @@ static void UART_RxTask(void* params)
       {
         /*Ensure that there is no context switch during frame processing*/
         taskENTER_CRITICAL();
-        //HAL_UART_Transmit_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE); // transmission is not stable with interrupts
-        //HAL_UART_Transmit(&huart6, UART_ReceivedFrame, FRAME_SIZE, 100); //show table contents
+
+        char str[] = "RX processing\n";
+        HAL_UART_Transmit(&huart3, str, strlen(str), DEBUG_UART_WAITING);
         
         //CRC check will be performed here
         CRC_Value_Calculated = Calculate_CRC32((char*)UART_ReceivedFrame, 12);
@@ -181,6 +191,18 @@ static void UART_RxTask(void* params)
         }
         
         /*Frame is correct and can be further processed*/
+        
+#ifdef DEBUG
+        char str2[] = "Frame is: ";
+        HAL_UART_Transmit(&huart3, str2, strlen(str2), DEBUG_UART_WAITING);
+
+        
+        char frame[FRAME_NO_CRC + 1];
+        memcpy(frame,UART_ReceivedFrame,FRAME_NO_CRC);
+        frame[12] = '\n'; //line feed at the end of frame data
+        
+        HAL_UART_Transmit(&huart3, frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
+#endif
         
         /*Frame parsing to structure*/
         s_UARTFrame.source = UART_ReceivedFrame[0];
@@ -210,7 +232,7 @@ static void UART_RxTask(void* params)
 
 static void UART_TxTask(void* params)
 {
-  uint8_t UART_MessageToTransmit[FRAME_SIZE] = {6,6,6};
+  uint8_t UART_MessageToTransmit[FRAME_SIZE] = {0};
   uint32_t CRC_Value_Calculated;
   uint32_t* CRC_Address;
   uint8_t *p1, *p2, *p3, *p4;
@@ -224,6 +246,11 @@ static void UART_TxTask(void* params)
       if(xSemaphoreTake(UART_Mutex, portMAX_DELAY) == pdPASS)
       {
         taskENTER_CRITICAL(); 
+        
+#ifdef DEBUG
+        char str[] = "TX processing\n";
+        HAL_UART_Transmit(&huart3, str, strlen(str), DEBUG_UART_WAITING);
+#endif
         
         xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);
         
@@ -242,7 +269,7 @@ static void UART_TxTask(void* params)
         UART_MessageToTransmit[13] = *p3;
         UART_MessageToTransmit[12] = *p4;
         
-        HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, 100); //show table contents
+        HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, NO_WAITING); //show table contents
         
         /*Give back UART Mutex*/
         xSemaphoreGive(UART_Mutex);
@@ -253,6 +280,27 @@ static void UART_TxTask(void* params)
   }
 }
 /* Task definitions end */
+
+/**
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
+void MX_USART3_UART_Init(void)
+{
+  huart3.Instance = USART3;
+  huart3.Init.BaudRate = 115200;
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
+  huart3.Init.StopBits = UART_STOPBITS_1;
+  huart3.Init.Parity = UART_PARITY_NONE;
+  huart3.Init.Mode = UART_MODE_TX_RX;
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
 
 /**
 * @brief USART6 Initialization Function
