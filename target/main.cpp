@@ -124,9 +124,6 @@ int main(void)
   BSP_LED_Init(LED3);
   BSP_LED_Init(LED4);
   
-  /*Initial start of UART interrupt receiving*/
-  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE); 
-  
   char str[] = "System initialized, starting FreeRTOS Scheduler\n";
   HAL_UART_Transmit(&huart3, str, strlen(str), DEBUG_UART_WAITING);
   

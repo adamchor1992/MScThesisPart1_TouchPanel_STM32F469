@@ -1,4 +1,7 @@
 #include <gui/screen_module1_screen/Screen_Module1View.hpp>
+#include "stm32469i_discovery.h" //for led driving
+
+#define FRAME_SIZE 16
 
 Screen_Module1View::Screen_Module1View()
 {
@@ -8,10 +11,27 @@ Screen_Module1View::Screen_Module1View()
 void Screen_Module1View::setupScreen()
 {
   Screen_Module1ViewBase::setupScreen();
+
+  extern UART_HandleTypeDef huart6;
+  /*Table to which UART interrupt writes*/
+  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+
+  /*Activate green LED to show that receiving is active*/
+  BSP_LED_On(LED1);
+
+  /*Start of UART interrupt receiving*/
+  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
+  NVIC_EnableIRQ(USART6_IRQn);
 }
 
 void Screen_Module1View::tearDownScreen()
 {
+  /*Disable UART RX Interrupt*/
+  NVIC_DisableIRQ(USART6_IRQn);
+
+  /*Dectivate green LED to show that receiving is not active*/
+  BSP_LED_Off(LED1);
+
   Screen_Module1ViewBase::tearDownScreen();
 }
 
