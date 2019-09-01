@@ -1046,21 +1046,39 @@
           </file>
         </group>
         <group>
-          <name>screen_module1_screen</name>
+          <name>screen_module1_data_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_screen\Screen_Module1ViewBase.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_data_screen\Screen_Module1_DataViewBase.cpp</name>
           </file>
         </group>
         <group>
-          <name>screen_module2_screen</name>
+          <name>screen_module1_graph_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_screen\Screen_Module2ViewBase.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_graph_screen\Screen_Module1_GraphViewBase.cpp</name>
           </file>
         </group>
         <group>
-          <name>screen_module3_screen</name>
+          <name>screen_module1_settings_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_screen\Screen_Module3ViewBase.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_settings_screen\Screen_Module1_SettingsViewBase.cpp</name>
+          </file>
+        </group>
+        <group>
+          <name>screen_module2_data_screen</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp</name>
+          </file>
+        </group>
+        <group>
+          <name>screen_module2_graph_screen</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp</name>
+          </file>
+        </group>
+        <group>
+          <name>screen_module2_settings_screen</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp</name>
           </file>
         </group>
         <group>
@@ -1161,30 +1179,57 @@
         </file>
       </group>
       <group>
-        <name>screen_module1_screen</name>
+        <name>screen_module1_data_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_screen\Screen_Module1Presenter.cpp</name>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_screen\Screen_Module1View.cpp</name>
-        </file>
-      </group>
-      <group>
-        <name>screen_module2_screen</name>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_screen\Screen_Module2Presenter.cpp</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_screen\Screen_Module2View.cpp</name>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataView.cpp</name>
         </file>
       </group>
       <group>
-        <name>screen_module3_screen</name>
+        <name>screen_module1_graph_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_screen\Screen_Module3Presenter.cpp</name>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_screen\Screen_Module3View.cpp</name>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphView.cpp</name>
+        </file>
+      </group>
+      <group>
+        <name>screen_module1_settings_screen</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsView.cpp</name>
+        </file>
+      </group>
+      <group>
+        <name>screen_module2_data_screen</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp</name>
+        </file>
+      </group>
+      <group>
+        <name>screen_module2_graph_screen</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp</name>
+        </file>
+      </group>
+      <group>
+        <name>screen_module2_settings_screen</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp</name>
         </file>
       </group>
       <group>

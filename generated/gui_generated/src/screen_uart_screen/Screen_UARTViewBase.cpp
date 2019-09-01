@@ -9,8 +9,8 @@
 Screen_UARTViewBase::Screen_UARTViewBase() :
     buttonCallback(this, &Screen_UARTViewBase::buttonCallbackHandler)
 {
-    backgroundBox_UARTScreen.setPosition(0, 0, 800, 480);
-    backgroundBox_UARTScreen.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    backgroundBox_Black.setPosition(0, 0, 800, 480);
+    backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     buttonWithLabel_GoToMainMenu.setXY(315, 420);
     buttonWithLabel_GoToMainMenu.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -59,7 +59,7 @@ Screen_UARTViewBase::Screen_UARTViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID127));
 
-    add(backgroundBox_UARTScreen);
+    add(backgroundBox_Black);
     add(buttonWithLabel_GoToMainMenu);
     add(buttonWithLabel_SendUartHello);
     add(buttonWithLabel_ClearUart);
@@ -80,8 +80,8 @@ void Screen_UARTViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
     {
         //Interaction_GoBackToMainMenu
         //When buttonWithLabel_GoToMainMenu clicked change screen to Screen_Main
-        //Go to Screen_Main with screen transition towards West
-        application().gotoScreen_MainScreenSlideTransitionWest();
+        //Go to Screen_Main with no screen transition
+        application().gotoScreen_MainScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_SendUartHello)
     {

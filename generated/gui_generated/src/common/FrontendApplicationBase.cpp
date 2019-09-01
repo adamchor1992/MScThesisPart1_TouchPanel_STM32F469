@@ -9,12 +9,18 @@
 #include <touchgfx/Texts.hpp>
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 #include <gui/screen_main_screen/Screen_MainPresenter.hpp>
-#include <gui/screen_module1_screen/Screen_Module1View.hpp>
-#include <gui/screen_module1_screen/Screen_Module1Presenter.hpp>
-#include <gui/screen_module2_screen/Screen_Module2View.hpp>
-#include <gui/screen_module2_screen/Screen_Module2Presenter.hpp>
-#include <gui/screen_module3_screen/Screen_Module3View.hpp>
-#include <gui/screen_module3_screen/Screen_Module3Presenter.hpp>
+#include <gui/screen_module1_data_screen/Screen_Module1_DataView.hpp>
+#include <gui/screen_module1_data_screen/Screen_Module1_DataPresenter.hpp>
+#include <gui/screen_module1_settings_screen/Screen_Module1_SettingsView.hpp>
+#include <gui/screen_module1_settings_screen/Screen_Module1_SettingsPresenter.hpp>
+#include <gui/screen_module1_graph_screen/Screen_Module1_GraphView.hpp>
+#include <gui/screen_module1_graph_screen/Screen_Module1_GraphPresenter.hpp>
+#include <gui/screen_module2_data_screen/Screen_Module2_DataView.hpp>
+#include <gui/screen_module2_data_screen/Screen_Module2_DataPresenter.hpp>
+#include <gui/screen_module2_settings_screen/Screen_Module2_SettingsView.hpp>
+#include <gui/screen_module2_settings_screen/Screen_Module2_SettingsPresenter.hpp>
+#include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
+#include <gui/screen_module2_graph_screen/Screen_Module2_GraphPresenter.hpp>
 #include <gui/screen_uart_screen/Screen_UARTView.hpp>
 #include <gui/screen_uart_screen/Screen_UARTPresenter.hpp>
 #include <gui/template_screen/TemplateView.hpp>
@@ -48,68 +54,95 @@ void FrontendApplicationBase::gotoScreen_MainScreenNoTransitionImpl()
     makeTransition<Screen_MainView, Screen_MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
+// Screen_Module1_Data
 
-void FrontendApplicationBase::gotoScreen_MainScreenSlideTransitionWest()
+void FrontendApplicationBase::gotoScreen_Module1_DataScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_MainScreenSlideTransitionWestImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module1_DataScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoScreen_MainScreenSlideTransitionWestImpl()
+void FrontendApplicationBase::gotoScreen_Module1_DataScreenNoTransitionImpl()
 {
-    makeTransition<Screen_MainView, Screen_MainPresenter, touchgfx::SlideTransition<WEST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    makeTransition<Screen_Module1_DataView, Screen_Module1_DataPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// Screen_Module1
+// Screen_Module1_Settings
 
-void FrontendApplicationBase::gotoScreen_Module1ScreenSlideTransitionEast()
+void FrontendApplicationBase::gotoScreen_Module1_SettingsScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module1ScreenSlideTransitionEastImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module1_SettingsScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoScreen_Module1ScreenSlideTransitionEastImpl()
+void FrontendApplicationBase::gotoScreen_Module1_SettingsScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module1View, Screen_Module1Presenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    makeTransition<Screen_Module1_SettingsView, Screen_Module1_SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// Screen_Module2
+// Screen_Module1_Graph
 
-void FrontendApplicationBase::gotoScreen_Module2ScreenSlideTransitionEast()
+void FrontendApplicationBase::gotoScreen_Module1_GraphScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module2ScreenSlideTransitionEastImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module1_GraphScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoScreen_Module2ScreenSlideTransitionEastImpl()
+void FrontendApplicationBase::gotoScreen_Module1_GraphScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module2View, Screen_Module2Presenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    makeTransition<Screen_Module1_GraphView, Screen_Module1_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// Screen_Module3
+// Screen_Module2_Data
 
-void FrontendApplicationBase::gotoScreen_Module3ScreenCoverTransitionEast()
+void FrontendApplicationBase::gotoScreen_Module2_DataScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module3ScreenCoverTransitionEastImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module2_DataScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoScreen_Module3ScreenCoverTransitionEastImpl()
+void FrontendApplicationBase::gotoScreen_Module2_DataScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module3View, Screen_Module3Presenter, touchgfx::CoverTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    makeTransition<Screen_Module2_DataView, Screen_Module2_DataPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Screen_Module2_Settings
+
+void FrontendApplicationBase::gotoScreen_Module2_SettingsScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module2_SettingsScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoScreen_Module2_SettingsScreenNoTransitionImpl()
+{
+    makeTransition<Screen_Module2_SettingsView, Screen_Module2_SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Screen_Module2_Graph
+
+void FrontendApplicationBase::gotoScreen_Module2_GraphScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module2_GraphScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoScreen_Module2_GraphScreenNoTransitionImpl()
+{
+    makeTransition<Screen_Module2_GraphView, Screen_Module2_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_UART
 
-void FrontendApplicationBase::gotoScreen_UARTScreenSlideTransitionEast()
+void FrontendApplicationBase::gotoScreen_UARTScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_UARTScreenSlideTransitionEastImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_UARTScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoScreen_UARTScreenSlideTransitionEastImpl()
+void FrontendApplicationBase::gotoScreen_UARTScreenNoTransitionImpl()
 {
-    makeTransition<Screen_UARTView, Screen_UARTPresenter, touchgfx::SlideTransition<EAST>, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    makeTransition<Screen_UARTView, Screen_UARTPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Template

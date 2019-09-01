@@ -9,8 +9,8 @@
 Screen_MainViewBase::Screen_MainViewBase() :
     buttonCallback(this, &Screen_MainViewBase::buttonCallbackHandler)
 {
-    backgroundBox_MainScreen.setPosition(0, 0, 800, 480);
-    backgroundBox_MainScreen.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    backgroundBox_Black.setPosition(0, 0, 800, 480);
+    backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     buttonWithLabel_UART_Debug.setXY(0, 149);
     buttonWithLabel_UART_Debug.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -26,21 +26,14 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID39));
 
-    buttonWithLabel_Module3.setXY(315, 334);
-    buttonWithLabel_Module3.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_Module3.setLabelText(TypedText(T_SINGLEUSEID43));
-    buttonWithLabel_Module3.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel_Module3.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel_Module3.setAction(buttonCallback);
-
-    buttonWithLabel_Module2.setXY(315, 210);
+    buttonWithLabel_Module2.setXY(315, 274);
     buttonWithLabel_Module2.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_Module2.setLabelText(TypedText(T_SINGLEUSEID42));
     buttonWithLabel_Module2.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setAction(buttonCallback);
 
-    buttonWithLabel_Module1.setXY(315, 89);
+    buttonWithLabel_Module1.setXY(315, 149);
     buttonWithLabel_Module1.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_Module1.setLabelText(TypedText(T_SINGLEUSEID41));
     buttonWithLabel_Module1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -66,10 +59,9 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_ActiveModule.resizeToCurrentText();
     textArea_ActiveModule.setTypedText(TypedText(T_SINGLEUSEID129));
 
-    add(backgroundBox_MainScreen);
+    add(backgroundBox_Black);
     add(buttonWithLabel_UART_Debug);
     add(textArea_CPU_Usage);
-    add(buttonWithLabel_Module3);
     add(buttonWithLabel_Module2);
     add(buttonWithLabel_Module1);
     add(textArea_MainMenu);
@@ -88,29 +80,22 @@ void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
     {
         //Interaction_GoToUARTScreen
         //When buttonWithLabel_UART_Debug clicked change screen to Screen_UART
-        //Go to Screen_UART with screen transition towards East
-        application().gotoScreen_UARTScreenSlideTransitionEast();
-    }
-    else if (&src == &buttonWithLabel_Module3)
-    {
-        //Interaction_GoToModule3Screen
-        //When buttonWithLabel_Module3 clicked change screen to Screen_Module3
-        //Go to Screen_Module3 with screen transition towards East
-        application().gotoScreen_Module3ScreenCoverTransitionEast();
+        //Go to Screen_UART with no screen transition
+        application().gotoScreen_UARTScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_Module2)
     {
         //Interaction_GoToModule2Screen
-        //When buttonWithLabel_Module2 clicked change screen to Screen_Module2
-        //Go to Screen_Module2 with screen transition towards East
-        application().gotoScreen_Module2ScreenSlideTransitionEast();
+        //When buttonWithLabel_Module2 clicked change screen to Screen_Module2_Data
+        //Go to Screen_Module2_Data with no screen transition
+        application().gotoScreen_Module2_DataScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_Module1)
     {
         //Interaction_GoToModule1Screen
-        //When buttonWithLabel_Module1 clicked change screen to Screen_Module1
-        //Go to Screen_Module1 with screen transition towards East
-        application().gotoScreen_Module1ScreenSlideTransitionEast();
+        //When buttonWithLabel_Module1 clicked change screen to Screen_Module1_Data
+        //Go to Screen_Module1_Data with no screen transition
+        application().gotoScreen_Module1_DataScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_Graph_Debug)
     {

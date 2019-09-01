@@ -28,10 +28,9 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::Box backgroundBox_MainScreen;
+    touchgfx::Box backgroundBox_Black;
     touchgfx::ButtonWithLabel buttonWithLabel_UART_Debug;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
-    touchgfx::ButtonWithLabel buttonWithLabel_Module3;
     touchgfx::ButtonWithLabel buttonWithLabel_Module2;
     touchgfx::ButtonWithLabel buttonWithLabel_Module1;
     touchgfx::TextArea textArea_MainMenu;

@@ -749,34 +749,64 @@
               <FilePath>../../gui/src/screen_main_screen/screen_mainview.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module1Presenter.cpp</FileName>
+              <FileName>Screen_Module1_DataPresenter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module1_screen/screen_module1presenter.cpp</FilePath>
+              <FilePath>../../gui/src/screen_module1_data_screen/screen_module1_datapresenter.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module1View.cpp</FileName>
+              <FileName>Screen_Module1_DataView.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module1_screen/screen_module1view.cpp</FilePath>
+              <FilePath>../../gui/src/screen_module1_data_screen/screen_module1_dataview.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module2Presenter.cpp</FileName>
+              <FileName>Screen_Module1_GraphPresenter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_screen/screen_module2presenter.cpp</FilePath>
+              <FilePath>../../gui/src/screen_module1_graph_screen/screen_module1_graphpresenter.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module2View.cpp</FileName>
+              <FileName>Screen_Module1_GraphView.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_screen/screen_module2view.cpp</FilePath>
+              <FilePath>../../gui/src/screen_module1_graph_screen/screen_module1_graphview.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module3Presenter.cpp</FileName>
+              <FileName>Screen_Module1_SettingsPresenter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module3_screen/screen_module3presenter.cpp</FilePath>
+              <FilePath>../../gui/src/screen_module1_settings_screen/screen_module1_settingspresenter.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module3View.cpp</FileName>
+              <FileName>Screen_Module1_SettingsView.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module3_screen/screen_module3view.cpp</FilePath>
+              <FilePath>../../gui/src/screen_module1_settings_screen/screen_module1_settingsview.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_DataPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module2_data_screen/screen_module2_datapresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_DataView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module2_data_screen/screen_module2_dataview.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_GraphPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module2_graph_screen/screen_module2_graphpresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_GraphView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module2_graph_screen/screen_module2_graphview.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_SettingsPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module2_settings_screen/screen_module2_settingspresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_SettingsView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module2_settings_screen/screen_module2_settingsview.cpp</FilePath>
             </File>
             <File>
               <FileName>Screen_UARTPresenter.cpp</FileName>
@@ -914,19 +944,34 @@
               <FilePath>../../generated/gui_generated/src/screen_main_screen/screen_mainviewbase.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module1ViewBase.cpp</FileName>
+              <FileName>Screen_Module1_DataViewBase.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_module1_screen/screen_module1viewbase.cpp</FilePath>
+              <FilePath>../../generated/gui_generated/src/screen_module1_data_screen/screen_module1_dataviewbase.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module2ViewBase.cpp</FileName>
+              <FileName>Screen_Module1_GraphViewBase.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_module2_screen/screen_module2viewbase.cpp</FilePath>
+              <FilePath>../../generated/gui_generated/src/screen_module1_graph_screen/screen_module1_graphviewbase.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module3ViewBase.cpp</FileName>
+              <FileName>Screen_Module1_SettingsViewBase.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_module3_screen/screen_module3viewbase.cpp</FilePath>
+              <FilePath>../../generated/gui_generated/src/screen_module1_settings_screen/screen_module1_settingsviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_DataViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/gui_generated/src/screen_module2_data_screen/screen_module2_dataviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_GraphViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/gui_generated/src/screen_module2_graph_screen/screen_module2_graphviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module2_SettingsViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/gui_generated/src/screen_module2_settings_screen/screen_module2_settingsviewbase.cpp</FilePath>
             </File>
             <File>
               <FileName>Screen_UARTViewBase.cpp</FileName>

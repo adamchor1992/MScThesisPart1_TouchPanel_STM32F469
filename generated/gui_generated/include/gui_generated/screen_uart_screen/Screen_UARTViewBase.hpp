@@ -36,7 +36,7 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::Box backgroundBox_UARTScreen;
+    touchgfx::Box backgroundBox_Black;
     touchgfx::ButtonWithLabel buttonWithLabel_GoToMainMenu;
     touchgfx::ButtonWithLabel buttonWithLabel_SendUartHello;
     touchgfx::ButtonWithLabel buttonWithLabel_ClearUart;

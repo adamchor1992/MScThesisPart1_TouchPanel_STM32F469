@@ -3,12 +3,10 @@
 Screen_MainView::Screen_MainView()
 {
   /*Dim and deactivate Module buttons*/
-  buttonWithLabel_Module1.setAlpha(100);
+  //buttonWithLabel_Module1.setAlpha(100);
   //buttonWithLabel_Module1.setTouchable(false);
-  buttonWithLabel_Module2.setAlpha(100);
+  //buttonWithLabel_Module2.setAlpha(100);
   //buttonWithLabel_Module2.setTouchable(false);
-  buttonWithLabel_Module3.setAlpha(100);
-  //buttonWithLabel_Module3.setTouchable(false);
 }
 
 void Screen_MainView::setupScreen()

@@ -9,8 +9,8 @@
 TemplateViewBase::TemplateViewBase() :
     buttonCallback(this, &TemplateViewBase::buttonCallbackHandler)
 {
-    backgroundBox_TemplateScreen.setPosition(0, 0, 800, 480);
-    backgroundBox_TemplateScreen.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
+    backgroundBox_Black.setPosition(0, 0, 800, 480);
+    backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     buttonWithLabel_GoToMainMenu.setXY(315, 420);
     buttonWithLabel_GoToMainMenu.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -26,7 +26,7 @@ TemplateViewBase::TemplateViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID125));
 
-    add(backgroundBox_TemplateScreen);
+    add(backgroundBox_Black);
     add(buttonWithLabel_GoToMainMenu);
     add(textArea_CPU_Usage);
 }

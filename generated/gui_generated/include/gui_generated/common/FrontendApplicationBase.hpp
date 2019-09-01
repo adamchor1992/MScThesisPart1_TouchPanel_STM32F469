@@ -18,23 +18,33 @@ public:
     // Screen_Main
     void gotoScreen_MainScreenNoTransition();
 
-    void gotoScreen_MainScreenSlideTransitionWest();
+
+    // Screen_Module1_Data
+    void gotoScreen_Module1_DataScreenNoTransition();
 
 
-    // Screen_Module1
-    void gotoScreen_Module1ScreenSlideTransitionEast();
+    // Screen_Module1_Settings
+    void gotoScreen_Module1_SettingsScreenNoTransition();
 
 
-    // Screen_Module2
-    void gotoScreen_Module2ScreenSlideTransitionEast();
+    // Screen_Module1_Graph
+    void gotoScreen_Module1_GraphScreenNoTransition();
 
 
-    // Screen_Module3
-    void gotoScreen_Module3ScreenCoverTransitionEast();
+    // Screen_Module2_Data
+    void gotoScreen_Module2_DataScreenNoTransition();
+
+
+    // Screen_Module2_Settings
+    void gotoScreen_Module2_SettingsScreenNoTransition();
+
+
+    // Screen_Module2_Graph
+    void gotoScreen_Module2_GraphScreenNoTransition();
 
 
     // Screen_UART
-    void gotoScreen_UARTScreenSlideTransitionEast();
+    void gotoScreen_UARTScreenNoTransition();
 
 
     // Template
@@ -48,23 +58,33 @@ protected:
     // Screen_Main
     void gotoScreen_MainScreenNoTransitionImpl();
 
-    void gotoScreen_MainScreenSlideTransitionWestImpl();
+
+    // Screen_Module1_Data
+    void gotoScreen_Module1_DataScreenNoTransitionImpl();
 
 
-    // Screen_Module1
-    void gotoScreen_Module1ScreenSlideTransitionEastImpl();
+    // Screen_Module1_Settings
+    void gotoScreen_Module1_SettingsScreenNoTransitionImpl();
 
 
-    // Screen_Module2
-    void gotoScreen_Module2ScreenSlideTransitionEastImpl();
+    // Screen_Module1_Graph
+    void gotoScreen_Module1_GraphScreenNoTransitionImpl();
 
 
-    // Screen_Module3
-    void gotoScreen_Module3ScreenCoverTransitionEastImpl();
+    // Screen_Module2_Data
+    void gotoScreen_Module2_DataScreenNoTransitionImpl();
+
+
+    // Screen_Module2_Settings
+    void gotoScreen_Module2_SettingsScreenNoTransitionImpl();
+
+
+    // Screen_Module2_Graph
+    void gotoScreen_Module2_GraphScreenNoTransitionImpl();
 
 
     // Screen_UART
-    void gotoScreen_UARTScreenSlideTransitionEastImpl();
+    void gotoScreen_UARTScreenNoTransitionImpl();
 
 
     // Template

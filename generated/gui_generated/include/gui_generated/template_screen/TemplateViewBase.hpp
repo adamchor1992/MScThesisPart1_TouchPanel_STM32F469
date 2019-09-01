@@ -27,7 +27,7 @@ protected:
     /*
      * Member Declarations
      */
-    touchgfx::Box backgroundBox_TemplateScreen;
+    touchgfx::Box backgroundBox_Black;
     touchgfx::ButtonWithLabel buttonWithLabel_GoToMainMenu;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
 

@@ -8,15 +8,20 @@
 #include <common/Partition.hpp>
 #include <mvp/MVPHeap.hpp>
 #include <touchgfx/transitions/NoTransition.hpp>
-#include <touchgfx/transitions/SlideTransition.hpp>
-#include <touchgfx/transitions/SlideTransition.hpp>
-#include <touchgfx/transitions/SlideTransition.hpp>
-#include <touchgfx/transitions/CoverTransition.hpp>
 
-#include <touchgfx/transitions/SlideTransition.hpp>
-#include <touchgfx/transitions/SlideTransition.hpp>
-#include <touchgfx/transitions/SlideTransition.hpp>
-#include <touchgfx/transitions/SlideTransition.hpp>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #include <gui/common/FrontendApplication.hpp>
@@ -24,12 +29,18 @@
 
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 #include <gui/screen_main_screen/Screen_MainPresenter.hpp>
-#include <gui/screen_module1_screen/Screen_Module1View.hpp>
-#include <gui/screen_module1_screen/Screen_Module1Presenter.hpp>
-#include <gui/screen_module2_screen/Screen_Module2View.hpp>
-#include <gui/screen_module2_screen/Screen_Module2Presenter.hpp>
-#include <gui/screen_module3_screen/Screen_Module3View.hpp>
-#include <gui/screen_module3_screen/Screen_Module3Presenter.hpp>
+#include <gui/screen_module1_data_screen/Screen_Module1_DataView.hpp>
+#include <gui/screen_module1_data_screen/Screen_Module1_DataPresenter.hpp>
+#include <gui/screen_module1_settings_screen/Screen_Module1_SettingsView.hpp>
+#include <gui/screen_module1_settings_screen/Screen_Module1_SettingsPresenter.hpp>
+#include <gui/screen_module1_graph_screen/Screen_Module1_GraphView.hpp>
+#include <gui/screen_module1_graph_screen/Screen_Module1_GraphPresenter.hpp>
+#include <gui/screen_module2_data_screen/Screen_Module2_DataView.hpp>
+#include <gui/screen_module2_data_screen/Screen_Module2_DataPresenter.hpp>
+#include <gui/screen_module2_settings_screen/Screen_Module2_SettingsView.hpp>
+#include <gui/screen_module2_settings_screen/Screen_Module2_SettingsPresenter.hpp>
+#include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
+#include <gui/screen_module2_graph_screen/Screen_Module2_GraphPresenter.hpp>
 #include <gui/screen_uart_screen/Screen_UARTView.hpp>
 #include <gui/screen_uart_screen/Screen_UARTPresenter.hpp>
 #include <gui/template_screen/TemplateView.hpp>
@@ -57,12 +68,15 @@ public:
      * @note All view types used in the application MUST be added to this list!
      */
     typedef meta::TypeList< Screen_MainView,
-            meta::TypeList< Screen_Module1View,
-            meta::TypeList< Screen_Module2View,
-            meta::TypeList< Screen_Module3View,
+            meta::TypeList< Screen_Module1_DataView,
+            meta::TypeList< Screen_Module1_SettingsView,
+            meta::TypeList< Screen_Module1_GraphView,
+            meta::TypeList< Screen_Module2_DataView,
+            meta::TypeList< Screen_Module2_SettingsView,
+            meta::TypeList< Screen_Module2_GraphView,
             meta::TypeList< Screen_UARTView,
             meta::TypeList< TemplateView,
-            meta::Nil > > > > >
+            meta::Nil > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -75,12 +89,15 @@ public:
      * @note All presenter types used in the application MUST be added to this list!
      */
     typedef meta::TypeList< Screen_MainPresenter,
-            meta::TypeList< Screen_Module1Presenter,
-            meta::TypeList< Screen_Module2Presenter,
-            meta::TypeList< Screen_Module3Presenter,
+            meta::TypeList< Screen_Module1_DataPresenter,
+            meta::TypeList< Screen_Module1_SettingsPresenter,
+            meta::TypeList< Screen_Module1_GraphPresenter,
+            meta::TypeList< Screen_Module2_DataPresenter,
+            meta::TypeList< Screen_Module2_SettingsPresenter,
+            meta::TypeList< Screen_Module2_GraphPresenter,
             meta::TypeList< Screen_UARTPresenter,
             meta::TypeList< TemplatePresenter,
-            meta::Nil > > > > >
+            meta::Nil > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**
@@ -93,10 +110,7 @@ public:
      * @note All transition types used in the application MUST be added to this list!
      */
     typedef meta::TypeList< NoTransition,
-            meta::TypeList< SlideTransition<EAST>,
-            meta::TypeList< CoverTransition<EAST>,
-            meta::TypeList< SlideTransition<WEST>,
-            meta::Nil > > >
+            meta::Nil
             > GeneratedTransitionTypes;
 
     /**
