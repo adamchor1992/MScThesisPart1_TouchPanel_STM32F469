@@ -7,6 +7,7 @@
 #include <crc32.h>
 #include "string.h"
 #include "UART_Frame_Struct.h"
+#include <stdio.h>
 
 /* FreeRTOS Kernel includes. */
 #include "FreeRTOS.h"
@@ -47,6 +48,11 @@ UART_HandleTypeDef huart6;
 
 void MX_USART3_UART_Init(void);
 void MX_USART6_UART_Init(void);
+
+void DebugPrint(const char* ch)
+{
+  HAL_UART_Transmit(&huart3, (uint8_t*)ch, strlen(ch), DEBUG_UART_WAITING);
+}
 
 void Error_Handler(void);
 
@@ -124,9 +130,8 @@ int main(void)
   BSP_LED_Init(LED3);
   BSP_LED_Init(LED4);
   
-  char str[] = "System initialized, starting FreeRTOS Scheduler\n";
-  HAL_UART_Transmit(&huart3, str, strlen(str), DEBUG_UART_WAITING);
-  
+  DebugPrint("System initialized, starting FreeRTOS Scheduler\n");
+
   vTaskStartScheduler();
   
   /*Control never reaches here*/
@@ -136,6 +141,7 @@ int main(void)
 /* Task definitions begin */
 static void GUI_Task(void* params)
 {
+  DebugPrint("GUI task initialized\n");
   touchgfx::HAL::getInstance()->taskEntry();
 }
 
@@ -150,6 +156,8 @@ static void UART_RxTask(void* params)
   /*Structure to which UART task writes processed UART frame*/
   UARTFrameStruct_t s_UARTFrame;
   
+  DebugPrint("RX task initialized\n");
+
   while(1)
   {   
     /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
@@ -161,8 +169,9 @@ static void UART_RxTask(void* params)
         /*Ensure that there is no context switch during frame processing*/
         taskENTER_CRITICAL();
 
-        char str[] = "RX processing\n";
-        HAL_UART_Transmit(&huart3, str, strlen(str), DEBUG_UART_WAITING);
+#ifdef DEBUG
+        DebugPrint("RX processing\n");
+#endif
         
         //CRC check will be performed here
         CRC_Value_Calculated = Calculate_CRC32((char*)UART_ReceivedFrame, 12);
@@ -190,15 +199,11 @@ static void UART_RxTask(void* params)
         /*Frame is correct and can be further processed*/
         
 #ifdef DEBUG
-        char str2[] = "Frame is: ";
-        HAL_UART_Transmit(&huart3, str2, strlen(str2), DEBUG_UART_WAITING);
-
-        
+        DebugPrint("Frame is: ");
         char frame[FRAME_NO_CRC + 1];
         memcpy(frame,UART_ReceivedFrame,FRAME_NO_CRC);
         frame[12] = '\n'; //line feed at the end of frame data
-        
-        HAL_UART_Transmit(&huart3, frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
+        HAL_UART_Transmit(&huart3, (uint8_t*)frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
 #endif
         
         /*Frame parsing to structure*/
@@ -234,6 +239,8 @@ static void UART_TxTask(void* params)
   uint32_t* CRC_Address;
   uint8_t *p1, *p2, *p3, *p4;
   
+  DebugPrint("TX task initialized\n");
+
   while(1)
   {  
     /*Take TxSempahore*/
@@ -245,8 +252,7 @@ static void UART_TxTask(void* params)
         taskENTER_CRITICAL(); 
         
 #ifdef DEBUG
-        char str[] = "TX processing\n";
-        HAL_UART_Transmit(&huart3, str, strlen(str), DEBUG_UART_WAITING);
+        DebugPrint("TX processing\n");
 #endif
         
         xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);
