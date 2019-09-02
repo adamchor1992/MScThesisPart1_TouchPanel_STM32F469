@@ -12,6 +12,7 @@ public:
   virtual void setupScreen();
   virtual void tearDownScreen();
   
+  void processControlFrame(UARTFrameStruct_t s_UARTFrame);
   void updateCpuUsage(uint8_t value);
 protected:
 };

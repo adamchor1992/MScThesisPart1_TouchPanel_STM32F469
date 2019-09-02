@@ -21,6 +21,7 @@ public:
   virtual void notifyNewUART_RXValue(uint8_t *newValue) {}
   virtual void notifyNewUART_TXValue(uint8_t *newValue) {}
   virtual void notifyNewUART_RXParsedFrame(UARTFrameStruct_t s_UARTFrame) {}
+  virtual void notifyNewControlFrame(UARTFrameStruct_t s_UARTFrame) {}
   virtual void notifyNewCpuUsageValue(uint8_t value) {}
   
   virtual ~ModelListener() {}

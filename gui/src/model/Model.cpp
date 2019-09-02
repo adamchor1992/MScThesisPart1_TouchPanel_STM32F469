@@ -9,8 +9,7 @@
 #include "string.h"
 #include "UART_Frame_Struct.h"
 
-extern const uint8_t FRAME_SIZE = 16;
-extern xQueueHandle msgQueueUARTReceive;
+extern xQueueHandle msgQueueUART_RX_ProcessedFrame;
 extern xQueueHandle msgQueueUARTTransmit;
 extern xSemaphoreHandle UART_TxSemaphore;
 
@@ -28,13 +27,20 @@ Model::Model() : modelListener(0)
 void Model::tick()
 {
   //get new UART message from message queue (if any)
-  if (uxQueueMessagesWaiting(msgQueueUARTReceive) > 0)
+  if (uxQueueMessagesWaiting(msgQueueUART_RX_ProcessedFrame) > 0)
   {
     /*Frame is validated at this point and can be directly recovered from queue and copied to local s_UARTFrame structure*/    
-    xQueueReceive(msgQueueUARTReceive, &s_UARTFrame, 0);
+    xQueueReceive(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, 0);
     
-    modelListener->notifyNewUART_RXParsedFrame(s_UARTFrame);
-    modelListener->notifyNewUART_RXValue(s_UARTFrame.payload); //notify GUI of something new RECEIVED
+    if(s_UARTFrame.type == '1') //control type frame
+    {
+      modelListener->notifyNewControlFrame(s_UARTFrame);
+    }
+    else if(s_UARTFrame.type == '1') //data type frame
+    {
+      modelListener->notifyNewUART_RXParsedFrame(s_UARTFrame);
+      modelListener->notifyNewUART_RXValue(s_UARTFrame.payload); //notify GUI of something new RECEIVED
+    }
     
     //modelListener->notifyNewUART_TXValue(UART_ReceivedValue); //notify GUI of something new to TRANSMIT
     

@@ -17,8 +17,7 @@
 #include "semphr.h"
 
 /* Defines */
-#define FRAME_SIZE 16
-#define FRAME_NO_CRC 12
+#define FRAME_NO_CRC FRAME_SIZE-4
 #define QUEUES_SIZE 1
 #define DEBUG_UART_WAITING 50
 #define NO_WAITING 0
@@ -33,12 +32,16 @@
 
 xQueueHandle msgQueueUARTReceive;
 xQueueHandle msgQueueUARTTransmit;
+xQueueHandle msgQueueUART_RX_ProcessedFrame;
 xSemaphoreHandle UART_RxSemaphore;
 xSemaphoreHandle UART_TxSemaphore;
 xSemaphoreHandle UART_Mutex;
 
+uint8_t activeModule=0;
+
 static void GUI_Task(void* params);
 static void UART_RxTask(void* params);
+static void UART_InitConnectionTask(void* params);
 static void UART_TxTask(void* params);
 /* FreeRTOS stuff end*/
 
@@ -96,21 +99,27 @@ int main(void)
               NULL,
               LOW_PRIORITY,
               NULL);
-  
-  xTaskCreate(UART_RxTask, (TASKCREATE_NAME_TYPE)"UART_RxTask",
-              200,
-              NULL,
-              MEDIUM_PRIORITY,
-              NULL);
-  
-  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
+  xTaskCreate(UART_InitConnectionTask, (TASKCREATE_NAME_TYPE)"UART_InitConnectionTask",
               200,
               NULL,
               HIGH_PRIORITY,
               NULL);
-  
+
+//  xTaskCreate(UART_RxTask, (TASKCREATE_NAME_TYPE)"UART_RxTask",
+//              200,
+//              NULL,
+//              MEDIUM_PRIORITY,
+//              NULL);
+
+//  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
+//              200,
+//              NULL,
+//              HIGH_PRIORITY,
+//              NULL);
+
   /*Create message queues for UART task*/
   msgQueueUARTReceive = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
+  msgQueueUART_RX_ProcessedFrame = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
   msgQueueUARTTransmit = xQueueCreate(QUEUES_SIZE, FRAME_SIZE * sizeof(uint8_t));
   
   /*Debugging*/
@@ -145,17 +154,64 @@ static void GUI_Task(void* params)
   touchgfx::HAL::getInstance()->taskEntry();
 }
 
+static void UART_InitConnectionTask(void* params)
+{
+  UARTFrameStruct_t s_UARTFrame;
+  uint8_t length_int;
+
+  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
+
+  DebugPrint("Waiting for module to send connection request\n");
+
+  /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
+  if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
+  {
+    /*Frame parsing to structure*/
+    s_UARTFrame.source = UART_ReceivedFrame[0];
+    s_UARTFrame.module = UART_ReceivedFrame[1];
+    s_UARTFrame.type = UART_ReceivedFrame[2];
+    s_UARTFrame.parameter = UART_ReceivedFrame[3];
+    s_UARTFrame.sign = UART_ReceivedFrame[4];
+    s_UARTFrame.length = UART_ReceivedFrame[5];
+
+    length_int = s_UARTFrame.length - '0';
+
+    for(uint8_t i=0; i < length_int; i++)
+    {
+      s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
+    }
+
+    if(s_UARTFrame.type == '1') // Control type frame
+    {
+      DebugPrint("CONNECTED\n");
+      xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
+    }
+    else
+    {
+      DebugPrint("BAD FRAME TYPE\n");
+    }
+
+    /*Give back UART_RxSemaphore*/
+    xSemaphoreGive(UART_RxSemaphore);
+  }
+
+  DebugPrint("Deleting connection initialization task\n");
+
+  /*Task deletes itself*/
+  vTaskDelete(NULL);
+}
+
 static void UART_RxTask(void* params)
 {
   uint32_t CRC_Value_Calculated;
   uint8_t CRC_Value_Received_Raw_8Bit[4];
   uint32_t CRC_Value_Received;
-  
+
   uint8_t length_int;
-  
+
   /*Structure to which UART task writes processed UART frame*/
   UARTFrameStruct_t s_UARTFrame;
-  
+
   DebugPrint("RX task initialized\n");
 
   while(1)
@@ -221,8 +277,10 @@ static void UART_RxTask(void* params)
         
         //what about CRC? 
         
-        xQueueSendToBack(msgQueueUARTReceive, &s_UARTFrame, NO_WAITING);
+        xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
         
+        /*Give back UART_RxSemaphore*/
+        xSemaphoreGive(UART_RxSemaphore);
         /*Give back UART Mutex*/
         xSemaphoreGive(UART_Mutex);
         
