@@ -6,7 +6,9 @@
 #include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
 
-Screen_Module2_SettingsViewBase::Screen_Module2_SettingsViewBase()
+Screen_Module2_SettingsViewBase::Screen_Module2_SettingsViewBase() :
+    buttonCallback(this, &Screen_Module2_SettingsViewBase::buttonCallbackHandler),
+    sliderValueChangedCallback(this, &Screen_Module2_SettingsViewBase::sliderValueChangedCallbackHandler)
 {
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
@@ -16,12 +18,14 @@ Screen_Module2_SettingsViewBase::Screen_Module2_SettingsViewBase()
     buttonWithLabel_SetValue.setLabelText(TypedText(T_SINGLEUSEID167));
     buttonWithLabel_SetValue.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_SetValue.setAction(buttonCallback);
 
     slider_Value.setXY(381, 202);
     slider_Value.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_Value.setupHorizontalSlider(2, 19, 2, 0, 310);
     slider_Value.setValueRange(0, 100);
     slider_Value.setValue(0);
+    slider_Value.setNewValueCallback(sliderValueChangedCallback);
 
     radioButtonParameter2.setXY(62, 179);
     radioButtonParameter2.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
@@ -85,6 +89,7 @@ Screen_Module2_SettingsViewBase::Screen_Module2_SettingsViewBase()
     buttonWithLabel_Back.setLabelText(TypedText(T_SINGLEUSEID176));
     buttonWithLabel_Back.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_Back.setAction(buttonCallback);
 
     textArea_CPU_Usage.setPosition(618, 451, 182, 29);
     textArea_CPU_Usage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -118,4 +123,33 @@ Screen_Module2_SettingsViewBase::Screen_Module2_SettingsViewBase()
 void Screen_Module2_SettingsViewBase::setupScreen()
 {
 
+}
+
+void Screen_Module2_SettingsViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithLabel_SetValue)
+    {
+        //Interaction_SetValueButtonPushed
+        //When buttonWithLabel_SetValue clicked call virtual function
+        //Call setNewValue
+        setNewValue();
+    }
+    else if (&src == &buttonWithLabel_Back)
+    {
+        //Interaction_GoBack
+        //When buttonWithLabel_Back clicked change screen to Screen_Module2_Data
+        //Go to Screen_Module2_Data with no screen transition
+        application().gotoScreen_Module2_DataScreenNoTransition();
+    }
+}
+
+void Screen_Module2_SettingsViewBase::sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value)
+{
+    if (&src == &slider_Value)
+    {
+        //Interaction_UpdateValueToSet
+        //When slider_Value value changed call virtual function
+        //Call updateValueToSet
+        updateValueToSet(value);
+    }
 }

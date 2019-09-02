@@ -52,11 +52,11 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_Graph_Debug.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Graph_Debug.setAction(buttonCallback);
 
-    textArea_ActiveModule.setXY(0, 431);
+    textArea_ActiveModule.setPosition(0, 431, 528, 49);
     textArea_ActiveModule.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ActiveModule.setLinespacing(0);
-    textArea_ActiveModule.setWildcard(TypedText(T_SINGLEUSEID130).getText());
-    textArea_ActiveModule.resizeToCurrentText();
+    Unicode::snprintf(textArea_ActiveModuleBuffer, TEXTAREA_ACTIVEMODULE_SIZE, "%s", TypedText(T_SINGLEUSEID130).getText());
+    textArea_ActiveModule.setWildcard(textArea_ActiveModuleBuffer);
     textArea_ActiveModule.setTypedText(TypedText(T_SINGLEUSEID129));
 
     add(backgroundBox_Black);

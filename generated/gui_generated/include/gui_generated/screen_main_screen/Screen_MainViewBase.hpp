@@ -42,6 +42,8 @@ protected:
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
+    static const uint16_t TEXTAREA_ACTIVEMODULE_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_ActiveModuleBuffer[TEXTAREA_ACTIVEMODULE_SIZE];
 
 private:
 

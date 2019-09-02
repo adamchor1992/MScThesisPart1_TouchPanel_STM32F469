@@ -53,6 +53,8 @@ KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId129_Gb[17] TEXT_LOCATION_
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId130_Gb[5] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x4e, 0x6f, 0x6e, 0x65, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
+KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId137_Gb[18] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x20, 0x31, 0x20, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x0 };
+TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId166_Gb[6] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x47, 0x72, 0x61, 0x70, 0x68, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId167_Gb[10] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x53, 0x65, 0x74, 0x20, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x0 };
@@ -61,7 +63,7 @@ KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId170_Gb[16] TEXT_LOCATION_
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId172_Gb[10] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
-KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId173_Gb[18] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x20, 0x31, 0x20, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x0 };
+KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId173_Gb[18] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x4d, 0x6f, 0x64, 0x75, 0x6c, 0x65, 0x20, 0x32, 0x20, 0x53, 0x65, 0x74, 0x74, 0x69, 0x6e, 0x67, 0x73, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId174_Gb[2] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x33, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
@@ -116,7 +118,7 @@ KEEP extern const touchgfx::Unicode::UnicodeChar* const textsGb[86] TEXT_LOCATIO
     T_SingleUseId170_Gb,
     T_SingleUseId80_Gb,
     T_SingleUseId172_Gb,
-    T_SingleUseId173_Gb,
+    T_SingleUseId137_Gb,
     T_SingleUseId174_Gb,
     T_SingleUseId175_Gb,
     T_SingleUseId180_Gb,

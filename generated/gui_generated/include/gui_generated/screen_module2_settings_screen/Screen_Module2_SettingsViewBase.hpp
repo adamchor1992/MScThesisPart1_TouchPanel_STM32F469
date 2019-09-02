@@ -23,6 +23,19 @@ public:
 
     virtual void setupScreen();
 
+    /*
+     * Custom Action Handlers
+     */
+    virtual void setNewValue()
+    {
+        // Override and implement this function in Screen_Module2_SettingsView
+    }
+
+    virtual void updateValueToSet(int value)
+    {
+        // Override and implement this function in Screen_Module2_SettingsView
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(Application::getInstance());
@@ -58,6 +71,18 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
 
 private:
+
+    /*
+     * Callback Handler Declarations
+     */
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
+
+    /*
+     * Callback Declarations
+     */
+    touchgfx::Callback<Screen_Module2_SettingsViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Screen_Module2_SettingsViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
 
 };
 

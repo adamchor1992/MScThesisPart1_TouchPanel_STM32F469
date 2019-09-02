@@ -198,17 +198,17 @@
               "Blue": 255
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
               "TextId": "SingleUseId130",
-              "UseBuffer": false,
-              "BufferSize": 0
+              "UseBuffer": true,
+              "BufferSize": 10
             },
             "Name": "textArea_ActiveModule",
             "X": 0,
             "Y": 431,
-            "Width": 420,
+            "Width": 528,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1032,7 +1032,7 @@
             }
           },
           {
-            "InteractionName": "updateValueToSet",
+            "InteractionName": "Interaction_UpdateValueToSet",
             "HasCompletedTrigger": false,
             "Trigger": {
               "TriggerComponent": "slider_Value",
@@ -1875,7 +1875,45 @@
             "Moveable": false
           }
         ],
-        "Interactions": [],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction_GoBack",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithLabel_Back",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen_Module2_Data",
+              "Type": "ActionGotoScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction_SetValueButtonPushed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithLabel_SetValue",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "setNewValue",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_UpdateValueToSet",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "slider_Value",
+              "Type": "TriggerSliderValueChanged"
+            },
+            "Action": {
+              "FunctionName": "updateValueToSet",
+              "Type": "ActionCustom"
+            }
+          }
+        ],
         "Name": "Screen_Module2_Settings",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0

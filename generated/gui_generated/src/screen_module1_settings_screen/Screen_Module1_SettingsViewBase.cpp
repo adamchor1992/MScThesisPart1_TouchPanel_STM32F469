@@ -147,7 +147,7 @@ void Screen_Module1_SettingsViewBase::sliderValueChangedCallbackHandler(const to
 {
     if (&src == &slider_Value)
     {
-        //updateValueToSet
+        //Interaction_UpdateValueToSet
         //When slider_Value value changed call virtual function
         //Call updateValueToSet
         updateValueToSet(value);
