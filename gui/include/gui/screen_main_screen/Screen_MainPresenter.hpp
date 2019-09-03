@@ -29,7 +29,7 @@ public:
   
   virtual ~Screen_MainPresenter() {};
   
-  void notifyNewControlFrame(UARTFrameStruct_t s_UARTFrame);
+  void notifyNewControlFrame(UARTFrameStruct_t & s_UARTFrame);
 
 private:
   Screen_MainPresenter();

@@ -10,65 +10,74 @@ init = InitSerial.Init
 #############################SENDING###############################
 
 # constant header assuming source, module and parameter is all 1
-header = '111'
+
+source = '1'
+module = '1'
+frame_type = '2'      # data frame
+parameter = '1'
+
+header = source + module + frame_type + parameter
 
 # define initial payload in form of int or string
-x = list(range(0,360,1))
+x = list(range(0, 360, 1))
 y = []
 
 for i in x:
-    y.append(int((round(math.sin(math.radians(i)),3))*1000)) # int scaled by 1000
-
-# for i in range(0,360):
-#     if (y[i] > 0):
-#         y[i] = y[i] * (-1)
-#     print(y[i])
-#     print("")
+    y.append(int((round(math.sin(math.radians(i)), 3))*999))  # int scaled by 999
 
 index = 0
 
-for value in y:
-    print("Number: " + str(index))
+while True:
+    for value in y:
+        print("Number: " + str(index))
 
-    print("sin(" + str(index) + ") = " + str(value))
+        print("sin(" + str(index) + ") = " + str(value))
 
-    # define payload to send
-    payload = str(value)
+        # define payload to send
+        payload = str(abs(value))
 
-    # determine payload's actual length
-    length = str(len(payload))
+        if value >= 0:
+            sign = '1'
+        else:
+            sign = '2'
 
-    print("Length: " + str(length))
+        # determine payload's actual length
+        length = str(len(payload))
 
-    # create string of 8-length trailing null characters
-    trailing_zeroes = '\x00' * (8 - int(length))
+        print("Length: " + str(length))
 
-    # build data frame
-    data_frame = header + length + payload + trailing_zeroes
+        # create string of 8-length trailing null characters
+        trailing_zeroes = '\x00' * (10 - int(length))
 
-    # calculate crc for built data frame
-    calculated_crc32 = init.crc32_func(data_frame.encode('utf-8'))
+        # build data frame
+        data_frame = header + sign + length + payload + trailing_zeroes
 
-    # print crc in hex form
-    # print(hex(calculated_crc32))
+        # calculate crc for built data frame
+        calculated_crc32 = init.crc32_func(data_frame.encode('utf-8'))
 
-    # convert 32 bit int crc to 4 bytes
-    crc_bytes = (calculated_crc32).to_bytes(4, byteorder='big')
+        # print crc in hex form
+        # print(hex(calculated_crc32))
 
-    print("CRC bytes: " + str(crc_bytes))
+        # convert 32 bit int crc to 4 bytes
+        crc_bytes = calculated_crc32.to_bytes(4, byteorder='big')
 
-    # convert data frame string to bytes
-    data_frame_bytes = data_frame.encode('utf-8')
+        print("CRC bytes: " + str(crc_bytes))
 
-    # print(data_frame_bytes)
+        # convert data frame string to bytes
+        data_frame_bytes = data_frame.encode('utf-8')
 
-    full_frame = data_frame_bytes + crc_bytes
-    print("Full frame: " + str(full_frame))
+        # print(data_frame_bytes)
 
-    init.ser.write(full_frame)
+        full_frame = data_frame_bytes + crc_bytes
+        print("Full frame: " + str(full_frame))
+        print("Full frame length: " + str(len(full_frame)))
 
-    print("------------------------------------------------------------------------")
+        init.ser.write(full_frame)
 
-    index = index + 1
+        print("------------------------------------------------------------------------")
 
-    time.sleep(0.05)
+        index = index + 1
+
+        time.sleep(0.05)
+
+    index = 0

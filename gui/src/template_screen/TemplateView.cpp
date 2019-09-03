@@ -3,6 +3,8 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include "stm32469i_discovery.h" //for led driving
 
+void DebugPrint(const char* ch);
+
 #ifdef SIMULATOR
 #include <stdlib.h>
 #endif
@@ -81,80 +83,62 @@ void TemplateView::handleTickEvent()
 //  }
 }
 
-void TemplateView::addNewValueToGraphFromUART(uint8_t length, uint8_t* data)
+void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
 {
-  isNegative = false;
-  /*Up to 5 characters may be received and interpreted as number, which is 4 characters for number and 1 optional character for minus sign*/
-  int8_t valueReceived[5] = {0};
+  bool isNegative;
   
-  length_int = length - '0';
+  if(s_UARTFrame.sign == '1')
+  {
+    isNegative = false;
+  }
+  else if(s_UARTFrame.sign == '2')
+  {
+    isNegative = true;
+  }
+  
+  /*Up to 5 characters may be received and interpreted as number, which is 4 characters for number and 1 optional character for minus sign*/
+  int8_t valueReceived[3] = {0};
+  
+  length_int = s_UARTFrame.length - '0';
   
   /*Assign meaningful received data to valueReceived table*/
   for(int i=0; i<length_int; i++)
   {
-    valueReceived[i] = ((*(data+i))-'0');
-  }	
-  
-  /*Check if negative number*/
-  if(valueReceived[0] == -3) // -3 is result of subtracting ASCII code of hyphen '-' and ASCII code of '0' performed in loop higher, TODO: SIMPLIFY THIS
-  {
-    BSP_LED_Toggle(LED1);
-    isNegative = true;
+    valueReceived[i] = ((*(s_UARTFrame.payload+i))-'0');
   }
   
   value_int = 0;
+ 
+  /*Value is positive so check frame characters one by one, from zero index, without shift*/
+  switch(length_int)
+  {      
+  case 3:
+    value_int = (valueReceived[0] * 100) + (valueReceived[1] * 10) + (valueReceived[2] * 1);
+    break;
+    
+  case 2:
+    value_int = (valueReceived[0] * 10) + (valueReceived[1] * 1);
+    break;
+    
+  case 1:
+    value_int = (valueReceived[0] * 1);
+    break;
+  }
+  
+  BSP_LED_Toggle(LED3);
   
   if(isNegative)
   {
-    /*Decrement length of frame by 1 to account for already processed minus sign*/
-    length_int--; 
-    /*First characters in frame is '-' so shift checking all other characters by 1 to the right*/
-    switch(length_int)
-    {
-    case 4:
-      value_int = (valueReceived[1] * 1000) + (valueReceived[2] * 100) + (valueReceived[3] * 10) + (valueReceived[4] * 1);
-      break;
-      
-    case 3:
-      value_int = (valueReceived[1] * 100) + (valueReceived[2] * 10) + (valueReceived[3] * 1);
-      break;
-      
-    case 2:
-      value_int = (valueReceived[1] * 10) + (valueReceived[2] * 1);
-      break;
-      
-    case 1:
-      value_int = (valueReceived[1] * 1);
-      break;
-    }
     /*Make value_int negative*/
     value_int = value_int * (-1); 
-    
-    BSP_LED_Toggle(LED2);
   }
-  else
-  {
-    /*Value is positive so check frame characters one by one, from zero index, without shift*/
-    switch(length_int)
-    {
-    case 4:
-      value_int = (valueReceived[0] * 1000) + (valueReceived[1] * 100) + (valueReceived[2] * 10) + (valueReceived[3] * 1);
-      break;
-      
-    case 3:
-      value_int = (valueReceived[0] * 100) + (valueReceived[1] * 10) + (valueReceived[2] * 1);
-      break;
-      
-    case 2:
-      value_int = (valueReceived[0] * 10) + (valueReceived[1] * 1);
-      break;
-      
-    case 1:
-      value_int = (valueReceived[0] * 1);
-      break;
-    }
-    BSP_LED_Toggle(LED3);
-  }
+  
+  char str8[5];   
+  
+  snprintf(str8, sizeof(uint8_t), "%d", value_int);   // convert uint8_t to string 
+     
+  DebugPrint("\nRamka graphu ma wartosc: \n");
+  DebugPrint(str8);
   
   graph.addValue(tickCounter, value_int);
   

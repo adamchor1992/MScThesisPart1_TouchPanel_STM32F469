@@ -40,8 +40,8 @@ xSemaphoreHandle UART_Mutex;
 uint8_t activeModule=0;
 
 static void GUI_Task(void* params);
-static void UART_RxTask(void* params);
 static void UART_InitConnectionTask(void* params);
+static void UART_Task(void* params);
 static void UART_TxTask(void* params);
 /* FreeRTOS stuff end*/
 
@@ -105,12 +105,6 @@ int main(void)
               HIGH_PRIORITY,
               NULL);
 
-//  xTaskCreate(UART_RxTask, (TASKCREATE_NAME_TYPE)"UART_RxTask",
-//              200,
-//              NULL,
-//              MEDIUM_PRIORITY,
-//              NULL);
-
 //  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
 //              200,
 //              NULL,
@@ -158,11 +152,11 @@ static void UART_InitConnectionTask(void* params)
 {
   UARTFrameStruct_t s_UARTFrame;
   uint8_t length_int;
-
+  
   HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
-
+  
   DebugPrint("Waiting for module to send connection request\n");
-
+  
   /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
   if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
   {
@@ -173,14 +167,14 @@ static void UART_InitConnectionTask(void* params)
     s_UARTFrame.parameter = UART_ReceivedFrame[3];
     s_UARTFrame.sign = UART_ReceivedFrame[4];
     s_UARTFrame.length = UART_ReceivedFrame[5];
-
+    
     length_int = s_UARTFrame.length - '0';
-
+    
     for(uint8_t i=0; i < length_int; i++)
     {
       s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
     }
-
+    
     if(s_UARTFrame.type == '1') // Control type frame
     {
       DebugPrint("CONNECTED\n");
@@ -190,102 +184,101 @@ static void UART_InitConnectionTask(void* params)
     {
       DebugPrint("BAD FRAME TYPE\n");
     }
-
-    /*Give back UART_RxSemaphore*/
-    xSemaphoreGive(UART_RxSemaphore);
   }
-
+  
+  DebugPrint("Creating UART task\n");
+  
+  xTaskCreate(UART_Task, (TASKCREATE_NAME_TYPE)"UART_Task",
+              200,
+              NULL,
+              MEDIUM_PRIORITY,
+              NULL);
+  
   DebugPrint("Deleting connection initialization task\n");
-
+  
   /*Task deletes itself*/
   vTaskDelete(NULL);
 }
 
-static void UART_RxTask(void* params)
+static void UART_Task(void* params)
 {
   uint32_t CRC_Value_Calculated;
   uint8_t CRC_Value_Received_Raw_8Bit[4];
   uint32_t CRC_Value_Received;
-
+  
   uint8_t length_int;
-
+  
   /*Structure to which UART task writes processed UART frame*/
   UARTFrameStruct_t s_UARTFrame;
-
+  
   DebugPrint("RX task initialized\n");
-
+  
   while(1)
   {   
     /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
     if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Take UART mutex*/
-      if(xSemaphoreTake(UART_Mutex, portMAX_DELAY) == pdPASS)
+      /*Ensure that there is no context switch during frame processing*/
+      taskENTER_CRITICAL();
+      
+#ifdef DEBUG
+      DebugPrint("RX processing\n");
+#endif
+      
+      //CRC check will be performed here
+      CRC_Value_Calculated = Calculate_CRC32((char*)UART_ReceivedFrame, 16);
+      
+      CRC_Value_Received_Raw_8Bit[0] = UART_ReceivedFrame[16];
+      CRC_Value_Received_Raw_8Bit[1] = UART_ReceivedFrame[17];
+      CRC_Value_Received_Raw_8Bit[2] = UART_ReceivedFrame[18];
+      CRC_Value_Received_Raw_8Bit[3] = UART_ReceivedFrame[19];
+      
+      CRC_Value_Received = CRC_Value_Received_Raw_8Bit[3] | CRC_Value_Received_Raw_8Bit[2] << 8 | CRC_Value_Received_Raw_8Bit[1] << 16 | CRC_Value_Received_Raw_8Bit[0] << 24;
+      
+      if(CRC_Value_Calculated != CRC_Value_Received)
       {
-        /*Ensure that there is no context switch during frame processing*/
-        taskENTER_CRITICAL();
-
-#ifdef DEBUG
-        DebugPrint("RX processing\n");
-#endif
+        DebugPrint("WRONG CRC");
+        /*Frame is corrupted and should be discarded*/
+        BSP_LED_On(LED1);
+        BSP_LED_On(LED2);
+        BSP_LED_On(LED3);
+        BSP_LED_On(LED4);
         
-        //CRC check will be performed here
-        CRC_Value_Calculated = Calculate_CRC32((char*)UART_ReceivedFrame, 12);
+        //HAL_UART_STATE_RESET(); //reset UART buffer?
         
-        CRC_Value_Received_Raw_8Bit[0] = UART_ReceivedFrame[12];
-        CRC_Value_Received_Raw_8Bit[1] = UART_ReceivedFrame[13];
-        CRC_Value_Received_Raw_8Bit[2] = UART_ReceivedFrame[14];
-        CRC_Value_Received_Raw_8Bit[3] = UART_ReceivedFrame[15];
-        
-        CRC_Value_Received = CRC_Value_Received_Raw_8Bit[3] | CRC_Value_Received_Raw_8Bit[2] << 8 | CRC_Value_Received_Raw_8Bit[1] << 16 | CRC_Value_Received_Raw_8Bit[0] << 24;
-        
-        if(CRC_Value_Calculated != CRC_Value_Received)
-        {
-          /*Frame is corrupted and should be discarded*/
-          BSP_LED_On(LED1);
-          BSP_LED_On(LED2);
-          BSP_LED_On(LED3);
-          BSP_LED_On(LED4);
-          
-          //HAL_UART_STATE_RESET(); //reset UART buffer?
-          
-          continue;
-        }
-        
-        /*Frame is correct and can be further processed*/
-        
-#ifdef DEBUG
-        DebugPrint("Frame is: ");
-        char frame[FRAME_NO_CRC + 1];
-        memcpy(frame,UART_ReceivedFrame,FRAME_NO_CRC);
-        frame[12] = '\n'; //line feed at the end of frame data
-        HAL_UART_Transmit(&huart3, (uint8_t*)frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
-#endif
-        
-        /*Frame parsing to structure*/
-        s_UARTFrame.source = UART_ReceivedFrame[0];
-        s_UARTFrame.module = UART_ReceivedFrame[1];
-        s_UARTFrame.parameter = UART_ReceivedFrame[2];
-        s_UARTFrame.length = UART_ReceivedFrame[3];
-        
-        length_int = s_UARTFrame.length - '0';
-        
-        for(uint8_t i=0; i < length_int; i++)
-        {
-          s_UARTFrame.payload[i] = UART_ReceivedFrame[4+i]; //payload starts from 4th element up to [4 + length] element
-        }
-        
-        //what about CRC? 
-        
-        xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
-        
-        /*Give back UART_RxSemaphore*/
-        xSemaphoreGive(UART_RxSemaphore);
-        /*Give back UART Mutex*/
-        xSemaphoreGive(UART_Mutex);
-        
-        taskEXIT_CRITICAL();
+        continue;
       }
+      
+      /*Frame is correct and can be further processed*/
+      
+#ifdef DEBUG
+      DebugPrint("Frame is: ");
+      char frame[FRAME_NO_CRC + 1];
+      memcpy(frame,UART_ReceivedFrame,FRAME_NO_CRC);
+      frame[12] = '\n'; //line feed at the end of frame data
+      HAL_UART_Transmit(&huart3, (uint8_t*)frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
+#endif
+      
+      /*Frame parsing to structure*/        
+      s_UARTFrame.source = UART_ReceivedFrame[0];
+      s_UARTFrame.module = UART_ReceivedFrame[1];
+      s_UARTFrame.type = UART_ReceivedFrame[2];
+      s_UARTFrame.parameter = UART_ReceivedFrame[3];
+      s_UARTFrame.sign = UART_ReceivedFrame[4];
+      s_UARTFrame.length = UART_ReceivedFrame[5];
+      
+      length_int = s_UARTFrame.length - '0';
+      
+      for(uint8_t i=0; i < length_int; i++)
+      {
+        s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
+      }
+      
+      //what about CRC? 
+      
+      xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
+            
+      taskEXIT_CRITICAL();
     }
   }
 }
@@ -386,5 +379,9 @@ void MX_USART6_UART_Init(void)
 
 void Error_Handler(void)
 {
-  BSP_LED_On(LED2); //in case of error turn on red LED
+  DebugPrint("ERROR HANDLER INVOKED");
+  BSP_LED_On(LED1);
+  BSP_LED_On(LED2);
+  BSP_LED_On(LED3);
+  BSP_LED_On(LED4);; //in case of error turn on all LEDs
 }

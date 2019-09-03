@@ -11,7 +11,10 @@ class Screen_Module2_GraphView;
 class Screen_Module2_GraphPresenter : public Presenter, public ModelListener
 {
 public:
-    Screen_Module2_GraphPresenter(Screen_Module2_GraphView& v);
+  Screen_Module2_GraphPresenter(Screen_Module2_GraphView& v);
+  
+  virtual void notifyNewUART_RX_Parsed_Frame_Graph(UARTFrameStruct_t & s_UARTFrame); 
+  void notifyNewCpuUsageValue(uint8_t value);
 
     /**
      * The activate function is called automatically when this screen is "switched in"

@@ -47,8 +47,10 @@ public:
   virtual void tearDownScreen();
   
   virtual void handleTickEvent();
-  virtual void addNewValueToGraphFromUART(uint8_t length, uint8_t* data);
+  
+  virtual void addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame);
   void updateCpuUsage(uint8_t value);
+  
 private:
   int tickCounter;
   uint8_t length_int;

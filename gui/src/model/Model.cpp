@@ -36,13 +36,13 @@ void Model::tick()
     {
       modelListener->notifyNewControlFrame(s_UARTFrame);
     }
-    else if(s_UARTFrame.type == '1') //data type frame
+    else if(s_UARTFrame.type == '2') //data type frame
     {
-      modelListener->notifyNewUART_RXParsedFrame(s_UARTFrame);
-      modelListener->notifyNewUART_RXValue(s_UARTFrame.payload); //notify GUI of something new RECEIVED
+      modelListener->notifyNewUART_RX_Parsed_Frame_Graph(s_UARTFrame);
+      modelListener->notifyNewUART_RX_Value(s_UARTFrame); //notify GUI of something new RECEIVED
     }
     
-    //modelListener->notifyNewUART_TXValue(UART_ReceivedValue); //notify GUI of something new to TRANSMIT
+    //modelListener->notifyNewUART_TX_Value(UART_ReceivedValue); //notify GUI of something new to TRANSMIT
     
     //xQueueSendToBack(msgQueueUARTTransmit, UART_ReceivedValue, 0);
   }
@@ -50,7 +50,7 @@ void Model::tick()
   modelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
 }
 
-void Model::setNewValueToSet(UARTFrameStruct_t s_UARTFrame)
+void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
 {
   uint8_t UART_ValueToTransmit[FRAME_SIZE] = {0};
   

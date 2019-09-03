@@ -16,13 +16,12 @@ void TemplatePresenter::deactivate()
   
 }
 
-void TemplatePresenter::notifyNewUART_RXParsedFrame(UARTFrameStruct_t s_UARTFrame)
+void TemplatePresenter::notifyNewUART_RX_Parsed_Frame_Graph(UARTFrameStruct_t & s_UARTFrame)
 {
-  view.addNewValueToGraphFromUART(s_UARTFrame.length, s_UARTFrame.payload);
+  view.addNewValueToGraphFromUART(s_UARTFrame);
 }
 
 void TemplatePresenter::notifyNewCpuUsageValue(uint8_t value)
 {
   view.updateCpuUsage(value);
 }
-

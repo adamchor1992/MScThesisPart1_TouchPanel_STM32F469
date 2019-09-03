@@ -16,7 +16,7 @@ void Screen_MainPresenter::deactivate()
   
 }
 
-void Screen_MainPresenter::notifyNewControlFrame(UARTFrameStruct_t s_UARTFrame)
+void Screen_MainPresenter::notifyNewControlFrame(UARTFrameStruct_t & s_UARTFrame)
 {
   view.processControlFrame(s_UARTFrame);
 }

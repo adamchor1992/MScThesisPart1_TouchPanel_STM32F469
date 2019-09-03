@@ -39,7 +39,7 @@ public:
   * the ModelListener interface.
   */
   void tick();
-  void setNewValueToSet(UARTFrameStruct_t s_UARTFrame);
+  void setNewValueToSet(UARTFrameStruct_t & s_UARTFrame);
   
 protected:
   /**

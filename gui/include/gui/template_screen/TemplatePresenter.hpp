@@ -12,7 +12,7 @@ class TemplatePresenter : public Presenter, public ModelListener
 {
 public:
   TemplatePresenter(TemplateView& v);
-  virtual void notifyNewUART_RXParsedFrame(UARTFrameStruct_t s_UARTFrame); 
+  virtual void notifyNewUART_RX_Parsed_Frame_Graph(UARTFrameStruct_t & s_UARTFrame); 
   void notifyNewCpuUsageValue(uint8_t value);
   
   /**
