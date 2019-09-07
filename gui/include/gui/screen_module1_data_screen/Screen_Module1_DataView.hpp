@@ -11,6 +11,9 @@ public:
     virtual ~Screen_Module1_DataView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    
+    void updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame);
+    
 protected:
 };
 

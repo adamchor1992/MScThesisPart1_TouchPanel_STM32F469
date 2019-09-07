@@ -12,6 +12,8 @@ class Screen_Module1_SettingsPresenter : public Presenter, public ModelListener
 {
 public:
     Screen_Module1_SettingsPresenter(Screen_Module1_SettingsView& v);
+    
+    virtual void notifyNewValueToSet(UARTFrameStruct_t & s_UARTFrame);
 
     /**
      * The activate function is called automatically when this screen is "switched in"

@@ -355,34 +355,6 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId71",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId72",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textArea_CRC",
-            "X": 0,
-            "Y": 269,
-            "Width": 350,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "TextId": "SingleUseId73",
             "TextRotation": "0",
             "Color": {
@@ -396,12 +368,12 @@
             "Wildcard1": {
               "TextId": "SingleUseId74",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 11
             },
             "Name": "textArea_Value",
             "X": 0,
-            "Y": 220,
-            "Width": 350,
+            "Y": 314,
+            "Width": 800,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -428,7 +400,7 @@
             },
             "Name": "textArea_ParameterID",
             "X": 0,
-            "Y": 171,
+            "Y": 216,
             "Width": 351,
             "Height": 49,
             "Type": "TextArea",
@@ -569,6 +541,62 @@
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId185",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId186",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_TypeID",
+            "X": 0,
+            "Y": 171,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId187",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId188",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_SignID",
+            "X": 0,
+            "Y": 265,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -1225,34 +1253,6 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId153",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId154",
-              "UseBuffer": true,
-              "BufferSize": 10
-            },
-            "Name": "textArea_CRC",
-            "X": 0,
-            "Y": 269,
-            "Width": 350,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "TextId": "SingleUseId155",
             "TextRotation": "0",
             "Color": {
@@ -1266,12 +1266,12 @@
             "Wildcard1": {
               "TextId": "SingleUseId156",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 11
             },
             "Name": "textArea_Value",
             "X": 0,
-            "Y": 220,
-            "Width": 350,
+            "Y": 314,
+            "Width": 800,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1298,7 +1298,7 @@
             },
             "Name": "textArea_ParameterID",
             "X": 0,
-            "Y": 171,
+            "Y": 216,
             "Width": 351,
             "Height": 49,
             "Type": "TextArea",
@@ -1439,6 +1439,62 @@
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId181",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId182",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_TypeID",
+            "X": 0,
+            "Y": 171,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId183",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId184",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_SignID",
+            "X": 0,
+            "Y": 265,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -2473,14 +2529,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId71",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId72",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId73",
         "IsResource": false
       },
@@ -2625,14 +2673,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId153",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId154",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId155",
         "IsResource": false
       },
@@ -2734,6 +2774,38 @@
       },
       {
         "TextEntryId": "SingleUseId180",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId181",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId182",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId183",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId184",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId185",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId186",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId187",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId188",
         "IsResource": false
       }
     ],

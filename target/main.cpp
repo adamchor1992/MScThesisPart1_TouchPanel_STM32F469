@@ -20,6 +20,7 @@
 #define FRAME_NO_CRC FRAME_SIZE-4
 #define QUEUES_SIZE 1
 #define DEBUG_UART_WAITING 50
+#define UART_TX_WAITING 50
 #define NO_WAITING 0
 #define LOW_PRIORITY 1
 #define MEDIUM_PRIORITY 2
@@ -105,12 +106,6 @@ int main(void)
               HIGH_PRIORITY,
               NULL);
 
-//  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
-//              200,
-//              NULL,
-//              HIGH_PRIORITY,
-//              NULL);
-
   /*Create message queues for UART task*/
   msgQueueUARTReceive = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
   msgQueueUART_RX_ProcessedFrame = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
@@ -192,6 +187,12 @@ static void UART_InitConnectionTask(void* params)
               200,
               NULL,
               MEDIUM_PRIORITY,
+              NULL);
+    
+  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
+              200,
+              NULL,
+              HIGH_PRIORITY,
               NULL);
   
   DebugPrint("Deleting connection initialization task\n");
@@ -297,9 +298,6 @@ static void UART_TxTask(void* params)
     /*Take TxSempahore*/
     if(xSemaphoreTake(UART_TxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Take UART mutex*/
-      if(xSemaphoreTake(UART_Mutex, portMAX_DELAY) == pdPASS)
-      {
         taskENTER_CRITICAL(); 
         
 #ifdef DEBUG
@@ -309,7 +307,7 @@ static void UART_TxTask(void* params)
         xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);
         
         //CRC calculation
-        CRC_Value_Calculated = Calculate_CRC32((char*)UART_MessageToTransmit, 12);
+        CRC_Value_Calculated = Calculate_CRC32((char*)UART_MessageToTransmit, 16);
         
         CRC_Address = &CRC_Value_Calculated;
         
@@ -318,18 +316,22 @@ static void UART_TxTask(void* params)
         p3 = ((uint8_t*)CRC_Address + 2);
         p4 = ((uint8_t*)CRC_Address + 3);
         
-        UART_MessageToTransmit[15] = *p1;
-        UART_MessageToTransmit[14] = *p2;
-        UART_MessageToTransmit[13] = *p3;
-        UART_MessageToTransmit[12] = *p4;
+        UART_MessageToTransmit[19] = *p1;
+        UART_MessageToTransmit[18] = *p2;
+        UART_MessageToTransmit[17] = *p3;
+        UART_MessageToTransmit[16] = *p4;
         
-        HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, NO_WAITING); //show table contents
+#ifdef DEBUG
+        DebugPrint("TX Frame is: ");
+        char frame[FRAME_NO_CRC + 1];
+        memcpy(frame,UART_MessageToTransmit,FRAME_NO_CRC);
+        frame[16] = '\n'; //line feed at the end of frame data
+        HAL_UART_Transmit(&huart3, (uint8_t*)frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
+#endif
         
-        /*Give back UART Mutex*/
-        xSemaphoreGive(UART_Mutex);
+        HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, UART_TX_WAITING); //show table contents
         
         taskEXIT_CRITICAL(); 
-      }
     }
   }
 }

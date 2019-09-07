@@ -11,6 +11,10 @@ public:
     virtual ~Screen_Module1_SettingsView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    
+    virtual void updateValueToSet(int value);
+    virtual void setNewValue();
+    
 protected:
 };
 

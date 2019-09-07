@@ -20,7 +20,7 @@
         <stlinkResetStrategy>0</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>1566900366</Checksum>
+        <Checksum>2937045760</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -115,7 +115,7 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\HAL.hpp}.899.9" 0 0 1 "" 0 "" 0</Bp0>
+        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\HAL.hpp}.899.9" 0 0 1 "" 0 "" 0</Bp0>
         <Bp1>_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F\portmacro.h}.105.1" 0 0 1 "" 0 "" 0</Bp1>
         <Count>2</Count>
     </Breakpoints2>

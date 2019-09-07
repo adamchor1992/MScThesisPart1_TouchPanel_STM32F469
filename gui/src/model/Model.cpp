@@ -40,6 +40,7 @@ void Model::tick()
     {
       modelListener->notifyNewUART_RX_Parsed_Frame_Graph(s_UARTFrame);
       modelListener->notifyNewUART_RX_Value(s_UARTFrame); //notify GUI of something new RECEIVED
+      modelListener->notifyNewUART_RX_ParsedFrame(s_UARTFrame);
     }
     
     //modelListener->notifyNewUART_TX_Value(UART_ReceivedValue); //notify GUI of something new to TRANSMIT
@@ -56,14 +57,16 @@ void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
   
   UART_ValueToTransmit[0] = s_UARTFrame.source;
   UART_ValueToTransmit[1] = s_UARTFrame.module;
-  UART_ValueToTransmit[2] = s_UARTFrame.parameter;
-  UART_ValueToTransmit[3] = s_UARTFrame.length;
+  UART_ValueToTransmit[2] = s_UARTFrame.type;
+  UART_ValueToTransmit[3] = s_UARTFrame.parameter;
+  UART_ValueToTransmit[4] = s_UARTFrame.sign;
+  UART_ValueToTransmit[5] = s_UARTFrame.length;
   
-  s_UARTFrame.length = s_UARTFrame.length - '0'; //convert to int
+  uint8_t length_int = s_UARTFrame.length - '0'; //convert to int
   
-  for (int i = 0; i < s_UARTFrame.length; i++)
+  for (int i = 0; i < length_int; i++)
   {
-    UART_ValueToTransmit[4 + i] = *(s_UARTFrame.payload + i);
+    UART_ValueToTransmit[6 + i] = *(s_UARTFrame.payload + i);
   }
   
   xQueueSendToBack(msgQueueUARTTransmit, UART_ValueToTransmit, 0);

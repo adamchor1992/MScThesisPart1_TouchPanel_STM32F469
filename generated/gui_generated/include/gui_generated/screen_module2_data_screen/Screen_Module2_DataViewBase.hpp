@@ -31,7 +31,6 @@ protected:
     touchgfx::Box backgroundBox_Black;
     touchgfx::ButtonWithLabel buttonWithLabel_GoToMainMenu;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
-    touchgfx::TextAreaWithOneWildcard textArea_CRC;
     touchgfx::TextAreaWithOneWildcard textArea_Value;
     touchgfx::TextAreaWithOneWildcard textArea_ParameterID;
     touchgfx::TextAreaWithOneWildcard textArea_ModuleID;
@@ -39,15 +38,15 @@ protected:
     touchgfx::TextArea textArea_Title;
     touchgfx::ButtonWithLabel buttonWithLabel_Settings;
     touchgfx::ButtonWithLabel buttonWithLabel_Graph;
+    touchgfx::TextAreaWithOneWildcard textArea_TypeID;
+    touchgfx::TextAreaWithOneWildcard textArea_SignID;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
-    static const uint16_t TEXTAREA_CRC_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea_CRCBuffer[TEXTAREA_CRC_SIZE];
-    static const uint16_t TEXTAREA_VALUE_SIZE = 10;
+    static const uint16_t TEXTAREA_VALUE_SIZE = 11;
     touchgfx::Unicode::UnicodeChar textArea_ValueBuffer[TEXTAREA_VALUE_SIZE];
     static const uint16_t TEXTAREA_PARAMETERID_SIZE = 4;
     touchgfx::Unicode::UnicodeChar textArea_ParameterIDBuffer[TEXTAREA_PARAMETERID_SIZE];
@@ -55,6 +54,10 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea_ModuleIDBuffer[TEXTAREA_MODULEID_SIZE];
     static const uint16_t TEXTAREA_SOURCEID_SIZE = 4;
     touchgfx::Unicode::UnicodeChar textArea_SourceIDBuffer[TEXTAREA_SOURCEID_SIZE];
+    static const uint16_t TEXTAREA_TYPEID_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar textArea_TypeIDBuffer[TEXTAREA_TYPEID_SIZE];
+    static const uint16_t TEXTAREA_SIGNID_SIZE = 4;
+    touchgfx::Unicode::UnicodeChar textArea_SignIDBuffer[TEXTAREA_SIGNID_SIZE];
 
 private:
 

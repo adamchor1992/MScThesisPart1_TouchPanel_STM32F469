@@ -15,3 +15,8 @@ void Screen_Module2_DataPresenter::deactivate()
 {
 
 }
+
+void Screen_Module2_DataPresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame)
+{
+  view.updateGUIFrameData(s_UARTFrame);
+}

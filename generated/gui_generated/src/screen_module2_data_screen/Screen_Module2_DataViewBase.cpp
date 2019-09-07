@@ -26,21 +26,14 @@ Screen_Module2_DataViewBase::Screen_Module2_DataViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID151));
 
-    textArea_CRC.setPosition(0, 269, 350, 49);
-    textArea_CRC.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_CRC.setLinespacing(0);
-    Unicode::snprintf(textArea_CRCBuffer, TEXTAREA_CRC_SIZE, "%s", TypedText(T_SINGLEUSEID154).getText());
-    textArea_CRC.setWildcard(textArea_CRCBuffer);
-    textArea_CRC.setTypedText(TypedText(T_SINGLEUSEID153));
-
-    textArea_Value.setPosition(0, 220, 350, 49);
+    textArea_Value.setPosition(0, 314, 800, 49);
     textArea_Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Value.setLinespacing(0);
     Unicode::snprintf(textArea_ValueBuffer, TEXTAREA_VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID156).getText());
     textArea_Value.setWildcard(textArea_ValueBuffer);
     textArea_Value.setTypedText(TypedText(T_SINGLEUSEID155));
 
-    textArea_ParameterID.setPosition(0, 171, 351, 49);
+    textArea_ParameterID.setPosition(0, 216, 351, 49);
     textArea_ParameterID.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ParameterID.setLinespacing(0);
     Unicode::snprintf(textArea_ParameterIDBuffer, TEXTAREA_PARAMETERID_SIZE, "%s", TypedText(T_SINGLEUSEID158).getText());
@@ -80,10 +73,23 @@ Screen_Module2_DataViewBase::Screen_Module2_DataViewBase() :
     buttonWithLabel_Graph.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Graph.setAction(buttonCallback);
 
+    textArea_TypeID.setPosition(0, 171, 351, 49);
+    textArea_TypeID.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_TypeID.setLinespacing(0);
+    Unicode::snprintf(textArea_TypeIDBuffer, TEXTAREA_TYPEID_SIZE, "%s", TypedText(T_SINGLEUSEID182).getText());
+    textArea_TypeID.setWildcard(textArea_TypeIDBuffer);
+    textArea_TypeID.setTypedText(TypedText(T_SINGLEUSEID181));
+
+    textArea_SignID.setPosition(0, 265, 351, 49);
+    textArea_SignID.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_SignID.setLinespacing(0);
+    Unicode::snprintf(textArea_SignIDBuffer, TEXTAREA_SIGNID_SIZE, "%s", TypedText(T_SINGLEUSEID184).getText());
+    textArea_SignID.setWildcard(textArea_SignIDBuffer);
+    textArea_SignID.setTypedText(TypedText(T_SINGLEUSEID183));
+
     add(backgroundBox_Black);
     add(buttonWithLabel_GoToMainMenu);
     add(textArea_CPU_Usage);
-    add(textArea_CRC);
     add(textArea_Value);
     add(textArea_ParameterID);
     add(textArea_ModuleID);
@@ -91,6 +97,8 @@ Screen_Module2_DataViewBase::Screen_Module2_DataViewBase() :
     add(textArea_Title);
     add(buttonWithLabel_Settings);
     add(buttonWithLabel_Graph);
+    add(textArea_TypeID);
+    add(textArea_SignID);
 }
 
 void Screen_Module2_DataViewBase::setupScreen()

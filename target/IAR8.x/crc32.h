@@ -1,3 +1,6 @@
+#ifndef CRC32_H
+#define CRC32_H
+
 uint32_t Calculate_CRC32 (char *data, int len);
 
 // CRC32 lookup table for polynomial 0x04c11db7 - CRC-32/MPEG-2, no reflections should be applied
@@ -76,3 +79,5 @@ uint32_t Calculate_CRC32 (char *data, int len)
     crc = (crc << 8) ^ crc_table[((crc >> 24) ^ *data++) & 0xff];
   return crc;
 }
+
+#endif // CRC32_H
