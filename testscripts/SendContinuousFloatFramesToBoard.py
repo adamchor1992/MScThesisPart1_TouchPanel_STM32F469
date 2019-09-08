@@ -5,28 +5,38 @@ init = InitSerial.Init
 
 #############################SENDING###############################
 
-#constant header assuming source, module and parameter is all 1
-header = '121'
+source = '1'
+module = '1'
+frame_type = '2'      # data frame
+parameter = '1'
 
-#define inital payload in form of int or string
-i = 0.1
+header = source + module + frame_type + parameter
+
+#define initial payload in form of int or string
+i = -999.9
 
 while True:
     print("Number: " + str(i))
-    
-    #define payload to send
+
+    # define payload to send
     payload = str(i)
-    
+
+    if i >= 0:
+        sign = '1'
+    else:
+        sign = '2'
+        payload = payload[1:]     #remove minus sign
+
     #determine payload's actual length
     length = str(len(payload))
 
     print("Length: " + str(length))
 
     #create string of 8-length trailing null characters
-    trailing_zeroes = '\x00' * (8 - int(length))
+    trailing_zeroes = '\x00' * (10 - int(length))
 
-    #build data frame
-    data_frame = header + length + payload + trailing_zeroes
+    # build data frame
+    data_frame = header + sign + length + payload + trailing_zeroes
 
     #calculate crc for built data frame
     calculated_crc32 = init.crc32_func(data_frame.encode('utf-8'))
@@ -51,11 +61,11 @@ while True:
 
     print("------------------------------------------------------------------------")
 
-    i = i + 0.1
+    i = i + 0.5
 
-    if i >= 100:
-        i = 0.0
+    if i >= 999:
+        i = -999.9
 
     i = round(i, 1) #round i so it is exactly %.2f precision
 
-    time.sleep(0.1)
+    time.sleep(0.01)

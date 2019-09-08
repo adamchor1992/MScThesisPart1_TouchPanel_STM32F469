@@ -9,8 +9,6 @@ init = InitSerial.Init
 
 #############################SENDING###############################
 
-# constant header assuming source, module and parameter is all 1
-
 source = '1'
 module = '1'
 frame_type = '2'      # data frame
@@ -23,7 +21,7 @@ x = list(range(0, 360, 1))
 y = []
 
 for i in x:
-    y.append(int((round(math.sin(math.radians(i)), 3))*999))  # int scaled by 999
+    y.append(math.sin(math.radians(i)) * 999)  # float scaled by 1000
 
 index = 0
 
@@ -34,12 +32,17 @@ while True:
         print("sin(" + str(index) + ") = " + str(value))
 
         # define payload to send
-        payload = str(abs(value))
+        payload = str(value)
 
         if value >= 0:
             sign = '1'
         else:
             sign = '2'
+            payload = payload[1:]  # remove minus sign
+
+        payload = payload[:4]  # remove minus sign
+
+        print("Payload po modyfikacji: " + payload)
 
         # determine payload's actual length
         length = str(len(payload))
@@ -78,6 +81,6 @@ while True:
 
         index = index + 1
 
-        time.sleep(0.05)
+        time.sleep(0.01)
 
     index = 0

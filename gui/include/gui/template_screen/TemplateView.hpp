@@ -53,8 +53,7 @@ public:
   
 private:
   int tickCounter;
-  uint8_t length_int;
-  int16_t value_int;
+  float value_float;
   bool isNegative;
   
   Image background;

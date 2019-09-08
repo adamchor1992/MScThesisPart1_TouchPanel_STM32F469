@@ -5,10 +5,14 @@ init = InitSerial.Init
 
 #############################SENDING###############################
 
-#constant header assuming source, module and parameter is all 1
-header = '111'
+source = '1'
+module = '1'
+frame_type = '2'      # data frame
+parameter = '1'
 
-#define inital payload in form of int or string
+header = source + module + frame_type + parameter
+
+#define initial payload in form of int or string
 i = 0
 
 while True:
@@ -20,11 +24,16 @@ while True:
     #determine payload's actual length
     length = str(len(payload))
 
-    #create string of 8-length trailing null characters
-    trailing_zeroes = '\x00' * (8 - int(length))
+    if i >= 0:
+        sign = '1'
+    else:
+        sign = '2'
 
-    #build data frame
-    data_frame = header + length + payload + trailing_zeroes
+    #create string of 8-length trailing null characters
+    trailing_zeroes = '\x00' * (10 - int(length))
+
+    # build data frame
+    data_frame = header + sign + length + payload + trailing_zeroes
 
     #calculate crc for built data frame
     calculated_crc32 = init.crc32_func(data_frame.encode('utf-8'))

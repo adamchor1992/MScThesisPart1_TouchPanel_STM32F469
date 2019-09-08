@@ -2,6 +2,7 @@
 #include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include "stm32469i_discovery.h" //for led driving
+#include <string>
 
 void DebugPrint(const char* ch);
 
@@ -42,7 +43,7 @@ void TemplateView::setupScreen()
   // the max and min x/y value that can be displayed inside the
   // dimension of the graph.
   graph.setRange(0, 360, -1000, 1000);
-  
+
   // Set the line width in pixels
   graph.setLineWidth(2);
   
@@ -85,8 +86,6 @@ void TemplateView::handleTickEvent()
 
 void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
 {
-  bool isNegative;
-  
   if(s_UARTFrame.sign == '1')
   {
     isNegative = false;
@@ -95,52 +94,25 @@ void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
   {
     isNegative = true;
   }
-  
-  /*Up to 5 characters may be received and interpreted as number, which is 4 characters for number and 1 optional character for minus sign*/
-  int8_t valueReceived[3] = {0};
-  
-  length_int = s_UARTFrame.length - '0';
-  
-  /*Assign meaningful received data to valueReceived table*/
-  for(int i=0; i<length_int; i++)
-  {
-    valueReceived[i] = ((*(s_UARTFrame.payload+i))-'0');
-  }
-  
-  value_int = 0;
- 
-  /*Value is positive so check frame characters one by one, from zero index, without shift*/
-  switch(length_int)
-  {      
-  case 3:
-    value_int = (valueReceived[0] * 100) + (valueReceived[1] * 10) + (valueReceived[2] * 1);
-    break;
+
+  value_float = std::stof((char*)(s_UARTFrame.payload));
     
-  case 2:
-    value_int = (valueReceived[0] * 10) + (valueReceived[1] * 1);
-    break;
-    
-  case 1:
-    value_int = (valueReceived[0] * 1);
-    break;
-  }
-  
   BSP_LED_Toggle(LED3);
   
   if(isNegative)
   {
     /*Make value_int negative*/
-    value_int = value_int * (-1); 
+    value_float = value_float * (-1); 
   }
   
   char str8[5];   
   
-  snprintf(str8, sizeof(uint8_t), "%d", value_int);   // convert uint8_t to string 
+  snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
      
   DebugPrint("\nRamka graphu ma wartosc: \n");
   DebugPrint(str8);
   
-  graph.addValue(tickCounter, value_int);
+  graph.addValue(tickCounter, value_float);
   
   tickCounter++;
   
