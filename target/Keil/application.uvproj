@@ -809,14 +809,14 @@
               <FilePath>../../gui/src/screen_module2_settings_screen/screen_module2_settingsview.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_UARTPresenter.cpp</FileName>
+              <FileName>Screen_UART_RX_DebugPresenter.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_uart_screen/screen_uartpresenter.cpp</FilePath>
+              <FilePath>../../gui/src/screen_uart_rx_debug_screen/screen_uart_rx_debugpresenter.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_UARTView.cpp</FileName>
+              <FileName>Screen_UART_RX_DebugView.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_uart_screen/screen_uartview.cpp</FilePath>
+              <FilePath>../../gui/src/screen_uart_rx_debug_screen/screen_uart_rx_debugview.cpp</FilePath>
             </File>
             <File>
               <FileName>TemplatePresenter.cpp</FileName>
@@ -847,6 +847,16 @@
               <FileName>BitmapDatabase.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/images/src/bitmapdatabase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>blue_buttons_round_edge_medium.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_buttons_round_edge_medium.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>blue_buttons_round_edge_medium_pressed.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_buttons_round_edge_medium_pressed.cpp</FilePath>
             </File>
             <File>
               <FileName>blue_buttons_round_edge_small.cpp</FileName>
@@ -892,6 +902,16 @@
               <FileName>blue_slider_horizontal_medium_slider_round_fill.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_medium_slider_round_fill.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>blue_togglebars_toggle_round_large_button_off.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_large_button_off.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>blue_togglebars_toggle_round_large_button_on.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_large_button_on.cpp</FilePath>
             </File>
             <File>
               <FileName>Font_verdana_10_4bpp.cpp</FileName>
@@ -974,9 +994,9 @@
               <FilePath>../../generated/gui_generated/src/screen_module2_settings_screen/screen_module2_settingsviewbase.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_UARTViewBase.cpp</FileName>
+              <FileName>Screen_UART_RX_DebugViewBase.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_uart_screen/screen_uartviewbase.cpp</FilePath>
+              <FilePath>../../generated/gui_generated/src/screen_uart_rx_debug_screen/screen_uart_rx_debugviewbase.cpp</FilePath>
             </File>
             <File>
               <FileName>Table_verdana_10_4bpp.cpp</FileName>

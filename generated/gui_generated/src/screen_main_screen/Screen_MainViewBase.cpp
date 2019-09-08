@@ -79,9 +79,9 @@ void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
     if (&src == &buttonWithLabel_UART_Debug)
     {
         //Interaction_GoToUARTScreen
-        //When buttonWithLabel_UART_Debug clicked change screen to Screen_UART
-        //Go to Screen_UART with no screen transition
-        application().gotoScreen_UARTScreenNoTransition();
+        //When buttonWithLabel_UART_Debug clicked change screen to Screen_UART_RX_Debug
+        //Go to Screen_UART_RX_Debug with no screen transition
+        application().gotoScreen_UART_RX_DebugScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_Module2)
     {

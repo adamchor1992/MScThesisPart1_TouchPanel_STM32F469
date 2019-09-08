@@ -14,8 +14,7 @@ public:
     
     virtual void updateValueToSet(int value);
     virtual void setNewValue();
-    
-protected:
+    void updateCpuUsage(uint8_t value);
 };
 
 #endif // SCREEN_MODULE1_SETTINGS_VIEW_HPP

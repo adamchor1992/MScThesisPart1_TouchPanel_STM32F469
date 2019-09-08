@@ -11,7 +11,8 @@ public:
     virtual ~Screen_Module2_SettingsView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-protected:
+    
+    void updateCpuUsage(uint8_t value);
 };
 
 #endif // SCREEN_MODULE2_SETTINGS_VIEW_HPP

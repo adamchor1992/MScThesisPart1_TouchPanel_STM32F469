@@ -14,3 +14,9 @@ void Screen_Module2_SettingsView::tearDownScreen()
 {
     Screen_Module2_SettingsViewBase::tearDownScreen();
 }
+
+void Screen_Module2_SettingsView::updateCpuUsage(uint8_t value)
+{  
+  Unicode::snprintf(textArea_CPU_UsageBuffer,4,"%d",value);
+  textArea_CPU_Usage.invalidate();
+}

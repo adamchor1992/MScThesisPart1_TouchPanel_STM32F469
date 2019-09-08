@@ -14,6 +14,7 @@ public:
     Screen_Module1_SettingsPresenter(Screen_Module1_SettingsView& v);
     
     virtual void notifyNewValueToSet(UARTFrameStruct_t & s_UARTFrame);
+    void notifyNewCpuUsageValue(uint8_t value);
 
     /**
      * The activate function is called automatically when this screen is "switched in"

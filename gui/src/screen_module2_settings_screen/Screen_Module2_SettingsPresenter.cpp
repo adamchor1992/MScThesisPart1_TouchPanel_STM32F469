@@ -15,3 +15,8 @@ void Screen_Module2_SettingsPresenter::deactivate()
 {
 
 }
+
+void Screen_Module2_SettingsPresenter::notifyNewCpuUsageValue(uint8_t value)
+{
+  view.updateCpuUsage(value);
+}

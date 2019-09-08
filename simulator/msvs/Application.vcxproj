@@ -18,9 +18,6 @@
     <ClCompile Include="..\main.cpp"/>
     <ClCompile Include="..\..\gui\src\common\FrontendApplication.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen_uart_screen\Screen_UARTPresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen_uart_screen\Screen_UARTView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen_uart_screen\Screen_UARTViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\screen_main_screen\Screen_MainPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen_main_screen\Screen_MainView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_main_screen\Screen_MainViewBase.cpp"/>
@@ -49,6 +46,9 @@
     <ClCompile Include="..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\texts\texts.xlsx"/>
@@ -193,9 +193,6 @@
     <ClInclude Include="..\..\gui\include\gui\common\FrontendHeap.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\FrontendHeapBase.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen_uart_screen\Screen_UARTPresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen_uart_screen\Screen_UARTView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_uart_screen\Screen_UARTViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen_main_screen\Screen_MainPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen_main_screen\Screen_MainView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_main_screen\Screen_MainViewBase.hpp"/>
@@ -227,6 +224,9 @@
     <ClInclude Include="..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_graph_screen\Screen_Module2_GraphViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\touchgfx.rc"/>

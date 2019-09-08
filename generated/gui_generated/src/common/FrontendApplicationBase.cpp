@@ -21,8 +21,8 @@
 #include <gui/screen_module2_settings_screen/Screen_Module2_SettingsPresenter.hpp>
 #include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
 #include <gui/screen_module2_graph_screen/Screen_Module2_GraphPresenter.hpp>
-#include <gui/screen_uart_screen/Screen_UARTView.hpp>
-#include <gui/screen_uart_screen/Screen_UARTPresenter.hpp>
+#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugView.hpp>
+#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugPresenter.hpp>
 #include <gui/template_screen/TemplateView.hpp>
 #include <gui/template_screen/TemplatePresenter.hpp>
 
@@ -132,17 +132,17 @@ void FrontendApplicationBase::gotoScreen_Module2_GraphScreenNoTransitionImpl()
     makeTransition<Screen_Module2_GraphView, Screen_Module2_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// Screen_UART
+// Screen_UART_RX_Debug
 
-void FrontendApplicationBase::gotoScreen_UARTScreenNoTransition()
+void FrontendApplicationBase::gotoScreen_UART_RX_DebugScreenNoTransition()
 {
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_UARTScreenNoTransitionImpl);
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_UART_RX_DebugScreenNoTransitionImpl);
     pendingScreenTransitionCallback = &transitionCallback;
 }
 
-void FrontendApplicationBase::gotoScreen_UARTScreenNoTransitionImpl()
+void FrontendApplicationBase::gotoScreen_UART_RX_DebugScreenNoTransitionImpl()
 {
-    makeTransition<Screen_UARTView, Screen_UARTPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    makeTransition<Screen_UART_RX_DebugView, Screen_UART_RX_DebugPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Template

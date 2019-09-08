@@ -1082,9 +1082,9 @@
           </file>
         </group>
         <group>
-          <name>screen_uart_screen</name>
+          <name>screen_uart_rx_debug_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_screen\Screen_UARTViewBase.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp</name>
           </file>
         </group>
         <group>
@@ -1098,6 +1098,12 @@
         <name>images</name>
         <group>
           <name>__designer</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium_pressed.cpp</name>
+          </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small.cpp</name>
           </file>
@@ -1124,6 +1130,12 @@
           </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_fill.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_off.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
           </file>
         </group>
         <file>
@@ -1233,12 +1245,12 @@
         </file>
       </group>
       <group>
-        <name>screen_uart_screen</name>
+        <name>screen_uart_rx_debug_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_uart_screen\Screen_UARTPresenter.cpp</name>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_uart_screen\Screen_UARTView.cpp</name>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp</name>
         </file>
       </group>
       <group>

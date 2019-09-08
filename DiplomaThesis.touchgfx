@@ -228,7 +228,7 @@
             },
             "Action": {
               "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Screen_UART",
+              "ActionComponent": "Screen_UART_RX_Debug",
               "Type": "ActionGotoScreen"
             }
           },
@@ -660,7 +660,7 @@
             "Alpha": 255,
             "Name": "backgroundBox_Black",
             "X": 0,
-            "Y": 0,
+            "Y": 1,
             "Width": 800,
             "Height": 480,
             "Type": "Box",
@@ -688,8 +688,8 @@
             "TextRotation": "0",
             "Style": "Style4",
             "Name": "buttonWithLabel_SetValue",
-            "X": 475,
-            "Y": 296,
+            "X": 495,
+            "Y": 359,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -714,8 +714,8 @@
             "InitValue": 0,
             "Style": "Style7",
             "Name": "slider_Value",
-            "X": 381,
-            "Y": 202,
+            "X": 401,
+            "Y": 296,
             "Width": 358,
             "Height": 52,
             "Type": "Slider",
@@ -736,7 +736,7 @@
             "Style": "Style4",
             "Name": "radioButtonParameter2",
             "X": 62,
-            "Y": 179,
+            "Y": 142,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -759,7 +759,7 @@
             "LineSpacing": 0,
             "Name": "textArea_Parameter2",
             "X": 0,
-            "Y": 179,
+            "Y": 140,
             "Width": 25,
             "Height": 49,
             "Type": "TextArea",
@@ -780,7 +780,7 @@
             "Style": "Style4",
             "Name": "radioButtonParameter1",
             "X": 62,
-            "Y": 130,
+            "Y": 98,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -803,7 +803,7 @@
             "LineSpacing": 0,
             "Name": "textArea_Parameter1",
             "X": 0,
-            "Y": 130,
+            "Y": 96,
             "Width": 25,
             "Height": 49,
             "Type": "TextArea",
@@ -830,8 +830,8 @@
               "BufferSize": 4
             },
             "Name": "textArea_ValueToSet",
-            "X": 380,
-            "Y": 118,
+            "X": 408,
+            "Y": 240,
             "Width": 361,
             "Height": 49,
             "Type": "TextArea",
@@ -854,9 +854,9 @@
             "LineSpacing": 0,
             "Name": "textArea_ParameterToSet",
             "X": 0,
-            "Y": 69,
-            "Width": 214,
-            "Height": 49,
+            "Y": 49,
+            "Width": 106,
+            "Height": 24,
             "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
@@ -900,7 +900,7 @@
             "LineSpacing": 0,
             "Name": "textArea_Parameter3",
             "X": 0,
-            "Y": 228,
+            "Y": 184,
             "Width": 25,
             "Height": 49,
             "Type": "TextArea",
@@ -923,7 +923,7 @@
             "LineSpacing": 0,
             "Name": "textArea_Parameter4",
             "X": 0,
-            "Y": 277,
+            "Y": 228,
             "Width": 25,
             "Height": 49,
             "Type": "TextArea",
@@ -944,7 +944,7 @@
             "Style": "Style4",
             "Name": "radioButtonParameter3",
             "X": 62,
-            "Y": 228,
+            "Y": 186,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -965,7 +965,7 @@
             "Style": "Style4",
             "Name": "radioButtonParameter4",
             "X": 62,
-            "Y": 277,
+            "Y": 230,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1031,6 +1031,430 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter1",
+            "X": 122,
+            "Y": 98,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId189",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea_Parameter5",
+            "X": 0,
+            "Y": 272,
+            "Width": 25,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId190",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea_Parameter6",
+            "X": 0,
+            "Y": 316,
+            "Width": 25,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId191",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea_Parameter7",
+            "X": 0,
+            "Y": 360,
+            "Width": 25,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId192",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea_Parameter8",
+            "X": 0,
+            "Y": 404,
+            "Width": 25,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "Selected": false,
+            "Deselectable": false,
+            "FileNameSelected": "__designer\\blue_check_buttons_check_mark_active.png",
+            "FileNameSelectedPressed": "__designer\\blue_check_buttons_check_mark_normal.png",
+            "FileNameUnselected": "__designer\\blue_check_buttons_check_mark_inactive.png",
+            "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
+            "Style": "Style4",
+            "Name": "radioButtonParameter5",
+            "X": 62,
+            "Y": 274,
+            "Width": 44,
+            "Height": 44,
+            "Type": "RadioButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "Selected": false,
+            "Deselectable": false,
+            "FileNameSelected": "__designer\\blue_check_buttons_check_mark_active.png",
+            "FileNameSelectedPressed": "__designer\\blue_check_buttons_check_mark_normal.png",
+            "FileNameUnselected": "__designer\\blue_check_buttons_check_mark_inactive.png",
+            "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
+            "Style": "Style4",
+            "Name": "radioButtonParameter6",
+            "X": 62,
+            "Y": 318,
+            "Width": 44,
+            "Height": 44,
+            "Type": "RadioButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "Selected": false,
+            "Deselectable": false,
+            "FileNameSelected": "__designer\\blue_check_buttons_check_mark_active.png",
+            "FileNameSelectedPressed": "__designer\\blue_check_buttons_check_mark_normal.png",
+            "FileNameUnselected": "__designer\\blue_check_buttons_check_mark_inactive.png",
+            "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
+            "Style": "Style4",
+            "Name": "radioButtonParameter7",
+            "X": 62,
+            "Y": 362,
+            "Width": 44,
+            "Height": 44,
+            "Type": "RadioButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "Selected": false,
+            "Deselectable": false,
+            "FileNameSelected": "__designer\\blue_check_buttons_check_mark_active.png",
+            "FileNameSelectedPressed": "__designer\\blue_check_buttons_check_mark_normal.png",
+            "FileNameUnselected": "__designer\\blue_check_buttons_check_mark_inactive.png",
+            "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
+            "Style": "Style4",
+            "Name": "radioButtonParameter8",
+            "X": 62,
+            "Y": 406,
+            "Width": 44,
+            "Height": 44,
+            "Type": "RadioButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "FileNameImage": "",
+            "Alpha": 255,
+            "StartX": 5,
+            "StartY": 5,
+            "EndX": 5,
+            "EndY": 400,
+            "LineWidth": 4,
+            "LineEndingStyle": "Round",
+            "Name": "line1",
+            "X": 107,
+            "Y": 47,
+            "Width": 15,
+            "Height": 403,
+            "Type": "Line",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId193",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "textArea_ParameterToSet_1",
+            "X": 157,
+            "Y": 49,
+            "Width": 59,
+            "Height": 24,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter2",
+            "X": 122,
+            "Y": 142,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter3",
+            "X": 122,
+            "Y": 186,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter4",
+            "X": 122,
+            "Y": 230,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter5",
+            "X": 122,
+            "Y": 274,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter6",
+            "X": 122,
+            "Y": 318,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter7",
+            "X": 122,
+            "Y": 362,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
+            "Alpha": 255,
+            "Style": "Style4",
+            "Name": "toggleButtonParameter8",
+            "X": 122,
+            "Y": 406,
+            "Width": 128,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "FileNameImage": "",
+            "Alpha": 255,
+            "StartX": 5,
+            "StartY": 5,
+            "EndX": 5,
+            "EndY": 400,
+            "LineWidth": 4,
+            "LineEndingStyle": "Round",
+            "Name": "line1_1",
+            "X": 255,
+            "Y": 47,
+            "Width": 15,
+            "Height": 403,
+            "Type": "Line",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_edge_medium_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_medium.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId195",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style3",
+            "Name": "buttonWithLabel2",
+            "X": 473,
+            "Y": 117,
+            "Width": 230,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -1074,7 +1498,7 @@
         ],
         "Name": "Screen_Module1_Settings",
         "OverrideDefaultBufferSize": false,
-        "CanvasBufferSize": 0
+        "CanvasBufferSize": 12000
       },
       {
         "Components": [
@@ -2097,7 +2521,7 @@
             "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
             "Released": "__designer\\blue_buttons_round_edge_small.png",
             "Alpha": 255,
-            "TextId": "SingleUseId18",
+            "TextId": "SingleUseId196",
             "ReleasedColor": {
               "Red": 255,
               "Green": 255,
@@ -2112,7 +2536,7 @@
             "Style": "Style4",
             "Name": "buttonWithLabel_GoToMainMenu",
             "X": 315,
-            "Y": 420,
+            "Y": 421,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -2123,65 +2547,7 @@
             "Moveable": false
           },
           {
-            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_edge_small.png",
-            "Alpha": 255,
-            "TextId": "SingleUseId21",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Style": "Style4",
-            "Name": "buttonWithLabel_SendUartHello",
-            "X": 315,
-            "Y": 85,
-            "Width": 170,
-            "Height": 60,
-            "Type": "ButtonWithLabel",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_edge_small.png",
-            "Alpha": 255,
-            "TextId": "SingleUseId36",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 0,
-              "Blue": 0
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Style": "Style4",
-            "Name": "buttonWithLabel_ClearUart",
-            "X": 630,
-            "Y": 229,
-            "Width": 170,
-            "Height": 60,
-            "Type": "ButtonWithLabel",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId22",
+            "TextId": "SingleUseId197",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -2192,15 +2558,15 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId34",
+              "TextId": "SingleUseId198",
               "UseBuffer": true,
-              "BufferSize": 11
+              "BufferSize": 6
             },
-            "Name": "textArea_UartRX",
-            "X": 0,
-            "Y": 272,
-            "Width": 599,
-            "Height": 49,
+            "Name": "textArea_CPU_Usage",
+            "X": 618,
+            "Y": 451,
+            "Width": 182,
+            "Height": 29,
             "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
@@ -2209,7 +2575,7 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId23",
+            "TextId": "SingleUseId199",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -2220,14 +2586,14 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId35",
+              "TextId": "SingleUseId200",
               "UseBuffer": true,
               "BufferSize": 11
             },
-            "Name": "textArea_UartTX",
+            "Name": "textArea_Value",
             "X": 0,
-            "Y": 191,
-            "Width": 599,
+            "Y": 314,
+            "Width": 800,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2237,7 +2603,91 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId13",
+            "TextId": "SingleUseId201",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId202",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_ParameterID",
+            "X": 0,
+            "Y": 216,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId203",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId204",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_ModuleID",
+            "X": 0,
+            "Y": 122,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId205",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId206",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_SourceID",
+            "X": 0,
+            "Y": 74,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId207",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -2247,10 +2697,10 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
-            "Name": "textArea_UARTHeader",
-            "X": 346,
+            "Name": "textArea_Title",
+            "X": 240,
             "Y": 0,
-            "Width": 108,
+            "Width": 321,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2260,7 +2710,7 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId127",
+            "TextId": "SingleUseId210",
             "TextRotation": "0",
             "Color": {
               "Red": 255,
@@ -2271,15 +2721,43 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId128",
+              "TextId": "SingleUseId211",
               "UseBuffer": true,
-              "BufferSize": 6
+              "BufferSize": 4
             },
-            "Name": "textArea_CPU_Usage",
-            "X": 618,
-            "Y": 451,
-            "Width": 182,
-            "Height": 29,
+            "Name": "textArea_TypeID",
+            "X": 0,
+            "Y": 171,
+            "Width": 351,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId212",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId213",
+              "UseBuffer": true,
+              "BufferSize": 4
+            },
+            "Name": "textArea_SignID",
+            "X": 0,
+            "Y": 265,
+            "Width": 351,
+            "Height": 49,
             "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
@@ -2301,49 +2779,9 @@
               "ActionComponent": "Screen_Main",
               "Type": "ActionGotoScreen"
             }
-          },
-          {
-            "InteractionName": "InteractionClearTX",
-            "HasCompletedTrigger": true,
-            "Trigger": {
-              "TriggerComponent": "buttonWithLabel_ClearUart",
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "TextId": "SingleUseId37",
-              "WildcardLocation": "Wildcard1",
-              "ActionComponent": "textArea_UartTX",
-              "Type": "ActionSetWildcard"
-            }
-          },
-          {
-            "InteractionName": "InteractionClearRX",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "InteractionToTriggerOn": "InteractionClearTX",
-              "Type": "TriggerInteractionCompleted"
-            },
-            "Action": {
-              "TextId": "SingleUseId38",
-              "WildcardLocation": "Wildcard1",
-              "ActionComponent": "textArea_UartRX",
-              "Type": "ActionSetWildcard"
-            }
-          },
-          {
-            "InteractionName": "Interaction_SendUARTHello",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "TriggerComponent": "buttonWithLabel_SendUartHello",
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "FunctionName": "sendUARTHello",
-              "Type": "ActionCustom"
-            }
           }
         ],
-        "Name": "Screen_UART",
+        "Name": "Screen_UART_RX_Debug",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
       },
@@ -2453,46 +2891,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId13",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId18",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId21",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId22",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId23",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId34",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId35",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId36",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId37",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId38",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId39",
         "IsResource": false
       },
@@ -2574,14 +2972,6 @@
       },
       {
         "TextEntryId": "SingleUseId126",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId127",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId128",
         "IsResource": false
       },
       {
@@ -2806,6 +3196,94 @@
       },
       {
         "TextEntryId": "SingleUseId188",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId189",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId190",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId191",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId192",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId193",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId195",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId196",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId197",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId198",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId199",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId200",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId201",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId202",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId203",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId204",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId205",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId206",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId207",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId210",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId211",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId212",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId213",
         "IsResource": false
       }
     ],

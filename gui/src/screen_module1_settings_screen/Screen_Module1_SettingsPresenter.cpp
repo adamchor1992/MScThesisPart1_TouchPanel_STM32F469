@@ -20,3 +20,8 @@ void Screen_Module1_SettingsPresenter::notifyNewValueToSet(UARTFrameStruct_t & s
 {
   model->setNewValueToSet(s_UARTFrame);
 }
+
+void Screen_Module1_SettingsPresenter::notifyNewCpuUsageValue(uint8_t value)
+{
+  view.updateCpuUsage(value);
+}

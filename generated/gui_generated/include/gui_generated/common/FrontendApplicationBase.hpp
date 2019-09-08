@@ -43,8 +43,8 @@ public:
     void gotoScreen_Module2_GraphScreenNoTransition();
 
 
-    // Screen_UART
-    void gotoScreen_UARTScreenNoTransition();
+    // Screen_UART_RX_Debug
+    void gotoScreen_UART_RX_DebugScreenNoTransition();
 
 
     // Template
@@ -83,8 +83,8 @@ protected:
     void gotoScreen_Module2_GraphScreenNoTransitionImpl();
 
 
-    // Screen_UART
-    void gotoScreen_UARTScreenNoTransitionImpl();
+    // Screen_UART_RX_Debug
+    void gotoScreen_UART_RX_DebugScreenNoTransitionImpl();
 
 
     // Template

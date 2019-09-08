@@ -13,6 +13,9 @@
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
 
 class Screen_Module1_SettingsViewBase : public touchgfx::View<Screen_Module1_SettingsPresenter>
@@ -60,7 +63,29 @@ protected:
     touchgfx::RadioButton radioButtonParameter4;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
-    touchgfx::RadioButtonGroup<4> radioButtonGroup;
+    touchgfx::ToggleButton toggleButtonParameter1;
+    touchgfx::TextArea textArea_Parameter5;
+    touchgfx::TextArea textArea_Parameter6;
+    touchgfx::TextArea textArea_Parameter7;
+    touchgfx::TextArea textArea_Parameter8;
+    touchgfx::RadioButton radioButtonParameter5;
+    touchgfx::RadioButton radioButtonParameter6;
+    touchgfx::RadioButton radioButtonParameter7;
+    touchgfx::RadioButton radioButtonParameter8;
+    touchgfx::Line line1;
+    touchgfx::PainterRGB565 line1Painter;
+    touchgfx::TextArea textArea_ParameterToSet_1;
+    touchgfx::ToggleButton toggleButtonParameter2;
+    touchgfx::ToggleButton toggleButtonParameter3;
+    touchgfx::ToggleButton toggleButtonParameter4;
+    touchgfx::ToggleButton toggleButtonParameter5;
+    touchgfx::ToggleButton toggleButtonParameter6;
+    touchgfx::ToggleButton toggleButtonParameter7;
+    touchgfx::ToggleButton toggleButtonParameter8;
+    touchgfx::Line line1_1;
+    touchgfx::PainterRGB565 line1_1Painter;
+    touchgfx::ButtonWithLabel buttonWithLabel2;
+    touchgfx::RadioButtonGroup<8> radioButtonGroup;
 
     /*
      * Wildcard Buffers
@@ -83,6 +108,12 @@ private:
      */
     touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
+
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 
 };
 

@@ -42,8 +42,8 @@
 #include <gui/screen_module2_settings_screen/Screen_Module2_SettingsPresenter.hpp>
 #include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
 #include <gui/screen_module2_graph_screen/Screen_Module2_GraphPresenter.hpp>
-#include <gui/screen_uart_screen/Screen_UARTView.hpp>
-#include <gui/screen_uart_screen/Screen_UARTPresenter.hpp>
+#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugView.hpp>
+#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugPresenter.hpp>
 #include <gui/template_screen/TemplateView.hpp>
 #include <gui/template_screen/TemplatePresenter.hpp>
 
@@ -75,7 +75,7 @@ public:
             meta::TypeList< Screen_Module2_DataView,
             meta::TypeList< Screen_Module2_SettingsView,
             meta::TypeList< Screen_Module2_GraphView,
-            meta::TypeList< Screen_UARTView,
+            meta::TypeList< Screen_UART_RX_DebugView,
             meta::TypeList< TemplateView,
             meta::Nil > > > > > > > >
             > GeneratedViewTypes;
@@ -96,7 +96,7 @@ public:
             meta::TypeList< Screen_Module2_DataPresenter,
             meta::TypeList< Screen_Module2_SettingsPresenter,
             meta::TypeList< Screen_Module2_GraphPresenter,
-            meta::TypeList< Screen_UARTPresenter,
+            meta::TypeList< Screen_UART_RX_DebugPresenter,
             meta::TypeList< TemplatePresenter,
             meta::Nil > > > > > > > >
             > GeneratedPresenterTypes;

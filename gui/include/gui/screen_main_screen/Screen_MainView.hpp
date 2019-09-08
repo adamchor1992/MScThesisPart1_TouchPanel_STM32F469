@@ -14,7 +14,6 @@ public:
   
   void processControlFrame(UARTFrameStruct_t s_UARTFrame);
   void updateCpuUsage(uint8_t value);
-protected:
 };
 
 #endif // SCREEN_MAIN_VIEW_HPP

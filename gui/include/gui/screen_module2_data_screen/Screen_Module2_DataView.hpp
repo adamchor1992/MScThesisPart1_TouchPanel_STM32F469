@@ -13,8 +13,7 @@ public:
     virtual void tearDownScreen();
     
     void updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame);
-    
-protected:
+    void updateCpuUsage(uint8_t value);
 };
 
 #endif // SCREEN_MODULE2_DATA_VIEW_HPP

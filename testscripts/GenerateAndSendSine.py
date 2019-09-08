@@ -40,7 +40,7 @@ while True:
             sign = '2'
             payload = payload[1:]  # remove minus sign
 
-        payload = payload[:4]  # remove minus sign
+        payload = payload[:6]
 
         print("Payload po modyfikacji: " + payload)
 

@@ -1,17 +1,17 @@
-#ifndef SCREEN_MODULE2_DATA_PRESENTER_HPP
-#define SCREEN_MODULE2_DATA_PRESENTER_HPP
+#ifndef SCREEN_UART_RX_DEBUG_PRESENTER_HPP
+#define SCREEN_UART_RX_DEBUG_PRESENTER_HPP
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
 
 using namespace touchgfx;
 
-class Screen_Module2_DataView;
+class Screen_UART_RX_DebugView;
 
-class Screen_Module2_DataPresenter : public Presenter, public ModelListener
+class Screen_UART_RX_DebugPresenter : public Presenter, public ModelListener
 {
 public:
-    Screen_Module2_DataPresenter(Screen_Module2_DataView& v);
+    Screen_UART_RX_DebugPresenter(Screen_UART_RX_DebugView& v);
 
     virtual void notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame); 
     void notifyNewCpuUsageValue(uint8_t value);
@@ -28,13 +28,13 @@ public:
      */
     virtual void deactivate();
 
-    virtual ~Screen_Module2_DataPresenter() {};
+    virtual ~Screen_UART_RX_DebugPresenter() {};
 
 private:
-    Screen_Module2_DataPresenter();
+    Screen_UART_RX_DebugPresenter();
 
-    Screen_Module2_DataView& view;
+    Screen_UART_RX_DebugView& view;
 };
 
 
-#endif // SCREEN_MODULE2_DATA_PRESENTER_HPP
+#endif // SCREEN_UART_RX_DEBUG_PRESENTER_HPP

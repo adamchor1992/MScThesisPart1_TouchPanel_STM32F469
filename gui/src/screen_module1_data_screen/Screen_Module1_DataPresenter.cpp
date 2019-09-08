@@ -20,3 +20,8 @@ void Screen_Module1_DataPresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct_
 {
   view.updateGUIFrameData(s_UARTFrame);
 }
+
+void Screen_Module1_DataPresenter::notifyNewCpuUsageValue(uint8_t value)
+{
+  view.updateCpuUsage(value);
+}
