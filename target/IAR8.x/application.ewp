@@ -1194,6 +1194,12 @@
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small_pressed.cpp</name>
           </file>
           <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button_pressed.cpp</name>
+          </file>
+          <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_active.cpp</name>
           </file>
           <file>
@@ -1213,12 +1219,6 @@
           </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_fill.cpp</name>
-          </file>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_off.cpp</name>
-          </file>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
           </file>
         </group>
         <file>

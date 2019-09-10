@@ -12,7 +12,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
 {
     CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
-    backgroundBox_Black.setPosition(0, 1, 800, 480);
+    backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     buttonWithLabel_SetValue.setXY(495, 359);
@@ -29,27 +29,27 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     slider_Value.setValue(0);
     slider_Value.setNewValueCallback(sliderValueChangedCallback);
 
-    radioButtonParameter2.setXY(62, 142);
+    radioButtonParameter2.setXY(62, 113);
     radioButtonParameter2.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter2.setSelected(false);
     radioButtonParameter2.setDeselectionEnabled(false);
 
-    textArea_Parameter2.setXY(0, 140);
+    textArea_Parameter2.setXY(0, 113);
     textArea_Parameter2.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter2.setLinespacing(0);
     textArea_Parameter2.setTypedText(TypedText(T_SINGLEUSEID132));
 
-    radioButtonParameter1.setXY(62, 98);
+    radioButtonParameter1.setXY(62, 73);
     radioButtonParameter1.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter1.setSelected(true);
     radioButtonParameter1.setDeselectionEnabled(false);
 
-    textArea_Parameter1.setXY(0, 96);
+    textArea_Parameter1.setXY(0, 73);
     textArea_Parameter1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter1.setLinespacing(0);
     textArea_Parameter1.setTypedText(TypedText(T_SINGLEUSEID133));
 
-    textArea_ValueToSet.setPosition(408, 240, 361, 49);
+    textArea_ValueToSet.setPosition(409, 209, 361, 49);
     textArea_ValueToSet.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ValueToSet.setLinespacing(0);
     Unicode::snprintf(textArea_ValueToSetBuffer, TEXTAREA_VALUETOSET_SIZE, "%s", TypedText(T_SINGLEUSEID135).getText());
@@ -66,22 +66,22 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_Title.setLinespacing(0);
     textArea_Title.setTypedText(TypedText(T_SINGLEUSEID137));
 
-    textArea_Parameter3.setXY(0, 184);
+    textArea_Parameter3.setXY(0, 153);
     textArea_Parameter3.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter3.setLinespacing(0);
     textArea_Parameter3.setTypedText(TypedText(T_SINGLEUSEID138));
 
-    textArea_Parameter4.setXY(0, 228);
+    textArea_Parameter4.setXY(0, 193);
     textArea_Parameter4.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter4.setLinespacing(0);
     textArea_Parameter4.setTypedText(TypedText(T_SINGLEUSEID139));
 
-    radioButtonParameter3.setXY(62, 186);
+    radioButtonParameter3.setXY(62, 153);
     radioButtonParameter3.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter3.setSelected(false);
     radioButtonParameter3.setDeselectionEnabled(false);
 
-    radioButtonParameter4.setXY(62, 230);
+    radioButtonParameter4.setXY(62, 193);
     radioButtonParameter4.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter4.setSelected(false);
     radioButtonParameter4.setDeselectionEnabled(false);
@@ -100,96 +100,85 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID142));
 
-    toggleButtonParameter1.setXY(122, 98);
-    toggleButtonParameter1.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-
-    textArea_Parameter5.setXY(0, 272);
+    textArea_Parameter5.setXY(0, 233);
     textArea_Parameter5.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter5.setLinespacing(0);
     textArea_Parameter5.setTypedText(TypedText(T_SINGLEUSEID189));
 
-    textArea_Parameter6.setXY(0, 316);
+    textArea_Parameter6.setXY(0, 273);
     textArea_Parameter6.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter6.setLinespacing(0);
     textArea_Parameter6.setTypedText(TypedText(T_SINGLEUSEID190));
 
-    textArea_Parameter7.setXY(0, 360);
+    textArea_Parameter7.setXY(0, 313);
     textArea_Parameter7.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter7.setLinespacing(0);
     textArea_Parameter7.setTypedText(TypedText(T_SINGLEUSEID191));
 
-    textArea_Parameter8.setXY(0, 404);
+    textArea_Parameter8.setXY(0, 353);
     textArea_Parameter8.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter8.setLinespacing(0);
     textArea_Parameter8.setTypedText(TypedText(T_SINGLEUSEID192));
 
-    radioButtonParameter5.setXY(62, 274);
+    radioButtonParameter5.setXY(62, 233);
     radioButtonParameter5.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter5.setSelected(false);
     radioButtonParameter5.setDeselectionEnabled(false);
 
-    radioButtonParameter6.setXY(62, 318);
+    radioButtonParameter6.setXY(62, 273);
     radioButtonParameter6.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter6.setSelected(false);
     radioButtonParameter6.setDeselectionEnabled(false);
 
-    radioButtonParameter7.setXY(62, 362);
+    radioButtonParameter7.setXY(62, 313);
     radioButtonParameter7.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter7.setSelected(false);
     radioButtonParameter7.setDeselectionEnabled(false);
 
-    radioButtonParameter8.setXY(62, 406);
+    radioButtonParameter8.setXY(62, 353);
     radioButtonParameter8.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter8.setSelected(false);
     radioButtonParameter8.setDeselectionEnabled(false);
 
-    line1.setPosition(107, 47, 15, 403);
+    line1.setPosition(107, 47, 15, 432);
     line1Painter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     line1.setPainter(line1Painter);
     line1.setStart(5, 5);
-    line1.setEnd(5, 400);
+    line1.setEnd(5, 429);
     line1.setLineWidth(4);
     line1.setLineEndingStyle(Line::ROUND_CAP_ENDING);
 
-    textArea_ParameterToSet_1.setPosition(157, 49, 59, 24);
-    textArea_ParameterToSet_1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_ParameterToSet_1.setLinespacing(0);
-    textArea_ParameterToSet_1.setTypedText(TypedText(T_SINGLEUSEID193));
+    buttonWithLabel_EnableParameter.setXY(150, 65);
+    buttonWithLabel_EnableParameter.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_PRESSED_ID));
+    buttonWithLabel_EnableParameter.setLabelText(TypedText(T_SINGLEUSEID195));
+    buttonWithLabel_EnableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_EnableParameter.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    toggleButtonParameter2.setXY(122, 142);
-    toggleButtonParameter2.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    textArea_Parameter9.setXY(0, 393);
+    textArea_Parameter9.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter9.setLinespacing(0);
+    textArea_Parameter9.setTypedText(TypedText(T_SINGLEUSEID248));
 
-    toggleButtonParameter3.setXY(122, 186);
-    toggleButtonParameter3.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    textArea_Parameter10.setXY(0, 433);
+    textArea_Parameter10.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter10.setLinespacing(0);
+    textArea_Parameter10.setTypedText(TypedText(T_SINGLEUSEID249));
 
-    toggleButtonParameter4.setXY(122, 230);
-    toggleButtonParameter4.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    radioButtonParameter9.setXY(62, 393);
+    radioButtonParameter9.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButtonParameter9.setSelected(false);
+    radioButtonParameter9.setDeselectionEnabled(false);
 
-    toggleButtonParameter5.setXY(122, 274);
-    toggleButtonParameter5.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    radioButtonParameter10.setXY(62, 433);
+    radioButtonParameter10.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButtonParameter10.setSelected(false);
+    radioButtonParameter10.setDeselectionEnabled(false);
 
-    toggleButtonParameter6.setXY(122, 318);
-    toggleButtonParameter6.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-
-    toggleButtonParameter7.setXY(122, 362);
-    toggleButtonParameter7.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-
-    toggleButtonParameter8.setXY(122, 406);
-    toggleButtonParameter8.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-
-    line1_1.setPosition(255, 47, 15, 403);
-    line1_1Painter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    line1_1.setPainter(line1_1Painter);
-    line1_1.setStart(5, 5);
-    line1_1.setEnd(5, 400);
-    line1_1.setLineWidth(4);
-    line1_1.setLineEndingStyle(Line::ROUND_CAP_ENDING);
-
-    buttonWithLabel2.setXY(473, 117);
-    buttonWithLabel2.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_PRESSED_ID));
-    buttonWithLabel2.setLabelText(TypedText(T_SINGLEUSEID195));
-    buttonWithLabel2.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_DisableParameter.setXY(150, 145);
+    buttonWithLabel_DisableParameter.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_PRESSED_ID));
+    buttonWithLabel_DisableParameter.setLabelText(TypedText(T_SINGLEUSEID250));
+    buttonWithLabel_DisableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_DisableParameter.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
     add(backgroundBox_Black);
     add(buttonWithLabel_SetValue);
@@ -207,7 +196,6 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     add(radioButtonParameter4);
     add(buttonWithLabel_Back);
     add(textArea_CPU_Usage);
-    add(toggleButtonParameter1);
     add(textArea_Parameter5);
     add(textArea_Parameter6);
     add(textArea_Parameter7);
@@ -217,16 +205,12 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     add(radioButtonParameter7);
     add(radioButtonParameter8);
     add(line1);
-    add(textArea_ParameterToSet_1);
-    add(toggleButtonParameter2);
-    add(toggleButtonParameter3);
-    add(toggleButtonParameter4);
-    add(toggleButtonParameter5);
-    add(toggleButtonParameter6);
-    add(toggleButtonParameter7);
-    add(toggleButtonParameter8);
-    add(line1_1);
-    add(buttonWithLabel2);
+    add(buttonWithLabel_EnableParameter);
+    add(textArea_Parameter9);
+    add(textArea_Parameter10);
+    add(radioButtonParameter9);
+    add(radioButtonParameter10);
+    add(buttonWithLabel_DisableParameter);
     radioButtonGroup.add(radioButtonParameter2);
     radioButtonGroup.add(radioButtonParameter1);
     radioButtonGroup.add(radioButtonParameter3);
@@ -235,6 +219,8 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     radioButtonGroup.add(radioButtonParameter6);
     radioButtonGroup.add(radioButtonParameter7);
     radioButtonGroup.add(radioButtonParameter8);
+    radioButtonGroup.add(radioButtonParameter9);
+    radioButtonGroup.add(radioButtonParameter10);
 }
 
 void Screen_Module1_SettingsViewBase::setupScreen()
@@ -258,39 +244,11 @@ void Screen_Module1_SettingsViewBase::buttonCallbackHandler(const touchgfx::Abst
         //Go to Screen_Module1_Data with no screen transition
         application().gotoScreen_Module1_DataScreenNoTransition();
     }
-    else if (&src == &toggleButtonParameter1)
+    else if (&src == &buttonWithLabel_EnableParameter)
     {
 
     }
-    else if (&src == &toggleButtonParameter2)
-    {
-
-    }
-    else if (&src == &toggleButtonParameter3)
-    {
-
-    }
-    else if (&src == &toggleButtonParameter4)
-    {
-
-    }
-    else if (&src == &toggleButtonParameter5)
-    {
-
-    }
-    else if (&src == &toggleButtonParameter6)
-    {
-
-    }
-    else if (&src == &toggleButtonParameter7)
-    {
-
-    }
-    else if (&src == &toggleButtonParameter8)
-    {
-
-    }
-    else if (&src == &buttonWithLabel2)
+    else if (&src == &buttonWithLabel_DisableParameter)
     {
 
     }

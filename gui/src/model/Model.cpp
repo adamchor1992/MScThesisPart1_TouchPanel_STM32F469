@@ -2,6 +2,7 @@
 #include <gui/model/ModelListener.hpp>
 #include <touchgfx/hal/HAL.hpp>
 
+#ifndef SIMULATOR
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "semphr.h"
@@ -18,14 +19,19 @@ uint8_t value = 0;
 /*Structure to which UART task writes processed UART frame*/
 UARTFrameStruct_t s_UARTFrame;
 
+#endif
+
 Model::Model() : modelListener(0)
 {
+	#ifndef SIMULATOR
   extern UART_HandleTypeDef huart6;
   m_huart6 = huart6;
+  #endif
 }
 
 void Model::tick()
 {
+	#ifndef SIMULATOR
   //get new UART message from message queue (if any)
   if (uxQueueMessagesWaiting(msgQueueUART_RX_ProcessedFrame) > 0)
   {
@@ -49,10 +55,13 @@ void Model::tick()
   }
   
   modelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
+  
+  #endif
 }
 
 void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
 {
+	#ifndef SIMULATOR
   uint8_t UART_ValueToTransmit[FRAME_SIZE] = {0};
   
   UART_ValueToTransmit[0] = s_UARTFrame.source;
@@ -73,4 +82,5 @@ void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
   
   /*Give semaphore to activate UART_Tx task*/
   xSemaphoreGive(UART_TxSemaphore);
+  #endif
 }

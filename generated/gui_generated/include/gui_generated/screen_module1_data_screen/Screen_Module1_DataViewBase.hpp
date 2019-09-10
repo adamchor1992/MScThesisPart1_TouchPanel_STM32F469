@@ -8,10 +8,16 @@
 #include <mvp/View.hpp>
 #include <gui/screen_module1_data_screen/Screen_Module1_DataPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
+#include <touchgfx/containers/Container.hpp>
 
+#include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/widgets/canvas/Circle.hpp>
+#include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/mixins/ClickListener.hpp>
 class Screen_Module1_DataViewBase : public touchgfx::View<Screen_Module1_DataPresenter>
 {
 public:
@@ -19,6 +25,14 @@ public:
     virtual ~Screen_Module1_DataViewBase() {}
 
     virtual void setupScreen();
+
+    /*
+     * Custom Action Handlers
+     */
+    virtual void showAll()
+    {
+        // Override and implement this function in Screen_Module1_DataView
+    }
 
 protected:
     FrontendApplication& application() {
@@ -29,35 +43,70 @@ protected:
      * Member Declarations
      */
     touchgfx::Box backgroundBox_Black;
-    touchgfx::ButtonWithLabel buttonWithLabel_GoToMainMenu;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
-    touchgfx::TextAreaWithOneWildcard textArea_Value;
-    touchgfx::TextAreaWithOneWildcard textArea_ParameterID;
-    touchgfx::TextAreaWithOneWildcard textArea_ModuleID;
-    touchgfx::TextAreaWithOneWildcard textArea_SourceID;
-    touchgfx::TextArea textArea_Title;
-    touchgfx::ButtonWithLabel buttonWithLabel_Settings;
+    touchgfx::ButtonWithLabel buttonWithLabel_GoToMainMenu;
     touchgfx::ButtonWithLabel buttonWithLabel_Graph;
-    touchgfx::TextAreaWithOneWildcard textArea_TypeID;
-    touchgfx::TextAreaWithOneWildcard textArea_SignID;
+    touchgfx::ButtonWithLabel buttonWithLabel_Settings;
+    touchgfx::Line line1;
+    touchgfx::PainterRGB565 line1Painter;
+    touchgfx::Container textAreaContainer;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Param2;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Param1;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Power;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Frequency;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Current;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Voltage;
+
+    touchgfx::TextArea textArea_Title;
+    touchgfx::TextArea textArea_Parameter2;
+    touchgfx::TextArea textArea_Parameter1;
+    touchgfx::TextArea textArea_Parameter3;
+    touchgfx::TextArea textArea_Parameter4;
+    touchgfx::TextArea textArea_Parameter5;
+    touchgfx::TextArea textArea_Parameter6;
+    touchgfx::TextArea textArea_Parameter7;
+    touchgfx::TextArea textArea_Parameter8;
+    touchgfx::TextArea textArea_Parameter9;
+    touchgfx::TextArea textArea_Parameter10;
+    touchgfx::Circle circle_Parameter1;
+    touchgfx::PainterRGB565 circle_Parameter1Painter;
+    touchgfx::Circle circle_Parameter2;
+    touchgfx::PainterRGB565 circle_Parameter2Painter;
+    touchgfx::Circle circle_Parameter3;
+    touchgfx::PainterRGB565 circle_Parameter3Painter;
+    touchgfx::Circle circle_Parameter4;
+    touchgfx::PainterRGB565 circle_Parameter4Painter;
+    touchgfx::Circle circle_Parameter5;
+    touchgfx::PainterRGB565 circle_Parameter5Painter;
+    touchgfx::Circle circle_Parameter6;
+    touchgfx::PainterRGB565 circle_Parameter6Painter;
+    touchgfx::Circle circle_Parameter7;
+    touchgfx::PainterRGB565 circle_Parameter7Painter;
+    touchgfx::Circle circle_Parameter8;
+    touchgfx::PainterRGB565 circle_Parameter8Painter;
+    touchgfx::Circle circle_Parameter9;
+    touchgfx::PainterRGB565 circle_Parameter9Painter;
+    touchgfx::Circle circle_Parameter10;
+    touchgfx::PainterRGB565 circle_Parameter10Painter;
+    touchgfx::Button button1_ShowAll;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
-    static const uint16_t TEXTAREA_VALUE_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_ValueBuffer[TEXTAREA_VALUE_SIZE];
-    static const uint16_t TEXTAREA_PARAMETERID_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar textArea_ParameterIDBuffer[TEXTAREA_PARAMETERID_SIZE];
-    static const uint16_t TEXTAREA_MODULEID_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar textArea_ModuleIDBuffer[TEXTAREA_MODULEID_SIZE];
-    static const uint16_t TEXTAREA_SOURCEID_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar textArea_SourceIDBuffer[TEXTAREA_SOURCEID_SIZE];
-    static const uint16_t TEXTAREA_TYPEID_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar textArea_TypeIDBuffer[TEXTAREA_TYPEID_SIZE];
-    static const uint16_t TEXTAREA_SIGNID_SIZE = 4;
-    touchgfx::Unicode::UnicodeChar textArea_SignIDBuffer[TEXTAREA_SIGNID_SIZE];
+    static const uint16_t TEXTAREA_PARAM2_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Param2Buffer[TEXTAREA_PARAM2_SIZE];
+    static const uint16_t TEXTAREA_PARAM1_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Param1Buffer[TEXTAREA_PARAM1_SIZE];
+    static const uint16_t TEXTAREA_POWER_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_PowerBuffer[TEXTAREA_POWER_SIZE];
+    static const uint16_t TEXTAREA_FREQUENCY_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_FrequencyBuffer[TEXTAREA_FREQUENCY_SIZE];
+    static const uint16_t TEXTAREA_CURRENT_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_CurrentBuffer[TEXTAREA_CURRENT_SIZE];
+    static const uint16_t TEXTAREA_VOLTAGE_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_VoltageBuffer[TEXTAREA_VOLTAGE_SIZE];
 
 private:
 
@@ -70,6 +119,12 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Screen_Module1_DataViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 
 };
 

@@ -2,8 +2,11 @@
 #define MODEL_HPP
 
 #include <touchgfx/Utils.hpp>
-#include <stm32f4xx_hal_uart.h>
 #include "UART_Frame_Struct.h"
+
+#ifndef SIMULATOR
+#include <stm32f4xx_hal_uart.h>
+#endif
 
 class ModelListener;
 
@@ -47,7 +50,9 @@ protected:
   */
   ModelListener* modelListener;
 private:
+#ifndef SIMULATOR
   UART_HandleTypeDef m_huart6;
+#endif
   uint8_t *receivedUART_TXValue;
 };
 

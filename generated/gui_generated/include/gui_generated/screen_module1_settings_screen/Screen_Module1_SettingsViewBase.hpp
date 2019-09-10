@@ -13,7 +13,6 @@
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
-#include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
@@ -63,7 +62,6 @@ protected:
     touchgfx::RadioButton radioButtonParameter4;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
-    touchgfx::ToggleButton toggleButtonParameter1;
     touchgfx::TextArea textArea_Parameter5;
     touchgfx::TextArea textArea_Parameter6;
     touchgfx::TextArea textArea_Parameter7;
@@ -74,18 +72,13 @@ protected:
     touchgfx::RadioButton radioButtonParameter8;
     touchgfx::Line line1;
     touchgfx::PainterRGB565 line1Painter;
-    touchgfx::TextArea textArea_ParameterToSet_1;
-    touchgfx::ToggleButton toggleButtonParameter2;
-    touchgfx::ToggleButton toggleButtonParameter3;
-    touchgfx::ToggleButton toggleButtonParameter4;
-    touchgfx::ToggleButton toggleButtonParameter5;
-    touchgfx::ToggleButton toggleButtonParameter6;
-    touchgfx::ToggleButton toggleButtonParameter7;
-    touchgfx::ToggleButton toggleButtonParameter8;
-    touchgfx::Line line1_1;
-    touchgfx::PainterRGB565 line1_1Painter;
-    touchgfx::ButtonWithLabel buttonWithLabel2;
-    touchgfx::RadioButtonGroup<8> radioButtonGroup;
+    touchgfx::ButtonWithLabel buttonWithLabel_EnableParameter;
+    touchgfx::TextArea textArea_Parameter9;
+    touchgfx::TextArea textArea_Parameter10;
+    touchgfx::RadioButton radioButtonParameter9;
+    touchgfx::RadioButton radioButtonParameter10;
+    touchgfx::ButtonWithLabel buttonWithLabel_DisableParameter;
+    touchgfx::RadioButtonGroup<10> radioButtonGroup;
 
     /*
      * Wildcard Buffers

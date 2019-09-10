@@ -1,10 +1,15 @@
 #include <gui/template_screen/TemplateView.hpp>
 #include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
-#include "stm32469i_discovery.h" //for led driving
 #include <string>
 
+#ifndef SIMULATOR
+#include "stm32469i_discovery.h" //for led driving
+#endif
+
+#ifndef SIMULATOR
 void DebugPrint(const char* ch);
+#endif
 
 #ifdef SIMULATOR
 #include <stdlib.h>
@@ -86,6 +91,7 @@ void TemplateView::handleTickEvent()
 
 void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
 {
+	#ifndef SIMULATOR
   if(s_UARTFrame.sign == '1')
   {
     isNegative = false;
@@ -97,7 +103,9 @@ void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
 
   value_float = std::stof((char*)(s_UARTFrame.payload));
     
+	#ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
+  #endif
   
   if(isNegative)
   {
@@ -126,6 +134,7 @@ void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
     
     tickCounter = 0;
   }
+  #endif
 }
 
 void TemplateView::updateCpuUsage(uint8_t value)

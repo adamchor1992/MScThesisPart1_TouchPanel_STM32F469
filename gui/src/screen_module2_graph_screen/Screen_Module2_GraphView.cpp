@@ -1,8 +1,11 @@
 #include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
-#include "stm32469i_discovery.h" //for led driving
 #include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
 #include <string>
+
+#ifndef SIMULATOR
+#include "stm32469i_discovery.h" //for led driving
+#endif
 
 Screen_Module2_GraphView::Screen_Module2_GraphView()
 {
@@ -42,7 +45,9 @@ void Screen_Module2_GraphView::tearDownScreen()
     Screen_Module2_GraphViewBase::tearDownScreen();
 }
 
+#ifndef SIMULATOR
 void DebugPrint(const char* ch);
+#endif
 
 #ifdef SIMULATOR
 #include <stdlib.h>
@@ -104,7 +109,9 @@ void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
   
   value_float = std::stof((char*)(s_UARTFrame.payload));
     
+	#ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
+  #endif
   
   if(isNegative)
   {
@@ -116,8 +123,10 @@ void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
   
   snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
      
+	 #ifndef SIMULATOR
   DebugPrint("\nRamka graphu ma wartosc: \n");
   DebugPrint(str8);
+  #endif
   
   graph.addValue(tickCounter, value_float);
   

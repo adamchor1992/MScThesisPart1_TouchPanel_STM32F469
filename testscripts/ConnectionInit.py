@@ -6,7 +6,7 @@ init = InitSerial.Init
 #############################SENDING###############################
 
 # constant header assuming source, module and parameter is all 1
-header = '12111'
+header = '11111'
 
 # define initial payload in form of int or string
 i = 0

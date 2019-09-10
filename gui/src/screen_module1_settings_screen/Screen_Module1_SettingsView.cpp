@@ -9,8 +9,9 @@ void Screen_Module1_SettingsView::setupScreen()
 {
     Screen_Module1_SettingsViewBase::setupScreen();
     
+	#ifndef SIMULATOR
     NVIC_DisableIRQ(USART6_IRQn);
-    
+    #endif
     
 }
 
@@ -18,6 +19,7 @@ void Screen_Module1_SettingsView::tearDownScreen()
 {
     Screen_Module1_SettingsViewBase::tearDownScreen();
     
+	#ifndef SIMULATOR
     extern UART_HandleTypeDef huart6;
     extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
     
@@ -27,6 +29,7 @@ void Screen_Module1_SettingsView::tearDownScreen()
     NVIC_EnableIRQ(USART6_IRQn);
     
     HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
+	#endif
 }
 
 void Screen_Module1_SettingsView::updateValueToSet(int value)
@@ -76,6 +79,7 @@ void Screen_Module1_SettingsView::setNewValue()
   else
     s_UARTFrame.length = '9'; //error
   
+  #ifndef SIMULATOR
   char data_chars[10] = { 255, 255, 255, 255, 255, 255 }; //data starts from 6th element up to [6 + length] element
   
   sprintf(data_chars, "%d", sliderValue);
@@ -84,6 +88,7 @@ void Screen_Module1_SettingsView::setNewValue()
   {
     s_UARTFrame.payload[i] = data_chars[i];
   }
+  #endif
   
   this->presenter->notifyNewValueToSet(s_UARTFrame);
 }

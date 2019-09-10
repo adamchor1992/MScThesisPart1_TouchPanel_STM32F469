@@ -9,8 +9,11 @@ void Screen_MainView::setupScreen()
 {
   Screen_MainViewBase::setupScreen();
 
+#ifndef SIMULATOR
   extern uint8_t activeModule;
+#endif
 
+#ifndef SIMULATOR
   /*Dim and deactivate Module buttons*/
   if(activeModule == 1)
   {
@@ -40,6 +43,7 @@ void Screen_MainView::setupScreen()
   buttonWithLabel_Module1.invalidate();
   buttonWithLabel_Module2.invalidate();
   textArea_ActiveModule.invalidate();
+  #endif
 }
 
 void Screen_MainView::tearDownScreen()
@@ -49,7 +53,9 @@ void Screen_MainView::tearDownScreen()
 
 void Screen_MainView::processControlFrame(UARTFrameStruct_t s_UARTFrame)
 {
+	#ifndef SIMULATOR
   extern uint8_t activeModule;
+
 
   switch(s_UARTFrame.module)
   {
@@ -83,6 +89,7 @@ void Screen_MainView::processControlFrame(UARTFrameStruct_t s_UARTFrame)
       activeModule = 2;
       break;
   }
+  #endif
 }
 
 void Screen_MainView::updateCpuUsage(uint8_t value)
