@@ -8,7 +8,7 @@ struct UARTFrameStruct_t
 {
   uint8_t source;       //source/target ID
   uint8_t module;       //module ID
-  uint8_t type;         //frame type (data or control)
+  uint8_t function;     //function type (data transfer or others)
   uint8_t parameter;    //parameter ID
   uint8_t sign;         //sign of payload value, '1' - positive, '2' - negative, always '1' for control frame
   uint8_t length;       //length of payload

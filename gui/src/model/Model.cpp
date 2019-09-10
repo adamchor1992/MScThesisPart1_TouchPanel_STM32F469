@@ -38,11 +38,11 @@ void Model::tick()
     /*Frame is validated at this point and can be directly recovered from queue and copied to local s_UARTFrame structure*/    
     xQueueReceive(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, 0);
     
-    if(s_UARTFrame.type == '1') //control type frame
+    if(s_UARTFrame.function == '1') //control type frame
     {
       modelListener->notifyNewControlFrame(s_UARTFrame);
     }
-    else if(s_UARTFrame.type == '2') //data type frame
+    else if(s_UARTFrame.function == '2') //data type frame
     {
       modelListener->notifyNewUART_RX_Parsed_Frame_Graph(s_UARTFrame);
       modelListener->notifyNewUART_RX_Value(s_UARTFrame); //notify GUI of something new RECEIVED
@@ -66,7 +66,7 @@ void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
   
   UART_ValueToTransmit[0] = s_UARTFrame.source;
   UART_ValueToTransmit[1] = s_UARTFrame.module;
-  UART_ValueToTransmit[2] = s_UARTFrame.type;
+  UART_ValueToTransmit[2] = s_UARTFrame.function;
   UART_ValueToTransmit[3] = s_UARTFrame.parameter;
   UART_ValueToTransmit[4] = s_UARTFrame.sign;
   UART_ValueToTransmit[5] = s_UARTFrame.length;

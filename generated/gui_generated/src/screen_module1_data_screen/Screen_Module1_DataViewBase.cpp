@@ -52,22 +52,6 @@ Screen_Module1_DataViewBase::Screen_Module1_DataViewBase() :
 
     textAreaContainer.setPosition(-1, 65, 610, 298);
 
-    textArea_Param2.setPosition(1, 249, 576, 49);
-    textArea_Param2.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Param2.setLinespacing(0);
-    Unicode::snprintf(textArea_Param2Buffer, TEXTAREA_PARAM2_SIZE, "%s", TypedText(T_SINGLEUSEID74).getText());
-    textArea_Param2.setWildcard(textArea_Param2Buffer);
-    textArea_Param2.setTypedText(TypedText(T_SINGLEUSEID73));
-    textAreaContainer.add(textArea_Param2);
-
-    textArea_Param1.setPosition(1, 200, 576, 49);
-    textArea_Param1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Param1.setLinespacing(0);
-    Unicode::snprintf(textArea_Param1Buffer, TEXTAREA_PARAM1_SIZE, "%s", TypedText(T_SINGLEUSEID188).getText());
-    textArea_Param1.setWildcard(textArea_Param1Buffer);
-    textArea_Param1.setTypedText(TypedText(T_SINGLEUSEID187));
-    textAreaContainer.add(textArea_Param1);
-
     textArea_Power.setPosition(1, 151, 576, 49);
     textArea_Power.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Power.setLinespacing(0);

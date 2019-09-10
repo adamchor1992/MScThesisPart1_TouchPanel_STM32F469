@@ -25,7 +25,7 @@ void Screen_Module2_DataView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame
     Unicode::snprintf(textArea_ModuleIDBuffer, TEXTAREA_MODULEID_SIZE, "%c", s_UARTFrame.module);
     textArea_ModuleID.invalidate();
     
-    Unicode::snprintf(textArea_TypeIDBuffer, TEXTAREA_TYPEID_SIZE, "%c", s_UARTFrame.type);
+    Unicode::snprintf(textArea_TypeIDBuffer, TEXTAREA_TYPEID_SIZE, "%c", s_UARTFrame.function);
     textArea_TypeID.invalidate();
     
     Unicode::snprintf(textArea_ParameterIDBuffer, TEXTAREA_PARAMETERID_SIZE, "%c", s_UARTFrame.parameter);

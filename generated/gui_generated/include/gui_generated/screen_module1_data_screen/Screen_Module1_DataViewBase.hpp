@@ -50,8 +50,6 @@ protected:
     touchgfx::Line line1;
     touchgfx::PainterRGB565 line1Painter;
     touchgfx::Container textAreaContainer;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Param2;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Param1;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Power;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Frequency;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Current;
@@ -95,10 +93,6 @@ protected:
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
-    static const uint16_t TEXTAREA_PARAM2_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_Param2Buffer[TEXTAREA_PARAM2_SIZE];
-    static const uint16_t TEXTAREA_PARAM1_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_Param1Buffer[TEXTAREA_PARAM1_SIZE];
     static const uint16_t TEXTAREA_POWER_SIZE = 11;
     touchgfx::Unicode::UnicodeChar textArea_PowerBuffer[TEXTAREA_POWER_SIZE];
     static const uint16_t TEXTAREA_FREQUENCY_SIZE = 11;

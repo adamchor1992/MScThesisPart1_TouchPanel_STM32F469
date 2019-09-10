@@ -46,7 +46,7 @@ void Screen_Module1_SettingsView::setNewValue()
   
   s_UARTFrame.source = '1';
   s_UARTFrame.module = '1';
-  s_UARTFrame.type = '2';  //data frame type
+  s_UARTFrame.function = '2';  //data frame type
   s_UARTFrame.parameter = '0'; //this should be overwritten by following instructions
   
   if (radioButtonParameter1.getSelected())

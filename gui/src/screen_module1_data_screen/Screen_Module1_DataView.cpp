@@ -48,14 +48,6 @@ void Screen_Module1_DataView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame
       Unicode::snprintf(textArea_PowerBuffer, TEXTAREA_POWER_SIZE, "%s", stringToDisplay);
       textArea_Power.invalidate();
       break;
-    case 'f':
-      Unicode::snprintf(textArea_Param1Buffer, TEXTAREA_PARAM1_SIZE, "%s", stringToDisplay);
-      textArea_Param1.invalidate();
-      break;
-    case 'g':
-      Unicode::snprintf(textArea_Param2Buffer, TEXTAREA_PARAM2_SIZE, "%s", stringToDisplay);
-      textArea_Param2.invalidate();
-      break;
     }
   }
 #endif

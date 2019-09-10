@@ -158,7 +158,7 @@ static void UART_InitConnectionTask(void* params)
     /*Frame parsing to structure*/
     s_UARTFrame.source = UART_ReceivedFrame[0];
     s_UARTFrame.module = UART_ReceivedFrame[1];
-    s_UARTFrame.type = UART_ReceivedFrame[2];
+    s_UARTFrame.function = UART_ReceivedFrame[2];
     s_UARTFrame.parameter = UART_ReceivedFrame[3];
     s_UARTFrame.sign = UART_ReceivedFrame[4];
     s_UARTFrame.length = UART_ReceivedFrame[5];
@@ -170,7 +170,7 @@ static void UART_InitConnectionTask(void* params)
       s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
     }
     
-    if(s_UARTFrame.type == '1') // Control type frame
+    if(s_UARTFrame.function == '1') // Control type frame
     {
       DebugPrint("CONNECTED\n");
       xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
@@ -263,7 +263,7 @@ static void UART_Task(void* params)
       /*Frame parsing to structure*/        
       s_UARTFrame.source = UART_ReceivedFrame[0];
       s_UARTFrame.module = UART_ReceivedFrame[1];
-      s_UARTFrame.type = UART_ReceivedFrame[2];
+      s_UARTFrame.function = UART_ReceivedFrame[2];
       s_UARTFrame.parameter = UART_ReceivedFrame[3];
       s_UARTFrame.sign = UART_ReceivedFrame[4];
       s_UARTFrame.length = UART_ReceivedFrame[5];

@@ -441,62 +441,6 @@
           {
             "Components": [
               {
-                "TextId": "SingleUseId73",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "Alpha": 255,
-                "AutoSize": false,
-                "LineSpacing": 0,
-                "Wildcard1": {
-                  "TextId": "SingleUseId74",
-                  "UseBuffer": true,
-                  "BufferSize": 11
-                },
-                "Name": "textArea_Param2",
-                "X": 1,
-                "Y": 249,
-                "Width": 576,
-                "Height": 49,
-                "Type": "TextArea",
-                "Visible": true,
-                "Draggable": false,
-                "Clickable": true,
-                "Fadeable": false,
-                "Moveable": false
-              },
-              {
-                "TextId": "SingleUseId187",
-                "TextRotation": "0",
-                "Color": {
-                  "Red": 255,
-                  "Green": 255,
-                  "Blue": 255
-                },
-                "Alpha": 255,
-                "AutoSize": false,
-                "LineSpacing": 0,
-                "Wildcard1": {
-                  "TextId": "SingleUseId188",
-                  "UseBuffer": true,
-                  "BufferSize": 11
-                },
-                "Name": "textArea_Param1",
-                "X": 1,
-                "Y": 200,
-                "Width": 576,
-                "Height": 49,
-                "Type": "TextArea",
-                "Visible": true,
-                "Draggable": false,
-                "Clickable": true,
-                "Fadeable": false,
-                "Moveable": false
-              },
-              {
                 "TextId": "SingleUseId75",
                 "TextRotation": "0",
                 "Color": {
@@ -3421,14 +3365,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId73",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId74",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId75",
         "IsResource": false
       },
@@ -3682,14 +3618,6 @@
       },
       {
         "TextEntryId": "SingleUseId186",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId187",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId188",
         "IsResource": false
       },
       {

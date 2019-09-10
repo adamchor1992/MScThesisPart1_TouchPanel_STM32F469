@@ -8,7 +8,7 @@ init = InitSerial.Init
 source = '1'
 module = '1'
 frame_type = '2'      # data frame
-parameter = '1'
+parameter = 'b'
 
 header = source + module + frame_type + parameter
 
