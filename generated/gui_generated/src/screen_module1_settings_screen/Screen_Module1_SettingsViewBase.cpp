@@ -22,10 +22,10 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonWithLabel_SetValue.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setAction(buttonCallback);
 
-    slider_Value.setXY(401, 296);
+    slider_Value.setXY(392, 296);
     slider_Value.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_Value.setupHorizontalSlider(2, 19, 2, 0, 310);
-    slider_Value.setValueRange(0, 100);
+    slider_Value.setValueRange(0, 1000);
     slider_Value.setValue(0);
     slider_Value.setNewValueCallback(sliderValueChangedCallback);
 
@@ -49,7 +49,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_Parameter1.setLinespacing(0);
     textArea_Parameter1.setTypedText(TypedText(T_SINGLEUSEID133));
 
-    textArea_ValueToSet.setPosition(409, 209, 361, 49);
+    textArea_ValueToSet.setPosition(402, 209, 398, 49);
     textArea_ValueToSet.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ValueToSet.setLinespacing(0);
     Unicode::snprintf(textArea_ValueToSetBuffer, TEXTAREA_VALUETOSET_SIZE, "%s", TypedText(T_SINGLEUSEID135).getText());
@@ -153,6 +153,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonWithLabel_EnableParameter.setLabelText(TypedText(T_SINGLEUSEID195));
     buttonWithLabel_EnableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_EnableParameter.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_EnableParameter.setAction(buttonCallback);
 
     textArea_Parameter9.setXY(0, 393);
     textArea_Parameter9.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -179,6 +180,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonWithLabel_DisableParameter.setLabelText(TypedText(T_SINGLEUSEID250));
     buttonWithLabel_DisableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_DisableParameter.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_DisableParameter.setAction(buttonCallback);
 
     add(backgroundBox_Black);
     add(buttonWithLabel_SetValue);
@@ -246,11 +248,17 @@ void Screen_Module1_SettingsViewBase::buttonCallbackHandler(const touchgfx::Abst
     }
     else if (&src == &buttonWithLabel_EnableParameter)
     {
-
+        //Interaction_EnableParameterButtonPushed
+        //When buttonWithLabel_EnableParameter clicked call virtual function
+        //Call enableParameterButtonPushed
+        enableParameterButtonPushed();
     }
     else if (&src == &buttonWithLabel_DisableParameter)
     {
-
+        //Interaction_DisableParameterButtonPushed
+        //When buttonWithLabel_DisableParameter clicked call virtual function
+        //Call disableParameterButtonPushed
+        disableParameterButtonPushed();
     }
 }
 

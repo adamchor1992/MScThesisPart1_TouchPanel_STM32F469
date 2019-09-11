@@ -1213,12 +1213,12 @@
             "IndicatorPos": 2,
             "IndicatorMax": 310,
             "IndicatorMin": 0,
-            "ValueMax": 100,
+            "ValueMax": 1000,
             "ValueMin": 0,
             "InitValue": 0,
             "Style": "Style7",
             "Name": "slider_Value",
-            "X": 401,
+            "X": 392,
             "Y": 296,
             "Width": 358,
             "Height": 52,
@@ -1264,7 +1264,7 @@
             "Name": "textArea_Parameter2",
             "X": 0,
             "Y": 113,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1308,7 +1308,7 @@
             "Name": "textArea_Parameter1",
             "X": 0,
             "Y": 73,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1331,12 +1331,12 @@
             "Wildcard1": {
               "TextId": "SingleUseId135",
               "UseBuffer": true,
-              "BufferSize": 4
+              "BufferSize": 12
             },
             "Name": "textArea_ValueToSet",
-            "X": 409,
+            "X": 402,
             "Y": 209,
-            "Width": 361,
+            "Width": 398,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1382,7 +1382,7 @@
             "Name": "textArea_Title",
             "X": 219,
             "Y": 0,
-            "Width": 361,
+            "Width": 362,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1405,7 +1405,7 @@
             "Name": "textArea_Parameter3",
             "X": 0,
             "Y": 153,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1428,7 +1428,7 @@
             "Name": "textArea_Parameter4",
             "X": 0,
             "Y": 193,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1550,7 +1550,7 @@
             "Name": "textArea_Parameter5",
             "X": 0,
             "Y": 233,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1573,7 +1573,7 @@
             "Name": "textArea_Parameter6",
             "X": 0,
             "Y": 273,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1596,7 +1596,7 @@
             "Name": "textArea_Parameter7",
             "X": 0,
             "Y": 313,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1619,7 +1619,7 @@
             "Name": "textArea_Parameter8",
             "X": 0,
             "Y": 353,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1781,7 +1781,7 @@
             "Name": "textArea_Parameter9",
             "X": 0,
             "Y": 393,
-            "Width": 25,
+            "Width": 26,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1924,13 +1924,27 @@
             }
           },
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "Interaction_EnableParameterButtonPushed",
             "HasCompletedTrigger": false,
             "Trigger": {
-              "Type": "TriggerNone"
+              "TriggerComponent": "buttonWithLabel_EnableParameter",
+              "Type": "TriggerClicked"
             },
             "Action": {
-              "Type": "ActionNone"
+              "FunctionName": "enableParameterButtonPushed",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_DisableParameterButtonPushed",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithLabel_DisableParameter",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "disableParameterButtonPushed",
+              "Type": "ActionCustom"
             }
           }
         ],

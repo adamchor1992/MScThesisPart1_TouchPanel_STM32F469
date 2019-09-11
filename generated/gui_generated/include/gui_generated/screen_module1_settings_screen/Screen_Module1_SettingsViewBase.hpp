@@ -38,6 +38,16 @@ public:
         // Override and implement this function in Screen_Module1_SettingsView
     }
 
+    virtual void enableParameterButtonPushed()
+    {
+        // Override and implement this function in Screen_Module1_SettingsView
+    }
+
+    virtual void disableParameterButtonPushed()
+    {
+        // Override and implement this function in Screen_Module1_SettingsView
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(Application::getInstance());
@@ -83,7 +93,7 @@ protected:
     /*
      * Wildcard Buffers
      */
-    static const uint16_t TEXTAREA_VALUETOSET_SIZE = 4;
+    static const uint16_t TEXTAREA_VALUETOSET_SIZE = 12;
     touchgfx::Unicode::UnicodeChar textArea_ValueToSetBuffer[TEXTAREA_VALUETOSET_SIZE];
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];

@@ -14,6 +14,8 @@ public:
     
     virtual void updateValueToSet(int value);
     virtual void setNewValue();
+	virtual void enableParameterButtonPushed();
+	virtual void disableParameterButtonPushed();
     void updateCpuUsage(uint8_t value);
 };
 

@@ -34,9 +34,9 @@ void Screen_Module1_SettingsView::tearDownScreen()
 
 void Screen_Module1_SettingsView::updateValueToSet(int value)
 {
-  Unicode::itoa(value, textArea_ValueToSetBuffer, TEXTAREA_VALUETOSET_SIZE, 10);
-  textArea_ValueToSet.setWildcard(textArea_ValueToSetBuffer);
-  textArea_ValueToSet.invalidate();
+	float float_value = float(value) * float(0.1);
+	Unicode::snprintfFloat(textArea_ValueToSetBuffer, 6, "%.1f", float_value);
+	textArea_ValueToSet.invalidate();
 }
 
 void Screen_Module1_SettingsView::setNewValue()
@@ -46,7 +46,7 @@ void Screen_Module1_SettingsView::setNewValue()
   
   s_UARTFrame.source = '1';
   s_UARTFrame.module = '1';
-  s_UARTFrame.function = '2';  //data frame type
+  s_UARTFrame.function = '6';  //set parameter
   s_UARTFrame.parameter = '0'; //this should be overwritten by following instructions
   
   if (radioButtonParameter1.getSelected())
@@ -65,10 +65,36 @@ void Screen_Module1_SettingsView::setNewValue()
   {
     s_UARTFrame.parameter = '4';
   }
+  else if (radioButtonParameter5.getSelected())
+  {
+	  s_UARTFrame.parameter = '5';
+  }
+  else if (radioButtonParameter6.getSelected())
+  {
+	  s_UARTFrame.parameter = '6';
+  }
+  else if (radioButtonParameter7.getSelected())
+  {
+	  s_UARTFrame.parameter = '7';
+  }
+  else if (radioButtonParameter8.getSelected())
+  {
+	  s_UARTFrame.parameter = '8';
+  }
+  else if (radioButtonParameter9.getSelected())
+  {
+	  s_UARTFrame.parameter = '9';
+  }
+  else if (radioButtonParameter10.getSelected())
+  {
+	  s_UARTFrame.parameter = 'a';
+  }
   
   s_UARTFrame.sign = '1'; //sign is always positive
     
   uint8_t sliderValue = slider_Value.getValue();
+
+
   
   if (sliderValue < 10)
     s_UARTFrame.length = '1';
@@ -91,6 +117,122 @@ void Screen_Module1_SettingsView::setNewValue()
   #endif
   
   this->presenter->notifyNewValueToSet(s_UARTFrame);
+}
+
+void Screen_Module1_SettingsView::enableParameterButtonPushed()
+{
+	/*Structure used to propagate UART frame contents up to Model class*/
+	UARTFrameStruct_t s_UARTFrame;
+
+	s_UARTFrame.source = '1';
+	s_UARTFrame.module = '1';
+	s_UARTFrame.function = '4';  //enable parameter
+	s_UARTFrame.parameter = '0'; //this should be overwritten by following instructions
+
+	if (radioButtonParameter1.getSelected())
+	{
+		s_UARTFrame.parameter = '1';
+	}
+	else if (radioButtonParameter2.getSelected())
+	{
+		s_UARTFrame.parameter = '2';
+	}
+	else if (radioButtonParameter3.getSelected())
+	{
+		s_UARTFrame.parameter = '3';
+	}
+	else if (radioButtonParameter4.getSelected())
+	{
+		s_UARTFrame.parameter = '4';
+	}
+	else if (radioButtonParameter5.getSelected())
+	{
+		s_UARTFrame.parameter = '5';
+	}
+	else if (radioButtonParameter6.getSelected())
+	{
+		s_UARTFrame.parameter = '6';
+	}
+	else if (radioButtonParameter7.getSelected())
+	{
+		s_UARTFrame.parameter = '7';
+	}
+	else if (radioButtonParameter8.getSelected())
+	{
+		s_UARTFrame.parameter = '8';
+	}
+	else if (radioButtonParameter9.getSelected())
+	{
+		s_UARTFrame.parameter = '9';
+	}
+	else if (radioButtonParameter10.getSelected())
+	{
+		s_UARTFrame.parameter = 'a';
+	}
+
+	s_UARTFrame.sign = '1'; //sign is always positive
+
+	s_UARTFrame.payload[6] = '0';
+
+	this->presenter->notifyNewValueToSet(s_UARTFrame);
+}
+
+void Screen_Module1_SettingsView::disableParameterButtonPushed()
+{
+	/*Structure used to propagate UART frame contents up to Model class*/
+	UARTFrameStruct_t s_UARTFrame;
+
+	s_UARTFrame.source = '1';
+	s_UARTFrame.module = '1';
+	s_UARTFrame.function = '5';  //disable parameter
+	s_UARTFrame.parameter = '0'; //this should be overwritten by following instructions
+
+	if (radioButtonParameter1.getSelected())
+	{
+		s_UARTFrame.parameter = '1';
+	}
+	else if (radioButtonParameter2.getSelected())
+	{
+		s_UARTFrame.parameter = '2';
+	}
+	else if (radioButtonParameter3.getSelected())
+	{
+		s_UARTFrame.parameter = '3';
+	}
+	else if (radioButtonParameter4.getSelected())
+	{
+		s_UARTFrame.parameter = '4';
+	}
+	else if (radioButtonParameter5.getSelected())
+	{
+		s_UARTFrame.parameter = '5';
+	}
+	else if (radioButtonParameter6.getSelected())
+	{
+		s_UARTFrame.parameter = '6';
+	}
+	else if (radioButtonParameter7.getSelected())
+	{
+		s_UARTFrame.parameter = '7';
+	}
+	else if (radioButtonParameter8.getSelected())
+	{
+		s_UARTFrame.parameter = '8';
+	}
+	else if (radioButtonParameter9.getSelected())
+	{
+		s_UARTFrame.parameter = '9';
+	}
+	else if (radioButtonParameter10.getSelected())
+	{
+		s_UARTFrame.parameter = 'a';
+	}
+
+	s_UARTFrame.sign = '1'; //sign is always positive
+
+	s_UARTFrame.payload[6] = '0';
+
+	this->presenter->notifyNewValueToSet(s_UARTFrame);
 }
 
 void Screen_Module1_SettingsView::updateCpuUsage(uint8_t value)
