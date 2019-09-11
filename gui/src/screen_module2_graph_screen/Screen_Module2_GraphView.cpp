@@ -126,10 +126,10 @@ void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
 	 #ifndef SIMULATOR
   DebugPrint("\nRamka graphu ma wartosc: \n");
   DebugPrint(str8);
-  #endif
   
   graph.addValue(tickCounter, value_float);
-  
+#endif
+
   tickCounter++;
   
   if (tickCounter == 360)

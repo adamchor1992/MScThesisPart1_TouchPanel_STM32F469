@@ -11,9 +11,19 @@ public:
     virtual ~Screen_Module1_DataView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+	// Declaring callback handler for HiddenBox
+	void TextAreaClickHandler(const TextAreaWithOneWildcard& b, const ClickEvent& e);
     
     void updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame);
     void updateCpuUsage(uint8_t value);
+
+	// Show all text areas again
+	void showAll();
+
+protected:
+	// Declaring callback type of TextAreaWithOneWildcard and clickEvent
+	Callback<Screen_Module1_DataView, const TextAreaWithOneWildcard&, const ClickEvent&> TextAreaClickedCallback;
 };
 
 #endif // SCREEN_MODULE1_DATA_VIEW_HPP
