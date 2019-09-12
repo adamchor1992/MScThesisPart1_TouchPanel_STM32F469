@@ -15,7 +15,6 @@
 #include <touchgfx/containers/Container.hpp>
 
 #include <touchgfx/widgets/TextArea.hpp>
-#include <touchgfx/widgets/canvas/Circle.hpp>
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 class Screen_Module1_DataViewBase : public touchgfx::View<Screen_Module1_DataPresenter>
@@ -56,36 +55,6 @@ protected:
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Voltage;
 
     touchgfx::TextArea textArea_Title;
-    touchgfx::TextArea textArea_Parameter2;
-    touchgfx::TextArea textArea_Parameter1;
-    touchgfx::TextArea textArea_Parameter3;
-    touchgfx::TextArea textArea_Parameter4;
-    touchgfx::TextArea textArea_Parameter5;
-    touchgfx::TextArea textArea_Parameter6;
-    touchgfx::TextArea textArea_Parameter7;
-    touchgfx::TextArea textArea_Parameter8;
-    touchgfx::TextArea textArea_Parameter9;
-    touchgfx::TextArea textArea_Parameter10;
-    touchgfx::Circle circle_Parameter1;
-    touchgfx::PainterRGB565 circle_Parameter1Painter;
-    touchgfx::Circle circle_Parameter2;
-    touchgfx::PainterRGB565 circle_Parameter2Painter;
-    touchgfx::Circle circle_Parameter3;
-    touchgfx::PainterRGB565 circle_Parameter3Painter;
-    touchgfx::Circle circle_Parameter4;
-    touchgfx::PainterRGB565 circle_Parameter4Painter;
-    touchgfx::Circle circle_Parameter5;
-    touchgfx::PainterRGB565 circle_Parameter5Painter;
-    touchgfx::Circle circle_Parameter6;
-    touchgfx::PainterRGB565 circle_Parameter6Painter;
-    touchgfx::Circle circle_Parameter7;
-    touchgfx::PainterRGB565 circle_Parameter7Painter;
-    touchgfx::Circle circle_Parameter8;
-    touchgfx::PainterRGB565 circle_Parameter8Painter;
-    touchgfx::Circle circle_Parameter9;
-    touchgfx::PainterRGB565 circle_Parameter9Painter;
-    touchgfx::Circle circle_Parameter10;
-    touchgfx::PainterRGB565 circle_Parameter10Painter;
     touchgfx::Button button1_ShowAll;
 
     /*
