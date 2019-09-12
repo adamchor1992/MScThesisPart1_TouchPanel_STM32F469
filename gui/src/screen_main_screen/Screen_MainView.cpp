@@ -1,5 +1,7 @@
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 
+void DebugPrint(const char* ch);
+
 Screen_MainView::Screen_MainView()
 {
 
@@ -51,45 +53,49 @@ void Screen_MainView::tearDownScreen()
   Screen_MainViewBase::tearDownScreen();
 }
 
-void Screen_MainView::processControlFrame(UARTFrameStruct_t s_UARTFrame)
+void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
 {
-	#ifndef SIMULATOR
+#ifndef SIMULATOR
+  DebugPrint("Processing init frame\n");
+  
   extern uint8_t activeModule;
-
-
+  
   switch(s_UARTFrame.module)
   {
-    case '1':
-      buttonWithLabel_Module1.setAlpha(255);
-      buttonWithLabel_Module1.setTouchable(true);
-      buttonWithLabel_Module2.setAlpha(100);
-      buttonWithLabel_Module2.setTouchable(false);
-
-      Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 1",10);
-
-      buttonWithLabel_Module1.invalidate();
-      buttonWithLabel_Module2.invalidate();
-      textArea_ActiveModule.invalidate();
-
-      activeModule = 1;
-      break;
-
+  case '1':
+    buttonWithLabel_Module1.setAlpha(255);
+    buttonWithLabel_Module1.setTouchable(true);
+    buttonWithLabel_Module2.setAlpha(100);
+    buttonWithLabel_Module2.setTouchable(false);
+    
+    Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 1",10);
+    
+    buttonWithLabel_Module1.invalidate();
+    buttonWithLabel_Module2.invalidate();
+    textArea_ActiveModule.invalidate();
+    
+    activeModule = 1;
+    DebugPrint("Active module 1\n");
+    break;
+    
     case'2':
       buttonWithLabel_Module1.setAlpha(100);
       buttonWithLabel_Module1.setTouchable(false);
       buttonWithLabel_Module2.setAlpha(255);
       buttonWithLabel_Module2.setTouchable(true);
-
+      
       Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 2",10);
-
+      
       buttonWithLabel_Module1.invalidate();
       buttonWithLabel_Module2.invalidate();
       textArea_ActiveModule.invalidate();
-
+      
       activeModule = 2;
+      DebugPrint("Active module 2\n");
       break;
   }
-  #endif
+  DebugPrint("Init frame processed\n");
+#endif
 }
 
 void Screen_MainView::updateCpuUsage(uint8_t value)

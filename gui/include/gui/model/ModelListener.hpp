@@ -18,11 +18,9 @@ class ModelListener
 public:
   ModelListener() : model(0) {}
   
-  virtual void notifyNewUART_RX_Value(UARTFrameStruct_t & s_UARTFrame) {}
-  virtual void notifyNewUART_TX_Value(uint8_t *newValue) {}
-  virtual void notifyNewUART_RX_Parsed_Frame_Graph(UARTFrameStruct_t & s_UARTFrame) {}
+  virtual void notifyInitFrame(UARTFrameStruct_t & s_UARTFrame) {}
   virtual void notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame) {}
-  virtual void notifyNewControlFrame(UARTFrameStruct_t & s_UARTFrame) {}
+  virtual void notifyNewUART_TX_Value(uint8_t *newValue) {}
   virtual void notifyNewCpuUsageValue(uint8_t value) {}
   
   virtual ~ModelListener() {}

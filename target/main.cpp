@@ -38,7 +38,7 @@ xSemaphoreHandle UART_RxSemaphore;
 xSemaphoreHandle UART_TxSemaphore;
 xSemaphoreHandle UART_Mutex;
 
-uint8_t activeModule=0;
+uint8_t activeModule = 0;
 
 static void GUI_Task(void* params);
 static void UART_InitConnectionTask(void* params);
@@ -152,53 +152,66 @@ static void UART_InitConnectionTask(void* params)
   
   DebugPrint("Waiting for module to send connection request\n");
   
-  /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
-  if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
+  while(1)
   {
-    /*Frame parsing to structure*/
-    s_UARTFrame.source = UART_ReceivedFrame[0];
-    s_UARTFrame.module = UART_ReceivedFrame[1];
-    s_UARTFrame.function = UART_ReceivedFrame[2];
-    s_UARTFrame.parameter = UART_ReceivedFrame[3];
-    s_UARTFrame.sign = UART_ReceivedFrame[4];
-    s_UARTFrame.length = UART_ReceivedFrame[5];
-    
-    length_int = s_UARTFrame.length - '0';
-    
-    for(uint8_t i=0; i < length_int; i++)
+    /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
+    if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
-    }
-    
-    if(s_UARTFrame.function == '1') // Control type frame
-    {
-      DebugPrint("CONNECTED\n");
-      xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
-    }
-    else
-    {
-      DebugPrint("BAD FRAME TYPE\n");
+      taskENTER_CRITICAL();
+      
+      /*Frame parsing to structure*/
+      s_UARTFrame.source = UART_ReceivedFrame[0];
+      s_UARTFrame.module = UART_ReceivedFrame[1];
+      s_UARTFrame.function = UART_ReceivedFrame[2];
+      s_UARTFrame.parameter = UART_ReceivedFrame[3];
+      s_UARTFrame.sign = UART_ReceivedFrame[4];
+      s_UARTFrame.length = UART_ReceivedFrame[5];
+      
+      length_int = s_UARTFrame.length - '0';
+      
+      for(uint8_t i=0; i < length_int; i++)
+      {
+        s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
+      }
+      
+      if(s_UARTFrame.function == '2') // Init type frame
+      {
+        DebugPrint("CONNECTED\n");
+        
+        xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
+        
+        /*Give GUI task time to process Init frame*/
+        vTaskDelay(100);
+        
+        DebugPrint("Creating UART_Task\n");
+        
+        xTaskCreate(UART_Task, (TASKCREATE_NAME_TYPE)"UART_Task",
+                    200,
+                    NULL,
+                    MEDIUM_PRIORITY,
+                    NULL);
+        
+        DebugPrint("Creating UART_TxTask\n");
+        
+        xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
+                    200,
+                    NULL,
+                    HIGH_PRIORITY,
+                    NULL);
+        
+        DebugPrint("Deleting connection initialization task\n");
+        
+        /*Task deletes itself*/
+        vTaskDelete(NULL);
+      }
+      else
+      {
+        DebugPrint("BAD FRAME TYPE\n");
+      }
+      
+      taskEXIT_CRITICAL();
     }
   }
-  
-  DebugPrint("Creating UART task\n");
-  
-  xTaskCreate(UART_Task, (TASKCREATE_NAME_TYPE)"UART_Task",
-              200,
-              NULL,
-              MEDIUM_PRIORITY,
-              NULL);
-    
-  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
-              200,
-              NULL,
-              HIGH_PRIORITY,
-              NULL);
-  
-  DebugPrint("Deleting connection initialization task\n");
-  
-  /*Task deletes itself*/
-  vTaskDelete(NULL);
 }
 
 static void UART_Task(void* params)

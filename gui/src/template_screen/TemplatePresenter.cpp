@@ -16,7 +16,7 @@ void TemplatePresenter::deactivate()
   
 }
 
-void TemplatePresenter::notifyNewUART_RX_Parsed_Frame_Graph(UARTFrameStruct_t & s_UARTFrame)
+void TemplatePresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame)
 {
   view.addNewValueToGraphFromUART(s_UARTFrame);
 }
