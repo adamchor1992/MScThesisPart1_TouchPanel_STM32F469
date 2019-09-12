@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 
 class Screen_Module1_GraphViewBase : public touchgfx::View<Screen_Module1_GraphPresenter>
 {
@@ -48,6 +49,12 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Screen_Module1_GraphViewBase, const touchgfx::AbstractButton&> buttonCallback;
+
+    /*
+     * Canvas Buffer Size
+     */
+    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
+    uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 
 };
 

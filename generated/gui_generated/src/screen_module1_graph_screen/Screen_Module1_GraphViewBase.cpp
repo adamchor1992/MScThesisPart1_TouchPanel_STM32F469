@@ -9,6 +9,8 @@
 Screen_Module1_GraphViewBase::Screen_Module1_GraphViewBase() :
     buttonCallback(this, &Screen_Module1_GraphViewBase::buttonCallbackHandler)
 {
+    CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
+
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
