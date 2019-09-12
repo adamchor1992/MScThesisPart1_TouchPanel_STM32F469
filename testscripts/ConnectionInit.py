@@ -6,7 +6,7 @@ init = InitSerial.Init
 #############################SENDING###############################
 
 source = '1'
-module = '2'
+module = '1'
 frame_type = '2'      # init frame
 parameter = '1'
 sign = '1'

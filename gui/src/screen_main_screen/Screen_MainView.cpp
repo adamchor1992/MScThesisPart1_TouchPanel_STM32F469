@@ -10,12 +10,11 @@ Screen_MainView::Screen_MainView()
 void Screen_MainView::setupScreen()
 {
   Screen_MainViewBase::setupScreen();
-
+  
 #ifndef SIMULATOR
+  
   extern uint8_t activeModule;
-#endif
-
-#ifndef SIMULATOR
+  
   /*Dim and deactivate Module buttons*/
   if(activeModule == 1)
   {
@@ -41,11 +40,12 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module2.setTouchable(false);
     Unicode::strncpy(textArea_ActiveModuleBuffer,"None",10);
   }
-
+  
   buttonWithLabel_Module1.invalidate();
   buttonWithLabel_Module2.invalidate();
   textArea_ActiveModule.invalidate();
-  #endif
+  
+#endif
 }
 
 void Screen_MainView::tearDownScreen()

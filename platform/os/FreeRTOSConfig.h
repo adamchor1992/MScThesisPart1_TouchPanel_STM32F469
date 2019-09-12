@@ -108,7 +108,7 @@ extern "C" {
 #define TASKCREATE_NAME_TYPE                    signed char *
 #endif
 #define configMINIMAL_STACK_SIZE                ( ( unsigned short ) 64 )
-#define configTOTAL_HEAP_SIZE                   ( ( size_t ) ( 10000 ) )
+#define configTOTAL_HEAP_SIZE                   ( ( size_t ) ( 20000 ) )
 #define configMAX_TASK_NAME_LEN                 ( 10 )
 #define configUSE_TRACE_FACILITY                1
 #define configUSE_16_BIT_TICKS                  0

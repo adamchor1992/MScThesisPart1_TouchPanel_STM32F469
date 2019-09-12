@@ -28,8 +28,8 @@
 #define DEBUG
 
 /* FreeRTOS stuff begin*/
-#define configGUI_TASK_STK_SIZE ( 1200 )
-#define CANVAS_BUFFER_SIZE (5000)
+#define configGUI_TASK_STK_SIZE ( 2000 )
+#define CANVAS_BUFFER_SIZE (10000)
 
 xQueueHandle msgQueueUARTReceive;
 xQueueHandle msgQueueUARTTransmit;

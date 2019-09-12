@@ -96,7 +96,8 @@ void Screen_Module1_GraphView::handleTickEvent()
 
 void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
 {
-	#ifndef SIMULATOR
+#ifndef SIMULATOR
+  
   if(s_UARTFrame.sign == '1')
   {
     isNegative = false;
@@ -107,23 +108,23 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
   }
   
   value_float = std::stof((char*)(s_UARTFrame.payload));
-    
-#ifndef SIMULATOR
-  BSP_LED_Toggle(LED3);
-  #endif
   
+  BSP_LED_Toggle(LED3);
+
   if(isNegative)
   {
     /*Make value_int negative*/
     value_float = value_float * (-1); 
   }
   
-  char str8[5];   
+  //char str8[5];   
   
-  snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
-     
-  DebugPrint("\nRamka graphu ma wartosc: \n");
-  DebugPrint(str8);
+  //snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
+  
+  //DebugPrint("\nRamka graphu ma wartosc: \n");
+  //DebugPrint(str8);
+  
+  DebugPrint("drawing on graph\n");
   
   graph.addValue(tickCounter, value_float);
   
@@ -139,7 +140,8 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     
     tickCounter = 0;
   }
-  #endif
+  
+#endif
 }
 
 void Screen_Module1_GraphView::updateCpuUsage(uint8_t value)
