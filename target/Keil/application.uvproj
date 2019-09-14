@@ -769,6 +769,16 @@
               <FilePath>../../gui/src/screen_module1_graph_screen/screen_module1_graphview.cpp</FilePath>
             </File>
             <File>
+              <FileName>Screen_Module1_InfoPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module1_info_screen/screen_module1_infopresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module1_InfoView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen_module1_info_screen/screen_module1_infoview.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Screen_Module1_SettingsPresenter.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/screen_module1_settings_screen/screen_module1_settingspresenter.cpp</FilePath>
@@ -972,6 +982,11 @@
               <FileName>Screen_Module1_GraphViewBase.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/gui_generated/src/screen_module1_graph_screen/screen_module1_graphviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen_Module1_InfoViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/gui_generated/src/screen_module1_info_screen/screen_module1_infoviewbase.cpp</FilePath>
             </File>
             <File>
               <FileName>Screen_Module1_SettingsViewBase.cpp</FileName>

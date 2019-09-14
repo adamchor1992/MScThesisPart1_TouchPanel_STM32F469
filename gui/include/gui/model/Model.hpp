@@ -52,8 +52,9 @@ protected:
 private:
 #ifndef SIMULATOR
   UART_HandleTypeDef m_huart6;
-#endif
   uint8_t *receivedUART_TXValue;
+  uint8_t initFrameCount;
+#endif
 };
 
 #endif /* MODEL_HPP */

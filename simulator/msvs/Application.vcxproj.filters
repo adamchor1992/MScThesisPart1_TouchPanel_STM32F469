@@ -259,8 +259,20 @@
     <Filter Include="Source Files\generated\gui_generated\screen_uart_rx_debug_screen">
       <UniqueIdentifier>1CABDA96-5F26-4721-91E0-EE36DF62D2F5</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\screen_module1_info_screen">
+      <UniqueIdentifier>FD63DF0D-EE63-42F4-AD1D-524F1D335E02</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module1_info_screen">
+      <UniqueIdentifier>92340102-3C0F-43A3-B224-28F3685525AF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module1_info_screen">
+      <UniqueIdentifier>58DF7C40-6D6E-45FF-93F5-B5F949670BFF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module1_info_screen">
+      <UniqueIdentifier>005F988E-3430-4941-80B7-912BBB1F30C2</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>5C6A2CCC-6161-420A-BBA9-ADF73B847AB9</UniqueIdentifier>
+      <UniqueIdentifier>7198BC8C-85C9-46C0-8E17-D49CB438C244</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -380,6 +392,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen_uart_rx_debug_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp">
+      <Filter>Source Files\gui\screen_module1_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp">
+      <Filter>Source Files\gui\screen_module1_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_info_screen\Screen_Module1_InfoViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module1_info_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -906,6 +927,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen_uart_rx_debug_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module1_info_screen\Screen_Module1_InfoPresenter.hpp">
+      <Filter>Header Files\gui\screen_module1_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module1_info_screen\Screen_Module1_InfoView.hpp">
+      <Filter>Header Files\gui\screen_module1_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module1_info_screen\Screen_Module1_InfoViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module1_info_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

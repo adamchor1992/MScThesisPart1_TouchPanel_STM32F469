@@ -124,20 +124,29 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
   //DebugPrint("\nRamka graphu ma wartosc: \n");
   //DebugPrint(str8);
   
+  /*Check if value is higher than graph upper range*/
+  if(int(value_float) >= graph.getRangeTop())
+  {
+    graph.setRange(graph.getRangeLeft(), graph.getRangeRight(), graph.getRangeBottom(), int(value_float));
+  }
+  /*Check if value is smaller than graph lower range*/
+  else if(int(value_float) <= graph.getRangeBottom())
+  {
+    graph.setRange(graph.getRangeLeft(), graph.getRangeRight(), int(value_float), graph.getRangeTop());
+  }
+  
   DebugPrint("drawing on graph\n");
   
-  graph.addValue(tickCounter, value_float);
+  graph.addValue(tickCounter, int(value_float));
   
   tickCounter++;
   
   if (tickCounter == 360)
   {
-    // Reset the graph and start over
-    //graph.setRange(0, 1000, 0, 1000);
-    //graph.setLineWidth(2);
+    /*Reset graph and its range*/
     graph.clear();
     graph.invalidate();
-    
+    graph.setRange(0, 360, -1000, 1000);
     tickCounter = 0;
   }
   

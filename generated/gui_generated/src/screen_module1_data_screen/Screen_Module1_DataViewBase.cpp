@@ -76,7 +76,7 @@ Screen_Module1_DataViewBase::Screen_Module1_DataViewBase() :
     textArea_Current.setTypedText(TypedText(T_SINGLEUSEID77));
     textAreaContainer.add(textArea_Current);
 
-    textArea_Voltage.setPosition(1, 9, 576, 49);
+    textArea_Voltage.setPosition(0, 9, 576, 49);
     textArea_Voltage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Voltage.setLinespacing(0);
     Unicode::snprintf(textArea_VoltageBuffer, TEXTAREA_VOLTAGE_SIZE, "%s", TypedText(T_SINGLEUSEID80).getText());
@@ -93,6 +93,13 @@ Screen_Module1_DataViewBase::Screen_Module1_DataViewBase() :
     button1_ShowAll.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_ICON_BUTTON_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_ICON_BUTTON_PRESSED_ID));
     button1_ShowAll.setAction(buttonCallback);
 
+    buttonWithLabel_Info.setXY(630, 0);
+    buttonWithLabel_Info.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Info.setLabelText(TypedText(T_SINGLEUSEID251));
+    buttonWithLabel_Info.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_Info.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_Info.setAction(buttonCallback);
+
     add(backgroundBox_Black);
     add(textArea_CPU_Usage);
     add(buttonWithLabel_GoToMainMenu);
@@ -102,6 +109,7 @@ Screen_Module1_DataViewBase::Screen_Module1_DataViewBase() :
     add(textAreaContainer);
     add(textArea_Title);
     add(button1_ShowAll);
+    add(buttonWithLabel_Info);
 }
 
 void Screen_Module1_DataViewBase::setupScreen()
@@ -138,5 +146,12 @@ void Screen_Module1_DataViewBase::buttonCallbackHandler(const touchgfx::Abstract
         //When button1_ShowAll clicked call virtual function
         //Call showAll
         showAll();
+    }
+    else if (&src == &buttonWithLabel_Info)
+    {
+        //Interaction_GoToInfoScreen
+        //When buttonWithLabel_Info clicked change screen to Screen_Module1_Info
+        //Go to Screen_Module1_Info with no screen transition
+        application().gotoScreen_Module1_InfoScreenNoTransition();
     }
 }

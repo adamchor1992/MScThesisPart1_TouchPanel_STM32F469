@@ -541,7 +541,7 @@
                   "BufferSize": 11
                 },
                 "Name": "textArea_Voltage",
-                "X": 1,
+                "X": 0,
                 "Y": 9,
                 "Width": 576,
                 "Height": 49,
@@ -604,6 +604,35 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId251",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "buttonWithLabel_Info",
+            "X": 630,
+            "Y": 0,
+            "Width": 170,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -656,6 +685,19 @@
             "Action": {
               "FunctionName": "showAll",
               "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_GoToInfoScreen",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithLabel_Info",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen_Module1_Info",
+              "Type": "ActionGotoScreen"
             }
           }
         ],
@@ -1582,6 +1624,267 @@
             "Moveable": false
           },
           {
+            "TextId": "SingleUseId252",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId253",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_Version",
+            "X": 0,
+            "Y": 265,
+            "Width": 800,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId254",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId255",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_Speed",
+            "X": 0,
+            "Y": 216,
+            "Width": 800,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId256",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId257",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_Type",
+            "X": 0,
+            "Y": 122,
+            "Width": 800,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId258",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId259",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_Vendor",
+            "X": 0,
+            "Y": 74,
+            "Width": 800,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId260",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId261",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_Model",
+            "X": 0,
+            "Y": 171,
+            "Width": 800,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId264",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "textArea_Info",
+            "X": 360,
+            "Y": 0,
+            "Width": 80,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId265",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId266",
+              "UseBuffer": true,
+              "BufferSize": 6
+            },
+            "Name": "textArea_CPU_Usage",
+            "X": 618,
+            "Y": 451,
+            "Width": 182,
+            "Height": 29,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId267",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "buttonWithLabel_Back",
+            "X": 315,
+            "Y": 421,
+            "Width": 170,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction_GoBack",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithLabel_Back",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Screen_Module1_Data",
+              "Type": "ActionGotoScreen"
+            }
+          }
+        ],
+        "Name": "Screen_Module1_Info",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "Alpha": 255,
+            "Name": "backgroundBox_Black",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Type": "Box",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
             "Released": "__designer\\blue_buttons_round_edge_small.png",
             "Alpha": 255,
@@ -2044,7 +2347,7 @@
             "Name": "textArea_Parameter2",
             "X": 0,
             "Y": 179,
-            "Width": 26,
+            "Width": 25,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2088,7 +2391,7 @@
             "Name": "textArea_Parameter1",
             "X": 0,
             "Y": 130,
-            "Width": 26,
+            "Width": 25,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2162,7 +2465,7 @@
             "Name": "textArea_Title",
             "X": 219,
             "Y": 0,
-            "Width": 362,
+            "Width": 361,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2185,7 +2488,7 @@
             "Name": "textArea_Parameter3",
             "X": 0,
             "Y": 228,
-            "Width": 26,
+            "Width": 25,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2208,7 +2511,7 @@
             "Name": "textArea_Parameter4",
             "X": 0,
             "Y": 277,
-            "Width": 26,
+            "Width": 25,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -3334,6 +3637,66 @@
       },
       {
         "TextEntryId": "SingleUseId250",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId251",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId252",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId253",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId254",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId255",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId256",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId257",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId258",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId259",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId260",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId261",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId264",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId265",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId266",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId267",
         "IsResource": false
       }
     ],

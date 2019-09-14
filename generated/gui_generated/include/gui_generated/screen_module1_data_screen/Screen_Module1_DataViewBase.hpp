@@ -56,6 +56,7 @@ protected:
 
     touchgfx::TextArea textArea_Title;
     touchgfx::Button button1_ShowAll;
+    touchgfx::ButtonWithLabel buttonWithLabel_Info;
 
     /*
      * Wildcard Buffers

@@ -1141,6 +1141,12 @@
           </file>
         </group>
         <group>
+          <name>screen_module1_info_screen</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_info_screen\Screen_Module1_InfoViewBase.cpp</name>
+          </file>
+        </group>
+        <group>
           <name>screen_module1_settings_screen</name>
           <file>
             <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_settings_screen\Screen_Module1_SettingsViewBase.cpp</name>
@@ -1289,6 +1295,15 @@
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphView.cpp</name>
+        </file>
+      </group>
+      <group>
+        <name>screen_module1_info_screen</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp</name>
         </file>
       </group>
       <group>
