@@ -28,9 +28,27 @@ Screen_Module1_GraphViewBase::Screen_Module1_GraphViewBase() :
     buttonWithLabel_Back.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setAction(buttonCallback);
 
+    textArea_GraphUpperRange.setXY(0, 0);
+    textArea_GraphUpperRange.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_GraphUpperRange.setLinespacing(0);
+    Unicode::snprintf(textArea_GraphUpperRangeBuffer, TEXTAREA_GRAPHUPPERRANGE_SIZE, "%s", TypedText(T_SINGLEUSEID270).getText());
+    textArea_GraphUpperRange.setWildcard(textArea_GraphUpperRangeBuffer);
+    textArea_GraphUpperRange.resizeToCurrentText();
+    textArea_GraphUpperRange.setTypedText(TypedText(T_SINGLEUSEID268));
+
+    textArea_GraphLowerRange.setXY(0, 385);
+    textArea_GraphLowerRange.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_GraphLowerRange.setLinespacing(0);
+    Unicode::snprintf(textArea_GraphLowerRangeBuffer, TEXTAREA_GRAPHLOWERRANGE_SIZE, "%s", TypedText(T_SINGLEUSEID271).getText());
+    textArea_GraphLowerRange.setWildcard(textArea_GraphLowerRangeBuffer);
+    textArea_GraphLowerRange.resizeToCurrentText();
+    textArea_GraphLowerRange.setTypedText(TypedText(T_SINGLEUSEID269));
+
     add(backgroundBox_Black);
     add(textArea_CPU_Usage);
     add(buttonWithLabel_Back);
+    add(textArea_GraphUpperRange);
+    add(textArea_GraphLowerRange);
 }
 
 void Screen_Module1_GraphViewBase::setupScreen()

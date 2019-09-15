@@ -1581,6 +1581,62 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId268",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId270",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textArea_GraphUpperRange",
+            "X": 0,
+            "Y": 0,
+            "Width": 51,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId269",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId271",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textArea_GraphLowerRange",
+            "X": 0,
+            "Y": 385,
+            "Width": 60,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -3697,6 +3753,22 @@
       },
       {
         "TextEntryId": "SingleUseId267",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId268",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId269",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId270",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId271",
         "IsResource": false
       }
     ],

@@ -28,7 +28,9 @@ private:
   bool isNegative;
   
   Image background;
-  Graph graph;
+  Graph graphYellow;
+  Graph graphRed;
+  Graph graphBlue;
 };
 
 #endif // SCREEN_MODULE1_GRAPH_VIEW_HPP

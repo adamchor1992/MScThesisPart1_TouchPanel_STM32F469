@@ -31,12 +31,18 @@ protected:
     touchgfx::Box backgroundBox_Black;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
+    touchgfx::TextAreaWithOneWildcard textArea_GraphUpperRange;
+    touchgfx::TextAreaWithOneWildcard textArea_GraphLowerRange;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
+    static const uint16_t TEXTAREA_GRAPHUPPERRANGE_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_GraphUpperRangeBuffer[TEXTAREA_GRAPHUPPERRANGE_SIZE];
+    static const uint16_t TEXTAREA_GRAPHLOWERRANGE_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_GraphLowerRangeBuffer[TEXTAREA_GRAPHLOWERRANGE_SIZE];
 
 private:
 
