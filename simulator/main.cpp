@@ -56,7 +56,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     HAL& hal = touchgfx_generic_init<HALSDL2>(dma, lcd, tc, SIM_WIDTH, SIM_HEIGHT, 0, 0);
 
     // Simulate hardware running at 60Hz generating a vsync every 16.6667 ms
-    static_cast<HALSDL2&>(hal).setVsyncInterval(1.0f);
+    static_cast<HALSDL2&>(hal).setVsyncInterval(16.6667f);
     static_cast<HALSDL2&>(hal).setWindowTitle(SIM_TITLE);
 
     // Initialize SDL

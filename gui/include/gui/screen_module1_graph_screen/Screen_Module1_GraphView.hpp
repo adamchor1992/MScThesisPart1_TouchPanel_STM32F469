@@ -24,13 +24,13 @@ public:
   
 private:
   int tickCounter;
-  float value_float;
-  bool isNegative;
-  
+  int value;
+
   Image background;
   Graph graphYellow;
   Graph graphRed;
   Graph graphBlue;
+  Graph graphGreen;
 };
 
 #endif // SCREEN_MODULE1_GRAPH_VIEW_HPP

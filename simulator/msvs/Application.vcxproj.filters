@@ -284,7 +284,7 @@
       <UniqueIdentifier>06147071-7304-4193-A565-366D5CF37DC1</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>3AE57B1A-6E5C-4A77-BBD8-3AB8E9B78CE8</UniqueIdentifier>
+      <UniqueIdentifier>FCDA2C71-2424-4896-9AB7-8679798D8885</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -338,9 +338,6 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\common\GraphLine.cpp">
       <Filter>Source Files\gui\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\include\UART_Frame_Struct.h">
-      <Filter>Source Files\gui\include</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.cpp">
       <Filter>Source Files\gui\screen_module1_settings_screen</Filter>
@@ -422,6 +419,9 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen_module1_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\include\UART_Frame_Struct.h">
+      <Filter>Source Files\gui\include</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -862,9 +862,6 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\target\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery.h">
-      <Filter>Header Files\gui\screen_led_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\template_screen\TemplatePresenter.hpp">
       <Filter>Header Files\gui\template_screen</Filter>
     </ClInclude>
@@ -966,6 +963,9 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen_module1_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\target\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

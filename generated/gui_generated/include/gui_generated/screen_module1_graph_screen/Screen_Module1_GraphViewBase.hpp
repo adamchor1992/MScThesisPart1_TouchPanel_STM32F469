@@ -37,11 +37,11 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_GraphRangeBottom;
     touchgfx::Line line_VericalAxis;
     touchgfx::PainterRGB565 line_VericalAxisPainter;
-    touchgfx::Line line_HorizontalAxis;
-    touchgfx::PainterRGB565 line_HorizontalAxisPainter;
     touchgfx::TextAreaWithOneWildcard textArea_GraphRangeLeft;
     touchgfx::TextAreaWithOneWildcard textArea_GraphRangeRight;
     touchgfx::ButtonWithLabel buttonWithLabel_Signals;
+    touchgfx::Line line_HorizontalAxis_1;
+    touchgfx::PainterRGB565 line_HorizontalAxis_1Painter;
 
     /*
      * Wildcard Buffers

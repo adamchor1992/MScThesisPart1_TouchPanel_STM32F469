@@ -5,6 +5,9 @@
 
 #ifndef SIMULATOR
 #include "stm32469i_discovery.h" //for led driving
+#include <stdlib.h>
+
+void DebugPrint(const char* ch);
 #endif
 
 Screen_Module2_GraphView::Screen_Module2_GraphView()
@@ -45,14 +48,6 @@ void Screen_Module2_GraphView::tearDownScreen()
     Screen_Module2_GraphViewBase::tearDownScreen();
 }
 
-#ifndef SIMULATOR
-void DebugPrint(const char* ch);
-#endif
-
-#ifdef SIMULATOR
-#include <stdlib.h>
-#endif
-
 class Utils
 {
 public:
@@ -67,37 +62,14 @@ public:
   } 
 };
 
-
-
 void Screen_Module2_GraphView::handleTickEvent()
 {
-//  // Number of ticks between inserting a point in the graph
-//  int interval = 1;
-//  
-//  if (tickCounter % interval == 0)
-//  {
-//    // Insert a point in the graph.
-//    // The Y value is a random number in the y range of the graph.
-//    graph.addValue(tickCounter, Utils::randomNumberBetween(graph.getRangeBottom(), graph.getRangeTop()));
-//    //graph.addValue(tickCounter / interval, tickCounter / interval);
-//  }
-//  
-//  tickCounter++;
-//  
-//  if (tickCounter == 360 * interval)
-//  {
-//    // Reset the graph and start over
-//    //graph.setRange(0, 100, 0, 40);
-//    graph.setLineWidth(2);
-//    graph.clear();
-//    graph.invalidate();
-//    
-//    tickCounter = 0;
-//  }
+
 }
 
 void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
 {
+#ifndef SIMULATOR
   if(s_UARTFrame.sign == '1')
   {
     isNegative = false;
@@ -107,29 +79,25 @@ void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     isNegative = true;
   }
   
-  value_float = std::stof((char*)(s_UARTFrame.payload));
-    
-	#ifndef SIMULATOR
-  BSP_LED_Toggle(LED3);
-  #endif
+  value = std::stof((char*)(s_UARTFrame.payload));
   
+  BSP_LED_Toggle(LED3);
+
   if(isNegative)
   {
     /*Make value_int negative*/
-    value_float = value_float * (-1); 
+    value = value * (-1); 
   }
   
-  char str8[5];   
+  //char str8[5];   
   
-  snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
-     
-	 #ifndef SIMULATOR
-  DebugPrint("\nRamka graphu ma wartosc: \n");
-  DebugPrint(str8);
+  //snprintf(str8, sizeof(uint8_t), "%f", value);   // convert uint8_t to string 
   
-  graph.addValue(tickCounter, value_float);
-#endif
-
+  //DebugPrint("\nRamka graphu ma wartosc: \n");
+  //DebugPrint(str8);
+  
+  graph.addValue(tickCounter, value);
+  
   tickCounter++;
   
   if (tickCounter == 360)
@@ -142,6 +110,7 @@ void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     
     tickCounter = 0;
   }
+#endif
 }
 
 void Screen_Module2_GraphView::updateCpuUsage(uint8_t value)

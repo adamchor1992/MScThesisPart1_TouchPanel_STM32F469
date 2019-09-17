@@ -28,44 +28,36 @@ Screen_Module1_GraphViewBase::Screen_Module1_GraphViewBase() :
     buttonWithLabel_Back.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setAction(buttonCallback);
 
-    textArea_GraphRangeTop.setPosition(0, 0, 59, 25);
+    textArea_GraphRangeTop.setPosition(13, 0, 42, 15);
     textArea_GraphRangeTop.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_GraphRangeTop.setLinespacing(0);
     Unicode::snprintf(textArea_GraphRangeTopBuffer, TEXTAREA_GRAPHRANGETOP_SIZE, "%s", TypedText(T_SINGLEUSEID270).getText());
     textArea_GraphRangeTop.setWildcard(textArea_GraphRangeTopBuffer);
     textArea_GraphRangeTop.setTypedText(TypedText(T_SINGLEUSEID268));
 
-    textArea_GraphRangeBottom.setPosition(-5, 350, 64, 25);
+    textArea_GraphRangeBottom.setPosition(13, 370, 42, 15);
     textArea_GraphRangeBottom.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_GraphRangeBottom.setLinespacing(0);
     Unicode::snprintf(textArea_GraphRangeBottomBuffer, TEXTAREA_GRAPHRANGEBOTTOM_SIZE, "%s", TypedText(T_SINGLEUSEID271).getText());
     textArea_GraphRangeBottom.setWildcard(textArea_GraphRangeBottomBuffer);
     textArea_GraphRangeBottom.setTypedText(TypedText(T_SINGLEUSEID269));
 
-    line_VericalAxis.setPosition(55, 0, 10, 375);
+    line_VericalAxis.setPosition(55, 0, 2, 385);
     line_VericalAxisPainter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     line_VericalAxis.setPainter(line_VericalAxisPainter);
-    line_VericalAxis.setStart(5, 0);
-    line_VericalAxis.setEnd(5, 375);
+    line_VericalAxis.setStart(1, 0);
+    line_VericalAxis.setEnd(1, 385);
     line_VericalAxis.setLineWidth(2);
     line_VericalAxis.setLineEndingStyle(Line::ROUND_CAP_ENDING);
 
-    line_HorizontalAxis.setPosition(59, 371, 741, 10);
-    line_HorizontalAxisPainter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    line_HorizontalAxis.setPainter(line_HorizontalAxisPainter);
-    line_HorizontalAxis.setStart(0, 5);
-    line_HorizontalAxis.setEnd(740, 5);
-    line_HorizontalAxis.setLineWidth(2);
-    line_HorizontalAxis.setLineEndingStyle(Line::ROUND_CAP_ENDING);
-
-    textArea_GraphRangeLeft.setPosition(59, 384, 71, 25);
+    textArea_GraphRangeLeft.setPosition(55, 390, 26, 12);
     textArea_GraphRangeLeft.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_GraphRangeLeft.setLinespacing(0);
     Unicode::snprintf(textArea_GraphRangeLeftBuffer, TEXTAREA_GRAPHRANGELEFT_SIZE, "%s", TypedText(T_SINGLEUSEID273).getText());
     textArea_GraphRangeLeft.setWildcard(textArea_GraphRangeLeftBuffer);
     textArea_GraphRangeLeft.setTypedText(TypedText(T_SINGLEUSEID272));
 
-    textArea_GraphRangeRight.setPosition(744, 384, 56, 25);
+    textArea_GraphRangeRight.setPosition(758, 390, 42, 12);
     textArea_GraphRangeRight.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_GraphRangeRight.setLinespacing(0);
     Unicode::snprintf(textArea_GraphRangeRightBuffer, TEXTAREA_GRAPHRANGERIGHT_SIZE, "%s", TypedText(T_SINGLEUSEID275).getText());
@@ -79,16 +71,24 @@ Screen_Module1_GraphViewBase::Screen_Module1_GraphViewBase() :
     buttonWithLabel_Signals.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Signals.setAction(buttonCallback);
 
+    line_HorizontalAxis_1.setPosition(55, 385, 741, 2);
+    line_HorizontalAxis_1Painter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    line_HorizontalAxis_1.setPainter(line_HorizontalAxis_1Painter);
+    line_HorizontalAxis_1.setStart(0, 1);
+    line_HorizontalAxis_1.setEnd(740, 1);
+    line_HorizontalAxis_1.setLineWidth(2);
+    line_HorizontalAxis_1.setLineEndingStyle(Line::ROUND_CAP_ENDING);
+
     add(backgroundBox_Black);
     add(textArea_CPU_Usage);
     add(buttonWithLabel_Back);
     add(textArea_GraphRangeTop);
     add(textArea_GraphRangeBottom);
     add(line_VericalAxis);
-    add(line_HorizontalAxis);
     add(textArea_GraphRangeLeft);
     add(textArea_GraphRangeRight);
     add(buttonWithLabel_Signals);
+    add(line_HorizontalAxis_1);
 }
 
 void Screen_Module1_GraphViewBase::setupScreen()

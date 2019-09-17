@@ -14,6 +14,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
 
     toggleButton_Voltage.setXY(336, 121);
     toggleButton_Voltage.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Voltage.forceState(true);
 
     toggleButton_Current.setXY(336, 171);
     toggleButton_Current.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));

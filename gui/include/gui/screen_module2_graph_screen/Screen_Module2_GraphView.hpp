@@ -24,7 +24,7 @@ public:
   
 private:
   int tickCounter;
-  float value_float;
+  int value;
   bool isNegative;
   
   Image background;
