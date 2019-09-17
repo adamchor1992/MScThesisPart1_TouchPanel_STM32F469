@@ -5,6 +5,7 @@
 
 Screen_Module1_InfoView::Screen_Module1_InfoView()
 {
+		#ifndef SIMULATOR
   extern uint8_t m_vendor[PAYLOAD_SIZE];
   extern uint8_t m_type[PAYLOAD_SIZE];
   extern uint8_t m_model[PAYLOAD_SIZE];
@@ -67,6 +68,7 @@ Screen_Module1_InfoView::Screen_Module1_InfoView()
 
   Unicode::snprintf(textArea_VersionBuffer, TEXTAREA_VERSION_SIZE, "%s", vendorVersionDisplay);
   textArea_Version.invalidate();
+  #endif
 }
 
 void Screen_Module1_InfoView::setupScreen()

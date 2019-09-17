@@ -1070,6 +1070,12 @@
           </file>
         </group>
         <group>
+          <name>screen_module1_signals_screen</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp</name>
+          </file>
+        </group>
+        <group>
           <name>screen_module2_data_screen</name>
           <file>
             <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp</name>
@@ -1142,6 +1148,12 @@
           </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_fill.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_off.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
           </file>
         </group>
         <file>
@@ -1230,6 +1242,15 @@
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsView.cpp</name>
+        </file>
+      </group>
+      <group>
+        <name>screen_module1_signals_screen</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp</name>
         </file>
       </group>
       <group>

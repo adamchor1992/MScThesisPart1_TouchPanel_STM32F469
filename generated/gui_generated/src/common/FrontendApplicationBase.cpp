@@ -15,6 +15,8 @@
 #include <gui/screen_module1_settings_screen/Screen_Module1_SettingsPresenter.hpp>
 #include <gui/screen_module1_graph_screen/Screen_Module1_GraphView.hpp>
 #include <gui/screen_module1_graph_screen/Screen_Module1_GraphPresenter.hpp>
+#include <gui/screen_module1_signals_screen/Screen_Module1_SignalsView.hpp>
+#include <gui/screen_module1_signals_screen/Screen_Module1_SignalsPresenter.hpp>
 #include <gui/screen_module1_info_screen/Screen_Module1_InfoView.hpp>
 #include <gui/screen_module1_info_screen/Screen_Module1_InfoPresenter.hpp>
 #include <gui/screen_module2_data_screen/Screen_Module2_DataView.hpp>
@@ -93,6 +95,19 @@ void FrontendApplicationBase::gotoScreen_Module1_GraphScreenNoTransition()
 void FrontendApplicationBase::gotoScreen_Module1_GraphScreenNoTransitionImpl()
 {
     makeTransition<Screen_Module1_GraphView, Screen_Module1_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// Screen_Module1_Signals
+
+void FrontendApplicationBase::gotoScreen_Module1_SignalsScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_Module1_SignalsScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoScreen_Module1_SignalsScreenNoTransitionImpl()
+{
+    makeTransition<Screen_Module1_SignalsView, Screen_Module1_SignalsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module1_Info

@@ -52,6 +52,9 @@
     <ClCompile Include="..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_info_screen\Screen_Module1_InfoViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\texts\texts.xlsx"/>
@@ -233,6 +236,9 @@
     <ClInclude Include="..\..\gui\include\gui\screen_module1_info_screen\Screen_Module1_InfoPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen_module1_info_screen\Screen_Module1_InfoView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module1_info_screen\Screen_Module1_InfoViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\touchgfx.rc"/>

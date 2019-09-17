@@ -271,8 +271,20 @@
     <Filter Include="Header Files\generated\gui_generated\screen_module1_info_screen">
       <UniqueIdentifier>005F988E-3430-4941-80B7-912BBB1F30C2</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\screen_module1_signals_screen">
+      <UniqueIdentifier>F4F8809C-A0FB-4A5F-9CD2-E8A9798CF87E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module1_signals_screen">
+      <UniqueIdentifier>C531F88E-F0EA-4260-8414-E3BDBD4D7568</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module1_signals_screen">
+      <UniqueIdentifier>91CF18B5-AD85-46CE-BB1D-B5CFE9356A40</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module1_signals_screen">
+      <UniqueIdentifier>06147071-7304-4193-A565-366D5CF37DC1</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>486D65B6-9CFD-45F8-82E8-968CF32B8C65</UniqueIdentifier>
+      <UniqueIdentifier>3AE57B1A-6E5C-4A77-BBD8-3AB8E9B78CE8</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -401,6 +413,15 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_info_screen\Screen_Module1_InfoViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen_module1_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp">
+      <Filter>Source Files\gui\screen_module1_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp">
+      <Filter>Source Files\gui\screen_module1_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module1_signals_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -936,6 +957,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module1_info_screen\Screen_Module1_InfoViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen_module1_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.hpp">
+      <Filter>Header Files\gui\screen_module1_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsView.hpp">
+      <Filter>Header Files\gui\screen_module1_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module1_signals_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

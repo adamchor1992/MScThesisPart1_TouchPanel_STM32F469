@@ -31,6 +31,10 @@ public:
     void gotoScreen_Module1_GraphScreenNoTransition();
 
 
+    // Screen_Module1_Signals
+    void gotoScreen_Module1_SignalsScreenNoTransition();
+
+
     // Screen_Module1_Info
     void gotoScreen_Module1_InfoScreenNoTransition();
 
@@ -73,6 +77,10 @@ protected:
 
     // Screen_Module1_Graph
     void gotoScreen_Module1_GraphScreenNoTransitionImpl();
+
+
+    // Screen_Module1_Signals
+    void gotoScreen_Module1_SignalsScreenNoTransitionImpl();
 
 
     // Screen_Module1_Info

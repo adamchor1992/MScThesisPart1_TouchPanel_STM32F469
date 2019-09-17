@@ -44,6 +44,7 @@ void Screen_Module1_SettingsView::updateValueToSet(int value)
 
 void Screen_Module1_SettingsView::setNewValue()
 {
+	#ifndef SIMULATOR
   /*Structure used to propagate UART frame contents up to Model class*/
   UARTFrameStruct_t s_UARTFrame;
   
@@ -101,7 +102,7 @@ void Screen_Module1_SettingsView::setNewValue()
   sliderValue = slider_Value.getValue();
   sliderFloatValue = double(sliderValue) * double(0.1);
   
-#ifndef SIMULATOR
+
   char data_chars[10] = {0}; //data starts from 6th element up to [6 + length] element
   
   sprintf(data_chars, "%.1lf", sliderFloatValue);
@@ -114,9 +115,9 @@ void Screen_Module1_SettingsView::setNewValue()
   {
     s_UARTFrame.payload[i] = data_chars[i];
   }
-#endif
-  
+
   this->presenter->notifyNewValueToSet(s_UARTFrame);
+  #endif
 }
 
 void Screen_Module1_SettingsView::enableParameterButtonPushed()

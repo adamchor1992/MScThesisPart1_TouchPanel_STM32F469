@@ -10,6 +10,8 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/widgets/canvas/Line.hpp>
+#include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 
 class Screen_Module1_GraphViewBase : public touchgfx::View<Screen_Module1_GraphPresenter>
@@ -31,18 +33,29 @@ protected:
     touchgfx::Box backgroundBox_Black;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
-    touchgfx::TextAreaWithOneWildcard textArea_GraphUpperRange;
-    touchgfx::TextAreaWithOneWildcard textArea_GraphLowerRange;
+    touchgfx::TextAreaWithOneWildcard textArea_GraphRangeTop;
+    touchgfx::TextAreaWithOneWildcard textArea_GraphRangeBottom;
+    touchgfx::Line line_VericalAxis;
+    touchgfx::PainterRGB565 line_VericalAxisPainter;
+    touchgfx::Line line_HorizontalAxis;
+    touchgfx::PainterRGB565 line_HorizontalAxisPainter;
+    touchgfx::TextAreaWithOneWildcard textArea_GraphRangeLeft;
+    touchgfx::TextAreaWithOneWildcard textArea_GraphRangeRight;
+    touchgfx::ButtonWithLabel buttonWithLabel_Signals;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
-    static const uint16_t TEXTAREA_GRAPHUPPERRANGE_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea_GraphUpperRangeBuffer[TEXTAREA_GRAPHUPPERRANGE_SIZE];
-    static const uint16_t TEXTAREA_GRAPHLOWERRANGE_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea_GraphLowerRangeBuffer[TEXTAREA_GRAPHLOWERRANGE_SIZE];
+    static const uint16_t TEXTAREA_GRAPHRANGETOP_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_GraphRangeTopBuffer[TEXTAREA_GRAPHRANGETOP_SIZE];
+    static const uint16_t TEXTAREA_GRAPHRANGEBOTTOM_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_GraphRangeBottomBuffer[TEXTAREA_GRAPHRANGEBOTTOM_SIZE];
+    static const uint16_t TEXTAREA_GRAPHRANGELEFT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_GraphRangeLeftBuffer[TEXTAREA_GRAPHRANGELEFT_SIZE];
+    static const uint16_t TEXTAREA_GRAPHRANGERIGHT_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_GraphRangeRightBuffer[TEXTAREA_GRAPHRANGERIGHT_SIZE];
 
 private:
 
@@ -59,7 +72,7 @@ private:
     /*
      * Canvas Buffer Size
      */
-    static const uint16_t CANVAS_BUFFER_SIZE = 12000;
+    static const uint16_t CANVAS_BUFFER_SIZE = 24000;
     uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
 
 };

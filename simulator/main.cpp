@@ -18,8 +18,8 @@
 #endif
 #include <stdlib.h>
 
-//#include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
-//#define CANVAS_BUFFER_SIZE (3600)
+#include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
+#define CANVAS_BUFFER_SIZE (24000)
 
 using namespace touchgfx;
 
@@ -56,7 +56,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     HAL& hal = touchgfx_generic_init<HALSDL2>(dma, lcd, tc, SIM_WIDTH, SIM_HEIGHT, 0, 0);
 
     // Simulate hardware running at 60Hz generating a vsync every 16.6667 ms
-    static_cast<HALSDL2&>(hal).setVsyncInterval(16.6667f);
+    static_cast<HALSDL2&>(hal).setVsyncInterval(1.0f);
     static_cast<HALSDL2&>(hal).setWindowTitle(SIM_TITLE);
 
     // Initialize SDL
@@ -74,8 +74,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     // in your application. The CANVAS_BUFFER_SIZE can be adjusted to match
     // your needs in performance vs. RAM usage. Read more on this in the
     // TouchGFX Manual.
-    //static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
-    //CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
+    static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
+    CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     touchgfx::HAL::getInstance()->taskEntry(); //Never returns
 

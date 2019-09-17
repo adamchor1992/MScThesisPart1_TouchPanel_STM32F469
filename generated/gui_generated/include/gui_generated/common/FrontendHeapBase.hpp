@@ -27,6 +27,8 @@
 
 
 
+
+
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
@@ -38,6 +40,8 @@
 #include <gui/screen_module1_settings_screen/Screen_Module1_SettingsPresenter.hpp>
 #include <gui/screen_module1_graph_screen/Screen_Module1_GraphView.hpp>
 #include <gui/screen_module1_graph_screen/Screen_Module1_GraphPresenter.hpp>
+#include <gui/screen_module1_signals_screen/Screen_Module1_SignalsView.hpp>
+#include <gui/screen_module1_signals_screen/Screen_Module1_SignalsPresenter.hpp>
 #include <gui/screen_module1_info_screen/Screen_Module1_InfoView.hpp>
 #include <gui/screen_module1_info_screen/Screen_Module1_InfoPresenter.hpp>
 #include <gui/screen_module2_data_screen/Screen_Module2_DataView.hpp>
@@ -76,13 +80,14 @@ public:
             meta::TypeList< Screen_Module1_DataView,
             meta::TypeList< Screen_Module1_SettingsView,
             meta::TypeList< Screen_Module1_GraphView,
+            meta::TypeList< Screen_Module1_SignalsView,
             meta::TypeList< Screen_Module1_InfoView,
             meta::TypeList< Screen_Module2_DataView,
             meta::TypeList< Screen_Module2_SettingsView,
             meta::TypeList< Screen_Module2_GraphView,
             meta::TypeList< Screen_UART_RX_DebugView,
             meta::TypeList< TemplateView,
-            meta::Nil > > > > > > > > >
+            meta::Nil > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -98,13 +103,14 @@ public:
             meta::TypeList< Screen_Module1_DataPresenter,
             meta::TypeList< Screen_Module1_SettingsPresenter,
             meta::TypeList< Screen_Module1_GraphPresenter,
+            meta::TypeList< Screen_Module1_SignalsPresenter,
             meta::TypeList< Screen_Module1_InfoPresenter,
             meta::TypeList< Screen_Module2_DataPresenter,
             meta::TypeList< Screen_Module2_SettingsPresenter,
             meta::TypeList< Screen_Module2_GraphPresenter,
             meta::TypeList< Screen_UART_RX_DebugPresenter,
             meta::TypeList< TemplatePresenter,
-            meta::Nil > > > > > > > > >
+            meta::Nil > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**
