@@ -10,7 +10,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     buttonCallback(this, &Screen_Module1_SignalsViewBase::buttonCallbackHandler),
     sliderValueChangedCallback(this, &Screen_Module1_SignalsViewBase::sliderValueChangedCallbackHandler)
 {
-    backgroundBox_Black.setPosition(0, 0, 800, 480);
+    backgroundBox_Black.setPosition(0, 1, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     toggleButton_Voltage.setXY(235, 122);
@@ -49,7 +49,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     textArea_Voltage.setLinespacing(0);
     textArea_Voltage.setTypedText(TypedText(T_SINGLEUSEID283));
 
-    textArea_Title.setXY(260, 0);
+    textArea_Title.setXY(328, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Title.setLinespacing(0);
     textArea_Title.setTypedText(TypedText(T_SINGLEUSEID285));
@@ -110,6 +110,15 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     textArea_Y_AxisMax.setWildcard(textArea_Y_AxisMaxBuffer);
     textArea_Y_AxisMax.setTypedText(TypedText(T_SINGLEUSEID292));
 
+    textArea_Auto_Y_Range.setPosition(568, 7, 130, 25);
+    textArea_Auto_Y_Range.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Auto_Y_Range.setLinespacing(0);
+    textArea_Auto_Y_Range.setTypedText(TypedText(T_SINGLEUSEID296));
+
+    toggleButton_Auto_Y_Range.setXY(704, 0);
+    toggleButton_Auto_Y_Range.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
+    toggleButton_Auto_Y_Range.setAction(buttonCallback);
+
     add(backgroundBox_Black);
     add(toggleButton_Voltage);
     add(toggleButton_Current);
@@ -128,6 +137,8 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     add(textArea_Y_AxisMin);
     add(slider_Y_AxisMax);
     add(textArea_Y_AxisMax);
+    add(textArea_Auto_Y_Range);
+    add(toggleButton_Auto_Y_Range);
 }
 
 void Screen_Module1_SignalsViewBase::setupScreen()
@@ -171,6 +182,13 @@ void Screen_Module1_SignalsViewBase::buttonCallbackHandler(const touchgfx::Abstr
         //When buttonWithLabel_Back clicked change screen to Screen_Module1_Graph
         //Go to Screen_Module1_Graph with no screen transition
         application().gotoScreen_Module1_GraphScreenNoTransition();
+    }
+    else if (&src == &toggleButton_Auto_Y_Range)
+    {
+        //Interaction_PressedAutoRangeToggleButton
+        //When toggleButton_Auto_Y_Range clicked call virtual function
+        //Call pressedAutoRangeToggleButton
+        pressedAutoRangeToggleButton();
     }
 }
 

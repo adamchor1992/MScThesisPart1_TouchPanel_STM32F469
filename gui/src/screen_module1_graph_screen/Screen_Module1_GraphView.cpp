@@ -21,6 +21,7 @@ bool Screen_Module1_GraphView::voltageGraphEnabled = true;
 bool Screen_Module1_GraphView::currentGraphEnabled = true;
 bool Screen_Module1_GraphView::frequencyGraphEnabled = true;
 bool Screen_Module1_GraphView::powerGraphEnabled = true;
+bool Screen_Module1_GraphView::autoRangeEnabled = false;
 
 int Screen_Module1_GraphView::m_graphRangeBottom = INITIAL_GRAPH_RANGE_BOTTOM;
 int Screen_Module1_GraphView::m_graphRangeTop = INITIAL_GRAPH_RANGE_TOP;
@@ -97,32 +98,35 @@ void Screen_Module1_GraphView::tearDownScreen()
 
 void Screen_Module1_GraphView::handleTickEvent()
 {	
-  if(m_graphRangeBottomChangedFlag)
+  if(autoRangeEnabled == true)
   {
-    graphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
-    graphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
-    graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
-    graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    if(m_graphRangeBottomChangedFlag)
+    {
+      graphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      graphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      
+      Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom);
+      textArea_GraphRangeBottom.invalidate();
+      
+      /*Reset flag*/
+      m_graphRangeBottomChangedFlag = false;
+    }
     
-    Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom);
-    textArea_GraphRangeBottom.invalidate();
-    
-    /*Reset flag*/
-    m_graphRangeBottomChangedFlag = false;
-  }
-  
-  if(m_graphRangeTopChangedFlag)
-  {
-    graphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
-    graphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
-    graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
-    graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
-    
-    Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop);
-    textArea_GraphRangeTop.invalidate();
-    
-    /*Reset flag*/
-    m_graphRangeTopChangedFlag = false;
+    if(m_graphRangeTopChangedFlag)
+    {
+      graphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      graphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+      
+      Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop);
+      textArea_GraphRangeTop.invalidate();
+      
+      /*Reset flag*/
+      m_graphRangeTopChangedFlag = false;
+    }
   }
   
 #ifdef SIMULATOR
@@ -254,19 +258,22 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
   //DebugPrint("\nRamka graphu ma wartosc: \n");
   //DebugPrint(str8);
   
-  for(int i=0; i < GRAPHS_COUNT; i++)
+  if(autoRangeEnabled == true)
   {
-    /*Check if value is higher than any graph's top range*/
-    if(value > graphs[i]->getRangeTop())
+    for(int i=0; i < GRAPHS_COUNT; i++)
     {
-      m_graphRangeTopChangedFlag = true;
-      m_graphRangeTop = value;
-    }
-    /*Check if value is lower than graph bottom range*/
-    else if(value < graphs[i]->getRangeBottom())
-    {
-      m_graphRangeBottomChangedFlag = true;
-      m_graphRangeBottom = value;
+      /*Check if value is higher than any graph's top range*/
+      if(value > graphs[i]->getRangeTop())
+      {
+        m_graphRangeTopChangedFlag = true;
+        m_graphRangeTop = value;
+      }
+      /*Check if value is lower than graph bottom range*/
+      else if(value < graphs[i]->getRangeBottom())
+      {
+        m_graphRangeBottomChangedFlag = true;
+        m_graphRangeBottom = value;
+      }
     }
   }
   

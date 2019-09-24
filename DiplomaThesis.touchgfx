@@ -1819,7 +1819,7 @@
             "Alpha": 255,
             "Name": "backgroundBox_Black",
             "X": 0,
-            "Y": 0,
+            "Y": 1,
             "Width": 800,
             "Height": 480,
             "Type": "Box",
@@ -2005,9 +2005,9 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "textArea_Title",
-            "X": 260,
+            "X": 328,
             "Y": 0,
-            "Width": 280,
+            "Width": 144,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2234,6 +2234,47 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId296",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Name": "textArea_Auto_Y_Range",
+            "X": 568,
+            "Y": 7,
+            "Width": 130,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "InitialStatePressed": false,
+            "Pressed": "__designer\\blue_togglebars_toggle_round_small_button_on.png",
+            "Released": "__designer\\blue_togglebars_toggle_round_small_button_off.png",
+            "Alpha": 255,
+            "Style": "Style5",
+            "Name": "toggleButton_Auto_Y_Range",
+            "X": 704,
+            "Y": 0,
+            "Width": 96,
+            "Height": 38,
+            "Type": "ToggleButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -2331,6 +2372,18 @@
             },
             "Action": {
               "FunctionName": "updateY_AxisMax",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_PressedAutoRangeToggleButton",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButton_Auto_Y_Range",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "pressedAutoRangeToggleButton",
               "Type": "ActionCustom"
             }
           }
@@ -4526,6 +4579,10 @@
       },
       {
         "TextEntryId": "SingleUseId295",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId296",
         "IsResource": false
       }
     ],

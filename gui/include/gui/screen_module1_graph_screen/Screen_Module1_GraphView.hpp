@@ -51,6 +51,7 @@ private:
   static bool currentGraphEnabled;
   static bool frequencyGraphEnabled;
   static bool powerGraphEnabled;
+  static bool autoRangeEnabled;
   
   static int m_graphRangeBottom;
   static int m_graphRangeTop;

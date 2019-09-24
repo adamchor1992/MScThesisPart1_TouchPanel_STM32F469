@@ -944,6 +944,16 @@
               <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_large_button_on.cpp</FilePath>
             </File>
             <File>
+              <FileName>blue_togglebars_toggle_round_small_button_off.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_off.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>blue_togglebars_toggle_round_small_button_on.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_on.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Font_verdana_10_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/font_verdana_10_4bpp.cpp</FilePath>

@@ -13,6 +13,7 @@ void Screen_Module1_SignalsView::setupScreen()
   toggleButton_Current.forceState(Screen_Module1_GraphView::currentGraphEnabled);
   toggleButton_Frequency.forceState(Screen_Module1_GraphView::frequencyGraphEnabled);
   toggleButton_Power.forceState(Screen_Module1_GraphView::powerGraphEnabled);
+  toggleButton_Auto_Y_Range.forceState(Screen_Module1_GraphView::autoRangeEnabled);
   
   /*Initialize sliders' values */
   slider_TimeRange.setValue(Screen_Module1_GraphView::m_graphRangeRight);
@@ -104,4 +105,36 @@ void Screen_Module1_SignalsView::updateY_AxisMax(int value)
 {
   Unicode::snprintf(textArea_Y_AxisMaxBuffer, 6, "%d", value);
   textArea_Y_AxisMax.invalidate();
+}
+
+void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
+{
+  if(toggleButton_Auto_Y_Range.getState() == true)
+  {
+    Screen_Module1_GraphView::autoRangeEnabled = true; 
+    
+    textArea_Y_AxisMin.setVisible(false);
+    textArea_Y_AxisMax.setVisible(false);
+    slider_Y_AxisMin.setVisible(false);
+    slider_Y_AxisMax.setVisible(false);
+    
+    textArea_Y_AxisMin.invalidate();
+    textArea_Y_AxisMax.invalidate();
+    slider_Y_AxisMin.invalidate();
+    slider_Y_AxisMax.invalidate();
+  }
+  else
+  {
+    Screen_Module1_GraphView::autoRangeEnabled = false;
+    
+    textArea_Y_AxisMin.setVisible(true);
+    textArea_Y_AxisMax.setVisible(true);
+    slider_Y_AxisMin.setVisible(true);
+    slider_Y_AxisMax.setVisible(true);
+    
+    textArea_Y_AxisMin.invalidate();
+    textArea_Y_AxisMax.invalidate();
+    slider_Y_AxisMin.invalidate();
+    slider_Y_AxisMax.invalidate();
+  }
 }

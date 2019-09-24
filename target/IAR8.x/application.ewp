@@ -1238,6 +1238,12 @@
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
           </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_off.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_on.cpp</name>
+          </file>
         </group>
         <file>
           <name>$PROJ_DIR$\..\..\generated\images\src\background.cpp</name>

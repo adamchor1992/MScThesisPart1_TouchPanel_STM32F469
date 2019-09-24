@@ -20,6 +20,8 @@ public:
   virtual void updateTimeRange(int value);
   virtual void updateY_AxisMin(int value);
   virtual void updateY_AxisMax(int value);
+  
+  virtual void pressedAutoRangeToggleButton();
 };
 
 #endif // SCREEN_MODULE1_SIGNALS_VIEW_HPP

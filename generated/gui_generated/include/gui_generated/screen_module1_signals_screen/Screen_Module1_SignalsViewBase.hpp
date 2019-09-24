@@ -60,6 +60,11 @@ public:
         // Override and implement this function in Screen_Module1_SignalsView
     }
 
+    virtual void pressedAutoRangeToggleButton()
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(Application::getInstance());
@@ -86,6 +91,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_Y_AxisMin;
     touchgfx::Slider slider_Y_AxisMax;
     touchgfx::TextAreaWithOneWildcard textArea_Y_AxisMax;
+    touchgfx::TextArea textArea_Auto_Y_Range;
+    touchgfx::ToggleButton toggleButton_Auto_Y_Range;
 
     /*
      * Wildcard Buffers
