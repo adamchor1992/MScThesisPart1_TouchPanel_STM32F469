@@ -10,57 +10,77 @@
 void DebugPrint(const char* ch);
 #endif
 
-#define GRAPH_RANGE_BOTTOM -1000
-#define GRAPH_RANGE_TOP 1000
-#define GRAPH_RANGE_LEFT 0
-#define GRAPH_RANGE_RIGHT 720
+#define INITIAL_GRAPH_RANGE_BOTTOM -1000
+#define INITIAL_GRAPH_RANGE_TOP 1000
+#define INITIAL_GRAPH_RANGE_LEFT 0
+#define INITIAL_GRAPH_RANGE_RIGHT 720
 
-bool Screen_Module1_GraphView::voltageGraphEnabled = false;
-bool Screen_Module1_GraphView::currentGraphEnabled = false;
-bool Screen_Module1_GraphView::frequencyGraphEnabled = false;
-bool Screen_Module1_GraphView::powerGraphEnabled = false;
+#define GRAPHS_COUNT 4
+
+bool Screen_Module1_GraphView::voltageGraphEnabled = true;
+bool Screen_Module1_GraphView::currentGraphEnabled = true;
+bool Screen_Module1_GraphView::frequencyGraphEnabled = true;
+bool Screen_Module1_GraphView::powerGraphEnabled = true;
+
+int Screen_Module1_GraphView::m_graphRangeBottom = INITIAL_GRAPH_RANGE_BOTTOM;
+int Screen_Module1_GraphView::m_graphRangeTop = INITIAL_GRAPH_RANGE_TOP;
+int Screen_Module1_GraphView::m_graphRangeRight = INITIAL_GRAPH_RANGE_RIGHT;
+
+void Screen_Module1_GraphView::setGraphRanges(int bottom, int top, int right)
+{
+  m_graphRangeBottom = bottom;
+  m_graphRangeTop = top;
+  m_graphRangeRight = right;
+}
 
 Screen_Module1_GraphView::Screen_Module1_GraphView()
 {
-
+  m_graphRangeBottomChangedFlag = false;
+  m_graphRangeTopChangedFlag = false;
+  
+  m_PreviousYellow_X = 0;
+  m_PreviousRed_X = 0;
+  m_PreviousBlue_X = 0;
+  m_PreviousGreen_X = 0;
+  
+  tickCounter = 0;
+  
+  graphs[0] = &graphYellow;
+  graphs[1] = &graphRed;
+  graphs[2] = &graphBlue;
+  graphs[3] = &graphGreen;
 }
 
 void Screen_Module1_GraphView::setupScreen()
 {
   tickCounter = 0;
   
-  // Place the graph on the screen
-  graphYellow.setXY(55, 0);
-  graphRed.setXY(55, 0);
-  graphBlue.setXY(55, 0);
-  graphGreen.setXY(55, 0);
-  
-  // Set the outer dimensions and color of the graph
+  // Set the outer dimensions and color of the graphs
   graphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC));
   graphRed.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0x00, 0x00));
   graphBlue.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0x00, 0xFF));
   graphGreen.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0xFF, 0x00));
   
-  // Set the range for the x and y axis of the graph. That is
-  // the max and min x/y value that can be displayed inside the
-  // dimension of the graph.
-  graphYellow.setRange(GRAPH_RANGE_LEFT, GRAPH_RANGE_RIGHT, GRAPH_RANGE_BOTTOM, GRAPH_RANGE_TOP);
-  graphRed.setRange(GRAPH_RANGE_LEFT, GRAPH_RANGE_RIGHT, GRAPH_RANGE_BOTTOM, GRAPH_RANGE_TOP);
-  graphBlue.setRange(GRAPH_RANGE_LEFT, GRAPH_RANGE_RIGHT, GRAPH_RANGE_BOTTOM, GRAPH_RANGE_TOP);
-  graphGreen.setRange(GRAPH_RANGE_LEFT, GRAPH_RANGE_RIGHT, GRAPH_RANGE_BOTTOM, GRAPH_RANGE_TOP);
+  // Initialize graphs
+  for(int i=0; i < GRAPHS_COUNT; i++)
+  {
+    // Place graphs on the screen
+    graphs[i]->setXY(55, 0);
+    // Set the ranges for the x and y axis of the graphs
+    graphs[i]->setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    // Set line width of the graphs
+    graphs[i]->setLineWidth(2);
+  }
   
-  /*Initialize graph vertical range text areas */
-  Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d",graphYellow.getRangeTop());
+  /*Initialize graph ranges text areas */
+  Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop);
   textArea_GraphRangeTop.invalidate();
   
-  Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d",graphYellow.getRangeBottom());
+  Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom);
   textArea_GraphRangeBottom.invalidate();
   
-  // Set the line width in pixels
-  graphYellow.setLineWidth(2);
-  graphRed.setLineWidth(2);
-  graphBlue.setLineWidth(2);
-  graphGreen.setLineWidth(2);
+  Unicode::snprintf(textArea_GraphRangeRightBuffer,6,"%d", m_graphRangeRight);
+  textArea_GraphRangeBottom.invalidate();
   
   add(graphYellow);
   add(graphRed);
@@ -72,16 +92,44 @@ void Screen_Module1_GraphView::setupScreen()
 
 void Screen_Module1_GraphView::tearDownScreen()
 {
-    Screen_Module1_GraphViewBase::tearDownScreen();
+  Screen_Module1_GraphViewBase::tearDownScreen();
 }
 
 void Screen_Module1_GraphView::handleTickEvent()
 {	
+  if(m_graphRangeBottomChangedFlag)
+  {
+    graphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    graphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    
+    Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom);
+    textArea_GraphRangeBottom.invalidate();
+    
+    /*Reset flag*/
+    m_graphRangeBottomChangedFlag = false;
+  }
+  
+  if(m_graphRangeTopChangedFlag)
+  {
+    graphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    graphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
+    
+    Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop);
+    textArea_GraphRangeTop.invalidate();
+    
+    /*Reset flag*/
+    m_graphRangeTopChangedFlag = false;
+  }
+  
 #ifdef SIMULATOR
-  static int value1 = GRAPH_RANGE_BOTTOM;
-  static int value2 = GRAPH_RANGE_BOTTOM + 40;
-  static int value3 = GRAPH_RANGE_BOTTOM + 80;
-  static int value4 = GRAPH_RANGE_BOTTOM + 120;
+  static int value1 = INITIAL_GRAPH_RANGE_BOTTOM;
+  static int value2 = INITIAL_GRAPH_RANGE_BOTTOM + 40;
+  static int value3 = INITIAL_GRAPH_RANGE_BOTTOM + 80;
+  static int value4 = INITIAL_GRAPH_RANGE_BOTTOM + 120;
   
   /*Check if value is higher than graph upper range*/
   if(value1 >= graphYellow.getRangeTop())
@@ -97,96 +145,69 @@ void Screen_Module1_GraphView::handleTickEvent()
     Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", value1);
     textArea_GraphRangeBottom.invalidate();
   }
-
+  
   /*Check if value is higher than graph upper range*/
   if (value2 >= graphRed.getRangeTop())
   {
-	  graphRed.setRange(graphRed.getRangeLeft(), graphRed.getRangeRight(), graphRed.getRangeBottom(), value2);
-	  Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", value2);
-	  textArea_GraphRangeTop.invalidate();
+    graphRed.setRange(graphRed.getRangeLeft(), graphRed.getRangeRight(), graphRed.getRangeBottom(), value2);
+    Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", value2);
+    textArea_GraphRangeTop.invalidate();
   }
   /*Check if value is smaller than graph lower range*/
   else if (value2 <= graphRed.getRangeBottom())
   {
-	  graphRed.setRange(graphRed.getRangeLeft(), graphRed.getRangeRight(), value2, graphRed.getRangeTop());
-	  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", value2);
-	  textArea_GraphRangeBottom.invalidate();
+    graphRed.setRange(graphRed.getRangeLeft(), graphRed.getRangeRight(), value2, graphRed.getRangeTop());
+    Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", value2);
+    textArea_GraphRangeBottom.invalidate();
   }
-
+  
   /*Check if value is higher than graph upper range*/
   if (value3 >= graphBlue.getRangeTop())
   {
-	  graphBlue.setRange(graphBlue.getRangeLeft(), graphBlue.getRangeRight(), graphBlue.getRangeBottom(), value3);
-	  Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", value3);
-	  textArea_GraphRangeTop.invalidate();
+    graphBlue.setRange(graphBlue.getRangeLeft(), graphBlue.getRangeRight(), graphBlue.getRangeBottom(), value3);
+    Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", value3);
+    textArea_GraphRangeTop.invalidate();
   }
   /*Check if value is smaller than graph lower range*/
   else if (value3 <= graphBlue.getRangeBottom())
   {
-	  graphBlue.setRange(graphBlue.getRangeLeft(), graphBlue.getRangeRight(), value3, graphBlue.getRangeTop());
-	  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", value3);
-	  textArea_GraphRangeBottom.invalidate();
+    graphBlue.setRange(graphBlue.getRangeLeft(), graphBlue.getRangeRight(), value3, graphBlue.getRangeTop());
+    Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", value3);
+    textArea_GraphRangeBottom.invalidate();
   }
-
+  
   /*Check if value is higher than graph upper range*/
   if (value4 >= graphGreen.getRangeTop())
   {
-	  graphGreen.setRange(graphGreen.getRangeLeft(), graphGreen.getRangeRight(), graphGreen.getRangeBottom(), value4);
-	  Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", value4);
-	  textArea_GraphRangeTop.invalidate();
+    graphGreen.setRange(graphGreen.getRangeLeft(), graphGreen.getRangeRight(), graphGreen.getRangeBottom(), value4);
+    Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", value4);
+    textArea_GraphRangeTop.invalidate();
   }
   /*Check if value is smaller than graph lower range*/
   else if (value4 <= graphGreen.getRangeBottom())
   {
-	  graphGreen.setRange(graphGreen.getRangeLeft(), graphGreen.getRangeRight(), value4, graphGreen.getRangeTop());
-	  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", value4);
-	  textArea_GraphRangeBottom.invalidate();
+    graphGreen.setRange(graphGreen.getRangeLeft(), graphGreen.getRangeRight(), value4, graphGreen.getRangeTop());
+    Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", value4);
+    textArea_GraphRangeBottom.invalidate();
   }
-  
- // if (tickCounter > GRAPH_RANGE_RIGHT)
- // {
- //   graphYellow.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
-	//graphRed.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
-	//graphBlue.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
-	//graphGreen.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
-
- //   Unicode::snprintf(textArea_GraphRangeLeftBuffer, 6, "%d", graphYellow.getRangeLeft());
- //   textArea_GraphRangeLeft.invalidate();
- //   
- //   Unicode::snprintf(textArea_GraphRangeRightBuffer, 6, "%d", graphYellow.getRangeRight());
- //   textArea_GraphRangeRight.invalidate();
- //   
- //   /*Delete value which is no longer visible on graph*/
- //   graphYellow.deleteValue(graphYellow.getRangeRight() - GRAPH_RANGE_RIGHT);
-	//graphRed.deleteValue(graphRed.getRangeRight() - GRAPH_RANGE_RIGHT);
-	//graphBlue.deleteValue(graphBlue.getRangeRight() - GRAPH_RANGE_RIGHT);
-	//graphGreen.deleteValue(graphGreen.getRangeRight() - GRAPH_RANGE_RIGHT);
- // }
-
-
-
-  /*graphYellow.addValue(tickCounter, sin(value1*3.14159 / 180) * 999);
-  graphRed.addValue(tickCounter, sin(value2*3.14159 / 180) * 999);
-  graphBlue.addValue(tickCounter, sin(value3*3.14159 / 180) * 999);
-  graphGreen.addValue(tickCounter, sin(value4*3.14159 / 180) * 999);*/
-
+    
   if (voltageGraphEnabled)
   {
-	  graphYellow.addValue(tickCounter, value1);
+    graphYellow.addValue(tickCounter, value1);
   }
-
+  
   if (currentGraphEnabled)
   {
-	  graphRed.addValue(tickCounter, value2 + 20);
+    graphRed.addValue(tickCounter, value2 + 20);
   }
-
+  
   if (frequencyGraphEnabled)
   {
-	  graphBlue.addValue(tickCounter, value3 + 40);
+    graphBlue.addValue(tickCounter, value3 + 40);
   }
   if (powerGraphEnabled)
   {
-	  graphGreen.addValue(tickCounter, value4 + 60);
+    graphGreen.addValue(tickCounter, value4 + 60);
   }
   
   tickCounter++;
@@ -194,24 +215,24 @@ void Screen_Module1_GraphView::handleTickEvent()
   value2++;
   value3++;
   value4++;
-
-  if (tickCounter == 720)
+  
+  if (tickCounter >= m_graphRangeRight)
   {
-	  graphYellow.clear();
-	  graphYellow.invalidate();
-
-	  graphRed.clear();
-	  graphRed.invalidate();
-
-	  graphBlue.clear();
-	  graphBlue.invalidate();
-
-	  graphGreen.clear();
-	  graphGreen.invalidate();
-
-	  tickCounter = 0;
+    graphYellow.clear();
+    graphYellow.invalidate();
+    
+    graphRed.clear();
+    graphRed.invalidate();
+    
+    graphBlue.clear();
+    graphBlue.invalidate();
+    
+    graphGreen.clear();
+    graphGreen.invalidate();
+    
+    tickCounter = 0;
   }
-
+  
 #endif
 }
 
@@ -220,8 +241,8 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
 #ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
   
-  value = std::stof((char*)(s_UARTFrame.payload));
- 
+  value = int(std::stof((char*)(s_UARTFrame.payload)));
+  
   if(s_UARTFrame.sign == '2')
   {
     /*Make value_int negative*/
@@ -233,70 +254,131 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
   //DebugPrint("\nRamka graphu ma wartosc: \n");
   //DebugPrint(str8);
   
-  /*Check if value is higher than graph upper range*/
-  if(value >= graphYellow.getRangeTop())
+  for(int i=0; i < GRAPHS_COUNT; i++)
   {
-    graphYellow.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), graphYellow.getRangeBottom(), value);
-    //graphRed.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), graphYellow.getRangeBottom(), value);
-    //graphBlue.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), graphYellow.getRangeBottom(), value);
-    //graphGreen.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), graphYellow.getRangeBottom(), value);
-    
-    Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", value);
-    textArea_GraphRangeTop.invalidate();
-  }
-  /*Check if value is smaller than graph lower range*/
-  else if(value <= graphYellow.getRangeBottom())
-  {
-    graphYellow.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), value, graphYellow.getRangeTop());
-    //graphRed.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), value, graphYellow.getRangeTop());
-    //graphBlue.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), value, graphYellow.getRangeTop());
-    //graphGreen.setRange(graphYellow.getRangeLeft(), graphYellow.getRangeRight(), value, graphYellow.getRangeTop());
-    
-    Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", value);
-    textArea_GraphRangeBottom.invalidate();
+    /*Check if value is higher than any graph's top range*/
+    if(value > graphs[i]->getRangeTop())
+    {
+      m_graphRangeTopChangedFlag = true;
+      m_graphRangeTop = value;
+    }
+    /*Check if value is lower than graph bottom range*/
+    else if(value < graphs[i]->getRangeBottom())
+    {
+      m_graphRangeBottomChangedFlag = true;
+      m_graphRangeBottom = value;
+    }
   }
   
-  if (tickCounter > GRAPH_RANGE_RIGHT)
+  if(tickCounter >= m_graphRangeRight)
   {
-    graphYellow.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
-    //graphRed.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
-    //graphBlue.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
-    //graphGreen.setRange(graphYellow.getRangeLeft() + 1, graphYellow.getRangeRight() + 1, graphYellow.getRangeBottom(), graphYellow.getRangeTop());
+    graphYellow.clear();
+    graphYellow.invalidate();
     
-    Unicode::snprintf(textArea_GraphRangeLeftBuffer, 6, "%d", graphYellow.getRangeLeft());
-    textArea_GraphRangeLeft.invalidate();
+    graphRed.clear();
+    graphRed.invalidate();
     
-    Unicode::snprintf(textArea_GraphRangeRightBuffer, 6, "%d", graphYellow.getRangeRight());
-    textArea_GraphRangeRight.invalidate();
+    graphBlue.clear();
+    graphBlue.invalidate();
     
-    /*Delete value which is no longer visible on graph*/
-    graphYellow.deleteValue(graphYellow.getRangeRight() - GRAPH_RANGE_RIGHT);
+    graphGreen.clear();
+    graphGreen.invalidate();
+    
+    m_PreviousYellow_X = 0;
+    m_PreviousRed_X = 0;
+    m_PreviousBlue_X = 0;
+    m_PreviousGreen_X = 0;
+    
+    tickCounter = 0;
   }
   
-  //graphYellow.addValue(tickCounter, value);
-  //graphRed.addValue(tickCounter + 40, value);
-  //graphBlue.addValue(tickCounter + 80, value);
-  //graphGreen.addValue(tickCounter + 120, value);
-
-  switch (s_UARTFrame.parameter)
+  char str8[10] = {'\0'};
+  snprintf(str8, sizeof(int), "%d", tickCounter);   // convert uint8_t to string 
+  DebugPrint("\nTick counter: ");
+  DebugPrint(str8);
+  DebugPrint("\n");
+  
+  switch(s_UARTFrame.parameter)
   {
   case 'v':
-	  graphYellow.addValue(tickCounter, value);
-	  break;
+    if(voltageGraphEnabled == true)
+    {
+      if(m_PreviousYellow_X == tickCounter)
+      {
+        ++tickCounter; 
+        m_PreviousYellow_X = tickCounter;
+      }
+      else
+      {
+        m_PreviousYellow_X = tickCounter;
+      }
+      graphYellow.addValue(tickCounter, value);
+    }
+    break;
   case 'c':
-	  graphRed.addValue(tickCounter, value);
-	  break;
+    if(currentGraphEnabled == true)
+    {
+      if(m_PreviousRed_X == tickCounter)
+      {
+        ++tickCounter; 
+        m_PreviousRed_X = tickCounter;
+      }
+      else
+      {
+        m_PreviousRed_X = tickCounter;
+      }
+      graphRed.addValue(tickCounter, value);
+    }
+    break;
   case 'f':
-	  graphBlue.addValue(tickCounter, value);
-	  break;
+    if(frequencyGraphEnabled == true)
+    {
+      if(m_PreviousBlue_X == tickCounter)
+      {
+        ++tickCounter; 
+        m_PreviousBlue_X = tickCounter;
+      }
+      else
+      {
+        m_PreviousBlue_X = tickCounter;
+      }
+      graphBlue.addValue(tickCounter, value);
+    }
+    break;
   case 'p':
-	  graphGreen.addValue(tickCounter, value);
-	  break;
+    if(powerGraphEnabled == true)
+    {
+      if(m_PreviousGreen_X == tickCounter)
+      {
+        ++tickCounter; 
+        m_PreviousGreen_X = tickCounter;
+      }
+      else
+      {
+        m_PreviousGreen_X = tickCounter;
+      }
+      graphGreen.addValue(tickCounter, value);
+    }
+    break;
   }
-
-  tickCounter++;
-
 #endif
+}
+
+uint8_t Screen_Module1_GraphView::activeSignalsCount()
+{
+  /*How many signals active/visible?*/
+  uint8_t activeSignals = 0;
+  
+  if(voltageGraphEnabled == true)
+    ++activeSignals;
+  if(currentGraphEnabled == true)
+    ++activeSignals;
+  if(frequencyGraphEnabled == true)
+    ++activeSignals;
+  if(powerGraphEnabled == true)
+    ++activeSignals;
+  
+  return activeSignals;
 }
 
 void Screen_Module1_GraphView::updateCpuUsage(uint8_t value)
