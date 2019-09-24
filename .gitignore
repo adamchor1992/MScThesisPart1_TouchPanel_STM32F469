@@ -2,4 +2,5 @@
 *.d
 *.log
 /build/*
-/target/IAR8.x/Debug/
+/target/IAR8.x/Debug/*
+!/target/IAR8.x/Debug/Exe
