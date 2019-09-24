@@ -8,10 +8,13 @@
 #include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 
+#include <gui/screen_module1_signals_screen/Screen_Module1_SignalsView.hpp>
+
 using namespace touchgfx;
 
 class Screen_Module1_GraphView : public Screen_Module1_GraphViewBase
 {
+	friend class Screen_Module1_SignalsView;
 public:
   Screen_Module1_GraphView();
   virtual ~Screen_Module1_GraphView() {}
@@ -31,6 +34,11 @@ private:
   Graph graphRed;
   Graph graphBlue;
   Graph graphGreen;
+
+  static bool voltageGraphEnabled;
+  static bool currentGraphEnabled;
+  static bool frequencyGraphEnabled;
+  static bool powerGraphEnabled;
 };
 
 #endif // SCREEN_MODULE1_GRAPH_VIEW_HPP

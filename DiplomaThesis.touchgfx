@@ -1830,14 +1830,14 @@
             "Moveable": false
           },
           {
-            "InitialStatePressed": true,
+            "InitialStatePressed": false,
             "Pressed": "__designer\\blue_togglebars_toggle_round_large_button_on.png",
             "Released": "__designer\\blue_togglebars_toggle_round_large_button_off.png",
             "Alpha": 255,
             "Style": "Style4",
             "Name": "toggleButton_Voltage",
-            "X": 336,
-            "Y": 121,
+            "X": 235,
+            "Y": 122,
             "Width": 128,
             "Height": 38,
             "Type": "ToggleButton",
@@ -1854,8 +1854,8 @@
             "Alpha": 255,
             "Style": "Style4",
             "Name": "toggleButton_Current",
-            "X": 336,
-            "Y": 171,
+            "X": 235,
+            "Y": 172,
             "Width": 128,
             "Height": 38,
             "Type": "ToggleButton",
@@ -1872,8 +1872,8 @@
             "Alpha": 255,
             "Style": "Style4",
             "Name": "toggleButton_Frequency",
-            "X": 336,
-            "Y": 221,
+            "X": 235,
+            "Y": 222,
             "Width": 128,
             "Height": 38,
             "Type": "ToggleButton",
@@ -1890,8 +1890,8 @@
             "Alpha": 255,
             "Style": "Style4",
             "Name": "toggleButton_Power",
-            "X": 336,
-            "Y": 271,
+            "X": 235,
+            "Y": 272,
             "Width": 128,
             "Height": 38,
             "Type": "ToggleButton",
@@ -2072,6 +2072,168 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "IsHorizontalSlider": true,
+            "BackgroundUnselected": "__designer\\blue_slider_horizontal_medium_slider_round_back.png",
+            "BackgroundSelected": "__designer\\blue_slider_horizontal_medium_slider_round_fill.png",
+            "Indicator": "__designer\\blue_slider_horizontal_medium_indicators_slider_round_nob.png",
+            "BackgroundX": 2,
+            "BackgroundY": 19,
+            "IndicatorPos": 2,
+            "IndicatorMax": 310,
+            "IndicatorMin": 0,
+            "ValueMax": 1440,
+            "ValueMin": 0,
+            "InitValue": 720,
+            "Style": "Style7",
+            "Name": "slider_TimeRange",
+            "X": 410,
+            "Y": 120,
+            "Width": 358,
+            "Height": 52,
+            "Type": "Slider",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "IsHorizontalSlider": true,
+            "BackgroundUnselected": "__designer\\blue_slider_horizontal_medium_slider_round_back.png",
+            "BackgroundSelected": "__designer\\blue_slider_horizontal_medium_slider_round_fill.png",
+            "Indicator": "__designer\\blue_slider_horizontal_medium_indicators_slider_round_nob.png",
+            "BackgroundX": 2,
+            "BackgroundY": 19,
+            "IndicatorPos": 2,
+            "IndicatorMax": 310,
+            "IndicatorMin": 0,
+            "ValueMax": 1000,
+            "ValueMin": 0,
+            "InitValue": 1,
+            "Style": "Style7",
+            "Name": "slider_Y_AxisMin",
+            "X": 410,
+            "Y": 220,
+            "Width": 358,
+            "Height": 52,
+            "Type": "Slider",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId289",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId295",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textArea_TimeRange",
+            "X": 410,
+            "Y": 70,
+            "Width": 390,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId290",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId293",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textArea_Y_AxisMin",
+            "X": 410,
+            "Y": 170,
+            "Width": 390,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "IsHorizontalSlider": true,
+            "BackgroundUnselected": "__designer\\blue_slider_horizontal_medium_slider_round_back.png",
+            "BackgroundSelected": "__designer\\blue_slider_horizontal_medium_slider_round_fill.png",
+            "Indicator": "__designer\\blue_slider_horizontal_medium_indicators_slider_round_nob.png",
+            "BackgroundX": 2,
+            "BackgroundY": 19,
+            "IndicatorPos": 2,
+            "IndicatorMax": 310,
+            "IndicatorMin": 0,
+            "ValueMax": 1000,
+            "ValueMin": 0,
+            "InitValue": 1,
+            "Style": "Style7",
+            "Name": "slider_Y_AxisMax",
+            "X": 410,
+            "Y": 320,
+            "Width": 358,
+            "Height": 52,
+            "Type": "Slider",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId292",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId294",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "textArea_Y_AxisMax",
+            "X": 410,
+            "Y": 270,
+            "Width": 390,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -2086,6 +2248,90 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Screen_Module1_Graph",
               "Type": "ActionGotoScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction_SetVoltageGraph",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButton_Voltage",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "setVoltageGraphVisible",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_SetCurrentGraph",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButton_Current",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "setCurrentGraphVisible",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_SetFrequencyGraph",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButton_Frequency",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "setFrequencyGraphVisible",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_SetPowerGraph",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "toggleButton_Power",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "setPowerGraphVisible",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_UpdateTimeRange",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "slider_TimeRange",
+              "Type": "TriggerSliderValueChanged"
+            },
+            "Action": {
+              "FunctionName": "updateTimeRange",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_UpdateYAxisMin",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "slider_Y_AxisMin",
+              "Type": "TriggerSliderValueChanged"
+            },
+            "Action": {
+              "FunctionName": "updateY_AxisMin",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_UpdateYAxisMax",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "slider_Y_AxisMax",
+              "Type": "TriggerSliderValueChanged"
+            },
+            "Action": {
+              "FunctionName": "updateY_AxisMax",
+              "Type": "ActionCustom"
             }
           }
         ],
@@ -4256,6 +4502,30 @@
       },
       {
         "TextEntryId": "SingleUseId288",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId289",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId290",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId292",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId293",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId294",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId295",
         "IsResource": false
       }
     ],

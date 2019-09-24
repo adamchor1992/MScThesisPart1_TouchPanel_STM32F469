@@ -105,8 +105,8 @@ WARN = error all extra write-strings init-self cast-qual \
        no-conversion no-overloaded-virtual
 CXXWARN = non-virtual-dtor ctor-dtor-privacy
 
-c_compiler_options_local   += -pedantic $(addprefix -W,$(WARN))
-cpp_compiler_options_local += -pedantic $(addprefix -W,$(WARN) $(CXXWARN))
+c_compiler_options_local   += -pedantic
+cpp_compiler_options_local += -pedantic
 
 #include everything + specific vendor folders
 framework_includes := $(touchgfx_path)/framework/include

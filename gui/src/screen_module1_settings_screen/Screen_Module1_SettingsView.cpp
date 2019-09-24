@@ -37,7 +37,7 @@ void Screen_Module1_SettingsView::tearDownScreen()
 
 void Screen_Module1_SettingsView::updateValueToSet(int value)
 {
-  float float_value = float(value) * float(0.1);
+  float float_value = float(value) * 0.1;
   Unicode::snprintfFloat(textArea_ValueToSetBuffer, 6, "%.1f", float_value);
   textArea_ValueToSet.invalidate();
 }

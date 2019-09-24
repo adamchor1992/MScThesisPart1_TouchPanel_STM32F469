@@ -11,7 +11,15 @@ public:
     virtual ~Screen_Module1_SignalsView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-protected:
+
+	virtual void setVoltageGraphVisible();
+	virtual void setCurrentGraphVisible();
+	virtual void setFrequencyGraphVisible();
+	virtual void setPowerGraphVisible();
+
+	virtual void updateTimeRange(int value);
+	virtual void updateY_AxisMin(int value);
+	virtual void updateY_AxisMax(int value);
 };
 
 #endif // SCREEN_MODULE1_SIGNALS_VIEW_HPP

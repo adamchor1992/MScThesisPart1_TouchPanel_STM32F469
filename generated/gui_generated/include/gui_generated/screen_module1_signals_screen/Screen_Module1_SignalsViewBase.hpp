@@ -12,6 +12,7 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
+#include <touchgfx/containers/Slider.hpp>
 
 class Screen_Module1_SignalsViewBase : public touchgfx::View<Screen_Module1_SignalsPresenter>
 {
@@ -20,6 +21,44 @@ public:
     virtual ~Screen_Module1_SignalsViewBase() {}
 
     virtual void setupScreen();
+
+    /*
+     * Custom Action Handlers
+     */
+    virtual void setVoltageGraphVisible()
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
+
+    virtual void setCurrentGraphVisible()
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
+
+    virtual void setFrequencyGraphVisible()
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
+
+    virtual void setPowerGraphVisible()
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
+
+    virtual void updateTimeRange(int value)
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
+
+    virtual void updateY_AxisMin(int value)
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
+
+    virtual void updateY_AxisMax(int value)
+    {
+        // Override and implement this function in Screen_Module1_SignalsView
+    }
 
 protected:
     FrontendApplication& application() {
@@ -41,12 +80,24 @@ protected:
     touchgfx::TextArea textArea_Title;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
+    touchgfx::Slider slider_TimeRange;
+    touchgfx::Slider slider_Y_AxisMin;
+    touchgfx::TextAreaWithOneWildcard textArea_TimeRange;
+    touchgfx::TextAreaWithOneWildcard textArea_Y_AxisMin;
+    touchgfx::Slider slider_Y_AxisMax;
+    touchgfx::TextAreaWithOneWildcard textArea_Y_AxisMax;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
+    static const uint16_t TEXTAREA_TIMERANGE_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_TimeRangeBuffer[TEXTAREA_TIMERANGE_SIZE];
+    static const uint16_t TEXTAREA_Y_AXISMIN_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_Y_AxisMinBuffer[TEXTAREA_Y_AXISMIN_SIZE];
+    static const uint16_t TEXTAREA_Y_AXISMAX_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea_Y_AxisMaxBuffer[TEXTAREA_Y_AXISMAX_SIZE];
 
 private:
 
@@ -54,11 +105,13 @@ private:
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
 
     /*
      * Callback Declarations
      */
     touchgfx::Callback<Screen_Module1_SignalsViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Screen_Module1_SignalsViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
 
 };
 
