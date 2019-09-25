@@ -16,6 +16,7 @@ void DebugPrint(const char* ch);
 #define INITIAL_GRAPH_RANGE_RIGHT 720
 
 #define GRAPHS_COUNT 4
+#define SCALE_FACTOR 1000
 
 bool Screen_Module1_GraphView::voltageGraphEnabled = true;
 bool Screen_Module1_GraphView::currentGraphEnabled = true;
@@ -57,10 +58,10 @@ void Screen_Module1_GraphView::setupScreen()
   tickCounter = 0;
   
   // Set the outer dimensions and color of the graphs
-  graphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC));
-  graphRed.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0x00, 0x00));
-  graphBlue.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0x00, 0xFF));
-  graphGreen.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0xFF, 0x00));
+  graphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC), m_graphRangeBottom, m_graphRangeTop);
+  graphRed.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0x00, 0x00), m_graphRangeBottom, m_graphRangeTop);
+  graphBlue.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0x00, 0xFF), m_graphRangeBottom, m_graphRangeTop);
+  graphGreen.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0xFF, 0x00), m_graphRangeBottom, m_graphRangeTop);
   
   // Initialize graphs
   for(int i=0; i < GRAPHS_COUNT; i++)
@@ -74,10 +75,10 @@ void Screen_Module1_GraphView::setupScreen()
   }
   
   /*Initialize graph ranges text areas */
-  Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop);
+  Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop / SCALE_FACTOR);
   textArea_GraphRangeTop.invalidate();
   
-  Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom);
+  Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom / SCALE_FACTOR);
   textArea_GraphRangeBottom.invalidate();
   
   Unicode::snprintf(textArea_GraphRangeRightBuffer,6,"%d", m_graphRangeRight);
@@ -107,7 +108,7 @@ void Screen_Module1_GraphView::handleTickEvent()
       graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
       graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
       
-      Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom);
+      Unicode::snprintf(textArea_GraphRangeBottomBuffer,6,"%d", m_graphRangeBottom / SCALE_FACTOR);
       textArea_GraphRangeBottom.invalidate();
       
       /*Reset flag*/
@@ -121,7 +122,7 @@ void Screen_Module1_GraphView::handleTickEvent()
       graphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
       graphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_graphRangeRight, m_graphRangeBottom, m_graphRangeTop);
       
-      Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop);
+      Unicode::snprintf(textArea_GraphRangeTopBuffer,6,"%d", m_graphRangeTop / SCALE_FACTOR);
       textArea_GraphRangeTop.invalidate();
       
       /*Reset flag*/
@@ -245,8 +246,8 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
 #ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
   
-  value = int(std::stof((char*)(s_UARTFrame.payload)));
-  
+  value = int(std::stof((char*)(s_UARTFrame.payload)) * SCALE_FACTOR); //scale by 1000
+    
   if(s_UARTFrame.sign == '2')
   {
     /*Make value_int negative*/
@@ -299,10 +300,22 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     tickCounter = 0;
   }
   
-  char str8[10] = {'\0'};
-  snprintf(str8, sizeof(int), "%d", tickCounter);   // convert uint8_t to string 
-  DebugPrint("\nTick counter: ");
-  DebugPrint(str8);
+  char str_bottom[10] = {'\0'};
+  snprintf(str_bottom, 3 * sizeof(int), "%d", m_graphRangeBottom);   // convert uint8_t to string 
+  DebugPrint("\nGraph bottom range: ");
+  DebugPrint(str_bottom);
+  DebugPrint("\n");
+  
+  char str_top[10] = {'\0'};
+  snprintf(str_top, 3 * sizeof(int), "%d", m_graphRangeTop);   // convert uint8_t to string 
+  DebugPrint("\nGraph top range: ");
+  DebugPrint(str_top);
+  DebugPrint("\n");
+  
+  char str_value[10] = {'\0'};
+  snprintf(str_value, 3 * sizeof(int), "%d", value);   // convert uint8_t to string 
+  DebugPrint("\nValue after scaling: ");
+  DebugPrint(str_value);
   DebugPrint("\n");
   
   switch(s_UARTFrame.parameter)

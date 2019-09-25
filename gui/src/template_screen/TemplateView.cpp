@@ -42,7 +42,7 @@ void TemplateView::setupScreen()
   
   // Set the outer dimensions and color of the graph
   //graph.setup(440, 200, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC));
-  graph.setup(800, 375, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC));
+  graph.setup(800, 375, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC), -1000, 1000);
   
   // Set the range for the x and y axis of the graph. That is
   // the max and min x/y value that can be displayed inside the

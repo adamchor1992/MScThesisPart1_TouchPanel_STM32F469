@@ -1,6 +1,8 @@
 #include <gui/screen_module1_signals_screen/Screen_Module1_SignalsView.hpp>
 #include <gui/screen_module1_graph_screen/Screen_Module1_GraphView.hpp>
 
+#define SCALE_FACTOR 1000
+
 Screen_Module1_SignalsView::Screen_Module1_SignalsView()
 {
   
@@ -20,12 +22,12 @@ void Screen_Module1_SignalsView::setupScreen()
   Unicode::snprintf(textArea_TimeRangeBuffer,6,"%d", Screen_Module1_GraphView::m_graphRangeRight);
   textArea_TimeRange.invalidate();
   
-  slider_Y_AxisMin.setValue(Screen_Module1_GraphView::m_graphRangeBottom);
-  Unicode::snprintf(textArea_Y_AxisMinBuffer,6,"%d", Screen_Module1_GraphView::m_graphRangeBottom);
+  slider_Y_AxisMin.setValue(Screen_Module1_GraphView::m_graphRangeBottom / SCALE_FACTOR  * (-1));
+  Unicode::snprintf(textArea_Y_AxisMinBuffer,6,"%d", Screen_Module1_GraphView::m_graphRangeBottom / SCALE_FACTOR);
   textArea_Y_AxisMin.invalidate();
   
-  slider_Y_AxisMax.setValue(Screen_Module1_GraphView::m_graphRangeTop);
-  Unicode::snprintf(textArea_Y_AxisMaxBuffer,6,"%d", Screen_Module1_GraphView::m_graphRangeTop);
+  slider_Y_AxisMax.setValue(Screen_Module1_GraphView::m_graphRangeTop / SCALE_FACTOR);
+  Unicode::snprintf(textArea_Y_AxisMaxBuffer,6,"%d", Screen_Module1_GraphView::m_graphRangeTop / SCALE_FACTOR);
   textArea_Y_AxisMax.invalidate();
   
   Screen_Module1_SignalsViewBase::setupScreen();
@@ -33,7 +35,7 @@ void Screen_Module1_SignalsView::setupScreen()
 
 void Screen_Module1_SignalsView::tearDownScreen()
 {
-  Screen_Module1_GraphView::setGraphRanges(slider_Y_AxisMin.getValue(), slider_Y_AxisMax.getValue(), slider_TimeRange.getValue());
+  Screen_Module1_GraphView::setGraphRanges(slider_Y_AxisMin.getValue() * SCALE_FACTOR * (-1), slider_Y_AxisMax.getValue() * SCALE_FACTOR, slider_TimeRange.getValue());
   
   Screen_Module1_SignalsViewBase::tearDownScreen();
 }

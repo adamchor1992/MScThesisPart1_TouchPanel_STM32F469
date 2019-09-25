@@ -40,7 +40,7 @@ public:
     virtual ~Graph();
 
     /**
-     * @fn void Graph::setup(int newWidth, int newHeight, uint16_t lineColor);
+     * @fn void Graph::setup(int newWidth, int newHeight, uint16_t lineColor, int graphLineRangeBottom, int graphLineRangeTop);
      *
      * @brief Set characteristics of the graph.
      *
@@ -50,7 +50,7 @@ public:
      * @param newHeight       Height of the new.
      * @param lineColor       The line color.
      */
-    void setup(int newWidth, int newHeight, uint16_t lineColor);
+    void setup(int newWidth, int newHeight, uint16_t lineColor, int graphLineRangeBottom, int graphLineRangeTop);
 
     /**
      * @fn bool Graph::addValue(int x, int y)

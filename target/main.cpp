@@ -236,7 +236,7 @@ static void UART_Task(void* params)
       taskENTER_CRITICAL();
       
 #ifdef DEBUG
-      DebugPrint("RX processing\n");
+      //DebugPrint("RX processing\n");
 #endif
       
       //CRC check will be performed here

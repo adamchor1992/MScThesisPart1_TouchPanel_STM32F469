@@ -12,7 +12,7 @@ Graph::~Graph()
 {
 }
 
-void Graph::setup(int newWidth, int newHeight, uint16_t lineColor)
+void Graph::setup(int newWidth, int newHeight, uint16_t lineColor, int graphLineRangeBottom, int graphLineRangeTop)
 {
     setWidth(newWidth);
     setHeight(newHeight);
@@ -23,7 +23,7 @@ void Graph::setup(int newWidth, int newHeight, uint16_t lineColor)
     graphLine.setPainter(graphLinePainter);
     graphLine.setBuffer(graphBuffer, NUMBER_OF_POINTS);
     graphLine.setLineWidth(2);
-    graphLine.setRange(0, 720, -1000, 1000);
+    graphLine.setRange(0, 720, graphLineRangeBottom, graphLineRangeTop);
 
     add(graphLine);
 }

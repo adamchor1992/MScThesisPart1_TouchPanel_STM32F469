@@ -78,7 +78,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     slider_Y_AxisMin.setXY(410, 220);
     slider_Y_AxisMin.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_Y_AxisMin.setupHorizontalSlider(2, 19, 2, 0, 310);
-    slider_Y_AxisMin.setValueRange(0, 1000);
+    slider_Y_AxisMin.setValueRange(1, 10);
     slider_Y_AxisMin.setValue(1);
     slider_Y_AxisMin.setNewValueCallback(sliderValueChangedCallback);
 
@@ -99,7 +99,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     slider_Y_AxisMax.setXY(410, 320);
     slider_Y_AxisMax.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_Y_AxisMax.setupHorizontalSlider(2, 19, 2, 0, 310);
-    slider_Y_AxisMax.setValueRange(0, 1000);
+    slider_Y_AxisMax.setValueRange(1, 10);
     slider_Y_AxisMax.setValue(1);
     slider_Y_AxisMax.setNewValueCallback(sliderValueChangedCallback);
 
