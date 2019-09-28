@@ -12,10 +12,10 @@ public:
   virtual void setupScreen();
   virtual void tearDownScreen();
   
-  virtual void setVoltageGraphVisible();
-  virtual void setCurrentGraphVisible();
-  virtual void setFrequencyGraphVisible();
-  virtual void setPowerGraphVisible();
+  virtual void setParameter1GraphVisible();
+  virtual void setParameter2GraphVisible();
+  virtual void setParameter3GraphVisible();
+  virtual void setParameter4GraphVisible();
   
   virtual void updateTimeRange(int value);
   virtual void updateY_AxisMin(int value);

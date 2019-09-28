@@ -13,6 +13,7 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/containers/Slider.hpp>
+#include <touchgfx/mixins/ClickListener.hpp>
 
 class Screen_Module1_SignalsViewBase : public touchgfx::View<Screen_Module1_SignalsPresenter>
 {
@@ -25,22 +26,22 @@ public:
     /*
      * Custom Action Handlers
      */
-    virtual void setVoltageGraphVisible()
+    virtual void setParameter1GraphVisible()
     {
         // Override and implement this function in Screen_Module1_SignalsView
     }
 
-    virtual void setCurrentGraphVisible()
+    virtual void setParameter2GraphVisible()
     {
         // Override and implement this function in Screen_Module1_SignalsView
     }
 
-    virtual void setFrequencyGraphVisible()
+    virtual void setParameter3GraphVisible()
     {
         // Override and implement this function in Screen_Module1_SignalsView
     }
 
-    virtual void setPowerGraphVisible()
+    virtual void setParameter4GraphVisible()
     {
         // Override and implement this function in Screen_Module1_SignalsView
     }
@@ -74,14 +75,10 @@ protected:
      * Member Declarations
      */
     touchgfx::Box backgroundBox_Black;
-    touchgfx::ToggleButton toggleButton_Voltage;
-    touchgfx::ToggleButton toggleButton_Current;
-    touchgfx::ToggleButton toggleButton_Frequency;
-    touchgfx::ToggleButton toggleButton_Power;
-    touchgfx::TextArea textArea_Power;
-    touchgfx::TextArea textArea_Frequency;
-    touchgfx::TextArea textArea_Current;
-    touchgfx::TextArea textArea_Voltage;
+    touchgfx::ToggleButton toggleButton_Parameter1;
+    touchgfx::ToggleButton toggleButton_Parameter2;
+    touchgfx::ToggleButton toggleButton_Parameter3;
+    touchgfx::ToggleButton toggleButton_Parameter4;
     touchgfx::TextArea textArea_Title;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
@@ -93,6 +90,10 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_Y_AxisMax;
     touchgfx::TextArea textArea_Auto_Y_Range;
     touchgfx::ToggleButton toggleButton_Auto_Y_Range;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter1Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter2Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter3Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter4Name;
 
     /*
      * Wildcard Buffers
@@ -105,6 +106,14 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea_Y_AxisMinBuffer[TEXTAREA_Y_AXISMIN_SIZE];
     static const uint16_t TEXTAREA_Y_AXISMAX_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea_Y_AxisMaxBuffer[TEXTAREA_Y_AXISMAX_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER1NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter1NameBuffer[TEXTAREA_PARAMETER1NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER2NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter2NameBuffer[TEXTAREA_PARAMETER2NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER3NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter3NameBuffer[TEXTAREA_PARAMETER3NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER4NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter4NameBuffer[TEXTAREA_PARAMETER4NAME_SIZE];
 
 private:
 

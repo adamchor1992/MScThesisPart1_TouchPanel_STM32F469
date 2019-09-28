@@ -8,6 +8,8 @@
 #include <stm32f4xx_hal_uart.h>
 #endif
 
+#define PAYLOAD_SIZE 10
+
 class ModelListener;
 
 /**
@@ -43,6 +45,30 @@ public:
   */
   void tick();
   void setNewValueToSet(UARTFrameStruct_t & s_UARTFrame);
+  
+  /*Data needed to initialize Info screen specifications*/
+  static uint8_t m_vendor[PAYLOAD_SIZE];
+  static uint8_t m_type[PAYLOAD_SIZE];
+  static uint8_t m_model[PAYLOAD_SIZE];
+  static uint8_t m_speed[PAYLOAD_SIZE];
+  static uint8_t m_version[PAYLOAD_SIZE];
+  
+  static uint8_t m_vendorStringLength;
+  static uint8_t m_typeStringLength;
+  static uint8_t m_modelStringLength;
+  static uint8_t m_speedStringLength;
+  static uint8_t m_versionStringLength;
+  
+  /*Parameter names*/
+  static uint8_t m_parameter1Name[PAYLOAD_SIZE];
+  static uint8_t m_parameter2Name[PAYLOAD_SIZE];
+  static uint8_t m_parameter3Name[PAYLOAD_SIZE];
+  static uint8_t m_parameter4Name[PAYLOAD_SIZE];
+  
+  static uint8_t m_parameter1NameLength;
+  static uint8_t m_parameter2NameLength;
+  static uint8_t m_parameter3NameLength;
+  static uint8_t m_parameter4NameLength;
   
 protected:
   /**

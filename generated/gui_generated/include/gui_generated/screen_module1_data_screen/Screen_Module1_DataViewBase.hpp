@@ -49,10 +49,14 @@ protected:
     touchgfx::Line line1;
     touchgfx::PainterRGB565 line1Painter;
     touchgfx::Container textAreaContainer;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Power;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Frequency;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Current;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Voltage;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter1Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter2Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter3Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter4Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter1Value;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter2Value;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter3Value;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter4Value;
 
     touchgfx::TextArea textArea_Title;
     touchgfx::Button button1_ShowAll;
@@ -63,14 +67,22 @@ protected:
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
-    static const uint16_t TEXTAREA_POWER_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_PowerBuffer[TEXTAREA_POWER_SIZE];
-    static const uint16_t TEXTAREA_FREQUENCY_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_FrequencyBuffer[TEXTAREA_FREQUENCY_SIZE];
-    static const uint16_t TEXTAREA_CURRENT_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_CurrentBuffer[TEXTAREA_CURRENT_SIZE];
-    static const uint16_t TEXTAREA_VOLTAGE_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_VoltageBuffer[TEXTAREA_VOLTAGE_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER1NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter1NameBuffer[TEXTAREA_PARAMETER1NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER2NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter2NameBuffer[TEXTAREA_PARAMETER2NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER3NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter3NameBuffer[TEXTAREA_PARAMETER3NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER4NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter4NameBuffer[TEXTAREA_PARAMETER4NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER1VALUE_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter1ValueBuffer[TEXTAREA_PARAMETER1VALUE_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER2VALUE_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter2ValueBuffer[TEXTAREA_PARAMETER2VALUE_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER3VALUE_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter3ValueBuffer[TEXTAREA_PARAMETER3VALUE_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER4VALUE_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter4ValueBuffer[TEXTAREA_PARAMETER4VALUE_SIZE];
 
 private:
 

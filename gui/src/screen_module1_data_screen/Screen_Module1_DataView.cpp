@@ -1,31 +1,84 @@
 #include <gui/screen_module1_data_screen/Screen_Module1_DataView.hpp>
+#include <gui/model/Model.hpp>
+
+#define PAYLOAD_SIZE 10
 
 Screen_Module1_DataView::Screen_Module1_DataView() : TextAreaClickedCallback(this, &Screen_Module1_DataView::TextAreaClickHandler)
 {
+#ifndef SIMULATOR     
+  uint8_t parameter1NameLength_int = Model::m_parameter1NameLength - '0';
+  uint8_t parameter2NameLength_int = Model::m_parameter2NameLength - '0';
+  uint8_t parameter3NameLength_int = Model::m_parameter3NameLength - '0';
+  uint8_t parameter4NameLength_int = Model::m_parameter4NameLength - '0';
   
+  uint16_t parameter1StringDisplay[10] = { 0 };
+  uint16_t parameter2StringDisplay[10] = { 0 };
+  uint16_t parameter3StringDisplay[10] = { 0 };
+  uint16_t parameter4StringDisplay[10] = { 0 };
+  
+  for (int i = 0; i < parameter1NameLength_int; i++)
+  {
+    *(parameter1StringDisplay + i) = *(Model::m_parameter1Name + i);
+  }
+  
+  for (int i = 0; i < parameter2NameLength_int; i++)
+  {
+    *(parameter2StringDisplay + i) = *(Model::m_parameter2Name + i);
+  }
+  
+  for (int i = 0; i < parameter3NameLength_int; i++)
+  {
+    *(parameter3StringDisplay + i) = *(Model::m_parameter3Name + i);
+  }
+  
+  for (int i = 0; i < parameter4NameLength_int; i++)
+  {
+    *(parameter4StringDisplay + i) = *(Model::m_parameter4Name + i);
+  }
+    
+  Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", parameter1StringDisplay);
+  textArea_Parameter1Name.invalidate();
+
+  Unicode::snprintf(textArea_Parameter2NameBuffer, TEXTAREA_PARAMETER2NAME_SIZE, "%s", parameter2StringDisplay);
+  textArea_Parameter2Name.invalidate();
+
+  Unicode::snprintf(textArea_Parameter3NameBuffer, TEXTAREA_PARAMETER3NAME_SIZE, "%s", parameter3StringDisplay);
+  textArea_Parameter3Name.invalidate();
+
+  Unicode::snprintf(textArea_Parameter4NameBuffer, TEXTAREA_PARAMETER4NAME_SIZE, "%s", parameter4StringDisplay);
+  textArea_Parameter4Name.invalidate();
+  #endif
 }
 
 void Screen_Module1_DataView::TextAreaClickHandler(const TextAreaWithOneWildcard& b, const ClickEvent& evt)
 {
-  if (&b == &textArea_Voltage)
+  if (&b == &textArea_Parameter1Name)
   {
-    textArea_Voltage.setVisible(false);
-    textArea_Voltage.invalidate();
+    textArea_Parameter1Name.setVisible(false);
+    textArea_Parameter1Value.setVisible(false);
+    textArea_Parameter1Name.invalidate();
+    textArea_Parameter1Value.invalidate();
   }
-  else if (&b == &textArea_Current)
+  else if (&b == &textArea_Parameter2Name)
   {
-    textArea_Current.setVisible(false);
-    textArea_Current.invalidate();
+    textArea_Parameter2Name.setVisible(false);
+    textArea_Parameter2Value.setVisible(false);
+    textArea_Parameter2Name.invalidate();
+    textArea_Parameter2Value.invalidate();
   }
-  else if (&b == &textArea_Frequency)
+  else if (&b == &textArea_Parameter3Name)
   {
-    textArea_Frequency.setVisible(false);
-    textArea_Frequency.invalidate();
+    textArea_Parameter3Name.setVisible(false);
+    textArea_Parameter3Value.setVisible(false);
+    textArea_Parameter3Name.invalidate();
+    textArea_Parameter3Value.invalidate();
   }
-  else if (&b == &textArea_Power)
+  else if (&b == &textArea_Parameter4Name)
   {
-    textArea_Power.setVisible(false);
-    textArea_Power.invalidate();
+    textArea_Parameter4Name.setVisible(false);
+    textArea_Parameter4Value.setVisible(false);
+    textArea_Parameter4Name.invalidate();
+    textArea_Parameter4Value.invalidate();
   }
 }
 
@@ -34,10 +87,10 @@ void Screen_Module1_DataView::setupScreen()
   Screen_Module1_DataViewBase::setupScreen();
   
   // Add the callback to HiddenBox
-  textArea_Voltage.setClickAction(TextAreaClickedCallback);
-  textArea_Current.setClickAction(TextAreaClickedCallback);
-  textArea_Frequency.setClickAction(TextAreaClickedCallback);
-  textArea_Power.setClickAction(TextAreaClickedCallback);
+  textArea_Parameter1Name.setClickAction(TextAreaClickedCallback);
+  textArea_Parameter2Name.setClickAction(TextAreaClickedCallback);
+  textArea_Parameter3Name.setClickAction(TextAreaClickedCallback);
+  textArea_Parameter4Name.setClickAction(TextAreaClickedCallback);
 }
 
 void Screen_Module1_DataView::tearDownScreen()
@@ -62,21 +115,21 @@ void Screen_Module1_DataView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame
   {
     switch(s_UARTFrame.parameter)
     {
-    case 'b':
-      Unicode::snprintf(textArea_VoltageBuffer, TEXTAREA_VOLTAGE_SIZE, "%s", stringToDisplay);
-      textArea_Voltage.invalidate();
+    case '1':
+      Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", stringToDisplay);
+      textArea_Parameter1Value.invalidate();
       break;
-    case 'c':
-      Unicode::snprintf(textArea_CurrentBuffer, TEXTAREA_CURRENT_SIZE, "%s", stringToDisplay);
-      textArea_Current.invalidate();
+    case '2':
+      Unicode::snprintf(textArea_Parameter2ValueBuffer, TEXTAREA_PARAMETER2VALUE_SIZE, "%s", stringToDisplay);
+      textArea_Parameter2Value.invalidate();
       break;
-    case 'd':
-      Unicode::snprintf(textArea_FrequencyBuffer, TEXTAREA_FREQUENCY_SIZE, "%s", stringToDisplay);
-      textArea_Frequency.invalidate();
+    case '3':
+      Unicode::snprintf(textArea_Parameter3ValueBuffer, TEXTAREA_PARAMETER3VALUE_SIZE, "%s", stringToDisplay);
+      textArea_Parameter3Value.invalidate();
       break;
-    case 'e':
-      Unicode::snprintf(textArea_PowerBuffer, TEXTAREA_POWER_SIZE, "%s", stringToDisplay);
-      textArea_Power.invalidate();
+    case '4':
+      Unicode::snprintf(textArea_Parameter4ValueBuffer, TEXTAREA_PARAMETER4VALUE_SIZE, "%s", stringToDisplay);
+      textArea_Parameter4Value.invalidate();
       break;
     }
   }
@@ -91,13 +144,21 @@ void Screen_Module1_DataView::updateCpuUsage(uint8_t value)
 
 void Screen_Module1_DataView::showAll()
 {
-  textArea_Voltage.setVisible(true);
-  textArea_Current.setVisible(true);
-  textArea_Frequency.setVisible(true);
-  textArea_Power.setVisible(true);
+  textArea_Parameter1Name.setVisible(true);
+  textArea_Parameter1Value.setVisible(true);
+  textArea_Parameter2Name.setVisible(true);
+  textArea_Parameter2Value.setVisible(true);
+  textArea_Parameter3Name.setVisible(true);
+  textArea_Parameter3Value.setVisible(true);
+  textArea_Parameter4Name.setVisible(true);
+  textArea_Parameter4Value.setVisible(true);
   
-  textArea_Voltage.invalidate();
-  textArea_Current.invalidate();
-  textArea_Frequency.invalidate();
-  textArea_Power.invalidate();
+  textArea_Parameter1Name.invalidate();
+  textArea_Parameter1Value.invalidate();
+  textArea_Parameter2Name.invalidate();
+  textArea_Parameter2Value.invalidate();
+  textArea_Parameter3Name.invalidate();
+  textArea_Parameter3Value.invalidate();
+  textArea_Parameter4Name.invalidate();
+  textArea_Parameter4Value.invalidate();
 }

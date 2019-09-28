@@ -216,7 +216,7 @@ public:
     uint8_t getAlpha();
 
 protected:
-    static const int NUMBER_OF_POINTS = 1000; ///< Max number of points in the graph, 4 graph lines * 1000 points each
+    static const int NUMBER_OF_POINTS = 1080; ///< Max number of points in the graph, 4 graph lines * 1000 points each
 
     GraphLine graphLine;           ///< The line of the graph
 

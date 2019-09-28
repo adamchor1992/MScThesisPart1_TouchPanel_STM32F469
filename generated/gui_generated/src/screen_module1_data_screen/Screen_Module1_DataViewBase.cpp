@@ -52,37 +52,69 @@ Screen_Module1_DataViewBase::Screen_Module1_DataViewBase() :
 
     textAreaContainer.setPosition(-1, 65, 610, 298);
 
-    textArea_Power.setPosition(1, 151, 576, 49);
-    textArea_Power.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Power.setLinespacing(0);
-    Unicode::snprintf(textArea_PowerBuffer, TEXTAREA_POWER_SIZE, "%s", TypedText(T_SINGLEUSEID76).getText());
-    textArea_Power.setWildcard(textArea_PowerBuffer);
-    textArea_Power.setTypedText(TypedText(T_SINGLEUSEID75));
-    textAreaContainer.add(textArea_Power);
+    textArea_Parameter1Name.setPosition(0, 9, 249, 49);
+    textArea_Parameter1Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter1Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", TypedText(T_SINGLEUSEID305).getText());
+    textArea_Parameter1Name.setWildcard(textArea_Parameter1NameBuffer);
+    textArea_Parameter1Name.setTypedText(TypedText(T_SINGLEUSEID79));
+    textAreaContainer.add(textArea_Parameter1Name);
 
-    textArea_Frequency.setPosition(0, 106, 577, 49);
-    textArea_Frequency.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Frequency.setLinespacing(0);
-    Unicode::snprintf(textArea_FrequencyBuffer, TEXTAREA_FREQUENCY_SIZE, "%s", TypedText(T_SINGLEUSEID186).getText());
-    textArea_Frequency.setWildcard(textArea_FrequencyBuffer);
-    textArea_Frequency.setTypedText(TypedText(T_SINGLEUSEID185));
-    textAreaContainer.add(textArea_Frequency);
+    textArea_Parameter2Name.setPosition(0, 57, 249, 49);
+    textArea_Parameter2Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter2Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter2NameBuffer, TEXTAREA_PARAMETER2NAME_SIZE, "%s", TypedText(T_SINGLEUSEID307).getText());
+    textArea_Parameter2Name.setWildcard(textArea_Parameter2NameBuffer);
+    textArea_Parameter2Name.setTypedText(TypedText(T_SINGLEUSEID306));
+    textAreaContainer.add(textArea_Parameter2Name);
 
-    textArea_Current.setPosition(0, 57, 576, 49);
-    textArea_Current.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Current.setLinespacing(0);
-    Unicode::snprintf(textArea_CurrentBuffer, TEXTAREA_CURRENT_SIZE, "%s", TypedText(T_SINGLEUSEID78).getText());
-    textArea_Current.setWildcard(textArea_CurrentBuffer);
-    textArea_Current.setTypedText(TypedText(T_SINGLEUSEID77));
-    textAreaContainer.add(textArea_Current);
+    textArea_Parameter3Name.setPosition(0, 106, 249, 49);
+    textArea_Parameter3Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter3Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter3NameBuffer, TEXTAREA_PARAMETER3NAME_SIZE, "%s", TypedText(T_SINGLEUSEID309).getText());
+    textArea_Parameter3Name.setWildcard(textArea_Parameter3NameBuffer);
+    textArea_Parameter3Name.setTypedText(TypedText(T_SINGLEUSEID308));
+    textAreaContainer.add(textArea_Parameter3Name);
 
-    textArea_Voltage.setPosition(0, 9, 576, 49);
-    textArea_Voltage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Voltage.setLinespacing(0);
-    Unicode::snprintf(textArea_VoltageBuffer, TEXTAREA_VOLTAGE_SIZE, "%s", TypedText(T_SINGLEUSEID80).getText());
-    textArea_Voltage.setWildcard(textArea_VoltageBuffer);
-    textArea_Voltage.setTypedText(TypedText(T_SINGLEUSEID79));
-    textAreaContainer.add(textArea_Voltage);
+    textArea_Parameter4Name.setPosition(0, 155, 249, 49);
+    textArea_Parameter4Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter4Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter4NameBuffer, TEXTAREA_PARAMETER4NAME_SIZE, "%s", TypedText(T_SINGLEUSEID311).getText());
+    textArea_Parameter4Name.setWildcard(textArea_Parameter4NameBuffer);
+    textArea_Parameter4Name.setTypedText(TypedText(T_SINGLEUSEID310));
+    textAreaContainer.add(textArea_Parameter4Name);
+
+    textArea_Parameter1Value.setPosition(264, 9, 249, 49);
+    textArea_Parameter1Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter1Value.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID313).getText());
+    textArea_Parameter1Value.setWildcard(textArea_Parameter1ValueBuffer);
+    textArea_Parameter1Value.setTypedText(TypedText(T_SINGLEUSEID312));
+    textAreaContainer.add(textArea_Parameter1Value);
+
+    textArea_Parameter2Value.setPosition(264, 57, 249, 49);
+    textArea_Parameter2Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter2Value.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter2ValueBuffer, TEXTAREA_PARAMETER2VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID315).getText());
+    textArea_Parameter2Value.setWildcard(textArea_Parameter2ValueBuffer);
+    textArea_Parameter2Value.setTypedText(TypedText(T_SINGLEUSEID314));
+    textAreaContainer.add(textArea_Parameter2Value);
+
+    textArea_Parameter3Value.setPosition(264, 106, 249, 49);
+    textArea_Parameter3Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter3Value.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter3ValueBuffer, TEXTAREA_PARAMETER3VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID317).getText());
+    textArea_Parameter3Value.setWildcard(textArea_Parameter3ValueBuffer);
+    textArea_Parameter3Value.setTypedText(TypedText(T_SINGLEUSEID316));
+    textAreaContainer.add(textArea_Parameter3Value);
+
+    textArea_Parameter4Value.setPosition(264, 155, 249, 49);
+    textArea_Parameter4Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter4Value.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter4ValueBuffer, TEXTAREA_PARAMETER4VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID319).getText());
+    textArea_Parameter4Value.setWildcard(textArea_Parameter4ValueBuffer);
+    textArea_Parameter4Value.setTypedText(TypedText(T_SINGLEUSEID318));
+    textAreaContainer.add(textArea_Parameter4Value);
 
     textArea_Title.setXY(309, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));

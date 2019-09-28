@@ -10,44 +10,24 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     buttonCallback(this, &Screen_Module1_SignalsViewBase::buttonCallbackHandler),
     sliderValueChangedCallback(this, &Screen_Module1_SignalsViewBase::sliderValueChangedCallbackHandler)
 {
-    backgroundBox_Black.setPosition(0, 1, 800, 480);
+    backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    toggleButton_Voltage.setXY(235, 122);
-    toggleButton_Voltage.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-    toggleButton_Voltage.setAction(buttonCallback);
+    toggleButton_Parameter1.setXY(235, 120);
+    toggleButton_Parameter1.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter1.setAction(buttonCallback);
 
-    toggleButton_Current.setXY(235, 172);
-    toggleButton_Current.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-    toggleButton_Current.setAction(buttonCallback);
+    toggleButton_Parameter2.setXY(235, 170);
+    toggleButton_Parameter2.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter2.setAction(buttonCallback);
 
-    toggleButton_Frequency.setXY(235, 222);
-    toggleButton_Frequency.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-    toggleButton_Frequency.setAction(buttonCallback);
+    toggleButton_Parameter3.setXY(235, 220);
+    toggleButton_Parameter3.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter3.setAction(buttonCallback);
 
-    toggleButton_Power.setXY(235, 272);
-    toggleButton_Power.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
-    toggleButton_Power.setAction(buttonCallback);
-
-    textArea_Power.setPosition(0, 261, 250, 49);
-    textArea_Power.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Power.setLinespacing(0);
-    textArea_Power.setTypedText(TypedText(T_SINGLEUSEID277));
-
-    textArea_Frequency.setPosition(0, 211, 250, 49);
-    textArea_Frequency.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Frequency.setLinespacing(0);
-    textArea_Frequency.setTypedText(TypedText(T_SINGLEUSEID279));
-
-    textArea_Current.setPosition(0, 161, 250, 49);
-    textArea_Current.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Current.setLinespacing(0);
-    textArea_Current.setTypedText(TypedText(T_SINGLEUSEID281));
-
-    textArea_Voltage.setPosition(0, 111, 250, 49);
-    textArea_Voltage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Voltage.setLinespacing(0);
-    textArea_Voltage.setTypedText(TypedText(T_SINGLEUSEID283));
+    toggleButton_Parameter4.setXY(235, 270);
+    toggleButton_Parameter4.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter4.setAction(buttonCallback);
 
     textArea_Title.setXY(328, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -70,9 +50,9 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
 
     slider_TimeRange.setXY(410, 120);
     slider_TimeRange.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
-    slider_TimeRange.setupHorizontalSlider(2, 19, 2, 0, 310);
-    slider_TimeRange.setValueRange(1, 1000);
-    slider_TimeRange.setValue(720);
+    slider_TimeRange.setupHorizontalSlider(2, 19, 2, 1, 310);
+    slider_TimeRange.setValueRange(1, 3);
+    slider_TimeRange.setValue(2);
     slider_TimeRange.setNewValueCallback(sliderValueChangedCallback);
 
     slider_Y_AxisMin.setXY(410, 220);
@@ -119,15 +99,39 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     toggleButton_Auto_Y_Range.setBitmaps(Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
     toggleButton_Auto_Y_Range.setAction(buttonCallback);
 
+    textArea_Parameter1Name.setPosition(0, 110, 235, 49);
+    textArea_Parameter1Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter1Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", TypedText(T_SINGLEUSEID321).getText());
+    textArea_Parameter1Name.setWildcard(textArea_Parameter1NameBuffer);
+    textArea_Parameter1Name.setTypedText(TypedText(T_SINGLEUSEID320));
+
+    textArea_Parameter2Name.setPosition(0, 160, 235, 49);
+    textArea_Parameter2Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter2Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter2NameBuffer, TEXTAREA_PARAMETER2NAME_SIZE, "%s", TypedText(T_SINGLEUSEID323).getText());
+    textArea_Parameter2Name.setWildcard(textArea_Parameter2NameBuffer);
+    textArea_Parameter2Name.setTypedText(TypedText(T_SINGLEUSEID322));
+
+    textArea_Parameter3Name.setPosition(0, 210, 235, 49);
+    textArea_Parameter3Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter3Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter3NameBuffer, TEXTAREA_PARAMETER3NAME_SIZE, "%s", TypedText(T_SINGLEUSEID325).getText());
+    textArea_Parameter3Name.setWildcard(textArea_Parameter3NameBuffer);
+    textArea_Parameter3Name.setTypedText(TypedText(T_SINGLEUSEID324));
+
+    textArea_Parameter4Name.setPosition(0, 260, 235, 49);
+    textArea_Parameter4Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Parameter4Name.setLinespacing(0);
+    Unicode::snprintf(textArea_Parameter4NameBuffer, TEXTAREA_PARAMETER4NAME_SIZE, "%s", TypedText(T_SINGLEUSEID327).getText());
+    textArea_Parameter4Name.setWildcard(textArea_Parameter4NameBuffer);
+    textArea_Parameter4Name.setTypedText(TypedText(T_SINGLEUSEID326));
+
     add(backgroundBox_Black);
-    add(toggleButton_Voltage);
-    add(toggleButton_Current);
-    add(toggleButton_Frequency);
-    add(toggleButton_Power);
-    add(textArea_Power);
-    add(textArea_Frequency);
-    add(textArea_Current);
-    add(textArea_Voltage);
+    add(toggleButton_Parameter1);
+    add(toggleButton_Parameter2);
+    add(toggleButton_Parameter3);
+    add(toggleButton_Parameter4);
     add(textArea_Title);
     add(textArea_CPU_Usage);
     add(buttonWithLabel_Back);
@@ -139,6 +143,10 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     add(textArea_Y_AxisMax);
     add(textArea_Auto_Y_Range);
     add(toggleButton_Auto_Y_Range);
+    add(textArea_Parameter1Name);
+    add(textArea_Parameter2Name);
+    add(textArea_Parameter3Name);
+    add(textArea_Parameter4Name);
 }
 
 void Screen_Module1_SignalsViewBase::setupScreen()
@@ -148,33 +156,33 @@ void Screen_Module1_SignalsViewBase::setupScreen()
 
 void Screen_Module1_SignalsViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &toggleButton_Voltage)
+    if (&src == &toggleButton_Parameter1)
     {
-        //Interaction_SetVoltageGraph
-        //When toggleButton_Voltage clicked call virtual function
-        //Call setVoltageGraphVisible
-        setVoltageGraphVisible();
+        //Interaction_SetParameter1Graph
+        //When toggleButton_Parameter1 clicked call virtual function
+        //Call setParameter1GraphVisible
+        setParameter1GraphVisible();
     }
-    else if (&src == &toggleButton_Current)
+    else if (&src == &toggleButton_Parameter2)
     {
-        //Interaction_SetCurrentGraph
-        //When toggleButton_Current clicked call virtual function
-        //Call setCurrentGraphVisible
-        setCurrentGraphVisible();
+        //Interaction_SetParameter2Graph
+        //When toggleButton_Parameter2 clicked call virtual function
+        //Call setParameter2GraphVisible
+        setParameter2GraphVisible();
     }
-    else if (&src == &toggleButton_Frequency)
+    else if (&src == &toggleButton_Parameter3)
     {
-        //Interaction_SetFrequencyGraph
-        //When toggleButton_Frequency clicked call virtual function
-        //Call setFrequencyGraphVisible
-        setFrequencyGraphVisible();
+        //Interaction_SetParameter3Graph
+        //When toggleButton_Parameter3 clicked call virtual function
+        //Call setParameter3GraphVisible
+        setParameter3GraphVisible();
     }
-    else if (&src == &toggleButton_Power)
+    else if (&src == &toggleButton_Parameter4)
     {
-        //Interaction_SetPowerGraph
-        //When toggleButton_Power clicked call virtual function
-        //Call setPowerGraphVisible
-        setPowerGraphVisible();
+        //Interaction_SetParameter4Graph
+        //When toggleButton_Parameter4 clicked call virtual function
+        //Call setParameter4GraphVisible
+        setParameter4GraphVisible();
     }
     else if (&src == &buttonWithLabel_Back)
     {

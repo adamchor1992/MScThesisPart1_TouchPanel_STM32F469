@@ -29,15 +29,15 @@ public:
   static void setGraphRanges(int bottom, int top, int right);
   
 private:
-  int tickCounter;
-  int value;
+  int m_tickCounter;
+  int m_value;
   
-  Image background;
-  Graph graphYellow;
-  Graph graphRed;
-  Graph graphBlue;
-  Graph graphGreen;
-  Graph* graphs[4];
+  Image m_background;
+  Graph m_graphYellow;
+  Graph m_graphRed;
+  Graph m_graphBlue;
+  Graph m_graphGreen;
+  Graph* m_graphs[4];
   
   bool m_graphRangeBottomChangedFlag;
   bool m_graphRangeTopChangedFlag;
@@ -47,11 +47,11 @@ private:
   int m_PreviousBlue_X;
   int m_PreviousGreen_X;
   
-  static bool voltageGraphEnabled;
-  static bool currentGraphEnabled;
-  static bool frequencyGraphEnabled;
-  static bool powerGraphEnabled;
-  static bool autoRangeEnabled;
+  static bool m_parameter1GraphEnabled;
+  static bool m_parameter2GraphEnabled;
+  static bool m_parameter3GraphEnabled;
+  static bool m_parameter4GraphEnabled;
+  static bool m_autoRangeEnabled;
   
   static int m_graphRangeBottom;
   static int m_graphRangeTop;

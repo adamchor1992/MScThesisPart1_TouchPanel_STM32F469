@@ -15,21 +15,21 @@ Screen_Module1_InfoViewBase::Screen_Module1_InfoViewBase() :
     textArea_Version.setPosition(0, 265, 800, 49);
     textArea_Version.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Version.setLinespacing(0);
-    Unicode::snprintf(textArea_VersionBuffer, TEXTAREA_VERSION_SIZE, "%s", TypedText(T_SINGLEUSEID253).getText());
+    Unicode::snprintf(textArea_VersionBuffer, TEXTAREA_VERSION_SIZE, "%s", TypedText(T_SINGLEUSEID300).getText());
     textArea_Version.setWildcard(textArea_VersionBuffer);
     textArea_Version.setTypedText(TypedText(T_SINGLEUSEID252));
 
     textArea_Speed.setPosition(0, 216, 800, 49);
     textArea_Speed.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Speed.setLinespacing(0);
-    Unicode::snprintf(textArea_SpeedBuffer, TEXTAREA_SPEED_SIZE, "%s", TypedText(T_SINGLEUSEID255).getText());
+    Unicode::snprintf(textArea_SpeedBuffer, TEXTAREA_SPEED_SIZE, "%s", TypedText(T_SINGLEUSEID299).getText());
     textArea_Speed.setWildcard(textArea_SpeedBuffer);
     textArea_Speed.setTypedText(TypedText(T_SINGLEUSEID254));
 
     textArea_Type.setPosition(0, 122, 800, 49);
     textArea_Type.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Type.setLinespacing(0);
-    Unicode::snprintf(textArea_TypeBuffer, TEXTAREA_TYPE_SIZE, "%s", TypedText(T_SINGLEUSEID257).getText());
+    Unicode::snprintf(textArea_TypeBuffer, TEXTAREA_TYPE_SIZE, "%s", TypedText(T_SINGLEUSEID297).getText());
     textArea_Type.setWildcard(textArea_TypeBuffer);
     textArea_Type.setTypedText(TypedText(T_SINGLEUSEID256));
 
@@ -43,7 +43,7 @@ Screen_Module1_InfoViewBase::Screen_Module1_InfoViewBase() :
     textArea_Model.setPosition(0, 171, 800, 49);
     textArea_Model.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Model.setLinespacing(0);
-    Unicode::snprintf(textArea_ModelBuffer, TEXTAREA_MODEL_SIZE, "%s", TypedText(T_SINGLEUSEID261).getText());
+    Unicode::snprintf(textArea_ModelBuffer, TEXTAREA_MODEL_SIZE, "%s", TypedText(T_SINGLEUSEID298).getText());
     textArea_Model.setWildcard(textArea_ModelBuffer);
     textArea_Model.setTypedText(TypedText(T_SINGLEUSEID260));
 

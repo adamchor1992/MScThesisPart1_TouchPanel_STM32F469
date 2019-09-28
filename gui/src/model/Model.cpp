@@ -10,8 +10,6 @@
 #include "string.h"
 #include "UART_Frame_Struct.h"
 
-#define PAYLOAD_SIZE 10
-
 extern xQueueHandle msgQueueUART_RX_ProcessedFrame;
 extern xQueueHandle msgQueueUARTTransmit;
 extern xSemaphoreHandle UART_TxSemaphore;
@@ -20,17 +18,28 @@ extern uint8_t activeModule;
 uint8_t value = 0; 
 
 /*Data needed to initialize Info screen specifications*/
-uint8_t m_vendor[PAYLOAD_SIZE] = {0};
-uint8_t m_type[PAYLOAD_SIZE] = {0};
-uint8_t m_model[PAYLOAD_SIZE] = {0};
-uint8_t m_speed[PAYLOAD_SIZE] = {0};
-uint8_t m_version[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_vendor[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_type[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_model[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_speed[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_version[PAYLOAD_SIZE] = {0};
 
-uint8_t m_vendorStringLength = 0;
-uint8_t m_typeStringLength = 0;
-uint8_t m_modelStringLength = 0;
-uint8_t m_speedStringLength = 0;
-uint8_t m_versionStringLength = 0;
+uint8_t Model::m_vendorStringLength = 0;
+uint8_t Model::m_typeStringLength = 0;
+uint8_t Model::m_modelStringLength = 0;
+uint8_t Model::m_speedStringLength = 0;
+uint8_t Model::m_versionStringLength = 0;
+
+/*Parameter names*/
+uint8_t Model::m_parameter1Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_parameter2Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_parameter3Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_parameter4Name[PAYLOAD_SIZE] = {0};
+
+uint8_t Model::m_parameter1NameLength = 0;
+uint8_t Model::m_parameter2NameLength = 0;
+uint8_t Model::m_parameter3NameLength = 0;
+uint8_t Model::m_parameter4NameLength = 0;
 
 void DebugPrint(const char* ch);
 
@@ -72,9 +81,9 @@ void Model::tick()
       /*Skip if any module is already active*/
       if(activeModule == 0)
       {
-        if(initFrameCount < 5)
+        if(initFrameCount < 9)
         {
-          DebugPrint("Init frame count less than 5\n");
+          DebugPrint("Init frame count less than 9\n");
           switch(s_UARTFrame.parameter)
           {
           case '1':
@@ -107,15 +116,39 @@ void Model::tick()
             m_versionStringLength = s_UARTFrame.length;
             DebugPrint("Case 5 finished\n");
             break;
+          case '6':
+            DebugPrint("Case 6\n");
+            strncpy(m_parameter1Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_parameter1NameLength = s_UARTFrame.length;
+            DebugPrint("Case 6 finished\n");
+            break;
+          case '7':
+            DebugPrint("Case 7\n");
+            strncpy(m_parameter2Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_parameter2NameLength = s_UARTFrame.length;
+            DebugPrint("Case 7 finished\n");
+            break;
+          case '8':
+            DebugPrint("Case 8\n");
+            strncpy(m_parameter3Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_parameter3NameLength = s_UARTFrame.length;
+            DebugPrint("Case 8 finished\n");
+            break;
+          case '9':
+            DebugPrint("Case 9\n");
+            strncpy(m_parameter4Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_parameter4NameLength = s_UARTFrame.length;
+            DebugPrint("Case 9 finished\n");
+            break;
           default:
             DebugPrint("Case default\n");
           }
           DebugPrint("Increasing init frame count\n");
           ++initFrameCount;
           
-          if(initFrameCount == 5)
+          if(initFrameCount == 9)
           {
-            DebugPrint("Received 5 init frames\n");
+            DebugPrint("Received 9 init frames\n");
             modelListener->notifyInitFrame(s_UARTFrame); 
           }
         }
