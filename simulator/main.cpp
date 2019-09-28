@@ -19,7 +19,7 @@
 #include <stdlib.h>
 
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
-#define CANVAS_BUFFER_SIZE (24000)
+#define CANVAS_BUFFER_SIZE (50000)
 
 using namespace touchgfx;
 
@@ -76,6 +76,11 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     // TouchGFX Manual.
     static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
     CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
+
+	//AllocConsole();
+	//freopen("CONIN$", "r", stdin);
+	//freopen("CONOUT$", "w", stdout);
+	//freopen("CONOUT$", "w", stderr);
 
     touchgfx::HAL::getInstance()->taskEntry(); //Never returns
 

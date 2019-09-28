@@ -71,7 +71,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     slider_TimeRange.setXY(410, 120);
     slider_TimeRange.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_TimeRange.setupHorizontalSlider(2, 19, 2, 0, 310);
-    slider_TimeRange.setValueRange(0, 1000);
+    slider_TimeRange.setValueRange(1, 1000);
     slider_TimeRange.setValue(720);
     slider_TimeRange.setNewValueCallback(sliderValueChangedCallback);
 
