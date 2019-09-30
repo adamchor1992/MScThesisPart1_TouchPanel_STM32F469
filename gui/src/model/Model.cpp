@@ -54,6 +54,29 @@ uint8_t Model::m_parameter2NameLength = 0;
 uint8_t Model::m_parameter3NameLength = 0;
 uint8_t Model::m_parameter4NameLength = 0;
 
+/*Settable parameter names*/
+uint8_t Model::m_settableParameter1Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter2Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter3Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter4Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter5Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter6Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter7Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter8Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter9Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_settableParameter10Name[PAYLOAD_SIZE] = {0};
+
+uint8_t Model::m_settableParameter1NameLength = 0;
+uint8_t Model::m_settableParameter2NameLength = 0;
+uint8_t Model::m_settableParameter3NameLength = 0;
+uint8_t Model::m_settableParameter4NameLength = 0;
+uint8_t Model::m_settableParameter5NameLength = 0;
+uint8_t Model::m_settableParameter6NameLength = 0;
+uint8_t Model::m_settableParameter7NameLength = 0;
+uint8_t Model::m_settableParameter8NameLength = 0;
+uint8_t Model::m_settableParameter9NameLength = 0;
+uint8_t Model::m_settableParameter10NameLength = 0;
+
 void DebugPrint(const char* ch);
 
 /*Structure to which UART task writes processed UART frame*/
@@ -96,7 +119,7 @@ void Model::tick()
       {
         if(initFrameCount < INIT_FRAME_COUNT)
         {
-          DebugPrint("Init frame count less than 14\n");
+          DebugPrint("Init frame count less than 24\n");
           
           switch(s_UARTFrame.parameter)
           {
@@ -198,6 +221,76 @@ void Model::tick()
             DebugPrint("Case n finished\n");
             break;
             
+          case 'o':
+            DebugPrint("Case o\n");
+            strncpy(m_settableParameter1Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter1NameLength = s_UARTFrame.length;
+            DebugPrint("Case o finished\n");
+            break;
+            
+          case 'p':
+            DebugPrint("Case p\n");
+            strncpy(m_settableParameter2Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter2NameLength = s_UARTFrame.length;
+            DebugPrint("Case p finished\n");
+            break;
+            
+          case 'q':
+            DebugPrint("Case q\n");
+            strncpy(m_settableParameter3Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter3NameLength = s_UARTFrame.length;
+            DebugPrint("Case q finished\n");
+            break;
+            
+          case 'r':
+            DebugPrint("Case r\n");
+            strncpy(m_settableParameter4Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter4NameLength = s_UARTFrame.length;
+            DebugPrint("Case r finished\n");
+            break;
+            
+          case 's':
+            DebugPrint("Case s\n");
+            strncpy(m_settableParameter5Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter5NameLength = s_UARTFrame.length;
+            DebugPrint("Case s finished\n");
+            break;
+            
+          case 't':
+            DebugPrint("Case t\n");
+            strncpy(m_settableParameter6Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter6NameLength = s_UARTFrame.length;
+            DebugPrint("Case t finished\n");
+            break;
+            
+          case 'u':
+            DebugPrint("Case u\n");
+            strncpy(m_settableParameter7Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter7NameLength = s_UARTFrame.length;
+            DebugPrint("Case u finished\n");
+            break;
+            
+          case 'v':
+            DebugPrint("Case v\n");
+            strncpy(m_settableParameter8Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter8NameLength = s_UARTFrame.length;
+            DebugPrint("Case v finished\n");
+            break;
+            
+          case 'w':
+            DebugPrint("Case w\n");
+            strncpy(m_settableParameter9Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter9NameLength = s_UARTFrame.length;
+            DebugPrint("Case w finished\n");
+            break;
+            
+          case 'x':
+            DebugPrint("Case x\n");
+            strncpy(m_settableParameter10Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_settableParameter10NameLength = s_UARTFrame.length;
+            DebugPrint("Case x finished\n");
+            break;
+            
           default:
             DebugPrint("Case default\n");
           }
@@ -207,7 +300,7 @@ void Model::tick()
           
           if(initFrameCount == INIT_FRAME_COUNT)
           {
-            DebugPrint("Received 14 init frames\n");
+            DebugPrint("Received 24 init frames\n");
             modelListener->notifyInitFrame(s_UARTFrame); 
           }
         }

@@ -20,7 +20,7 @@
         <stlinkResetStrategy>0</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>2641948143</Checksum>
+        <Checksum>977016096</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -63,6 +63,9 @@
         <Show>1 1</Show>
         <Sort>4 0</Sort>
     </SfrWindow>
+    <array_types>
+        <Fmt0>unsigned short[11]	5	0</Fmt0>
+    </array_types>
     <watch_formats>
         <Fmt0>{W}1:runtimeStatsBuffer[150]	0	3</Fmt0>
     </watch_formats>

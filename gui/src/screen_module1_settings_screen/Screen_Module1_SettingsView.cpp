@@ -1,11 +1,105 @@
 #include <gui/screen_module1_settings_screen/Screen_Module1_SettingsView.hpp>
+#include <gui/model/Model.hpp>
 #include <string>
 
 void DebugPrint(const char* ch);
 
 Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 {
+  #ifndef SIMULATOR     
+  uint8_t settableParameter1NameLength_int = Model::m_settableParameter1NameLength - '0';
+  uint8_t settableParameter2NameLength_int = Model::m_settableParameter2NameLength - '0';
+  uint8_t settableParameter3NameLength_int = Model::m_settableParameter3NameLength - '0';
+  uint8_t settableParameter4NameLength_int = Model::m_settableParameter4NameLength - '0';
+  uint8_t settableParameter5NameLength_int = Model::m_settableParameter5NameLength - '0';
+  uint8_t settableParameter6NameLength_int = Model::m_settableParameter6NameLength - '0';
+  uint8_t settableParameter7NameLength_int = Model::m_settableParameter7NameLength - '0';
+  uint8_t settableParameter8NameLength_int = Model::m_settableParameter8NameLength - '0';
+  uint8_t settableParameter9NameLength_int = Model::m_settableParameter9NameLength - '0';
+  uint8_t settableParameter10NameLength_int = Model::m_settableParameter10NameLength - '0';
   
+  uint16_t settableParameter1StringDisplay[10] = { 0 };
+  uint16_t settableParameter2StringDisplay[10] = { 0 };
+  uint16_t settableParameter3StringDisplay[10] = { 0 };
+  uint16_t settableParameter4StringDisplay[10] = { 0 };
+  uint16_t settableParameter5StringDisplay[10] = { 0 };
+  uint16_t settableParameter6StringDisplay[10] = { 0 };
+  uint16_t settableParameter7StringDisplay[10] = { 0 };
+  uint16_t settableParameter8StringDisplay[10] = { 0 };
+  uint16_t settableParameter9StringDisplay[10] = { 0 };
+  uint16_t settableParameter10StringDisplay[10] = { 0 };
+  
+  for (int i = 0; i < settableParameter1NameLength_int; i++)
+  {
+    *(settableParameter1StringDisplay + i) = *(Model::m_settableParameter1Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter2NameLength_int; i++)
+  {
+    *(settableParameter2StringDisplay + i) = *(Model::m_settableParameter2Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter3NameLength_int; i++)
+  {
+    *(settableParameter3StringDisplay + i) = *(Model::m_settableParameter3Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter4NameLength_int; i++)
+  {
+    *(settableParameter4StringDisplay + i) = *(Model::m_settableParameter4Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter5NameLength_int; i++)
+  {
+    *(settableParameter5StringDisplay + i) = *(Model::m_settableParameter5Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter6NameLength_int; i++)
+  {
+    *(settableParameter6StringDisplay + i) = *(Model::m_settableParameter6Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter7NameLength_int; i++)
+  {
+    *(settableParameter7StringDisplay + i) = *(Model::m_settableParameter7Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter8NameLength_int; i++)
+  {
+    *(settableParameter8StringDisplay + i) = *(Model::m_settableParameter8Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter9NameLength_int; i++)
+  {
+    *(settableParameter9StringDisplay + i) = *(Model::m_settableParameter9Name + i);
+  }
+  
+  for (int i = 0; i < settableParameter10NameLength_int; i++)
+  {
+    *(settableParameter10StringDisplay + i) = *(Model::m_settableParameter10Name + i);
+  }
+    
+  Unicode::snprintf(textArea_SettableParameter1NameBuffer, TEXTAREA_SETTABLEPARAMETER1NAME_SIZE, "%s", settableParameter1StringDisplay);
+  textArea_SettableParameter1Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter2NameBuffer, TEXTAREA_SETTABLEPARAMETER2NAME_SIZE, "%s", settableParameter2StringDisplay);
+  textArea_SettableParameter2Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter3NameBuffer, TEXTAREA_SETTABLEPARAMETER3NAME_SIZE, "%s", settableParameter3StringDisplay);
+  textArea_SettableParameter3Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter4NameBuffer, TEXTAREA_SETTABLEPARAMETER4NAME_SIZE, "%s", settableParameter4StringDisplay);
+  textArea_SettableParameter4Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter5NameBuffer, TEXTAREA_SETTABLEPARAMETER5NAME_SIZE, "%s", settableParameter5StringDisplay);
+  textArea_SettableParameter5Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter6NameBuffer, TEXTAREA_SETTABLEPARAMETER6NAME_SIZE, "%s", settableParameter6StringDisplay);
+  textArea_SettableParameter6Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter7NameBuffer, TEXTAREA_SETTABLEPARAMETER7NAME_SIZE, "%s", settableParameter7StringDisplay);
+  textArea_SettableParameter7Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter8NameBuffer, TEXTAREA_SETTABLEPARAMETER8NAME_SIZE, "%s", settableParameter8StringDisplay);
+  textArea_SettableParameter8Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter9NameBuffer, TEXTAREA_SETTABLEPARAMETER9NAME_SIZE, "%s", settableParameter9StringDisplay);
+  textArea_SettableParameter9Name.invalidate();
+  Unicode::snprintf(textArea_SettableParameter10NameBuffer, TEXTAREA_SETTABLEPARAMETER10NAME_SIZE, "%s", settableParameter10StringDisplay);
+  textArea_SettableParameter10Name.invalidate();
+  #endif
 }
 
 void Screen_Module1_SettingsView::setupScreen()
@@ -15,7 +109,6 @@ void Screen_Module1_SettingsView::setupScreen()
 #ifndef SIMULATOR
   NVIC_DisableIRQ(USART6_IRQn);
 #endif
-  
 }
 
 void Screen_Module1_SettingsView::tearDownScreen()
@@ -44,7 +137,7 @@ void Screen_Module1_SettingsView::updateValueToSet(int value)
 
 void Screen_Module1_SettingsView::setNewValue()
 {
-	#ifndef SIMULATOR
+#ifndef SIMULATOR
   /*Structure used to propagate UART frame contents up to Model class*/
   UARTFrameStruct_t s_UARTFrame;
   
@@ -102,7 +195,7 @@ void Screen_Module1_SettingsView::setNewValue()
   sliderValue = slider_Value.getValue();
   sliderFloatValue = double(sliderValue) * double(0.1);
   
-
+  
   char data_chars[10] = {0}; //data starts from 6th element up to [6 + length] element
   
   sprintf(data_chars, "%.1lf", sliderFloatValue);
@@ -115,9 +208,9 @@ void Screen_Module1_SettingsView::setNewValue()
   {
     s_UARTFrame.payload[i] = data_chars[i];
   }
-
+  
   this->presenter->notifyNewValueToSet(s_UARTFrame);
-  #endif
+#endif
 }
 
 void Screen_Module1_SettingsView::enableParameterButtonPushed()

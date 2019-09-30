@@ -11,8 +11,8 @@
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
@@ -60,22 +60,15 @@ protected:
     touchgfx::ButtonWithLabel buttonWithLabel_SetValue;
     touchgfx::Slider slider_Value;
     touchgfx::RadioButton radioButtonParameter2;
-    touchgfx::TextArea textArea_Parameter2;
     touchgfx::RadioButton radioButtonParameter1;
-    touchgfx::TextArea textArea_Parameter1;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter1Name;
     touchgfx::TextAreaWithOneWildcard textArea_ValueToSet;
     touchgfx::TextArea textArea_ParameterToSet;
     touchgfx::TextArea textArea_Title;
-    touchgfx::TextArea textArea_Parameter3;
-    touchgfx::TextArea textArea_Parameter4;
     touchgfx::RadioButton radioButtonParameter3;
     touchgfx::RadioButton radioButtonParameter4;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
-    touchgfx::TextArea textArea_Parameter5;
-    touchgfx::TextArea textArea_Parameter6;
-    touchgfx::TextArea textArea_Parameter7;
-    touchgfx::TextArea textArea_Parameter8;
     touchgfx::RadioButton radioButtonParameter5;
     touchgfx::RadioButton radioButtonParameter6;
     touchgfx::RadioButton radioButtonParameter7;
@@ -83,20 +76,47 @@ protected:
     touchgfx::Line line1;
     touchgfx::PainterRGB565 line1Painter;
     touchgfx::ButtonWithLabel buttonWithLabel_EnableParameter;
-    touchgfx::TextArea textArea_Parameter9;
-    touchgfx::TextArea textArea_Parameter10;
     touchgfx::RadioButton radioButtonParameter9;
     touchgfx::RadioButton radioButtonParameter10;
     touchgfx::ButtonWithLabel buttonWithLabel_DisableParameter;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter2Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter3Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter4Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter5Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter6Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter7Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter8Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter9Name;
+    touchgfx::TextAreaWithOneWildcard textArea_SettableParameter10Name;
     touchgfx::RadioButtonGroup<10> radioButtonGroup;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER1NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter1NameBuffer[TEXTAREA_SETTABLEPARAMETER1NAME_SIZE];
     static const uint16_t TEXTAREA_VALUETOSET_SIZE = 12;
     touchgfx::Unicode::UnicodeChar textArea_ValueToSetBuffer[TEXTAREA_VALUETOSET_SIZE];
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER2NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter2NameBuffer[TEXTAREA_SETTABLEPARAMETER2NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER3NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter3NameBuffer[TEXTAREA_SETTABLEPARAMETER3NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER4NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter4NameBuffer[TEXTAREA_SETTABLEPARAMETER4NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER5NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter5NameBuffer[TEXTAREA_SETTABLEPARAMETER5NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER6NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter6NameBuffer[TEXTAREA_SETTABLEPARAMETER6NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER7NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter7NameBuffer[TEXTAREA_SETTABLEPARAMETER7NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER8NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter8NameBuffer[TEXTAREA_SETTABLEPARAMETER8NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER9NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter9NameBuffer[TEXTAREA_SETTABLEPARAMETER9NAME_SIZE];
+    static const uint16_t TEXTAREA_SETTABLEPARAMETER10NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_SettableParameter10NameBuffer[TEXTAREA_SETTABLEPARAMETER10NAME_SIZE];
 
 private:
 

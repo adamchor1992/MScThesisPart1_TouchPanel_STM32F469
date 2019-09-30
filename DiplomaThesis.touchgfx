@@ -903,34 +903,11 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter2",
-            "X": 62,
-            "Y": 113,
+            "X": 216,
+            "Y": 106,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId132",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter2",
-            "X": 0,
-            "Y": 113,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -947,8 +924,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter1",
-            "X": 62,
-            "Y": 73,
+            "X": 216,
+            "Y": 66,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -967,12 +944,17 @@
               "Blue": 255
             },
             "Alpha": 255,
-            "AutoSize": true,
+            "AutoSize": false,
             "LineSpacing": 0,
-            "Name": "textArea_Parameter1",
+            "Wildcard1": {
+              "TextId": "SingleUseId356",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter1Name",
             "X": 0,
-            "Y": 73,
-            "Width": 25,
+            "Y": 65,
+            "Width": 216,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -1022,7 +1004,7 @@
             "LineSpacing": 0,
             "Name": "textArea_ParameterToSet",
             "X": 0,
-            "Y": 49,
+            "Y": 41,
             "Width": 106,
             "Height": 24,
             "Type": "TextArea",
@@ -1056,52 +1038,6 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId138",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter3",
-            "X": 0,
-            "Y": 153,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId139",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter4",
-            "X": 0,
-            "Y": 193,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "Alpha": 255,
             "Selected": false,
             "Deselectable": false,
@@ -1111,8 +1047,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter3",
-            "X": 62,
-            "Y": 153,
+            "X": 216,
+            "Y": 146,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1132,8 +1068,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter4",
-            "X": 62,
-            "Y": 193,
+            "X": 216,
+            "Y": 186,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1201,98 +1137,6 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId189",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter5",
-            "X": 0,
-            "Y": 233,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId190",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter6",
-            "X": 0,
-            "Y": 273,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId191",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter7",
-            "X": 0,
-            "Y": 313,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId192",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter8",
-            "X": 0,
-            "Y": 353,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "Alpha": 255,
             "Selected": false,
             "Deselectable": false,
@@ -1302,8 +1146,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter5",
-            "X": 62,
-            "Y": 233,
+            "X": 216,
+            "Y": 226,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1323,8 +1167,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter6",
-            "X": 62,
-            "Y": 273,
+            "X": 216,
+            "Y": 266,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1344,8 +1188,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter7",
-            "X": 62,
-            "Y": 313,
+            "X": 216,
+            "Y": 306,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1365,8 +1209,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter8",
-            "X": 62,
-            "Y": 353,
+            "X": 216,
+            "Y": 346,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1391,7 +1235,7 @@
             "LineWidth": 4,
             "LineEndingStyle": "Round",
             "Name": "line1",
-            "X": 107,
+            "X": 260,
             "Y": 47,
             "Width": 15,
             "Height": 432,
@@ -1420,57 +1264,11 @@
             "TextRotation": "0",
             "Style": "Style3",
             "Name": "buttonWithLabel_EnableParameter",
-            "X": 150,
+            "X": 450,
             "Y": 65,
             "Width": 230,
             "Height": 60,
             "Type": "ButtonWithLabel",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId248",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter9",
-            "X": 0,
-            "Y": 393,
-            "Width": 25,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId249",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea_Parameter10",
-            "X": 0,
-            "Y": 433,
-            "Width": 51,
-            "Height": 49,
-            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -1487,8 +1285,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter9",
-            "X": 62,
-            "Y": 393,
+            "X": 216,
+            "Y": 386,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1508,8 +1306,8 @@
             "FileNameUnselectedPressed": "__designer\\blue_check_buttons_check_mark_pressed.png",
             "Style": "Style4",
             "Name": "radioButtonParameter10",
-            "X": 62,
-            "Y": 433,
+            "X": 216,
+            "Y": 426,
             "Width": 44,
             "Height": 44,
             "Type": "RadioButton",
@@ -1537,11 +1335,263 @@
             "TextRotation": "0",
             "Style": "Style3",
             "Name": "buttonWithLabel_DisableParameter",
-            "X": 150,
+            "X": 450,
             "Y": 145,
             "Width": 230,
             "Height": 60,
             "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId357",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId358",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter2Name",
+            "X": 0,
+            "Y": 105,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId359",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId360",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter3Name",
+            "X": 0,
+            "Y": 145,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId361",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId362",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter4Name",
+            "X": 0,
+            "Y": 185,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId363",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId364",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter5Name",
+            "X": 0,
+            "Y": 225,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId365",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId366",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter6Name",
+            "X": 0,
+            "Y": 265,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId367",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId368",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter7Name",
+            "X": 0,
+            "Y": 305,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId369",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId370",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter8Name",
+            "X": 0,
+            "Y": 345,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId371",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId372",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter9Name",
+            "X": 0,
+            "Y": 385,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId373",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId374",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_SettableParameter10Name",
+            "X": 0,
+            "Y": 425,
+            "Width": 216,
+            "Height": 49,
+            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -4285,10 +4335,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId132",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId133",
         "IsResource": false
       },
@@ -4306,14 +4352,6 @@
       },
       {
         "TextEntryId": "SingleUseId137",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId138",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId139",
         "IsResource": false
       },
       {
@@ -4481,22 +4519,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId189",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId190",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId191",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId192",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId195",
         "IsResource": false
       },
@@ -4658,14 +4680,6 @@
       },
       {
         "TextEntryId": "SingleUseId237",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId248",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId249",
         "IsResource": false
       },
       {
@@ -4942,6 +4956,82 @@
       },
       {
         "TextEntryId": "SingleUseId355",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId356",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId357",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId358",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId359",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId360",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId361",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId362",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId363",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId364",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId365",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId366",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId367",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId368",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId369",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId370",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId371",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId372",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId373",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId374",
         "IsResource": false
       }
     ],

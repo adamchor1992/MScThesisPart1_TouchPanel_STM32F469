@@ -9,7 +9,7 @@
 #endif
 
 #define PAYLOAD_SIZE 10
-#define INIT_FRAME_COUNT 14
+#define INIT_FRAME_COUNT 24
 
 class ModelListener;
 
@@ -83,6 +83,29 @@ public:
   static uint8_t m_parameter2NameLength;
   static uint8_t m_parameter3NameLength;
   static uint8_t m_parameter4NameLength;
+  
+  /*Settable parameter names*/
+  static uint8_t m_settableParameter1Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter2Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter3Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter4Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter5Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter6Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter7Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter8Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter9Name[PAYLOAD_SIZE];
+  static uint8_t m_settableParameter10Name[PAYLOAD_SIZE];
+  
+  static uint8_t m_settableParameter1NameLength;
+  static uint8_t m_settableParameter2NameLength;
+  static uint8_t m_settableParameter3NameLength;
+  static uint8_t m_settableParameter4NameLength;
+  static uint8_t m_settableParameter5NameLength;
+  static uint8_t m_settableParameter6NameLength;
+  static uint8_t m_settableParameter7NameLength;
+  static uint8_t m_settableParameter8NameLength;
+  static uint8_t m_settableParameter9NameLength;
+  static uint8_t m_settableParameter10NameLength;
   
 protected:
   /**

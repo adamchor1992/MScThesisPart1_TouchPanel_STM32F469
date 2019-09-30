@@ -28,8 +28,10 @@
 #define DEBUG
 
 /* FreeRTOS stuff begin*/
-#define configGUI_TASK_STK_SIZE ( 2000 )
-#define CANVAS_BUFFER_SIZE (10000)
+#define GUI_TASK_STACK_SIZE 1700
+#define UART_TASK_STACK_SIZE 200
+
+#define CANVAS_BUFFER_SIZE 10000
 
 xQueueHandle msgQueueUARTReceive;
 xQueueHandle msgQueueUARTTransmit;
@@ -96,12 +98,12 @@ int main(void)
   CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
   
   xTaskCreate(GUI_Task, (TASKCREATE_NAME_TYPE)"GUITask",
-              configGUI_TASK_STK_SIZE-300,
+              GUI_TASK_STACK_SIZE,
               NULL,
               LOW_PRIORITY,
               NULL);
   xTaskCreate(UART_InitConnectionTask, (TASKCREATE_NAME_TYPE)"UART_InitConnectionTask",
-              200,
+              UART_TASK_STACK_SIZE,
               NULL,
               HIGH_PRIORITY,
               NULL);
@@ -186,7 +188,7 @@ static void UART_InitConnectionTask(void* params)
         DebugPrint("Creating UART_Task\n");
         
         xTaskCreate(UART_Task, (TASKCREATE_NAME_TYPE)"UART_Task",
-                    200,
+                    UART_TASK_STACK_SIZE,
                     NULL,
                     MEDIUM_PRIORITY,
                     NULL);
@@ -194,7 +196,7 @@ static void UART_InitConnectionTask(void* params)
         DebugPrint("Creating UART_TxTask\n");
         
         xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
-                    200,
+                    UART_TASK_STACK_SIZE,
                     NULL,
                     HIGH_PRIORITY,
                     NULL);
