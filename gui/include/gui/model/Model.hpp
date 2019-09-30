@@ -9,6 +9,7 @@
 #endif
 
 #define PAYLOAD_SIZE 10
+#define INIT_FRAME_COUNT 14
 
 class ModelListener;
 
@@ -46,20 +47,33 @@ public:
   void tick();
   void setNewValueToSet(UARTFrameStruct_t & s_UARTFrame);
   
-  /*Data needed to initialize Info screen specifications*/
-  static uint8_t m_vendor[PAYLOAD_SIZE];
-  static uint8_t m_type[PAYLOAD_SIZE];
-  static uint8_t m_model[PAYLOAD_SIZE];
-  static uint8_t m_speed[PAYLOAD_SIZE];
-  static uint8_t m_version[PAYLOAD_SIZE];
+  /*Module initialization parameter names*/
+  static uint8_t m_initParameter1Name[PAYLOAD_SIZE];
+  static uint8_t m_initParameter2Name[PAYLOAD_SIZE];
+  static uint8_t m_initParameter3Name[PAYLOAD_SIZE];
+  static uint8_t m_initParameter4Name[PAYLOAD_SIZE];
+  static uint8_t m_initParameter5Name[PAYLOAD_SIZE];
   
-  static uint8_t m_vendorStringLength;
-  static uint8_t m_typeStringLength;
-  static uint8_t m_modelStringLength;
-  static uint8_t m_speedStringLength;
-  static uint8_t m_versionStringLength;
+  static uint8_t m_initParameter1NameStringLength;
+  static uint8_t m_initParameter2NameStringLength;
+  static uint8_t m_initParameter3NameStringLength;
+  static uint8_t m_initParameter4NameStringLength;
+  static uint8_t m_initParameter5NameStringLength;
   
-  /*Parameter names*/
+  /*Module initialization parameter values*/
+  static uint8_t m_initParameter1Value[PAYLOAD_SIZE];
+  static uint8_t m_initParameter2Value[PAYLOAD_SIZE];
+  static uint8_t m_initParameter3Value[PAYLOAD_SIZE];
+  static uint8_t m_initParameter4Value[PAYLOAD_SIZE];
+  static uint8_t m_initParameter5Value[PAYLOAD_SIZE];
+  
+  static uint8_t m_initParameter1ValueStringLength;
+  static uint8_t m_initParameter2ValueStringLength;
+  static uint8_t m_initParameter3ValueStringLength;
+  static uint8_t m_initParameter4ValueStringLength;
+  static uint8_t m_initParameter5ValueStringLength;
+  
+  /*Custom parameter names*/
   static uint8_t m_parameter1Name[PAYLOAD_SIZE];
   static uint8_t m_parameter2Name[PAYLOAD_SIZE];
   static uint8_t m_parameter3Name[PAYLOAD_SIZE];

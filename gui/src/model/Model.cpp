@@ -17,20 +17,33 @@ extern uint8_t activeModule;
 
 uint8_t value = 0; 
 
-/*Data needed to initialize Info screen specifications*/
-uint8_t Model::m_vendor[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_type[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_model[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_speed[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_version[PAYLOAD_SIZE] = {0};
+/*Module initialization parameter names*/
+uint8_t Model::m_initParameter1Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter2Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter3Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter4Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter5Name[PAYLOAD_SIZE] = {0};
 
-uint8_t Model::m_vendorStringLength = 0;
-uint8_t Model::m_typeStringLength = 0;
-uint8_t Model::m_modelStringLength = 0;
-uint8_t Model::m_speedStringLength = 0;
-uint8_t Model::m_versionStringLength = 0;
+uint8_t Model::m_initParameter1NameStringLength = 0;
+uint8_t Model::m_initParameter2NameStringLength = 0;
+uint8_t Model::m_initParameter3NameStringLength = 0;
+uint8_t Model::m_initParameter4NameStringLength = 0;
+uint8_t Model::m_initParameter5NameStringLength = 0;
 
-/*Parameter names*/
+/*Module initialization parameter values*/
+uint8_t Model::m_initParameter1Value[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter2Value[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter3Value[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter4Value[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_initParameter5Value[PAYLOAD_SIZE] = {0};
+
+uint8_t Model::m_initParameter1ValueStringLength = 0;
+uint8_t Model::m_initParameter2ValueStringLength = 0;
+uint8_t Model::m_initParameter3ValueStringLength = 0;
+uint8_t Model::m_initParameter4ValueStringLength = 0;
+uint8_t Model::m_initParameter5ValueStringLength = 0;
+
+/*Custom parameter names*/
 uint8_t Model::m_parameter1Name[PAYLOAD_SIZE] = {0};
 uint8_t Model::m_parameter2Name[PAYLOAD_SIZE] = {0};
 uint8_t Model::m_parameter3Name[PAYLOAD_SIZE] = {0};
@@ -64,11 +77,11 @@ void Model::tick()
   if (uxQueueMessagesWaiting(msgQueueUART_RX_ProcessedFrame) > 0)
   {
     /*Clear frame payload*/
-    for(int i=0; i<PAYLOAD_SIZE;i++)
+    for(int i=0; i < PAYLOAD_SIZE; i++)
     {
       s_UARTFrame.payload[i] = '\0';
     }
-
+    
     /*Frame is validated at this point and can be directly recovered from queue and copied to local s_UARTFrame structure*/    
     xQueueReceive(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, 0);
     
@@ -81,74 +94,120 @@ void Model::tick()
       /*Skip if any module is already active*/
       if(activeModule == 0)
       {
-        if(initFrameCount < 9)
+        if(initFrameCount < INIT_FRAME_COUNT)
         {
-          DebugPrint("Init frame count less than 9\n");
+          DebugPrint("Init frame count less than 14\n");
+          
           switch(s_UARTFrame.parameter)
           {
-          case '1':
-            DebugPrint("Case 1\n");
-            strncpy(m_vendor, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
-            m_vendorStringLength = s_UARTFrame.length;
-            DebugPrint("Case 1 finished\n");
+          case 'a':
+            DebugPrint("Case a\n");
+            strncpy(m_initParameter1Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter1NameStringLength = s_UARTFrame.length;
+            DebugPrint("Case a finished\n");
             break;
-          case '2':
-            DebugPrint("Case 2\n");
-            strncpy(m_type, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
-            m_typeStringLength = s_UARTFrame.length;
-            DebugPrint("Case 2 finished\n");
+            
+          case 'b':
+            DebugPrint("Case b\n");
+            strncpy(m_initParameter2Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter2NameStringLength = s_UARTFrame.length;
+            DebugPrint("Case b finished\n");
             break;
-          case '3':
-            DebugPrint("Case 3\n");
-            strncpy(m_model, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
-            m_modelStringLength = s_UARTFrame.length;
-            DebugPrint("Case 3 finished\n");
+            
+          case 'c':
+            DebugPrint("Case c\n");
+            strncpy(m_initParameter3Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter3NameStringLength = s_UARTFrame.length;
+            DebugPrint("Case c finished\n");
             break;
-          case '4':
-            DebugPrint("Case 4\n");
-            strncpy(m_speed, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
-            m_speedStringLength = s_UARTFrame.length;
-            DebugPrint("Case 4 finished\n");
+            
+          case 'd':
+            DebugPrint("Case d\n");
+            strncpy(m_initParameter4Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter4NameStringLength = s_UARTFrame.length;
+            DebugPrint("Case d finished\n");
             break;
-          case '5':
-            DebugPrint("Case 5\n");
-            strncpy(m_version, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
-            m_versionStringLength = s_UARTFrame.length;
-            DebugPrint("Case 5 finished\n");
+            
+          case 'e':
+            DebugPrint("Case e\n");
+            strncpy(m_initParameter5Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter5NameStringLength = s_UARTFrame.length;
+            DebugPrint("Case e finished\n");
             break;
-          case '6':
-            DebugPrint("Case 6\n");
+            
+          case 'f':
+            DebugPrint("Case f\n");
+            strncpy(m_initParameter1Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter1ValueStringLength = s_UARTFrame.length;
+            DebugPrint("Case f finished\n");
+            break;
+            
+          case 'g':
+            DebugPrint("Case g\n");
+            strncpy(m_initParameter2Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter2ValueStringLength = s_UARTFrame.length;
+            DebugPrint("Case g finished\n");
+            break;
+            
+          case 'h':
+            DebugPrint("Case h\n");
+            strncpy(m_initParameter3Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter3ValueStringLength = s_UARTFrame.length;
+            DebugPrint("Case h finished\n");
+            break;
+            
+          case 'i':
+            DebugPrint("Case i\n");
+            strncpy(m_initParameter4Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter4ValueStringLength = s_UARTFrame.length;
+            DebugPrint("Case i finished\n");
+            break;
+            
+          case 'j':
+            DebugPrint("Case j\n");
+            strncpy(m_initParameter5Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+            m_initParameter5ValueStringLength = s_UARTFrame.length;
+            DebugPrint("Case j finished\n");
+            break;
+            
+          case 'k':
+            DebugPrint("Case k\n");
             strncpy(m_parameter1Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
             m_parameter1NameLength = s_UARTFrame.length;
-            DebugPrint("Case 6 finished\n");
+            DebugPrint("Case k finished\n");
             break;
-          case '7':
-            DebugPrint("Case 7\n");
+            
+          case 'l':
+            DebugPrint("Case l\n");
             strncpy(m_parameter2Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
             m_parameter2NameLength = s_UARTFrame.length;
-            DebugPrint("Case 7 finished\n");
+            DebugPrint("Case l finished\n");
             break;
-          case '8':
-            DebugPrint("Case 8\n");
+            
+          case 'm':
+            DebugPrint("Case m\n");
             strncpy(m_parameter3Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
             m_parameter3NameLength = s_UARTFrame.length;
-            DebugPrint("Case 8 finished\n");
+            DebugPrint("Case m finished\n");
             break;
-          case '9':
-            DebugPrint("Case 9\n");
+            
+          case 'n':
+            DebugPrint("Case n\n");
             strncpy(m_parameter4Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
             m_parameter4NameLength = s_UARTFrame.length;
-            DebugPrint("Case 9 finished\n");
+            DebugPrint("Case n finished\n");
             break;
+            
           default:
             DebugPrint("Case default\n");
           }
+          
           DebugPrint("Increasing init frame count\n");
           ++initFrameCount;
           
-          if(initFrameCount == 9)
+          if(initFrameCount == INIT_FRAME_COUNT)
           {
-            DebugPrint("Received 9 init frames\n");
+            DebugPrint("Received 14 init frames\n");
             modelListener->notifyInitFrame(s_UARTFrame); 
           }
         }
@@ -170,7 +229,7 @@ void Model::tick()
 
 void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
 {
-	#ifndef SIMULATOR
+#ifndef SIMULATOR
   uint8_t UART_ValueToTransmit[FRAME_SIZE] = {0};
   
   UART_ValueToTransmit[0] = s_UARTFrame.source;
@@ -191,5 +250,5 @@ void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
   
   /*Give semaphore to activate UART_Tx task*/
   xSemaphoreGive(UART_TxSemaphore);
-  #endif
+#endif
 }

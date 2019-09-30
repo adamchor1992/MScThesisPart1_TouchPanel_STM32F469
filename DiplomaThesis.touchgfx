@@ -2545,90 +2545,6 @@
             "Moveable": false
           },
           {
-            "TextId": "SingleUseId252",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId300",
-              "UseBuffer": true,
-              "BufferSize": 11
-            },
-            "Name": "textArea_Version",
-            "X": 0,
-            "Y": 265,
-            "Width": 800,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId254",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId299",
-              "UseBuffer": true,
-              "BufferSize": 11
-            },
-            "Name": "textArea_Speed",
-            "X": 0,
-            "Y": 216,
-            "Width": 800,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId256",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId297",
-              "UseBuffer": true,
-              "BufferSize": 11
-            },
-            "Name": "textArea_Type",
-            "X": 0,
-            "Y": 122,
-            "Width": 800,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
             "TextId": "SingleUseId258",
             "TextRotation": "0",
             "Color": {
@@ -2640,42 +2556,14 @@
             "AutoSize": false,
             "LineSpacing": 0,
             "Wildcard1": {
-              "TextId": "SingleUseId259",
+              "TextId": "SingleUseId337",
               "UseBuffer": true,
               "BufferSize": 11
             },
-            "Name": "textArea_Vendor",
+            "Name": "textArea_InitParameter1Name",
             "X": 0,
-            "Y": 74,
-            "Width": 800,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId260",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId298",
-              "UseBuffer": true,
-              "BufferSize": 11
-            },
-            "Name": "textArea_Model",
-            "X": 0,
-            "Y": 171,
-            "Width": 800,
+            "Y": 90,
+            "Width": 301,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -2758,6 +2646,258 @@
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId338",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId339",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter2Name",
+            "X": 0,
+            "Y": 140,
+            "Width": 301,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId340",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId341",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter3Name",
+            "X": 0,
+            "Y": 190,
+            "Width": 301,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId342",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId343",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter4Name",
+            "X": 0,
+            "Y": 240,
+            "Width": 301,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId344",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId345",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter5Name",
+            "X": 0,
+            "Y": 290,
+            "Width": 301,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId346",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId347",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter1Value",
+            "X": 301,
+            "Y": 90,
+            "Width": 198,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId348",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId349",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter2Value",
+            "X": 301,
+            "Y": 140,
+            "Width": 198,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId350",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId351",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter3Value",
+            "X": 301,
+            "Y": 190,
+            "Width": 198,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId352",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId353",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter4Value",
+            "X": 301,
+            "Y": 240,
+            "Width": 198,
+            "Height": 49,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId354",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "AutoSize": false,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId355",
+              "UseBuffer": true,
+              "BufferSize": 11
+            },
+            "Name": "textArea_InitParameter5Value",
+            "X": 301,
+            "Y": 290,
+            "Width": 198,
+            "Height": 49,
+            "Type": "TextArea",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -4537,27 +4677,7 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId252",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId254",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId256",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId258",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId259",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId260",
         "IsResource": false
       },
       {
@@ -4657,22 +4777,6 @@
         "IsResource": false
       },
       {
-        "TextEntryId": "SingleUseId297",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId298",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId299",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId300",
-        "IsResource": false
-      },
-      {
         "TextEntryId": "SingleUseId305",
         "IsResource": false
       },
@@ -4762,6 +4866,82 @@
       },
       {
         "TextEntryId": "SingleUseId327",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId337",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId338",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId339",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId340",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId341",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId342",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId343",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId344",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId345",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId346",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId347",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId348",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId349",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId350",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId351",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId352",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId353",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId354",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId355",
         "IsResource": false
       }
     ],

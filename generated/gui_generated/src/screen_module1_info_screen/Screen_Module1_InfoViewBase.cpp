@@ -12,40 +12,12 @@ Screen_Module1_InfoViewBase::Screen_Module1_InfoViewBase() :
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    textArea_Version.setPosition(0, 265, 800, 49);
-    textArea_Version.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Version.setLinespacing(0);
-    Unicode::snprintf(textArea_VersionBuffer, TEXTAREA_VERSION_SIZE, "%s", TypedText(T_SINGLEUSEID300).getText());
-    textArea_Version.setWildcard(textArea_VersionBuffer);
-    textArea_Version.setTypedText(TypedText(T_SINGLEUSEID252));
-
-    textArea_Speed.setPosition(0, 216, 800, 49);
-    textArea_Speed.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Speed.setLinespacing(0);
-    Unicode::snprintf(textArea_SpeedBuffer, TEXTAREA_SPEED_SIZE, "%s", TypedText(T_SINGLEUSEID299).getText());
-    textArea_Speed.setWildcard(textArea_SpeedBuffer);
-    textArea_Speed.setTypedText(TypedText(T_SINGLEUSEID254));
-
-    textArea_Type.setPosition(0, 122, 800, 49);
-    textArea_Type.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Type.setLinespacing(0);
-    Unicode::snprintf(textArea_TypeBuffer, TEXTAREA_TYPE_SIZE, "%s", TypedText(T_SINGLEUSEID297).getText());
-    textArea_Type.setWildcard(textArea_TypeBuffer);
-    textArea_Type.setTypedText(TypedText(T_SINGLEUSEID256));
-
-    textArea_Vendor.setPosition(0, 74, 800, 49);
-    textArea_Vendor.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Vendor.setLinespacing(0);
-    Unicode::snprintf(textArea_VendorBuffer, TEXTAREA_VENDOR_SIZE, "%s", TypedText(T_SINGLEUSEID259).getText());
-    textArea_Vendor.setWildcard(textArea_VendorBuffer);
-    textArea_Vendor.setTypedText(TypedText(T_SINGLEUSEID258));
-
-    textArea_Model.setPosition(0, 171, 800, 49);
-    textArea_Model.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_Model.setLinespacing(0);
-    Unicode::snprintf(textArea_ModelBuffer, TEXTAREA_MODEL_SIZE, "%s", TypedText(T_SINGLEUSEID298).getText());
-    textArea_Model.setWildcard(textArea_ModelBuffer);
-    textArea_Model.setTypedText(TypedText(T_SINGLEUSEID260));
+    textArea_InitParameter1Name.setPosition(0, 90, 301, 49);
+    textArea_InitParameter1Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter1Name.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter1NameBuffer, TEXTAREA_INITPARAMETER1NAME_SIZE, "%s", TypedText(T_SINGLEUSEID337).getText());
+    textArea_InitParameter1Name.setWildcard(textArea_InitParameter1NameBuffer);
+    textArea_InitParameter1Name.setTypedText(TypedText(T_SINGLEUSEID258));
 
     textArea_Info.setXY(360, 0);
     textArea_Info.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -66,15 +38,83 @@ Screen_Module1_InfoViewBase::Screen_Module1_InfoViewBase() :
     buttonWithLabel_Back.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setAction(buttonCallback);
 
+    textArea_InitParameter2Name.setPosition(0, 140, 301, 49);
+    textArea_InitParameter2Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter2Name.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter2NameBuffer, TEXTAREA_INITPARAMETER2NAME_SIZE, "%s", TypedText(T_SINGLEUSEID339).getText());
+    textArea_InitParameter2Name.setWildcard(textArea_InitParameter2NameBuffer);
+    textArea_InitParameter2Name.setTypedText(TypedText(T_SINGLEUSEID338));
+
+    textArea_InitParameter3Name.setPosition(0, 190, 301, 49);
+    textArea_InitParameter3Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter3Name.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter3NameBuffer, TEXTAREA_INITPARAMETER3NAME_SIZE, "%s", TypedText(T_SINGLEUSEID341).getText());
+    textArea_InitParameter3Name.setWildcard(textArea_InitParameter3NameBuffer);
+    textArea_InitParameter3Name.setTypedText(TypedText(T_SINGLEUSEID340));
+
+    textArea_InitParameter4Name.setPosition(0, 240, 301, 49);
+    textArea_InitParameter4Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter4Name.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter4NameBuffer, TEXTAREA_INITPARAMETER4NAME_SIZE, "%s", TypedText(T_SINGLEUSEID343).getText());
+    textArea_InitParameter4Name.setWildcard(textArea_InitParameter4NameBuffer);
+    textArea_InitParameter4Name.setTypedText(TypedText(T_SINGLEUSEID342));
+
+    textArea_InitParameter5Name.setPosition(0, 290, 301, 49);
+    textArea_InitParameter5Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter5Name.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter5NameBuffer, TEXTAREA_INITPARAMETER5NAME_SIZE, "%s", TypedText(T_SINGLEUSEID345).getText());
+    textArea_InitParameter5Name.setWildcard(textArea_InitParameter5NameBuffer);
+    textArea_InitParameter5Name.setTypedText(TypedText(T_SINGLEUSEID344));
+
+    textArea_InitParameter1Value.setPosition(301, 90, 198, 49);
+    textArea_InitParameter1Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter1Value.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter1ValueBuffer, TEXTAREA_INITPARAMETER1VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID347).getText());
+    textArea_InitParameter1Value.setWildcard(textArea_InitParameter1ValueBuffer);
+    textArea_InitParameter1Value.setTypedText(TypedText(T_SINGLEUSEID346));
+
+    textArea_InitParameter2Value.setPosition(301, 140, 198, 49);
+    textArea_InitParameter2Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter2Value.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter2ValueBuffer, TEXTAREA_INITPARAMETER2VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID349).getText());
+    textArea_InitParameter2Value.setWildcard(textArea_InitParameter2ValueBuffer);
+    textArea_InitParameter2Value.setTypedText(TypedText(T_SINGLEUSEID348));
+
+    textArea_InitParameter3Value.setPosition(301, 190, 198, 49);
+    textArea_InitParameter3Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter3Value.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter3ValueBuffer, TEXTAREA_INITPARAMETER3VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID351).getText());
+    textArea_InitParameter3Value.setWildcard(textArea_InitParameter3ValueBuffer);
+    textArea_InitParameter3Value.setTypedText(TypedText(T_SINGLEUSEID350));
+
+    textArea_InitParameter4Value.setPosition(301, 240, 198, 49);
+    textArea_InitParameter4Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter4Value.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter4ValueBuffer, TEXTAREA_INITPARAMETER4VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID353).getText());
+    textArea_InitParameter4Value.setWildcard(textArea_InitParameter4ValueBuffer);
+    textArea_InitParameter4Value.setTypedText(TypedText(T_SINGLEUSEID352));
+
+    textArea_InitParameter5Value.setPosition(301, 290, 198, 49);
+    textArea_InitParameter5Value.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_InitParameter5Value.setLinespacing(0);
+    Unicode::snprintf(textArea_InitParameter5ValueBuffer, TEXTAREA_INITPARAMETER5VALUE_SIZE, "%s", TypedText(T_SINGLEUSEID355).getText());
+    textArea_InitParameter5Value.setWildcard(textArea_InitParameter5ValueBuffer);
+    textArea_InitParameter5Value.setTypedText(TypedText(T_SINGLEUSEID354));
+
     add(backgroundBox_Black);
-    add(textArea_Version);
-    add(textArea_Speed);
-    add(textArea_Type);
-    add(textArea_Vendor);
-    add(textArea_Model);
+    add(textArea_InitParameter1Name);
     add(textArea_Info);
     add(textArea_CPU_Usage);
     add(buttonWithLabel_Back);
+    add(textArea_InitParameter2Name);
+    add(textArea_InitParameter3Name);
+    add(textArea_InitParameter4Name);
+    add(textArea_InitParameter5Name);
+    add(textArea_InitParameter1Value);
+    add(textArea_InitParameter2Value);
+    add(textArea_InitParameter3Value);
+    add(textArea_InitParameter4Value);
+    add(textArea_InitParameter5Value);
 }
 
 void Screen_Module1_InfoViewBase::setupScreen()

@@ -79,16 +79,6 @@ KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId249_Gb[3] TEXT_LOCATION_F
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId250_Gb[18] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x44, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x20, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
-KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId252_Gb[24] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x3a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x2, 0x0 };
-TEXT_LOCATION_FLASH_PRAGMA
-KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId254_Gb[24] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x53, 0x70, 0x65, 0x65, 0x64, 0x3a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x2, 0x0 };
-TEXT_LOCATION_FLASH_PRAGMA
-KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId256_Gb[25] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x54, 0x79, 0x70, 0x65, 0x3a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x2, 0x0 };
-TEXT_LOCATION_FLASH_PRAGMA
-KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId258_Gb[24] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x56, 0x65, 0x6e, 0x64, 0x6f, 0x72, 0x3a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x2, 0x0 };
-TEXT_LOCATION_FLASH_PRAGMA
-KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId260_Gb[24] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x3a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x2, 0x0 };
-TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId264_Gb[5] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x49, 0x6e, 0x66, 0x6f, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId271_Gb[6] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x2d, 0x31, 0x30, 0x30, 0x30, 0x0 };
@@ -109,10 +99,10 @@ KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId295_Gb[4] TEXT_LOCATION_F
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId296_Gb[13] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x41, 0x75, 0x74, 0x6f, 0x20, 0x59, 0x20, 0x72, 0x61, 0x6e, 0x67, 0x65, 0x0 };
 TEXT_LOCATION_FLASH_PRAGMA
-KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId327_Gb[5] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x4e, 0x6f, 0x6e, 0x65, 0x0 };
+KEEP const touchgfx::Unicode::UnicodeChar T_SingleUseId355_Gb[5] TEXT_LOCATION_FLASH_ATTRIBUTE = { 0x4e, 0x6f, 0x6e, 0x65, 0x0 };
 
 TEXT_LOCATION_FLASH_PRAGMA
-KEEP extern const touchgfx::Unicode::UnicodeChar* const textsGb[173] TEXT_LOCATION_FLASH_ATTRIBUTE =
+KEEP extern const touchgfx::Unicode::UnicodeChar* const textsGb[183] TEXT_LOCATION_FLASH_ATTRIBUTE =
 {
     T_SingleUseId7_Gb,
     T_SingleUseId69_Gb,
@@ -124,13 +114,13 @@ KEEP extern const touchgfx::Unicode::UnicodeChar* const textsGb[173] TEXT_LOCATI
     T_SingleUseId66_Gb,
     T_SingleUseId69_Gb,
     T_SingleUseId271_Gb+4,
-    T_SingleUseId256_Gb+23,
+    T_SingleUseId199_Gb+19,
     T_SingleUseId123_Gb,
     T_SingleUseId66_Gb,
     T_SingleUseId69_Gb,
     T_SingleUseId271_Gb+4,
     T_SingleUseId129_Gb,
-    T_SingleUseId327_Gb,
+    T_SingleUseId355_Gb,
     T_SingleUseId167_Gb,
     T_SingleUseId42_Gb+7,
     T_SingleUseId63_Gb+7,
@@ -230,23 +220,18 @@ KEEP extern const touchgfx::Unicode::UnicodeChar* const textsGb[173] TEXT_LOCATI
     T_SingleUseId249_Gb,
     T_SingleUseId250_Gb,
     T_SingleUseId264_Gb,
-    T_SingleUseId252_Gb,
-    T_SingleUseId254_Gb,
-    T_SingleUseId256_Gb,
-    T_SingleUseId258_Gb,
-    T_SingleUseId327_Gb,
-    T_SingleUseId260_Gb,
+    T_SingleUseId199_Gb+19,
     T_SingleUseId264_Gb,
     T_SingleUseId69_Gb,
     T_SingleUseId271_Gb+4,
     T_SingleUseId288_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId256_Gb+23,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId199_Gb+19,
     T_SingleUseId271_Gb+1,
     T_SingleUseId271_Gb,
-    T_SingleUseId256_Gb+23,
+    T_SingleUseId199_Gb+19,
     T_SingleUseId271_Gb+4,
-    T_SingleUseId256_Gb+23,
+    T_SingleUseId199_Gb+19,
     T_SingleUseId295_Gb,
     T_SingleUseId285_Gb,
     T_SingleUseId285_Gb,
@@ -260,32 +245,47 @@ KEEP extern const touchgfx::Unicode::UnicodeChar* const textsGb[173] TEXT_LOCATI
     T_SingleUseId63_Gb+7,
     T_SingleUseId295_Gb,
     T_SingleUseId296_Gb,
-    T_SingleUseId327_Gb,
-    T_SingleUseId327_Gb,
-    T_SingleUseId327_Gb,
-    T_SingleUseId327_Gb,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb,
-    T_SingleUseId256_Gb+23,
-    T_SingleUseId327_Gb
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb,
+    T_SingleUseId199_Gb+19,
+    T_SingleUseId355_Gb
 };
 
