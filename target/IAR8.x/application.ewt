@@ -1254,9 +1254,21 @@
                     </file>
                 </group>
                 <group>
+                    <name>screen_module1_info_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_info_screen\Screen_Module1_InfoViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
                     <name>screen_module1_settings_screen</name>
                     <file>
                         <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_settings_screen\Screen_Module1_SettingsViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module1_signals_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp</name>
                     </file>
                 </group>
                 <group>
@@ -1307,6 +1319,12 @@
                         <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small_pressed.cpp</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button_pressed.cpp</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_active.cpp</name>
                     </file>
                     <file>
@@ -1332,6 +1350,12 @@
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_off.cpp</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_on.cpp</name>
                     </file>
                 </group>
                 <file>
@@ -1405,12 +1429,30 @@
                 </file>
             </group>
             <group>
+                <name>screen_module1_info_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp</name>
+                </file>
+            </group>
+            <group>
                 <name>screen_module1_settings_screen</name>
                 <file>
                     <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module1_signals_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp</name>
                 </file>
             </group>
             <group>
@@ -1564,6 +1606,9 @@
                 <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_usart.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\stm32f4xx_it.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fmc.c</name>
             </file>
             <file>
@@ -1643,10 +1688,4 @@
             </file>
         </group>
     </group>
-    <file>
-        <name>$PROJ_DIR$\LED_32F469IDISCOVERY.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\stm32f4xx_it.c</name>
-    </file>
 </project>

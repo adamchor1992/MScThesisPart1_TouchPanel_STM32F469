@@ -266,15 +266,7 @@ static void UART_Task(void* params)
       }
       
       /*Frame is correct and can be further processed*/
-      
-#ifdef DEBUG
-      DebugPrint("Frame is: ");
-      char frame[FRAME_NO_CRC + 1];
-      memcpy(frame,UART_ReceivedFrame,FRAME_NO_CRC);
-      frame[12] = '\n'; //line feed at the end of frame data
-      HAL_UART_Transmit(&huart3, (uint8_t*)frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
-#endif
-      
+            
       /*Frame parsing to structure*/        
       s_UARTFrame.source = UART_ReceivedFrame[0];
       s_UARTFrame.module = UART_ReceivedFrame[1];
@@ -289,9 +281,7 @@ static void UART_Task(void* params)
       {
         s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
       }
-      
-      //what about CRC? 
-      
+            
       xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
             
       taskEXIT_CRITICAL();
