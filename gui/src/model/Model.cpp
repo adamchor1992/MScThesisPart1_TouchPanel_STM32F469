@@ -1,6 +1,8 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
 #include <touchgfx/hal/HAL.hpp>
+#include <gui/common/FrontendApplication.hpp>
+#include <gui_generated/common/FrontendApplicationBase.hpp>
 
 #ifndef SIMULATOR
 #include "FreeRTOS.h"
@@ -78,6 +80,8 @@ uint8_t Model::m_settableParameter8NameLength = 0;
 uint8_t Model::m_settableParameter9NameLength = 0;
 uint8_t Model::m_settableParameter10NameLength = 0;
 
+uint8_t activeModule = 0;
+
 void DebugPrint(const char* ch);
 
 /*Structure to which UART task writes processed UART frame*/
@@ -116,9 +120,16 @@ void Model::tick()
       {
         modelListener->notifyNewUART_RX_ParsedFrame(s_UARTFrame);
       }
-      else if(s_UARTFrame.function == '7') //deinit connection
+      else if(s_UARTFrame.function == '3') //deinit connection
       {
+        DebugPrint("Deinit frame received\n");
         
+        /*Set no active modules*/
+        activeModule = 0;
+        /*Go back to main menu screen*/
+        static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
+        
+        connectionState = UNCONNECTED;
       }
       else
       {
@@ -319,6 +330,9 @@ void Model::tick()
                 connectionState = CONNECTED;
                 DebugPrint("Received 24 init frames\n");
                 modelListener->notifyInitFrame(s_UARTFrame); 
+                
+                /*Set initFrameCount back to 0 to make another connection initialization possible after connection deinitialization*/
+                initFrameCount = 0;
               }
             }
           }
@@ -339,8 +353,8 @@ void Model::tick()
     }
     
     modelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
-#endif
   }
+#endif
 }
 
 void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)

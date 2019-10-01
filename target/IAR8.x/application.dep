@@ -44,6 +44,11 @@
             <file>$PROJ_DIR$\..\..\generated\fonts\src\FontGetters.cpp</file>
             <file>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_10_4bpp.cpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_large_button_off.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\platform\driver\touch\TouchController.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsView.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\bsp\KeySampler.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\cortex-m\CortexMMCUInstrumentation.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\common\Graph.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_nor.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_tim_ex.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SignalsViewBase.o</file>
@@ -55,63 +60,128 @@
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_tim.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SignalsPresenter.o</file>
             <file>$PROJ_DIR$\Debug\Obj\timers.o</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\list.h</file>
             <file>$PROJ_DIR$\Debug\Obj\application.pbd</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\ToggleButton.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\portasm.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\canvas_widget_renderer\RenderingBuffer.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SignalsPresenter.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\clocale</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_pwr_ex.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\Config.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_medium.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dma.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cfloat</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_ltdc.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\string</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_it.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Table_verdana_40_4bpp.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_medium.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_rcc_ex.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SettingsViewBase.xcl</file>
+            <file>$PROJ_DIR$\Debug\List\application.map</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_SettingsView.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Buttons.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\transforms\DisplayTransformation.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\type_traits</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SignalsViewBase.xcl</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module1_graph_screen\Screen_Module1_GraphViewBase.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cwctype</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\lcd\LCD.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\Buttons.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dsi.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SignalsView.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_cortex.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\PainterRGB565Bitmap.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_ll_fmc.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\iccarm_builtin.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xxexception</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\common\FrontendHeap.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Font_verdana_40_4bpp.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_check_buttons_check_mark_normal.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\Types.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_main_screen\Screen_MainView.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\Components\Common\ts.h</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\timers.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\limits.h</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\common\FrontendHeapBase.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\TextureMapTypes.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_check_buttons_check_mark_inactive.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_small_button_off.xcl</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\projdefs.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\cortex-m\CMSIS\core_cmFunc.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_rcc_ex.o</file>
             <file>$PROJ_DIR$\Debug\Obj\KeySampler.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\RadioButton.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery.h</file>
             <file>$PROJ_DIR$\Debug\Obj\port.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4DMA.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_DataView.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\mvp\Presenter.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_small_button_off.o</file>
             <file>$PROJ_DIR$\Debug\Obj\list.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\ApplicationFontProvider.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_check_buttons_check_mark_active.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\JSMOCHelper.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_InfoViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_usart.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_flash_ramfunc.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\stm32f4xx_hal_conf.h</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_small_button_on.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_small_button_on.xcl</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\FreeRTOS.h</file>
             <file>$PROJ_DIR$\Debug\Obj\queue.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_data_screen\Screen_Module1_DataPresenter.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\Box.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cstddef</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\common\Partition.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_uart.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_rcc.h</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_medium_pressed.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_SettingsPresenter.o</file>
             <file>$PROJ_DIR$\Debug\Obj\ApplicationFontProvider.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\croutine.o</file>
             <file>$PROJ_DIR$\Debug\Obj\STM32F4DMA.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_ts.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\ctime</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\platform\core\MCUInstrumentation.hpp</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F\portmacro.h</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_slider_horizontal_medium_slider_round_fill.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\Line.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\ButtonWithLabel.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Table_verdana_20_4bpp.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\common\GraphLine.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\tasks.o</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\portable.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xiosbase</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_DataPresenter.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SettingsPresenter.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Event.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\Image.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\CMSIS\system_stm32f4xx.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\DMA.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_cortex.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_UART_RX_DebugPresenter.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_slider_horizontal_medium_slider_round_back.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\main.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
             <file>$PROJ_DIR$\Debug\Obj\BoardConfiguration.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\TemplateViewBase.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\uart_frame_struct.h</file>
             <file>$PROJ_DIR$\Debug\Obj\tasks.xcl</file>
             <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\queue.c</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fmc.c</file>
             <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\OSWrappers.cpp</file>
             <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\list.c</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\UIEventListener.hpp</file>
             <file>$PROJ_DIR$\..\bsp\source\bsp\KeySampler.cpp</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_usart.c</file>
             <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\tasks.c</file>
@@ -119,10 +189,13 @@
             <file>$PROJ_DIR$\..\bsp\source\bsp\Buttons.cpp</file>
             <file>$PROJ_DIR$\..\bsp\source\bsp\OTM8009TouchController.cpp</file>
             <file>$PROJ_DIR$\stm32f4xx_it.c</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_tim.h</file>
             <file>$PROJ_DIR$\..\bsp\source\GPIO.cpp</file>
             <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\croutine.c</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\CMSIS\system_stm32f4xx.c</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4HAL_DSI.cpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\canvas_widget_renderer\Scanline.hpp</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\cortex-m\CortexMMCUInstrumentation.cpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_rcc.xcl</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fsmc.c</file>
@@ -133,17 +206,26 @@
             <file>$PROJ_DIR$\Debug\Obj\OSWrappers.o</file>
             <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F\portasm.s</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4DMA.cpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_pwr_ex.h</file>
             <file>$PROJ_DIR$\Debug\Obj\TemplatePresenter.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Utils.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\PainterRGB565.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_DataPresenter.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Graph.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Font_verdana_10_4bpp.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\bsp\OTM8009TouchController.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\background.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cstring</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_GraphView.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\ConstFont.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\STM32F4HAL_DSI.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SettingsView.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_lcd.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\canvas_widget_renderer\Outline.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_GraphPresenter.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_GraphViewBase.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xtr1common</file>
             <file>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp</file>
             <file>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_on.cpp</file>
             <file>$PROJ_DIR$\..\..\generated\texts\src\LanguageGb.cpp</file>
@@ -208,175 +290,371 @@
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma_ex.c</file>
             <file>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_qspi.c</file>
             <file>$PROJ_DIR$\Debug\Obj\Table_verdana_10_4bpp.o</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphPresenter.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_graph_screen\Screen_Module1_GraphPresenter.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_i2c_ex.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_i2c.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Kerning_verdana_20_4bpp.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\FontManager.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dma2d.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_DataView.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_ltdc.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Texts.o</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module2_data_screen\Screen_Module2_DataViewBase.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma_ex.h</file>
             <file>$PROJ_DIR$\Debug\Obj\heap_2.o</file>
             <file>$PROJ_DIR$\Debug\Obj\LanguageGb.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\TemplateView.o</file>
             <file>$PROJ_DIR$\Debug\Obj\FrontendApplicationBase.o</file>
+            <file>$PROJ_DIR$\..\..\generated\fonts\include\fonts\ApplicationFontProvider.hpp</file>
+            <file>$PROJ_DIR$\..\..\generated\images\include\BitmapDatabase.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphView.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_sdram.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_icon_button.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_DataPresenter.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\ostream</file>
             <file>$PROJ_DIR$\Debug\Obj\Font_verdana_20_4bpp.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_float_setup.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xutility</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\TextProvider.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_def.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xlocnum</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\CMSIS\core_cm4.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Graph.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_usart.h</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_medium_pressed.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_sdram.o</file>
             <file>$PROJ_DIR$\Debug\Obj\GraphLine.o</file>
             <file>$PROJ_DIR$\Debug\Obj\FrontendApplicationBase.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma2d.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_UART_RX_DebugPresenter.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\time.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\CMSIS\stm32f469xx.h</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\new</file>
+            <file>$TOOLKIT_DIR$\inc\c\assert.h</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\Components\n25q128a\n25q128a.h</file>
             <file>$PROJ_DIR$\Debug\Obj\AbstractGraph.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\list.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_GraphView.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\time32.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\Gestures.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\FrontendApplication.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_crc.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dma_ex.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\canvas_widget_renderer\CanvasWidgetRenderer.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cerrno</file>
             <file>$PROJ_DIR$\Debug\Obj\Model.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\canvas_widget_renderer\Rasterizer.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_InfoPresenter.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\lib\core\cortex_m4f\IAR8.x\touchgfx_core.a</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_info_screen\Screen_Module1_InfoView.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\iar_intrinsics_common.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_DataViewBase.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\model\Model.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dma.xcl</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module1_info_screen\Screen_Module1_InfoViewBase.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_InfoView.o</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\common\FrontendApplication.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cwchar</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_sram.o</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_sdram.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\BoardConfiguration.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\BitmapDatabase.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\OSWrappers.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Font_verdana_40_4bpp.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_check_buttons_check_mark_pressed.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Unicode.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dma2d.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_MainPresenter.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cassert</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\TextArea.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cctype</file>
             <file>$PROJ_DIR$\Debug\Obj\Model.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cstdint</file>
             <file>$PROJ_DIR$\Debug\Exe\application.hex</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_MainView.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module2_data_screen\Screen_Module2_DataView.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_GraphPresenter.xcl</file>
             <file>$PROJ_DIR$\Debug\Exe\application.out</file>
+            <file>$PROJ_DIR$\..\..\generated\texts\include\texts\TextKeysAndLanguages.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SettingsView.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Texts.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_GraphViewBase.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_gpio.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma.h</file>
             <file>$PROJ_DIR$\Debug\Obj\STM32F4DMA.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_DataView.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Table_verdana_40_4bpp.o</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\template_screen\TemplateViewBase.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_DataPresenter.xcl</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_main_screen\Screen_MainViewBase.hpp</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\CWRUtil.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4HAL_DSI.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\TemplateView.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Font.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cmath</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_ts.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_check_buttons_check_mark_normal.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\exception</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\TypedText.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\mvp\View.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\BlitOp.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_ll_fsmc.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_tim_ex.o</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_lcd.h</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_slider_horizontal_medium_slider_round_fill.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_sdram.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_InfoView.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\system_stm32f4xx.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_DataViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_sdram.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_info_screen\Screen_Module1_InfoPresenter.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_usart.o</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\Components\otm8009a\otm8009a.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\errno.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\utility</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_adc.h</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\StackMacros.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\AbstractButton.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\platform\driver\button\ButtonController.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_InfoPresenter.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_SettingsPresenter.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Table_verdana_10_4bpp.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_rcc.o</file>
             <file>$PROJ_DIR$\Debug\Obj\otm8009a.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\events\DragEvent.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\InternalFlashFont.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\BitmapDatabase.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cstdio</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_DataView.xcl</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\common\FrontendApplicationBase.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_SettingsViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_flash.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_GraphPresenter.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\platform\driver\lcd\LCD16bpp.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_slider_horizontal_medium_indicators_slider_round_nob.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product_stdlib.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\Button.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_slider_horizontal_medium_slider_round_back.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_ltdc_ex.h</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_main_screen\Screen_MainPresenter.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Color.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_graph_screen\Screen_Module1_GraphView.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_gpio_ex.h</file>
             <file>$PROJ_DIR$\Debug\Obj\KeySampler.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\main.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Kerning_verdana_40_4bpp.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\stdexcept</file>
             <file>$PROJ_DIR$\Debug\Obj\TemplateViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_qspi.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\Legacy\stm32_hal_legacy.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Callback.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_InfoViewBase.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Font_verdana_10_4bpp.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\cstdlib</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\croutine.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Texts.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_qspi.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_UART_RX_DebugView.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_gpio.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_nor.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dma_ex.o</file>
             <file>$PROJ_DIR$\Debug\Obj\GPIO.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_GraphViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_small_pressed.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\model\ModelListener.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Application.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\mixins\ClickListener.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\TextAreaWithWildcard.hpp</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\queue.h</file>
             <file>$PROJ_DIR$\Debug\Obj\GraphLine.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xlocale</file>
+            <file>$PROJ_DIR$\application.icf</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\common\Meta.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_qspi.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_large_button_on.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xlocinfo</file>
+            <file>$TOOLKIT_DIR$\inc\c\xtgmath.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_sdram.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\typeinfo</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
             <file>$PROJ_DIR$\Debug\Obj\OSWrappers.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_uart.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\xlocale_lconv.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\events\ClickEvent.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\canvas_widget_renderer\Cell.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\string.h</file>
             <file>$PROJ_DIR$\Debug\Obj\system_stm32f4xx.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_lcd.xcl</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module1_settings_screen\Screen_Module1_SettingsViewBase.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\common\TouchGFXInit.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\croutine.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_large_button_off.o</file>
             <file>$PROJ_DIR$\Debug\Obj\port.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\CMSIS\stm32f4xx.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\containers\Slider.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\mvp\MVPHeap.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\FrontendApplication.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_gpio.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_uart.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dsi.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\streambuf</file>
             <file>$PROJ_DIR$\Debug\Obj\OTM8009TouchController.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_GraphPresenter.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\AbstractPainterRGB565.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\iosfwd</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_i2c.h</file>
             <file>$PROJ_DIR$\Debug\Obj\STM32F4HAL_DSI.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module2_data_screen\Screen_Module2_DataPresenter.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\FontGetters.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_slider_horizontal_medium_indicators_slider_round_nob.o</file>
             <file>$PROJ_DIR$\Debug\Obj\init.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_check_buttons_check_mark_inactive.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_DataViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_ll_fmc.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\template_screen\TemplateView.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\GPIO.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\Atomic.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\ft6x06.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\xctype.h</file>
             <file>$PROJ_DIR$\Debug\Obj\background.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\mvp\MVPApplication.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Font_verdana_20_4bpp.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_icon_button_pressed.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_small.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_GraphViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_MainView.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Drawable.hpp</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\istream</file>
             <file>$PROJ_DIR$\Debug\Obj\TypedTextDatabase.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fmc.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_UART_RX_DebugView.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\queue.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\wctype.h</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xmemory0</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\events\GestureEvent.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\heap_2.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_MainPresenter.o</file>
             <file>$PROJ_DIR$\Debug\Obj\otm8009a.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_togglebars_toggle_round_large_button_on.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_tim_ex.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_adc_ex.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\platform\driver\lcd\LCD24bpp.hpp</file>
+            <file>$TOOLKIT_DIR$\lib\dlpp7M_tl_nc.a</file>
             <file>$PROJ_DIR$\Debug\Obj\startup_stm32f469xx.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_rcc_ex.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Buttons.xcl</file>
+            <file>$PROJ_DIR$\..\..\generated\texts\include\texts\TypedTextDatabase.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xstring</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\ios</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_small.o</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_ts.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_DataViewBase.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\timers.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_pwr.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_GraphView.xcl</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Screen.hpp</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\task.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_UART_RX_DebugViewBase.o</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\template_screen\TemplatePresenter.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\TemplatePresenter.o</file>
+            <file>$PROJ_DIR$\stm32f4xx_it.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\AbstractPainter.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_icon_button_pressed.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_data_screen\Screen_Module1_DataView.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\system_error</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SettingsViewBase.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\canvas_widget_renderer\Renderer.hpp</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\mpu_wrappers.h</file>
             <file>$PROJ_DIR$\Debug\Obj\CortexMMCUInstrumentation.o</file>
             <file>$PROJ_DIR$\Debug\Obj\BoardConfiguration.o</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_icon_button.o</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_pwr_ex.o</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\limits</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\initializer_list</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_it.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_SettingsView.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\TypedTextDatabase.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_UART_RX_DebugViewBase.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\ctype.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_ltdc.h</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module2_graph_screen\Screen_Module2_GraphViewBase.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_ll_fsmc.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_buttons_round_edge_small_pressed.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\xatomic.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_tim.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_cortex.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\float.h</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\common\AbstractGraph.hpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_settings_screen\Screen_Module1_SettingsView.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\cortex-m\CMSIS\core_cmInstr.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_qspi.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\EasingEquations.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\blue_check_buttons_check_mark_active.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\climits</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_SettingsPresenter.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\wchar.h</file>
             <file>$PROJ_DIR$\Debug\Obj\OTM8009TouchController.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\Table_verdana_20_4bpp.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_MainViewBase.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\CanvasWidget.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\cortex-m\CMSIS\core_cmSimd.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_dsi.o</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\containers\Container.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module2_GraphView.xcl</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_flash_ex.h</file>
             <file>$PROJ_DIR$\Debug\Obj\AbstractGraph.o</file>
+            <file>$PROJ_DIR$\..\..\platform\os\FreeRTOSConfig.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_sram.xcl</file>
+            <file>$TOOLKIT_DIR$\inc\c\locale.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Kerning_verdana_10_4bpp.o</file>
             <file>$PROJ_DIR$\Debug\Obj\Kerning_verdana_40_4bpp.xcl</file>
+            <file>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include\semphr.h</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\CortexMMCUInstrumentation.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\canvas\Canvas.hpp</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
             <file>$PROJ_DIR$\Debug\Obj\GPIO.o</file>
+            <file>$TOOLKIT_DIR$\inc\cpp\xstddef</file>
+            <file>$PROJ_DIR$\..\bsp\source\vendor\Components\ft6x06\ft6x06.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\Widget.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\transitions\Transition.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_MainViewBase.o</file>
             <file>$PROJ_DIR$\Debug\Obj\FontGetters.xcl</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_module1_data_screen\Screen_Module1_DataViewBase.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\common\AbstractPartition.hpp</file>
+            <file>$PROJ_DIR$\..\..\generated\gui_generated\include\gui_generated\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\Kerning_verdana_10_4bpp.xcl</file>
             <file>$PROJ_DIR$\Debug\Obj\LanguageGb.o</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\widgets\RadioButtonGroup.hpp</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\Bitmap.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\stm32f4xx_hal_pwr.xcl</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\transitions\NoTransition.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_pwr.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Kerning_verdana_20_4bpp.xcl</file>
+            <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module2_settings_screen\Screen_Module2_SettingsView.hpp</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_qspi.h</file>
+            <file>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_sram.h</file>
+            <file>$PROJ_DIR$\..\..\touchgfx\framework\include\touchgfx\hal\HAL.hpp</file>
             <file>$PROJ_DIR$\Debug\Obj\init.o</file>
+            <file>$PROJ_DIR$\..\crc32.h</file>
             <file>$PROJ_DIR$\..\init.cpp</file>
             <file>$PROJ_DIR$\..\init.h</file>
             <file>$PROJ_DIR$\..\utilities.h</file>
@@ -389,7 +667,7 @@
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 244</file>
+                    <file> 377 77</file>
                 </tool>
             </outputs>
         </file>
@@ -398,857 +676,155 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 251</file>
+                    <file> 387</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 58</file>
+                    <file> 72</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 395 313 219 361 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_info_screen\Screen_Module1_InfoViewBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 80</file>
+                    <file> 123</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 282</file>
+                    <file> 455</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 350 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 412 469 132 629 472 369 291 400 459 148 440 419 444 378 304</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_normal.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 69</file>
+                    <file> 98</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 255</file>
+                    <file> 398</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_inactive.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 310</file>
+                    <file> 516</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 70</file>
+                    <file> 106</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_fill.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 91</file>
+                    <file> 146</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 258</file>
+                    <file> 406</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 311</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 230</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_20_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 204</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 370</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_data_screen\Screen_Module1_DataViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 261</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 331</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium_pressed.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 218</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 85</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_main_screen\Screen_MainViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 365</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 355</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 335</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 346</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_graph_screen\Screen_Module1_GraphViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 318</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 247</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\template_screen\TemplateViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 280</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 101</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_40_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 279</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 361</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 59</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 54</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small_pressed.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 348</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 289</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button_pressed.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 316</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 337</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_active.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 351</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 79</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_20_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 354</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 92</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 330</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 317</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 341</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 214</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_10_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 202</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 266</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 212</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 221</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_pressed.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 236</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 46</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_back.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 276</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 98</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_off.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 299</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 38</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 292</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 326</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_settings_screen\Screen_Module1_SettingsViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 338</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 60</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 41</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 63</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 288</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 138</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 272</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 122</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 308</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 275</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\ApplicationFontProvider.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 78</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 87</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 283</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 131</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 315</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 216</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 68</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 235</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\FontGetters.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 307</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 366</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_10_4bpp.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 360</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 367</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\queue.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 322</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 84</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fmc.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 67</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 312</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\OSWrappers.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 125</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 294</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\list.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 224</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 77</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\bsp\KeySampler.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 73</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 277</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_usart.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 263</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 81</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\tasks.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 93</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 102</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\MemMang\heap_2.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 209</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 323</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\bsp\Buttons.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 62</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 329</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\bsp\OTM8009TouchController.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 304</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 353</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\stm32f4xx_it.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 57</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 343</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\GPIO.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 364</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 287</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\croutine.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 88</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 298</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\CMSIS\system_stm32f4xx.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 260</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 296</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4HAL_DSI.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 134</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 306</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\cortex-m\CortexMMCUInstrumentation.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 339</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 363</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fsmc.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 256</file>
+                    <file> 517</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 347</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 297 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 512 469 132 629 148 440 419 400 459 472 369 291 444 304 378</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\timers.c</name>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_20_4bpp.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 49</file>
+                    <file> 290</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 332</file>
+                    <file> 643</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 395 313 219 361 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F\port.c</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_data_screen\Screen_Module1_DataViewBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 74</file>
+                    <file> 410</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 300</file>
+                    <file> 557</file>
                 </tool>
             </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\BoardConfiguration.cpp</name>
-            <outputs>
+            <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 340</file>
+                    <file> 633 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 131 469 132 629 472 369 291 400 459 148 440 419 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 471 444 378 304</file>
                 </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 100</file>
-                </tool>
-            </outputs>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F\portasm.s</name>
-            <outputs>
-                <tool>
-                    <name>AARM</name>
-                    <file> 51</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4DMA.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 89</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 249</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 232</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 259</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_on.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 82</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 83</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\texts\src\LanguageGb.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 368</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 210</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\texts\src\TypedTextDatabase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 320</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 345</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\common\AbstractGraph.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 358</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 223</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\common\Graph.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 217</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 130</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_main_screen\Screen_MainView.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium_pressed.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -1256,298 +832,246 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 242</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataPresenter.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 215</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 252</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 352</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 95</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsView.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 135</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 245</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 274</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 243</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 129</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 94</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataView.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 75</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 250</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 86</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 265</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 61</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 344</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 97</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 222</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\BitmapDatabase.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 234</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 269</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\texts\src\Texts.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 208</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 246</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\common\FrontendApplication.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 226</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 301</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\model\Model.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 240</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 228</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphView.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 133</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 334</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 206</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 270</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\background.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 132</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 314</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphPresenter.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
                     <file> 137</file>
                 </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 305</file>
-                </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_main_screen\Screen_MainViewBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 229</file>
+                    <file> 631</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 264</file>
+                    <file> 607</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 390 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 443 469 132 629 148 440 419 400 459 472 369 291 444 304 378</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 48</file>
+                    <file> 564</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 52</file>
+                    <file> 585</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 635 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 62 469 132 629 148 440 419 400 459 472 369 291 444 304 378</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_off.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_graph_screen\Screen_Module1_GraphViewBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 76</file>
+                    <file> 529</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 71</file>
+                    <file> 382</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 85 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 286 469 132 629 472 369 291 400 459 148 440 419 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 444 378 304</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\template_screen\TemplateViewBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 225</file>
+                    <file> 451</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 357</file>
+                    <file> 169</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 388 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 565 469 132 629 148 440 419 400 459 472 369 291 339 489 444 304 378</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_main_screen\Screen_MainPresenter.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_40_4bpp.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 324</file>
+                    <file> 449</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 239</file>
+                    <file> 620</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 395 313 219 361 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 73</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 65</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small_pressed.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 590</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 468</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button_pressed.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 527</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 569</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_active.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 601</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 121</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_20_4bpp.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 606</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 149</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 395 313 219 361 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 555</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 528</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 577</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 307</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_10_4bpp.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -1555,38 +1079,1116 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 321</file>
+                    <file> 423</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 395 313 219 361 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 45</file>
+                    <file> 302</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 65</file>
+                    <file> 322</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 328 399 627 133 158 484 367 625 380 292 365 457 167 439 581 220 95 83 431 525 470 488 156 99 161 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 96 104 641 352 100 390 443 469 132 629 148 440 419 400 459 472 369 291 570 633 131 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 471 597 493 466 499 157 112 638 445 85 286 43 150 596 444 92 304 40 391 366 57 345 350 412 375 297 512 644 579 287 305 588 285 327 635 62 519 388 565 378</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\common\GraphLine.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_pressed.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 220</file>
+                    <file> 360</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 290</file>
+                    <file> 51</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplateView.cpp</name>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_back.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 441</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 165</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_off.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 496</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 38</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 479</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 544</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_settings_screen\Screen_Module1_SettingsViewBase.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 572</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 76</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 493 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 466 469 132 629 148 440 419 400 459 499 157 112 472 369 291 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 638 444 304 378</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 46</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 84</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 391 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 366 469 132 629 57 440 419 369 291 400 459 472 148 499 157 471 444 304 378</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 467</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 218</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 588 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 285 469 132 629 472 369 291 400 459 148 440 419 339 489 444 378 304</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 433</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 195</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 579 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 287 469 132 629 148 440 419 400 459 499 157 112 369 291 472 638 444 304 378</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 514</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 438</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\ApplicationFontProvider.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 120</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 139</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 303 291 395 313 219 361 99 161 484 367 625 380 292 329 64 427 212</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 456</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 207</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 526</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 310</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 97</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 359</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\FontGetters.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 513</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 632</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 427 212 395 313 219 361 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_10_4bpp.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 619</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 636</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 395 313 219 361 99 161 484 367 625 380 292 329 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\queue.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 537</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 130</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 167 484 367 625 380 292 365 439 490 80 129 158 108 616 161 152 145 574 563 55 473</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fmc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 93</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 518</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\OSWrappers.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 198</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 485</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 358 99 161 484 367 625 380 292 329 64 129 158 365 108 616 152 145 574 563 55 473 621 520 647 402 335 488 156 426 540 176 160 521 361 219 39 420 144</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\list.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 332</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 119</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 167 484 367 625 380 292 365 439 129 158 108 616 161 152 145 574 55</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\bsp\KeySampler.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 111</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 447</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 41 420 99 161 484 367 625 380 292 329 64 88 490 365 80</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_usart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 413</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 124</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\tasks.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 151</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 171</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 167 484 367 625 380 292 365 439 490 80 129 158 108 616 161 152 145 574 563 55 102 418</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\MemMang\heap_2.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 299</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 541</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 167 484 367 625 380 292 365 439 129 158 108 616 161 152 145 574 563 55</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\bsp\Buttons.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 79</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 551</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 88 113 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\bsp\OTM8009TouchController.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 506</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 605</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 208 39 99 161 484 367 625 380 292 329 64 113 611 126 136 314 498 326 316 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645 405 414 355 490 80 556 628 101</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\stm32f4xx_it.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 71</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 582</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645 567</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\GPIO.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 626</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 465</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 520 113 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\croutine.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 140</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 495</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 129 158 484 367 625 380 292 365 108 616 161 152 145 574 563 55 458</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\CMSIS\system_stm32f4xx.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 409</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 491</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4HAL_DSI.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 213</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 511</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 358 99 161 484 367 625 380 292 329 64 393 647 402 335 488 156 426 540 176 160 521 361 219 39 420 144 115 87 395 313 639 368 520 490 365 80 189 498 326 316 598 594 94 109 609 159 504 314 453 587 442 462 446</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\cortex-m\CortexMMCUInstrumentation.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 575</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 623</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 42 144 161 484 367 625 380 292 647 99 329 64 402 335 488 156 426 540 176 160 521 361 219 39 420</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fsmc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 403</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 589</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\timers.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 54</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 558</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 167 484 367 625 380 292 365 439 129 158 108 616 161 152 145 574 563 55 473 102</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F\port.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 114</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 497</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 74 94 367 625 380 292 346 129 158 484 365 108 616 161 152 145 574 563 55</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\BoardConfiguration.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 576</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 168</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 494 647 99 161 484 367 625 380 292 329 64 402 335 488 156 426 540 176 160 521 361 219 39 420 144 552 400 368 395 313 459 303 291 96 104 477 134 634 500 641 630 87 639 352 431 525 470 454 401 562 612 531 203 122 117 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 100 390 443 469 132 629 148 440 419 472 369 570 633 131 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 471 597 493 466 499 157 112 638 445 85 286 43 150 596 444 92 304 40 391 366 57 345 350 412 375 297 512 644 579 287 305 588 285 327 635 62 519 388 565 356 115 393 520 42 437 105 547 208 41 611 126 136 75 462 446 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 318 645 355 460 330 113 405 414 490 80</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F\portasm.s</name>
+            <outputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 58</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>AARM</name>
+                    <file> 616</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4DMA.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 141</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 385</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 358 99 161 484 367 625 380 292 329 64 647 402 335 488 156 426 540 176 160 521 361 219 39 420 144 87 395 313 639 368 115 611 126 136 314 498 326 316 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 351</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 408</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 345 350 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 412 469 132 629 472 369 291 400 459 148 440 419 69 533 309 554 315 602 103 396 81 311 481 505 153 475 210 490 80 61 618 523 487 86 538 450 553 539 580 67 595 353 604 312 416 509 429 591 483 480 370 586 143 325 334 571 340 415</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_on.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 127</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 128</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\texts\src\LanguageGb.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 637</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 300</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 161 484 367 625 380 292 361 219 99 329 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\texts\src\TypedTextDatabase.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 534</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 584</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 427 212 395 313 219 361 99 161 484 367 625 380 292 329 64 400 368 459 552</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\common\AbstractGraph.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 615</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 331</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 596 99 161 484 367 625 380 292 329 64 629 531 470 488 156 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 203 454 624 82 392 342 216 489 573 59 190 339 568 608 444</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\common\Graph.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 317</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 206</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 43 150 596 99 161 484 367 625 380 292 329 64 629 531 470 488 156 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 203 454 624 82 392 342 216 489 573 59 190 339 568 608 444 612 204 508 92 304 132 600 81 311 481 220 457 167 365 439</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_main_screen\Screen_MainView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 530</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 374</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 100 390 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 443 469 132 629 148 440 419 400 459 472 369 291</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 308</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 389</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 570 633 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 131 469 132 629 472 369 291 400 459 148 440 419 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 471</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 603</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 155</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 597 493 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 466 469 132 629 148 440 419 400 459 499 157 112 472 369 291 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 638</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 214</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 379</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 597 493 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 466 469 132 629 148 440 419 400 459 499 157 112 472 369 291 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 638 69 533 309 554 315 602 103 396 81 311 481 505 153 475 210 490 80 61 618 523 487 86 538 450 553 539 580 67 595 353 604 312 416 509 429 591 483 480 370 586 143 325 334 571 340 415</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 436</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 376</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 305 401 562 488 156 99 161 484 367 625 380 292 329 64 426 540 470 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 612 531 203 454 122 117 588 352 431 525 477 134 634 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 285 469 132 629 472 369 291 400 459 148 440 419 339 489 43 150 596 624 82 392 342 216 573 59 190 568 608 444 204 508 92 304 157</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 205</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 154</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 375 297 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 512 469 132 629 148 440 419 400 459 472 369 291</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 116</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 386</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 570 633 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 131 469 132 629 472 369 291 400 459 148 440 419 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 471</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 138</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 422</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 644 579 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 287 469 132 629 148 440 419 400 459 499 157 112 369 291 472 638</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 78</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 583</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 644 579 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 287 469 132 629 148 440 419 400 459 499 157 112 369 291 472 638</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 164</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 324</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 327 635 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 62 469 132 629 148 440 419 400 459 472 369 291</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\BitmapDatabase.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 357</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 428</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 639 368 329 484 367 625 380 292 99 161 64 304</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\texts\src\Texts.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 296</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 381</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 219 459 361 99 161 484 367 625 380 292 329 64 647 402 335 488 156 426 540 176 160 521 39 420 144 400 368 395 313 552 87 639</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\common\FrontendApplication.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 336</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 501</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\model\Model.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 371</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 341</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 348 203 99 161 484 367 625 380 292 329 64 639 368 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 365 384 298 469 647 402 335 488 156 426 540 176 160 521 361 219 39 420 144 352 431 525 470 630 87 395 313 454 477 134 634 401 562 612 531 122 117 500 328 399 627 133 158 457 167 439 581 220 95 83 129 108 616 152 145 574 473 621 563 55 490 80 652 649 396 81 311 481</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphView.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -1594,29 +2196,269 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 253</file>
+                    <file> 560</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 304 99 161 484 367 625 380 292 329 64 639 368 378 445 401 562 488 156 426 540 470 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 612 531 203 454 122 117 85 352 431 525 477 134 634 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 286 469 132 629 472 369 291 400 459 148 440 419 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 43 150 596 444 92 157 40 391 366 57 499 471 69 533 309 554 315 602 103 396 81 311 481 505 153 475 210 490 80 61 618 523 487 86 538 450 553 539 580 67 595 353 604 312 416 509 429 591 483 480 370 586 143 325 334 571 340 415 113 611 126 136 75 462 446 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 294</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 430</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 375 297 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 512 469 132 629 148 440 419 400 459 472 369 291</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\background.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 209</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 524</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 217</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 507</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 445 401 562 488 156 99 161 484 367 625 380 292 329 64 426 540 470 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 612 531 203 454 122 117 85 352 431 525 477 134 634 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 286 469 132 629 472 369 291 400 459 148 440 419 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 43 150 596 444 92 304 157 40 391 366 57 499 471</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 343</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 421</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 345 350 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 412 469 132 629 472 369 291 400 459 148 440 419</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 53</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 60</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 40 391 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 366 469 132 629 57 440 419 369 291 400 459 472 148 499 157 471</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_off.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 118</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 107</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 64</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 333</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 613</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 304 99 161 484 367 625 380 292 329 64 639 368 378 305 401 562 488 156 426 540 470 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 612 531 203 454 122 117 588 352 431 525 477 134 634 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 285 469 132 629 472 369 291 400 459 148 440 419 339 489 43 150 596 624 82 392 342 216 573 59 190 568 608 444 204 508 92 157 69 533 309 554 315 602 103 396 81 311 481 505 153 475 210 490 80 61 618 523 487 86 538 450 553 539 580 67 595 353 604 312 416 509 429 591 483 480 370 586 143 325 334 571 340 415 113 611 126 136 75 462 446 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_main_screen\Screen_MainPresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 542</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 364</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 100 390 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 443 469 132 629 148 440 419 400 459 472 369 291</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 461</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 536</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 327 635 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 62 469 132 629 148 440 419 400 459 472 369 291</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 50</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 90</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 40 391 352 431 525 470 488 156 99 161 484 367 625 380 292 329 64 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 454 477 134 634 401 562 612 531 203 122 117 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 366 469 132 629 57 440 419 369 291 400 459 472 148 499 157 471 445 85 286 147 624 82 392 342 216 489 573 59 190 339 568 608 204 508 43 150 596 444 92 304</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\common\GraphLine.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 321</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 474</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 150 596 99 161 484 367 625 380 292 329 64 629 531 470 488 156 426 540 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 203 454 624 82 392 342 216 489 573 59 190 339 568 608 444</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplateView.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 301</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 394</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 519 401 562 488 156 99 161 484 367 625 380 292 329 64 426 540 470 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 612 531 203 454 122 117 388 352 431 525 477 134 634 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 565 469 132 629 148 440 419 400 459 472 369 291 339 489 43 150 596 624 82 392 342 216 573 59 190 568 608 444 204 508 92 304 157 378 69 533 309 554 315 602 103 396 81 311 481 505 153 475 210 490 80 61 618 523 487 86 538 450 553 539 580 67 595 353 604 312 416 509 429 591 483 480 370 586 143 325 334 571 340 415 113 611 126 136 75 462 446 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_sdram.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 293</file>
+                    <file> 482</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 262</file>
+                    <file> 411</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 355 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\IAR\startup_stm32f469xx.s</name>
             <outputs>
                 <tool>
                     <name>AARM</name>
-                    <file> 327</file>
+                    <file> 549</file>
                 </tool>
             </outputs>
         </file>
@@ -1625,302 +2467,98 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 291</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 42</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_ts.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 90</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 254</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 237</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 362</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\vendor\Components\otm8009a\otm8009a.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 268</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 325</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_ltdc.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 56</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 207</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_nor.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 39</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 285</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_pwr.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 333</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 369</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\vendor\Components\ft6x06\ft6x06.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 43</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 313</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_rcc.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 267</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 119</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_rcc_ex.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 72</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 328</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_sdram.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 219</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 213</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\main.cpp</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 278</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 99</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_sram.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 233</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 359</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 271</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 273</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dsi.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 356</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 64</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_cortex.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 66</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 96</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_tim.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 349</file>
+                    <file> 478</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 47</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 460 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645 330</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma.c</name>
+            <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_ts.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 55</file>
+                    <file> 142</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 231</file>
+                    <file> 397</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 556 113 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645 405 414 355 490 80 628 101</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_tim_ex.c</name>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 257</file>
+                    <file> 362</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 40</file>
+                    <file> 622</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_uart.c</name>
+            <name>$PROJ_DIR$\..\bsp\source\vendor\Components\otm8009a\otm8009a.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 303</file>
+                    <file> 425</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 543</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 414 161 484 367 625 380 292</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_ltdc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 68</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 295</file>
                 </tool>
             </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplatePresenter.cpp</name>
-            <outputs>
+            <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 336</file>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
                 </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 128</file>
-                </tool>
-            </outputs>
+            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_lcd.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 136</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 297</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_gpio.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 248</file>
-                </tool>
-                <tool>
-                    <name>BICOMP</name>
-                    <file> 302</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_i2c.c</name>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_nor.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -1928,96 +2566,490 @@
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 203</file>
+                    <file> 463</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_pwr.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 559</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 640</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\vendor\Components\ft6x06\ft6x06.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 48</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 522</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 628 101 161 484 367 625 380 292</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_rcc.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 424</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 192</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_rcc_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 110</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 550</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_sdram.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 320</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 306</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\main.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 448</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 166</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 651 135 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 384 298 113 611 126 136 75 462 446 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 318 645 647 99 329 64 402 335 488 156 426 540 176 160 521 361 219 39 420 144 520 356 339 629 531 470 630 87 395 313 639 368 203 454 489 490 80 170 372 652 649 396 81 311 481 220 457 167 439 129 158 108 616 152 145 574 563 55 473 621</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_sram.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 354</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 617</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 432</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 434</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 113 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dsi.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 610</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 89</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_cortex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 91</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 163</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_tim.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 592</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 52</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 66</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 349</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_tim_ex.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 404</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_uart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 503</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 486</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplatePresenter.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 566</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 202</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 519 401 562 488 156 99 161 484 367 625 380 292 329 64 426 540 470 176 630 87 219 647 402 335 160 521 361 39 420 144 395 313 639 368 612 531 203 454 122 117 388 352 431 525 477 134 634 500 328 399 627 133 158 365 457 167 439 581 220 95 83 348 170 372 135 314 498 326 316 598 594 94 109 609 159 453 189 384 298 565 469 132 629 148 440 419 400 459 472 369 291 339 489 43 150 596 624 82 392 342 216 573 59 190 568 608 444 204 508 92 304 157</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_lcd.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 215</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 492</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 405 414 161 484 367 625 380 292 355 611 126 136 314 498 326 316 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645 113 490 80</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_gpio.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 383</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 502</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_i2c.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 49</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 289</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma2d.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 238</file>
+                    <file> 363</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 205</file>
+                    <file> 293</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_pwr_ex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 342</file>
+                    <file> 578</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 53</file>
+                    <file> 63</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_dma_ex.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 286</file>
+                    <file> 464</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 227</file>
+                    <file> 338</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_qspi.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 281</file>
+                    <file> 452</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 350</file>
+                    <file> 599</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 611 126 136 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 75 462 446 384 298 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 135 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\Debug\Exe\application.out</name>
             <outputs>
                 <tool>
+                    <name>ILINK</name>
+                    <file> 77</file>
+                </tool>
+                <tool>
                     <name>OBJCOPY</name>
-                    <file> 241</file>
+                    <file> 373</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 476 615 120 209 357 73 319 555 590 577 527 601 516 98 360 514 441 146 496 479 118 127 576 79 575 140 456 526 97 513 336 302 48 626 317 321 299 648 619 290 449 111 637 332 448 371 198 425 506 114 58 537 542 530 631 308 116 410 217 211 529 343 351 123 603 214 572 53 50 46 205 294 517 436 333 467 138 78 433 164 461 564 549 432 215 478 482 142 141 213 362 91 66 363 464 610 383 49 68 44 559 578 452 424 110 320 354 592 404 503 413 71 93 403 409 284 606 387 151 566 301 451 296 54 534 655 344 532 162 548 70 561</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\init.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 371</file>
+                    <file> 648</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 309</file>
+                    <file> 515</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 651 135 314 498 326 316 161 484 367 625 380 292 598 594 94 109 609 159 453 189 365 384 298 113 611 126 136 75 462 446 593 417 546 337 323 435 614 125 646 535 407 510 288 587 442 504 642 201 184 545 318 645</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\utilities.cpp</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 377</file>
+                    <file> 655</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>
-                    <file> 376</file>
+                    <file> 654</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 652 170 372 161 484 367 625 380 292 649 396 81 311 481 220 457 167 365 439</file>
+                </tool>
+            </inputs>
         </file>
     </configuration>
 </project>

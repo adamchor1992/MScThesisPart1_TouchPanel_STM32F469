@@ -39,8 +39,6 @@ xQueueHandle msgQueueUART_RX_ProcessedFrame;
 xSemaphoreHandle UART_RxSemaphore;
 xSemaphoreHandle UART_TxSemaphore;
 
-uint8_t activeModule = 0;
-
 static void GUI_Task(void* params);
 static void UART_RxTask(void* params);
 static void UART_TxTask(void* params);
