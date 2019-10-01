@@ -118,6 +118,8 @@ private:
   uint8_t *receivedUART_TXValue;
   uint8_t initFrameCount;
 #endif
+  uint8_t connectionState;
+  enum connectionStates {UNCONNECTED, CONNECTED};
 };
 
 #endif /* MODEL_HPP */
