@@ -9,6 +9,7 @@
 #include "task.h"
 #include "string.h"
 #include "UART_Frame_Struct.h"
+#include "../utilities.h"
 
 extern xQueueHandle msgQueueUART_RX_ProcessedFrame;
 extern xQueueHandle msgQueueUARTTransmit;
@@ -325,19 +326,7 @@ void Model::setNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
 #ifndef SIMULATOR
   uint8_t UART_ValueToTransmit[FRAME_SIZE] = {0};
   
-  UART_ValueToTransmit[0] = s_UARTFrame.source;
-  UART_ValueToTransmit[1] = s_UARTFrame.module;
-  UART_ValueToTransmit[2] = s_UARTFrame.function;
-  UART_ValueToTransmit[3] = s_UARTFrame.parameter;
-  UART_ValueToTransmit[4] = s_UARTFrame.sign;
-  UART_ValueToTransmit[5] = s_UARTFrame.length;
-  
-  uint8_t length_int = s_UARTFrame.length - '0'; //convert to int
-  
-  for (int i = 0; i < length_int; i++)
-  {
-    UART_ValueToTransmit[6 + i] = *(s_UARTFrame.payload + i);
-  }
+  convertUARTstructToFrameTable(s_UARTFrame, UART_ValueToTransmit);
   
   xQueueSendToBack(msgQueueUARTTransmit, UART_ValueToTransmit, 0);
   

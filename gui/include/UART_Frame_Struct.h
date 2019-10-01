@@ -1,6 +1,8 @@
 #ifndef UART_FRAME_STRUCT_H
 #define UART_FRAME_STRUCT_H
 
+#include <cstdint>
+
 #define FRAME_SIZE 20
 
 /*20-byte frame*/

@@ -1504,10 +1504,22 @@
         <group>
             <name>main</name>
             <file>
+                <name>$PROJ_DIR$\..\init.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\init.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\main.cpp</name>
                 <configuration>
                     <name>Debug</name>
                 </configuration>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\utilities.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\utilities.h</name>
             </file>
         </group>
     </group>

@@ -1,13 +1,13 @@
 /* General Includes. */
+#include "init.h"
 #include <touchgfx/hal/HAL.hpp>
 #include <touchgfx/hal/GPIO.hpp>
-#include "stm32469i_discovery.h" //for led driving
 #include <touchgfx/hal/BoardConfiguration.hpp>
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
-#include <crc32.h>
 #include "string.h"
 #include "UART_Frame_Struct.h"
 #include <stdio.h>
+#include "utilities.h"
 
 /* FreeRTOS Kernel includes. */
 #include "FreeRTOS.h"
@@ -38,7 +38,6 @@ xQueueHandle msgQueueUARTTransmit;
 xQueueHandle msgQueueUART_RX_ProcessedFrame;
 xSemaphoreHandle UART_RxSemaphore;
 xSemaphoreHandle UART_TxSemaphore;
-xSemaphoreHandle UART_Mutex;
 
 uint8_t activeModule = 0;
 
@@ -51,8 +50,8 @@ static void UART_TxTask(void* params);
 UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart6;
 
-void MX_USART3_UART_Init(void);
-void MX_USART6_UART_Init(void);
+void MX_USART3_UART_Init(UART_HandleTypeDef *huart);
+void MX_USART6_UART_Init(UART_HandleTypeDef *huart);
 
 void DebugPrint(const char* ch)
 {
@@ -90,8 +89,8 @@ int main(void)
   touchgfx_init();
   
   /*UART init*/
-  MX_USART3_UART_Init();
-  MX_USART6_UART_Init();
+  MX_USART3_UART_Init(&huart3);
+  MX_USART6_UART_Init(&huart6);
   
   static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
   CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
@@ -101,6 +100,7 @@ int main(void)
               NULL,
               LOW_PRIORITY,
               NULL);
+  
   xTaskCreate(UART_RxTask, (TASKCREATE_NAME_TYPE)"UARTRxTask",
               UART_TASK_STACK_SIZE,
               NULL,
@@ -125,9 +125,6 @@ int main(void)
   /*Create UART semaphore*/
   UART_RxSemaphore = xSemaphoreCreateBinary();
   UART_TxSemaphore = xSemaphoreCreateBinary();
-
-  /*Create UART mutex*/
-  UART_Mutex = xSemaphoreCreateMutex();
   
   /*Initialize LEDS for debugging purposes*/
   BSP_LED_Init(LED1);
@@ -151,13 +148,7 @@ static void GUI_Task(void* params)
 }
 
 static void UART_RxTask(void* params)
-{
-  uint32_t CRC_Value_Calculated;
-  uint8_t CRC_Value_Received_Raw_8Bit[4];
-  uint32_t CRC_Value_Received;
-  
-  uint8_t length_int;
-  
+{  
   /*Structure to which UART task writes processed UART frame*/
   UARTFrameStruct_t s_UARTFrame;
   
@@ -178,17 +169,8 @@ static void UART_RxTask(void* params)
       //DebugPrint("RX processing\n");
 #endif
       
-      //CRC check will be performed here
-      CRC_Value_Calculated = Calculate_CRC32((char*)UART_ReceivedFrame, 16);
-      
-      CRC_Value_Received_Raw_8Bit[0] = UART_ReceivedFrame[16];
-      CRC_Value_Received_Raw_8Bit[1] = UART_ReceivedFrame[17];
-      CRC_Value_Received_Raw_8Bit[2] = UART_ReceivedFrame[18];
-      CRC_Value_Received_Raw_8Bit[3] = UART_ReceivedFrame[19];
-      
-      CRC_Value_Received = CRC_Value_Received_Raw_8Bit[3] | CRC_Value_Received_Raw_8Bit[2] << 8 | CRC_Value_Received_Raw_8Bit[1] << 16 | CRC_Value_Received_Raw_8Bit[0] << 24;
-      
-      if(CRC_Value_Calculated != CRC_Value_Received)
+      //CRC check
+      if(checkCRC(UART_ReceivedFrame) == false)
       {
         DebugPrint("WRONG CRC");
         /*Frame is corrupted and should be discarded*/
@@ -197,27 +179,13 @@ static void UART_RxTask(void* params)
         BSP_LED_On(LED3);
         BSP_LED_On(LED4);
         
-        //HAL_UART_STATE_RESET(); //reset UART buffer?
-        
+        /*Stop processing corrupted frame*/
         continue;
       }
-      
       /*Frame is correct and can be further processed*/
             
-      /*Frame parsing to structure*/        
-      s_UARTFrame.source = UART_ReceivedFrame[0];
-      s_UARTFrame.module = UART_ReceivedFrame[1];
-      s_UARTFrame.function = UART_ReceivedFrame[2];
-      s_UARTFrame.parameter = UART_ReceivedFrame[3];
-      s_UARTFrame.sign = UART_ReceivedFrame[4];
-      s_UARTFrame.length = UART_ReceivedFrame[5];
-      
-      length_int = s_UARTFrame.length - '0';
-      
-      for(uint8_t i=0; i < length_int; i++)
-      {
-        s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
-      }
+      /*Frame parsing to structure*/  
+      convertFrameTableToUARTstruct(UART_ReceivedFrame, s_UARTFrame);
             
       xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
             
@@ -229,9 +197,6 @@ static void UART_RxTask(void* params)
 static void UART_TxTask(void* params)
 {
   uint8_t UART_MessageToTransmit[FRAME_SIZE] = {0};
-  uint32_t CRC_Value_Calculated;
-  uint32_t* CRC_Address;
-  uint8_t *p1, *p2, *p3, *p4;
   
   DebugPrint("TX task initialized\n");
 
@@ -246,22 +211,8 @@ static void UART_TxTask(void* params)
         DebugPrint("TX processing\n");
 #endif
         
-        xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);
-        
-        //CRC calculation
-        CRC_Value_Calculated = Calculate_CRC32((char*)UART_MessageToTransmit, 16);
-        
-        CRC_Address = &CRC_Value_Calculated;
-        
-        p1 = ((uint8_t*)CRC_Address);
-        p2 = ((uint8_t*)CRC_Address + 1);
-        p3 = ((uint8_t*)CRC_Address + 2);
-        p4 = ((uint8_t*)CRC_Address + 3);
-        
-        UART_MessageToTransmit[19] = *p1;
-        UART_MessageToTransmit[18] = *p2;
-        UART_MessageToTransmit[17] = *p3;
-        UART_MessageToTransmit[16] = *p4;
+        xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);                  
+        appendCRCtoFrame(UART_MessageToTransmit);
         
 #ifdef DEBUG
         DebugPrint("TX Frame is: ");
@@ -278,54 +229,3 @@ static void UART_TxTask(void* params)
   }
 }
 /* Task definitions end */
-
-/**
-  * @brief USART3 Initialization Function
-  * @param None
-  * @retval None
-  */
-void MX_USART3_UART_Init(void)
-{
-  huart3.Instance = USART3;
-  huart3.Init.BaudRate = 115200;
-  huart3.Init.WordLength = UART_WORDLENGTH_8B;
-  huart3.Init.StopBits = UART_STOPBITS_1;
-  huart3.Init.Parity = UART_PARITY_NONE;
-  huart3.Init.Mode = UART_MODE_TX_RX;
-  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-/**
-* @brief USART6 Initialization Function
-* @param None
-* @retval None
-*/
-void MX_USART6_UART_Init(void)
-{
-  huart6.Instance = USART6;
-  huart6.Init.BaudRate = 115200;
-  huart6.Init.WordLength = UART_WORDLENGTH_8B;
-  huart6.Init.StopBits = UART_STOPBITS_1;
-  huart6.Init.Parity = UART_PARITY_NONE;
-  huart6.Init.Mode = UART_MODE_TX_RX;
-  huart6.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart6.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart6) != HAL_OK)
-  {
-    Error_Handler();
-  }
-}
-
-void Error_Handler(void)
-{
-  DebugPrint("ERROR HANDLER INVOKED");
-  BSP_LED_On(LED1);
-  BSP_LED_On(LED2);
-  BSP_LED_On(LED3);
-  BSP_LED_On(LED4);; //in case of error turn on all LEDs
-}
