@@ -141,168 +141,168 @@ void Model::tick()
               {
               case 'a':
                 DebugPrint("Case a\n");
-                strncpy(m_initParameter1Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter1Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter1NameStringLength = s_UARTFrame.length;
                 DebugPrint("Case a finished\n");
                 break;
                 
               case 'b':
                 DebugPrint("Case b\n");
-                strncpy(m_initParameter2Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter2Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter2NameStringLength = s_UARTFrame.length;
                 DebugPrint("Case b finished\n");
                 break;
                 
               case 'c':
                 DebugPrint("Case c\n");
-                strncpy(m_initParameter3Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter3Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter3NameStringLength = s_UARTFrame.length;
                 DebugPrint("Case c finished\n");
                 break;
                 
               case 'd':
                 DebugPrint("Case d\n");
-                strncpy(m_initParameter4Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter4Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter4NameStringLength = s_UARTFrame.length;
                 DebugPrint("Case d finished\n");
                 break;
                 
               case 'e':
                 DebugPrint("Case e\n");
-                strncpy(m_initParameter5Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter5Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter5NameStringLength = s_UARTFrame.length;
                 DebugPrint("Case e finished\n");
                 break;
                 
               case 'f':
                 DebugPrint("Case f\n");
-                strncpy(m_initParameter1Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter1Value, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter1ValueStringLength = s_UARTFrame.length;
                 DebugPrint("Case f finished\n");
                 break;
                 
               case 'g':
                 DebugPrint("Case g\n");
-                strncpy(m_initParameter2Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter2Value, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter2ValueStringLength = s_UARTFrame.length;
                 DebugPrint("Case g finished\n");
                 break;
                 
               case 'h':
                 DebugPrint("Case h\n");
-                strncpy(m_initParameter3Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter3Value, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter3ValueStringLength = s_UARTFrame.length;
                 DebugPrint("Case h finished\n");
                 break;
                 
               case 'i':
                 DebugPrint("Case i\n");
-                strncpy(m_initParameter4Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter4Value, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter4ValueStringLength = s_UARTFrame.length;
                 DebugPrint("Case i finished\n");
                 break;
                 
               case 'j':
                 DebugPrint("Case j\n");
-                strncpy(m_initParameter5Value, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_initParameter5Value, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_initParameter5ValueStringLength = s_UARTFrame.length;
                 DebugPrint("Case j finished\n");
                 break;
                 
               case 'k':
                 DebugPrint("Case k\n");
-                strncpy(m_parameter1Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_parameter1Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_parameter1NameLength = s_UARTFrame.length;
                 DebugPrint("Case k finished\n");
                 break;
                 
               case 'l':
                 DebugPrint("Case l\n");
-                strncpy(m_parameter2Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_parameter2Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_parameter2NameLength = s_UARTFrame.length;
                 DebugPrint("Case l finished\n");
                 break;
                 
               case 'm':
                 DebugPrint("Case m\n");
-                strncpy(m_parameter3Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_parameter3Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_parameter3NameLength = s_UARTFrame.length;
                 DebugPrint("Case m finished\n");
                 break;
                 
               case 'n':
                 DebugPrint("Case n\n");
-                strncpy(m_parameter4Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_parameter4Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_parameter4NameLength = s_UARTFrame.length;
                 DebugPrint("Case n finished\n");
                 break;
                 
               case 'o':
                 DebugPrint("Case o\n");
-                strncpy(m_settableParameter1Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter1Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter1NameLength = s_UARTFrame.length;
                 DebugPrint("Case o finished\n");
                 break;
                 
               case 'p':
                 DebugPrint("Case p\n");
-                strncpy(m_settableParameter2Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter2Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter2NameLength = s_UARTFrame.length;
                 DebugPrint("Case p finished\n");
                 break;
                 
               case 'q':
                 DebugPrint("Case q\n");
-                strncpy(m_settableParameter3Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter3Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter3NameLength = s_UARTFrame.length;
                 DebugPrint("Case q finished\n");
                 break;
                 
               case 'r':
                 DebugPrint("Case r\n");
-                strncpy(m_settableParameter4Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter4Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter4NameLength = s_UARTFrame.length;
                 DebugPrint("Case r finished\n");
                 break;
                 
               case 's':
                 DebugPrint("Case s\n");
-                strncpy(m_settableParameter5Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter5Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter5NameLength = s_UARTFrame.length;
                 DebugPrint("Case s finished\n");
                 break;
                 
               case 't':
                 DebugPrint("Case t\n");
-                strncpy(m_settableParameter6Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter6Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter6NameLength = s_UARTFrame.length;
                 DebugPrint("Case t finished\n");
                 break;
                 
               case 'u':
                 DebugPrint("Case u\n");
-                strncpy(m_settableParameter7Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter7Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter7NameLength = s_UARTFrame.length;
                 DebugPrint("Case u finished\n");
                 break;
                 
               case 'v':
                 DebugPrint("Case v\n");
-                strncpy(m_settableParameter8Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter8Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter8NameLength = s_UARTFrame.length;
                 DebugPrint("Case v finished\n");
                 break;
                 
               case 'w':
                 DebugPrint("Case w\n");
-                strncpy(m_settableParameter9Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter9Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter9NameLength = s_UARTFrame.length;
                 DebugPrint("Case w finished\n");
                 break;
                 
               case 'x':
                 DebugPrint("Case x\n");
-                strncpy(m_settableParameter10Name, (const char*)s_UARTFrame.payload, PAYLOAD_SIZE);
+                memcpy(m_settableParameter10Name, s_UARTFrame.payload, PAYLOAD_SIZE);
                 m_settableParameter10NameLength = s_UARTFrame.length;
                 DebugPrint("Case x finished\n");
                 break;

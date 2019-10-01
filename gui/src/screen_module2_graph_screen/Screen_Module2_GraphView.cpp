@@ -79,7 +79,7 @@ void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     isNegative = true;
   }
   
-  value = std::stof((char*)(s_UARTFrame.payload));
+  value = int(std::stof((char*)(s_UARTFrame.payload)));
   
   BSP_LED_Toggle(LED3);
 

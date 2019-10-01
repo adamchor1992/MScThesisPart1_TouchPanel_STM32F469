@@ -48,7 +48,7 @@ void TemplateView::setupScreen()
   // the max and min x/y value that can be displayed inside the
   // dimension of the graph.
   graph.setRange(0, 360, -1000, 1000);
-
+  
   // Set the line width in pixels
   graph.setLineWidth(2);
   
@@ -64,34 +64,34 @@ void TemplateView::tearDownScreen()
 
 void TemplateView::handleTickEvent()
 {
-//  // Number of ticks between inserting a point in the graph
-//  int interval = 1;
-//  
-//  if (tickCounter % interval == 0)
-//  {
-//    // Insert a point in the graph.
-//    // The Y value is a random number in the y range of the graph.
-//    graph.addValue(tickCounter, Utils::randomNumberBetween(graph.getRangeBottom(), graph.getRangeTop()));
-//    //graph.addValue(tickCounter / interval, tickCounter / interval);
-//  }
-//  
-//  tickCounter++;
-//  
-//  if (tickCounter == 360 * interval)
-//  {
-//    // Reset the graph and start over
-//    //graph.setRange(0, 100, 0, 40);
-//    graph.setLineWidth(2);
-//    graph.clear();
-//    graph.invalidate();
-//    
-//    tickCounter = 0;
-//  }
+  //  // Number of ticks between inserting a point in the graph
+  //  int interval = 1;
+  //  
+  //  if (tickCounter % interval == 0)
+  //  {
+  //    // Insert a point in the graph.
+  //    // The Y value is a random number in the y range of the graph.
+  //    graph.addValue(tickCounter, Utils::randomNumberBetween(graph.getRangeBottom(), graph.getRangeTop()));
+  //    //graph.addValue(tickCounter / interval, tickCounter / interval);
+  //  }
+  //  
+  //  tickCounter++;
+  //  
+  //  if (tickCounter == 360 * interval)
+  //  {
+  //    // Reset the graph and start over
+  //    //graph.setRange(0, 100, 0, 40);
+  //    graph.setLineWidth(2);
+  //    graph.clear();
+  //    graph.invalidate();
+  //    
+  //    tickCounter = 0;
+  //  }
 }
 
 void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
 {
-	#ifndef SIMULATOR
+#ifndef SIMULATOR
   if(s_UARTFrame.sign == '1')
   {
     isNegative = false;
@@ -100,12 +100,12 @@ void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
   {
     isNegative = true;
   }
-
+  
   value_float = std::stof((char*)(s_UARTFrame.payload));
-    
-	#ifndef SIMULATOR
+  
+#ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
-  #endif
+#endif
   
   if(isNegative)
   {
@@ -116,11 +116,11 @@ void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
   char str8[5];   
   
   snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
-     
+  
   DebugPrint("\nRamka graphu ma wartosc: \n");
   DebugPrint(str8);
   
-  graph.addValue(tickCounter, value_float);
+  graph.addValue(tickCounter, int(value_float));
   
   tickCounter++;
   
@@ -134,7 +134,7 @@ void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
     
     tickCounter = 0;
   }
-  #endif
+#endif
 }
 
 void TemplateView::updateCpuUsage(uint8_t value)
