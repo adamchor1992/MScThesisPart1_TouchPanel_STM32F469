@@ -43,8 +43,7 @@ xSemaphoreHandle UART_Mutex;
 uint8_t activeModule = 0;
 
 static void GUI_Task(void* params);
-static void UART_InitConnectionTask(void* params);
-static void UART_Task(void* params);
+static void UART_RxTask(void* params);
 static void UART_TxTask(void* params);
 /* FreeRTOS stuff end*/
 
@@ -102,7 +101,13 @@ int main(void)
               NULL,
               LOW_PRIORITY,
               NULL);
-  xTaskCreate(UART_InitConnectionTask, (TASKCREATE_NAME_TYPE)"UART_InitConnectionTask",
+  xTaskCreate(UART_RxTask, (TASKCREATE_NAME_TYPE)"UARTRxTask",
+              UART_TASK_STACK_SIZE,
+              NULL,
+              MEDIUM_PRIORITY,
+              NULL);
+  
+  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
               UART_TASK_STACK_SIZE,
               NULL,
               HIGH_PRIORITY,
@@ -145,78 +150,7 @@ static void GUI_Task(void* params)
   touchgfx::HAL::getInstance()->taskEntry();
 }
 
-static void UART_InitConnectionTask(void* params)
-{
-  UARTFrameStruct_t s_UARTFrame;
-  uint8_t length_int;
-  
-  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
-  
-  DebugPrint("Waiting for module to send connection request\n");
-  
-  while(1)
-  {
-    /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
-    if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
-    {
-      taskENTER_CRITICAL();
-      
-      /*Frame parsing to structure*/
-      s_UARTFrame.source = UART_ReceivedFrame[0];
-      s_UARTFrame.module = UART_ReceivedFrame[1];
-      s_UARTFrame.function = UART_ReceivedFrame[2];
-      s_UARTFrame.parameter = UART_ReceivedFrame[3];
-      s_UARTFrame.sign = UART_ReceivedFrame[4];
-      s_UARTFrame.length = UART_ReceivedFrame[5];
-      
-      length_int = s_UARTFrame.length - '0';
-      
-      for(uint8_t i=0; i < length_int; i++)
-      {
-        s_UARTFrame.payload[i] = UART_ReceivedFrame[6+i]; //payload starts from 6th element up to [6 + length] element
-      }
-      
-      if(s_UARTFrame.function == '2') // Init type frame
-      {
-        DebugPrint("CONNECTED\n");
-        
-        xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
-        
-        /*Give GUI task time to process Init frame*/
-        vTaskDelay(100);
-        
-        DebugPrint("Creating UART_Task\n");
-        
-        xTaskCreate(UART_Task, (TASKCREATE_NAME_TYPE)"UART_Task",
-                    UART_TASK_STACK_SIZE,
-                    NULL,
-                    MEDIUM_PRIORITY,
-                    NULL);
-        
-        DebugPrint("Creating UART_TxTask\n");
-        
-        xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
-                    UART_TASK_STACK_SIZE,
-                    NULL,
-                    HIGH_PRIORITY,
-                    NULL);
-        
-        DebugPrint("Deleting connection initialization task\n");
-        
-        /*Task deletes itself*/
-        vTaskDelete(NULL);
-      }
-      else
-      {
-        DebugPrint("BAD FRAME TYPE\n");
-      }
-      
-      taskEXIT_CRITICAL();
-    }
-  }
-}
-
-static void UART_Task(void* params)
+static void UART_RxTask(void* params)
 {
   uint32_t CRC_Value_Calculated;
   uint8_t CRC_Value_Received_Raw_8Bit[4];
@@ -226,6 +160,9 @@ static void UART_Task(void* params)
   
   /*Structure to which UART task writes processed UART frame*/
   UARTFrameStruct_t s_UARTFrame;
+  
+  /*Start receiving*/
+  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
   
   DebugPrint("RX task initialized\n");
   
@@ -300,7 +237,7 @@ static void UART_TxTask(void* params)
 
   while(1)
   {  
-    /*Take TxSempahore*/
+    /*Take TxSemaphore*/
     if(xSemaphoreTake(UART_TxSemaphore, portMAX_DELAY) == pdPASS)
     {
         taskENTER_CRITICAL(); 
