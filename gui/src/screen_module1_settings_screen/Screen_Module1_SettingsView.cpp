@@ -2,8 +2,6 @@
 #include <gui/model/Model.hpp>
 #include <string>
 
-void DebugPrint(const char* ch);
-
 Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 {
   #ifndef SIMULATOR     

@@ -45,7 +45,7 @@ void MX_USART6_UART_Init(UART_HandleTypeDef *huart)
 
 void Error_Handler(void)
 {
-  DebugPrint("ERROR HANDLER INVOKED");
+  printf("ERROR HANDLER INVOKED\n");
   BSP_LED_On(LED1);
   BSP_LED_On(LED2);
   BSP_LED_On(LED3);

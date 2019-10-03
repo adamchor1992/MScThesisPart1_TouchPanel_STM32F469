@@ -7,10 +7,6 @@
 #include "stm32469i_discovery.h" //for led driving
 #endif
 
-#ifndef SIMULATOR
-void DebugPrint(const char* ch);
-#endif
-
 #ifdef SIMULATOR
 #include <stdlib.h>
 #endif
@@ -112,13 +108,6 @@ void TemplateView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
     /*Make value_int negative*/
     value_float = value_float * (-1); 
   }
-  
-  char str8[5];   
-  
-  snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
-  
-  DebugPrint("\nRamka graphu ma wartosc: \n");
-  DebugPrint(str8);
   
   graph.addValue(tickCounter, int(value_float));
   

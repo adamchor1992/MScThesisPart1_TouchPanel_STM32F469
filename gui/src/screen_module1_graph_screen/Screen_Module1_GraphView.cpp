@@ -7,7 +7,6 @@
 #ifndef SIMULATOR
 #include "stm32469i_discovery.h" //for led driving
 #include <stdlib.h>
-void DebugPrint(const char* ch);
 #endif
 
 #ifdef SIMULATOR
@@ -311,11 +310,8 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
 		/*Make value_int negative*/
 		m_value = m_value * (-1);
 	}
-
-	//char str8[5];   
-	//snprintf(str8, sizeof(uint8_t), "%f", value_float);   // convert uint8_t to string 
-	//DebugPrint("\nRamka graphu ma wartosc: \n");
-	//DebugPrint(str8);
+ 
+	printf("Graph frame has value: %d\n", m_value);
 
 	if (m_autoRangeEnabled == true)
 	{
@@ -358,23 +354,9 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
 		m_tickCounter = 0;
 	}
 
-	char str_bottom[10] = { '\0' };
-	snprintf(str_bottom, 3 * sizeof(int), "%d", m_graphRangeBottom);   // convert uint8_t to string 
-	DebugPrint("\nGraph bottom range: ");
-	DebugPrint(str_bottom);
-	DebugPrint("\n");
-
-	char str_top[10] = { '\0' };
-	snprintf(str_top, 3 * sizeof(int), "%d", m_graphRangeTop);   // convert uint8_t to string 
-	DebugPrint("\nGraph top range: ");
-	DebugPrint(str_top);
-	DebugPrint("\n");
-
-	char str_value[10] = { '\0' };
-	snprintf(str_value, 3 * sizeof(int), "%d", m_value);   // convert uint8_t to string 
-	DebugPrint("\nValue after scaling: ");
-	DebugPrint(str_value);
-	DebugPrint("\n");
+	printf("Graph bottom range: %d\n", m_graphRangeBottom);
+	printf("Graph top range: %d\n", m_graphRangeTop);
+	printf("Value after scaling: %d\n", m_value);
 
 	switch (s_UARTFrame.parameter)
 	{

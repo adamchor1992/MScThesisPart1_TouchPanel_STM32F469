@@ -1,7 +1,5 @@
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 
-void DebugPrint(const char* ch);
-
 Screen_MainView::Screen_MainView()
 {
 
@@ -56,7 +54,7 @@ void Screen_MainView::tearDownScreen()
 void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
 {
 #ifndef SIMULATOR
-  DebugPrint("Processing init frame\n");
+  printf("Processing init frame\n");
   
   extern uint8_t activeModule;
   
@@ -75,7 +73,7 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
     textArea_ActiveModule.invalidate();
     
     activeModule = 1;
-    DebugPrint("Active module 1\n");
+    printf("Active module %d\n", activeModule);
     break;
     
     case'2':
@@ -91,10 +89,10 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
       textArea_ActiveModule.invalidate();
       
       activeModule = 2;
-      DebugPrint("Active module 2\n");
+      printf("Active module %d\n", activeModule);
       break;
   }
-  DebugPrint("Init frame processed\n");
+  printf("Init frame processed\n");
 #endif
 }
 

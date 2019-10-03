@@ -51,16 +51,10 @@ UART_HandleTypeDef huart6;
 void MX_USART3_UART_Init(UART_HandleTypeDef *huart);
 void MX_USART6_UART_Init(UART_HandleTypeDef *huart);
 
-void DebugPrint(const char* ch)
-{
-  HAL_UART_Transmit(&huart3, (uint8_t*)ch, strlen(ch), DEBUG_UART_WAITING);
-}
-
 void Error_Handler(void);
 
 /*Table to which UART interrupt writes*/
 uint8_t UART_ReceivedFrame[FRAME_SIZE] = {0};
-
 /* General stuff end*/
 
 /*UART receive interrupt callback function*/
@@ -77,6 +71,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(UART_RxSemaphore, &xHigherPriorityTaskWoken);
+}
+
+int fputc(int ch, FILE *f)
+{
+ HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 0xFFFF);
+ 
+ //HAL_UART_Transmit(&huart3, (uint8_t*)ch, 1, DEBUG_UART_WAITING);
+ 
+ return ch;
 }
 
 using namespace touchgfx;
@@ -130,8 +133,8 @@ int main(void)
   BSP_LED_Init(LED3);
   BSP_LED_Init(LED4);
   
-  DebugPrint("System initialized, starting FreeRTOS Scheduler\n");
-
+  printf("System initialized, starting FreeRTOS Scheduler\n");
+  
   vTaskStartScheduler();
   
   /*Control never reaches here*/
@@ -141,7 +144,7 @@ int main(void)
 /* Task definitions begin */
 static void GUI_Task(void* params)
 {
-  DebugPrint("GUI task initialized\n");
+  printf("GUI task initialized\n");
   touchgfx::HAL::getInstance()->taskEntry();
 }
 
@@ -153,7 +156,7 @@ static void UART_RxTask(void* params)
   /*Start receiving*/
   HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
   
-  DebugPrint("RX task initialized\n");
+  printf("RX task initialized\n");
   
   while(1)
   {   
@@ -164,13 +167,13 @@ static void UART_RxTask(void* params)
       taskENTER_CRITICAL();
       
 #ifdef DEBUG
-      //DebugPrint("RX processing\n");
+      //printf("RX processing\n");
 #endif
       
       //CRC check
       if(checkCRC(UART_ReceivedFrame) == false)
       {
-        DebugPrint("WRONG CRC");
+        printf("WRONG CRC\n");
         /*Frame is corrupted and should be discarded*/
         BSP_LED_On(LED1);
         BSP_LED_On(LED2);
@@ -196,7 +199,7 @@ static void UART_TxTask(void* params)
 {
   uint8_t UART_MessageToTransmit[FRAME_SIZE] = {0};
   
-  DebugPrint("TX task initialized\n");
+  printf("TX task initialized\n");
 
   while(1)
   {  
@@ -206,18 +209,18 @@ static void UART_TxTask(void* params)
         taskENTER_CRITICAL(); 
         
 #ifdef DEBUG
-        DebugPrint("TX processing\n");
+        printf("TX processing\n");
 #endif
         
         xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);                  
         appendCRCtoFrame(UART_MessageToTransmit);
         
 #ifdef DEBUG
-        DebugPrint("TX Frame is: ");
         char frame[FRAME_NO_CRC + 1];
-        memcpy(frame,UART_MessageToTransmit,FRAME_NO_CRC);
+        memcpy(frame, UART_MessageToTransmit,FRAME_NO_CRC);
         frame[16] = '\n'; //line feed at the end of frame data
-        HAL_UART_Transmit(&huart3, (uint8_t*)frame, FRAME_NO_CRC + 1, DEBUG_UART_WAITING);
+        
+        printf("TX Frame is: %s\n", frame);
 #endif
         
         HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, UART_TX_WAITING); //show table contents

@@ -7,5 +7,4 @@
 void MX_USART3_UART_Init(UART_HandleTypeDef *huart);
 void MX_USART6_UART_Init(UART_HandleTypeDef *huart);
 void Error_Handler(void);
-void DebugPrint(const char* ch);
 #endif

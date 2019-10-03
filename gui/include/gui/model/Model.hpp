@@ -115,11 +115,11 @@ protected:
 private:
 #ifndef SIMULATOR
   UART_HandleTypeDef m_huart6;
-  uint8_t *receivedUART_TXValue;
-  uint8_t initFrameCount;
-#endif
-  uint8_t connectionState;
-  enum connectionStates {UNCONNECTED, CONNECTED};
+  uint8_t* mp_receivedUART_TXValue;
+  uint8_t m_receivedInitFrameCount;
+  uint8_t m_connectionState;
+  enum m_connectionStates {UNCONNECTED, CONNECTED};
+  #endif
 };
 
 #endif /* MODEL_HPP */
