@@ -12,6 +12,8 @@ class Screen_Module1_SignalsPresenter : public Presenter, public ModelListener
 {
 public:
     Screen_Module1_SignalsPresenter(Screen_Module1_SignalsView& v);
+    
+    void notifyNewCpuUsageValue(uint8_t value);
 
     /**
      * The activate function is called automatically when this screen is "switched in"

@@ -6,15 +6,10 @@ Screen_MainView::Screen_MainView()
 }
 
 void Screen_MainView::setupScreen()
-{
-  Screen_MainViewBase::setupScreen();
-  
+{  
 #ifndef SIMULATOR
-  
-  extern uint8_t activeModule;
-  
   /*Dim and deactivate Module buttons*/
-  if(activeModule == 1)
+  if(Model::m_ActiveModule == 1)
   {
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
@@ -22,7 +17,7 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module2.setTouchable(false);
     Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 1",10);
   }
-  else if(activeModule == 2)
+  else if(Model::m_ActiveModule == 2)
   {
     buttonWithLabel_Module1.setAlpha(100);
     buttonWithLabel_Module1.setTouchable(false);
@@ -42,21 +37,18 @@ void Screen_MainView::setupScreen()
   buttonWithLabel_Module1.invalidate();
   buttonWithLabel_Module2.invalidate();
   textArea_ActiveModule.invalidate();
-  
 #endif
 }
 
 void Screen_MainView::tearDownScreen()
 {
-  Screen_MainViewBase::tearDownScreen();
+  
 }
 
 void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
 {
 #ifndef SIMULATOR
   printf("Processing init frame\n");
-  
-  extern uint8_t activeModule;
   
   switch(s_UARTFrame.module)
   {
@@ -72,8 +64,8 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
     buttonWithLabel_Module2.invalidate();
     textArea_ActiveModule.invalidate();
     
-    activeModule = 1;
-    printf("Active module %d\n", activeModule);
+    Model::m_ActiveModule = 1;
+    printf("Active module %d\n", Model::m_ActiveModule);
     break;
     
     case'2':
@@ -88,8 +80,8 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
       buttonWithLabel_Module2.invalidate();
       textArea_ActiveModule.invalidate();
       
-      activeModule = 2;
-      printf("Active module %d\n", activeModule);
+      Model::m_ActiveModule = 2;
+      printf("Active module %d\n", Model::m_ActiveModule);
       break;
   }
   printf("Init frame processed\n");

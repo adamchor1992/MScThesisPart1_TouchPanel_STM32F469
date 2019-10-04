@@ -6,10 +6,10 @@
 Screen_Module1_DataView::Screen_Module1_DataView() : TextAreaClickedCallback(this, &Screen_Module1_DataView::TextAreaClickHandler)
 {
 #ifndef SIMULATOR     
-  uint8_t parameter1NameLength_int = Model::m_parameter1NameLength - '0';
-  uint8_t parameter2NameLength_int = Model::m_parameter2NameLength - '0';
-  uint8_t parameter3NameLength_int = Model::m_parameter3NameLength - '0';
-  uint8_t parameter4NameLength_int = Model::m_parameter4NameLength - '0';
+  uint8_t parameter1NameLength_int = Model::m_Parameter1NameLength - '0';
+  uint8_t parameter2NameLength_int = Model::m_Parameter2NameLength - '0';
+  uint8_t parameter3NameLength_int = Model::m_Parameter3NameLength - '0';
+  uint8_t parameter4NameLength_int = Model::m_Parameter4NameLength - '0';
   
   uint16_t parameter1StringDisplay[10] = { 0 };
   uint16_t parameter2StringDisplay[10] = { 0 };
@@ -18,36 +18,36 @@ Screen_Module1_DataView::Screen_Module1_DataView() : TextAreaClickedCallback(thi
   
   for (int i = 0; i < parameter1NameLength_int; i++)
   {
-    *(parameter1StringDisplay + i) = *(Model::m_parameter1Name + i);
+    *(parameter1StringDisplay + i) = *(Model::m_Parameter1Name + i);
   }
   
   for (int i = 0; i < parameter2NameLength_int; i++)
   {
-    *(parameter2StringDisplay + i) = *(Model::m_parameter2Name + i);
+    *(parameter2StringDisplay + i) = *(Model::m_Parameter2Name + i);
   }
   
   for (int i = 0; i < parameter3NameLength_int; i++)
   {
-    *(parameter3StringDisplay + i) = *(Model::m_parameter3Name + i);
+    *(parameter3StringDisplay + i) = *(Model::m_Parameter3Name + i);
   }
   
   for (int i = 0; i < parameter4NameLength_int; i++)
   {
-    *(parameter4StringDisplay + i) = *(Model::m_parameter4Name + i);
+    *(parameter4StringDisplay + i) = *(Model::m_Parameter4Name + i);
   }
-    
+  
   Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", parameter1StringDisplay);
   textArea_Parameter1Name.invalidate();
-
+  
   Unicode::snprintf(textArea_Parameter2NameBuffer, TEXTAREA_PARAMETER2NAME_SIZE, "%s", parameter2StringDisplay);
   textArea_Parameter2Name.invalidate();
-
+  
   Unicode::snprintf(textArea_Parameter3NameBuffer, TEXTAREA_PARAMETER3NAME_SIZE, "%s", parameter3StringDisplay);
   textArea_Parameter3Name.invalidate();
-
+  
   Unicode::snprintf(textArea_Parameter4NameBuffer, TEXTAREA_PARAMETER4NAME_SIZE, "%s", parameter4StringDisplay);
   textArea_Parameter4Name.invalidate();
-  #endif
+#endif
 }
 
 void Screen_Module1_DataView::TextAreaClickHandler(const TextAreaWithOneWildcard& b, const ClickEvent& evt)
@@ -84,8 +84,6 @@ void Screen_Module1_DataView::TextAreaClickHandler(const TextAreaWithOneWildcard
 
 void Screen_Module1_DataView::setupScreen()
 {
-  Screen_Module1_DataViewBase::setupScreen();
-  
   // Add the callback to HiddenBox
   textArea_Parameter1Name.setClickAction(TextAreaClickedCallback);
   textArea_Parameter2Name.setClickAction(TextAreaClickedCallback);
@@ -95,7 +93,7 @@ void Screen_Module1_DataView::setupScreen()
 
 void Screen_Module1_DataView::tearDownScreen()
 {
-  Screen_Module1_DataViewBase::tearDownScreen();
+  
 }
 
 void Screen_Module1_DataView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame)
@@ -136,12 +134,6 @@ void Screen_Module1_DataView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame
 #endif
 }
 
-void Screen_Module1_DataView::updateCpuUsage(uint8_t value)
-{  
-  Unicode::snprintf(textArea_CPU_UsageBuffer,4,"%d",value);
-  textArea_CPU_Usage.invalidate();
-}
-
 void Screen_Module1_DataView::showAll()
 {
   textArea_Parameter1Name.setVisible(true);
@@ -161,4 +153,10 @@ void Screen_Module1_DataView::showAll()
   textArea_Parameter3Value.invalidate();
   textArea_Parameter4Name.invalidate();
   textArea_Parameter4Value.invalidate();
+}
+
+void Screen_Module1_DataView::updateCpuUsage(uint8_t value)
+{  
+  Unicode::snprintf(textArea_CPU_UsageBuffer,4,"%d",value);
+  textArea_CPU_Usage.invalidate();
 }

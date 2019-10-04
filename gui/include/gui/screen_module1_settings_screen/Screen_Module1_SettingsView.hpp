@@ -7,16 +7,16 @@
 class Screen_Module1_SettingsView : public Screen_Module1_SettingsViewBase
 {
 public:
-    Screen_Module1_SettingsView();
-    virtual ~Screen_Module1_SettingsView() {}
-    virtual void setupScreen();
-    virtual void tearDownScreen();
-    
-    virtual void updateValueToSet(int value);
-    virtual void setNewValue();
-	virtual void enableParameterButtonPushed();
-	virtual void disableParameterButtonPushed();
-    void updateCpuUsage(uint8_t value);
+  Screen_Module1_SettingsView();
+  virtual ~Screen_Module1_SettingsView() {}
+  virtual void setupScreen();
+  virtual void tearDownScreen();
+  
+  virtual void updateValueToSet(int value);
+  virtual void setNewValue();
+  virtual void enableParameterButtonPushed();
+  virtual void disableParameterButtonPushed();
+  void updateCpuUsage(uint8_t value);
 };
 
 #endif // SCREEN_MODULE1_SETTINGS_VIEW_HPP

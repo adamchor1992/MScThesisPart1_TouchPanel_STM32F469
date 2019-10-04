@@ -31,12 +31,12 @@ public:
   Model();
   
   /**
-  * Sets the modelListener to point to the currently active presenter. Called automatically
+  * Sets the m_ModelListener to point to the currently active presenter. Called automatically
   * when switching screen.
   */
   void bind(ModelListener* listener)
   {
-    modelListener = listener;
+    m_ModelListener = listener;
   }
   
   /**
@@ -48,78 +48,80 @@ public:
   void setNewValueToSet(UARTFrameStruct_t & s_UARTFrame);
   
   /*Module initialization parameter names*/
-  static uint8_t m_initParameter1Name[PAYLOAD_SIZE];
-  static uint8_t m_initParameter2Name[PAYLOAD_SIZE];
-  static uint8_t m_initParameter3Name[PAYLOAD_SIZE];
-  static uint8_t m_initParameter4Name[PAYLOAD_SIZE];
-  static uint8_t m_initParameter5Name[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter1Name[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter2Name[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter3Name[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter4Name[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter5Name[PAYLOAD_SIZE];
   
-  static uint8_t m_initParameter1NameStringLength;
-  static uint8_t m_initParameter2NameStringLength;
-  static uint8_t m_initParameter3NameStringLength;
-  static uint8_t m_initParameter4NameStringLength;
-  static uint8_t m_initParameter5NameStringLength;
+  static uint8_t m_InitParameter1NameStringLength;
+  static uint8_t m_InitParameter2NameStringLength;
+  static uint8_t m_InitParameter3NameStringLength;
+  static uint8_t m_InitParameter4NameStringLength;
+  static uint8_t m_InitParameter5NameStringLength;
   
   /*Module initialization parameter values*/
-  static uint8_t m_initParameter1Value[PAYLOAD_SIZE];
-  static uint8_t m_initParameter2Value[PAYLOAD_SIZE];
-  static uint8_t m_initParameter3Value[PAYLOAD_SIZE];
-  static uint8_t m_initParameter4Value[PAYLOAD_SIZE];
-  static uint8_t m_initParameter5Value[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter1Value[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter2Value[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter3Value[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter4Value[PAYLOAD_SIZE];
+  static uint8_t m_InitParameter5Value[PAYLOAD_SIZE];
   
-  static uint8_t m_initParameter1ValueStringLength;
-  static uint8_t m_initParameter2ValueStringLength;
-  static uint8_t m_initParameter3ValueStringLength;
-  static uint8_t m_initParameter4ValueStringLength;
-  static uint8_t m_initParameter5ValueStringLength;
+  static uint8_t m_InitParameter1ValueStringLength;
+  static uint8_t m_InitParameter2ValueStringLength;
+  static uint8_t m_InitParameter3ValueStringLength;
+  static uint8_t m_InitParameter4ValueStringLength;
+  static uint8_t m_InitParameter5ValueStringLength;
   
   /*Custom parameter names*/
-  static uint8_t m_parameter1Name[PAYLOAD_SIZE];
-  static uint8_t m_parameter2Name[PAYLOAD_SIZE];
-  static uint8_t m_parameter3Name[PAYLOAD_SIZE];
-  static uint8_t m_parameter4Name[PAYLOAD_SIZE];
+  static uint8_t m_Parameter1Name[PAYLOAD_SIZE];
+  static uint8_t m_Parameter2Name[PAYLOAD_SIZE];
+  static uint8_t m_Parameter3Name[PAYLOAD_SIZE];
+  static uint8_t m_Parameter4Name[PAYLOAD_SIZE];
   
-  static uint8_t m_parameter1NameLength;
-  static uint8_t m_parameter2NameLength;
-  static uint8_t m_parameter3NameLength;
-  static uint8_t m_parameter4NameLength;
+  static uint8_t m_Parameter1NameLength;
+  static uint8_t m_Parameter2NameLength;
+  static uint8_t m_Parameter3NameLength;
+  static uint8_t m_Parameter4NameLength;
   
   /*Settable parameter names*/
-  static uint8_t m_settableParameter1Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter2Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter3Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter4Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter5Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter6Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter7Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter8Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter9Name[PAYLOAD_SIZE];
-  static uint8_t m_settableParameter10Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter1Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter2Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter3Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter4Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter5Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter6Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter7Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter8Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter9Name[PAYLOAD_SIZE];
+  static uint8_t m_SettableParameter10Name[PAYLOAD_SIZE];
   
-  static uint8_t m_settableParameter1NameLength;
-  static uint8_t m_settableParameter2NameLength;
-  static uint8_t m_settableParameter3NameLength;
-  static uint8_t m_settableParameter4NameLength;
-  static uint8_t m_settableParameter5NameLength;
-  static uint8_t m_settableParameter6NameLength;
-  static uint8_t m_settableParameter7NameLength;
-  static uint8_t m_settableParameter8NameLength;
-  static uint8_t m_settableParameter9NameLength;
-  static uint8_t m_settableParameter10NameLength;
+  static uint8_t m_SettableParameter1NameLength;
+  static uint8_t m_SettableParameter2NameLength;
+  static uint8_t m_SettableParameter3NameLength;
+  static uint8_t m_SettableParameter4NameLength;
+  static uint8_t m_SettableParameter5NameLength;
+  static uint8_t m_SettableParameter6NameLength;
+  static uint8_t m_SettableParameter7NameLength;
+  static uint8_t m_SettableParameter8NameLength;
+  static uint8_t m_SettableParameter9NameLength;
+  static uint8_t m_SettableParameter10NameLength;
+  
+  static uint8_t m_ActiveModule;
+  static UART_HandleTypeDef* m_pHuart6;
   
 protected:
   /**
   * Pointer to the currently active presenter.
   */
-  ModelListener* modelListener;
+  ModelListener* m_ModelListener;
 private:
 #ifndef SIMULATOR
-  UART_HandleTypeDef m_huart6;
-  uint8_t* mp_receivedUART_TXValue;
-  uint8_t m_receivedInitFrameCount;
-  uint8_t m_connectionState;
-  enum m_connectionStates {UNCONNECTED, CONNECTED};
-  #endif
+  uint8_t* mp_ReceivedUART_TXValue;
+  uint8_t m_ReceivedInitFrameCount;
+  uint8_t m_ConnectionState;
+  enum m_ConnectionStates {UNCONNECTED, CONNECTED};
+#endif
 };
 
 #endif /* MODEL_HPP */

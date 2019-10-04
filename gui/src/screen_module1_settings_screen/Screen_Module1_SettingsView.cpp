@@ -4,17 +4,17 @@
 
 Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 {
-  #ifndef SIMULATOR     
-  uint8_t settableParameter1NameLength_int = Model::m_settableParameter1NameLength - '0';
-  uint8_t settableParameter2NameLength_int = Model::m_settableParameter2NameLength - '0';
-  uint8_t settableParameter3NameLength_int = Model::m_settableParameter3NameLength - '0';
-  uint8_t settableParameter4NameLength_int = Model::m_settableParameter4NameLength - '0';
-  uint8_t settableParameter5NameLength_int = Model::m_settableParameter5NameLength - '0';
-  uint8_t settableParameter6NameLength_int = Model::m_settableParameter6NameLength - '0';
-  uint8_t settableParameter7NameLength_int = Model::m_settableParameter7NameLength - '0';
-  uint8_t settableParameter8NameLength_int = Model::m_settableParameter8NameLength - '0';
-  uint8_t settableParameter9NameLength_int = Model::m_settableParameter9NameLength - '0';
-  uint8_t settableParameter10NameLength_int = Model::m_settableParameter10NameLength - '0';
+#ifndef SIMULATOR     
+  uint8_t settableParameter1NameLength_int = Model::m_SettableParameter1NameLength - '0';
+  uint8_t settableParameter2NameLength_int = Model::m_SettableParameter2NameLength - '0';
+  uint8_t settableParameter3NameLength_int = Model::m_SettableParameter3NameLength - '0';
+  uint8_t settableParameter4NameLength_int = Model::m_SettableParameter4NameLength - '0';
+  uint8_t settableParameter5NameLength_int = Model::m_SettableParameter5NameLength - '0';
+  uint8_t settableParameter6NameLength_int = Model::m_SettableParameter6NameLength - '0';
+  uint8_t settableParameter7NameLength_int = Model::m_SettableParameter7NameLength - '0';
+  uint8_t settableParameter8NameLength_int = Model::m_SettableParameter8NameLength - '0';
+  uint8_t settableParameter9NameLength_int = Model::m_SettableParameter9NameLength - '0';
+  uint8_t settableParameter10NameLength_int = Model::m_SettableParameter10NameLength - '0';
   
   uint16_t settableParameter1StringDisplay[10] = { 0 };
   uint16_t settableParameter2StringDisplay[10] = { 0 };
@@ -29,54 +29,54 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
   
   for (int i = 0; i < settableParameter1NameLength_int; i++)
   {
-    *(settableParameter1StringDisplay + i) = *(Model::m_settableParameter1Name + i);
+    *(settableParameter1StringDisplay + i) = *(Model::m_SettableParameter1Name + i);
   }
   
   for (int i = 0; i < settableParameter2NameLength_int; i++)
   {
-    *(settableParameter2StringDisplay + i) = *(Model::m_settableParameter2Name + i);
+    *(settableParameter2StringDisplay + i) = *(Model::m_SettableParameter2Name + i);
   }
   
   for (int i = 0; i < settableParameter3NameLength_int; i++)
   {
-    *(settableParameter3StringDisplay + i) = *(Model::m_settableParameter3Name + i);
+    *(settableParameter3StringDisplay + i) = *(Model::m_SettableParameter3Name + i);
   }
   
   for (int i = 0; i < settableParameter4NameLength_int; i++)
   {
-    *(settableParameter4StringDisplay + i) = *(Model::m_settableParameter4Name + i);
+    *(settableParameter4StringDisplay + i) = *(Model::m_SettableParameter4Name + i);
   }
   
   for (int i = 0; i < settableParameter5NameLength_int; i++)
   {
-    *(settableParameter5StringDisplay + i) = *(Model::m_settableParameter5Name + i);
+    *(settableParameter5StringDisplay + i) = *(Model::m_SettableParameter5Name + i);
   }
   
   for (int i = 0; i < settableParameter6NameLength_int; i++)
   {
-    *(settableParameter6StringDisplay + i) = *(Model::m_settableParameter6Name + i);
+    *(settableParameter6StringDisplay + i) = *(Model::m_SettableParameter6Name + i);
   }
   
   for (int i = 0; i < settableParameter7NameLength_int; i++)
   {
-    *(settableParameter7StringDisplay + i) = *(Model::m_settableParameter7Name + i);
+    *(settableParameter7StringDisplay + i) = *(Model::m_SettableParameter7Name + i);
   }
   
   for (int i = 0; i < settableParameter8NameLength_int; i++)
   {
-    *(settableParameter8StringDisplay + i) = *(Model::m_settableParameter8Name + i);
+    *(settableParameter8StringDisplay + i) = *(Model::m_SettableParameter8Name + i);
   }
   
   for (int i = 0; i < settableParameter9NameLength_int; i++)
   {
-    *(settableParameter9StringDisplay + i) = *(Model::m_settableParameter9Name + i);
+    *(settableParameter9StringDisplay + i) = *(Model::m_SettableParameter9Name + i);
   }
   
   for (int i = 0; i < settableParameter10NameLength_int; i++)
   {
-    *(settableParameter10StringDisplay + i) = *(Model::m_settableParameter10Name + i);
+    *(settableParameter10StringDisplay + i) = *(Model::m_SettableParameter10Name + i);
   }
-    
+  
   Unicode::snprintf(textArea_SettableParameter1NameBuffer, TEXTAREA_SETTABLEPARAMETER1NAME_SIZE, "%s", settableParameter1StringDisplay);
   textArea_SettableParameter1Name.invalidate();
   Unicode::snprintf(textArea_SettableParameter2NameBuffer, TEXTAREA_SETTABLEPARAMETER2NAME_SIZE, "%s", settableParameter2StringDisplay);
@@ -97,13 +97,11 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
   textArea_SettableParameter9Name.invalidate();
   Unicode::snprintf(textArea_SettableParameter10NameBuffer, TEXTAREA_SETTABLEPARAMETER10NAME_SIZE, "%s", settableParameter10StringDisplay);
   textArea_SettableParameter10Name.invalidate();
-  #endif
+#endif
 }
 
 void Screen_Module1_SettingsView::setupScreen()
 {
-  Screen_Module1_SettingsViewBase::setupScreen();
-  
 #ifndef SIMULATOR
   NVIC_DisableIRQ(USART6_IRQn);
 #endif
@@ -111,18 +109,15 @@ void Screen_Module1_SettingsView::setupScreen()
 
 void Screen_Module1_SettingsView::tearDownScreen()
 {
-  Screen_Module1_SettingsViewBase::tearDownScreen();
-  
 #ifndef SIMULATOR
-  extern UART_HandleTypeDef huart6;
   extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
-  
-  HAL_UART_DeInit(&huart6);
-  HAL_UART_Init(&huart6);
+
+  HAL_UART_DeInit(Model::m_pHuart6);
+  HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
 #endif
 }
 

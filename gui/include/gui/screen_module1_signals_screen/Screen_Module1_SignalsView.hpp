@@ -22,6 +22,8 @@ public:
   virtual void updateY_AxisMax(int value);
   
   virtual void pressedAutoRangeToggleButton();
+  
+  void updateCpuUsage(uint8_t value);
 };
 
 #endif // SCREEN_MODULE1_SIGNALS_VIEW_HPP

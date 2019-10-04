@@ -29,33 +29,33 @@ public:
   static void setGraphRanges(int bottom, int top, int right);
   
 private:
-  int m_tickCounter;
-  int m_value;
+  int m_TickCounter;
+  int m_Value;
   
-  Image m_background;
-  Graph m_graphYellow;
-  Graph m_graphRed;
-  Graph m_graphBlue;
-  Graph m_graphGreen;
-  Graph* m_graphs[4];
+  Image m_Background;
+  Graph m_GraphYellow;
+  Graph m_GraphRed;
+  Graph m_GraphBlue;
+  Graph m_GraphGreen;
+  Graph* m_Graphs[4];
   
-  bool m_graphRangeBottomChangedFlag;
-  bool m_graphRangeTopChangedFlag;
+  bool m_GraphRangeBottomChangedFlag;
+  bool m_GraphRangeTopChangedFlag;
     
   int m_PreviousYellow_X;
   int m_PreviousRed_X;
   int m_PreviousBlue_X;
   int m_PreviousGreen_X;
   
-  static bool m_parameter1GraphEnabled;
-  static bool m_parameter2GraphEnabled;
-  static bool m_parameter3GraphEnabled;
-  static bool m_parameter4GraphEnabled;
-  static bool m_autoRangeEnabled;
+  static bool m_Parameter1GraphEnabled;
+  static bool m_Parameter2GraphEnabled;
+  static bool m_Parameter3GraphEnabled;
+  static bool m_Parameter4GraphEnabled;
+  static bool m_AutoRangeEnabled;
   
-  static int m_graphRangeBottom;
-  static int m_graphRangeTop;
-  static int m_graphRangeRight;
+  static int m_GraphRangeBottom;
+  static int m_GraphRangeTop;
+  static int m_GraphRangeRight;
 };
 
 #endif // SCREEN_MODULE1_GRAPH_VIEW_HPP
