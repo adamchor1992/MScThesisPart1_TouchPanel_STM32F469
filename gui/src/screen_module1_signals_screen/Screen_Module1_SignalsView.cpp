@@ -54,6 +54,10 @@ Screen_Module1_SignalsView::Screen_Module1_SignalsView()
 
 void Screen_Module1_SignalsView::setupScreen()
 {  
+#ifndef SIMULATOR
+  NVIC_DisableIRQ(USART6_IRQn);
+#endif
+  
   /*Initialize buttons' states*/
   toggleButton_Parameter1.forceState(Screen_Module1_GraphView::m_Parameter1GraphEnabled);
   toggleButton_Parameter2.forceState(Screen_Module1_GraphView::m_Parameter2GraphEnabled);
@@ -77,6 +81,18 @@ void Screen_Module1_SignalsView::setupScreen()
 
 void Screen_Module1_SignalsView::tearDownScreen()
 {
+#ifndef SIMULATOR
+  /*Restart UART RX*/
+  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+  
+  HAL_UART_DeInit(Model::m_pHuart6);
+  HAL_UART_Init(Model::m_pHuart6);
+  
+  NVIC_EnableIRQ(USART6_IRQn);
+  
+  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+#endif
+  
   Screen_Module1_GraphView::setGraphRanges(slider_Y_AxisMin.getValue() * SCALE_FACTOR * (-1), slider_Y_AxisMax.getValue() * SCALE_FACTOR, slider_TimeRange.getValue() * SINE_PERIOD_DEGREES);
 }
 

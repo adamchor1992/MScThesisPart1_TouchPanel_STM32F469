@@ -2,17 +2,27 @@
 
 Screen_UART_RX_DebugView::Screen_UART_RX_DebugView()
 {
-
+  
 }
 
 void Screen_UART_RX_DebugView::setupScreen()
 {
-    Screen_UART_RX_DebugViewBase::setupScreen();
+#ifndef SIMULATOR
+  /*Restart UART RX*/
+  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+  
+  HAL_UART_DeInit(Model::m_pHuart6);
+  HAL_UART_Init(Model::m_pHuart6);
+  
+  NVIC_EnableIRQ(USART6_IRQn);
+  
+  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+#endif
 }
 
 void Screen_UART_RX_DebugView::tearDownScreen()
 {
-    Screen_UART_RX_DebugViewBase::tearDownScreen();
+  
 }
 
 void Screen_UART_RX_DebugView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame)

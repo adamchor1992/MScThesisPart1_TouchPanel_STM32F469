@@ -59,6 +59,18 @@ Screen_Module1_GraphView::Screen_Module1_GraphView()
 
 void Screen_Module1_GraphView::setupScreen()
 {
+#ifndef SIMULATOR
+  /*Restart UART RX*/
+  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+  
+  HAL_UART_DeInit(Model::m_pHuart6);
+  HAL_UART_Init(Model::m_pHuart6);
+  
+  NVIC_EnableIRQ(USART6_IRQn);
+  
+  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+#endif
+  
   m_TickCounter = 0;
   
   // Set the outer dimensions and color of the graphs
