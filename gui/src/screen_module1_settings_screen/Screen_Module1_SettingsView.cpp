@@ -2,77 +2,68 @@
 #include <gui/model/Model.hpp>
 #include <string>
 
+#define PAYLOAD_SIZE 10
+
 Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 {
 #ifndef SIMULATOR     
-  uint8_t settableParameter1NameLength_int = Model::m_SettableParameter1NameLength - '0';
-  uint8_t settableParameter2NameLength_int = Model::m_SettableParameter2NameLength - '0';
-  uint8_t settableParameter3NameLength_int = Model::m_SettableParameter3NameLength - '0';
-  uint8_t settableParameter4NameLength_int = Model::m_SettableParameter4NameLength - '0';
-  uint8_t settableParameter5NameLength_int = Model::m_SettableParameter5NameLength - '0';
-  uint8_t settableParameter6NameLength_int = Model::m_SettableParameter6NameLength - '0';
-  uint8_t settableParameter7NameLength_int = Model::m_SettableParameter7NameLength - '0';
-  uint8_t settableParameter8NameLength_int = Model::m_SettableParameter8NameLength - '0';
-  uint8_t settableParameter9NameLength_int = Model::m_SettableParameter9NameLength - '0';
-  uint8_t settableParameter10NameLength_int = Model::m_SettableParameter10NameLength - '0';
+  uint16_t settableParameter1StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter2StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter3StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter4StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter5StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter6StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter7StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter8StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter9StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameter10StringDisplay[PAYLOAD_SIZE] = { 0 };
   
-  uint16_t settableParameter1StringDisplay[10] = { 0 };
-  uint16_t settableParameter2StringDisplay[10] = { 0 };
-  uint16_t settableParameter3StringDisplay[10] = { 0 };
-  uint16_t settableParameter4StringDisplay[10] = { 0 };
-  uint16_t settableParameter5StringDisplay[10] = { 0 };
-  uint16_t settableParameter6StringDisplay[10] = { 0 };
-  uint16_t settableParameter7StringDisplay[10] = { 0 };
-  uint16_t settableParameter8StringDisplay[10] = { 0 };
-  uint16_t settableParameter9StringDisplay[10] = { 0 };
-  uint16_t settableParameter10StringDisplay[10] = { 0 };
-  
-  for (int i = 0; i < settableParameter1NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter1StringDisplay + i) = *(Model::m_SettableParameter1Name + i);
   }
   
-  for (int i = 0; i < settableParameter2NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter2StringDisplay + i) = *(Model::m_SettableParameter2Name + i);
   }
   
-  for (int i = 0; i < settableParameter3NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter3StringDisplay + i) = *(Model::m_SettableParameter3Name + i);
   }
   
-  for (int i = 0; i < settableParameter4NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter4StringDisplay + i) = *(Model::m_SettableParameter4Name + i);
   }
   
-  for (int i = 0; i < settableParameter5NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter5StringDisplay + i) = *(Model::m_SettableParameter5Name + i);
   }
   
-  for (int i = 0; i < settableParameter6NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter6StringDisplay + i) = *(Model::m_SettableParameter6Name + i);
   }
   
-  for (int i = 0; i < settableParameter7NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter7StringDisplay + i) = *(Model::m_SettableParameter7Name + i);
   }
   
-  for (int i = 0; i < settableParameter8NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter8StringDisplay + i) = *(Model::m_SettableParameter8Name + i);
   }
   
-  for (int i = 0; i < settableParameter9NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter9StringDisplay + i) = *(Model::m_SettableParameter9Name + i);
   }
   
-  for (int i = 0; i < settableParameter10NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(settableParameter10StringDisplay + i) = *(Model::m_SettableParameter10Name + i);
   }
@@ -187,7 +178,6 @@ void Screen_Module1_SettingsView::setNewValue()
   
   sliderValue = slider_Value.getValue();
   sliderFloatValue = double(sliderValue) * double(0.1);
-  
   
   char data_chars[10] = {0}; //data starts from 6th element up to [6 + length] element
   

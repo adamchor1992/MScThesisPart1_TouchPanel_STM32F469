@@ -75,11 +75,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 int fputc(int ch, FILE *f)
 {
- HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 0xFFFF);
- 
- //HAL_UART_Transmit(&huart3, (uint8_t*)ch, 1, DEBUG_UART_WAITING);
- 
- return ch;
+  HAL_UART_Transmit(&huart3, (uint8_t*)&ch, 1, DEBUG_UART_WAITING);
+  
+  return ch;
 }
 
 using namespace touchgfx;
@@ -113,7 +111,7 @@ int main(void)
               NULL,
               HIGH_PRIORITY,
               NULL);
-
+  
   /*Create message queues for UART task*/
   msgQueueUARTReceive = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
   msgQueueUART_RX_ProcessedFrame = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
@@ -151,7 +149,7 @@ static void GUI_Task(void* params)
 static void UART_RxTask(void* params)
 {  
   /*Structure to which UART task writes processed UART frame*/
-  UARTFrameStruct_t s_UARTFrame;
+  UARTFrameStruct_t s_UARTFrame = {0};
   
   /*Start receiving*/
   HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
@@ -180,16 +178,28 @@ static void UART_RxTask(void* params)
         BSP_LED_On(LED3);
         BSP_LED_On(LED4);
         
+        /*Reset frame to all zeroes*/
+        clearFrameTable(UART_ReceivedFrame);
+        
+        /*Reset frame structure to all zeroes*/
+        clearFrameStructure(s_UARTFrame);
+        
         /*Stop processing corrupted frame*/
         continue;
       }
       /*Frame is correct and can be further processed*/
-            
+      
       /*Frame parsing to structure*/  
       convertFrameTableToUARTstruct(UART_ReceivedFrame, s_UARTFrame);
-            
+      
       xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
-            
+      
+      /*Reset frame table to all zeroes*/
+      clearFrameTable(UART_ReceivedFrame);
+      
+      /*Reset frame structure to all zeroes*/
+      clearFrameStructure(s_UARTFrame);
+      
       taskEXIT_CRITICAL();
     }
   }
@@ -200,32 +210,32 @@ static void UART_TxTask(void* params)
   uint8_t UART_MessageToTransmit[FRAME_SIZE] = {0};
   
   printf("TX task initialized\n");
-
+  
   while(1)
   {  
     /*Take TxSemaphore*/
     if(xSemaphoreTake(UART_TxSemaphore, portMAX_DELAY) == pdPASS)
     {
-        taskENTER_CRITICAL(); 
-        
+      taskENTER_CRITICAL(); 
+      
 #ifdef DEBUG
-        printf("TX processing\n");
+      printf("TX processing\n");
 #endif
-        
-        xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);                  
-        appendCRCtoFrame(UART_MessageToTransmit);
-        
+      
+      xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);                  
+      appendCRCtoFrame(UART_MessageToTransmit);
+      
 #ifdef DEBUG
-        char frame[FRAME_NO_CRC + 1];
-        memcpy(frame, UART_MessageToTransmit,FRAME_NO_CRC);
-        frame[16] = '\n'; //line feed at the end of frame data
-        
-        printf("TX Frame is: %s\n", frame);
+      char frame[FRAME_NO_CRC + 1];
+      memcpy(frame, UART_MessageToTransmit,FRAME_NO_CRC);
+      frame[16] = '\n'; //line feed at the end of frame data
+      
+      printf("TX Frame is: %s\n", frame);
 #endif
-        
-        HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, UART_TX_WAITING); //show table contents
-        
-        taskEXIT_CRITICAL(); 
+      
+      HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, UART_TX_WAITING); //show table contents
+      
+      taskEXIT_CRITICAL(); 
     }
   }
 }

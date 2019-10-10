@@ -4,36 +4,32 @@
 
 #define SCALE_FACTOR 1000
 #define SINE_PERIOD_DEGREES 360
+#define PAYLOAD_SIZE 10
 
 Screen_Module1_SignalsView::Screen_Module1_SignalsView()
 {
   #ifndef SIMULATOR     
-  uint8_t parameter1NameLength_int = Model::m_Parameter1NameLength - '0';
-  uint8_t parameter2NameLength_int = Model::m_Parameter2NameLength - '0';
-  uint8_t parameter3NameLength_int = Model::m_Parameter3NameLength - '0';
-  uint8_t parameter4NameLength_int = Model::m_Parameter4NameLength - '0';
-  
   uint16_t parameter1StringDisplay[10] = { 0 };
   uint16_t parameter2StringDisplay[10] = { 0 };
   uint16_t parameter3StringDisplay[10] = { 0 };
   uint16_t parameter4StringDisplay[10] = { 0 };
   
-  for (int i = 0; i < parameter1NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(parameter1StringDisplay + i) = *(Model::m_Parameter1Name + i);
   }
   
-  for (int i = 0; i < parameter2NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(parameter2StringDisplay + i) = *(Model::m_Parameter2Name + i);
   }
   
-  for (int i = 0; i < parameter3NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(parameter3StringDisplay + i) = *(Model::m_Parameter3Name + i);
   }
   
-  for (int i = 0; i < parameter4NameLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(parameter4StringDisplay + i) = *(Model::m_Parameter4Name + i);
   }

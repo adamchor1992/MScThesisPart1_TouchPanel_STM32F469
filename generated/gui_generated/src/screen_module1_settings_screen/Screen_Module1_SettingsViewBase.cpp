@@ -29,17 +29,17 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     slider_Value.setValue(0);
     slider_Value.setNewValueCallback(sliderValueChangedCallback);
 
-    radioButtonParameter2.setXY(216, 106);
+    radioButtonParameter2.setXY(237, 106);
     radioButtonParameter2.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter2.setSelected(false);
     radioButtonParameter2.setDeselectionEnabled(false);
 
-    radioButtonParameter1.setXY(216, 66);
+    radioButtonParameter1.setXY(237, 66);
     radioButtonParameter1.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter1.setSelected(true);
     radioButtonParameter1.setDeselectionEnabled(false);
 
-    textArea_SettableParameter1Name.setPosition(0, 65, 216, 49);
+    textArea_SettableParameter1Name.setPosition(0, 65, 237, 49);
     textArea_SettableParameter1Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter1Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter1NameBuffer, TEXTAREA_SETTABLEPARAMETER1NAME_SIZE, "%s", TypedText(T_SINGLEUSEID356).getText());
@@ -63,12 +63,12 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_Title.setLinespacing(0);
     textArea_Title.setTypedText(TypedText(T_SINGLEUSEID137));
 
-    radioButtonParameter3.setXY(216, 146);
+    radioButtonParameter3.setXY(237, 146);
     radioButtonParameter3.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter3.setSelected(false);
     radioButtonParameter3.setDeselectionEnabled(false);
 
-    radioButtonParameter4.setXY(216, 186);
+    radioButtonParameter4.setXY(237, 186);
     radioButtonParameter4.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter4.setSelected(false);
     radioButtonParameter4.setDeselectionEnabled(false);
@@ -87,27 +87,27 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID142));
 
-    radioButtonParameter5.setXY(216, 226);
+    radioButtonParameter5.setXY(237, 226);
     radioButtonParameter5.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter5.setSelected(false);
     radioButtonParameter5.setDeselectionEnabled(false);
 
-    radioButtonParameter6.setXY(216, 266);
+    radioButtonParameter6.setXY(237, 266);
     radioButtonParameter6.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter6.setSelected(false);
     radioButtonParameter6.setDeselectionEnabled(false);
 
-    radioButtonParameter7.setXY(216, 306);
+    radioButtonParameter7.setXY(237, 306);
     radioButtonParameter7.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter7.setSelected(false);
     radioButtonParameter7.setDeselectionEnabled(false);
 
-    radioButtonParameter8.setXY(216, 346);
+    radioButtonParameter8.setXY(237, 346);
     radioButtonParameter8.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter8.setSelected(false);
     radioButtonParameter8.setDeselectionEnabled(false);
 
-    line1.setPosition(260, 47, 15, 432);
+    line1.setPosition(280, 47, 15, 432);
     line1Painter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     line1.setPainter(line1Painter);
     line1.setStart(5, 5);
@@ -122,12 +122,12 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonWithLabel_EnableParameter.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_EnableParameter.setAction(buttonCallback);
 
-    radioButtonParameter9.setXY(216, 386);
+    radioButtonParameter9.setXY(237, 386);
     radioButtonParameter9.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter9.setSelected(false);
     radioButtonParameter9.setDeselectionEnabled(false);
 
-    radioButtonParameter10.setXY(216, 426);
+    radioButtonParameter10.setXY(237, 426);
     radioButtonParameter10.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter10.setSelected(false);
     radioButtonParameter10.setDeselectionEnabled(false);
@@ -139,63 +139,63 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonWithLabel_DisableParameter.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_DisableParameter.setAction(buttonCallback);
 
-    textArea_SettableParameter2Name.setPosition(0, 105, 216, 49);
+    textArea_SettableParameter2Name.setPosition(0, 105, 237, 49);
     textArea_SettableParameter2Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter2Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter2NameBuffer, TEXTAREA_SETTABLEPARAMETER2NAME_SIZE, "%s", TypedText(T_SINGLEUSEID358).getText());
     textArea_SettableParameter2Name.setWildcard(textArea_SettableParameter2NameBuffer);
     textArea_SettableParameter2Name.setTypedText(TypedText(T_SINGLEUSEID357));
 
-    textArea_SettableParameter3Name.setPosition(0, 145, 216, 49);
+    textArea_SettableParameter3Name.setPosition(0, 145, 237, 49);
     textArea_SettableParameter3Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter3Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter3NameBuffer, TEXTAREA_SETTABLEPARAMETER3NAME_SIZE, "%s", TypedText(T_SINGLEUSEID360).getText());
     textArea_SettableParameter3Name.setWildcard(textArea_SettableParameter3NameBuffer);
     textArea_SettableParameter3Name.setTypedText(TypedText(T_SINGLEUSEID359));
 
-    textArea_SettableParameter4Name.setPosition(0, 185, 216, 49);
+    textArea_SettableParameter4Name.setPosition(0, 185, 237, 49);
     textArea_SettableParameter4Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter4Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter4NameBuffer, TEXTAREA_SETTABLEPARAMETER4NAME_SIZE, "%s", TypedText(T_SINGLEUSEID362).getText());
     textArea_SettableParameter4Name.setWildcard(textArea_SettableParameter4NameBuffer);
     textArea_SettableParameter4Name.setTypedText(TypedText(T_SINGLEUSEID361));
 
-    textArea_SettableParameter5Name.setPosition(0, 225, 216, 49);
+    textArea_SettableParameter5Name.setPosition(0, 225, 237, 49);
     textArea_SettableParameter5Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter5Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter5NameBuffer, TEXTAREA_SETTABLEPARAMETER5NAME_SIZE, "%s", TypedText(T_SINGLEUSEID364).getText());
     textArea_SettableParameter5Name.setWildcard(textArea_SettableParameter5NameBuffer);
     textArea_SettableParameter5Name.setTypedText(TypedText(T_SINGLEUSEID363));
 
-    textArea_SettableParameter6Name.setPosition(0, 265, 216, 49);
+    textArea_SettableParameter6Name.setPosition(0, 265, 237, 49);
     textArea_SettableParameter6Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter6Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter6NameBuffer, TEXTAREA_SETTABLEPARAMETER6NAME_SIZE, "%s", TypedText(T_SINGLEUSEID366).getText());
     textArea_SettableParameter6Name.setWildcard(textArea_SettableParameter6NameBuffer);
     textArea_SettableParameter6Name.setTypedText(TypedText(T_SINGLEUSEID365));
 
-    textArea_SettableParameter7Name.setPosition(0, 305, 216, 49);
+    textArea_SettableParameter7Name.setPosition(0, 305, 237, 49);
     textArea_SettableParameter7Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter7Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter7NameBuffer, TEXTAREA_SETTABLEPARAMETER7NAME_SIZE, "%s", TypedText(T_SINGLEUSEID368).getText());
     textArea_SettableParameter7Name.setWildcard(textArea_SettableParameter7NameBuffer);
     textArea_SettableParameter7Name.setTypedText(TypedText(T_SINGLEUSEID367));
 
-    textArea_SettableParameter8Name.setPosition(0, 345, 216, 49);
+    textArea_SettableParameter8Name.setPosition(0, 345, 237, 49);
     textArea_SettableParameter8Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter8Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter8NameBuffer, TEXTAREA_SETTABLEPARAMETER8NAME_SIZE, "%s", TypedText(T_SINGLEUSEID370).getText());
     textArea_SettableParameter8Name.setWildcard(textArea_SettableParameter8NameBuffer);
     textArea_SettableParameter8Name.setTypedText(TypedText(T_SINGLEUSEID369));
 
-    textArea_SettableParameter9Name.setPosition(0, 385, 216, 49);
+    textArea_SettableParameter9Name.setPosition(0, 385, 237, 49);
     textArea_SettableParameter9Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter9Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter9NameBuffer, TEXTAREA_SETTABLEPARAMETER9NAME_SIZE, "%s", TypedText(T_SINGLEUSEID372).getText());
     textArea_SettableParameter9Name.setWildcard(textArea_SettableParameter9NameBuffer);
     textArea_SettableParameter9Name.setTypedText(TypedText(T_SINGLEUSEID371));
 
-    textArea_SettableParameter10Name.setPosition(0, 425, 216, 49);
+    textArea_SettableParameter10Name.setPosition(0, 425, 237, 49);
     textArea_SettableParameter10Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_SettableParameter10Name.setLinespacing(0);
     Unicode::snprintf(textArea_SettableParameter10NameBuffer, TEXTAREA_SETTABLEPARAMETER10NAME_SIZE, "%s", TypedText(T_SINGLEUSEID374).getText());

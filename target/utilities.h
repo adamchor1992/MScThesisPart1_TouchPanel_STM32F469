@@ -11,5 +11,7 @@ void convertUARTstructToFrameTable(const UARTFrameStruct_t & frameStructure, uin
 uint32_t calculate_CRC32 (char *data, int len);
 bool checkCRC(const uint8_t frameTable[]);
 void appendCRCtoFrame(uint8_t frame[]);
+void clearFrameTable(uint8_t frameTable[]);
+void clearFrameStructure(UARTFrameStruct_t & frameStructure);
 
 #endif // UTILITIES_H

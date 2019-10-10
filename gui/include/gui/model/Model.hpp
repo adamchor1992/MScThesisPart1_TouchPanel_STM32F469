@@ -45,7 +45,7 @@ public:
   * the ModelListener interface.
   */
   void tick();
-  void setNewValueToSet(UARTFrameStruct_t & s_UARTFrame);
+  void setNewValueToSet(const UARTFrameStruct_t & frameStructure);
   
   /*Module initialization parameter names*/
   static uint8_t m_InitParameter1Name[PAYLOAD_SIZE];
@@ -53,37 +53,20 @@ public:
   static uint8_t m_InitParameter3Name[PAYLOAD_SIZE];
   static uint8_t m_InitParameter4Name[PAYLOAD_SIZE];
   static uint8_t m_InitParameter5Name[PAYLOAD_SIZE];
-  
-  static uint8_t m_InitParameter1NameStringLength;
-  static uint8_t m_InitParameter2NameStringLength;
-  static uint8_t m_InitParameter3NameStringLength;
-  static uint8_t m_InitParameter4NameStringLength;
-  static uint8_t m_InitParameter5NameStringLength;
-  
+    
   /*Module initialization parameter values*/
   static uint8_t m_InitParameter1Value[PAYLOAD_SIZE];
   static uint8_t m_InitParameter2Value[PAYLOAD_SIZE];
   static uint8_t m_InitParameter3Value[PAYLOAD_SIZE];
   static uint8_t m_InitParameter4Value[PAYLOAD_SIZE];
   static uint8_t m_InitParameter5Value[PAYLOAD_SIZE];
-  
-  static uint8_t m_InitParameter1ValueStringLength;
-  static uint8_t m_InitParameter2ValueStringLength;
-  static uint8_t m_InitParameter3ValueStringLength;
-  static uint8_t m_InitParameter4ValueStringLength;
-  static uint8_t m_InitParameter5ValueStringLength;
-  
+    
   /*Custom parameter names*/
   static uint8_t m_Parameter1Name[PAYLOAD_SIZE];
   static uint8_t m_Parameter2Name[PAYLOAD_SIZE];
   static uint8_t m_Parameter3Name[PAYLOAD_SIZE];
   static uint8_t m_Parameter4Name[PAYLOAD_SIZE];
-  
-  static uint8_t m_Parameter1NameLength;
-  static uint8_t m_Parameter2NameLength;
-  static uint8_t m_Parameter3NameLength;
-  static uint8_t m_Parameter4NameLength;
-  
+    
   /*Settable parameter names*/
   static uint8_t m_SettableParameter1Name[PAYLOAD_SIZE];
   static uint8_t m_SettableParameter2Name[PAYLOAD_SIZE];
@@ -95,20 +78,11 @@ public:
   static uint8_t m_SettableParameter8Name[PAYLOAD_SIZE];
   static uint8_t m_SettableParameter9Name[PAYLOAD_SIZE];
   static uint8_t m_SettableParameter10Name[PAYLOAD_SIZE];
-  
-  static uint8_t m_SettableParameter1NameLength;
-  static uint8_t m_SettableParameter2NameLength;
-  static uint8_t m_SettableParameter3NameLength;
-  static uint8_t m_SettableParameter4NameLength;
-  static uint8_t m_SettableParameter5NameLength;
-  static uint8_t m_SettableParameter6NameLength;
-  static uint8_t m_SettableParameter7NameLength;
-  static uint8_t m_SettableParameter8NameLength;
-  static uint8_t m_SettableParameter9NameLength;
-  static uint8_t m_SettableParameter10NameLength;
-  
+    
   static uint8_t m_ActiveModule;
+#ifndef SIMULATOR
   static UART_HandleTypeDef* m_pHuart6;
+#endif
   
 protected:
   /**

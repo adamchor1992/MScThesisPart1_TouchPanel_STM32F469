@@ -6,77 +6,65 @@
 
 Screen_Module1_InfoView::Screen_Module1_InfoView()
 {
-#ifndef SIMULATOR  
-  uint8_t initParameter1NameStringLength_int = Model::m_InitParameter1NameStringLength - '0';
-  uint8_t initParameter2NameStringLength_int = Model::m_InitParameter2NameStringLength - '0';
-  uint8_t initParameter3NameStringLength_int = Model::m_InitParameter3NameStringLength - '0';
-  uint8_t initParameter4NameStringLength_int = Model::m_InitParameter4NameStringLength - '0';
-  uint8_t initParameter5NameStringLength_int = Model::m_InitParameter5NameStringLength - '0';
-  
+#ifndef SIMULATOR    
   uint16_t initParameter1NameStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter2NameStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter3NameStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter4NameStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter5NameStringDisplay[PAYLOAD_SIZE] = { 0 };
-  
-  uint8_t initParameter1ValueStringLength_int = Model::m_InitParameter1ValueStringLength - '0';
-  uint8_t initParameter2ValueStringLength_int = Model::m_InitParameter2ValueStringLength - '0';
-  uint8_t initParameter3ValueStringLength_int = Model::m_InitParameter3ValueStringLength - '0';
-  uint8_t initParameter4ValueStringLength_int = Model::m_InitParameter4ValueStringLength - '0';
-  uint8_t initParameter5ValueStringLength_int = Model::m_InitParameter5ValueStringLength - '0';
-  
+    
   uint16_t initParameter1ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter2ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter3ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter4ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter5ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
   
-  for (int i = 0; i < initParameter1NameStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter1NameStringDisplay + i) = *(Model::m_InitParameter1Name + i);
   }
   
-  for (int i = 0; i < initParameter2NameStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter2NameStringDisplay + i) = *(Model::m_InitParameter2Name + i);
   }
   
-  for (int i = 0; i < initParameter3NameStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter3NameStringDisplay + i) = *(Model::m_InitParameter3Name + i);
   }
   
-  for (int i = 0; i < initParameter4NameStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter4NameStringDisplay + i) = *(Model::m_InitParameter4Name + i);
   }
   
-  for (int i = 0; i < initParameter5NameStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter5NameStringDisplay + i) = *(Model::m_InitParameter5Name + i);
   }
   
-  for (int i = 0; i < initParameter1ValueStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter1ValueStringDisplay + i) = *(Model::m_InitParameter1Value + i);
   }
   
-  for (int i = 0; i < initParameter2ValueStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter2ValueStringDisplay + i) = *(Model::m_InitParameter2Value + i);
   }
   
-  for (int i = 0; i < initParameter3ValueStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter3ValueStringDisplay + i) = *(Model::m_InitParameter3Value + i);
   }
   
-  for (int i = 0; i < initParameter4ValueStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter4ValueStringDisplay + i) = *(Model::m_InitParameter4Value + i);
   }
   
-  for (int i = 0; i < initParameter5ValueStringLength_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     *(initParameter5ValueStringDisplay + i) = *(Model::m_InitParameter5Value + i);
   }

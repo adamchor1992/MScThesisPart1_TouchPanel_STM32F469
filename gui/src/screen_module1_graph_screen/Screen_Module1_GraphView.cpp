@@ -201,7 +201,7 @@ void Screen_Module1_GraphView::handleTickEvent()
   value3 = value3 + increment;
   value4 = value4 + increment;
   
-  if (m_TickCounter >= m_graphRangeRight)
+  if (m_TickCounter >= m_GraphRangeRight)
   {
     m_GraphYellow.clear();
     m_GraphYellow.invalidate();
