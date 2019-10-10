@@ -16,22 +16,10 @@ Screen_Module1_SignalsView::Screen_Module1_SignalsView()
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    *(parameter1StringDisplay + i) = *(Model::m_Parameter1Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(parameter2StringDisplay + i) = *(Model::m_Parameter2Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(parameter3StringDisplay + i) = *(Model::m_Parameter3Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(parameter4StringDisplay + i) = *(Model::m_Parameter4Name + i);
+    parameter1StringDisplay[i] = Model::m_Parameter1Name[i];
+    parameter2StringDisplay[i] = Model::m_Parameter2Name[i];
+    parameter3StringDisplay[i] = Model::m_Parameter3Name[i];
+    parameter4StringDisplay[i] = Model::m_Parameter4Name[i];
   }
     
   Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", parameter1StringDisplay);

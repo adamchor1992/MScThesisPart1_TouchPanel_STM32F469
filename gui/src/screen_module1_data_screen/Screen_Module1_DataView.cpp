@@ -6,29 +6,17 @@
 Screen_Module1_DataView::Screen_Module1_DataView() : TextAreaClickedCallback(this, &Screen_Module1_DataView::TextAreaClickHandler)
 {
 #ifndef SIMULATOR       
-  uint16_t parameter1StringDisplay[10] = { 0 };
-  uint16_t parameter2StringDisplay[10] = { 0 };
-  uint16_t parameter3StringDisplay[10] = { 0 };
-  uint16_t parameter4StringDisplay[10] = { 0 };
+  uint16_t parameter1StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t parameter2StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t parameter3StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t parameter4StringDisplay[PAYLOAD_SIZE] = { 0 };
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    *(parameter1StringDisplay + i) = *(Model::m_Parameter1Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(parameter2StringDisplay + i) = *(Model::m_Parameter2Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(parameter3StringDisplay + i) = *(Model::m_Parameter3Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(parameter4StringDisplay + i) = *(Model::m_Parameter4Name + i);
+    parameter1StringDisplay[i] = Model::m_Parameter1Name[i];
+    parameter2StringDisplay[i] = Model::m_Parameter2Name[i];
+    parameter3StringDisplay[i] = Model::m_Parameter3Name[i];
+    parameter4StringDisplay[i] = Model::m_Parameter4Name[i];
   }
   
   Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", parameter1StringDisplay);
@@ -112,7 +100,7 @@ void Screen_Module1_DataView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame
   
   for (int i = 0; i < length_int; i++)
   {
-    *(stringToDisplay + i) = *(s_UARTFrame.payload + i);
+    stringToDisplay[i] = s_UARTFrame.payload[i];
   }
   
 #ifndef SIMULATOR

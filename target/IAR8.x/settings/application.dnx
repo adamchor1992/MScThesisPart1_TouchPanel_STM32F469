@@ -20,7 +20,7 @@
         <stlinkResetStrategy>0</stlinkResetStrategy>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3988866083</Checksum>
+        <Checksum>753339211</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -63,8 +63,12 @@
         <Show>1 1</Show>
         <Sort>4 0</Sort>
     </SfrWindow>
+    <struct_types>
+        <Fmt0>struct UARTFrameStruct_t-length	3	0</Fmt0>
+    </struct_types>
     <array_types>
-        <Fmt0>unsigned short[11]	5	0</Fmt0>
+        <Fmt0>uint16_t[10]	5	0</Fmt0>
+        <Fmt1>unsigned short[11]	5	0</Fmt1>
     </array_types>
     <watch_formats>
         <Fmt0>{W}1:runtimeStatsBuffer[150]	0	3</Fmt0>

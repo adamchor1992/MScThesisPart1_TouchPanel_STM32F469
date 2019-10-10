@@ -12,7 +12,7 @@ Screen_Module1_InfoView::Screen_Module1_InfoView()
   uint16_t initParameter3NameStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter4NameStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter5NameStringDisplay[PAYLOAD_SIZE] = { 0 };
-    
+  
   uint16_t initParameter1ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter2ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
   uint16_t initParameter3ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
@@ -21,52 +21,16 @@ Screen_Module1_InfoView::Screen_Module1_InfoView()
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    *(initParameter1NameStringDisplay + i) = *(Model::m_InitParameter1Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter2NameStringDisplay + i) = *(Model::m_InitParameter2Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter3NameStringDisplay + i) = *(Model::m_InitParameter3Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter4NameStringDisplay + i) = *(Model::m_InitParameter4Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter5NameStringDisplay + i) = *(Model::m_InitParameter5Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter1ValueStringDisplay + i) = *(Model::m_InitParameter1Value + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter2ValueStringDisplay + i) = *(Model::m_InitParameter2Value + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter3ValueStringDisplay + i) = *(Model::m_InitParameter3Value + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter4ValueStringDisplay + i) = *(Model::m_InitParameter4Value + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(initParameter5ValueStringDisplay + i) = *(Model::m_InitParameter5Value + i);
+    initParameter1NameStringDisplay[i] = Model::m_InitParameter1Name[i];
+    initParameter2NameStringDisplay[i] = Model::m_InitParameter2Name[i];
+    initParameter3NameStringDisplay[i] = Model::m_InitParameter3Name[i];
+    initParameter4NameStringDisplay[i] = Model::m_InitParameter4Name[i];
+    initParameter5NameStringDisplay[i] = Model::m_InitParameter5Name[i];
+    initParameter1ValueStringDisplay[i] = Model::m_InitParameter1Value[i];
+    initParameter2ValueStringDisplay[i] = Model::m_InitParameter2Value[i];
+    initParameter3ValueStringDisplay[i] = Model::m_InitParameter3Value[i];
+    initParameter4ValueStringDisplay[i] = Model::m_InitParameter4Value[i];
+    initParameter5ValueStringDisplay[i] = Model::m_InitParameter5Value[i];
   }
   
   Unicode::snprintf(textArea_InitParameter1NameBuffer, TEXTAREA_INITPARAMETER1NAME_SIZE, "%s", initParameter1NameStringDisplay);

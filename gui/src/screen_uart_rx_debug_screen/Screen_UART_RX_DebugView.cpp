@@ -49,7 +49,7 @@ void Screen_UART_RX_DebugView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFram
   
   for (int i = 0; i < s_UARTFrame.length; i++)
   {
-    *(stringToDisplay + i) = *(s_UARTFrame.payload + i);
+    stringToDisplay[i] = s_UARTFrame.payload[i];
   }
   
   Unicode::snprintf(textArea_ValueBuffer, s_UARTFrame.length + 1, "%s", stringToDisplay); //length + 1 because it is null-terminated string

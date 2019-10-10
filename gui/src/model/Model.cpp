@@ -116,10 +116,12 @@ void Model::tick()
             {
             case 'a':
               memcpy(m_InitParameter1Name, s_UARTFrame.payload, length_int);
+              printf("m_InitParameter1Name: %.10s\n", m_InitParameter1Name); 
               break;
               
             case 'b':
               memcpy(m_InitParameter2Name, s_UARTFrame.payload, length_int);
+              printf("m_InitParameter2Name: %.10s\n", m_InitParameter2Name); 
               break;
               
             case 'c':

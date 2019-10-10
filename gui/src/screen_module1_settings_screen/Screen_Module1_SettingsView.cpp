@@ -20,52 +20,16 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    *(settableParameter1StringDisplay + i) = *(Model::m_SettableParameter1Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter2StringDisplay + i) = *(Model::m_SettableParameter2Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter3StringDisplay + i) = *(Model::m_SettableParameter3Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter4StringDisplay + i) = *(Model::m_SettableParameter4Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter5StringDisplay + i) = *(Model::m_SettableParameter5Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter6StringDisplay + i) = *(Model::m_SettableParameter6Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter7StringDisplay + i) = *(Model::m_SettableParameter7Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter8StringDisplay + i) = *(Model::m_SettableParameter8Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter9StringDisplay + i) = *(Model::m_SettableParameter9Name + i);
-  }
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    *(settableParameter10StringDisplay + i) = *(Model::m_SettableParameter10Name + i);
+    settableParameter1StringDisplay[i] = Model::m_SettableParameter1Name[i];
+    settableParameter2StringDisplay[i] = Model::m_SettableParameter2Name[i];
+    settableParameter3StringDisplay[i] = Model::m_SettableParameter3Name[i];
+    settableParameter4StringDisplay[i] = Model::m_SettableParameter4Name[i];
+    settableParameter5StringDisplay[i] = Model::m_SettableParameter5Name[i];
+    settableParameter6StringDisplay[i] = Model::m_SettableParameter6Name[i];
+    settableParameter7StringDisplay[i] = Model::m_SettableParameter7Name[i];
+    settableParameter8StringDisplay[i] = Model::m_SettableParameter8Name[i];
+    settableParameter9StringDisplay[i] = Model::m_SettableParameter9Name[i];
+    settableParameter10StringDisplay[i] = Model::m_SettableParameter10Name[i];
   }
   
   Unicode::snprintf(textArea_SettableParameter1NameBuffer, TEXTAREA_SETTABLEPARAMETER1NAME_SIZE, "%s", settableParameter1StringDisplay);
