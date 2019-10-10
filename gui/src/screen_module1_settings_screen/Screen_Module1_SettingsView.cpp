@@ -57,6 +57,10 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 
 void Screen_Module1_SettingsView::setupScreen()
 {
+  /*Reinitialize slider to appropriate range*/
+  slider_Value.setValueRange(-1000, 1000);
+  slider_Value.setValue(0);
+  
 #ifndef SIMULATOR
   NVIC_DisableIRQ(USART6_IRQn);
 #endif
@@ -66,7 +70,7 @@ void Screen_Module1_SettingsView::tearDownScreen()
 {
 #ifndef SIMULATOR
   extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
-
+  
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
@@ -89,7 +93,7 @@ void Screen_Module1_SettingsView::setNewValue()
   /*Structure used to propagate UART frame contents up to Model class*/
   UARTFrameStruct_t s_UARTFrame;
   
-  uint16_t sliderValue;
+  int16_t sliderIntValue;
   double sliderFloatValue;
   
   s_UARTFrame.source = '1';
@@ -138,22 +142,34 @@ void Screen_Module1_SettingsView::setNewValue()
     s_UARTFrame.parameter = 'a';
   }
   
-  s_UARTFrame.sign = '1'; //sign is always positive
+  sliderIntValue = slider_Value.getValue();
   
-  sliderValue = slider_Value.getValue();
-  sliderFloatValue = double(sliderValue) * double(0.1);
+  if(sliderIntValue >= 0)
+  {
+    s_UARTFrame.sign = '1'; 
+  }
+  else
+  {
+    /*Make value positive so it is inserted as such to payload*/
+    sliderIntValue = sliderIntValue * (-1);
+    
+    /*Mark values as negative in UART frame*/
+    s_UARTFrame.sign = '2';
+  }
+
+  sliderFloatValue = double(sliderIntValue) * 0.1;
   
-  char data_chars[10] = {0}; //data starts from 6th element up to [6 + length] element
+  char sliderFloatValueBuffer[10] = {0}; //data starts from 6th element up to [6 + length] element
   
-  sprintf(data_chars, "%.1lf", sliderFloatValue);
+  sprintf(sliderFloatValueBuffer, "%.1lf", sliderFloatValue);
   
-  uint8_t length_int = strlen(data_chars);
+  uint8_t length_int = strlen(sliderFloatValueBuffer);
   
   s_UARTFrame.length = length_int + '0'; //convert to ASCII
   
   for (int i = 0; i < length_int; i++)
   {
-    s_UARTFrame.payload[i] = data_chars[i];
+    s_UARTFrame.payload[i] = sliderFloatValueBuffer[i];
   }
   
   this->presenter->notifyNewValueToSet(s_UARTFrame);
