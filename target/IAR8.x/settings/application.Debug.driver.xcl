@@ -20,6 +20,8 @@
 
 "--drv_catch_exceptions=0x000" 
 
+"--drv_interface_speed=4000" 
+
 "--drv_debug_ap=0" 
 
 "--stlink_probe=stlinkv2" 

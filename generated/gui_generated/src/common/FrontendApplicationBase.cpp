@@ -29,6 +29,8 @@
 #include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugPresenter.hpp>
 #include <gui/template_screen/TemplateView.hpp>
 #include <gui/template_screen/TemplatePresenter.hpp>
+#include <gui/screen1_screen/Screen1View.hpp>
+#include <gui/screen1_screen/Screen1Presenter.hpp>
 
 using namespace touchgfx;
 

@@ -54,6 +54,8 @@
 #include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugPresenter.hpp>
 #include <gui/template_screen/TemplateView.hpp>
 #include <gui/template_screen/TemplatePresenter.hpp>
+#include <gui/screen1_screen/Screen1View.hpp>
+#include <gui/screen1_screen/Screen1Presenter.hpp>
 
 
 /**
@@ -87,7 +89,8 @@ public:
             meta::TypeList< Screen_Module2_GraphView,
             meta::TypeList< Screen_UART_RX_DebugView,
             meta::TypeList< TemplateView,
-            meta::Nil > > > > > > > > > >
+            meta::TypeList< Screen1View,
+            meta::Nil > > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -110,7 +113,8 @@ public:
             meta::TypeList< Screen_Module2_GraphPresenter,
             meta::TypeList< Screen_UART_RX_DebugPresenter,
             meta::TypeList< TemplatePresenter,
-            meta::Nil > > > > > > > > > >
+            meta::TypeList< Screen1Presenter,
+            meta::Nil > > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**

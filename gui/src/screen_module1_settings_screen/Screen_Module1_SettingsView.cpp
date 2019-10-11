@@ -1,8 +1,10 @@
 #include <gui/screen_module1_settings_screen/Screen_Module1_SettingsView.hpp>
 #include <gui/model/Model.hpp>
 #include <string>
+#include <cmath>
 
 #define PAYLOAD_SIZE 10
+#define EXPONENT_OFFSET -8
 
 Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 {
@@ -58,7 +60,7 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 void Screen_Module1_SettingsView::setupScreen()
 {
   /*Reinitialize slider to appropriate range*/
-  slider_Value.setValueRange(-1000, 1000);
+  slider_Value.setValueRange(-100, 100);
   slider_Value.setValue(0);
   
 #ifndef SIMULATOR
@@ -157,17 +159,24 @@ void Screen_Module1_SettingsView::setNewValue()
     s_UARTFrame.sign = '2';
   }
 
+  /*Scale by 0.1*/
   sliderFloatValue = double(sliderIntValue) * 0.1;
+ 
+  int exponentChosen = scrollWheel_Exponents.getSelectedItem() + EXPONENT_OFFSET;
+ 
+  /*Take exponent into account*/
+  sliderFloatValue = sliderFloatValue * pow(10, exponentChosen);
   
-  char sliderFloatValueBuffer[10] = {0}; //data starts from 6th element up to [6 + length] element
+  printf("Item number selected: %d\n", scrollWheel_Exponents.getSelectedItem());
+  printf("Exponent chosen: %d\n", exponentChosen);
   
-  sprintf(sliderFloatValueBuffer, "%.1lf", sliderFloatValue);
+  char sliderFloatValueBuffer[PAYLOAD_SIZE] = {0};
   
-  uint8_t length_int = strlen(sliderFloatValueBuffer);
+  sprintf(sliderFloatValueBuffer, "%10lf", sliderFloatValue);
+
+  s_UARTFrame.length = PAYLOAD_SIZE + '0'; //convert 10 to ASCII ':'
   
-  s_UARTFrame.length = length_int + '0'; //convert to ASCII
-  
-  for (int i = 0; i < length_int; i++)
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
     s_UARTFrame.payload[i] = sliderFloatValueBuffer[i];
   }
@@ -290,6 +299,11 @@ void Screen_Module1_SettingsView::disableParameterButtonPushed()
   s_UARTFrame.payload[6] = 0;
   
   this->presenter->notifyNewValueToSet(s_UARTFrame);
+}
+
+void Screen_Module1_SettingsView::scrollWheel_ExponentsUpdateItem(ExponentContainer& item, int16_t itemIndex)
+{
+  item.setNumber(itemIndex, EXPONENT_OFFSET);
 }
 
 void Screen_Module1_SettingsView::updateCpuUsage(uint8_t value)

@@ -719,6 +719,11 @@
               <FilePath>../../gui/src/common/abstractgraph.cpp</FilePath>
             </File>
             <File>
+              <FileName>ExponentContainer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/containers/exponentcontainer.cpp</FilePath>
+            </File>
+            <File>
               <FileName>FrontendApplication.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/common/frontendapplication.cpp</FilePath>
@@ -737,6 +742,16 @@
               <FileName>Model.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/model/model.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen1Presenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen1_screen/screen1presenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen1View.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/screen1_screen/screen1view.cpp</FilePath>
             </File>
             <File>
               <FileName>Screen_MainPresenter.cpp</FileName>
@@ -954,6 +969,11 @@
               <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_on.cpp</FilePath>
             </File>
             <File>
+              <FileName>ExponentContainerBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/gui_generated/src/containers/exponentcontainerbase.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Font_verdana_10_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/font_verdana_10_4bpp.cpp</FilePath>
@@ -997,6 +1017,11 @@
               <FileName>LanguageGb.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/texts/src/languagegb.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Screen1ViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/gui_generated/src/screen1_screen/screen1viewbase.cpp</FilePath>
             </File>
             <File>
               <FileName>Screen_MainViewBase.cpp</FileName>

@@ -226,11 +226,9 @@ static void UART_TxTask(void* params)
       appendCRCtoFrame(UART_MessageToTransmit);
       
 #ifdef DEBUG
-      char frame[FRAME_NO_CRC + 1];
+      char frame[FRAME_NO_CRC];
       memcpy(frame, UART_MessageToTransmit,FRAME_NO_CRC);
-      frame[16] = '\n'; //line feed at the end of frame data
-      
-      printf("TX Frame is: %s\n", frame);
+      printf("TX Frame is: %.16s\n", frame);
 #endif
       
       HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, UART_TX_WAITING); //show table contents

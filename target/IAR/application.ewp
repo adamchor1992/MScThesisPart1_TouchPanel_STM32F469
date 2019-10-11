@@ -1040,6 +1040,18 @@
           </file>
         </group>
         <group>
+          <name>containers</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\containers\ExponentContainerBase.cpp</name>
+          </file>
+        </group>
+        <group>
+          <name>screen1_screen</name>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp</name>
+          </file>
+        </group>
+        <group>
           <name>screen_main_screen</name>
           <file>
             <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_main_screen\Screen_MainViewBase.cpp</name>
@@ -1200,9 +1212,24 @@
         </file>
       </group>
       <group>
+        <name>containers</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\containers\ExponentContainer.cpp</name>
+        </file>
+      </group>
+      <group>
         <name>model</name>
         <file>
           <name>$PROJ_DIR$\..\..\gui\src\model\Model.cpp</name>
+        </file>
+      </group>
+      <group>
+        <name>screen1_screen</name>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen1_screen\Screen1Presenter.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\gui\src\screen1_screen\Screen1View.cpp</name>
         </file>
       </group>
       <group>

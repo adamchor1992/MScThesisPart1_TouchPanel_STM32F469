@@ -8,23 +8,24 @@
 
 Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonCallback(this, &Screen_Module1_SettingsViewBase::buttonCallbackHandler),
-    sliderValueChangedCallback(this, &Screen_Module1_SettingsViewBase::sliderValueChangedCallbackHandler)
+    sliderValueChangedCallback(this, &Screen_Module1_SettingsViewBase::sliderValueChangedCallbackHandler),
+    updateItemCallback(this, &Screen_Module1_SettingsViewBase::updateItemCallbackHandler)
 {
     CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    buttonWithLabel_SetValue.setXY(495, 359);
+    buttonWithLabel_SetValue.setXY(437, 325);
     buttonWithLabel_SetValue.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_SetValue.setLabelText(TypedText(T_SINGLEUSEID131));
     buttonWithLabel_SetValue.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setAction(buttonCallback);
 
-    slider_Value.setXY(392, 296);
+    slider_Value.setXY(298, 256);
     slider_Value.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
-    slider_Value.setupHorizontalSlider(2, 19, 2, 0, 310);
+    slider_Value.setupHorizontalSlider(2, 19, 2, 0, 311);
     slider_Value.setValueRange(0, 1000);
     slider_Value.setValue(0);
     slider_Value.setNewValueCallback(sliderValueChangedCallback);
@@ -46,7 +47,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_SettableParameter1Name.setWildcard(textArea_SettableParameter1NameBuffer);
     textArea_SettableParameter1Name.setTypedText(TypedText(T_SINGLEUSEID133));
 
-    textArea_ValueToSet.setPosition(402, 209, 398, 49);
+    textArea_ValueToSet.setPosition(348, 198, 252, 49);
     textArea_ValueToSet.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ValueToSet.setLinespacing(0);
     Unicode::snprintf(textArea_ValueToSetBuffer, TEXTAREA_VALUETOSET_SIZE, "%s", TypedText(T_SINGLEUSEID135).getText());
@@ -115,7 +116,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     line1.setLineWidth(4);
     line1.setLineEndingStyle(Line::ROUND_CAP_ENDING);
 
-    buttonWithLabel_EnableParameter.setXY(450, 65);
+    buttonWithLabel_EnableParameter.setXY(307, 54);
     buttonWithLabel_EnableParameter.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_PRESSED_ID));
     buttonWithLabel_EnableParameter.setLabelText(TypedText(T_SINGLEUSEID195));
     buttonWithLabel_EnableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -132,7 +133,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     radioButtonParameter10.setSelected(false);
     radioButtonParameter10.setDeselectionEnabled(false);
 
-    buttonWithLabel_DisableParameter.setXY(450, 145);
+    buttonWithLabel_DisableParameter.setXY(307, 114);
     buttonWithLabel_DisableParameter.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_PRESSED_ID));
     buttonWithLabel_DisableParameter.setLabelText(TypedText(T_SINGLEUSEID250));
     buttonWithLabel_DisableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -202,6 +203,23 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_SettableParameter10Name.setWildcard(textArea_SettableParameter10NameBuffer);
     textArea_SettableParameter10Name.setTypedText(TypedText(T_SINGLEUSEID373));
 
+    scrollWheel_Exponents.setPosition(624, 186, 176, 70);
+    scrollWheel_Exponents.setHorizontal(false);
+    scrollWheel_Exponents.setCircular(false);
+    scrollWheel_Exponents.setEasingEquation(EasingEquations::backEaseOut);
+    scrollWheel_Exponents.setSwipeAcceleration(10);
+    scrollWheel_Exponents.setDragAcceleration(10);
+    scrollWheel_Exponents.setNumberOfItems(17);
+    scrollWheel_Exponents.setSelectedItemOffset(0);
+    scrollWheel_Exponents.setDrawableSize(53, 11);
+    scrollWheel_Exponents.setDrawables(scrollWheel_ExponentsListItems, updateItemCallback);
+    scrollWheel_Exponents.animateToItem(8, 0);
+
+    textArea_MultiplicationSign.setXY(600, 195);
+    textArea_MultiplicationSign.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_MultiplicationSign.setLinespacing(0);
+    textArea_MultiplicationSign.setTypedText(TypedText(T_SINGLEUSEID380));
+
     add(backgroundBox_Black);
     add(buttonWithLabel_SetValue);
     add(slider_Value);
@@ -233,6 +251,8 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     add(textArea_SettableParameter8Name);
     add(textArea_SettableParameter9Name);
     add(textArea_SettableParameter10Name);
+    add(scrollWheel_Exponents);
+    add(textArea_MultiplicationSign);
     radioButtonGroup.add(radioButtonParameter2);
     radioButtonGroup.add(radioButtonParameter1);
     radioButtonGroup.add(radioButtonParameter3);
@@ -247,7 +267,11 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
 
 void Screen_Module1_SettingsViewBase::setupScreen()
 {
-
+    scrollWheel_Exponents.initialize();
+    for (int i = 0; i < scrollWheel_ExponentsListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_ExponentsListItems[i].initialize();
+    }
 }
 
 void Screen_Module1_SettingsViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
@@ -290,5 +314,15 @@ void Screen_Module1_SettingsViewBase::sliderValueChangedCallbackHandler(const to
         //When slider_Value value changed call virtual function
         //Call updateValueToSet
         updateValueToSet(value);
+    }
+}
+
+void Screen_Module1_SettingsViewBase::updateItemCallbackHandler(DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
+{
+    if (items == &scrollWheel_ExponentsListItems)
+    {
+        Drawable* d = items->getDrawable(containerIndex);
+        ExponentContainer* cc = (ExponentContainer*)d;
+        scrollWheel_ExponentsUpdateItem(*cc, itemIndex);
     }
 }

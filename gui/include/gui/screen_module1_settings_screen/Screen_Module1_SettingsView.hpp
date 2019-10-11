@@ -16,6 +16,7 @@ public:
   virtual void setNewValue();
   virtual void enableParameterButtonPushed();
   virtual void disableParameterButtonPushed();
+  virtual void scrollWheel_ExponentsUpdateItem(ExponentContainer& item, int16_t itemIndex);
   void updateCpuUsage(uint8_t value);
 };
 

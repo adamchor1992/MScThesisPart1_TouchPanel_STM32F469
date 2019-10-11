@@ -15,8 +15,10 @@
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
-#include <touchgfx/widgets/RadioButtonGroup.hpp>
+#include <touchgfx/containers/scrollers/ScrollWheel.hpp>
+#include <gui/containers/ExponentContainer.hpp>
 
+#include <touchgfx/widgets/RadioButtonGroup.hpp>
 class Screen_Module1_SettingsViewBase : public touchgfx::View<Screen_Module1_SettingsPresenter>
 {
 public:
@@ -24,6 +26,11 @@ public:
     virtual ~Screen_Module1_SettingsViewBase() {}
 
     virtual void setupScreen();
+
+    virtual void scrollWheel_ExponentsUpdateItem(ExponentContainer& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
 
     /*
      * Custom Action Handlers
@@ -88,6 +95,10 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter8Name;
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter9Name;
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter10Name;
+    touchgfx::ScrollWheel scrollWheel_Exponents;
+    touchgfx::DrawableListItems<ExponentContainer, 3> scrollWheel_ExponentsListItems;
+
+    touchgfx::TextArea textArea_MultiplicationSign;
     touchgfx::RadioButtonGroup<10> radioButtonGroup;
 
     /*
@@ -125,12 +136,14 @@ private:
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
+    void updateItemCallbackHandler(DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
     /*
      * Callback Declarations
      */
     touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
+    touchgfx::Callback<Screen_Module1_SettingsViewBase, DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
 
     /*
      * Canvas Buffer Size
