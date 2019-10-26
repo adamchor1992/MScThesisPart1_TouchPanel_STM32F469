@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -292,9 +292,8 @@ void SlideMenu::remove(Drawable& d)
     menuContainer.remove(d);
 }
 
-void SlideMenu::stateChangeButtonClickedHandler(const AbstractButton& button)
+void SlideMenu::stateChangeButtonClickedHandler(const AbstractButton& /*button*/)
 {
-    (void)button;
     if (currentState == COLLAPSED)
     {
         animateToState(EXPANDED);
@@ -310,9 +309,8 @@ void SlideMenu::stateChangeButtonClickedHandler(const AbstractButton& button)
     }
 }
 
-void SlideMenu::animationEndedHandler(const MoveAnimator<Container>& container)
+void SlideMenu::animationEndedHandler(const MoveAnimator<Container>& /*container*/)
 {
-    (void)container;
     resetExpandedStateTimer();
     stateChangeButton.setTouchable(true);
 

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -38,7 +38,7 @@ class AbstractPainterBW : public AbstractPainter
 public:
     AbstractPainterBW()
     {
-        assert(HAL::lcd().bitDepth() == 1 && "The chosen painter only works with 1bpp displays");
+        assert(compatibleFramebuffer(Bitmap::BW) && "The chosen painter only works with BW displays");
     }
 
     virtual ~AbstractPainterBW() {}

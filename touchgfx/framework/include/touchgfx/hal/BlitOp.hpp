@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -52,7 +52,8 @@ enum BlitOperations
 struct BlitOp
 {
     uint32_t        operation;  ///< The operation to perform @see BlitOperations
-    const uint16_t* pSrc;          ///< Pointer to the source
+    const uint16_t* pSrc;          ///< Pointer to the source (pixels or indexes)
+    const uint8_t*  pClut;         ///< Pointer to the source CLUT entires
     uint16_t*       pDst;          ///< Pointer to the destination
     uint16_t        nSteps;        ///< The number of pixels in a line
     uint16_t        nLoops;        ///< The number of lines
@@ -60,6 +61,8 @@ struct BlitOp
     uint16_t        dstLoopStride; ///< The number of bytes to stride the destination after every loop
     colortype       color;         ///< Color to fill
     uint8_t         alpha;         ///< The alpha to use
+    uint8_t         srcFormat;     ///< The source format @see BitmapFormat
+    uint8_t         dstFormat;     ///< The destination format @see BitmapFormat
 };
 } // namespace touchgfx
 #endif // BLITOP_HPP

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -147,8 +147,8 @@ public:
     }
 
 protected:
-    uint16_t* fbCopy;   ///< Pointer to the animation storage in which the pixel data for this snapshot is stored. Zero if no snapshot has been made.
-    uint8_t   alpha;  ///< The alpha with which to draw this snapshot.
+    BitmapId bitmapId; ///< BitmapId where copy is stored s copied to.
+    uint8_t  alpha;    ///< The alpha with which to draw this snapshot.
 };
 } // namespace touchgfx
 

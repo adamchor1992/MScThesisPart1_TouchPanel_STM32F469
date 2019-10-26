@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -14,6 +14,7 @@
   */
 
 #include <touchgfx/widgets/TiledImage.hpp>
+#include <touchgfx/hal/HAL.hpp>
 
 namespace touchgfx
 {
@@ -112,7 +113,8 @@ Rect TiledImage::getSolidRect() const
         solidRect2.x += bitmap.getWidth();
         if (solidRect.x < 0)
         {
-            solidRect.width = MAX(solidRect.right(), 0);
+            int16_t right = solidRect.right();
+            solidRect.width = MAX(right, 0);
             solidRect.x = 0;
         }
         if (solidRect2.right() > getWidth())
@@ -135,7 +137,8 @@ Rect TiledImage::getSolidRect() const
         solidRect2.y += bitmap.getHeight();
         if (solidRect.y < 0)
         {
-            solidRect.height = MAX(solidRect.bottom(), 0);
+            int16_t bottom = solidRect.bottom();
+            solidRect.height = MAX(bottom, 0);
             solidRect.y = 0;
         }
         if (solidRect2.bottom() > getHeight())

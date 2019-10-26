@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -36,27 +36,24 @@ void AbstractPainterRGB888::render(uint8_t* ptr,
             uint8_t red, green, blue, alpha;
             if (renderNext(red, green, blue, alpha))
             {
-                if (widgetAlpha < 255)
-                {
-                    alpha = static_cast<uint8_t>((alpha * widgetAlpha) / 255);
-                }
-                uint32_t combinedAlpha = (*covers) * alpha;
+                uint8_t combinedAlpha = LCD::div255((*covers) * LCD::div255(alpha * widgetAlpha));
                 covers++;
 
-                if (combinedAlpha == (255u * 255u)) // max alpha=255 on "*covers" and max alpha=255 on "widgetAlpha"
+                if (combinedAlpha == 0xFF) // max alpha=0xFF on "*covers" and max alpha=0xFF on "widgetAlpha"
                 {
                     // Render a solid pixel
                     renderPixel(reinterpret_cast<uint16_t*>(p), red, green, blue);
                 }
                 else
                 {
+                    uint8_t ialpha = 0xFF - combinedAlpha;
                     uint8_t p_blue = p[0];
                     uint8_t p_green = p[1];
                     uint8_t p_red = p[2];
                     renderPixel(reinterpret_cast<uint16_t*>(p),
-                                static_cast<uint8_t>((((red - p_red)   * combinedAlpha) + (p_red << 16)) >> 16),
-                                static_cast<uint8_t>((((green - p_green) * combinedAlpha) + (p_green << 16)) >> 16),
-                                static_cast<uint8_t>((((blue - p_blue)  * combinedAlpha) + (p_blue << 16)) >> 16));
+                                LCD::div255(red * combinedAlpha + p_red * ialpha),
+                                LCD::div255(green * combinedAlpha + p_green * ialpha),
+                                LCD::div255(blue * combinedAlpha + p_blue * ialpha));
                 }
             }
             p += 3;

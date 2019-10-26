@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -16,8 +16,8 @@
 #ifndef FONT_HPP
 #define FONT_HPP
 
-#include <touchgfx/TextProvider.hpp>
 #include <touchgfx/hal/Types.hpp>
+#include <touchgfx/Unicode.hpp>
 
 namespace touchgfx
 {
@@ -30,7 +30,7 @@ namespace touchgfx
  */
 enum GlyphFlags
 {
-    GLYPH_DATA_FORMAT_A4 = 0x01, ///< Indicates whether or not glyph data was generated in A4 data format for an ST platform.
+    GLYPH_DATA_KERNINGTABLEPOS_BIT8_10 = 0x07, ///< The 8th, 9th and 10th bit of the kerningTablePos
     GLYPH_DATA_WIDTH_BIT8 = 0x08, ///< The 9th bit of "width"
     GLYPH_DATA_HEIGHT_BIT8 = 0x10, ///< The 9th bit of "height"
     GLYPH_DATA_TOP_BIT8 = 0x20, ///< The 9th bit of "top"
@@ -56,9 +56,23 @@ typedef struct
     uint8_t              _top;             ///< Vertical offset from baseline of the glyph
     int8_t               left;             ///< Horizontal offset from the left of the glyph
     uint8_t              _advance;         ///< Width of the glyph (including space to the left and right)
-    uint8_t              kerningTablePos;  ///< Where are the kerning information for this glyph stored in the kerning table
+    uint8_t              _kerningTablePos; ///< Where are the kerning information for this glyph stored in the kerning table
     uint8_t              kerningTableSize; ///< How many entries are there in the kerning table (following kerningTablePos) for this glyph
     uint8_t              flags;            ///< Additional glyph flags (font encoding and extra precision for width/height/top/advance)
+
+    /**
+     * @fn uint16_t kerningTablePos() const
+     *
+     * @brief Gets the "kerningTablePos" value where the 8th and 9th bits is stored in flags.
+     *
+     *        Gets the "kerningTablePos" value where the 8th and 9th bits is stored in flags.
+     *
+     * @return the right value of "kerningTablePos".
+     */
+    uint16_t kerningTablePos() const
+    {
+        return (((uint16_t)(flags & GLYPH_DATA_KERNINGTABLEPOS_BIT8_10)) << 8) | (uint16_t)_kerningTablePos;
+    }
 
     /**
      * @fn uint16_t width() const
@@ -100,6 +114,27 @@ typedef struct
     int16_t top() const
     {
         return (int16_t)(((flags & GLYPH_DATA_TOP_BIT9) ? 0xFE00 : 0) | ((flags & GLYPH_DATA_TOP_BIT8) ? 0x100 : 0) | (uint16_t)_top);
+    }
+
+    /**
+     * @fn void setTop(int16_t newTop)
+     *
+     * @brief Sets a top
+     *
+     * @param newTop The new top.
+     */
+    void setTop(int16_t newTop)
+    {
+        _top = newTop & 0xFF;
+        flags &= ~(GLYPH_DATA_TOP_BIT8 | GLYPH_DATA_TOP_BIT9);
+        if (newTop & 0x100)
+        {
+            flags |= GLYPH_DATA_TOP_BIT8;
+        }
+        if (newTop & 0x200)
+        {
+            flags |= GLYPH_DATA_TOP_BIT9;
+        }
     }
 
     /**
@@ -162,11 +197,14 @@ public:
      *
      * @brief Gets the glyph data associated with the specified unicode.
      *
-     *        Gets the glyph data associated with the specified unicode.
+     *        Gets the glyph data associated with the specified unicode. Please note that in case
+     *        of Thai letters where diacritics can be placed relative to the previous character(s),
+     *        please use TextProvider::getGlyph() instead as it will make a GlyphNode that will be
+     *        correct with respect to X/Y position.
      *
-     * @param unicode            The character to look up.
-     * @param pixelData          Pointer to the pixel data for the glyph if the glyph is found.
-     *                           This is set by this method.
+     * @param       unicode      The character to look up.
+     * @param       pixelData    Pointer to the pixel data for the glyph if the glyph is found. This
+     *                           is set by this method.
      * @param [out] bitsPerPixel Reference where to place the number of bits per pixel.
      *
      * @return A pointer to the glyph node or null if the glyph was not found.
@@ -178,11 +216,16 @@ public:
      *
      * @brief Gets the glyph data associated with the specified unicode.
      *
-     *        Gets the glyph data associated with the specified unicode.
+     *        Gets the glyph data associated with the specified unicode. Please note that in case
+     *        of Thai letters where diacritics can be placed relative to the previous character(s),
+     *        please use TextProvider::getGlyph() instead as it will make a GlyphNode that will be
+     *        correct with respect to X/Y position.
      *
      * @param unicode The character to look up.
      *
      * @return A pointer to the glyph node or null if the glyph was not found.
+     *
+     * @see TextProvider::getGlyph
      */
     virtual const GlyphNode* getGlyph(Unicode::UnicodeChar unicode) const
     {
@@ -363,6 +406,20 @@ public:
     }
 
     /**
+     * @fn virtual uint8_t Font::getDataFormatA4() const
+     *
+     * @brief Are the glyphs saved using ST A4 format.
+     *
+     *        Are the glyphs saved using ST A4 format.
+     *
+     * @return True if the font is stored using A4 format, false otherwise.
+     */
+    virtual uint8_t getDataFormatA4() const
+    {
+        return a4;
+    }
+
+    /**
      * @fn uint8_t Font::getMaxPixelsLeft() const
      *
      * @brief Gets maximum pixels left.
@@ -425,6 +482,20 @@ public:
      */
     virtual uint16_t getNumberOfLines(const Unicode::UnicodeChar* text, ...) const;
 
+    /**
+     * @fn virtual uint16_t* getGSUBTable() const;
+     *
+     * @brief Gets GSUB table.
+     *
+     *        Gets GSUB table.
+     *
+     * @return The GSUB table or null if font has GSUB no table
+     */
+    virtual const uint16_t* getGSUBTable() const
+    {
+        return 0;
+    }
+
 protected:
 
     /**
@@ -478,7 +549,7 @@ protected:
     static StringWidthFunctionPointer getStringWidthFunction;   ///< The getStringWidth function, either LTR (supporting LTR only) or RTL (supporting RTL and LTR)
 
     /**
-     * @fn Font::Font(uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar)
+     * @fn Font::Font(uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t dataFormatA4, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar)
      *
      * @brief Constructor.
      *
@@ -487,17 +558,28 @@ protected:
      * @param height       The font height in pixels.
      * @param pixBelowBase The number of pixels below the base line.
      * @param bitsPerPixel The number of bits per pixel.
+     * @param dataFormatA4 The glyphs are saved using ST A4 format.
      * @param maxLeft      The maximum left extend for a glyph in the font.
      * @param maxRight     The maximum right extend for a glyph in the font.
      * @param fallbackChar The fallback character for the typography in case no glyph is
      *                     available.
      * @param ellipsisChar The ellipsis character used for truncating long texts.
      */
-    Font(uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar) : fontHeight(height), pixelsBelowBaseline(pixBelowBase), bPerPixel(bitsPerPixel), maxPixelsLeft(maxLeft), maxPixelsRight(maxRight), falllbackCharacter(fallbackChar), ellipsisCharacter(ellipsisChar) { }
+    Font(uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t dataFormatA4, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar)
+        : fontHeight(height),
+          pixelsBelowBaseline(pixBelowBase),
+          bPerPixel(bitsPerPixel),
+          a4(dataFormatA4),
+          maxPixelsLeft(maxLeft),
+          maxPixelsRight(maxRight),
+          falllbackCharacter(fallbackChar),
+          ellipsisCharacter(ellipsisChar)
+    { }
 
     uint16_t fontHeight;                     ///< The font height in pixels
     uint8_t  pixelsBelowBaseline;            ///< The number of pixels below the base line
-    uint8_t  bPerPixel;                      ///< The number of bits per pixel
+    uint8_t  bPerPixel : 7;                  ///< The number of bits per pixel
+    uint8_t  a4 : 1;                         ///< Are glyphs encoded using A4 format
     uint8_t  maxPixelsLeft;                  ///< The maximum number of pixels a glyph extends to the left
     uint8_t  maxPixelsRight;                 ///< The maximum number of pixels a glyph extends to the right
     Unicode::UnicodeChar falllbackCharacter; ///< The fallback character to use when no glyph exists for the wanted character

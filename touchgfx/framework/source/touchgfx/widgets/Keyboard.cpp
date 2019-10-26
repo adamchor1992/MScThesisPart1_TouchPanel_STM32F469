@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -258,7 +258,7 @@ void Keyboard::handleClickEvent(const ClickEvent& evt)
 
 void Keyboard::handleDragEvent(const DragEvent& evt)
 {
-    if (highlightImage.isVisible() && (!highlightImage.getRect().intersect(static_cast<int16_t>(evt.getNewX()), static_cast<int16_t>(evt.getNewY()))) && (cancelIsEmitted == false))
+    if (highlightImage.isVisible() && (!highlightImage.getRect().intersect(static_cast<int16_t>(evt.getNewX()), static_cast<int16_t>(evt.getNewY()))) && (!cancelIsEmitted))
     {
         // Send a CANCEL click event, if user has dragged out of currently pressed/highlighted key.
         touchgfx::ClickEvent cancelEvent(touchgfx::ClickEvent::CANCEL, static_cast<int16_t>(evt.getOldX()), static_cast<int16_t>(evt.getOldY()));

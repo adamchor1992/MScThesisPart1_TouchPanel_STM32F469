@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -182,6 +182,18 @@ protected:
         uint16_t       animationDelay;               ///< A delay that is applied before animation start. Expressed in ticks.
         uint16_t       animationDuration;            ///< The complete duration of the animation. Expressed in ticks.
         EasingEquation animationProgressionEquation; ///< EasingEquation expressing the development of the value during the animation.
+    };
+
+    /**
+     * @enum AnimationState
+     *
+     * @brief Values that represent different states during an animation.
+     */
+    enum AnimationState
+    {
+        ANIMATION_FINISHED = 0, ///< The animation is finished
+        ANIMATION_DELAYED,      ///< The animation is in the delay mode
+        ANIMATION_RUNNING       ///< The animation is currently runnnig
     };
 
     AnimationSetting animations[NUMBER_OF_ANIMATION_PARAMETERS];    ///< Descriptions of the animation of specific animation parameters

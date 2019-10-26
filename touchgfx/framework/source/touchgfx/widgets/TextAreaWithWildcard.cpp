@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -27,15 +27,15 @@ int16_t TextAreaWithWildcardBase::calculateTextHeight(const Unicode::UnicodeChar
     va_list pArg;
     va_start(pArg, format);
 
-    TextProvider textProvider;
-    textProvider.initialize(format, pArg);
-
-    int16_t numLines = HAL::lcd().getNumLines(textProvider, wideTextAction, typedText.getTextDirection(), typedText.getFont(), getWidth());
-
     const Font* fontToDraw = typedText.getFont();
     int16_t textHeight = fontToDraw->getMinimumTextHeight();
 
+    TextProvider textProvider;
+    textProvider.initialize(format, pArg, fontToDraw->getGSUBTable());
+
+    int16_t numLines = LCD::getNumLines(textProvider, wideTextAction, typedText.getTextDirection(), typedText.getFont(), getWidth());
+
     va_end(pArg);
-    return numLines * textHeight + (numLines - 1) * linespace;
+    return (textHeight + linespace > 0) ? (numLines * textHeight + (numLines - 1) * linespace) : (numLines > 0) ? (textHeight) : 0;
 }
 } // namespace touchgfx

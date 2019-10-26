@@ -71,76 +71,76 @@
  * type lists in this class.
  *
  */
-class FrontendHeapBase : public MVPHeap
+class FrontendHeapBase : public touchgfx::MVPHeap
 {
 public:
     /**
      * A list of all view types. Must end with meta::Nil.
      * @note All view types used in the application MUST be added to this list!
      */
-    typedef meta::TypeList< Screen_MainView,
-            meta::TypeList< Screen_Module1_DataView,
-            meta::TypeList< Screen_Module1_SettingsView,
-            meta::TypeList< Screen_Module1_GraphView,
-            meta::TypeList< Screen_Module1_SignalsView,
-            meta::TypeList< Screen_Module1_InfoView,
-            meta::TypeList< Screen_Module2_DataView,
-            meta::TypeList< Screen_Module2_SettingsView,
-            meta::TypeList< Screen_Module2_GraphView,
-            meta::TypeList< Screen_UART_RX_DebugView,
-            meta::TypeList< TemplateView,
-            meta::TypeList< Screen1View,
-            meta::Nil > > > > > > > > > > >
+    typedef touchgfx::meta::TypeList< Screen_MainView,
+            touchgfx::meta::TypeList< Screen_Module1_DataView,
+            touchgfx::meta::TypeList< Screen_Module1_SettingsView,
+            touchgfx::meta::TypeList< Screen_Module1_GraphView,
+            touchgfx::meta::TypeList< Screen_Module1_SignalsView,
+            touchgfx::meta::TypeList< Screen_Module1_InfoView,
+            touchgfx::meta::TypeList< Screen_Module2_DataView,
+            touchgfx::meta::TypeList< Screen_Module2_SettingsView,
+            touchgfx::meta::TypeList< Screen_Module2_GraphView,
+            touchgfx::meta::TypeList< Screen_UART_RX_DebugView,
+            touchgfx::meta::TypeList< TemplateView,
+            touchgfx::meta::TypeList< Screen1View,
+            touchgfx::meta::Nil > > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
      * Determine (compile time) the View type of largest size.
      */
-    typedef meta::select_type_maxsize< GeneratedViewTypes >::type MaxGeneratedViewType;
+    typedef touchgfx::meta::select_type_maxsize< GeneratedViewTypes >::type MaxGeneratedViewType;
 
     /**
      * A list of all presenter types. Must end with meta::Nil.
      * @note All presenter types used in the application MUST be added to this list!
      */
-    typedef meta::TypeList< Screen_MainPresenter,
-            meta::TypeList< Screen_Module1_DataPresenter,
-            meta::TypeList< Screen_Module1_SettingsPresenter,
-            meta::TypeList< Screen_Module1_GraphPresenter,
-            meta::TypeList< Screen_Module1_SignalsPresenter,
-            meta::TypeList< Screen_Module1_InfoPresenter,
-            meta::TypeList< Screen_Module2_DataPresenter,
-            meta::TypeList< Screen_Module2_SettingsPresenter,
-            meta::TypeList< Screen_Module2_GraphPresenter,
-            meta::TypeList< Screen_UART_RX_DebugPresenter,
-            meta::TypeList< TemplatePresenter,
-            meta::TypeList< Screen1Presenter,
-            meta::Nil > > > > > > > > > > >
+    typedef touchgfx::meta::TypeList< Screen_MainPresenter,
+            touchgfx::meta::TypeList< Screen_Module1_DataPresenter,
+            touchgfx::meta::TypeList< Screen_Module1_SettingsPresenter,
+            touchgfx::meta::TypeList< Screen_Module1_GraphPresenter,
+            touchgfx::meta::TypeList< Screen_Module1_SignalsPresenter,
+            touchgfx::meta::TypeList< Screen_Module1_InfoPresenter,
+            touchgfx::meta::TypeList< Screen_Module2_DataPresenter,
+            touchgfx::meta::TypeList< Screen_Module2_SettingsPresenter,
+            touchgfx::meta::TypeList< Screen_Module2_GraphPresenter,
+            touchgfx::meta::TypeList< Screen_UART_RX_DebugPresenter,
+            touchgfx::meta::TypeList< TemplatePresenter,
+            touchgfx::meta::TypeList< Screen1Presenter,
+            touchgfx::meta::Nil > > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**
      * Determine (compile time) the Presenter type of largest size.
      */
-    typedef meta::select_type_maxsize< GeneratedPresenterTypes >::type MaxGeneratedPresenterType;
+    typedef touchgfx::meta::select_type_maxsize< GeneratedPresenterTypes >::type MaxGeneratedPresenterType;
 
     /**
      * A list of all transition types. Must end with meta::Nil.
      * @note All transition types used in the application MUST be added to this list!
      */
-    typedef meta::TypeList< NoTransition,
-            meta::Nil
+    typedef touchgfx::meta::TypeList< touchgfx::NoTransition,
+            touchgfx::meta::Nil
             > GeneratedTransitionTypes;
 
     /**
      * Determine (compile time) the Transition type of largest size.
      */
-    typedef meta::select_type_maxsize< GeneratedTransitionTypes >::type MaxGeneratedTransitionType;
+    typedef touchgfx::meta::select_type_maxsize< GeneratedTransitionTypes >::type MaxGeneratedTransitionType;
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
         app.gotoScreen_MainScreenNoTransition();
     }
 protected:
-    FrontendHeapBase(AbstractPartition& presenters, AbstractPartition& views, AbstractPartition& transitions, FrontendApplication& app)
+    FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)
         : MVPHeap(presenters, views, transitions, app)
     {
 

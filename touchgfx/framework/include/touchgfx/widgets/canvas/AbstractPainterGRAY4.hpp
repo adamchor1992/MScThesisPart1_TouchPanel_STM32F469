@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -38,7 +38,7 @@ class AbstractPainterGRAY4 : public AbstractPainter
 public:
     AbstractPainterGRAY4()
     {
-        assert(HAL::lcd().bitDepth() == 4 && "The chosen painter only works with 4bpp displays");
+        assert(compatibleFramebuffer(Bitmap::GRAY4) && "The chosen painter only works with GRAY4 displays");
     }
 
     virtual ~AbstractPainterGRAY4() {}

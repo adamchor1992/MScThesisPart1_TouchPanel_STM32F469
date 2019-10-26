@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -124,14 +124,14 @@ protected:
      *
      * @brief Handles the pressed updated.
      */
-    virtual void handlePressedUpdated() {};
+    virtual void handlePressedUpdated() {}
 
     /**
      * @fn virtual void AbstractButtonContainer::handleAlphaUpdated()
      *
      * @brief Handles the alpha updated.
      */
-    virtual void handleAlphaUpdated() {};
+    virtual void handleAlphaUpdated() {}
 };
 } // namespace touchgfx
 

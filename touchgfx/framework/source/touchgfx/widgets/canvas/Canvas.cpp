@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -48,28 +48,39 @@ Canvas::Canvas(const CanvasWidget* _widget, const Rect& invalidatedArea) : widge
 
     // Create the rendering buffer
     uint8_t* RESTRICT buf = reinterpret_cast<uint8_t*>(HAL::getInstance()->lockFrameBuffer());
-    int stride = 0;
+    int stride = HAL::lcd().framebufferStride();
     uint8_t offset = 0;
-    uint8_t bitDepth = HAL::lcd().bitDepth();
-    switch (bitDepth)
+    switch (HAL::lcd().framebufferFormat())
     {
-    case 1: // BW
-    case 2: // GRAY2
-    case 4: // GRAY4
-        {
-            uint8_t bitsPerByte = 8 / bitDepth;
-            stride = (HAL::FRAME_BUFFER_WIDTH + (bitsPerByte - 1)) / bitsPerByte;
-            buf += (dirtyAreaAbsolute.x / bitsPerByte) + dirtyAreaAbsolute.y * stride;
-            offset = dirtyAreaAbsolute.x % bitsPerByte;
-        }
+    case Bitmap::BW:
+        buf += (dirtyAreaAbsolute.x / 8) + dirtyAreaAbsolute.y * stride;
+        offset = dirtyAreaAbsolute.x % 8;
         break;
-    case 16: // RGB565
-    case 24: // RGB888
-    case 32: // ARGB8888
-        stride = HAL::FRAME_BUFFER_WIDTH * (bitDepth / 8);
-        buf += dirtyAreaAbsolute.x * (bitDepth / 8) + dirtyAreaAbsolute.y * stride;
+    case Bitmap::GRAY2:
+        buf += (dirtyAreaAbsolute.x / 4) + dirtyAreaAbsolute.y * stride;
+        offset = dirtyAreaAbsolute.x % 4;
         break;
-    default:
+    case Bitmap::GRAY4:
+        buf += (dirtyAreaAbsolute.x / 2) + dirtyAreaAbsolute.y * stride;
+        offset = dirtyAreaAbsolute.x % 2;
+        break;
+    case Bitmap::RGB565:
+        buf += dirtyAreaAbsolute.x * 2 + dirtyAreaAbsolute.y * stride;
+        break;
+    case Bitmap::RGB888:
+        buf += dirtyAreaAbsolute.x * 3 + dirtyAreaAbsolute.y * stride;
+        break;
+    case Bitmap::RGBA2222:
+    case Bitmap::BGRA2222:
+    case Bitmap::ARGB2222:
+    case Bitmap::ABGR2222:
+    case Bitmap::L8:
+        buf += dirtyAreaAbsolute.x + dirtyAreaAbsolute.y * stride;
+        break;
+    case Bitmap::ARGB8888:
+        buf += dirtyAreaAbsolute.x * 4 + dirtyAreaAbsolute.y * stride;
+        break;
+    case Bitmap::BW_RLE:
         assert(0 && "Unsupported bit depth");
         break;
     }

@@ -1,7 +1,7 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.10.0 distribution.
+# This file is part of the TouchGFX 4.12.3 distribution.
 #
-# <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+# <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
 #
 # This software component is licensed by ST under Ultimate Liberty license
@@ -19,10 +19,13 @@ require 'pathname'
 
 class FileIO
   def self.write_file(file_name, contents)
-    FileUtils.mkdir_p(File.dirname(file_name))
-    File.open(file_name, 'w') { |f| f.write(contents) }
+    write_file_silent(file_name, contents)
     callingPath = Pathname.new($calling_path)
     filePath = Pathname.new(file_name)
     puts "Generating #{filePath.relative_path_from(callingPath)}"
+  end
+  def self.write_file_silent(file_name, contents)
+    FileUtils.mkdir_p(File.dirname(file_name))
+    File.open(file_name, 'w') { |f| f.write(contents) }
   end
 end

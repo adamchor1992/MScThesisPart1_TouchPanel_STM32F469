@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -20,7 +20,11 @@
 #include <touchgfx/hal/BlitOp.hpp>
 #include <touchgfx/hal/Gestures.hpp>
 #include <touchgfx/hal/DMA.hpp>
+#include <touchgfx/hal/FrameBufferAllocator.hpp>
+#include <touchgfx/Bitmap.hpp>
 #include <touchgfx/Unicode.hpp>
+#include <touchgfx/Drawable.hpp>
+#include <touchgfx/lcd/LCD.hpp>
 
 #include <platform/driver/touch/TouchController.hpp>
 #include <platform/driver/button/ButtonController.hpp>
@@ -29,7 +33,6 @@
 namespace touchgfx
 {
 class UIEventListener;
-class LCD;
 
 /**
  * @class HAL HAL.hpp touchgfx/hal/HAL.hpp
@@ -61,6 +64,7 @@ public:
         touchController(touchCtrl),
         mcuInstrumentation(0),
         buttonController(0),
+        frameBufferAllocator(0),
         taskDelayFunc(0),
         frameBuffer0(0),
         frameBuffer1(0),
@@ -68,6 +72,7 @@ public:
         refreshStrategy(REFRESH_STRATEGY_DEFAULT),
         fingerSize(1),
         lockDMAToPorch(true),
+        auxiliaryLCD(0),
         touchSampleRate(1),
         mcuLoadPct(0),
         vSyncCnt(0),
@@ -290,7 +295,14 @@ public:
      */
     static LCD& lcd()
     {
-        return instance->lcdRef;
+        if (instance->useAuxiliaryLCD && instance->auxiliaryLCD)
+        {
+            return *instance->auxiliaryLCD;
+        }
+        else
+        {
+            return instance->lcdRef;
+        }
     }
 
     /**
@@ -398,11 +410,42 @@ public:
     virtual void blitSetTransparencyKey(uint16_t key);
 
     /**
-     * @fn virtual void HAL::blitCopy(const uint16_t* pSrc, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels);
+     * @fn virtual void HAL::blitCopy(const uint16_t* pSrc, const uint8_t* pClut, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels, uint16_t dstWidth, Bitmap::BitmapFormat srcFormat, Bitmap::BitmapFormat dstFormat)
      *
      * @brief Blits a 2D source-array to the frame buffer performing alpha-blending.
      *
-     *        Blits a 2D source-array to the frame buffer performing alpha-blending(and
+     *        Blits a 2D source-array to the frame buffer performing alpha-blending (and
+     *        transparency keying) as specified.
+     *
+     * @note Alpha=255 is assumed "solid" and shall be used if HAL does not support
+     *       BLIT_OP_COPY_WITH_ALPHA.
+     *
+     * @param pSrc                 The source-array pointer (points to first value to copy)
+     * @param pClut                The CLUT pointer (points to CLUT header data which include
+     *                             the type and size of this CLUT followed by colors data)
+     * @param x                    The destination x coordinate on the frame buffer.
+     * @param y                    The destination y coordinate on the frame buffer.
+     * @param width                The width desired area of the source 2D array.
+     * @param height               The height of desired area of the source 2D array.
+     * @param srcWidth             The distance (in elements) from first value of first line, to
+     *                             first value of second line (the source 2D array width)
+     * @param alpha                The alpha value to use for blending (255 = solid, no blending)
+     * @param hasTransparentPixels If true, this data copy contains transparent pixels and require
+     *                             hardware support for that to be enabled.
+     * @param dstWidth             The distance (in elements) from first value of first line, to
+     *                             first value of second line (the destination 2D array width)
+     * @param srcFormat            The source buffer color format (default is the framebuffer format)
+     * @param dstFormat            The destination buffer color format (default is the framebuffer
+     *                             format)
+     */
+    void blitCopy(const uint16_t* pSrc, const uint8_t* pClut, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels, uint16_t dstWidth, Bitmap::BitmapFormat srcFormat, Bitmap::BitmapFormat dstFormat);
+
+    /**
+     * @fn virtual void HAL::blitCopy(const uint16_t* pSrc, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels, uint16_t dstWidth, Bitmap::BitmapFormat srcFormat, Bitmap::BitmapFormat dstFormat);
+     *
+     * @brief Blits a 2D source-array to the frame buffer performing alpha-blending.
+     *
+     *        Blits a 2D source-array to the frame buffer performing alpha-blending (and
      *        transparency keying) as specified.
      *
      * @note Alpha=255 is assumed "solid" and shall be used if HAL does not support
@@ -416,8 +459,37 @@ public:
      * @param srcWidth             The distance (in elements) from first value of first line, to
      *                             first value of second line (the source 2D array width)
      * @param alpha                The alpha value to use for blending (255 = solid, no blending)
-     * @param hasTransparentPixels If true, this data copy contains transparent pixels and
-     *                             require hardware support for that to be enabled.
+     * @param hasTransparentPixels If true, this data copy contains transparent pixels and require
+     *                             hardware support for that to be enabled.
+     * @param dstWidth             The distance (in elements) from first value of first line, to
+     *                             first value of second line (the destination 2D array width)
+     * @param srcFormat            The source buffer color format (default is the framebuffer format)
+     * @param dstFormat            The destination buffer color format (default is the framebuffer
+     *                             format)
+     */
+    virtual void blitCopy(const uint16_t* pSrc, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels, uint16_t dstWidth, Bitmap::BitmapFormat srcFormat, Bitmap::BitmapFormat dstFormat);
+
+    /**
+     * @fn virtual void HAL::blitCopy(const uint16_t* pSrc, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels)
+     *
+     * @brief Blits a 2D source-array to the frame buffer performing alpha-blending.
+     *
+     *        Blits a 2D source-array to the frame buffer performing alpha-blending (and
+     *        transparency keying) as specified using the default lcd format.
+     *
+     * @note Alpha=255 is assumed "solid" and shall be used if HAL does not support
+     *       BLIT_OP_COPY_WITH_ALPHA.
+     *
+     * @param pSrc                 The source-array pointer (points to first value to copy)
+     * @param x                    The destination x coordinate on the frame buffer.
+     * @param y                    The destination y coordinate on the frame buffer.
+     * @param width                The width desired area of the source 2D array.
+     * @param height               The height of desired area of the source 2D array.
+     * @param srcWidth             The distance (in elements) from first value of first line, to
+     *                             first value of second line (the source 2D array width)
+     * @param alpha                The alpha value to use for blending (255 = solid, no blending)
+     * @param hasTransparentPixels If true, this data copy contains transparent pixels and require
+     *                             hardware support for that to be enabled.
      */
     virtual void blitCopy(const uint16_t* pSrc, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels);
 
@@ -463,13 +535,37 @@ public:
     virtual void blitCopyGlyph(const uint8_t* pSrc, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, colortype color, uint8_t alpha, BlitOperations operation);
 
     /**
+     * @fn virtual void HAL::blitFill(colortype color, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t alpha, uint16_t dstWidth, Bitmap::BitmapFormat dstFormat);
+     *
+     * @brief Blits a color value to the frame buffer performing alpha-blending (and transparency
+     *        keying) as specified.
+     *
+     *        Blits a color value to the frame buffer performing alpha-blending (and transparency
+     *        keying) as specified.
+     *
+     * @note Alpha=255 is assumed "solid" and shall be used if HAL does not support
+     *       BLIT_OP_FILL_WITH_ALPHA.
+     *
+     * @param color     The desired fill-color.
+     * @param x         The destination x coordinate on the frame buffer.
+     * @param y         The destination y coordinate on the frame buffer.
+     * @param width     The width desired area of the source 2D array.
+     * @param height    The height of desired area of the source 2D array.
+     * @param alpha     The alpha value to use for blending (255 = solid, no blending)
+     * @param dstWidth  The distance (in elements) from first value of first line, to first value of
+     *                  second line (the destination 2D array width)
+     * @param dstFormat The destination buffer color format (default is the framebuffer format)
+     */
+    virtual void blitFill(colortype color, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t alpha, uint16_t dstWidth, Bitmap::BitmapFormat dstFormat);
+
+    /**
      * @fn virtual void HAL::blitFill(colortype color, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint8_t alpha);
      *
      * @brief Blits a color value to the frame buffer performing alpha-blending (and transparency
      *        keying) as specified.
      *
-     *        Blits a color value to the frame buffer performing alpha-blending (and
-     *        transparency keying) as specified.
+     *        Blits a color value to the frame buffer performing alpha-blending (and transparency
+     *        keying) as specified.
      *
      * @note Alpha=255 is assumed "solid" and shall be used if HAL does not support
      *       BLIT_OP_FILL_WITH_ALPHA.
@@ -712,56 +808,48 @@ public:
      * @brief Sets the address used for frame buffers, usually located in external memory.
      *
      *        Sets the address used for frame buffers, usually located in external memory. Will
-     *        reserve memory for one or two frame buffers based on display size. Will
-     *        optionally also reserve memory for a third frame buffer used for animationStorage.
+     *        reserve memory for one or two frame buffers based on display size. Will optionally
+     *        also reserve memory for a third frame buffer used for animationStorage.
      *
-     * @param [in] adr            Starting address to use for frame buffers.
-     * @param depth               Depth of each pixel in bits, default is 16.
-     * @param useDoubleBuffering  If true, reserve memory for an extra frame buffer.
-     * @param useAnimationStorage If true, reserve memory for animation storage.
+     * @param [in] adr                 Starting address to use for frame buffers.
+     * @param      depth               (Optional) Depth of each pixel in bits, default is 16.
+     * @param      useDoubleBuffering  (Optional) If true, reserve memory for an extra frame buffer.
+     * @param      useAnimationStorage (Optional) If true, reserve memory for animation storage.
+     *
+     * @deprecated Use the setFramaBufferStartAddress with 'format' parameter instead of 'depth'
      */
     virtual void setFrameBufferStartAddress(void* adr, uint16_t depth = 16, bool useDoubleBuffering = true, bool useAnimationStorage = true)
     {
-        uint32_t bufferSizeInBytes = 0;
+        uint16_t stride = lcd().framebufferStride();
+        uint32_t bufferSizeInBytes = stride * FRAME_BUFFER_HEIGHT;
+        uint8_t* ptr = (uint8_t*)adr;
+        void* double_buf = 0;
+        void* anim_store = 0;
+        if (useDoubleBuffering)
+        {
+            ptr += bufferSizeInBytes; // Move past used buffer (framebuffer)
+            double_buf = (void*)ptr;
+        }
+        if (useAnimationStorage)
+        {
+            ptr += bufferSizeInBytes; // Move past used buffer (framebuffer and possibly double buffer)
+            anim_store = (void*)ptr;
+        }
         switch (depth)
         {
         case 32:
         case 24:
         case 16:
         case 8:
-            bufferSizeInBytes = (DISPLAY_WIDTH * DISPLAY_HEIGHT) * (depth / 8);
-            break;
         case 4:
         case 2:
         case 1:
-            bufferSizeInBytes = ((DISPLAY_WIDTH * depth + 7) / 8) * DISPLAY_HEIGHT;
+            setFrameBufferStartAddresses(adr, double_buf, anim_store);
             break;
         default:
-            assert(0 && "Unsupported bit depth"); // Must be power of two
+            assert(0 && "Unsupported bit depth");
             break;
         }
-        uint8_t* buffer = static_cast<uint8_t*>(adr);
-        frameBuffer0 = reinterpret_cast<uint16_t*>(buffer);
-        if (useDoubleBuffering)
-        {
-            buffer += bufferSizeInBytes;
-            frameBuffer1 = reinterpret_cast<uint16_t*>(buffer);
-        }
-        else
-        {
-            frameBuffer1 = 0;
-        }
-        if (useAnimationStorage)
-        {
-            buffer += bufferSizeInBytes;
-            frameBuffer2 = reinterpret_cast<uint16_t*>(buffer);
-        }
-        else
-        {
-            frameBuffer2 = 0;
-        }
-        USE_DOUBLE_BUFFERING = useDoubleBuffering;
-        USE_ANIMATION_STORAGE = useAnimationStorage;
     }
 
     /**
@@ -784,6 +872,25 @@ public:
         USE_DOUBLE_BUFFERING = doubleBuffer != 0;
         USE_ANIMATION_STORAGE = animationStorage != 0;
     }
+
+    /**
+     * @fn virtual uint16_t configurePartialFrameBuffer(const uint16_t x, const uint16_t y, const uint16_t width, const uint16_t height)
+     *
+     * @brief Configures a partial framebuffer as current framebuffer.
+     *
+     *        Configures a partial framebuffer as current
+     *        framebuffer. This method uses the assigned
+     *        FrameBufferAllocator to allocate block of compatible
+     *        dimensions. The height of the allocated block is
+     *        returned.
+     *
+     * @param x            The absolute x coordinate of the block on the screen.
+     * @param y            The absolute y coordinate of the block on the screen.
+     * @param width        The width of the block.
+     * @param height       The height of the block requested.
+     * @return             The height of the block allocated.
+     */
+    virtual uint16_t configurePartialFrameBuffer(const uint16_t x, const uint16_t y, const uint16_t width, const uint16_t height);
 
     /**
      * @fn void HAL::setTouchSampleRate(int8_t sampleRateInTicks)
@@ -914,6 +1021,34 @@ public:
     }
 
     /**
+     * @fn void setFrameBufferAllocator(FrameBufferAllocator* allocator)
+     *
+     * @brief Sets a framebuffer allocator.
+     *
+     *        Sets a framebuffer allocator. The framebuffer allocator
+     *        is only used in partial framebuffer mode.
+     *
+     * @param [in] allocator pointer to a framebuffer allocator object
+     */
+    void setFrameBufferAllocator(FrameBufferAllocator* allocator)
+    {
+        frameBufferAllocator = allocator;
+    }
+
+    /**
+     * @fn FrameBufferAllocator* getFrameBufferAllocator()
+     *
+     * @brief Gets the framebuffer allocator.
+     *
+     *        Gets the framebuffer allocator.
+     *
+     * @return The framebuffer allocator
+     */
+    FrameBufferAllocator* getFrameBufferAllocator()
+    {
+        return frameBufferAllocator;
+    }
+    /**
      * @fn void HAL::setFingerSize(uint8_t size)
      *
      * @brief Sets the finger size
@@ -973,8 +1108,9 @@ public:
      */
     typedef enum
     {
-        REFRESH_STRATEGY_DEFAULT,                     ///< If not explicitly set, this strategy is used.
-        REFRESH_STRATEGY_OPTIM_SINGLE_BUFFER_TFT_CTRL ///< Strategy optimized for single frame buffer on systems with TFT controller.
+        REFRESH_STRATEGY_DEFAULT,                      ///< If not explicitly set, this strategy is used.
+        REFRESH_STRATEGY_OPTIM_SINGLE_BUFFER_TFT_CTRL, ///< Strategy optimized for single frame buffer on systems with TFT controller.
+        REFRESH_STRATEGY_PARTIAL_FRAMEBUFFER           ///< Strategy using less than a full frame buffer.
     } FrameRefreshStrategy;
 
     /**
@@ -1010,7 +1146,7 @@ public:
      */
     bool setFrameRefreshStrategy(FrameRefreshStrategy s)
     {
-        if (s == REFRESH_STRATEGY_DEFAULT)
+        if (s == REFRESH_STRATEGY_DEFAULT || s == REFRESH_STRATEGY_PARTIAL_FRAMEBUFFER)
         {
             refreshStrategy = s;
             return true;
@@ -1021,7 +1157,7 @@ public:
             //   - task delay function
             //   - a TFT controller (+ an impl of getTFTCurrentLine())
             //   - single buffering
-            if (taskDelayFunc != 0 && getTFTCurrentLine() != 0xFFFF && !HAL::USE_DOUBLE_BUFFERING)
+            if (taskDelayFunc != 0 && getTFTCurrentLine() != 0xFFFF && !USE_DOUBLE_BUFFERING)
             {
                 refreshStrategy = s;
                 return true;
@@ -1114,6 +1250,75 @@ public:
     {
         return 0xFFFFu;
     }
+
+    /**
+     * @fn virtual DMAType HAL::getDMAType()
+     *
+     * @brief Function for obtaining the DMA type of the concrete DMA implementation.
+     *
+     *        Function for obtaining the DMA type of the concrete DMA implementation.
+     *        As default, will return DMA_TYPE_GENERIC type value.
+     *
+     * @return a DMAType value of the concrete DMA implementation.
+     */
+    virtual DMAType getDMAType()
+    {
+        return dma.getDMAType();
+    }
+
+    /**
+     * @fn virtual void HAL::drawDrawableInDynamicBitmap(Drawable& drawable, BitmapId bitmapId)
+     *
+     * @brief Render a Drawable and its widgets into a dynamic bitmap.
+     *
+     *        Render a Drawable and its widgets into a dynamic bitmap.
+     *
+     * @param drawable A reference on the Drawable object to render.
+     * @param bitmapId Dynamic bitmap to be used as a rendertarget.
+     */
+    virtual void drawDrawableInDynamicBitmap(Drawable& drawable, BitmapId bitmapId);
+
+    /**
+     * @fn virtual void HAL::drawDrawableInDynamicBitmap(Drawable& drawable, BitmapId bitmapId, const Rect& rect)
+     *
+     * @brief Render a Drawable and its widgets into a dynamic bitmap.
+     *
+     *        Render a Drawable and its widgets into a dynamic bitmap. Only the specified Rect region is updated.
+     *
+     * @param drawable A reference on the Drawable object to render.
+     * @param bitmapId Dynamic bitmap to be used as a rendertarget.
+     * @param rect Region to update.
+     */
+    virtual void drawDrawableInDynamicBitmap(Drawable& drawable, BitmapId bitmapId, const Rect& rect);
+
+    /**
+     * @fn void HAL::setAuxiliaryLCD(LCD* auxLCD)
+     *
+     * @brief Set an auxiliary LCD class to be used for offscreen rendering.
+     *
+     *        Set an auxiliary LCD class to be used for offscreen rendering.
+     *
+     * @param auxLCD A pointer on the axiliary LCD class to use for offscreen rendering.
+     */
+    void setAuxiliaryLCD(LCD* auxLCD)
+    {
+        auxiliaryLCD = auxLCD;
+    }
+
+    /**
+     * @fn void HAL::getAuxiliaryLCD(LCD* auxLCD)
+     *
+     * @brief Get the auxiliary LCD class attached to the HAL instance if any.
+     *
+     *        Get the auxiliary LCD class attached to the HAL instance if any.
+     *
+     * @return A pointer on the axiliary LCD class attached to the HAL instance.
+     */
+    LCD* getAuxiliaryLCD()
+    {
+        return auxiliaryLCD;
+    }
+
 protected:
 
     /**
@@ -1230,6 +1435,7 @@ protected:
     TouchController&       touchController;             ///< A reference to the touch controller.
     MCUInstrumentation*    mcuInstrumentation;          ///< A reference to an optional MCU instrumentation.
     ButtonController*      buttonController;            ///< A reference to an optional ButtonController.
+    FrameBufferAllocator*  frameBufferAllocator;        ///< A reference to an optional FrameBufferAllocator.
     static                 bool isDrawing;              ///< True if currently in the process of rendering a screen.
     Gestures               gestures;                    ///< Class for low-level interpretation of touch events.
     DisplayOrientation     nativeDisplayOrientation;    ///< Contains the native display orientation. If desired orientation is different, apply rotation.
@@ -1241,10 +1447,12 @@ protected:
     uint8_t                fingerSize;                  ///< The radius of the finger in pixels
     bool                   lockDMAToPorch;              ///< Whether or not to lock DMA transfers with TFT porch signal.
     bool                   frameBufferUpdatedThisFrame; ///< True if something was drawn in the current frame.
+    LCD*                   auxiliaryLCD;                ///< Auxiliary LCD class used to render Drawables into dynamic bitmaps.
+    Rect                   partialFrameBufferRect;      ///< The region of the screen covered by the partial framebuffer.
 
 private:
-    UIEventListener* listener;
-    static             HAL* instance;
+    UIEventListener*   listener;
+    static HAL*        instance;
     int32_t            lastX;
     int32_t            lastY;
     int8_t             touchSampleRate;
@@ -1259,14 +1467,11 @@ private:
     uint32_t           cc_begin;
     DisplayOrientation requestedOrientation;
     bool               displayOrientationChangeRequested;
+    bool               useAuxiliaryLCD;
 
-    friend class LCD1bpp;
-    friend class LCD2bpp;
-    friend class LCD4bpp;
-    friend class LCD16bpp;
-    friend class LCD24bpp;
-
+    uint16_t* getDstAddress(uint16_t x, uint16_t y, uint16_t* startAddress, uint16_t dstWidth, Bitmap::BitmapFormat dstFormat) const;
     uint16_t* getDstAddress(uint16_t x, uint16_t y, uint16_t* startAddress) const;
+    uint8_t   getBitDepth(Bitmap::BitmapFormat format) const;
 };
 } // namespace touchgfx
 #endif // HAL_HPP

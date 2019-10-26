@@ -1,7 +1,7 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.10.0 distribution.
+# This file is part of the TouchGFX 4.12.3 distribution.
 #
-# <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+# <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
 #
 # This software component is licensed by ST under Ultimate Liberty license
@@ -17,5 +17,14 @@ class TypedTextDatabaseHpp < Template
   end
   def output_path
     'include/texts/TypedTextDatabase.hpp'
+  end
+  def output_filename
+    File.join(@output_directory, output_path)
+  end
+  def run
+    if (!File::exists?(output_filename))
+      #generate TypedTextDatabase.hpp
+      super
+    end
   end
 end

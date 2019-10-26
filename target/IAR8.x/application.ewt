@@ -9,9 +9,9 @@
         <debug>1</debug>
         <settings>
             <name>C-STAT</name>
-            <archiveVersion>261</archiveVersion>
+            <archiveVersion>262</archiveVersion>
             <data>
-                <version>261</version>
+                <version>262</version>
                 <cstatargs>
                     <useExtraArgs>0</useExtraArgs>
                     <extraArgs></extraArgs>
@@ -24,7 +24,7 @@
                     <messagesLimit>100</messagesLimit>
                 </cstatargs>
                 <cstat_settings>
-                    <cstat_version>1.5.4</cstat_version>
+                    <cstat_version>1.6.2</cstat_version>
                     <checks_tree>
                         <package enabled="true" name="STDCHECKS">
                             <group enabled="true" name="ARR">
@@ -395,6 +395,7 @@
                                 <check enabled="false" name="MISRAC2004-2.4" />
                             </group>
                             <group enabled="true" name="MISRAC2004-5">
+                                <check enabled="true" name="MISRAC2004-5.1" />
                                 <check enabled="true" name="MISRAC2004-5.2" />
                                 <check enabled="true" name="MISRAC2004-5.3" />
                                 <check enabled="true" name="MISRAC2004-5.4" />
@@ -422,11 +423,8 @@
                                 <check enabled="true" name="MISRAC2004-8.7" />
                                 <check enabled="true" name="MISRAC2004-8.8_a" />
                                 <check enabled="true" name="MISRAC2004-8.8_b" />
-                                <check enabled="false" name="MISRAC2004-8.9" />
-                                <check enabled="true" name="MISRAC2004-8.12" />
-                            </group>
-                            <group enabled="true" name="MISRAC2004-8 10">
                                 <check enabled="true" name="MISRAC2004-8.10" />
+                                <check enabled="true" name="MISRAC2004-8.12" />
                             </group>
                             <group enabled="true" name="MISRAC2004-9">
                                 <check enabled="true" name="MISRAC2004-9.1_a" />
@@ -682,7 +680,6 @@
                                 <check enabled="true" name="MISRAC2012-Rule-8.4" />
                                 <check enabled="false" name="MISRAC2012-Rule-8.5_a" />
                                 <check enabled="true" name="MISRAC2012-Rule-8.5_b" />
-                                <check enabled="true" name="MISRAC2012-Rule-8.6" />
                                 <check enabled="false" name="MISRAC2012-Rule-8.7" />
                                 <check enabled="false" name="MISRAC2012-Rule-8.9_a" />
                                 <check enabled="false" name="MISRAC2012-Rule-8.9_b" />
@@ -984,9 +981,11 @@
                             </group>
                             <group enabled="true" name="MISRAC++2008-6-5">
                                 <check enabled="true" name="MISRAC++2008-6-5-1_a" />
+                                <check enabled="true" name="MISRAC++2008-6-5-1_b" />
                                 <check enabled="true" name="MISRAC++2008-6-5-2" />
                                 <check enabled="true" name="MISRAC++2008-6-5-3" />
                                 <check enabled="true" name="MISRAC++2008-6-5-4" />
+                                <check enabled="true" name="MISRAC++2008-6-5-5" />
                                 <check enabled="true" name="MISRAC++2008-6-5-6" />
                             </group>
                             <group enabled="true" name="MISRAC++2008-6-6">
@@ -1236,6 +1235,18 @@
                     </file>
                 </group>
                 <group>
+                    <name>containers</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\containers\ExponentContainerBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen1_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
                     <name>screen_main_screen</name>
                     <file>
                         <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_main_screen\Screen_MainViewBase.cpp</name>
@@ -1396,9 +1407,24 @@
                 </file>
             </group>
             <group>
+                <name>containers</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\containers\ExponentContainer.cpp</name>
+                </file>
+            </group>
+            <group>
                 <name>model</name>
                 <file>
                     <name>$PROJ_DIR$\..\..\gui\src\model\Model.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen1_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen1_screen\Screen1Presenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen1_screen\Screen1View.cpp</name>
                 </file>
             </group>
             <group>

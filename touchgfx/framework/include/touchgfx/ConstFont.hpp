@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -16,7 +16,7 @@
 #ifndef CONSTFONT_HPP
 #define CONSTFONT_HPP
 
-#include "Font.hpp"
+#include <touchgfx/Font.hpp>
 
 namespace touchgfx
 {
@@ -39,7 +39,7 @@ class ConstFont : public Font
 public:
 
     /**
-     * @fn ConstFont::ConstFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
+     * @fn ConstFont::ConstFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t dataFormatA4, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
      *
      * @brief Creates a font instance.
      *
@@ -51,13 +51,14 @@ public:
      * @param pixBelowBase The maximum number of pixels that can be drawn below the baseline in
      *                     this font.
      * @param bitsPerPixel The number of bits per pixel in this font.
+     * @param dataFormatA4 The glyphs are saved using ST A4 format.
      * @param maxLeft      The maximum a character extends to the left.
      * @param maxRight     The maximum a character extends to the right.
      * @param fallbackChar The fallback character for the typography in case no glyph is
      *                     available.
      * @param ellipsisChar The ellipsis character used for truncating long texts.
      */
-    ConstFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
+    ConstFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t dataFormatA4, uint8_t maxLeft, uint8_t maxRight, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
 
     using Font::getGlyph;
 
@@ -107,8 +108,6 @@ public:
      */
     virtual int8_t getKerning(Unicode::UnicodeChar prevChar, const GlyphNode* glyph) const = 0;
 
-protected:
-
     /**
      * @fn const GlyphNode* ConstFont::find(Unicode::UnicodeChar unicode) const;
      *
@@ -122,11 +121,13 @@ protected:
      */
     const GlyphNode* find(Unicode::UnicodeChar unicode) const;
 
+protected:
+
     const GlyphNode* glyphList; ///< The list of glyphs
     uint16_t         listSize;  ///< The size of the list of glyphs
 
 private:
-    ConstFont() : Font(0, 0, 0, 0, 0, 0, 0) { }
+    ConstFont() : Font(0, 0, 0, 0, 0, 0, 0, 0), glyphList(0), listSize(0) { }
 };
 } // namespace touchgfx
 #endif // CONSTFONT_HPP

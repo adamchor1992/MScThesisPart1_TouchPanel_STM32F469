@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -448,7 +448,7 @@ public:
     int32_t getOffset() const;
 
     /**
-     * @fn int16_t DrawableList::getItemIndex(int16_t drawableIndex);
+     * @fn int16_t DrawableList::getItemIndex(int16_t drawableIndex) const;
      *
      * @brief Gets item stored in a given Drawable.
      *
@@ -458,10 +458,10 @@ public:
      *
      * @return The item index.
      */
-    int16_t getItemIndex(int16_t drawableIndex);
+    int16_t getItemIndex(int16_t drawableIndex) const;
 
     /**
-     * @fn int16_t DrawableList::getDrawableIndices(int16_t itemIndex, int16_t* drawableIndices, int16_t num);
+     * @fn int16_t DrawableList::getDrawableIndices(int16_t itemIndex, int16_t* drawableIndexArray, int16_t arraySize) const;
      *
      * @brief Gets drawable indices.
      *
@@ -470,9 +470,9 @@ public:
      *        DrawableList is circular). The passed array will be filled with the drawable indices
      *        and the number of indices found is returned.
      *
-     * @param       itemIndex       Zero-based index of the item.
-     * @param [out] drawableIndices Array where the drawable indices are stored.
-     * @param       num             Size of drawable array.
+     * @param       itemIndex          Zero-based index of the item.
+     * @param [out] drawableIndexArray Array where the drawable indices are stored.
+     * @param       arraySize          Size of drawable array.
      *
      * @return The number of drawable indices found.
      *
@@ -480,10 +480,10 @@ public:
      * @see setCircular
      * @see getDrawbleIndex
      */
-    int16_t getDrawableIndices(int16_t itemIndex, int16_t* drawableIndexArray, int16_t arraySize);
+    int16_t getDrawableIndices(int16_t itemIndex, int16_t* drawableIndexArray, int16_t arraySize) const;
 
     /**
-     * @fn int16_t DrawableList::getDrawableIndex(int16_t itemIndex, int16_t prevDrawableIndex = -1);
+     * @fn int16_t DrawableList::getDrawableIndex(int16_t itemIndex, int16_t prevDrawableIndex = -1) const;
      *
      * @brief Gets the drawable index of an item.
      *
@@ -503,7 +503,7 @@ public:
      *
      * @see getDrawableIndices
      */
-    int16_t getDrawableIndex(int16_t itemIndex, int16_t prevDrawableIndex = -1);
+    int16_t getDrawableIndex(int16_t itemIndex, int16_t prevDrawableIndex = -1) const;
 
     /**
      * @fn void DrawableList::refreshDrawables();

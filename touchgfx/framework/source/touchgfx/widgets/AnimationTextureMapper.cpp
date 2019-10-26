@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -92,7 +92,7 @@ void AnimationTextureMapper::handleTickEvent()
 {
     if (animationRunning)
     {
-        bool activeAnimation = false;
+        AnimationState activeAnimation = ANIMATION_FINISHED;
 
         float newXAngle = xAngle;
         float newYAngle = yAngle;
@@ -106,10 +106,15 @@ void AnimationTextureMapper::handleTickEvent()
                 continue;
             }
 
+            if (animationCounter < animations[i].animationDelay && activeAnimation < ANIMATION_DELAYED)
+            {
+                activeAnimation = ANIMATION_DELAYED;
+            }
+
             if ((animationCounter >= animations[i].animationDelay) &&
                     (animationCounter <= (uint32_t)(animations[i].animationDelay + animations[i].animationDuration)))
             {
-                activeAnimation = true;
+                activeAnimation = ANIMATION_RUNNING;
 
                 // Adjust the used animationCounter for the startup delay
                 uint32_t actualAnimationCounter = animationCounter - animations[i].animationDelay;
@@ -150,7 +155,7 @@ void AnimationTextureMapper::handleTickEvent()
             }
         }
 
-        if (activeAnimation)
+        if (activeAnimation == ANIMATION_RUNNING)
         {
             updateAngles(newXAngle, newYAngle, newZAngle);
             setScale(newScale);
@@ -160,6 +165,10 @@ void AnimationTextureMapper::handleTickEvent()
                 textureMapperAnimationStepCallback->execute(*this);
             }
 
+            animationCounter++;
+        }
+        else if (activeAnimation == ANIMATION_DELAYED)
+        {
             animationCounter++;
         }
         else

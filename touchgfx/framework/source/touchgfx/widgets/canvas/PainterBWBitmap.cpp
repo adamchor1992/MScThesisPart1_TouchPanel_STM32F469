@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -14,7 +14,6 @@
   */
 
 #include <touchgfx/widgets/canvas/PainterBWBitmap.hpp>
-#include <platform/driver/lcd/LCD1bpp.hpp>
 
 namespace touchgfx
 {
@@ -27,16 +26,16 @@ PainterBWBitmap::PainterBWBitmap(const Bitmap& bmp) :
 void PainterBWBitmap::setBitmap(const Bitmap& bmp)
 {
     bitmap = bmp;
+    assert((bitmap.getId() == BITMAP_INVALID || bitmap.getFormat() == Bitmap::BW || bitmap.getFormat() == Bitmap::BW_RLE) && "The chosen painter only works with BW and BW_RLE bitmaps");
     bitmapRectToFrameBuffer = bitmap.getRect();
     DisplayTransformation::transformDisplayToFrameBuffer(bitmapRectToFrameBuffer);
 }
 
 // Found in LCD1bpp
-void fillBits(uint8_t* fb, uint16_t startX, uint16_t startY, uint16_t stride, uint16_t count, uint8_t color);
+void fillBits(uint8_t* fb, uint16_t startX, uint16_t startY, uint16_t stride, uint32_t count, uint8_t color);
 
-void PainterBWBitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigned count, const uint8_t* covers)
+void PainterBWBitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigned count, const uint8_t* /*covers*/)
 {
-    (void)covers;
     currentX = x + areaOffsetX;
     currentY = y + areaOffsetY;
     x += xAdjust;
@@ -56,7 +55,7 @@ void PainterBWBitmap::render(uint8_t* ptr, int x, int xAdjust, int y, unsigned c
         while (count)
         {
             uint32_t length = bw_rle.getLength();
-            uint16_t bitsToDraw = (uint16_t)MIN(length, (uint32_t)count);
+            uint32_t bitsToDraw = MIN(length, (uint32_t)count);
 
             fillBits(ptr, x, 0, 0 /* not used */, bitsToDraw, bw_rle.getColor());
             x += bitsToDraw;
@@ -160,6 +159,11 @@ bool PainterBWBitmap::renderInit()
     bw_rle = 0; // Used to remember if format is BW or BW_RLE
     bitmapBWPointer = 0;
 
+    if (bitmap.getId() == BITMAP_INVALID)
+    {
+        return false;
+    }
+
     if (currentX >= bitmapRectToFrameBuffer.width ||
             currentY >= bitmapRectToFrameBuffer.height)
     {
@@ -167,22 +171,28 @@ bool PainterBWBitmap::renderInit()
         return false;
     }
 
+    // Common for BW and BW_RLE
     bitmapBWPointer = (const uint8_t*)bitmap.getData();
     if (!bitmapBWPointer)
     {
         return false;
     }
+
     if (bitmap.getFormat() == Bitmap::BW_RLE)
     {
         bw_rle.init(bitmapBWPointer);
         uint32_t skip = (int32_t)currentY * (int32_t)bitmapRectToFrameBuffer.width + (int32_t)currentX;
         bw_rle.skipNext(skip);
+        return true;
     }
-    else
+
+    if (bitmap.getFormat() == Bitmap::BW)
     {
         bitmapBWPointer += currentY * ((bitmapRectToFrameBuffer.width + 7) / 8);
+        return true;
     }
-    return true;
+
+    return false;
 }
 
 bool PainterBWBitmap::renderNext(uint8_t& color)
@@ -200,7 +210,7 @@ bool PainterBWBitmap::renderNext(uint8_t& color)
     else
     {
         const uint8_t* src = bitmapBWPointer + currentX / 8;
-        color = (*src >> (7 - (currentX % 8))) & 1;
+        color = ((*src) >> (7 - (currentX % 8))) & 1;
     }
     return true;
 }

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -49,9 +49,13 @@ public:
      * @param green Value of the green part (0-255).
      * @param blue  Value of the blue part (0-255).
      *
-     * @return The color, encoded in a 16- or 24-bit representation depending on LCD color depth.
+     * @return The color representation depending on LCD color format.
      */
-    static colortype getColorFrom24BitRGB(uint8_t red, uint8_t green, uint8_t blue);
+    static colortype getColorFrom24BitRGB(uint8_t red, uint8_t green, uint8_t blue)
+    {
+        assert(HAL::getInstance() && "Cannot set color before HAL is initialized");
+        return HAL::lcd().getColorFrom24BitRGB(red, green, blue);
+    }
 
     /**
      * @fn static inline uint8_t Color::getRedColor(colortype color)
@@ -66,8 +70,7 @@ public:
      */
     static inline uint8_t getRedColor(colortype color)
     {
-        uint8_t bitDepth = HAL::lcd().bitDepth();
-        return bitDepth == 16 ? ((color & 0xF800) >> 8) : bitDepth == 24 ? ((color.getColor32() >> 16) & 0xFF) : bitDepth == 4 ? ((color & 0xF) * 0x11) : bitDepth == 2 ? ((color & 0x3) * 0x55) : 0;
+        return HAL::lcd().getRedColor(color);
     }
 
     /**
@@ -83,8 +86,7 @@ public:
      */
     static inline uint8_t getGreenColor(colortype color)
     {
-        uint8_t bitDepth = HAL::lcd().bitDepth();
-        return bitDepth == 16 ? ((color & 0x07E0) >> 3) : bitDepth == 24 ? ((color.getColor32() >> 8) & 0xFF) : bitDepth == 4 ? ((color & 0xF) * 0x11) : bitDepth == 2 ? ((color & 0x3) * 0x55) : 0;
+        return HAL::lcd().getGreenColor(color);
     }
 
     /**
@@ -100,8 +102,7 @@ public:
      */
     static inline uint8_t getBlueColor(colortype color)
     {
-        uint8_t bitDepth = HAL::lcd().bitDepth();
-        return bitDepth == 16 ? ((color & 0x001F) << 3) : bitDepth == 24 ? (color.getColor32() & 0xFF) : bitDepth == 4 ? ((color & 0xF) * 0x11) : bitDepth == 2 ? ((color & 0x3) * 0x55) : 0;
+        return HAL::lcd().getBlueColor(color);
     }
 };
 } // namespace touchgfx

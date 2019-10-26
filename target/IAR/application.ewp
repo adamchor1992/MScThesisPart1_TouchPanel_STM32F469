@@ -1001,16 +1001,22 @@
           <name>$PROJ_DIR$\..\..\generated\fonts\src\ApplicationFontProvider.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\CachedFont.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\FontGetters.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp_0.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\FontCache.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\GeneratedFont.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_10_4bpp.cpp</name>

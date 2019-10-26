@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -106,19 +106,29 @@ public:
     virtual void blitCopy(const uint8_t* sourceData, Bitmap::BitmapFormat sourceFormat, const Rect& source, const Rect& blitRect, uint8_t alpha, bool hasTransparentPixels);
 
     /**
-     * @fn virtual uint16_t* LCD1bpp::copyFrameBufferRegionToMemory(const Rect& region, const BitmapId bitmap = BITMAP_ANIMATION_STORAGE) = 0;
+     * @fn virtual uint16_t* LCD1bpp::copyFrameBufferRegionToMemory(const Rect& visRegion, const Rect& absRegion, const BitmapId bitmapId);
      *
-     * @brief Copies a part of the frame buffer.
+     * @brief Copies part of the frame buffer region to memory.
      *
-     *        Copies a part of the frame buffer to a bitmap.
+     *        Copies part of the framebuffer region to memory. The memory is given as BitmapId,
+     *        which can be BITMAP_ANIMATION_STORAGE. The two regions given are the visible region
+     *        and the absolute region on screen. This is used to copy only a part of an area. This
+     *        might be the case if a SnapshotWidget is placed inside a Container where parts of the
+     *        SnapshowWidget is outside the area defined by the Container. The visible region must
+     *        be completely inside the absolute region.
      *
-     * @param region The part to copy.
-     * @param bitmap The bitmap to store the data in. Default value is Animation Storage.
+     * @note There is only one instance of animation storage. The content of the animation storage
+     *       outside the given region is undefined.
      *
-     * @return A pointer to the copy.
+     * @param visRegion The visible region.
+     * @param absRegion The absolute region.
+     * @param bitmapId  Identifier for the bitmap.
      *
+     * @returns Null if it fails, else a pointer to the data in the given bitmap.
+     *
+     * @see blitCopy
      */
-    virtual uint16_t* copyFrameBufferRegionToMemory(const Rect& region, const BitmapId bitmap = BITMAP_ANIMATION_STORAGE);
+    virtual uint16_t* copyFrameBufferRegionToMemory(const Rect& visRegion, const Rect& absRegion, const BitmapId bitmapId);
 
     /**
      * @fn virtual void LCD1bpp::fillRect(const Rect& rect, colortype color, uint8_t alpha = 255);
@@ -147,8 +157,186 @@ public:
     {
         return 1;
     }
-protected:
 
+    /**
+     * @fn virtual Bitmap::BitmapFormat LCD1bpp::framebufferFormat() const
+     *
+     * @brief Framebuffer format used by the display
+     *
+     *        Framebuffer format used by the display
+     *
+     * @return Bitmap::BW.
+     */
+    virtual Bitmap::BitmapFormat framebufferFormat() const
+    {
+        return Bitmap::BW;
+    }
+
+    /**
+     * @fn virtual uint16_t LCD1bpp::framebufferStride() const
+     *
+     * @brief Framebuffer stride in bytes
+     *
+     *        Framebuffer stride in bytes. The distance (in bytes) from the start of one
+     *        framebuffer row, to the next.
+     *
+     * @return The number of bytes in one framebuffer row.
+     */
+    virtual uint16_t framebufferStride() const
+    {
+        return getFramebufferStride();
+    }
+
+    /**
+     * @fn FORCE_INLINE_FUNCTION static uint16_t getFramebufferStride()
+     *
+     * @brief Framebuffer stride in bytes
+     *
+     *        Framebuffer stride in bytes. The distance (in bytes) from the start of one
+     *        framebuffer row, to the next.
+     *
+     * @return The number of bytes in one framebuffer row.
+     */
+    FORCE_INLINE_FUNCTION static uint16_t getFramebufferStride()
+    {
+        assert(HAL::FRAME_BUFFER_WIDTH > 0 && "HAL has not been initialized yet");
+        return (HAL::FRAME_BUFFER_WIDTH + 7) / 8;
+    }
+
+    /**
+     * @fn virtual colortype LCD1bpp::getColorFrom24BitRGB(uint8_t red, uint8_t green, uint8_t blue) const
+     *
+     * @brief Generates a color representation to be used on the LCD, based on 24 bit RGB values.
+     *
+     *        Generates a color representation to be used on the LCD, based on 24 bit RGB values.
+     *
+     * @param red   Value of the red part (0-255).
+     * @param green Value of the green part (0-255).
+     * @param blue  Value of the blue part (0-255).
+     *
+     * @return The color representation depending on LCD color format.
+     */
+    virtual colortype getColorFrom24BitRGB(uint8_t red, uint8_t green, uint8_t blue) const
+    {
+        return getColorFromRGB(red, green, blue);
+    }
+
+    /**
+     * @fn FORCE_INLINE_FUNCTION static colortype LCD1bpp::getColorFromRGB(uint8_t red, uint8_t green, uint8_t blue)
+     *
+     * @brief Generates a color representation to be used on the LCD, based on 24 bit RGB values.
+     *
+     *        Generates a color representation to be used on the LCD, based on 24 bit RGB values.
+     *
+     * @param red   Value of the red part (0-255).
+     * @param green Value of the green part (0-255).
+     * @param blue  Value of the blue part (0-255).
+     *
+     * @return The color representation depending on LCD color format.
+     */
+    FORCE_INLINE_FUNCTION static colortype getColorFromRGB(uint8_t red, uint8_t green, uint8_t blue)
+    {
+        // Find the GRAY value (http://en.wikipedia.org/wiki/Luma_%28video%29) rounded to nearest integer
+        return (red * 54 + green * 183 + blue * 19) >> 15;
+    }
+
+    /**
+     * @fn virtual uint8_t LCD1bpp::getRedColor(colortype color) const
+     *
+     * @brief Gets the red color part of a color.
+     *
+     *        Gets the red color part of a color. As this function must work for all color depths,
+     *        it can be somewhat slow if used in speed critical sections. Consider finding the
+     *        color in another way, if possible.
+     *
+     * @param color The color value.
+     *
+     * @return The red part of the color.
+     */
+    virtual uint8_t getRedColor(colortype color) const
+    {
+        return getRedFromColor(color);
+    }
+
+    /**
+     * @fn FORCE_INLINE_FUNCTION static uint8_t LCD1bpp::getRedFromColor(colortype color)
+     *
+     * @brief Gets red from color
+     *
+     * @param color The color.
+     *
+     * @return The red from color.
+     */
+    FORCE_INLINE_FUNCTION static uint8_t getRedFromColor(colortype color)
+    {
+        return (color & 0x1) * 0xFF;
+    }
+
+    /**
+     * @fn virtual uint8_t LCD1bpp::getGreenColor(colortype color) const
+     *
+     * @brief Gets the green color part of a color.
+     *
+     *        Gets the green color part of a color. As this function must work for all color depths,
+     *        it can be somewhat slow if used in speed critical sections. Consider finding the
+     *        color in another way, if possible.
+     *
+     * @param color The 16 bit color value.
+     *
+     * @return The green part of the color.
+     */
+    virtual uint8_t getGreenColor(colortype color) const
+    {
+        return getGreenFromColor(color);
+    }
+
+    /**
+     * @fn virtual uint8_t LCD1bpp::getGreenFromColor(colortype color) const
+     *
+     * @brief Gets green from color
+     *
+     * @param color The color.
+     *
+     * @return The green from color.
+     */
+    FORCE_INLINE_FUNCTION static uint8_t getGreenFromColor(colortype color)
+    {
+        return (color & 0x1) * 0xFF;
+    }
+
+    /**
+     * @fn virtual uint8_t LCD1bpp::getBlueColor(colortype color) const
+     *
+     * @brief Gets the blue color part of a color.
+     *
+     *        Gets the blue color part of a color. As this function must work for all color depths,
+     *        it can be somewhat slow if used in speed critical sections. Consider finding the
+     *        color in another way, if possible.
+     *
+     * @param color The 16 bit color value.
+     *
+     * @return The blue part of the color.
+     */
+    virtual uint8_t getBlueColor(colortype color) const
+    {
+        return getBlueFromColor(color);
+    }
+
+    /**
+     * @fn FORCE_INLINE_FUNCTION static uint8_t LCD1bpp::getBlueFromColor(colortype color)
+     *
+     * @brief Gets blue from color
+     *
+     * @param color The color.
+     *
+     * @return The blue from color.
+     */
+    FORCE_INLINE_FUNCTION static uint8_t getBlueFromColor(colortype color)
+    {
+        return (color & 0x1) * 0xFF;
+    }
+
+protected:
     /**
      * @fn virtual void LCD1bpp::drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize)
      *
@@ -174,41 +362,40 @@ protected:
     }
 
     /**
-     * @fn static int LCD1bpp::nextPixel(bool portrait, TextRotation rotation);
+     * @fn static int LCD1bpp::nextPixel(bool rotatedDisplay, TextRotation textRotation);
      *
      * @brief Find out how much to advance in the display buffer to get to the next pixel.
      *
      *        Find out how much to advance in the display buffer to get to the next pixel.
      *
-     * @param portrait Is the display running in portrait mode?
-     * @param rotation Rotation to perform.
+     * @param rotatedDisplay Is the display running in portrait mode?
+     * @param textRotation   Rotation to perform.
      *
      * @return How much to advance to get to the next pixel.
      */
-    static int nextPixel(bool portrait, TextRotation rotation);
+    static int nextPixel(bool rotatedDisplay, TextRotation textRotation);
 
     /**
-     * @fn static int LCD1bpp::nextLine(bool portrait, TextRotation rotation);
+     * @fn static int LCD1bpp::nextLine(bool rotatedDisplay, TextRotation textRotation);
      *
      * @brief Find out how much to advance in the display buffer to get to the next line.
      *
      *        Find out how much to advance in the display buffer to get to the next line.
      *
-     * @param portrait Is the display running in portrait mode?
-     * @param rotation Rotation to perform.
+     * @param rotatedDisplay Is the display running in portrait mode?
+     * @param textRotation   Rotation to perform.
      *
      * @return How much to advance to get to the next line.
      */
-    static int nextLine(bool portrait, TextRotation rotation);
+    static int nextLine(bool rotatedDisplay, TextRotation textRotation);
 
     /**
-     * @fn virtual void LCD1bpp::drawGlyph(uint16_t* wbuf, Rect widgetArea, int16_t x, int16_t y, uint16_t offsetX, uint16_t offsetY, const Rect& invalidatedArea, const GlyphNode* glyph, const uint8_t* glyphData, colortype color, uint8_t bitsPerPixel, uint8_t alpha, TextRotation rotation = TEXT_ROTATE_0);
+     * @fn virtual void LCD1bpp::drawGlyph(uint16_t* wbuf, Rect widgetArea, int16_t x, int16_t y, uint16_t offsetX, uint16_t offsetY, const Rect& invalidatedArea, const GlyphNode* glyph, const uint8_t* glyphData, uint8_t dataFormatA4, colortype color, uint8_t bitsPerPixel, uint8_t alpha, TextRotation rotation);
      *
      * @brief Private version of draw-glyph with explicit destination buffer pointer argument.
      *
      *        Private version of draw-glyph with explicit destination buffer pointer argument.
-     *        For all parameters (except the buffer pointer) see the public version of
-     *        drawGlyph()
+     *        For all parameters (except the buffer pointer) see the public function drawString().
      *
      * @param [in] wbuf       The destination (frame) buffer to draw to.
      * @param widgetArea      The canvas to draw the glyph inside.
@@ -219,12 +406,13 @@ protected:
      * @param invalidatedArea The area to draw within.
      * @param glyph           Specifications of the glyph to draw.
      * @param glyphData       Data containing the actual glyph (dense format)
+     * @param dataFormatA4    The glyph is saved using ST A4 format.
      * @param color           The color of the glyph.
      * @param bitsPerPixel    Bit depth of the glyph.
      * @param alpha           The transparency of the glyph.
      * @param rotation        Rotation to do before drawing the glyph.
      */
-    virtual void drawGlyph(uint16_t* wbuf, Rect widgetArea, int16_t x, int16_t y, uint16_t offsetX, uint16_t offsetY, const Rect& invalidatedArea, const GlyphNode* glyph, const uint8_t* glyphData, colortype color, uint8_t bitsPerPixel, uint8_t alpha, TextRotation rotation = TEXT_ROTATE_0);
+    virtual void drawGlyph(uint16_t* wbuf, Rect widgetArea, int16_t x, int16_t y, uint16_t offsetX, uint16_t offsetY, const Rect& invalidatedArea, const GlyphNode* glyph, const uint8_t* glyphData, uint8_t dataFormatA4, colortype color, uint8_t bitsPerPixel, uint8_t alpha, TextRotation rotation);
 
     /**
      * @fn static void LCD1bpp::fillMemory(void* RESTRICT dst, colortype color, uint16_t bytesToFill);
@@ -258,6 +446,24 @@ protected:
      */
     virtual void blitCopyRLE(const uint16_t* _sourceData, const Rect& source, const Rect& blitRect, uint8_t alpha);
 
+    /**
+     * @fn void LCD1bpp::copyRect(const uint8_t* srcAddress, uint16_t srcStride, uint8_t srcPixelOffset, uint8_t* RESTRICT dstAddress, uint16_t dstStride, uint8_t dstPixelOffset, uint16_t width, uint16_t height) const;
+     *
+     * @brief Copies a rectangular area.
+     *
+     *        Copies a rectangular area.
+     *
+     * @param      srcAddress     Source address (byte address).
+     * @param      srcStride      Source stride (number of bytes to advance to next line).
+     * @param      srcPixelOffset Source pixel offset (first pixel in first source byte).
+     * @param [in] dstAddress     If destination address (byte address).
+     * @param      dstStride      Destination stride (number of bytes to advance to next line).
+     * @param      dstPixelOffset Destination pixel offset (first pixel in destination byte).
+     * @param      width          The width of area (in pixels).
+     * @param      height         The height of area (in pixels).
+     */
+    void copyRect(const uint8_t* srcAddress, uint16_t srcStride, uint8_t srcPixelOffset, uint8_t* RESTRICT dstAddress, uint16_t dstStride, uint8_t dstPixelOffset, uint16_t width, uint16_t height) const;
+
 private:
     class bwRLEdata
     {
@@ -271,46 +477,29 @@ private:
             data = src;
             rleByte = 0;
             firstHalfByte = true;
-            color = 0;
+            color = ~0; // Will be flipped to 0 by first call to getNextLength() below
             if (src != 0)
             {
                 // Read two half-bytes ahead
                 thisHalfByte = getNextHalfByte();
                 nextHalfByte = getNextHalfByte();
-                length = getNextLength();
+                getNextLength();
             }
-        }
-        uint32_t getNextLength()
-        {
-            uint32_t length = thisHalfByte; // Length is the next byte
-            // update read ahead buffer
-            thisHalfByte = nextHalfByte;
-            nextHalfByte = getNextHalfByte();
-            // If number after 'length' is 0
-            while (thisHalfByte == 0)
-            {
-                length <<= 4; // Multiply length by 16 and
-                length += nextHalfByte; // add the number after 0
-                // We have used the next two half bytes, read two new ones
-                thisHalfByte = getNextHalfByte();
-                nextHalfByte = getNextHalfByte();
-            }
-            return length;
         }
         void skipNext(uint32_t skip)
         {
-            while (skip > 0) // Are there more pixels to skip?
+            for (;;)
             {
                 if (length > skip) // is the current length enough?
                 {
                     length -= skip; // Reduce the length
                     skip = 0; // No more to skip
+                    break; // Done!
                 }
                 else
                 {
                     skip -= length; // Skip the entire run
-                    length = getNextLength(); // Read length of next run
-                    color = ~color; // Update the color of next run
+                    getNextLength(); // Swap colors and Read length of next run
                 }
             }
         }
@@ -323,6 +512,27 @@ private:
             return length;
         }
     private:
+        void getNextLength()
+        {
+            length = thisHalfByte; // Length is the next byte
+            // update read ahead buffer
+            thisHalfByte = nextHalfByte;
+            nextHalfByte = getNextHalfByte();
+            color = ~color; // Update the color of next run
+            // If number after 'length' is 0
+            while (thisHalfByte == 0)
+            {
+                length <<= 4; // Multiply length by 16 and
+                length += nextHalfByte; // add the number after 0
+                // We have used the next two half bytes, read two new ones
+                thisHalfByte = getNextHalfByte();
+                nextHalfByte = getNextHalfByte();
+            }
+            if (length == 0)
+            {
+                getNextLength();
+            }
+        }
         uint8_t getNextHalfByte()
         {
             if (firstHalfByte) // Start of new byte, read data from BW_RLE stream

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -302,8 +302,41 @@ public:
     static char** getArgv(int* argc);
 #endif
 
-protected:
+    /**
+     * @fn uint8_t* HALSDL2::scaleTo24bpp(uint8_t* dst, uint16_t* src, Bitmap::BitmapFormat format);
+     *
+     * @brief Scale framebuffer to 24bpp
+     *
+     *        Scale framebuffer to 24bpp. The format of the framebuffer (src) is given in
+     *        parameter format. The result is placed in the pre-allocated memory pointed to by
+     *        parameter dst. If the frambebuffer is in format Bitmap::RGB888, parameter dst is not
+     *        used and the parameter src is simply returned.
+     *
+     * @param [out] dst    Destination for the framebuffer. must be non-null unless format is
+     *                     Bitmap::RGB888.
+     * @param [in]  src    The framebuffer.
+     * @param       format Describes the format of the framebuffer (lcd().framebufferFormat()).
+     *
+     * @return Null if it fails, else a pointer to an uint8_t.
+     */
+    static uint8_t* scaleTo24bpp(uint8_t* dst, uint16_t* src, Bitmap::BitmapFormat format);
 
+    /**
+     * @fn uint8_t* HALSDL2::doRotate(uint8_t *dst, uint8_t* src);
+     *
+     * @brief Rotates a framebuffer if the display is rotated.
+     *
+     *        Rotates a framebuffer if the display is rotated.
+     *
+     * @param [out] dst Destination for the rotated framebuffer. must be non-null if the screen is
+     *                  rotated.
+     * @param [in]  src The framebuffer.
+     *
+     * @return Null if it fails, else a pointer to an uint8_t.
+     */
+    static uint8_t* doRotate(uint8_t* dst, uint8_t* src);
+
+protected:
     /**
      * @fn virtual uint16_t* HALSDL2::getTFTFrameBuffer() const;
      *
@@ -404,8 +437,6 @@ protected:
     void performDisplayOrientationChange();
 
 private:
-    uint8_t* scaleTo24bpp(uint16_t* src, uint16_t width, uint16_t height, uint16_t depth);
-    uint8_t* doRotate(uint8_t* src, int16_t width, int16_t height);
     void recreateWindow(bool updateContent = true);
     void pushTouch(bool down) const;
     bool popTouch() const;

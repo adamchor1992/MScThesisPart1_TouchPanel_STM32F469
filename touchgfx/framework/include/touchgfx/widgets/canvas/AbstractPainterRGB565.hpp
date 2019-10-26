@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -42,7 +42,7 @@ public:
 
     AbstractPainterRGB565()
     {
-        assert(HAL::lcd().bitDepth() == 16 && "The chosen painter only works with 16bpp displays");
+        assert(compatibleFramebuffer(Bitmap::RGB565) && "The chosen painter only works with RGB565 displays");
     }
 
     virtual ~AbstractPainterRGB565() {}
@@ -50,50 +50,49 @@ public:
     virtual void render(uint8_t* ptr, int x, int xAdjust, int y, unsigned count, const uint8_t* covers);
 
     /**
-     * @fn FORCE_INLINE_FUNCTION uint16_t AbstractPainterRGB565::mixColors(uint16_t newpix, uint16_t bufpix, uint16_t alpha, uint16_t shift)
+     * @fn FORCE_INLINE_FUNCTION uint16_t AbstractPainterRGB565::mixColors(uint16_t newpix, uint16_t bufpix, uint8_t alpha)
      *
      * @brief Mix colors.
      *
-     *        Mix colors from a new pixel and a buffer pixel with the given alpha applied to
-     *        the new pixel.
+     *        Mix colors from a new pixel and a buffer pixel with the given alpha applied to the
+     *        new pixel.
      *
      * @param newpix The newpix value.
      * @param bufpix The bufpix value.
      * @param alpha  The alpha of the newpix.
-     * @param shift  The shift, 8 if alpha is [0..255], 16 if alpha is [0..255*255].
      *
      * @return The new color to write to the frame buffer.
      */
-    FORCE_INLINE_FUNCTION uint16_t mixColors(uint16_t newpix, uint16_t bufpix, uint16_t alpha, uint16_t shift)
+    FORCE_INLINE_FUNCTION uint16_t mixColors(uint16_t newpix, uint16_t bufpix, uint8_t alpha)
     {
-        return mixColors(newpix & RMASK, newpix & GMASK, newpix & BMASK, bufpix, alpha, shift);
+        return mixColors(newpix & RMASK, newpix & GMASK, newpix & BMASK, bufpix, alpha);
     }
 
     /**
-     * @fn FORCE_INLINE_FUNCTION uint16_t AbstractPainterRGB565::mixColors(uint16_t R, uint16_t G, uint16_t B, uint16_t bufpix, uint16_t alpha, uint16_t shift)
+     * @fn FORCE_INLINE_FUNCTION uint16_t AbstractPainterRGB565::mixColors(uint16_t R, uint16_t G, uint16_t B, uint16_t bufpix, uint8_t alpha)
      *
      * @brief Mix colors.
      *
-     *        Mix colors from a new pixel and a buffer pixel with the given alpha applied to
-     *        the new pixel.
+     *        Mix colors from a new pixel and a buffer pixel with the given alpha applied to the
+     *        new pixel.
      *
      * @param R      The red color (placed in 0xF800).
      * @param G      The green color (placed in 0x03E0).
      * @param B      The blue color (placed in 0x001F).
      * @param bufpix The bufpix value.
      * @param alpha  The alpha of the newpix.
-     * @param shift  The shift, 8 if alpha is [0..255], 16 if alpha is [0..255*255].
      *
      * @return The new color to write to the frame buffer.
      */
-    FORCE_INLINE_FUNCTION uint16_t mixColors(uint16_t R, uint16_t G, uint16_t B, uint16_t bufpix, uint16_t alpha, uint16_t shift)
+    FORCE_INLINE_FUNCTION uint16_t mixColors(uint16_t R, uint16_t G, uint16_t B, uint16_t bufpix, uint8_t alpha)
     {
-        return (RMASK & ((((R - (bufpix & RMASK)) * alpha) >> shift) + (bufpix & RMASK))) |
-               (GMASK & ((((G - (bufpix & GMASK)) * alpha) >> shift) + (bufpix & GMASK))) |
-               (BMASK & ((((B - (bufpix & BMASK)) * alpha) >> shift) + (bufpix & BMASK)));
+        uint8_t ialpha = 0xFF - alpha;
+        return (((R * alpha + (bufpix & RMASK) * ialpha) / 255) & RMASK) |
+               (((G * alpha + (bufpix & GMASK) * ialpha) / 255) & GMASK) |
+               (((B * alpha + (bufpix & BMASK) * ialpha) / 255) & BMASK);
     }
-protected:
 
+protected:
     /**
      * @fn virtual bool AbstractPainterRGB565::renderInit()
      *

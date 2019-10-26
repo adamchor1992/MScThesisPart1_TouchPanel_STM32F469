@@ -9,14 +9,14 @@
 TemplateViewBase::TemplateViewBase() :
     buttonCallback(this, &TemplateViewBase::buttonCallbackHandler)
 {
-    CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
+    touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     buttonWithLabel_GoToMainMenu.setXY(315, 420);
-    buttonWithLabel_GoToMainMenu.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_GoToMainMenu.setLabelText(TypedText(T_SINGLEUSEID124));
+    buttonWithLabel_GoToMainMenu.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_GoToMainMenu.setLabelText(touchgfx::TypedText(T_SINGLEUSEID124));
     buttonWithLabel_GoToMainMenu.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_GoToMainMenu.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_GoToMainMenu.setAction(buttonCallback);
@@ -24,9 +24,9 @@ TemplateViewBase::TemplateViewBase() :
     textArea_CPU_Usage.setPosition(618, 451, 182, 29);
     textArea_CPU_Usage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_CPU_Usage.setLinespacing(0);
-    Unicode::snprintf(textArea_CPU_UsageBuffer, TEXTAREA_CPU_USAGE_SIZE, "%s", TypedText(T_SINGLEUSEID126).getText());
+    Unicode::snprintf(textArea_CPU_UsageBuffer, TEXTAREA_CPU_USAGE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID126).getText());
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
-    textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID125));
+    textArea_CPU_Usage.setTypedText(touchgfx::TypedText(T_SINGLEUSEID125));
 
     add(backgroundBox_Black);
     add(buttonWithLabel_GoToMainMenu);

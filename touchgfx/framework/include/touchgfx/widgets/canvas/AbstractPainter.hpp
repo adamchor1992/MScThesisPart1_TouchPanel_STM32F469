@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -17,6 +17,9 @@
 #define ABSTRACTPAINTER_HPP
 
 #include <stdint.h>
+
+#include <touchgfx/hal/HAL.hpp>
+#include <touchgfx/Bitmap.hpp>
 
 namespace touchgfx
 {
@@ -102,6 +105,27 @@ protected:
     uint8_t widgetAlpha; ///< The alpha of the widget using the painter
 
     friend class Canvas;
+
+    /**
+     * @fn static inline bool compatibleFramebuffer(Bitmap::BitmapFormat format);
+     *
+     * @brief Check if the provided bitmap format matches the current framebuffer format.
+     *
+     *        Helper function to check if the provided bitmap format matches the current framebuffer format.
+     *
+     * @param format A bitmap format.
+     *
+     * @return True if the format matches the framebuffer format, false otherwise.
+     */
+    static inline bool compatibleFramebuffer(Bitmap::BitmapFormat format)
+    {
+        bool compat = HAL::lcd().framebufferFormat() == format;
+        if (HAL::getInstance()->getAuxiliaryLCD())
+        {
+            compat |= HAL::getInstance()->getAuxiliaryLCD()->framebufferFormat() == format;
+        }
+        return compat;
+    }
 }; // class Painter
 } // namespace touchgfx
 

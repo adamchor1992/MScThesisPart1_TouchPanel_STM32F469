@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -87,6 +87,7 @@ void TextProgress::setValue(int value)
 void TextProgress::setNumberOfDecimals(uint16_t numberOfDecimals)
 {
     decimals = MIN(2, numberOfDecimals);
+    setValue(getValue());
 }
 
 uint16_t TextProgress::getNumberOfDecimals() const

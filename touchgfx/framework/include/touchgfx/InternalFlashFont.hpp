@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -36,7 +36,7 @@ class InternalFlashFont : public ConstFont
 public:
 
     /**
-     * @fn InternalFlashFont::InternalFlashFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t maxLeft, uint8_t maxRight, const uint8_t* glyphDataInternalFlash, const KerningNode* kerningList, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
+     * @fn InternalFlashFont::InternalFlashFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t dataFormatA4, uint8_t maxLeft, uint8_t maxRight, const uint8_t* glyphDataInternalFlash, const KerningNode* kerningList, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
      *
      * @brief Constructor.
      *
@@ -48,6 +48,7 @@ public:
      * @param pixBelowBase           The maximum number of pixels that can be drawn below the
      *                               baseline in this font.
      * @param bitsPerPixel           The number of bits per pixel in this font.
+     * @param dataFormatA4           The glyphs are saved using ST A4 format.
      * @param maxLeft                The maximum a character extends to the left.
      * @param maxRight               The maximum a character extends to the right.
      * @param glyphDataInternalFlash Pointer to the glyph data for the font, placed in internal
@@ -58,7 +59,7 @@ public:
      *                               available.
      * @param ellipsisChar           The ellipsis character used for truncating long texts.
      */
-    InternalFlashFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t maxLeft, uint8_t maxRight, const uint8_t* glyphDataInternalFlash, const KerningNode* kerningList, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
+    InternalFlashFont(const GlyphNode* list, uint16_t size, uint16_t height, uint8_t pixBelowBase, uint8_t bitsPerPixel, uint8_t dataFormatA4, uint8_t maxLeft, uint8_t maxRight, const uint8_t* glyphDataInternalFlash, const KerningNode* kerningList, const Unicode::UnicodeChar fallbackChar, const Unicode::UnicodeChar ellipsisChar);
 
     /**
      * @fn virtual const uint8_t* InternalFlashFont::getPixelData(const GlyphNode* glyph) const;
@@ -88,7 +89,7 @@ public:
     virtual int8_t getKerning(Unicode::UnicodeChar prevChar, const GlyphNode* glyph) const;
 
 private:
-    InternalFlashFont() : ConstFont(0, 0, 0, 0, 0, 0, 0, 0, 0) { }
+    InternalFlashFont() : ConstFont(0, 0, 0, 0, 0, 0, 0, 0, 0, 0) { }
     const uint8_t* glyphData;       ///< Information describing the glyph
     const KerningNode* kerningData; ///< Information describing the kerning
 };

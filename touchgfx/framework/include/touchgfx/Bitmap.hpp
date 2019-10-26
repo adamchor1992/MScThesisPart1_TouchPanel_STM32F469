@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -52,6 +52,19 @@ class BitmapData;
 class Bitmap
 {
 public:
+    /**
+     * @enum ClutFormat
+     *
+     * @brief Color data of a clut can be stored in the following formats.
+     *
+     *        Color data of a clut can be stored in the following formats.
+     */
+    enum ClutFormat
+    {
+        CLUT_FORMAT_L8_ARGB8888,       ///< 32-bit, 8 bits for each of red, green, blue and per pixel alpha channel
+        CLUT_FORMAT_L8_RGB888,         ///< 24-bit, 8 bits for each of red, green and blue, no per pixel alpha channel
+        CLUT_FORMAT_L8_RGB565          ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no per pixel alpha channel
+    };
 
     /**
      * @enum BitmapFormat
@@ -62,13 +75,18 @@ public:
      */
     enum BitmapFormat
     {
-        RGB565,   ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
-        RGB888,   ///< 24-bit, 8 bits for each of red, green and blue, no alpha channel
-        ARGB8888, ///< 32-bit, 8 bits for each of red, green, blue and alpha channel
-        BW,       ///< 1-bit, black / white, no alpha channel
-        BW_RLE,   ///< 1-bit, black / white, no alpha channel compressed with horizontal RLE
-        GRAY2,    ///< 2-bit grayscale
-        GRAY4     ///< 4.bit grayscale
+        RGB565,             ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
+        RGB888,             ///< 24-bit, 8 bits for each of red, green and blue, no alpha channel
+        ARGB8888,           ///< 32-bit, 8 bits for each of red, green, blue and alpha channel
+        BW,                 ///< 1-bit, black / white, no alpha channel
+        BW_RLE,             ///< 1-bit, black / white, no alpha channel compressed with horizontal RLE
+        GRAY2,              ///< 2-bit grayscale
+        GRAY4,              ///< 4-bit grayscale
+        ARGB2222,           ///< 8-bit color
+        ABGR2222,           ///< 8-bit color
+        RGBA2222,           ///< 8-bit color
+        BGRA2222,           ///< 8-bit color
+        L8                  ///< 8-bit indexed color
     };
 
     /**
@@ -81,14 +99,29 @@ public:
     struct BitmapData
     {
         const uint8_t* const data;                  ///< The data of this bitmap
-        const uint8_t* const alphaData;             ///< The data of the alpha channel (contains 0 if no alpha channel exist)
+        const uint8_t* const extraData;             ///< The data of either the alpha channel if exist or clut data in case of indexed color bitmap (contains 0 if no alpha channel neither clut exist)
         const uint16_t       width;                 ///< The width of the bitmap
         const uint16_t       height;                ///< The height of the bitmap
         const uint16_t       solidRect_x;           ///< The x coordinate of the maximum solid rectangle of the bitmap
         const uint16_t       solidRect_y;           ///< The y coordinate of the maximum solid rectangle of the bitmap
-        const uint16_t       solidRect_width;       ///< The width of the maximum solid rectangle of the bitmap
+        const uint16_t       solidRect_width : 13;  ///< The width of the maximum solid rectangle of the bitmap
+        const uint16_t       format_hi : 3;         ///< Determine the format of the data (high 3 bits)
         const uint16_t       solidRect_height : 13; ///< The height of the maximum solid rectangle of the bitmap
-        const uint8_t        format : 3;            ///< Determine the format of the data
+        const uint16_t       format_lo : 3;         ///< Determine the format of the data (low 3 bits)
+
+        /**
+         * @fn BitmapFormat getFormat() const
+         *
+         * @brief Gets the format
+         *
+         *        Gets the format by combining the high and low parts (format_hi &lt;&lt; 3) | format_lo
+         *
+         * @return The format.
+         */
+        BitmapFormat getFormat() const
+        {
+            return (BitmapFormat)((format_hi << 3) | format_lo);
+        }
     };
 
     /**
@@ -100,12 +133,12 @@ public:
      */
     struct DynamicBitmapData
     {
-        Rect     solid;  ///< The solidRect of this bitmap
-        uint16_t width;  ///< The width of the bitmap
-        uint16_t height; ///< The height of the bitmap
-        uint16_t format; ///< Determine the format of the data
-        uint8_t  inuse;  ///< zero if not in use
-        uint8_t  alpha;  ///< true if separate alpha for 565 format (always false)
+        Rect     solid;     ///< The solidRect of this bitmap
+        uint16_t width;     ///< The width of the bitmap
+        uint16_t height;    ///< The height of the bitmap
+        uint8_t  format: 5; ///< Determine the format of the data
+        uint8_t  inuse: 1;  ///< Zero if not in use
+        uint8_t  extra: 2;  ///< Extra data field, dependent on format
     };
 
     /**
@@ -168,14 +201,36 @@ public:
      *
      * @brief Gets a pointer to the alpha data, if present in the bitmap.
      *
-     *        Gets a pointer to the alpha data, if present in the bitmap.
+     *        Gets a pointer to the alpha data, if present in the bitmap. For images
+     *        stored in L8 format, a pointer to the CLUT will be returned. For non-opaque RGB565
+     *        images, a pointer to the alpha channel will be returned.
      *
      * @note If this bitmap is cached, it will return the cached version of alpha data for this
      *       bitmap.
      *
-     * @return A pointer to the raw alpha channel data. If no alpha channel exist 0 is returned.
+     * @return A pointer to the raw alpha channel data or CLUT. If no alpha channel or CLUT exist for the given Bitmap, 0 is returned.
+     *
+     * @deprecated Use getExtraData instead
+     *
+     * @see getExtraData
      */
     const uint8_t* getAlphaData() const;
+
+    /**
+     * @fn const uint8_t* Bitmap::getExtraData() const;
+     *
+     * @brief Gets a pointer to the extra (alpha) data, if present in the bitmap.
+     *
+     *        Gets a pointer to the extra (alpha) data, if present in the bitmap. For images
+     *        stored in L8 format, a pointer to the CLUT will be returned. For non-opaque RGB565
+     *        images, a pointer to the alpha channel will be returned.
+     *
+     * @note If this bitmap is cached, it will return the cached version of alpha data for this
+     *       bitmap.
+     *
+     * @return A pointer to the raw alpha channel data or CLUT. If no alpha channel or CLUT exist for the given Bitmap, 0 is returned.
+     */
+    const uint8_t* getExtraData() const;
 
     /**
      * @fn BitmapFormat Bitmap::getFormat() const;
@@ -236,7 +291,11 @@ public:
     bool isAlphaPerPixel() const
     {
         assert(bitmaps != 0 && "Bitmap database has not been initialized.");
-        return ((bitmaps != 0) && (bitmapId < numberOfBitmaps)) ? (bitmaps[bitmapId].alphaData != 0) : false;
+        if (getFormat() == L8)
+        {
+            return false; // No Alpha channel for indexed L8 bitmaps
+        }
+        return ((bitmaps != 0) && (bitmapId < numberOfBitmaps)) ? (bitmaps[bitmapId].extraData != 0) : false;
     }
 
     /**
@@ -383,17 +442,18 @@ public:
     static void clearCache();
 
     /**
-     * @fn static BitmapId Bitmap::dynamicBitmapCreate(const uint16_t width, const uint16_t height, BitmapFormat format);
+     * @fn static BitmapId Bitmap::dynamicBitmapCreate(const uint16_t width, const uint16_t height, BitmapFormat format, ClutFormat clutFormat = CLUT_FORMAT_L8_ARGB8888);
      *
      * @brief Create a dynamic bitmap.
      *
-     *        Create a dynamic bitmap.
+     *        Create a dynamic bitmap. The clutFormat parameter is ignored for bitmaps not in L8 format.
      *
-     * @param width  Width of the bitmap.
-     * @param height Height of the bitmap.
-     * @param format Bitmap format of the bitmap.
+     * @param width      Width of the bitmap.
+     * @param height     Height of the bitmap.
+     * @param format     Bitmap format of the bitmap.
+     * @param clutFormat Color lookup table format of the bitmap.
      *
-     * @return BitmapId of the new bitmap or BITMAP_INVALID if memory full.
+     * @return BitmapId of the new bitmap or BITMAP_INVALID if cache memory is full.
      *
      * @note Creation of a new dynamic bitmap may cause existing dynamic bitmaps to be moved in
      *       memory. Do not rely on bitmap memory addresses of dynamic bitmaps obtained from
@@ -401,7 +461,7 @@ public:
      *
      * @see dynamicBitmapAddress
      */
-    static BitmapId dynamicBitmapCreate(const uint16_t width, const uint16_t height, BitmapFormat format);
+    static BitmapId dynamicBitmapCreate(const uint16_t width, const uint16_t height, BitmapFormat format, ClutFormat clutFormat = CLUT_FORMAT_L8_ARGB8888);
 
     /**
      * @fn static bool Bitmap::dynamicBitmapDelete(BitmapId id);
@@ -439,9 +499,10 @@ public:
     /**
      * @fn static bool Bitmap::dynamicBitmapSetSolidRect(BitmapId id, const Rect& solidRect);
      *
-     * @brief Set the solid rectangle of a dynamic bitmap
+     * @brief Set the solid rectangle of a dynamic bitmap.
      *
-     *        Set the solid rectangle of a dynamic bitmap. Only relevant for RGBA8888 bitmaps.
+     *        Set the solid rectangle of a dynamic bitmap. Only relevant for ARGB8888 bitmaps
+     *        and 8bpp bitmap formats, as these formats include an alpha channel.
      *        The solid part of the bitmap is drawn faster than the transparent parts.
      *
      * @param id        The identifier.
@@ -450,6 +511,23 @@ public:
      * @return true if it succeeds, false if it fails.
      */
     static bool dynamicBitmapSetSolidRect(BitmapId id, const Rect& solidRect);
+
+    /**
+     * @fn static bool Bitmap::dynamicBitmapAddSolidRect(BitmapId id, const Rect& solidRect);
+     *
+     * @brief Updates the solid rectangle of a dynamic bitmap.
+     *
+     *        Updates the solid rectangle of a dynamic bitmap to include the given rectangle.
+     *        Only relevant for ARGB8888 bitmaps and 8bpp bitmap formats, as these formats
+     *        include an alpha channel.
+     *        The solid part of the bitmap is drawn faster than the transparent parts.
+     *
+     * @param id        The identifier.
+     * @param solidRect The solid rectangle.
+     *
+     * @return true if it succeeds, false if it fails.
+     */
+    static bool dynamicBitmapAddSolidRect(BitmapId id, const Rect& solidRect);
 
     /**
      * @fn bool Bitmap::operator==(const Bitmap& other) const
@@ -496,7 +574,34 @@ public:
      */
     static void setCache(uint16_t* cachep, uint32_t csize, uint32_t numberOfDynamicBitmaps = 0);
 
-private:
+    /**
+     * @fn static void Bitmap::removeCache();
+     *
+     * @brief Removes the bitmap cache.
+     *
+     *        Removes the bitmap cache. The memory can hereafter be used for other purposes.
+     *        All dynamic bitmap IDs are not valid after this.
+     *
+     */
+    static void removeCache();
+
+    /**
+     * @fn static void Bitmap::getCacheTopAddress();
+     *
+     * @brief Gets the address of the first unused memory in the cache.
+     *
+     *        Gets the address of the first unused memory in the
+     *        cache. Can be used in advanced application to reduce
+     *        power consumption of external RAM by turning off unused
+     *        RAM.
+     *
+     * @return Returns the highest used address in the cache.
+     */
+    static uint8_t* getCacheTopAddress()
+    {
+        return nextFreeData;
+    }
+
     /**
      * @fn static void Bitmap::compactCache();
      *
@@ -508,6 +613,7 @@ private:
      */
     static void compactCache();
 
+private:
     static uint32_t getSizeOfBitmap(BitmapId id);
 
     static bool copyBitmapToCache(BitmapId id, uint8_t* const dst);

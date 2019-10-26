@@ -14,79 +14,79 @@ Screen_Module2_SettingsViewBase::Screen_Module2_SettingsViewBase() :
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     buttonWithLabel_SetValue.setXY(475, 296);
-    buttonWithLabel_SetValue.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_SetValue.setLabelText(TypedText(T_SINGLEUSEID167));
+    buttonWithLabel_SetValue.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_SetValue.setLabelText(touchgfx::TypedText(T_SINGLEUSEID167));
     buttonWithLabel_SetValue.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setAction(buttonCallback);
 
     slider_Value.setXY(381, 202);
-    slider_Value.setBitmaps(Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
+    slider_Value.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_Value.setupHorizontalSlider(2, 19, 2, 0, 310);
     slider_Value.setValueRange(0, 100);
     slider_Value.setValue(0);
     slider_Value.setNewValueCallback(sliderValueChangedCallback);
 
     radioButtonParameter2.setXY(62, 179);
-    radioButtonParameter2.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButtonParameter2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter2.setSelected(false);
     radioButtonParameter2.setDeselectionEnabled(false);
 
     textArea_Parameter2.setXY(0, 179);
     textArea_Parameter2.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter2.setLinespacing(0);
-    textArea_Parameter2.setTypedText(TypedText(T_SINGLEUSEID168));
+    textArea_Parameter2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID168));
 
     radioButtonParameter1.setXY(62, 130);
-    radioButtonParameter1.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButtonParameter1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter1.setSelected(true);
     radioButtonParameter1.setDeselectionEnabled(false);
 
     textArea_Parameter1.setXY(0, 130);
     textArea_Parameter1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter1.setLinespacing(0);
-    textArea_Parameter1.setTypedText(TypedText(T_SINGLEUSEID169));
+    textArea_Parameter1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID169));
 
     textArea_ValueToSet.setPosition(380, 118, 361, 49);
     textArea_ValueToSet.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ValueToSet.setLinespacing(0);
-    Unicode::snprintf(textArea_ValueToSetBuffer, TEXTAREA_VALUETOSET_SIZE, "%s", TypedText(T_SINGLEUSEID171).getText());
+    Unicode::snprintf(textArea_ValueToSetBuffer, TEXTAREA_VALUETOSET_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID171).getText());
     textArea_ValueToSet.setWildcard(textArea_ValueToSetBuffer);
-    textArea_ValueToSet.setTypedText(TypedText(T_SINGLEUSEID170));
+    textArea_ValueToSet.setTypedText(touchgfx::TypedText(T_SINGLEUSEID170));
 
     textArea_ParameterToSet.setPosition(0, 69, 214, 49);
     textArea_ParameterToSet.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ParameterToSet.setLinespacing(0);
-    textArea_ParameterToSet.setTypedText(TypedText(T_SINGLEUSEID172));
+    textArea_ParameterToSet.setTypedText(touchgfx::TypedText(T_SINGLEUSEID172));
 
     textArea_Title.setXY(219, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Title.setLinespacing(0);
-    textArea_Title.setTypedText(TypedText(T_SINGLEUSEID173));
+    textArea_Title.setTypedText(touchgfx::TypedText(T_SINGLEUSEID173));
 
     textArea_Parameter3.setXY(0, 228);
     textArea_Parameter3.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter3.setLinespacing(0);
-    textArea_Parameter3.setTypedText(TypedText(T_SINGLEUSEID174));
+    textArea_Parameter3.setTypedText(touchgfx::TypedText(T_SINGLEUSEID174));
 
     textArea_Parameter4.setXY(0, 277);
     textArea_Parameter4.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Parameter4.setLinespacing(0);
-    textArea_Parameter4.setTypedText(TypedText(T_SINGLEUSEID175));
+    textArea_Parameter4.setTypedText(touchgfx::TypedText(T_SINGLEUSEID175));
 
     radioButtonParameter3.setXY(62, 228);
-    radioButtonParameter3.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButtonParameter3.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter3.setSelected(false);
     radioButtonParameter3.setDeselectionEnabled(false);
 
     radioButtonParameter4.setXY(62, 277);
-    radioButtonParameter4.setBitmaps(Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButtonParameter4.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter4.setSelected(false);
     radioButtonParameter4.setDeselectionEnabled(false);
 
     buttonWithLabel_Back.setXY(295, 419);
-    buttonWithLabel_Back.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_Back.setLabelText(TypedText(T_SINGLEUSEID176));
+    buttonWithLabel_Back.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Back.setLabelText(touchgfx::TypedText(T_SINGLEUSEID176));
     buttonWithLabel_Back.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setAction(buttonCallback);
@@ -94,9 +94,9 @@ Screen_Module2_SettingsViewBase::Screen_Module2_SettingsViewBase() :
     textArea_CPU_Usage.setPosition(618, 451, 182, 29);
     textArea_CPU_Usage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_CPU_Usage.setLinespacing(0);
-    Unicode::snprintf(textArea_CPU_UsageBuffer, TEXTAREA_CPU_USAGE_SIZE, "%s", TypedText(T_SINGLEUSEID178).getText());
+    Unicode::snprintf(textArea_CPU_UsageBuffer, TEXTAREA_CPU_USAGE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID178).getText());
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
-    textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID177));
+    textArea_CPU_Usage.setTypedText(touchgfx::TypedText(T_SINGLEUSEID177));
 
     add(backgroundBox_Black);
     add(buttonWithLabel_SetValue);

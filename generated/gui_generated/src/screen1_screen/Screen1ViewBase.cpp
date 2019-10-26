@@ -13,7 +13,7 @@ Screen1ViewBase::Screen1ViewBase() :
     scrollWheel1.setPosition(65, 34, 100, 75);
     scrollWheel1.setHorizontal(false);
     scrollWheel1.setCircular(false);
-    scrollWheel1.setEasingEquation(EasingEquations::backEaseOut);
+    scrollWheel1.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
     scrollWheel1.setSwipeAcceleration(10);
     scrollWheel1.setDragAcceleration(10);
     scrollWheel1.setNumberOfItems(10);
@@ -35,11 +35,11 @@ void Screen1ViewBase::setupScreen()
     }
 }
 
-void Screen1ViewBase::updateItemCallbackHandler(DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
+void Screen1ViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
 {
     if (items == &scrollWheel1ListItems)
     {
-        Drawable* d = items->getDrawable(containerIndex);
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
         ExponentContainer* cc = (ExponentContainer*)d;
         scrollWheel1UpdateItem(*cc, itemIndex);
     }

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -29,7 +29,7 @@ void PainterRGB888::setColor(colortype color, uint8_t alpha)
     painterRed = Color::getRedColor(color);
     painterGreen = Color::getGreenColor(color);
     painterBlue = Color::getBlueColor(color);
-    painterAlpha = alpha;
+    setAlpha(alpha);
 }
 
 touchgfx::colortype PainterRGB888::getColor() const
@@ -47,17 +47,17 @@ uint8_t PainterRGB888::getAlpha() const
     return painterAlpha;
 }
 
-void PainterRGB888::render(uint8_t* ptr, int x, int xAdjust, int y, unsigned count, const uint8_t* covers)
+void PainterRGB888::render(uint8_t* ptr, int x, int xAdjust, int /*y*/, unsigned count, const uint8_t* covers)
 {
     uint8_t* p = reinterpret_cast<uint8_t*>(ptr) + ((x + xAdjust) * 3);
     uint8_t pByte;
-    uint8_t totalAlpha = (widgetAlpha * painterAlpha) / 255;
-    if (totalAlpha == 255)
+    uint8_t totalAlpha = LCD::div255(widgetAlpha * painterAlpha);
+    if (totalAlpha == 0xFF)
     {
         do
         {
-            uint32_t alpha = *covers++;
-            if (alpha == 255)
+            uint8_t alpha = *covers++;
+            if (alpha == 0xFF)
             {
                 *p++ = painterBlue;
                 *p++ = painterGreen;
@@ -65,12 +65,13 @@ void PainterRGB888::render(uint8_t* ptr, int x, int xAdjust, int y, unsigned cou
             }
             else
             {
+                uint8_t ialpha = 0xFF - alpha;
                 pByte = *p;
-                *p++ = static_cast<uint8_t>((((painterBlue - pByte) * alpha) >> 8) + pByte);
+                *p++ = LCD::div255(painterBlue * alpha + pByte * ialpha);
                 pByte = *p;
-                *p++ = static_cast<uint8_t>((((painterGreen - pByte) * alpha) >> 8) + pByte);
+                *p++ = LCD::div255(painterGreen * alpha + pByte * ialpha);
                 pByte = *p;
-                *p++ = static_cast<uint8_t>((((painterRed - pByte) * alpha) >> 8) + pByte);
+                *p++ = LCD::div255(painterRed * alpha + pByte * ialpha);
             }
         }
         while (--count != 0);
@@ -79,13 +80,14 @@ void PainterRGB888::render(uint8_t* ptr, int x, int xAdjust, int y, unsigned cou
     {
         do
         {
-            uint32_t alpha = *covers++ * totalAlpha; // never 0 as both are !=0
+            uint8_t alpha = LCD::div255(*covers++ * totalAlpha);
+            uint8_t ialpha = 0xFF - alpha;
             pByte = *p;
-            *p++ = static_cast<uint8_t>((((painterBlue - pByte) * alpha) >> 16) + pByte);
+            *p++ = LCD::div255(painterBlue * alpha + pByte * ialpha);
             pByte = *p;
-            *p++ = static_cast<uint8_t>((((painterGreen - pByte) * alpha) >> 16) + pByte);
+            *p++ = LCD::div255(painterGreen * alpha + pByte * ialpha);
             pByte = *p;
-            *p++ = static_cast<uint8_t>((((painterRed - pByte) * alpha) >> 16) + pByte);
+            *p++ = LCD::div255(painterRed * alpha + pByte * ialpha);
         }
         while (--count != 0);
     }

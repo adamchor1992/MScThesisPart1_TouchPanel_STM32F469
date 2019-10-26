@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -75,13 +75,22 @@ public:
      *
      * @return The text.
      */
-    const Unicode::UnicodeChar* getText(TypedTextId id) const
-    {
-        return currentLanguagePtr[id];
-    }
+    const Unicode::UnicodeChar* getText(TypedTextId id) const;
+
+    /**
+     * @fn static void setTranslation(touchgfx::LanguageId id, const void* translation)
+     *
+     * @brief Adds or replaces a translation.
+     *
+     *        Adds or replaces a translation. This function allows an
+     *        application to add a translation at runtime.
+     *
+     * @param id          The id of the language to add or replace.
+     * @param translation A pointer to the translation in flash or RAM.
+     */
+    static void setTranslation(touchgfx::LanguageId id, const void* translation);
 
 private:
-    static const Unicode::UnicodeChar* const* currentLanguagePtr;
     static LanguageId currentLanguage;
 };
 } // namespace touchgfx

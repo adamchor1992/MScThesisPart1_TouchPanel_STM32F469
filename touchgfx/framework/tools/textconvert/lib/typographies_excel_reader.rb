@@ -1,7 +1,7 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.10.0 distribution.
+# This file is part of the TouchGFX 4.12.3 distribution.
 #
-# <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+# <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
 #
 # This software component is licensed by ST under Ultimate Liberty license
@@ -20,24 +20,28 @@ class TypographiesExcelReader
   def initialize(file_name)
     header_row_number = 3
     header_column_number = 2
-    @reader = ExcelReader.new(file_name, "Typography", header_row_number, header_column_number)
+    @reader = ExcelReader.new(file_name, 'Typography', header_row_number, header_column_number)
     @typographies = []
   end
 
   def run
     reader.read_rows do |row|
-      name = row[:"Typography Name"]
+      name = row[:'Typography Name']
       font = row[:font]
       size = row[:size]
       bpp = row[:bpp]
-      if row.exists?(:"Fallback Character")
-        fallback_character = row[:"Fallback Character"]
+      if row.exists?(:'Fallback Character')
+        fallback_character = row[:'Fallback Character']
       end
-      if row.exists?(:"Wildcard Characters")
-        wildcard_characters = row[:"Wildcard Characters"]
+      if row.exists?(:'Wildcard Characters')
+        wildcard_characters = row[:'Wildcard Characters']
       end
-      if row.exists?(:"Character Ranges") # New name
-        wildcard_ranges = row[:"Character Ranges"]
+      if row.exists?(:'Widget Wildcard Characters')
+        wildcard_characters ||= '' # Make sure wc_chars is defined
+        wildcard_characters += (row[:'Widget Wildcard Characters'] || '')
+      end
+      if row.exists?(:'Character Ranges') # New name
+        wildcard_ranges = row[:'Character Ranges']
       elsif row.exists?(:'Wildcard Ranges') # Old name
         wildcard_ranges = row[:'Wildcard Ranges']
       end

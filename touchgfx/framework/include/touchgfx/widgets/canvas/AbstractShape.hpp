@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -155,6 +155,30 @@ public:
     }
 
     /**
+     * @fn template <typename T> void AbstractShape::setShape(const ShapePoint<T>* points)
+     *
+     * @brief Sets a shape the struct Points.
+     *
+     *        Sets a shape the struct Points. The cached outline of the shape is automatically
+     *        updated.
+     *
+     * @tparam T Generic type parameter, either int or float.
+     * @param [in] points The points that make up the shape.
+     *
+     * @note The area containing the shape is not invalidated.
+     */
+    template <typename T>
+    void setShape(const ShapePoint<T>* points)
+    {
+        int numPoints = getNumPoints();
+        for (int i = 0; i < numPoints; i++)
+        {
+            setCorner(i, CWRUtil::toQ5<T>(points[i].x), CWRUtil::toQ5<T>(points[i].y));
+        }
+        updateAbstractShapeCache();
+    }
+
+    /**
      * @fn template <typename T> void AbstractShape::setOrigin(T x, T y)
      *
      * @brief Sets the position of (0,0).
@@ -274,6 +298,22 @@ public:
     }
 
     /**
+     * @fn template <typename T> void AbstractShape::getAngle(T& angle)
+     *
+     * @brief Gets the abstractShape's angle.
+     *
+     *        Gets the abstractShape's angle.
+     *
+     * @tparam T Generic type parameter.
+     * @param [out] angle The current abstractShape angle relative to 0.
+     */
+    template <typename T>
+    void getAngle(T& angle)
+    {
+        angle = this->shapeAngle.to<T>();
+    }
+
+    /**
      * @fn template <typename T> void AbstractShape::updateAngle(T angle)
      *
      * @brief Sets the angle to turn the abstractShape.
@@ -337,8 +377,8 @@ public:
     template <typename T>
     void setScale(T newXScale, T newYScale)
     {
-        xScale = CWRUtil::toQ5<T>(newXScale);
-        yScale = CWRUtil::toQ5<T>(newYScale);
+        xScale = CWRUtil::toQ10<T>(newXScale);
+        yScale = CWRUtil::toQ10<T>(newYScale);
         updateAbstractShapeCache();
     }
 
@@ -360,6 +400,41 @@ public:
     void setScale(T scale)
     {
         setScale(scale, scale);
+    }
+
+    /**
+     * @fn template <typename T> void AbstractShape::updateScale(T newXScale, T newYScale)
+     *
+     * @brief Scale the AbstractShape.
+     *
+     *        Scale the AbstractShape the given amounts in the x direction and the y direction.
+     *
+     * @tparam T Generic type parameter, either int or float.
+     * @param newXScale The new scale in the x direction.
+     * @param newYScale The new scale in the y direction.
+     *
+     * @note The area containing the AbstractShape is invalidated before and after the change.
+     *
+     * @see setScale()
+     */
+    template <typename T>
+    void updateScale(T newXScale, T newYScale)
+    {
+        CWRUtil::Q10 xScaleQ10 = CWRUtil::toQ10<T>(newXScale);
+        CWRUtil::Q10 yScaleQ10 = CWRUtil::toQ10<T>(newYScale);
+
+        if (xScale != xScaleQ10 || yScale != yScaleQ10)
+        {
+            Rect rectBefore = getMinimalRect();
+
+            xScale = xScaleQ10;
+            yScale = yScaleQ10;
+            updateAbstractShapeCache();
+
+            Rect rectAfter = getMinimalRect();
+            rectBefore.expandToFit(rectAfter);
+            invalidateRect(rectBefore);
+        }
     }
 
     /**
@@ -464,7 +539,7 @@ protected:
 private:
     CWRUtil::Q5 dx, dy;
     CWRUtil::Q5 shapeAngle;
-    CWRUtil::Q5 xScale, yScale;
+    CWRUtil::Q10 xScale, yScale;
     Rect minimalRect;
 };
 } // namespace touchgfx

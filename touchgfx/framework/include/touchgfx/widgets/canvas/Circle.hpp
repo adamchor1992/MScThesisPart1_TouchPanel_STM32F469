@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -197,6 +197,7 @@ public:
      * @see getArc
      * @see updateArcStart
      * @see updateArcEnd
+     * @see updateArc
      */
     template <typename T>
     void setArc(const T startAngle, const T endAngle)
@@ -222,6 +223,7 @@ public:
      * @see getArc
      * @see updateArcStart
      * @see updateArcEnd
+     * @see updateArc
      */
     void setArc(const int16_t startAngle, const int16_t endAngle)
     {
@@ -333,6 +335,7 @@ public:
      *
      * @see setArc
      * @see updateArcEnd
+     * @see updateArc
      */
     template <typename T>
     void updateArcStart(const T startAngle)
@@ -364,11 +367,12 @@ public:
      *
      * @see setArc
      * @see updateArcStart
+     * @see updateArc
      */
     template <typename T>
     void updateArcEnd(const T endAngle)
     {
-        CWRUtil::Q5 endAngleQ5 = CWRUtil::toQ5<T>(endAngle);
+        CWRUtil::Q5 endAngleQ5 = CWRUtil::toQ5(endAngle);
         if (circleArcAngleEnd == endAngleQ5)
         {
             return;
@@ -379,6 +383,143 @@ public:
         circleArcAngleEnd = endAngleQ5;
 
         invalidateRect(minimalRect);
+    }
+
+    /**
+     * @fn template <typename T> void Circle::updateArc(const T startAngle, const T endAngle)
+     *
+     * @brief Updates the start and end angle in degrees for this Circle arc.
+     *
+     *        Updates the start and end angle in degrees for this Circle arc.
+     *
+     * @tparam T Generic type parameter, either int or float.
+     * @param startAngle The new start angle in degrees.
+     * @param endAngle   The new end angle in degrees.
+     *
+     * @note The areas containing the updated Circle arcs are invalidated.
+     *
+     * @see setArc
+     * @see getArc
+     * @see updateArcStart
+     * @see updateArcEnd
+     */
+    template <typename T>
+    void updateArc(const T startAngle, const T endAngle)
+    {
+        CWRUtil::Q5 startAngleQ5 = CWRUtil::toQ5<T>(startAngle);
+        CWRUtil::Q5 endAngleQ5 = CWRUtil::toQ5(endAngle);
+        if (circleArcAngleStart == startAngleQ5 && circleArcAngleEnd == endAngleQ5)
+        {
+            return;
+        }
+
+        // Make sure old start < end
+        if (circleArcAngleStart > circleArcAngleEnd)
+        {
+            CWRUtil::Q5 tmp = circleArcAngleStart;
+            circleArcAngleStart = circleArcAngleEnd;
+            circleArcAngleEnd = tmp;
+        }
+        // Make sure new start < end
+        if (startAngleQ5 > endAngleQ5)
+        {
+            CWRUtil::Q5 tmp = startAngleQ5;
+            startAngleQ5 = endAngleQ5;
+            endAngleQ5 = tmp;
+        }
+
+        // Nice constant
+        const CWRUtil::Q5 _360 = CWRUtil::toQ5<int>(360);
+
+        // Get old circle range start in [0..360[
+        if (circleArcAngleStart >= _360)
+        {
+            int x = (circleArcAngleStart / _360).to<int>();
+            circleArcAngleStart = circleArcAngleStart - _360 * x;
+            circleArcAngleEnd = circleArcAngleEnd - _360 * x;
+        }
+        else if (circleArcAngleStart < 0)
+        {
+            int x = 1 + ((-circleArcAngleStart) / _360).to<int>();
+            circleArcAngleStart = circleArcAngleStart + _360 * x;
+            circleArcAngleEnd = circleArcAngleEnd + _360 * x;
+        }
+        // Detect full circle
+        if ((circleArcAngleEnd - circleArcAngleStart) > _360)
+        {
+            circleArcAngleEnd = circleArcAngleStart + _360;
+        }
+
+        // Get new circle range start in [0..360[
+        if (startAngleQ5 >= _360)
+        {
+            int x = (startAngleQ5 / _360).to<int>();
+            startAngleQ5 = startAngleQ5 - _360 * x;
+            endAngleQ5 = endAngleQ5 - _360 * x;
+        }
+        else if (startAngleQ5 < 0)
+        {
+            int x = 1 + (-startAngleQ5 / _360).to<int>();
+            startAngleQ5 = startAngleQ5 + _360 * x;
+            endAngleQ5 = endAngleQ5 + _360 * x;
+        }
+        // Detect full circle
+        if ((endAngleQ5 - startAngleQ5) >= _360)
+        {
+            // Align full new circle with old start.
+            // So old[90..270] -> new[0..360] becomes new[90..450] for smaller invalidated area
+            startAngleQ5 = circleArcAngleStart;
+            endAngleQ5 = startAngleQ5 + _360;
+        }
+        else if ((circleArcAngleEnd - circleArcAngleStart) >= _360)
+        {
+            // New circle is not full, but old is. Align old circle with new.
+            // So old[0..360] -> new[90..270] becomes old[90..450] for smaller invalidated area
+            circleArcAngleStart = startAngleQ5;
+            circleArcAngleEnd = circleArcAngleStart + _360;
+        }
+
+        // New start is after old end. Could be overlap
+        // if old[10..30]->new[350..380] becomes new[-10..20]
+        if (startAngleQ5 > circleArcAngleEnd && endAngleQ5 - _360 >= circleArcAngleStart)
+        {
+            startAngleQ5 = startAngleQ5 - _360;
+            endAngleQ5 = endAngleQ5 - _360;
+        }
+        // Same as above but for old instead of new
+        if (circleArcAngleStart > endAngleQ5 && circleArcAngleEnd - _360 >= startAngleQ5)
+        {
+            circleArcAngleStart = circleArcAngleStart - _360;
+            circleArcAngleEnd = circleArcAngleEnd - _360;
+        }
+
+        Rect r;
+        if (startAngleQ5 > circleArcAngleEnd || endAngleQ5 < circleArcAngleStart)
+        {
+            // Arcs do not overlap. Invalidate both arcs.
+            r = getMinimalRect(circleArcAngleStart, circleArcAngleEnd);
+            invalidateRect(r);
+
+            r = getMinimalRect(startAngleQ5, endAngleQ5);
+            invalidateRect(r);
+        }
+        else
+        {
+            // Arcs overlap. Invalidate both ends.
+            if (circleArcAngleStart != startAngleQ5)
+            {
+                r = getMinimalRectForUpdatedStartAngle(startAngleQ5);
+                invalidateRect(r);
+            }
+            if (circleArcAngleEnd != endAngleQ5)
+            {
+                r = getMinimalRectForUpdatedEndAngle(endAngleQ5);
+                invalidateRect(r);
+            }
+        }
+
+        circleArcAngleStart = CWRUtil::toQ5<T>(startAngle);
+        circleArcAngleEnd = CWRUtil::toQ5(endAngle);
     }
 
     /**
@@ -550,8 +691,8 @@ private:
     void updateMinMaxAR(const CWRUtil::Q5& a, const CWRUtil::Q5& r2, CWRUtil::Q5& xMin, CWRUtil::Q5& xMax, CWRUtil::Q5& yMin, CWRUtil::Q5& yMax) const;
     void updateMinMaxXY(const CWRUtil::Q5& xNew, const CWRUtil::Q5& yNew, CWRUtil::Q5& xMin, CWRUtil::Q5& xMax, CWRUtil::Q5& yMin, CWRUtil::Q5& yMax) const;
     void calculateMinimalRect(CWRUtil::Q5 arcStart, CWRUtil::Q5 arcEnd, CWRUtil::Q5& xMin, CWRUtil::Q5& xMax, CWRUtil::Q5& yMin, CWRUtil::Q5& yMax) const;
-    Rect getMinimalRectForUpdatedStartAngle(CWRUtil::Q5& startAngleQ5);
-    Rect getMinimalRectForUpdatedEndAngle(CWRUtil::Q5& endAngleQ5);
+    Rect getMinimalRectForUpdatedStartAngle(const CWRUtil::Q5& startAngleQ5) const;
+    Rect getMinimalRectForUpdatedEndAngle(const CWRUtil::Q5& endAngleQ5) const;
 };
 } // namespace touchgfx
 

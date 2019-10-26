@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -42,7 +42,7 @@ ScrollBase::ScrollBase()
       draggableX(false),
       draggableY(false)
 {
-    add(list);
+    Container::add(list);
     list.setXY(0, 0);
     list.setHorizontal(false);
     list.setCircular(false);

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -344,6 +344,21 @@ public:
      * @return 1 if DMA queue is full, else 0.
      */
     uint8_t isDmaQueueFull();
+
+    /**
+     * @fn virtual DMAType DMA_Interface::getDMAType()
+     *
+     * @brief Function for obtaining the DMA type of the concrete DMA_Interface implementation.
+     *
+     *        Function for obtaining the DMA type of the concrete DMA_Interface implementation.
+     *        As default, will return DMA_TYPE_GENERIC type value.
+     *
+     * @return a DMAType value of the concrete DMA_Interface implementation.
+     */
+    virtual DMAType getDMAType(void)
+    {
+        return DMA_TYPE_GENERIC;
+    }
 
     /**
      * @fn virtual DMA_Interface::~DMA_Interface()

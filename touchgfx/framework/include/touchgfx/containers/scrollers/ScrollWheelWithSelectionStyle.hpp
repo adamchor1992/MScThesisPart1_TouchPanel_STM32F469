@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -124,7 +124,7 @@ public:
     virtual void setNumberOfItems(int16_t numberOfItems);
 
     /**
-     * @fn virtual void ScrollWheelWithSelectionStyle::setSelecteItemOffset(int16_t offset)
+     * @fn virtual void ScrollWheelWithSelectionStyle::setSelectedItemOffset(int16_t offset)
      *
      * @brief Sets selected item offset.
      *
@@ -135,7 +135,7 @@ public:
      *
      * @param offset The offset.
      */
-    virtual void setSelecteItemOffset(int16_t offset);
+    virtual void setSelectedItemOffset(int16_t offset);
 
     /**
      * @fn void ScrollWheelWithSelectionStyle::setSelectedItemExtraSize(int16_t extraSizeBefore, int16_t extraSizeAfter);
@@ -148,7 +148,7 @@ public:
      * @param extraSizeBefore The extra size before.
      * @param extraSizeAfter  The extra size after.
      *
-     * @see setSelecteItemOffset
+     * @see setSelectedItemOffset
      */
     virtual void setSelectedItemExtraSize(int16_t extraSizeBefore, int16_t extraSizeAfter);
 
@@ -189,7 +189,7 @@ public:
      * @param marginBefore The margin before.
      * @param marginAfter  The margin after.
      *
-     * @see setSelecteItemOffset
+     * @see setSelectedItemOffset
      * @see setSelectedItemExtraSize
      */
     virtual void setSelectedItemMargin(int16_t marginBefore, int16_t marginAfter);

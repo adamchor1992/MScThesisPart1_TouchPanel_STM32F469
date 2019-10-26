@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -75,7 +75,7 @@ bool ScrollList::getSnapping() const
 int32_t ScrollList::getPositionForItem(int16_t itemIndex)
 {
     int32_t currentOffset = getNormalizedOffset(getOffset());
-    if (itemIndex < 0 || itemIndex >= list.getNumberOfItems())
+    if (itemIndex < 0 || itemIndex >= list.getNumberOfItems() || itemSize == 0)
     {
         return currentOffset;
     }

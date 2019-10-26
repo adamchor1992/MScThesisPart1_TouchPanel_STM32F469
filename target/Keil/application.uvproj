@@ -969,34 +969,44 @@
               <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_on.cpp</FilePath>
             </File>
             <File>
+              <FileName>CachedFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/cachedfont.cpp</FilePath>
+            </File>
+            <File>
               <FileName>ExponentContainerBase.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/gui_generated/src/containers/exponentcontainerbase.cpp</FilePath>
             </File>
             <File>
-              <FileName>Font_verdana_10_4bpp.cpp</FileName>
+              <FileName>Font_verdana_10_4bpp_0.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/fonts/src/font_verdana_10_4bpp.cpp</FilePath>
+              <FilePath>../../generated/fonts/src/font_verdana_10_4bpp_0.cpp</FilePath>
             </File>
             <File>
-              <FileName>Font_verdana_20_4bpp.cpp</FileName>
+              <FileName>Font_verdana_20_4bpp_0.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/fonts/src/font_verdana_20_4bpp.cpp</FilePath>
+              <FilePath>../../generated/fonts/src/font_verdana_20_4bpp_0.cpp</FilePath>
             </File>
             <File>
-              <FileName>Font_verdana_40_4bpp.cpp</FileName>
+              <FileName>Font_verdana_40_4bpp_0.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/fonts/src/font_verdana_40_4bpp.cpp</FilePath>
+              <FilePath>../../generated/fonts/src/font_verdana_40_4bpp_0.cpp</FilePath>
             </File>
             <File>
-              <FileName>FontGetters.cpp</FileName>
+              <FileName>FontCache.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/fonts/src/fontgetters.cpp</FilePath>
+              <FilePath>../../generated/fonts/src/fontcache.cpp</FilePath>
             </File>
             <File>
               <FileName>FrontendApplicationBase.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/gui_generated/src/common/frontendapplicationbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GeneratedFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/generatedfont.cpp</FilePath>
             </File>
             <File>
               <FileName>Kerning_verdana_10_4bpp.cpp</FileName>

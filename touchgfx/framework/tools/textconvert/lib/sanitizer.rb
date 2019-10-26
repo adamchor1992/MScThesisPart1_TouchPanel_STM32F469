@@ -1,7 +1,7 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.10.0 distribution.
+# This file is part of the TouchGFX 4.12.3 distribution.
 #
-# <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+# <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
 #
 # This software component is licensed by ST under Ultimate Liberty license
@@ -11,7 +11,7 @@
 #
 ##############################################################################
 
-TextEntrySanitizer = Struct.new(:text_entries, :typographies)
+TextEntrySanitizer = Struct.new(:text_entries, :typographies, :framebuffer_bpp)
 
 $warning_prefix = "\nWARNING (TextConverter): "
 
@@ -25,9 +25,10 @@ class Sanitizer < TextEntrySanitizer
       RemoveTextEntriesWithInvalidTypography,
       RemoveTextEntriesWithInvalidAlignment,
       RemoveTextEntriesWithInvalidDirection,
-      CheckSizeAndBpp
+      CheckSizeAndBpp,
+      DowngradeFontsBitDepth
     ].each do |sanitizer|
-      sanitizer.new(text_entries, typographies).run
+      sanitizer.new(text_entries, typographies, framebuffer_bpp).run
     end
   end
 end
@@ -149,6 +150,39 @@ class CheckSizeAndBpp < TextEntrySanitizer
 
       if ( (not typography.font_size.integer?) or (typography.font_size < 1) )
         raise "#{$warning_prefix} Typography named '#{typography.name}' has font size value '#{typography.font_size}', which is not a valid value"
+      end
+    end
+  end
+end
+
+class DowngradeFontsBitDepth < TextEntrySanitizer
+  def run
+    if (not framebuffer_bpp.nil?)
+      m = framebuffer_bpp.match(/BPP(\d+)/)
+      bpp = m.nil? ? 24 : m[1].to_i
+      typographies.each do |typography|
+        case bpp
+        when 8
+          if typography.bpp > 2
+            puts "Downgrading typography #{typography.name} from #{typography.bpp.to_s}bpp to 2bpp"
+            typography.bpp = 2
+          end
+        when 4
+          if typography.bpp > 4
+            puts "Downgrading typography #{typography.name} from #{typography.bpp.to_s}bpp to 4bpp"
+            typography.bpp = 4
+          end
+        when 2
+          if typography.bpp > 2
+            puts "Downgrading typography #{typography.name} from #{typography.bpp.to_s}bpp to 2bpp"
+            typography.bpp = 2
+          end
+        when 1
+          if typography.bpp > 1
+            puts "Downgrading typography #{typography.name} from #{typography.bpp.to_s}bpp to 1bpp"
+            typography.bpp = 1
+          end
+        end
       end
     end
   end

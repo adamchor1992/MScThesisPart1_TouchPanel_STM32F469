@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -21,7 +21,7 @@ ScrollWheelBase::ScrollWheelBase()
     : ScrollBase(),
       animateToCallback(0)
 {
-    setHorizontal(false);
+    ScrollWheelBase::setHorizontal(false);
     setTouchable(true);
 }
 
@@ -55,7 +55,7 @@ int32_t ScrollWheelBase::getPositionForItem(int16_t itemIndex)
 
 void ScrollWheelBase::animateToPosition(int32_t position, int16_t steps)
 {
-    if (animateToCallback && animateToCallback->isValid())
+    if (animateToCallback && animateToCallback->isValid() && itemSize > 0)
     {
         position = getNearestAlignedOffset(position);
         int16_t itemIndex = (-position) / itemSize;
@@ -81,7 +81,8 @@ int ScrollWheelBase::getSelectedItem() const
 int32_t ScrollWheelBase::keepOffsetInsideLimits(int32_t newOffset, int16_t overShoot) const
 {
     newOffset = MIN(newOffset, overShoot);
-    newOffset = MAX(newOffset, -(itemSize * (getNumberOfItems() - 1)) - overShoot);
+    int16_t numberOfItems = getNumberOfItems();
+    newOffset = MAX(newOffset, -(itemSize * (numberOfItems - 1)) - overShoot);
     return newOffset;
 }
 
@@ -138,7 +139,8 @@ void ScrollWheelBase::handleDragEvent(const DragEvent& evt)
     if (!getCircular())
     {
         newOffset = MIN(newOffset, itemSize * 3 / 4);
-        newOffset = MAX(newOffset, -(itemSize * (getNumberOfItems() - 1)) - itemSize * 3 / 4);
+        int16_t numberOfItems = getNumberOfItems();
+        newOffset = MAX(newOffset, -(itemSize * (numberOfItems - 1)) - itemSize * 3 / 4);
     }
     setOffset(newOffset);
 }

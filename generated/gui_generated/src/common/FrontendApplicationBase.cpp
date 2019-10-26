@@ -7,6 +7,7 @@
 #include <touchgfx/transitions/NoTransition.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Texts.hpp>
+#include <touchgfx/hal/HAL.hpp>
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 #include <gui/screen_main_screen/Screen_MainPresenter.hpp>
 #include <gui/screen_module1_data_screen/Screen_Module1_DataView.hpp>
@@ -41,7 +42,8 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
       frontendHeap(heap),
       model(m)
 {
-    Texts::setLanguage(GB);
+    touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_LANDSCAPE);
+    touchgfx::Texts::setLanguage(GB);
 }
 
 /*
@@ -57,7 +59,7 @@ void FrontendApplicationBase::gotoScreen_MainScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_MainScreenNoTransitionImpl()
 {
-    makeTransition<Screen_MainView, Screen_MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_MainView, Screen_MainPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module1_Data
@@ -70,7 +72,7 @@ void FrontendApplicationBase::gotoScreen_Module1_DataScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module1_DataScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module1_DataView, Screen_Module1_DataPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module1_DataView, Screen_Module1_DataPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module1_Settings
@@ -83,7 +85,7 @@ void FrontendApplicationBase::gotoScreen_Module1_SettingsScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module1_SettingsScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module1_SettingsView, Screen_Module1_SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module1_SettingsView, Screen_Module1_SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module1_Graph
@@ -96,7 +98,7 @@ void FrontendApplicationBase::gotoScreen_Module1_GraphScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module1_GraphScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module1_GraphView, Screen_Module1_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module1_GraphView, Screen_Module1_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module1_Signals
@@ -109,7 +111,7 @@ void FrontendApplicationBase::gotoScreen_Module1_SignalsScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module1_SignalsScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module1_SignalsView, Screen_Module1_SignalsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module1_SignalsView, Screen_Module1_SignalsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module1_Info
@@ -122,7 +124,7 @@ void FrontendApplicationBase::gotoScreen_Module1_InfoScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module1_InfoScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module1_InfoView, Screen_Module1_InfoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module1_InfoView, Screen_Module1_InfoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module2_Data
@@ -135,7 +137,7 @@ void FrontendApplicationBase::gotoScreen_Module2_DataScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module2_DataScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module2_DataView, Screen_Module2_DataPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module2_DataView, Screen_Module2_DataPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module2_Settings
@@ -148,7 +150,7 @@ void FrontendApplicationBase::gotoScreen_Module2_SettingsScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module2_SettingsScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module2_SettingsView, Screen_Module2_SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module2_SettingsView, Screen_Module2_SettingsPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_Module2_Graph
@@ -161,7 +163,7 @@ void FrontendApplicationBase::gotoScreen_Module2_GraphScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_Module2_GraphScreenNoTransitionImpl()
 {
-    makeTransition<Screen_Module2_GraphView, Screen_Module2_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_Module2_GraphView, Screen_Module2_GraphPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Screen_UART_RX_Debug
@@ -174,7 +176,7 @@ void FrontendApplicationBase::gotoScreen_UART_RX_DebugScreenNoTransition()
 
 void FrontendApplicationBase::gotoScreen_UART_RX_DebugScreenNoTransitionImpl()
 {
-    makeTransition<Screen_UART_RX_DebugView, Screen_UART_RX_DebugPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<Screen_UART_RX_DebugView, Screen_UART_RX_DebugPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Template
@@ -187,6 +189,6 @@ void FrontendApplicationBase::gotoTemplateScreenNoTransition()
 
 void FrontendApplicationBase::gotoTemplateScreenNoTransitionImpl()
 {
-    makeTransition<TemplateView, TemplatePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+    touchgfx::makeTransition<TemplateView, TemplatePresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -625,6 +625,17 @@ public:
     {
         return (uint16_t)TYPE_DRAWABLE;
     }
+
+    /**
+     * @fn void Drawable::drawToDynamicBitmap(BitmapId id)
+     *
+     * @brief Render the Drawable object into a dynamic bitmap.
+     *
+     *        Render the Drawable object into a dynamic bitmap.
+     *
+     * @param id The target dynamic bitmap to use for rendering.
+     */
+    void drawToDynamicBitmap(BitmapId id);
 
 protected:
     Rect      rect;                 ///< The coordinates of this drawable, relative to its parent.

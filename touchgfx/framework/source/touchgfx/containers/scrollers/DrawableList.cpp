@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -18,7 +18,8 @@
 namespace touchgfx
 {
 DrawableList::DrawableList()
-    : isHorizontal(false),
+    : Container(),
+      isHorizontal(false),
       isCircular(false),
       offset(0),
       itemSize(0),
@@ -48,7 +49,7 @@ void DrawableList::setHeight(int16_t height)
 
 void DrawableList::setHorizontal(bool horizontal)
 {
-    if (horizontal != isHorizontal)
+    if ((horizontal && !isHorizontal) || (!horizontal && isHorizontal))
     {
         isHorizontal = horizontal;
         refreshDrawables();
@@ -62,7 +63,7 @@ bool DrawableList::getHorizontal() const
 
 void DrawableList::setCircular(bool circular)
 {
-    if (circular != isCircular)
+    if ((circular && !isCircular) || (!circular && isCircular))
     {
         isCircular = circular;
         refreshDrawables();
@@ -140,14 +141,15 @@ int16_t DrawableList::getRequiredNumberOfDrawables() const
         }
     }
 
-    return MIN((drawableItems->getNumberOfDrawables() - firstDrawableIndex), requiredDrawables);
+    int16_t numberOfDrawables = drawableItems->getNumberOfDrawables();
+    return MIN((numberOfDrawables - firstDrawableIndex), requiredDrawables);
 }
 
 void DrawableList::setOffset(int32_t ofs)
 {
     offset = ofs;
 
-    if (numDrawables == 0 || numItems == 0)
+    if (numDrawables == 0 || numItems == 0 || itemSize == 0)
     {
         return;
     }
@@ -161,15 +163,15 @@ void DrawableList::setOffset(int32_t ofs)
     int16_t newFirstItem = 0;
     if (ofs > 0)
     {
-        int numItems = ofs / itemSize + 1;
-        newFirstItem -= numItems;
-        ofs -= numItems * itemSize;
+        int numberOfItems = ofs / itemSize + 1;
+        newFirstItem -= numberOfItems;
+        ofs -= numberOfItems * itemSize;
     }
     if (ofs <= -itemSize)
     {
-        int numItems = ofs / itemSize;
-        newFirstItem -= numItems;
-        ofs -= numItems * itemSize;
+        int numberOfItems = ofs / itemSize;
+        newFirstItem -= numberOfItems;
+        ofs -= numberOfItems * itemSize;
     }
     if (isCircular)
     {
@@ -271,9 +273,9 @@ int32_t DrawableList::getOffset() const
     return offset;
 }
 
-int16_t DrawableList::getItemIndex(int16_t drawableIndex)
+int16_t DrawableList::getItemIndex(int16_t drawableIndex) const
 {
-    if (drawableIndex < 0 || drawableIndex >= numDrawables)
+    if (drawableIndex < 0 || drawableIndex >= numDrawables || numDrawables == 0 || numItems == 0)
     {
         return -1;
     }
@@ -289,7 +291,7 @@ int16_t DrawableList::getItemIndex(int16_t drawableIndex)
     return itemNumber;
 }
 
-int16_t DrawableList::getDrawableIndices(int16_t itemIndex, int16_t* drawableIndexArray, int16_t arraySize)
+int16_t DrawableList::getDrawableIndices(int16_t itemIndex, int16_t* drawableIndexArray, int16_t arraySize) const
 {
     int16_t numFound = 0;
     int16_t drawableIndex = -1;
@@ -304,26 +306,27 @@ int16_t DrawableList::getDrawableIndices(int16_t itemIndex, int16_t* drawableInd
     return numFound;
 }
 
-int16_t DrawableList::getDrawableIndex(int16_t itemIndex, int16_t prevDrawableIndex /*= -1*/)
+int16_t DrawableList::getDrawableIndex(int16_t itemIndex, int16_t prevDrawableIndex /*= -1*/) const
 {
-    if (prevDrawableIndex >= -1 || prevDrawableIndex < numDrawables)
+    if (prevDrawableIndex < -1 || prevDrawableIndex >= numDrawables || numDrawables == 0 || numItems == 0)
     {
-        if (prevDrawableIndex >= 0)
+        return -1;
+    }
+    if (prevDrawableIndex >= 0)
+    {
+        prevDrawableIndex = (prevDrawableIndex - firstDrawable + numDrawables) % numDrawables;
+    }
+    for (int16_t i = prevDrawableIndex + 1; i < numDrawables; i++)
+    {
+        int16_t currentItemIndex = firstItem + i;
+        if (isCircular)
         {
-            prevDrawableIndex = (prevDrawableIndex - firstDrawable + numDrawables) % numDrawables;
+            currentItemIndex %= numItems;
         }
-        for (int16_t i = prevDrawableIndex + 1; i < numDrawables; i++)
+        if (itemIndex == currentItemIndex)
         {
-            int16_t currentItemIndex = firstItem + i;
-            if (isCircular)
-            {
-                currentItemIndex %= numItems;
-            }
-            if (itemIndex == currentItemIndex)
-            {
-                int16_t drawableIndex = (firstDrawable + i) % numDrawables;
-                return drawableIndex;
-            }
+            int16_t drawableIndex = (firstDrawable + i) % numDrawables;
+            return drawableIndex;
         }
     }
     return -1;

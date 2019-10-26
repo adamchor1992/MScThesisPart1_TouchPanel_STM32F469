@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -46,7 +46,6 @@ namespace touchgfx
 class TextArea : public Widget
 {
 public:
-
     /**
      * @fn TextArea::TextArea()
      *
@@ -165,7 +164,7 @@ public:
     }
 
     /**
-     * @fn inline void TextArea::setLinespacing(uint16_t space)
+     * @fn inline void TextArea::setLinespacing(int16_t space)
      *
      * @brief Sets the line spacing of the TextArea.
      *
@@ -173,13 +172,13 @@ public:
      *
      * @param space The line spacing of use in the TextArea.
      */
-    inline void setLinespacing(uint16_t space)
+    inline void setLinespacing(int16_t space)
     {
         linespace = space;
     }
 
     /**
-     * @fn inline uint16_t TextArea::getLinespacing() const
+     * @fn inline int16_t TextArea::getLinespacing() const
      *
      * @brief Gets the line spacing of the TextArea.
      *
@@ -187,7 +186,7 @@ public:
      *
      * @return The line spacing.
      */
-    inline uint16_t getLinespacing() const
+    inline int16_t getLinespacing() const
     {
         return linespace;
     }
@@ -299,7 +298,7 @@ public:
     }
 
     /**
-     * @fn void TextArea::setRotation(const TextRotation rotation = TEXT_ROTATE_0)
+     * @fn void TextArea::setRotation(const TextRotation rotation)
      *
      * @brief Sets rotation of the text in the TextArea.
      *
@@ -310,7 +309,7 @@ public:
      *
      * @param rotation The rotation of the text.
      */
-    void setRotation(const TextRotation rotation = TEXT_ROTATE_0)
+    void setRotation(const TextRotation rotation)
     {
         this->rotation = rotation;
     }
@@ -347,12 +346,32 @@ public:
     void resizeToCurrentText();
 
     /**
+     * @fn void TextArea::resizeToCurrentTextWithAlignment();
+     *
+     * @brief Sets the dimensions of the TextArea.
+     *
+     *        Sets the dimensions of the TextArea to match the width and height of the current
+     *        associated text for the current selected language.
+     *
+     *        When setting the width, the position of the TextArea might be changed in order to
+     *        keep the text centered or right aligned.
+     *
+     *        Please note that if the current text rotation is either 90 or 270 degrees, the width
+     *        of the text area will be set to the height of the text and vice versa, as the text is
+     *        rotated.
+     *
+     * @see setRotation
+     * @see resizeHeightToCurrentText
+     */
+    void resizeToCurrentTextWithAlignment();
+
+    /**
      * @fn void TextArea::resizeHeightToCurrentText();
      *
-     * @brief Sets the hight of the TextArea.
+     * @brief Sets the height of the TextArea.
      *
      *        Sets the height of the TextArea to match the height of the current associated
-     *        text for the current selected language. This is espicially useful for texts with
+     *        text for the current selected language. This is especially useful for texts with
      *        WordWrap enabled.
      *
      *        Please note that if the current text rotation is either 90 or 270 degrees, the
@@ -421,7 +440,7 @@ public:
 protected:
     TypedText      typedText;      ///< The TypedText to display
     colortype      color;          ///< The color to use.
-    uint16_t       linespace;      ///< The line spacing to use, in pixels, in case the text contains newlines.
+    int16_t        linespace;      ///< The line spacing to use, in pixels, in case the text contains newlines.
     uint8_t        alpha;          ///< The alpha to use.
     uint8_t        indentation;    ///< The indentation of the text inside the text area
     TextRotation   rotation;       ///< The text rotation to use

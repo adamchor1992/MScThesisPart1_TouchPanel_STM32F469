@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -38,6 +38,7 @@ namespace touchgfx
  * @see http://en.wikipedia.org/wiki/Q_%28number_format%29
  * @see Widget
  */
+
 struct CWRUtil
 {
     class Q10;
@@ -261,7 +262,7 @@ struct CWRUtil
         template <typename T>
         T to() const
         {
-            return v / (T)Rasterizer::POLY_BASE_SIZE;
+            return (T)v / (T)Rasterizer::POLY_BASE_SIZE;
         }
 
     private:
@@ -386,6 +387,25 @@ struct CWRUtil
             return Q5(v / int(q5));
         }
 
+        /**
+         * @fn template <typename T> T Q10::to() const
+         *
+         * @brief Converts the Q10 value to an int or a float.
+         *
+         *        Convert the Q10 value to an integer by removing the 10 bits used for the
+         *        fraction, or to a floating point value by dividing by 32 * 32, depending on the
+         *        type specified as T.
+         *
+         * @tparam T Either int or float.
+         *
+         * @return Q10 value as a type T.
+         */
+        template <typename T>
+        T to() const
+        {
+            return (T)v / (T)(Rasterizer::POLY_BASE_SIZE * Rasterizer::POLY_BASE_SIZE);
+        }
+
     private:
         int32_t v;
     };
@@ -486,6 +506,23 @@ struct CWRUtil
     private:
         int32_t v;
     };
+
+    /**
+     * @fn FORCE_INLINE_FUNCTION static Q5 toQ5(Q5 value)
+     *
+     * @brief Convert a Q5 to itself.
+     *
+     *        Convert a Q5 to itself. Allows toQ5 to be called with a variable that is already Q5.
+     *
+     * @param value the Q5.
+     *
+     * @return the value passed.
+     */
+    FORCE_INLINE_FUNCTION
+    static Q5 toQ5(Q5 value)
+    {
+        return value;
+    }
 
     /**
      * @fn template <typename T> FORCE_INLINE_FUNCTION static Q5 toQ5(T value)
@@ -823,6 +860,26 @@ struct CWRUtil
     }
 
     /**
+     * @fn static Q5 muldivQ10(Q10 factor1, Q10 factor2, Q10 divisor)
+     *
+     * @brief Multiply two Q5's and divide by a Q5 without overflowing the multiplication.
+     *
+     *        Multiply two Q5's and divide by a Q5 without overflowing the multiplication (assuming
+     *        that the final result can be stored in a Q5).
+     *
+     * @param factor1 The first factor.
+     * @param factor2 The second factor.
+     * @param divisor The divisor.
+     *
+     * @return factor1 * factor2 / divisor.
+     */
+    static Q5 muldivQ10(Q10 factor1, Q10 factor2, Q10 divisor)
+    {
+        int32_t remainder;
+        return Q5(muldiv(int(factor1), int(factor2), int(divisor), remainder) / Rasterizer::POLY_BASE_SIZE);
+    }
+
+    /**
      * @fn static Q5 mulQ5(Q5 factor1, Q5 factor2)
      *
      * @brief Multiply two Q5's returning a new Q5.
@@ -837,6 +894,23 @@ struct CWRUtil
     static Q5 mulQ5(Q5 factor1, Q5 factor2)
     {
         return muldivQ5(factor1, factor2, CWRUtil::toQ5<int>(1));
+    }
+
+    /**
+     * @fn static Q5 mulQ5(Q5 factor1, Q10 factor2)
+     *
+     * @brief Multiply one Q5 by a Q10 returning a new Q5.
+     *
+     *        Multiply one Q5 by a Q10 returning a new Q5 without overflowing.
+     *
+     * @param factor1 The first factor.
+     * @param factor2 The second factor.
+     *
+     * @return factor1 * factor2.
+     */
+    static Q5 mulQ5(Q5 factor1, Q10 factor2)
+    {
+        return muldivQ10(Q10(int(factor1) * Rasterizer::POLY_BASE_SIZE), factor2, CWRUtil::toQ10<int>(1));
     }
 
 private:

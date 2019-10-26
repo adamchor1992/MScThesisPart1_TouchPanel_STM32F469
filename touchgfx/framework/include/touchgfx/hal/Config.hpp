@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -16,74 +16,45 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
+#define STR(X) STR_I(X)
+#define STR_I(X) #X
+
 /**
- * Section placements of external flash data.
+ * Section placements of data.
  */
 #ifdef SIMULATOR
-#define LOCATION_EXTFLASH_PRAGMA
-#define LOCATION_EXTFLASH_ATTRIBUTE
+#define LOCATION_PRAGMA(name)
+#define LOCATION_ATTRIBUTE(name)
 #else
 #ifdef __GNUC__
-#ifdef __CODE_RED
-#include <cr_section_macros.h>
-#define LOCATION_EXTFLASH_PRAGMA
-#define LOCATION_EXTFLASH_ATTRIBUTE __RODATA(SPIFI)
-#else
-#define LOCATION_EXTFLASH_PRAGMA
-#define LOCATION_EXTFLASH_ATTRIBUTE __attribute__ ((section ("ExtFlashSection"))) __attribute__ ((aligned(4)))
-#endif
+#define LOCATION_PRAGMA(name)
+#define LOCATION_ATTRIBUTE(name) __attribute__ ((section (STR(name)))) __attribute__ ((aligned(4)))
 #elif defined __ICCARM__
-#define LOCATION_EXTFLASH_PRAGMA _Pragma("location=\"ExtFlashSection\"")
-#define LOCATION_EXTFLASH_ATTRIBUTE
+#define LOCATION_PRAGMA(name) _Pragma(STR(location=name))
+#define LOCATION_ATTRIBUTE(name)
 #elif defined(__ARMCC_VERSION)
-#define LOCATION_EXTFLASH_PRAGMA
-#define LOCATION_EXTFLASH_ATTRIBUTE __attribute__ ((section ("ExtFlashSection"))) __attribute__ ((aligned(4)))
+#define LOCATION_PRAGMA(name)
+#define LOCATION_ATTRIBUTE(name) __attribute__ ((section (name))) __attribute__ ((aligned(4)))
 #endif
 #endif
 
-#ifdef SIMULATOR
-#define FONT_LOCATION_FLASH_PRAGMA
-#define FONT_LOCATION_FLASH_ATTRIBUTE
-#else
-#ifdef __GNUC__
-#ifdef __CODE_RED
-#include <cr_section_macros.h>
-#define FONT_LOCATION_FLASH_PRAGMA
-#define FONT_LOCATION_FLASH_ATTRIBUTE __RODATA(SPIFI)
-#else
-#define FONT_LOCATION_FLASH_PRAGMA
-#define FONT_LOCATION_FLASH_ATTRIBUTE __attribute__ ((section ("FontFlashSection"))) __attribute__ ((aligned(4)))
-#endif
-#elif defined __ICCARM__
-#define FONT_LOCATION_FLASH_PRAGMA _Pragma("location=\"FontFlashSection\"")
-#define FONT_LOCATION_FLASH_ATTRIBUTE
-#elif defined(__ARMCC_VERSION)
-#define FONT_LOCATION_FLASH_PRAGMA
-#define FONT_LOCATION_FLASH_ATTRIBUTE __attribute__ ((section ("FontFlashSection"))) __attribute__ ((aligned(4)))
-#endif
-#endif
+/**
+ * Macros for backwards compatibility with TouchGFX 4.11 (and older) applications
+ */
+#define FONT_GLYPH_LOCATION_FLASH_PRAGMA LOCATION_PRAGMA("FontFlashSection")
+#define FONT_GLYPH_LOCATION_FLASH_ATTRIBUTE LOCATION_ATTRIBUTE("FontFlashSection")
 
-#ifdef SIMULATOR
-#define TEXT_LOCATION_FLASH_PRAGMA
-#define TEXT_LOCATION_FLASH_ATTRIBUTE
-#else
-#ifdef __GNUC__
-#ifdef __CODE_RED
-#include <cr_section_macros.h>
-#define TEXT_LOCATION_FLASH_PRAGMA
-#define TEXT_LOCATION_FLASH_ATTRIBUTE __RODATA(SPIFI)
-#else
-#define TEXT_LOCATION_FLASH_PRAGMA
-#define TEXT_LOCATION_FLASH_ATTRIBUTE __attribute__ ((section ("TextFlashSection"))) __attribute__ ((aligned(4)))
-#endif
-#elif defined __ICCARM__
-#define TEXT_LOCATION_FLASH_PRAGMA _Pragma("location=\"TextFlashSection\"")
-#define TEXT_LOCATION_FLASH_ATTRIBUTE
-#elif defined(__ARMCC_VERSION)
-#define TEXT_LOCATION_FLASH_PRAGMA
-#define TEXT_LOCATION_FLASH_ATTRIBUTE __attribute__ ((section ("TextFlashSection"))) __attribute__ ((aligned(4)))
-#endif
-#endif
+#define FONT_TABLE_LOCATION_FLASH_PRAGMA LOCATION_PRAGMA("FontFlashSection")
+#define FONT_TABLE_LOCATION_FLASH_ATTRIBUTE LOCATION_ATTRIBUTE("FontFlashSection")
+
+#define FONT_KERNING_LOCATION_FLASH_PRAGMA LOCATION_PRAGMA("FontFlashSection")
+#define FONT_KERNING_LOCATION_FLASH_ATTRIBUTE LOCATION_ATTRIBUTE("FontFlashSection")
+
+#define TEXT_LOCATION_FLASH_PRAGMA LOCATION_PRAGMA("TextFlashSection")
+#define TEXT_LOCATION_FLASH_ATTRIBUTE LOCATION_ATTRIBUTE("TextFlashSection")
+
+#define LOCATION_EXTFLASH_PRAGMA LOCATION_PRAGMA("ExtFlashSection")
+#define LOCATION_EXTFLASH_ATTRIBUTE LOCATION_ATTRIBUTE("ExtFlashSection")
 
 /**
  * To force inline of time critical functions
@@ -92,13 +63,10 @@
 #define FORCE_INLINE_FUNCTION inline
 #else
 #ifdef __GNUC__
-#ifdef __CODE_RED
-#define FORCE_INLINE_FUNCTION inline
-#else
 #define FORCE_INLINE_FUNCTION __attribute__((always_inline)) inline
-#endif
 #elif defined __ICCARM__
 #define FORCE_INLINE_FUNCTION _Pragma("inline=forced")
+#pragma diag_suppress=Pe236
 #elif defined(__ARMCC_VERSION)
 #define FORCE_INLINE_FUNCTION __forceinline
 #endif

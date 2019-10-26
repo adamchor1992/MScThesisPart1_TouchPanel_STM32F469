@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -17,6 +17,7 @@
 #include <touchgfx/transforms/DisplayTransformation.hpp>
 #include <touchgfx/Math3D.hpp>
 #include <touchgfx/TextureMapTypes.hpp>
+#include <touchgfx/hal/HAL.hpp>
 
 namespace touchgfx
 {
@@ -141,7 +142,8 @@ Rect TextureMapper::getBoundingRect() const
     float maxXf = MAX(imageX0, imageX1);
     maxXf = MAX(maxXf, imageX2);
     maxXf = ceilf(MAX(maxXf, imageX3));
-    int16_t maxX = (int16_t)(MIN(getWidth(), maxXf));
+    int16_t maxX = getWidth();
+    maxX = (int16_t)(MIN(maxX, maxXf));
 
     float minYf = MIN(imageY0, imageY1);
     minYf = MIN(minYf, imageY2);
@@ -151,7 +153,8 @@ Rect TextureMapper::getBoundingRect() const
     float maxYf = MAX(imageY0, imageY1);
     maxYf = MAX(maxYf, imageY2);
     maxYf = ceilf(MAX(maxYf, imageY3));
-    int16_t maxY = (int16_t)(MIN(getHeight(), maxYf));
+    int16_t maxY = getHeight();
+    maxY = (int16_t)(MIN(maxY, maxYf));
 
     return Rect(minX, minY, maxX - minX, maxY - minY);
 }
@@ -351,7 +354,7 @@ void TextureMapper::drawTriangle(const Rect& invalidatedArea, uint16_t* fb, cons
     vertices[2] = point2;
 
     DrawingSurface dest = { fb, HAL::FRAME_BUFFER_WIDTH };
-    TextureSurface src = { textmap, bitmap.getAlphaData(), bitmap.getWidth(), bitmap.getHeight(), bitmap.getWidth() };
+    TextureSurface src = { textmap, bitmap.getExtraData(), bitmap.getWidth(), bitmap.getHeight(), bitmap.getWidth() };
 
     HAL::lcd().drawTextureMapTriangle(dest, vertices, src, absoluteRect, dirtyAreaAbsolute, lookupRenderVariant(), alpha, subDivisionSize);
 }

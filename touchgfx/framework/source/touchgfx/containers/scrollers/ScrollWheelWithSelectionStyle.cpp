@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -29,8 +29,8 @@ ScrollWheelWithSelectionStyle::ScrollWheelWithSelectionStyle()
       originalUpdateDrawableCallback(0),
       originalUpdateCenterDrawableCallback(0)
 {
-    add(list2);
-    add(list1); // Put center list at top of the first/last list.
+    ScrollWheelBase::add(list2);
+    ScrollWheelBase::add(list1); // Put center list at top of the first/last list.
 }
 
 void ScrollWheelWithSelectionStyle::setWidth(int16_t width)
@@ -76,7 +76,7 @@ void ScrollWheelWithSelectionStyle::setNumberOfItems(int16_t numberOfItems)
     }
 }
 
-void ScrollWheelWithSelectionStyle::setSelecteItemOffset(int16_t offset)
+void ScrollWheelWithSelectionStyle::setSelectedItemOffset(int16_t offset)
 {
     ScrollWheelBase::setSelectedItemOffset(offset);
     refreshDrawableListsLayout();

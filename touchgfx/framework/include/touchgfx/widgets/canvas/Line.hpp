@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -506,6 +506,21 @@ public:
      * @return The minimal rectangle containing the shape drawn by this widget.
      */
     virtual Rect getMinimalRect() const;
+
+    /**
+     * @fn void updateLengthAndAngle(CWRUtil::Q5 length, CWRUtil::Q5 angle);
+     *
+     * @brief Update the end point for this Line.
+     *
+     *        Update the end point for this Line given the new length and angle.
+     *        The rectangle that surrounds the line before and after will be invalidated.
+     *
+     * @param length The new length of the line in Q5 format.
+     * @param angle The new angle of the line in Q5 format.
+     *
+     * @note The area containing the Line is invalidated before and after the change.
+     */
+    void updateLengthAndAngle(CWRUtil::Q5 length, CWRUtil::Q5 angle);
 
 private:
     CWRUtil::Q5 x1, y1, x2, y2;

@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -96,7 +96,7 @@ protected:
     virtual bool renderNext(uint8_t& red, uint8_t& green, uint8_t& blue, uint8_t& alpha);
 
     const uint32_t* bitmapARGB8888Pointer; ///< Pointer to the bitmap (ARGB8888)
-    const uint8_t* bitmapRGB888Pointer;   ///< Pointer to the bitmap (RGB888)
+    const uint8_t* bitmapRGB888Pointer;    ///< Pointer to the bitmap (RGB888)
 
     Bitmap bitmap;                  ///< The bitmap to be used when painting
     Rect   bitmapRectToFrameBuffer; ///< Bitmap rectangle translated to frame buffer coordinates

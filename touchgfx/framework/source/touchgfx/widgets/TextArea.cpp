@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -14,6 +14,7 @@
   */
 
 #include <touchgfx/widgets/TextArea.hpp>
+#include <touchgfx/hal/HAL.hpp>
 
 namespace touchgfx
 {
@@ -42,7 +43,7 @@ void TextArea::draw(const Rect& area) const
         if (fontToDraw != 0)
         {
             LCD::StringVisuals visuals(fontToDraw, color, alpha, typedText.getAlignment(), linespace, rotation, typedText.getTextDirection(), indentation, wideTextAction);
-            HAL::lcd().drawString(getAbsoluteRect(), area, visuals, typedText.getText());
+            HAL::lcd().drawString(getAbsoluteRect(), area, visuals, typedText.getText(), 0, 0);
         }
     }
 }
@@ -77,6 +78,66 @@ void TextArea::resizeToCurrentText()
     }
 }
 
+void TextArea::resizeToCurrentTextWithAlignment()
+{
+    if (typedText.hasValidId())
+    {
+        Alignment alignment = typedText.getAlignment();
+        uint16_t text_width = getTextWidth();
+        uint16_t text_height = getTextHeight();
+        if (rotation == TEXT_ROTATE_0 || rotation == TEXT_ROTATE_180)
+        {
+            // (rotate-0 && left-align) or (rotate-180 && right-align) places text to the left
+            if (!((rotation == TEXT_ROTATE_0 && alignment == LEFT) || (rotation == TEXT_ROTATE_180 && alignment == RIGHT)))
+            {
+                uint16_t old_width = getWidth();
+                uint16_t old_x = getX();
+                if (alignment == CENTER)
+                {
+                    setX(old_x + (old_width - text_width) / 2);
+                }
+                else
+                {
+                    setX(old_x + (old_width - text_width));
+                }
+            }
+            if (rotation == TEXT_ROTATE_180)
+            {
+                uint16_t old_height = getHeight();
+                uint16_t old_y = getY();
+                setY(old_y + (old_height - text_height));
+            }
+            setWidth(text_width);
+            setHeight(text_height);
+        }
+        else
+        {
+            // 90+left or 270+right places text at the same y coordinate
+            if (!((rotation == TEXT_ROTATE_90 && alignment == LEFT) || (rotation == TEXT_ROTATE_270 && alignment == RIGHT)))
+            {
+                uint16_t old_height = getHeight();
+                uint16_t old_y = getY();
+                if (alignment == CENTER)
+                {
+                    setY(old_y + (old_height - text_width) / 2);
+                }
+                else
+                {
+                    setY(old_y + (old_height - text_width));
+                }
+            }
+            if (rotation == TEXT_ROTATE_90)
+            {
+                uint16_t old_width = getWidth();
+                uint16_t old_x = getX();
+                setX(old_x + (old_width - text_height));
+            }
+            setWidth(text_height);
+            setHeight(text_width);
+        }
+    }
+}
+
 void TextArea::resizeHeightToCurrentText()
 {
     if (typedText.hasValidId())
@@ -97,15 +158,16 @@ int16_t TextArea::getTextHeightInternal(const Unicode::UnicodeChar* format, ...)
 {
     va_list pArg;
     va_start(pArg, format);
-    TextProvider textProvider;
-    textProvider.initialize(format, pArg);
-
-    int16_t numLines = HAL::lcd().getNumLines(textProvider, wideTextAction, typedText.getTextDirection(), typedText.getFont(), getWidth());
 
     const Font* fontToDraw = typedText.getFont();
     int16_t textHeight = fontToDraw->getMinimumTextHeight();
 
+    TextProvider textProvider;
+    textProvider.initialize(format, pArg, fontToDraw->getGSUBTable());
+
+    int16_t numLines = LCD::getNumLines(textProvider, wideTextAction, typedText.getTextDirection(), typedText.getFont(), getWidth());
+
     va_end(pArg);
-    return numLines * textHeight + (numLines - 1) * linespace;
+    return (textHeight + linespace > 0) ? (numLines * textHeight + (numLines - 1) * linespace) : (numLines > 0) ? (textHeight) : 0;
 }
 } // namespace touchgfx

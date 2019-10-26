@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -14,10 +14,11 @@
   */
 
 #include <touchgfx/widgets/SnapshotWidget.hpp>
+#include <touchgfx/hal/HAL.hpp>
 
 namespace touchgfx
 {
-SnapshotWidget::SnapshotWidget() : Widget(), fbCopy(0), alpha(255)
+SnapshotWidget::SnapshotWidget() : Widget(), bitmapId(BITMAP_INVALID), alpha(255)
 {
 }
 
@@ -27,26 +28,19 @@ SnapshotWidget::~SnapshotWidget()
 
 void SnapshotWidget::draw(const Rect& invalidatedArea) const
 {
-    if (!fbCopy)
+    if (alpha == 0 || bitmapId == BITMAP_INVALID)
     {
         return;
     }
 
-    Rect absRect;
+    Rect absRect(0, 0, Bitmap(bitmapId).getWidth(), rect.height);
     translateRectToAbsolute(absRect);
-    absRect.width = rect.width;
-    absRect.height = rect.height;
-    HAL::lcd().blitCopy(fbCopy, absRect, invalidatedArea, alpha, false);
+    HAL::lcd().blitCopy((const uint16_t*)Bitmap(bitmapId).getData(), absRect, invalidatedArea, alpha, false);
 }
 
 Rect SnapshotWidget::getSolidRect() const
 {
-    if (alpha < 255)
-    {
-        return Rect(0, 0, 0, 0);
-    }
-
-    if (!fbCopy)
+    if (alpha < 255 || bitmapId == BITMAP_INVALID)
     {
         return Rect(0, 0, 0, 0);
     }
@@ -58,11 +52,14 @@ Rect SnapshotWidget::getSolidRect() const
 
 void SnapshotWidget::makeSnapshot()
 {
-    fbCopy = reinterpret_cast<uint16_t*>(HAL::lcd().copyFrameBufferRegionToMemory(rect));
+    makeSnapshot(BITMAP_ANIMATION_STORAGE);
 }
 
 void SnapshotWidget::makeSnapshot(const BitmapId bmp)
 {
-    fbCopy = reinterpret_cast<uint16_t*>(HAL::lcd().copyFrameBufferRegionToMemory(rect, bmp));
+    Rect visRect(0, 0, rect.width, rect.height);
+    getVisibleRect(visRect);
+    Rect absRect = getAbsoluteRect();
+    bitmapId = (HAL::lcd().copyFrameBufferRegionToMemory(visRect, absRect, bmp)) ? bmp : BITMAP_INVALID;
 }
 } // namespace touchgfx

@@ -13,8 +13,8 @@ Screen_MainViewBase::Screen_MainViewBase() :
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     buttonWithLabel_UART_Debug.setXY(0, 149);
-    buttonWithLabel_UART_Debug.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_UART_Debug.setLabelText(TypedText(T_SINGLEUSEID7));
+    buttonWithLabel_UART_Debug.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_UART_Debug.setLabelText(touchgfx::TypedText(T_SINGLEUSEID7));
     buttonWithLabel_UART_Debug.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_UART_Debug.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_UART_Debug.setAction(buttonCallback);
@@ -22,20 +22,20 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_CPU_Usage.setPosition(618, 451, 182, 29);
     textArea_CPU_Usage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_CPU_Usage.setLinespacing(0);
-    Unicode::snprintf(textArea_CPU_UsageBuffer, TEXTAREA_CPU_USAGE_SIZE, "%s", TypedText(T_SINGLEUSEID40).getText());
+    Unicode::snprintf(textArea_CPU_UsageBuffer, TEXTAREA_CPU_USAGE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID40).getText());
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
-    textArea_CPU_Usage.setTypedText(TypedText(T_SINGLEUSEID39));
+    textArea_CPU_Usage.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
     buttonWithLabel_Module2.setXY(315, 274);
-    buttonWithLabel_Module2.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_Module2.setLabelText(TypedText(T_SINGLEUSEID42));
+    buttonWithLabel_Module2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Module2.setLabelText(touchgfx::TypedText(T_SINGLEUSEID42));
     buttonWithLabel_Module2.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setAction(buttonCallback);
 
     buttonWithLabel_Module1.setXY(315, 149);
-    buttonWithLabel_Module1.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_Module1.setLabelText(TypedText(T_SINGLEUSEID41));
+    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Module1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID41));
     buttonWithLabel_Module1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module1.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module1.setAction(buttonCallback);
@@ -43,11 +43,11 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_MainMenu.setXY(292, 0);
     textArea_MainMenu.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_MainMenu.setLinespacing(0);
-    textArea_MainMenu.setTypedText(TypedText(T_SINGLEUSEID44));
+    textArea_MainMenu.setTypedText(touchgfx::TypedText(T_SINGLEUSEID44));
 
     buttonWithLabel_Graph_Debug.setXY(0, 274);
-    buttonWithLabel_Graph_Debug.setBitmaps(Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_Graph_Debug.setLabelText(TypedText(T_SINGLEUSEID123));
+    buttonWithLabel_Graph_Debug.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Graph_Debug.setLabelText(touchgfx::TypedText(T_SINGLEUSEID123));
     buttonWithLabel_Graph_Debug.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Graph_Debug.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Graph_Debug.setAction(buttonCallback);
@@ -55,9 +55,9 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_ActiveModule.setPosition(0, 431, 528, 49);
     textArea_ActiveModule.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ActiveModule.setLinespacing(0);
-    Unicode::snprintf(textArea_ActiveModuleBuffer, TEXTAREA_ACTIVEMODULE_SIZE, "%s", TypedText(T_SINGLEUSEID130).getText());
+    Unicode::snprintf(textArea_ActiveModuleBuffer, TEXTAREA_ACTIVEMODULE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID130).getText());
     textArea_ActiveModule.setWildcard(textArea_ActiveModuleBuffer);
-    textArea_ActiveModule.setTypedText(TypedText(T_SINGLEUSEID129));
+    textArea_ActiveModule.setTypedText(touchgfx::TypedText(T_SINGLEUSEID129));
 
     add(backgroundBox_Black);
     add(buttonWithLabel_UART_Debug);

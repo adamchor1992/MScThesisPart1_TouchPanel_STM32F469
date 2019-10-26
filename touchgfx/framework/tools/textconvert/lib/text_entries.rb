@@ -1,7 +1,7 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.10.0 distribution.
+# This file is part of the TouchGFX 4.12.3 distribution.
 #
-# <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+# <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
 #
 # This software component is licensed by ST under Ultimate Liberty license
@@ -235,11 +235,17 @@ class Translation
   def empty?
     @text.nil? || @text.empty?
   end
+  def length
+    @text.length
+  end
   def number_of_substitutions
     to_cpp.count("\2")
   end
   def unicodes
-    numbers.map { |number| number.to_s.gsub(/\[|\]/,'').to_i }
+    @unicodes ||=
+      begin
+        numbers.map { |number| number.to_s.gsub(/\[|\]/,'').to_i }
+      end
   end
   def to_cpp
     cpp_text = @text.gsub("\2", '') # Remove all existing placeholders

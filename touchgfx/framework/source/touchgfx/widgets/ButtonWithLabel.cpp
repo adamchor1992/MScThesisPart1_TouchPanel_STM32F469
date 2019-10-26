@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -15,6 +15,7 @@
 
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/FontManager.hpp>
+#include <touchgfx/hal/HAL.hpp>
 
 namespace touchgfx
 {
@@ -27,9 +28,9 @@ void ButtonWithLabel::draw(const Rect& area) const
 {
     Button::draw(area);
 
-    const Font* fontToDraw = typedText.getFont();
-    if ((fontToDraw != 0) && typedText.hasValidId())
+    if (typedText.hasValidId())
     {
+        const Font* fontToDraw = typedText.getFont(); //never return 0
         uint8_t height = textHeightIncludingSpacing;
         int16_t offset;
         Rect labelRect;

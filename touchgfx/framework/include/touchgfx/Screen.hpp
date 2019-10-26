@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -19,7 +19,7 @@
 #include <touchgfx/events/ClickEvent.hpp>
 #include <touchgfx/events/DragEvent.hpp>
 #include <touchgfx/events/GestureEvent.hpp>
-#include "Application.hpp"
+#include <touchgfx/Application.hpp>
 #include <touchgfx/containers/Container.hpp>
 #include <touchgfx/lcd/LCD.hpp>
 #include <touchgfx/JSMOCHelper.hpp>
@@ -77,7 +77,7 @@ public:
     void draw();
 
     /**
-     * @fn void Screen::startSMOC(Rect& invalidatedArea);
+     * @fn void Screen::startSMOC(const Rect& invalidatedArea);
      *
      * @brief Starts a JSMOC run, analyzing what parts of what widgets should be redrawn.
      *
@@ -85,7 +85,7 @@ public:
      *
      * @param [in] invalidatedArea The area to redraw, expressed in absolute coordinates.
      */
-    void startSMOC(Rect& invalidatedArea);
+    void startSMOC(const Rect& invalidatedArea);
 
     /**
      * @fn void Screen::JSMOC(const Rect& invalidatedArea, Drawable* widgetToDraw);

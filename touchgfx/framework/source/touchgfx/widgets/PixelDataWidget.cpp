@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -14,6 +14,7 @@
   */
 
 #include <touchgfx/widgets/PixelDataWidget.hpp>
+#include <touchgfx/hal/HAL.hpp>
 
 namespace touchgfx
 {
@@ -75,7 +76,11 @@ touchgfx::Rect PixelDataWidget::getSolidRect() const
             solidRect.height = getHeight();
             break;
         case Bitmap::ARGB8888: ///< 32-bit, 8 bits for each of red, green, blue and alpha channel
-        default:
+        case Bitmap::ARGB2222: ///< 8-bit color
+        case Bitmap::ABGR2222: ///< 8-bit color
+        case Bitmap::RGBA2222: ///< 8-bit color
+        case Bitmap::BGRA2222: ///< 8-bit color
+        case Bitmap::L8:       ///< 8-bit indexed color
             //No knowledge about solid pixels
             break;
         }

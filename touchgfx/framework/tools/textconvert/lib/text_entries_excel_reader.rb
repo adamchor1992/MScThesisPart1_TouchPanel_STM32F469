@@ -1,7 +1,7 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.10.0 distribution.
+# This file is part of the TouchGFX 4.12.3 distribution.
 #
-# <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+# <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
 #
 # This software component is licensed by ST under Ultimate Liberty license
@@ -17,6 +17,7 @@ class TextEntriesExcelReader
   attr_reader :reader
 
   def initialize(file_name)
+    #puts "Running TextEntriesExcelReader:init, #{Time.now.strftime("%H:%M:%S:%L")}"
     header_row_number = 3
     header_column_number = 2
     @reader = ExcelReader.new(file_name, "Translation", header_row_number, header_column_number)
@@ -24,6 +25,7 @@ class TextEntriesExcelReader
   end
 
   def run
+    #puts "Running TextEntriesExcelReader:run, #{Time.now.strftime("%H:%M:%S:%L")}"
     reader.read_header do |header|
       @alignments = header.select { |column| column.match(/^.*-ALIGNMENT$/i) }.map(&:capitalize)
       @directions = header.select { |column| column.match(/^.*-DIRECTION$/i) }.map(&:capitalize)

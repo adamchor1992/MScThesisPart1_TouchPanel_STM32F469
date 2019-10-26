@@ -16,9 +16,9 @@ ExponentContainerBase::ExponentContainerBase()
     textArea_Exponent.setPosition(0, 0, 176, 53);
     textArea_Exponent.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Exponent.setLinespacing(0);
-    Unicode::snprintf(textArea_ExponentBuffer, TEXTAREA_EXPONENT_SIZE, "%s", TypedText(T_SINGLEUSEID381).getText());
+    Unicode::snprintf(textArea_ExponentBuffer, TEXTAREA_EXPONENT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID381).getText());
     textArea_Exponent.setWildcard(textArea_ExponentBuffer);
-    textArea_Exponent.setTypedText(TypedText(T_SINGLEUSEID378));
+    textArea_Exponent.setTypedText(touchgfx::TypedText(T_SINGLEUSEID378));
 
     add(backgroundBox_Black);
     add(textArea_Exponent);

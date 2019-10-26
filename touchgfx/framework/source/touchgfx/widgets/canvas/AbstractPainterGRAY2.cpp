@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.10.0 distribution.
+  * This file is part of the TouchGFX 4.12.3 distribution.
   *
-  * <h2><center>&copy; Copyright (c) 2018 STMicroelectronics.
+  * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
   *
   * This software component is licensed by ST under Ultimate Liberty license
@@ -36,23 +36,19 @@ void AbstractPainterGRAY2::render(uint8_t* ptr,
             uint8_t gray, alpha;
             if (renderNext(gray, alpha))
             {
-                if (widgetAlpha < 255)
-                {
-                    alpha = static_cast<uint8_t>((alpha * widgetAlpha) / 255);
-                }
-                uint16_t combinedAlpha = (*covers) * alpha / 255;
+                uint8_t combinedAlpha = LCD::div255((*covers) * LCD::div255(alpha * widgetAlpha));
                 covers++;
 
-                if (combinedAlpha == 255) // max alpha=255 on "*covers" and max alpha=255 on "widgetAlpha"
+                if (combinedAlpha == 0xFF) // max alpha=0xFF on "*covers" and max alpha=0xFF on "widgetAlpha"
                 {
                     // Render a solid pixel
                     renderPixel(ptr, x, gray);
                 }
                 else
                 {
-                    uint8_t p_gray = LCD2getPixel(ptr, x);
-                    uint16_t ialpha = 0x100 - combinedAlpha;
-                    renderPixel(ptr, x, static_cast<uint8_t>((p_gray * ialpha + gray * combinedAlpha) >> 8));
+                    uint8_t p_gray = LCD2getPixel(ptr, x) * 0x55;
+                    uint8_t ialpha = 0xFF - combinedAlpha;
+                    renderPixel(ptr, x, LCD::div255((gray * combinedAlpha + p_gray * ialpha) * 0x55) >> 6);
                 }
             }
             currentX++;
