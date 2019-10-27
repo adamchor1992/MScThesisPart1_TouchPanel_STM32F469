@@ -79,7 +79,6 @@ void Screen_Module1_DataView::setupScreen()
   HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
 #endif
   
-  // Add the callback to HiddenBox
   textArea_Parameter1Name.setClickAction(TextAreaClickedCallback);
   textArea_Parameter2Name.setClickAction(TextAreaClickedCallback);
   textArea_Parameter3Name.setClickAction(TextAreaClickedCallback);

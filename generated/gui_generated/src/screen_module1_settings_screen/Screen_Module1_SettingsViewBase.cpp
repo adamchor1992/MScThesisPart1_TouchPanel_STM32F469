@@ -8,27 +8,19 @@
 
 Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonCallback(this, &Screen_Module1_SettingsViewBase::buttonCallbackHandler),
-    sliderValueChangedCallback(this, &Screen_Module1_SettingsViewBase::sliderValueChangedCallbackHandler),
     updateItemCallback(this, &Screen_Module1_SettingsViewBase::updateItemCallbackHandler)
 {
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
-    backgroundBox_Black.setPosition(0, 0, 800, 480);
+    backgroundBox_Black.setPosition(-1, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    buttonWithLabel_SetValue.setXY(437, 325);
+    buttonWithLabel_SetValue.setXY(465, 356);
     buttonWithLabel_SetValue.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_SetValue.setLabelText(touchgfx::TypedText(T_SINGLEUSEID131));
     buttonWithLabel_SetValue.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetValue.setAction(buttonCallback);
-
-    slider_Value.setXY(298, 256);
-    slider_Value.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
-    slider_Value.setupHorizontalSlider(2, 19, 2, 0, 311);
-    slider_Value.setValueRange(0, 1000);
-    slider_Value.setValue(0);
-    slider_Value.setNewValueCallback(sliderValueChangedCallback);
 
     radioButtonParameter2.setXY(250, 106);
     radioButtonParameter2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
@@ -47,11 +39,9 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_SettableParameter1Name.setWildcard(textArea_SettableParameter1NameBuffer);
     textArea_SettableParameter1Name.setTypedText(touchgfx::TypedText(T_SINGLEUSEID133));
 
-    textArea_ValueToSet.setPosition(348, 198, 252, 49);
+    textArea_ValueToSet.setPosition(465, 165, 169, 77);
     textArea_ValueToSet.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ValueToSet.setLinespacing(0);
-    Unicode::snprintf(textArea_ValueToSetBuffer, TEXTAREA_VALUETOSET_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID135).getText());
-    textArea_ValueToSet.setWildcard(textArea_ValueToSetBuffer);
     textArea_ValueToSet.setTypedText(touchgfx::TypedText(T_SINGLEUSEID134));
 
     textArea_ParameterToSet.setPosition(0, 41, 106, 24);
@@ -93,7 +83,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     radioButtonParameter5.setSelected(false);
     radioButtonParameter5.setDeselectionEnabled(false);
 
-    radioButtonParameter6.setXY(250, 266);
+    radioButtonParameter6.setXY(250, 265);
     radioButtonParameter6.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
     radioButtonParameter6.setSelected(false);
     radioButtonParameter6.setDeselectionEnabled(false);
@@ -116,7 +106,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     line1.setLineWidth(4);
     line1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
 
-    buttonWithLabel_EnableParameter.setXY(307, 54);
+    buttonWithLabel_EnableParameter.setXY(569, 47);
     buttonWithLabel_EnableParameter.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_PRESSED_ID));
     buttonWithLabel_EnableParameter.setLabelText(touchgfx::TypedText(T_SINGLEUSEID195));
     buttonWithLabel_EnableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -133,7 +123,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     radioButtonParameter10.setSelected(false);
     radioButtonParameter10.setDeselectionEnabled(false);
 
-    buttonWithLabel_DisableParameter.setXY(307, 114);
+    buttonWithLabel_DisableParameter.setXY(569, 105);
     buttonWithLabel_DisableParameter.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_MEDIUM_PRESSED_ID));
     buttonWithLabel_DisableParameter.setLabelText(touchgfx::TypedText(T_SINGLEUSEID250));
     buttonWithLabel_DisableParameter.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -203,26 +193,148 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_SettableParameter10Name.setWildcard(textArea_SettableParameter10NameBuffer);
     textArea_SettableParameter10Name.setTypedText(touchgfx::TypedText(T_SINGLEUSEID373));
 
-    scrollWheel_Exponents.setPosition(624, 186, 176, 70);
-    scrollWheel_Exponents.setHorizontal(false);
-    scrollWheel_Exponents.setCircular(false);
-    scrollWheel_Exponents.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
-    scrollWheel_Exponents.setSwipeAcceleration(10);
-    scrollWheel_Exponents.setDragAcceleration(10);
-    scrollWheel_Exponents.setNumberOfItems(17);
-    scrollWheel_Exponents.setSelectedItemOffset(0);
-    scrollWheel_Exponents.setDrawableSize(53, 11);
-    scrollWheel_Exponents.setDrawables(scrollWheel_ExponentsListItems, updateItemCallback);
-    scrollWheel_Exponents.animateToItem(8, 0);
+    scrollWheel_Digit10.setPosition(305, 234, 38, 105);
+    scrollWheel_Digit10.setHorizontal(false);
+    scrollWheel_Digit10.setCircular(false);
+    scrollWheel_Digit10.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit10.setSwipeAcceleration(10);
+    scrollWheel_Digit10.setDragAcceleration(10);
+    scrollWheel_Digit10.setNumberOfItems(11);
+    scrollWheel_Digit10.setSelectedItemOffset(10);
+    scrollWheel_Digit10.setDrawableSize(96, 10);
+    scrollWheel_Digit10.setDrawables(scrollWheel_Digit10ListItems, updateItemCallback);
+    scrollWheel_Digit10.animateToItem(1, 0);
 
-    textArea_MultiplicationSign.setXY(600, 195);
-    textArea_MultiplicationSign.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea_MultiplicationSign.setLinespacing(0);
-    textArea_MultiplicationSign.setTypedText(touchgfx::TypedText(T_SINGLEUSEID380));
+    scrollWheel_Digit9.setPosition(355, 234, 38, 105);
+    scrollWheel_Digit9.setHorizontal(false);
+    scrollWheel_Digit9.setCircular(false);
+    scrollWheel_Digit9.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit9.setSwipeAcceleration(10);
+    scrollWheel_Digit9.setDragAcceleration(10);
+    scrollWheel_Digit9.setNumberOfItems(11);
+    scrollWheel_Digit9.setSelectedItemOffset(10);
+    scrollWheel_Digit9.setDrawableSize(96, 10);
+    scrollWheel_Digit9.setDrawables(scrollWheel_Digit9ListItems, updateItemCallback);
+    scrollWheel_Digit9.animateToItem(1, 0);
+
+    scrollWheel_Digit8.setPosition(405, 234, 38, 105);
+    scrollWheel_Digit8.setHorizontal(false);
+    scrollWheel_Digit8.setCircular(false);
+    scrollWheel_Digit8.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit8.setSwipeAcceleration(10);
+    scrollWheel_Digit8.setDragAcceleration(10);
+    scrollWheel_Digit8.setNumberOfItems(11);
+    scrollWheel_Digit8.setSelectedItemOffset(10);
+    scrollWheel_Digit8.setDrawableSize(96, 10);
+    scrollWheel_Digit8.setDrawables(scrollWheel_Digit8ListItems, updateItemCallback);
+    scrollWheel_Digit8.animateToItem(1, 0);
+
+    scrollWheel_Digit7.setPosition(455, 234, 38, 105);
+    scrollWheel_Digit7.setHorizontal(false);
+    scrollWheel_Digit7.setCircular(false);
+    scrollWheel_Digit7.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit7.setSwipeAcceleration(10);
+    scrollWheel_Digit7.setDragAcceleration(10);
+    scrollWheel_Digit7.setNumberOfItems(11);
+    scrollWheel_Digit7.setSelectedItemOffset(10);
+    scrollWheel_Digit7.setDrawableSize(96, 10);
+    scrollWheel_Digit7.setDrawables(scrollWheel_Digit7ListItems, updateItemCallback);
+    scrollWheel_Digit7.animateToItem(1, 0);
+
+    scrollWheel_Digit6.setPosition(505, 234, 38, 105);
+    scrollWheel_Digit6.setHorizontal(false);
+    scrollWheel_Digit6.setCircular(false);
+    scrollWheel_Digit6.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit6.setSwipeAcceleration(10);
+    scrollWheel_Digit6.setDragAcceleration(10);
+    scrollWheel_Digit6.setNumberOfItems(11);
+    scrollWheel_Digit6.setSelectedItemOffset(10);
+    scrollWheel_Digit6.setDrawableSize(96, 10);
+    scrollWheel_Digit6.setDrawables(scrollWheel_Digit6ListItems, updateItemCallback);
+    scrollWheel_Digit6.animateToItem(1, 0);
+
+    scrollWheel_Digit5.setPosition(555, 234, 38, 105);
+    scrollWheel_Digit5.setHorizontal(false);
+    scrollWheel_Digit5.setCircular(false);
+    scrollWheel_Digit5.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit5.setSwipeAcceleration(10);
+    scrollWheel_Digit5.setDragAcceleration(10);
+    scrollWheel_Digit5.setNumberOfItems(11);
+    scrollWheel_Digit5.setSelectedItemOffset(10);
+    scrollWheel_Digit5.setDrawableSize(96, 10);
+    scrollWheel_Digit5.setDrawables(scrollWheel_Digit5ListItems, updateItemCallback);
+    scrollWheel_Digit5.animateToItem(0, 0);
+
+    scrollWheel_Digit4.setPosition(605, 234, 38, 105);
+    scrollWheel_Digit4.setHorizontal(false);
+    scrollWheel_Digit4.setCircular(false);
+    scrollWheel_Digit4.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit4.setSwipeAcceleration(10);
+    scrollWheel_Digit4.setDragAcceleration(10);
+    scrollWheel_Digit4.setNumberOfItems(11);
+    scrollWheel_Digit4.setSelectedItemOffset(10);
+    scrollWheel_Digit4.setDrawableSize(96, 10);
+    scrollWheel_Digit4.setDrawables(scrollWheel_Digit4ListItems, updateItemCallback);
+    scrollWheel_Digit4.animateToItem(1, 0);
+
+    scrollWheel_Digit3.setPosition(655, 234, 38, 105);
+    scrollWheel_Digit3.setHorizontal(false);
+    scrollWheel_Digit3.setCircular(false);
+    scrollWheel_Digit3.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit3.setSwipeAcceleration(10);
+    scrollWheel_Digit3.setDragAcceleration(10);
+    scrollWheel_Digit3.setNumberOfItems(11);
+    scrollWheel_Digit3.setSelectedItemOffset(10);
+    scrollWheel_Digit3.setDrawableSize(96, 10);
+    scrollWheel_Digit3.setDrawables(scrollWheel_Digit3ListItems, updateItemCallback);
+    scrollWheel_Digit3.animateToItem(1, 0);
+
+    scrollWheel_Digit2.setPosition(705, 234, 38, 105);
+    scrollWheel_Digit2.setHorizontal(false);
+    scrollWheel_Digit2.setCircular(false);
+    scrollWheel_Digit2.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit2.setSwipeAcceleration(10);
+    scrollWheel_Digit2.setDragAcceleration(10);
+    scrollWheel_Digit2.setNumberOfItems(11);
+    scrollWheel_Digit2.setSelectedItemOffset(10);
+    scrollWheel_Digit2.setDrawableSize(96, 10);
+    scrollWheel_Digit2.setDrawables(scrollWheel_Digit2ListItems, updateItemCallback);
+    scrollWheel_Digit2.animateToItem(1, 0);
+
+    scrollWheel_Digit1.setPosition(756, 234, 38, 105);
+    scrollWheel_Digit1.setHorizontal(false);
+    scrollWheel_Digit1.setCircular(false);
+    scrollWheel_Digit1.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
+    scrollWheel_Digit1.setSwipeAcceleration(10);
+    scrollWheel_Digit1.setDragAcceleration(10);
+    scrollWheel_Digit1.setNumberOfItems(11);
+    scrollWheel_Digit1.setSelectedItemOffset(10);
+    scrollWheel_Digit1.setDrawableSize(96, 10);
+    scrollWheel_Digit1.setDrawables(scrollWheel_Digit1ListItems, updateItemCallback);
+    scrollWheel_Digit1.animateToItem(1, 0);
+
+    textArea_Plus.setXY(383, 133);
+    textArea_Plus.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Plus.setLinespacing(0);
+    textArea_Plus.setTypedText(touchgfx::TypedText(T_SINGLEUSEID404));
+
+    radioButton_Plus.setXY(339, 138);
+    radioButton_Plus.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButton_Plus.setSelected(true);
+    radioButton_Plus.setDeselectionEnabled(false);
+
+    radioButton_Minus.setXY(339, 182);
+    radioButton_Minus.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_INACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_ACTIVE_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CHECK_MARK_NORMAL_ID));
+    radioButton_Minus.setSelected(false);
+    radioButton_Minus.setDeselectionEnabled(false);
+
+    textArea_Minus.setXY(390, 177);
+    textArea_Minus.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_Minus.setLinespacing(0);
+    textArea_Minus.setTypedText(touchgfx::TypedText(T_SINGLEUSEID407));
 
     add(backgroundBox_Black);
     add(buttonWithLabel_SetValue);
-    add(slider_Value);
     add(radioButtonParameter2);
     add(radioButtonParameter1);
     add(textArea_SettableParameter1Name);
@@ -251,26 +363,85 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     add(textArea_SettableParameter8Name);
     add(textArea_SettableParameter9Name);
     add(textArea_SettableParameter10Name);
-    add(scrollWheel_Exponents);
-    add(textArea_MultiplicationSign);
-    radioButtonGroup.add(radioButtonParameter2);
-    radioButtonGroup.add(radioButtonParameter1);
-    radioButtonGroup.add(radioButtonParameter3);
-    radioButtonGroup.add(radioButtonParameter4);
-    radioButtonGroup.add(radioButtonParameter5);
-    radioButtonGroup.add(radioButtonParameter6);
-    radioButtonGroup.add(radioButtonParameter7);
-    radioButtonGroup.add(radioButtonParameter8);
-    radioButtonGroup.add(radioButtonParameter9);
-    radioButtonGroup.add(radioButtonParameter10);
+    add(scrollWheel_Digit10);
+    add(scrollWheel_Digit9);
+    add(scrollWheel_Digit8);
+    add(scrollWheel_Digit7);
+    add(scrollWheel_Digit6);
+    add(scrollWheel_Digit5);
+    add(scrollWheel_Digit4);
+    add(scrollWheel_Digit3);
+    add(scrollWheel_Digit2);
+    add(scrollWheel_Digit1);
+    add(textArea_Plus);
+    add(radioButton_Plus);
+    add(radioButton_Minus);
+    add(textArea_Minus);
+    radioButtonGroup_Parameter.add(radioButtonParameter2);
+    radioButtonGroup_Parameter.add(radioButtonParameter1);
+    radioButtonGroup_Parameter.add(radioButtonParameter3);
+    radioButtonGroup_Parameter.add(radioButtonParameter4);
+    radioButtonGroup_Parameter.add(radioButtonParameter5);
+    radioButtonGroup_Parameter.add(radioButtonParameter6);
+    radioButtonGroup_Parameter.add(radioButtonParameter7);
+    radioButtonGroup_Parameter.add(radioButtonParameter8);
+    radioButtonGroup_Parameter.add(radioButtonParameter9);
+    radioButtonGroup_Parameter.add(radioButtonParameter10);
+    radioButtonGroup_Sign.add(radioButton_Plus);
+    radioButtonGroup_Sign.add(radioButton_Minus);
 }
 
 void Screen_Module1_SettingsViewBase::setupScreen()
 {
-    scrollWheel_Exponents.initialize();
-    for (int i = 0; i < scrollWheel_ExponentsListItems.getNumberOfDrawables(); i++)
+    scrollWheel_Digit10.initialize();
+    for (int i = 0; i < scrollWheel_Digit10ListItems.getNumberOfDrawables(); i++)
     {
-        scrollWheel_ExponentsListItems[i].initialize();
+        scrollWheel_Digit10ListItems[i].initialize();
+    }
+    scrollWheel_Digit9.initialize();
+    for (int i = 0; i < scrollWheel_Digit9ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit9ListItems[i].initialize();
+    }
+    scrollWheel_Digit8.initialize();
+    for (int i = 0; i < scrollWheel_Digit8ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit8ListItems[i].initialize();
+    }
+    scrollWheel_Digit7.initialize();
+    for (int i = 0; i < scrollWheel_Digit7ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit7ListItems[i].initialize();
+    }
+    scrollWheel_Digit6.initialize();
+    for (int i = 0; i < scrollWheel_Digit6ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit6ListItems[i].initialize();
+    }
+    scrollWheel_Digit5.initialize();
+    for (int i = 0; i < scrollWheel_Digit5ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit5ListItems[i].initialize();
+    }
+    scrollWheel_Digit4.initialize();
+    for (int i = 0; i < scrollWheel_Digit4ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit4ListItems[i].initialize();
+    }
+    scrollWheel_Digit3.initialize();
+    for (int i = 0; i < scrollWheel_Digit3ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit3ListItems[i].initialize();
+    }
+    scrollWheel_Digit2.initialize();
+    for (int i = 0; i < scrollWheel_Digit2ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit2ListItems[i].initialize();
+    }
+    scrollWheel_Digit1.initialize();
+    for (int i = 0; i < scrollWheel_Digit1ListItems.getNumberOfDrawables(); i++)
+    {
+        scrollWheel_Digit1ListItems[i].initialize();
     }
 }
 
@@ -306,23 +477,66 @@ void Screen_Module1_SettingsViewBase::buttonCallbackHandler(const touchgfx::Abst
     }
 }
 
-void Screen_Module1_SettingsViewBase::sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value)
-{
-    if (&src == &slider_Value)
-    {
-        //Interaction_UpdateValueToSet
-        //When slider_Value value changed call virtual function
-        //Call updateValueToSet
-        updateValueToSet(value);
-    }
-}
-
 void Screen_Module1_SettingsViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
 {
-    if (items == &scrollWheel_ExponentsListItems)
+    if (items == &scrollWheel_Digit10ListItems)
     {
         touchgfx::Drawable* d = items->getDrawable(containerIndex);
-        ExponentContainer* cc = (ExponentContainer*)d;
-        scrollWheel_ExponentsUpdateItem(*cc, itemIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit10UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit9ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit9UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit8ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit8UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit7ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit7UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit6ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit6UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit5ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit5UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit4ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit4UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit3ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit3UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit2ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit2UpdateItem(*cc, itemIndex);
+    }
+    if (items == &scrollWheel_Digit1ListItems)
+    {
+        touchgfx::Drawable* d = items->getDrawable(containerIndex);
+        DigitTemplate* cc = (DigitTemplate*)d;
+        scrollWheel_Digit1UpdateItem(*cc, itemIndex);
     }
 }

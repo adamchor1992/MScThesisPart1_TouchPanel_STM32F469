@@ -719,9 +719,9 @@
               <FilePath>../../gui/src/common/abstractgraph.cpp</FilePath>
             </File>
             <File>
-              <FileName>ExponentContainer.cpp</FileName>
+              <FileName>DigitTemplate.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../gui/src/containers/exponentcontainer.cpp</FilePath>
+              <FilePath>../../gui/src/containers/digittemplate.cpp</FilePath>
             </File>
             <File>
               <FileName>FrontendApplication.cpp</FileName>
@@ -974,9 +974,9 @@
               <FilePath>../../generated/fonts/src/cachedfont.cpp</FilePath>
             </File>
             <File>
-              <FileName>ExponentContainerBase.cpp</FileName>
+              <FileName>DigitTemplateBase.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/containers/exponentcontainerbase.cpp</FilePath>
+              <FilePath>../../generated/gui_generated/src/containers/digittemplatebase.cpp</FilePath>
             </File>
             <File>
               <FileName>Font_verdana_10_4bpp_0.cpp</FileName>
@@ -992,6 +992,11 @@
               <FileName>Font_verdana_40_4bpp_0.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/font_verdana_40_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_verdana_60_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/font_verdana_60_4bpp_0.cpp</FilePath>
             </File>
             <File>
               <FileName>FontCache.cpp</FileName>
@@ -1022,6 +1027,11 @@
               <FileName>Kerning_verdana_40_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/kerning_verdana_40_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_verdana_60_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/kerning_verdana_60_4bpp.cpp</FilePath>
             </File>
             <File>
               <FileName>LanguageGb.cpp</FileName>
@@ -1097,6 +1107,11 @@
               <FileName>Table_verdana_40_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/table_verdana_40_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_verdana_60_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/table_verdana_60_4bpp.cpp</FilePath>
             </File>
             <File>
               <FileName>TemplateViewBase.cpp</FileName>

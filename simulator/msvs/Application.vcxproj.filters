@@ -308,7 +308,7 @@
       <UniqueIdentifier>D5C92D5D-38DC-411C-99C5-995F48AA9A2B</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>BA8662D3-E415-9970-29CF-47D759DADEE4</UniqueIdentifier>
+      <UniqueIdentifier>C3C7ABF4-7309-F696-F443-0130C8DD87F6</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -444,9 +444,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen_module1_signals_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\include\UART_Frame_Struct.h">
-      <Filter>Source Files\gui\include</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp">
       <Filter>Source Files\gui\screen1_screen</Filter>
     </ClCompile>
@@ -456,10 +453,10 @@
     <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\containers\ExponentContainer.cpp">
+    <ClCompile Include="..\..\gui\src\containers\DigitTemplate.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\ExponentContainerBase.cpp">
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1015,10 +1012,13 @@
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\containers\ExponentContainer.hpp">
+    <ClInclude Include="..\..\gui\include\gui\containers\DigitContainer.hpp">
       <Filter>Header Files\gui\containers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ExponentContainerBase.hpp">
+    <ClInclude Include="..\..\gui\include\gui\containers\DigitTemplate.hpp">
+      <Filter>Header Files\gui\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DigitTemplateBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
     </ClInclude>
   </ItemGroup>

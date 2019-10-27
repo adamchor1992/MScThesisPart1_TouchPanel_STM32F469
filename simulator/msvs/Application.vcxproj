@@ -58,8 +58,8 @@
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\containers\ExponentContainer.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\containers\ExponentContainerBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\containers\DigitTemplate.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\texts\texts.xlsx"/>
@@ -247,8 +247,9 @@
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\containers\ExponentContainer.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\ExponentContainerBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\DigitContainer.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\containers\DigitTemplate.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DigitTemplateBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\touchgfx.rc"/>

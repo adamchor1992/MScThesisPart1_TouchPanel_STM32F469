@@ -4,43 +4,15 @@
 #include <gui_generated/screen1_screen/Screen1ViewBase.hpp>
 #include <touchgfx/Color.hpp>
 
-Screen1ViewBase::Screen1ViewBase() :
-    updateItemCallback(this, &Screen1ViewBase::updateItemCallbackHandler)
+Screen1ViewBase::Screen1ViewBase()
 {
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    scrollWheel1.setPosition(65, 34, 100, 75);
-    scrollWheel1.setHorizontal(false);
-    scrollWheel1.setCircular(false);
-    scrollWheel1.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
-    scrollWheel1.setSwipeAcceleration(10);
-    scrollWheel1.setDragAcceleration(10);
-    scrollWheel1.setNumberOfItems(10);
-    scrollWheel1.setSelectedItemOffset(0);
-    scrollWheel1.setDrawableSize(53, 0);
-    scrollWheel1.setDrawables(scrollWheel1ListItems, updateItemCallback);
-    scrollWheel1.animateToItem(0, 0);
-
     add(backgroundBox_Black);
-    add(scrollWheel1);
 }
 
 void Screen1ViewBase::setupScreen()
 {
-    scrollWheel1.initialize();
-    for (int i = 0; i < scrollWheel1ListItems.getNumberOfDrawables(); i++)
-    {
-        scrollWheel1ListItems[i].initialize();
-    }
-}
 
-void Screen1ViewBase::updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex)
-{
-    if (items == &scrollWheel1ListItems)
-    {
-        touchgfx::Drawable* d = items->getDrawable(containerIndex);
-        ExponentContainer* cc = (ExponentContainer*)d;
-        scrollWheel1UpdateItem(*cc, itemIndex);
-    }
 }

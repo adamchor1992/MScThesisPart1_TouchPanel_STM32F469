@@ -12,7 +12,7 @@ public:
   virtual void setupScreen();
   virtual void tearDownScreen();
   
-  // Declaring callback handler for HiddenBox
+  // Declaring callback handler
   void TextAreaClickHandler(const TextAreaWithOneWildcard& b, const ClickEvent& e);
   
   void updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame);

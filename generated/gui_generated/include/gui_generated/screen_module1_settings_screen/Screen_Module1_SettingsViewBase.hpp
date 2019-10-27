@@ -9,14 +9,13 @@
 #include <gui/screen_module1_settings_screen/Screen_Module1_SettingsPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
-#include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/widgets/RadioButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/containers/scrollers/ScrollWheel.hpp>
-#include <gui/containers/ExponentContainer.hpp>
+#include <gui/containers/DigitTemplate.hpp>
 
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
 class Screen_Module1_SettingsViewBase : public touchgfx::View<Screen_Module1_SettingsPresenter>
@@ -26,7 +25,52 @@ public:
     virtual ~Screen_Module1_SettingsViewBase() {}
     virtual void setupScreen();
 
-    virtual void scrollWheel_ExponentsUpdateItem(ExponentContainer& item, int16_t itemIndex)
+    virtual void scrollWheel_Digit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void scrollWheel_Digit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
     {
         // Override and implement this function in Screen_Module1_Settings
     }
@@ -35,11 +79,6 @@ public:
      * Virtual Action Handlers
      */
     virtual void setNewValue()
-    {
-        // Override and implement this function in Screen_Module1_Settings
-    }
-
-    virtual void updateValueToSet(int value)
     {
         // Override and implement this function in Screen_Module1_Settings
     }
@@ -64,11 +103,10 @@ protected:
      */
     touchgfx::Box backgroundBox_Black;
     touchgfx::ButtonWithLabel buttonWithLabel_SetValue;
-    touchgfx::Slider slider_Value;
     touchgfx::RadioButton radioButtonParameter2;
     touchgfx::RadioButton radioButtonParameter1;
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter1Name;
-    touchgfx::TextAreaWithOneWildcard textArea_ValueToSet;
+    touchgfx::TextArea textArea_ValueToSet;
     touchgfx::TextArea textArea_ParameterToSet;
     touchgfx::TextArea textArea_Title;
     touchgfx::RadioButton radioButtonParameter3;
@@ -94,19 +132,48 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter8Name;
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter9Name;
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter10Name;
-    touchgfx::ScrollWheel scrollWheel_Exponents;
-    touchgfx::DrawableListItems<ExponentContainer, 3> scrollWheel_ExponentsListItems;
+    touchgfx::ScrollWheel scrollWheel_Digit10;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit10ListItems;
 
-    touchgfx::TextArea textArea_MultiplicationSign;
-    touchgfx::RadioButtonGroup<10> radioButtonGroup;
+    touchgfx::ScrollWheel scrollWheel_Digit9;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit9ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit8;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit8ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit7;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit7ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit6;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit6ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit5;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit5ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit4;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit4ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit3;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit3ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit2;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit2ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_Digit1;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit1ListItems;
+
+    touchgfx::TextArea textArea_Plus;
+    touchgfx::RadioButton radioButton_Plus;
+    touchgfx::RadioButton radioButton_Minus;
+    touchgfx::TextArea textArea_Minus;
+    touchgfx::RadioButtonGroup<10> radioButtonGroup_Parameter;
+    touchgfx::RadioButtonGroup<2> radioButtonGroup_Sign;
 
     /*
      * Wildcard Buffers
      */
     static const uint16_t TEXTAREA_SETTABLEPARAMETER1NAME_SIZE = 11;
     touchgfx::Unicode::UnicodeChar textArea_SettableParameter1NameBuffer[TEXTAREA_SETTABLEPARAMETER1NAME_SIZE];
-    static const uint16_t TEXTAREA_VALUETOSET_SIZE = 12;
-    touchgfx::Unicode::UnicodeChar textArea_ValueToSetBuffer[TEXTAREA_VALUETOSET_SIZE];
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
     static const uint16_t TEXTAREA_SETTABLEPARAMETER2NAME_SIZE = 11;
@@ -134,14 +201,12 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::AbstractButton&> buttonCallback;
-    touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
     touchgfx::Callback<Screen_Module1_SettingsViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
-    void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
     void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
     /*

@@ -8,8 +8,6 @@
 #include <mvp/View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/containers/scrollers/ScrollWheel.hpp>
-#include <gui/containers/ExponentContainer.hpp>
 
 class Screen1ViewBase : public touchgfx::View<Screen1Presenter>
 {
@@ -17,11 +15,6 @@ public:
     Screen1ViewBase();
     virtual ~Screen1ViewBase() {}
     virtual void setupScreen();
-
-    virtual void scrollWheel1UpdateItem(ExponentContainer& item, int16_t itemIndex)
-    {
-        // Override and implement this function in Screen1
-    }
 
 protected:
     FrontendApplication& application() {
@@ -32,13 +25,8 @@ protected:
      * Member Declarations
      */
     touchgfx::Box backgroundBox_Black;
-    touchgfx::ScrollWheel scrollWheel1;
-    touchgfx::DrawableListItems<ExponentContainer, 3> scrollWheel1ListItems;
-
 
 private:
-    touchgfx::Callback<Screen1ViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
-    void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
 };
 
