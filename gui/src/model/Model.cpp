@@ -17,39 +17,13 @@ extern xQueueHandle msgQueueUART_RX_ProcessedFrame;
 extern xQueueHandle msgQueueUARTTransmit;
 extern xSemaphoreHandle UART_TxSemaphore;
 
-/*Module initialization parameter names*/
-uint8_t Model::m_InitParameter1Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter2Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter3Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter4Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter5Name[PAYLOAD_SIZE] = {0};
+uint8_t Model::m_InitParametersModule1[INIT_FRAME_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule2[INIT_FRAME_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule3[INIT_FRAME_COUNT][PAYLOAD_SIZE] = {{0}};
 
-/*Module initialization parameter values*/
-uint8_t Model::m_InitParameter1Value[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter2Value[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter3Value[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter4Value[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_InitParameter5Value[PAYLOAD_SIZE] = {0};
-
-/*Custom parameter names*/
-uint8_t Model::m_Parameter1Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_Parameter2Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_Parameter3Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_Parameter4Name[PAYLOAD_SIZE] = {0};
-
-/*Settable parameter names*/
-uint8_t Model::m_SettableParameter1Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter2Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter3Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter4Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter5Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter6Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter7Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter8Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter9Name[PAYLOAD_SIZE] = {0};
-uint8_t Model::m_SettableParameter10Name[PAYLOAD_SIZE] = {0};
-
-uint8_t Model::m_ActiveModule = 0;
+bool Model::module1Connected = false;
+bool Model::module2Connected = false;
+bool Model::module3Connected = false;
 
 extern UART_HandleTypeDef huart6;
 UART_HandleTypeDef* Model::m_pHuart6 = &huart6;
@@ -62,7 +36,6 @@ Model::Model() : m_ModelListener(0)
 {
 #ifndef SIMULATOR
   m_ReceivedInitFrameCount = 0;
-  m_ConnectionState = UNCONNECTED;
 #endif
 }
 
@@ -78,176 +51,245 @@ void Model::tick()
     /*Frame is validated at this point and can be directly recovered from queue and copied to local s_UARTFrame structure*/    
     xQueueReceive(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, 0);
     
-    if(m_ConnectionState == CONNECTED)
+    switch(s_UARTFrame.module)
     {
-      if(s_UARTFrame.function == '1') //data type frame
+    case '1':
+      if(isModuleActive(1) == true)
       {
-        m_ModelListener->notifyNewUART_RX_ParsedFrame(s_UARTFrame);
+        if(s_UARTFrame.function == '1') //data type frame
+        {
+          m_ModelListener->notifyNewUART_RX_ParsedFrame(s_UARTFrame);
+        }
+        else if(s_UARTFrame.function == '3') //deinit connection
+        {
+          printf("Deinit frame received\n");
+          
+          /*Set module 1 not active*/
+          deactivateModule(1);
+          
+          /*Go back to main menu screen*/
+          static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
+        }
+        else
+        {
+          printf("Wrong frame type for module 1 in active state\n");
+        }
       }
-      else if(s_UARTFrame.function == '3') //deinit connection
-      {
-        printf("Deinit frame received\n");
-        
-        /*Set no active modules*/
-        m_ActiveModule = 0;
-        
-        /*Go back to main menu screen*/
-        static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
-        
-        m_ConnectionState = UNCONNECTED;
-      }
+      /*Module inactive*/
       else
       {
-        printf("Wrong frame type in CONNECTED state\n");
-      }
-    }
-    else if(m_ConnectionState == UNCONNECTED)
-    {
-      if(s_UARTFrame.function == '2') //init type frame
-      {
-        /*Skip if any module is already active*/
-        if(m_ActiveModule == 0)
+        if(s_UARTFrame.function == '2') //init frame
         {
           if(m_ReceivedInitFrameCount < INIT_FRAME_COUNT)
           {
             uint8_t length_int = s_UARTFrame.length - '0'; //convert char to int length 
             
-            switch(s_UARTFrame.parameter)
-            {
-            case 'a':
-              memcpy(m_InitParameter1Name, s_UARTFrame.payload, length_int);
-              printf("m_InitParameter1Name: %.10s\n", m_InitParameter1Name); 
-              break;
-              
-            case 'b':
-              memcpy(m_InitParameter2Name, s_UARTFrame.payload, length_int);
-              printf("m_InitParameter2Name: %.10s\n", m_InitParameter2Name); 
-              break;
-              
-            case 'c':
-              memcpy(m_InitParameter3Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'd':
-              memcpy(m_InitParameter4Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'e':
-              memcpy(m_InitParameter5Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'f':
-              memcpy(m_InitParameter1Value, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'g':
-              memcpy(m_InitParameter2Value, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'h':
-              memcpy(m_InitParameter3Value, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'i':
-              memcpy(m_InitParameter4Value, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'j':
-              memcpy(m_InitParameter5Value, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'k':
-              memcpy(m_Parameter1Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'l':
-              memcpy(m_Parameter2Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'm':
-              memcpy(m_Parameter3Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'n':
-              memcpy(m_Parameter4Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'o':
-              memcpy(m_SettableParameter1Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'p':
-              memcpy(m_SettableParameter2Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'q':
-              memcpy(m_SettableParameter3Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'r':
-              memcpy(m_SettableParameter4Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 's':
-              memcpy(m_SettableParameter5Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 't':
-              memcpy(m_SettableParameter6Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'u':
-              memcpy(m_SettableParameter7Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'v':
-              memcpy(m_SettableParameter8Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'w':
-              memcpy(m_SettableParameter9Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            case 'x':
-              memcpy(m_SettableParameter10Name, s_UARTFrame.payload, length_int);
-              break;
-              
-            default:
-              printf("UNSUPPORTED INIT FRAME\n");
-            }
+            //printf("Dlugosc wiadomosci nr %d to: %d\n", m_ReceivedInitFrameCount, length_int);
+            //printf("Tresc payloadu nr %d  to: %.10s\n", m_ReceivedInitFrameCount, s_UARTFrame.payload);
+            
+            memcpy(m_InitParametersModule1[m_ReceivedInitFrameCount], s_UARTFrame.payload, length_int);
+            
+            //printf("Do tablicy w indeksie nr %d wpisano: %.10s\n", m_ReceivedInitFrameCount, m_InitParametersModule1[m_ReceivedInitFrameCount]);
+            
+            //printf("Tresc payloadu to: %.10s\n", s_UARTFrame.payload);
             
             ++m_ReceivedInitFrameCount;
+          }
+          
+          printf("Received %d out of %d required init frames\n", m_ReceivedInitFrameCount, INIT_FRAME_COUNT);
+          
+          if(m_ReceivedInitFrameCount == INIT_FRAME_COUNT)
+          {
+            printf("Received all of %d init frames\n", INIT_FRAME_COUNT);
+            m_ModelListener->notifyAllInitFrameReceived(s_UARTFrame); 
             
-            printf("Received %d out of %d required init frames\n", m_ReceivedInitFrameCount, INIT_FRAME_COUNT);
-            
-            if(m_ReceivedInitFrameCount == INIT_FRAME_COUNT)
-            {
-              m_ConnectionState = CONNECTED;
-              printf("Received %d init frames\n", m_ReceivedInitFrameCount);
-              m_ModelListener->notifyInitFrame(s_UARTFrame); 
-              
-              /*Set m_ReceivedInitFrameCount back to 0 to make another connection initialization possible after connection deinitialization*/
-              m_ReceivedInitFrameCount = 0;
-            }
+            /*Set m_ReceivedInitFrameCount back to 0 to make another connection initialization possible after connection deinitialization*/
+            m_ReceivedInitFrameCount = 0;
           }
         }
         else
         {
-          printf("Skipping frame init due to some module is already active\n");
+          printf("Wrong frame type for module 1 in inactive state\n");
         }
       }
+      
+      break;
+      
+    case '2':
+      if(isModuleActive(2) == true)
+      {
+        if(s_UARTFrame.function == '1') //data type frame
+        {
+          m_ModelListener->notifyNewUART_RX_ParsedFrame(s_UARTFrame);
+        }
+        else if(s_UARTFrame.function == '3') //deinit connection
+        {
+          printf("Deinit frame received\n");
+          
+          /*Set module 2 not active*/
+          deactivateModule(2);
+          
+          /*Go back to main menu screen*/
+          static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
+        }
+        else
+        {
+          printf("Wrong frame type for module 2 in active state\n");
+        }
+      }
+      /*Module inactive*/
       else
       {
-        printf("Wrong frame type in UNCONNECTED state\n");
+        if(s_UARTFrame.function == '2') //init frame
+        {
+          if(m_ReceivedInitFrameCount < INIT_FRAME_COUNT)
+          {
+            uint8_t length_int = s_UARTFrame.length - '0'; //convert char to int length 
+            
+            memcpy(m_InitParametersModule2[m_ReceivedInitFrameCount], s_UARTFrame.payload, length_int);
+            
+            ++m_ReceivedInitFrameCount;
+          }
+          
+          printf("Received %d out of %d required init frames\n", m_ReceivedInitFrameCount, INIT_FRAME_COUNT);
+          
+          if(m_ReceivedInitFrameCount == INIT_FRAME_COUNT)
+          {
+            printf("Received all of %d init frames\n", INIT_FRAME_COUNT);
+            m_ModelListener->notifyAllInitFrameReceived(s_UARTFrame); 
+            
+            /*Set m_ReceivedInitFrameCount back to 0 to make another connection initialization possible after connection deinitialization*/
+            m_ReceivedInitFrameCount = 0;
+          }
+        }
+        else
+        {
+          printf("Wrong frame type for module 2 in inactive state\n");
+        }
       }
+      
+      break;
+      
+    case '3':
+      if(isModuleActive(3) == true)
+      {
+        if(s_UARTFrame.function == '1') //data type frame
+        {
+          m_ModelListener->notifyNewUART_RX_ParsedFrame(s_UARTFrame);
+        }
+        else if(s_UARTFrame.function == '3') //deinit connection
+        {
+          printf("Deinit frame received\n");
+          
+          /*Set module 3 not active*/
+          deactivateModule(3);
+          
+          /*Go back to main menu screen*/
+          static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
+        }
+        else
+        {
+          printf("Wrong frame type for module 3 in active state\n");
+        }
+      }
+      /*Module inactive*/
+      else
+      {
+        if(s_UARTFrame.function == '2') //init frame
+        {
+          if(m_ReceivedInitFrameCount < INIT_FRAME_COUNT)
+          {
+            uint8_t length_int = s_UARTFrame.length - '0'; //convert char to int length 
+            
+            memcpy(m_InitParametersModule3[m_ReceivedInitFrameCount], s_UARTFrame.payload, length_int);
+            
+            ++m_ReceivedInitFrameCount;
+          }
+          
+          printf("Received %d out of %d required init frames\n", m_ReceivedInitFrameCount, INIT_FRAME_COUNT);
+          
+          if(m_ReceivedInitFrameCount == INIT_FRAME_COUNT)
+          {
+            printf("Received all of %d init frames\n", INIT_FRAME_COUNT);
+            m_ModelListener->notifyAllInitFrameReceived(s_UARTFrame); 
+            
+            /*Set m_ReceivedInitFrameCount back to 0 to make another connection initialization possible after connection deinitialization*/
+            m_ReceivedInitFrameCount = 0;
+          }
+        }
+        else
+        {
+          printf("Wrong frame type for module 3 in inactive state\n");
+        }
+      }
+      
+      break;
+      
+    default:
+      printf("Unsupported module in Model.cpp\n");
     }
-    else
-    {
-      printf("Wrong state in Model.cpp\n");
-    }
-  }
-  m_ModelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
+    m_ModelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
 #endif
+  }
+}
+
+void Model::activateModule(int module)
+{
+  if(module == 1)
+  {
+    module1Connected = true;
+    printf("Module 1 activated\n");
+  }
+  else if(module == 2)
+  {
+    module2Connected = true;
+    printf("Module 2 activated\n");
+  }
+  else if(module == 3)
+  {
+    module3Connected = true;
+    printf("Module 3 activated\n");
+  }
+}
+
+void Model::deactivateModule(int module)
+{
+  if(module == 1)
+  {
+    module1Connected = false;
+    printf("Module 1 deactivated\n");
+  }
+  else if(module == 2)
+  {
+    module2Connected = false;
+    printf("Module 2 deactivated\n");
+  }
+  else if(module == 3)
+  {
+    module3Connected = false;
+    printf("Module 3 deactivated\n");
+  }
+}
+
+bool Model::isModuleActive(int module)
+{
+  if(module == 1)
+  {
+    return module1Connected;
+  }
+  else if(module == 2)
+  {
+    return module2Connected;
+  }
+  else if(module == 3)
+  {
+    return module3Connected;
+  }
+  else
+  {
+    printf("BAD GET MODULE STATE\n");
+    return false;
+  }
 }
 
 void Model::setNewValueToSet(const UARTFrameStruct_t & frameStructure)

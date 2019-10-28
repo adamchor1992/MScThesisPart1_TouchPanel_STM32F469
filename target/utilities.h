@@ -4,7 +4,6 @@
 #include "uart_frame_struct.h"
 #include "crc32.h"
 #include <cmath>
-#include "crc32.h"
 
 void convertFrameTableToUARTstruct(const uint8_t frameTable[],UARTFrameStruct_t & frameStructure);
 void convertUARTstructToFrameTable(const UARTFrameStruct_t & frameStructure, uint8_t frameTable[]);

@@ -2,65 +2,56 @@
 #include <gui/model/Model.hpp>
 #include <string>
 
-#define PAYLOAD_SIZE 10
-
 Screen_Module1_InfoView::Screen_Module1_InfoView()
 {
 #ifndef SIMULATOR    
-  uint16_t initParameter1NameStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter2NameStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter3NameStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter4NameStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter5NameStringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t initParameterNameStringDisplay[INIT_PARAMETER_NAME_COUNT][PAYLOAD_SIZE] = { 0 };
+  uint16_t initParameterValueStringDisplay[INIT_PARAMETER_VALUE_COUNT][PAYLOAD_SIZE] = { 0 };
   
-  uint16_t initParameter1ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter2ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter3ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter4ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t initParameter5ValueStringDisplay[PAYLOAD_SIZE] = { 0 };
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
+  for(int i = 0; i < INIT_PARAMETER_NAME_COUNT; i++)
   {
-    initParameter1NameStringDisplay[i] = Model::m_InitParameter1Name[i];
-    initParameter2NameStringDisplay[i] = Model::m_InitParameter2Name[i];
-    initParameter3NameStringDisplay[i] = Model::m_InitParameter3Name[i];
-    initParameter4NameStringDisplay[i] = Model::m_InitParameter4Name[i];
-    initParameter5NameStringDisplay[i] = Model::m_InitParameter5Name[i];
-    initParameter1ValueStringDisplay[i] = Model::m_InitParameter1Value[i];
-    initParameter2ValueStringDisplay[i] = Model::m_InitParameter2Value[i];
-    initParameter3ValueStringDisplay[i] = Model::m_InitParameter3Value[i];
-    initParameter4ValueStringDisplay[i] = Model::m_InitParameter4Value[i];
-    initParameter5ValueStringDisplay[i] = Model::m_InitParameter5Value[i];
+    for (int character = 0; character < PAYLOAD_SIZE; character++)
+    {
+      initParameterNameStringDisplay[i][character] = Model::m_InitParametersModule1[i + INIT_PARAMETER_NAME_OFFSET][character];
+    }
   }
   
-  Unicode::snprintf(textArea_InitParameter1NameBuffer, TEXTAREA_INITPARAMETER1NAME_SIZE, "%s", initParameter1NameStringDisplay);
+  for(int i = 0; i < INIT_PARAMETER_VALUE_COUNT; i++)
+  {
+    for (int character = 0; character < PAYLOAD_SIZE; character++)
+    {
+      initParameterValueStringDisplay[i][character] = Model::m_InitParametersModule1[i + INIT_PARAMETER_VALUE_OFFSET][character];
+    }
+  }
+  
+  Unicode::snprintf(textArea_InitParameter1NameBuffer, TEXTAREA_INITPARAMETER1NAME_SIZE, "%s", initParameterNameStringDisplay[0]);
   textArea_InitParameter1Name.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter2NameBuffer, TEXTAREA_INITPARAMETER2NAME_SIZE, "%s", initParameter2NameStringDisplay);
+  Unicode::snprintf(textArea_InitParameter2NameBuffer, TEXTAREA_INITPARAMETER2NAME_SIZE, "%s", initParameterNameStringDisplay[1]);
   textArea_InitParameter2Name.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter3NameBuffer, TEXTAREA_INITPARAMETER3NAME_SIZE, "%s", initParameter3NameStringDisplay);
+  Unicode::snprintf(textArea_InitParameter3NameBuffer, TEXTAREA_INITPARAMETER3NAME_SIZE, "%s", initParameterNameStringDisplay[2]);
   textArea_InitParameter3Name.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter4NameBuffer, TEXTAREA_INITPARAMETER4NAME_SIZE, "%s", initParameter4NameStringDisplay);
+  Unicode::snprintf(textArea_InitParameter4NameBuffer, TEXTAREA_INITPARAMETER4NAME_SIZE, "%s", initParameterNameStringDisplay[3]);
   textArea_InitParameter4Name.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter5NameBuffer, TEXTAREA_INITPARAMETER5NAME_SIZE, "%s", initParameter5NameStringDisplay);
+  Unicode::snprintf(textArea_InitParameter5NameBuffer, TEXTAREA_INITPARAMETER5NAME_SIZE, "%s", initParameterNameStringDisplay[4]);
   textArea_InitParameter5Name.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter1ValueBuffer, TEXTAREA_INITPARAMETER1VALUE_SIZE, "%s", initParameter1ValueStringDisplay);
+  Unicode::snprintf(textArea_InitParameter1ValueBuffer, TEXTAREA_INITPARAMETER1VALUE_SIZE, "%s", initParameterValueStringDisplay[0]);
   textArea_InitParameter1Value.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter2ValueBuffer, TEXTAREA_INITPARAMETER2VALUE_SIZE, "%s", initParameter2ValueStringDisplay);
+  Unicode::snprintf(textArea_InitParameter2ValueBuffer, TEXTAREA_INITPARAMETER2VALUE_SIZE, "%s", initParameterValueStringDisplay[1]);
   textArea_InitParameter2Value.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter3ValueBuffer, TEXTAREA_INITPARAMETER3VALUE_SIZE, "%s", initParameter3ValueStringDisplay);
+  Unicode::snprintf(textArea_InitParameter3ValueBuffer, TEXTAREA_INITPARAMETER3VALUE_SIZE, "%s", initParameterValueStringDisplay[2]);
   textArea_InitParameter3Value.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter4ValueBuffer, TEXTAREA_INITPARAMETER4VALUE_SIZE, "%s", initParameter4ValueStringDisplay);
+  Unicode::snprintf(textArea_InitParameter4ValueBuffer, TEXTAREA_INITPARAMETER4VALUE_SIZE, "%s", initParameterValueStringDisplay[3]);
   textArea_InitParameter4Value.invalidate();
   
-  Unicode::snprintf(textArea_InitParameter5ValueBuffer, TEXTAREA_INITPARAMETER5VALUE_SIZE, "%s", initParameter5ValueStringDisplay);
+  Unicode::snprintf(textArea_InitParameter5ValueBuffer, TEXTAREA_INITPARAMETER5VALUE_SIZE, "%s", initParameterValueStringDisplay[4]);
   textArea_InitParameter5Value.invalidate();
 #endif
 }

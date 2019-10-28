@@ -10,6 +10,14 @@
 
 #define PAYLOAD_SIZE 10
 #define INIT_FRAME_COUNT 24
+#define INIT_PARAMETER_NAME_COUNT 5
+#define INIT_PARAMETER_NAME_OFFSET 0
+#define INIT_PARAMETER_VALUE_COUNT 5
+#define INIT_PARAMETER_VALUE_OFFSET 5
+#define CUSTOM_PARAMETER_NAME_COUNT 4
+#define CUSTOM_PARAMETER_NAME_OFFSET 10
+#define SETTABLE_PARAMETER_NAME_COUNT 10
+#define SETTABLE_PARAMETER_NAME_OFFSET 14
 
 class ModelListener;
 
@@ -46,40 +54,20 @@ public:
   */
   void tick();
   void setNewValueToSet(const UARTFrameStruct_t & frameStructure);
+    
+  /*Module 1 initialization parameters*/  
+  static uint8_t m_InitParametersModule1[INIT_FRAME_COUNT][PAYLOAD_SIZE];
   
-  /*Module initialization parameter names*/
-  static uint8_t m_InitParameter1Name[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter2Name[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter3Name[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter4Name[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter5Name[PAYLOAD_SIZE];
-    
-  /*Module initialization parameter values*/
-  static uint8_t m_InitParameter1Value[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter2Value[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter3Value[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter4Value[PAYLOAD_SIZE];
-  static uint8_t m_InitParameter5Value[PAYLOAD_SIZE];
-    
-  /*Custom parameter names*/
-  static uint8_t m_Parameter1Name[PAYLOAD_SIZE];
-  static uint8_t m_Parameter2Name[PAYLOAD_SIZE];
-  static uint8_t m_Parameter3Name[PAYLOAD_SIZE];
-  static uint8_t m_Parameter4Name[PAYLOAD_SIZE];
-    
-  /*Settable parameter names*/
-  static uint8_t m_SettableParameter1Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter2Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter3Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter4Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter5Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter6Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter7Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter8Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter9Name[PAYLOAD_SIZE];
-  static uint8_t m_SettableParameter10Name[PAYLOAD_SIZE];
-    
-  static uint8_t m_ActiveModule;
+  /*Module 2 initialization parameters*/
+  static uint8_t m_InitParametersModule2[INIT_FRAME_COUNT][PAYLOAD_SIZE];
+  
+  /*Module 3 initialization parameters*/
+  static uint8_t m_InitParametersModule3[INIT_FRAME_COUNT][PAYLOAD_SIZE];
+
+  static void activateModule(int module);
+  static void deactivateModule(int module);
+  static bool isModuleActive(int module);
+  
 #ifndef SIMULATOR
   static UART_HandleTypeDef* m_pHuart6;
 #endif
@@ -93,8 +81,9 @@ private:
 #ifndef SIMULATOR
   uint8_t* mp_ReceivedUART_TXValue;
   uint8_t m_ReceivedInitFrameCount;
-  uint8_t m_ConnectionState;
-  enum m_ConnectionStates {UNCONNECTED, CONNECTED};
+  static bool module1Connected;
+  static bool module2Connected;
+  static bool module3Connected;
 #endif
 };
 

@@ -1,34 +1,29 @@
 #include <gui/screen_module1_data_screen/Screen_Module1_DataView.hpp>
 #include <gui/model/Model.hpp>
 
-#define PAYLOAD_SIZE 10
-
 Screen_Module1_DataView::Screen_Module1_DataView() : TextAreaClickedCallback(this, &Screen_Module1_DataView::TextAreaClickHandler)
 {
 #ifndef SIMULATOR       
-  uint16_t parameter1StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t parameter2StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t parameter3StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t parameter4StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t parameterStringDisplay[CUSTOM_PARAMETER_NAME_COUNT][PAYLOAD_SIZE] = {{ 0 }};
   
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
+  for(int i = 0; i < CUSTOM_PARAMETER_NAME_COUNT; i++)
   {
-    parameter1StringDisplay[i] = Model::m_Parameter1Name[i];
-    parameter2StringDisplay[i] = Model::m_Parameter2Name[i];
-    parameter3StringDisplay[i] = Model::m_Parameter3Name[i];
-    parameter4StringDisplay[i] = Model::m_Parameter4Name[i];
+    for (int character = 0; character < PAYLOAD_SIZE; character++)
+    {
+      parameterStringDisplay[i][character] = Model::m_InitParametersModule1[i + CUSTOM_PARAMETER_NAME_OFFSET][character];
+    }
   }
   
-  Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", parameter1StringDisplay);
+  Unicode::snprintf(textArea_Parameter1NameBuffer, TEXTAREA_PARAMETER1NAME_SIZE, "%s", parameterStringDisplay[0]);
   textArea_Parameter1Name.invalidate();
   
-  Unicode::snprintf(textArea_Parameter2NameBuffer, TEXTAREA_PARAMETER2NAME_SIZE, "%s", parameter2StringDisplay);
+  Unicode::snprintf(textArea_Parameter2NameBuffer, TEXTAREA_PARAMETER2NAME_SIZE, "%s", parameterStringDisplay[1]);
   textArea_Parameter2Name.invalidate();
   
-  Unicode::snprintf(textArea_Parameter3NameBuffer, TEXTAREA_PARAMETER3NAME_SIZE, "%s", parameter3StringDisplay);
+  Unicode::snprintf(textArea_Parameter3NameBuffer, TEXTAREA_PARAMETER3NAME_SIZE, "%s", parameterStringDisplay[2]);
   textArea_Parameter3Name.invalidate();
   
-  Unicode::snprintf(textArea_Parameter4NameBuffer, TEXTAREA_PARAMETER4NAME_SIZE, "%s", parameter4StringDisplay);
+  Unicode::snprintf(textArea_Parameter4NameBuffer, TEXTAREA_PARAMETER4NAME_SIZE, "%s", parameterStringDisplay[3]);
   textArea_Parameter4Name.invalidate();
 #endif
 }

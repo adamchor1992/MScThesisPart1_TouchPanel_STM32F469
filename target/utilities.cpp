@@ -101,11 +101,11 @@ void clearFrameStructure(UARTFrameStruct_t & frameStructure)
   
   for(uint8_t i=0; i < PAYLOAD_SIZE; i++)
   {
-    frameStructure.payload[6 + i] = 0;
+    frameStructure.payload[i] = 0;
   }
   
   for(uint8_t i=0; i < CRC_SIZE; i++)
   {
-    frameStructure.crc[16 + i] = 0;
+    frameStructure.crc[i] = 0;
   }
 }

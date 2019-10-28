@@ -3,58 +3,38 @@
 #include <string>
 #include <cmath>
 
-#include <typeinfo>
-
-#define PAYLOAD_SIZE 10
-#define EXPONENT_OFFSET -8
-
 Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 {
 #ifndef SIMULATOR     
-  uint16_t settableParameter1StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter2StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter3StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter4StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter5StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter6StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter7StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter8StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter9StringDisplay[PAYLOAD_SIZE] = { 0 };
-  uint16_t settableParameter10StringDisplay[PAYLOAD_SIZE] = { 0 };
+  uint16_t settableParameterStringDisplay[SETTABLE_PARAMETER_NAME_COUNT][PAYLOAD_SIZE] = { 0 };
   
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
+  for(int i=0; i< SETTABLE_PARAMETER_NAME_COUNT; i++)
   {
-    settableParameter1StringDisplay[i] = Model::m_SettableParameter1Name[i];
-    settableParameter2StringDisplay[i] = Model::m_SettableParameter2Name[i];
-    settableParameter3StringDisplay[i] = Model::m_SettableParameter3Name[i];
-    settableParameter4StringDisplay[i] = Model::m_SettableParameter4Name[i];
-    settableParameter5StringDisplay[i] = Model::m_SettableParameter5Name[i];
-    settableParameter6StringDisplay[i] = Model::m_SettableParameter6Name[i];
-    settableParameter7StringDisplay[i] = Model::m_SettableParameter7Name[i];
-    settableParameter8StringDisplay[i] = Model::m_SettableParameter8Name[i];
-    settableParameter9StringDisplay[i] = Model::m_SettableParameter9Name[i];
-    settableParameter10StringDisplay[i] = Model::m_SettableParameter10Name[i];
+    for (int character = 0; character < PAYLOAD_SIZE; character++)
+    {
+      settableParameterStringDisplay[i][character] = Model::m_InitParametersModule1[i + SETTABLE_PARAMETER_NAME_OFFSET][character];
+    }
   }
   
-  Unicode::snprintf(textArea_SettableParameter1NameBuffer, TEXTAREA_SETTABLEPARAMETER1NAME_SIZE, "%s", settableParameter1StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter1NameBuffer, TEXTAREA_SETTABLEPARAMETER1NAME_SIZE, "%s", settableParameterStringDisplay[0]);
   textArea_SettableParameter1Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter2NameBuffer, TEXTAREA_SETTABLEPARAMETER2NAME_SIZE, "%s", settableParameter2StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter2NameBuffer, TEXTAREA_SETTABLEPARAMETER2NAME_SIZE, "%s", settableParameterStringDisplay[1]);
   textArea_SettableParameter2Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter3NameBuffer, TEXTAREA_SETTABLEPARAMETER3NAME_SIZE, "%s", settableParameter3StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter3NameBuffer, TEXTAREA_SETTABLEPARAMETER3NAME_SIZE, "%s", settableParameterStringDisplay[2]);
   textArea_SettableParameter3Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter4NameBuffer, TEXTAREA_SETTABLEPARAMETER4NAME_SIZE, "%s", settableParameter4StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter4NameBuffer, TEXTAREA_SETTABLEPARAMETER4NAME_SIZE, "%s", settableParameterStringDisplay[3]);
   textArea_SettableParameter4Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter5NameBuffer, TEXTAREA_SETTABLEPARAMETER5NAME_SIZE, "%s", settableParameter5StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter5NameBuffer, TEXTAREA_SETTABLEPARAMETER5NAME_SIZE, "%s", settableParameterStringDisplay[4]);
   textArea_SettableParameter5Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter6NameBuffer, TEXTAREA_SETTABLEPARAMETER6NAME_SIZE, "%s", settableParameter6StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter6NameBuffer, TEXTAREA_SETTABLEPARAMETER6NAME_SIZE, "%s", settableParameterStringDisplay[5]);
   textArea_SettableParameter6Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter7NameBuffer, TEXTAREA_SETTABLEPARAMETER7NAME_SIZE, "%s", settableParameter7StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter7NameBuffer, TEXTAREA_SETTABLEPARAMETER7NAME_SIZE, "%s", settableParameterStringDisplay[6]);
   textArea_SettableParameter7Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter8NameBuffer, TEXTAREA_SETTABLEPARAMETER8NAME_SIZE, "%s", settableParameter8StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter8NameBuffer, TEXTAREA_SETTABLEPARAMETER8NAME_SIZE, "%s", settableParameterStringDisplay[7]);
   textArea_SettableParameter8Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter9NameBuffer, TEXTAREA_SETTABLEPARAMETER9NAME_SIZE, "%s", settableParameter9StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter9NameBuffer, TEXTAREA_SETTABLEPARAMETER9NAME_SIZE, "%s", settableParameterStringDisplay[8]);
   textArea_SettableParameter9Name.invalidate();
-  Unicode::snprintf(textArea_SettableParameter10NameBuffer, TEXTAREA_SETTABLEPARAMETER10NAME_SIZE, "%s", settableParameter10StringDisplay);
+  Unicode::snprintf(textArea_SettableParameter10NameBuffer, TEXTAREA_SETTABLEPARAMETER10NAME_SIZE, "%s", settableParameterStringDisplay[9]);
   textArea_SettableParameter10Name.invalidate();
 #endif
 

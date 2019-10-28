@@ -1,8 +1,9 @@
 #include <gui/screen_main_screen/Screen_MainView.hpp>
+#include <cstring>
 
 Screen_MainView::Screen_MainView()
 {
-  
+
 }
 
 void Screen_MainView::setupScreen()
@@ -18,47 +19,57 @@ void Screen_MainView::setupScreen()
   
   HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
   
-  /*Dim and deactivate Module buttons*/
-  if(Model::m_ActiveModule == 1)
+  char activeModuleString[10] = {0};
+  
+  /*Activate Module buttons of active modules*/
+  if(Model::isModuleActive(1) == true)
   {
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
-    buttonWithLabel_Module2.setAlpha(100);
-    buttonWithLabel_Module2.setTouchable(false);
-    buttonWithLabel_Module3.setAlpha(100);
-    buttonWithLabel_Module3.setTouchable(false);
-    Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 1",10);
-  }
-  else if(Model::m_ActiveModule == 2)
-  {
-    buttonWithLabel_Module1.setAlpha(100);
-    buttonWithLabel_Module1.setTouchable(false);
-    buttonWithLabel_Module2.setAlpha(255);
-    buttonWithLabel_Module2.setTouchable(true);
-    buttonWithLabel_Module3.setAlpha(100);
-    buttonWithLabel_Module3.setTouchable(false);
-    Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 2",10);
-  }
-  else if(Model::m_ActiveModule == 3)
-  {
-    buttonWithLabel_Module1.setAlpha(100);
-    buttonWithLabel_Module1.setTouchable(false);
-    buttonWithLabel_Module2.setAlpha(100);
-    buttonWithLabel_Module2.setTouchable(false);
-    buttonWithLabel_Module3.setAlpha(255);
-    buttonWithLabel_Module3.setTouchable(true);
-    Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 3",10);
+    
+    strcat(activeModuleString, "1 ");
   }
   else
   {
     buttonWithLabel_Module1.setAlpha(100);
     buttonWithLabel_Module1.setTouchable(false);
+  }
+  
+  if(Model::isModuleActive(2) == true)
+  {
+    buttonWithLabel_Module2.setAlpha(255);
+    buttonWithLabel_Module2.setTouchable(true);
+    
+    strcat(activeModuleString, "2 ");
+  }
+  else
+  {
     buttonWithLabel_Module2.setAlpha(100);
     buttonWithLabel_Module2.setTouchable(false);
+  }
+  
+  if(Model::isModuleActive(3) == true)
+  {
+    buttonWithLabel_Module3.setAlpha(255);
+    buttonWithLabel_Module3.setTouchable(true);
+    
+    strcat(activeModuleString, "3 ");
+  }
+  else
+  {
     buttonWithLabel_Module3.setAlpha(100);
     buttonWithLabel_Module3.setTouchable(false);
-    Unicode::strncpy(textArea_ActiveModuleBuffer,"None",10);
   }
+  
+  /*If no modules active*/
+  if(Model::isModuleActive(1) == false && Model::isModuleActive(2) == false && Model::isModuleActive(3) == false)
+  {
+    Unicode::strncpy(textArea_ActiveModuleBuffer,"None", 10);
+  }
+  
+  strcat(activeModuleString, "\n");
+  
+  Unicode::strncpy(textArea_ActiveModuleBuffer, activeModuleString, 10);
   
   buttonWithLabel_Module1.invalidate();
   buttonWithLabel_Module2.invalidate();
@@ -82,61 +93,36 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
   case '1':
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
-    buttonWithLabel_Module2.setAlpha(100);
-    buttonWithLabel_Module2.setTouchable(false);
-    buttonWithLabel_Module3.setAlpha(100);
-    buttonWithLabel_Module3.setTouchable(false);
     
-    Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 1",10);
-    
-    buttonWithLabel_Module1.invalidate();
-    buttonWithLabel_Module2.invalidate();
-    buttonWithLabel_Module3.invalidate();
-    textArea_ActiveModule.invalidate();
-    
-    Model::m_ActiveModule = 1;
-    printf("Active module %d\n", Model::m_ActiveModule);
+    Model::activateModule(1);
+    printf("Active module 1\n");
     break;
     
-    case'2':
-      buttonWithLabel_Module1.setAlpha(100);
-      buttonWithLabel_Module1.setTouchable(false);
-      buttonWithLabel_Module2.setAlpha(255);
-      buttonWithLabel_Module2.setTouchable(true);
-      buttonWithLabel_Module3.setAlpha(100);
-      buttonWithLabel_Module3.setTouchable(false);
-      
-      Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 2",10);
-      
-      buttonWithLabel_Module1.invalidate();
-      buttonWithLabel_Module2.invalidate();
-      buttonWithLabel_Module3.invalidate();
-      textArea_ActiveModule.invalidate();
-      
-      Model::m_ActiveModule = 2;
-      printf("Active module %d\n", Model::m_ActiveModule);
-      break;
-      
-      case'3':
-        buttonWithLabel_Module1.setAlpha(100);
-        buttonWithLabel_Module1.setTouchable(false);
-        buttonWithLabel_Module2.setAlpha(100);
-        buttonWithLabel_Module2.setTouchable(false);
-        buttonWithLabel_Module3.setAlpha(255);
-        buttonWithLabel_Module3.setTouchable(true);
-        
-        Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 3",10);
-        
-        buttonWithLabel_Module1.invalidate();
-        buttonWithLabel_Module2.invalidate();
-        buttonWithLabel_Module3.invalidate();
-        textArea_ActiveModule.invalidate();
-        
-        Model::m_ActiveModule = 3;
-        printf("Active module %d\n", Model::m_ActiveModule);
-        break;
+  case '2':
+    buttonWithLabel_Module2.setAlpha(255);
+    buttonWithLabel_Module2.setTouchable(true);
+    
+    Model::activateModule(2);
+    printf("Active module 2\n");
+    break;
+    
+  case '3':
+    buttonWithLabel_Module3.setAlpha(255);
+    buttonWithLabel_Module3.setTouchable(true);
+    
+    Model::activateModule(3);
+    printf("Active module 3\n");
+    break;
   }
+  
+  buttonWithLabel_Module1.invalidate();
+  buttonWithLabel_Module2.invalidate();
+  buttonWithLabel_Module3.invalidate();
+  textArea_ActiveModule.invalidate();
+  
   printf("Init frame processed\n");
+  
+  setupScreen();
 #endif
 }
 
