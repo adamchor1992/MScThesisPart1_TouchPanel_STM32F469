@@ -98,7 +98,7 @@
             "Style": "Style4",
             "Name": "buttonWithLabel_Module2",
             "X": 315,
-            "Y": 274,
+            "Y": 210,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -127,7 +127,7 @@
             "Style": "Style4",
             "Name": "buttonWithLabel_Module1",
             "X": 315,
-            "Y": 149,
+            "Y": 100,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -216,6 +216,35 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId408",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "buttonWithLabel_Module3",
+            "X": 315,
+            "Y": 320,
+            "Width": 170,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -269,6 +298,17 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Template",
               "Type": "ActionGotoScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction_GoToModule3Screen",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithLabel_Module3",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Type": "ActionNone"
             }
           }
         ],
@@ -5576,6 +5616,10 @@
       },
       {
         "TextEntryId": "SingleUseId407",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId408",
         "IsResource": false
       }
     ],

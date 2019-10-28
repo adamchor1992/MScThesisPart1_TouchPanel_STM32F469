@@ -35,6 +35,7 @@ protected:
     touchgfx::TextArea textArea_MainMenu;
     touchgfx::ButtonWithLabel buttonWithLabel_Graph_Debug;
     touchgfx::TextAreaWithOneWildcard textArea_ActiveModule;
+    touchgfx::ButtonWithLabel buttonWithLabel_Module3;
 
     /*
      * Wildcard Buffers

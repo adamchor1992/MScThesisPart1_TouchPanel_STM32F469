@@ -26,14 +26,14 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
-    buttonWithLabel_Module2.setXY(315, 274);
+    buttonWithLabel_Module2.setXY(315, 210);
     buttonWithLabel_Module2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_Module2.setLabelText(touchgfx::TypedText(T_SINGLEUSEID42));
     buttonWithLabel_Module2.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setAction(buttonCallback);
 
-    buttonWithLabel_Module1.setXY(315, 149);
+    buttonWithLabel_Module1.setXY(315, 100);
     buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_Module1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID41));
     buttonWithLabel_Module1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -59,6 +59,12 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_ActiveModule.setWildcard(textArea_ActiveModuleBuffer);
     textArea_ActiveModule.setTypedText(touchgfx::TypedText(T_SINGLEUSEID129));
 
+    buttonWithLabel_Module3.setXY(315, 320);
+    buttonWithLabel_Module3.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Module3.setLabelText(touchgfx::TypedText(T_SINGLEUSEID408));
+    buttonWithLabel_Module3.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_Module3.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+
     add(backgroundBox_Black);
     add(buttonWithLabel_UART_Debug);
     add(textArea_CPU_Usage);
@@ -67,6 +73,7 @@ Screen_MainViewBase::Screen_MainViewBase() :
     add(textArea_MainMenu);
     add(buttonWithLabel_Graph_Debug);
     add(textArea_ActiveModule);
+    add(buttonWithLabel_Module3);
 }
 
 void Screen_MainViewBase::setupScreen()

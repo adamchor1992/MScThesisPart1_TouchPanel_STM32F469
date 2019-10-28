@@ -2,7 +2,7 @@
 
 Screen_MainView::Screen_MainView()
 {
-
+  
 }
 
 void Screen_MainView::setupScreen()
@@ -25,6 +25,8 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module1.setTouchable(true);
     buttonWithLabel_Module2.setAlpha(100);
     buttonWithLabel_Module2.setTouchable(false);
+    buttonWithLabel_Module3.setAlpha(100);
+    buttonWithLabel_Module3.setTouchable(false);
     Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 1",10);
   }
   else if(Model::m_ActiveModule == 2)
@@ -33,7 +35,19 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module1.setTouchable(false);
     buttonWithLabel_Module2.setAlpha(255);
     buttonWithLabel_Module2.setTouchable(true);
+    buttonWithLabel_Module3.setAlpha(100);
+    buttonWithLabel_Module3.setTouchable(false);
     Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 2",10);
+  }
+  else if(Model::m_ActiveModule == 3)
+  {
+    buttonWithLabel_Module1.setAlpha(100);
+    buttonWithLabel_Module1.setTouchable(false);
+    buttonWithLabel_Module2.setAlpha(100);
+    buttonWithLabel_Module2.setTouchable(false);
+    buttonWithLabel_Module3.setAlpha(255);
+    buttonWithLabel_Module3.setTouchable(true);
+    Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 3",10);
   }
   else
   {
@@ -41,11 +55,14 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module1.setTouchable(false);
     buttonWithLabel_Module2.setAlpha(100);
     buttonWithLabel_Module2.setTouchable(false);
+    buttonWithLabel_Module3.setAlpha(100);
+    buttonWithLabel_Module3.setTouchable(false);
     Unicode::strncpy(textArea_ActiveModuleBuffer,"None",10);
   }
   
   buttonWithLabel_Module1.invalidate();
   buttonWithLabel_Module2.invalidate();
+  buttonWithLabel_Module3.invalidate();
   textArea_ActiveModule.invalidate();
 #endif
 }
@@ -67,11 +84,14 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
     buttonWithLabel_Module1.setTouchable(true);
     buttonWithLabel_Module2.setAlpha(100);
     buttonWithLabel_Module2.setTouchable(false);
+    buttonWithLabel_Module3.setAlpha(100);
+    buttonWithLabel_Module3.setTouchable(false);
     
     Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 1",10);
     
     buttonWithLabel_Module1.invalidate();
     buttonWithLabel_Module2.invalidate();
+    buttonWithLabel_Module3.invalidate();
     textArea_ActiveModule.invalidate();
     
     Model::m_ActiveModule = 1;
@@ -83,16 +103,38 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
       buttonWithLabel_Module1.setTouchable(false);
       buttonWithLabel_Module2.setAlpha(255);
       buttonWithLabel_Module2.setTouchable(true);
+      buttonWithLabel_Module3.setAlpha(100);
+      buttonWithLabel_Module3.setTouchable(false);
       
       Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 2",10);
       
       buttonWithLabel_Module1.invalidate();
       buttonWithLabel_Module2.invalidate();
+      buttonWithLabel_Module3.invalidate();
       textArea_ActiveModule.invalidate();
       
       Model::m_ActiveModule = 2;
       printf("Active module %d\n", Model::m_ActiveModule);
       break;
+      
+      case'3':
+        buttonWithLabel_Module1.setAlpha(100);
+        buttonWithLabel_Module1.setTouchable(false);
+        buttonWithLabel_Module2.setAlpha(100);
+        buttonWithLabel_Module2.setTouchable(false);
+        buttonWithLabel_Module3.setAlpha(255);
+        buttonWithLabel_Module3.setTouchable(true);
+        
+        Unicode::strncpy(textArea_ActiveModuleBuffer,"Module 3",10);
+        
+        buttonWithLabel_Module1.invalidate();
+        buttonWithLabel_Module2.invalidate();
+        buttonWithLabel_Module3.invalidate();
+        textArea_ActiveModule.invalidate();
+        
+        Model::m_ActiveModule = 3;
+        printf("Active module %d\n", Model::m_ActiveModule);
+        break;
   }
   printf("Init frame processed\n");
 #endif
