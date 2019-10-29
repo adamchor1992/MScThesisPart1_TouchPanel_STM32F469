@@ -1,3 +1,5 @@
+#ifndef SIMULATOR
+
 #include "init.h"
 #include "stm32f4xx_hal_uart.h"
 
@@ -51,3 +53,4 @@ void Error_Handler(void)
   BSP_LED_On(LED3);
   BSP_LED_On(LED4);; //in case of error turn on all LEDs
 }
+#endif

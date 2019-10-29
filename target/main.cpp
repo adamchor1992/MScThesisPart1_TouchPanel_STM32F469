@@ -17,7 +17,6 @@
 #include "semphr.h"
 
 /* Defines */
-#define FRAME_NO_CRC FRAME_SIZE-4
 #define QUEUES_SIZE 1
 #define DEBUG_UART_WAITING 50
 #define UART_TX_WAITING 50
@@ -25,7 +24,7 @@
 #define LOW_PRIORITY 1
 #define MEDIUM_PRIORITY 2
 #define HIGH_PRIORITY 3
-#define DEBUG
+#define DEBUG 1
 
 /* FreeRTOS stuff begin*/
 #define GUI_TASK_STACK_SIZE 1700
@@ -73,12 +72,19 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   xSemaphoreGiveFromISR(UART_RxSemaphore, &xHigherPriorityTaskWoken);
 }
 
+#if DEBUG == 1
 int fputc(int ch, FILE *f)
 {
   HAL_UART_Transmit(&huart3, (uint8_t*)&ch, 1, DEBUG_UART_WAITING);
   
   return ch;
 }
+#else
+int fputc(int ch, FILE *f)
+{
+  return 0;
+}
+#endif
 
 using namespace touchgfx;
 
@@ -117,10 +123,6 @@ int main(void)
   msgQueueUART_RX_ProcessedFrame = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
   msgQueueUARTTransmit = xQueueCreate(QUEUES_SIZE, FRAME_SIZE * sizeof(uint8_t));
   
-  /*Debugging*/
-  //vQueueAddToRegistry(  msgQueueUARTReceive, "msgQueueUARTReceive");
-  //vQueueAddToRegistry(  msgQueueUARTTransmit, "msgQueueUARTTransmit");
-  
   /*Create UART semaphore*/
   UART_RxSemaphore = xSemaphoreCreateBinary();
   UART_TxSemaphore = xSemaphoreCreateBinary();
@@ -156,18 +158,14 @@ static void UART_RxTask(void* params)
   
   printf("RX task initialized\n");
   
-  while(1)
+  while(true)
   {   
     /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
     if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
     {
       /*Ensure that there is no context switch during frame processing*/
       taskENTER_CRITICAL();
-      
-#ifdef DEBUG
-      //printf("RX processing\n");
-#endif
-      
+            
       //CRC check
       if(checkCRC(UART_ReceivedFrame) == false)
       {
@@ -211,25 +209,17 @@ static void UART_TxTask(void* params)
   
   printf("TX task initialized\n");
   
-  while(1)
+  while(true)
   {  
     /*Take TxSemaphore*/
     if(xSemaphoreTake(UART_TxSemaphore, portMAX_DELAY) == pdPASS)
     {
       taskENTER_CRITICAL(); 
-      
-#ifdef DEBUG
-      printf("TX processing\n");
-#endif
-      
+            
       xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);                  
       appendCRCtoFrame(UART_MessageToTransmit);
       
-#ifdef DEBUG
-      char frame[FRAME_NO_CRC];
-      memcpy(frame, UART_MessageToTransmit,FRAME_NO_CRC);
-      printf("TX Frame is: %.16s\n", frame);
-#endif
+      printf("TX Frame is: %.16s\n", UART_MessageToTransmit);
       
       HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, UART_TX_WAITING); //show table contents
       

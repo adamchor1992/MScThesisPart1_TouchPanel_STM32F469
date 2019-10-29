@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <fileVersion>4</fileVersion>
-    <fileChecksum>929771239</fileChecksum>
+    <fileChecksum>1650919869</fileChecksum>
     <configuration>
         <name>Debug</name>
         <outputs>
@@ -883,6 +883,11 @@
             <file>$PROJ_DIR$\Debug\Obj\stm32469i_discovery_ts.o</file>
             <file>$TOOLKIT_DIR$\inc\c\wchar.h</file>
             <file>$PROJ_DIR$\Debug\Obj\Screen_Module1_GraphPresenter.o</file>
+            <file>$PROJ_DIR$\..\..\gui\include\crc32.h</file>
+            <file>$PROJ_DIR$\..\..\gui\src\utilities.cpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\utilities.h</file>
+            <file>$PROJ_DIR$\..\..\gui\src\init.cpp</file>
+            <file>$PROJ_DIR$\..\..\gui\include\init.h</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
@@ -1938,7 +1943,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 526 646 677 313 177 263 211 757 873 483 261 865 635 125 398 150 508 206 396 850 627 434 853 720 767 864 204 200 827 874 742 369 830 679 213 611 481 712 515 288 342 560 375 453 555 547 551 847 350 397 595 807 184 340 651 192 532 663 199 502 334 687 584 744 733 740 748 562 662 247 146 168 217 394 300 747 517 867 667 335 719 171 678 498 761 496 490 836 270 468 571 94 868 400 458 592 653</file>
+                    <file> 526 646 677 313 177 263 211 757 873 483 261 865 635 125 398 150 508 206 396 850 627 434 853 720 767 864 204 200 827 874 742 369 830 679 213 611 481 712 515 288 342 560 375 453 555 547 551 847 350 397 595 807 184 340 651 192 532 663 199 502 334 687 584 744 733 740 748 562 662 247 146 168 217 394 300 747 517 867 667 335 719 171 678 498 761 496 490 836 270 468 571 880 878 400 458 592 653</file>
                 </tool>
             </inputs>
         </file>
@@ -2625,12 +2630,6 @@
                     <file> 773</file>
                 </tool>
             </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 94 125 398 313 177 263 211 757 873 868 400 458 592 653 517 217 394 827 300</file>
-                </tool>
-            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery_lcd.c</name>
@@ -2659,10 +2658,6 @@
             <name>$PROJ_DIR$\..\init.cpp</name>
             <outputs>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 485</file>
-                </tool>
-                <tool>
                     <name>BICOMP</name>
                     <file> 239</file>
                 </tool>
@@ -2671,12 +2666,6 @@
                     <file> 181</file>
                 </tool>
             </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 93 150 508 206 396 850 313 177 263 211 757 873 627 434 853 720 767 864 204 200 827 874 742 715 642 172 133 492 856 190 256 559 218 357 535 833 226 727 692 237 241 279 144 714 344 756 407 233 814 521 250 244</file>
-                </tool>
-            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp</name>
@@ -2867,7 +2856,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 93 150 508 206 396 850 313 177 263 211 757 873 627 434 853 720 767 864 204 200 827 874 742 715 642 172 133 492 856 190 256 559 218 357 535 833 226 727 692 237 241 279 144 714 344 756 407 233 814 521 250 244 830 677 483 261 679 213 611 481 712 515 288 342 560 375 646 865 635 453 555 547 551 847 350 397 595 807 184 340 651 759 656 602 471 440 468 571 125 398 94 868 400 458 592 653 517 217 394 300 335 168 719 171 678 498 761 836 270 496 490</file>
+                    <file> 882 150 508 206 396 850 313 177 263 211 757 873 627 434 853 720 767 864 204 200 827 874 742 715 642 172 133 492 856 190 256 559 218 357 535 833 226 727 692 237 241 279 144 714 344 756 407 233 814 521 250 244 830 677 483 261 679 213 611 481 712 515 288 342 560 375 646 865 635 453 555 547 551 847 350 397 595 807 184 340 651 759 656 602 471 440 468 571 125 398 880 878 400 458 592 653 517 217 394 300 335 168 719 171 678 498 761 836 270 496 490</file>
                 </tool>
             </inputs>
         </file>
@@ -4222,6 +4211,44 @@
                 <tool>
                     <name>ICCARM</name>
                     <file> 295 677 313 177 263 211 757 873 483 261 539 830 679 213 611 481 712 515 288 342 560 375 646 865 635 453 555 547 551 847 350 397 595 807 184 340 651 861 759 468 827 571 200 206 396 850 627 434 853 720 767 864 756 508 204 714 344 856 190</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\utilities.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 596</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 373</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 880 125 398 313 177 263 211 757 873 878 400 458 592 653 517 217 394 827 300</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\gui\src\init.cpp</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 485</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 239</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 882 150 508 206 396 850 313 177 263 211 757 873 627 434 853 720 767 864 204 200 827 874 742 715 642 172 133 492 856 190 256 559 218 357 535 833 226 727 692 237 241 279 144 714 344 756 407 233 814 521 250 244</file>
                 </tool>
             </inputs>
         </file>

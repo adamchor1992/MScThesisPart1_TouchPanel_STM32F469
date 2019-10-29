@@ -21,38 +21,20 @@
 
 class ModelListener;
 
-/**
-* The Model class defines the data model in the model-view-presenter paradigm.
-* The Model is a singular object used across all presenters. The currently active
-* presenter will have a pointer to the Model through deriving from ModelListener.
-*
-* The Model will typically contain UI state information that must be kept alive
-* through screen transitions. It also usually provides the interface to the rest
-* of the system (the backend). As such, the Model can receive events and data from
-* the backend and inform the current presenter of such events through the modelListener
-* pointer, which is automatically configured to point to the current presenter.
-* Conversely, the current presenter can trigger events in the backend through the Model.
-*/
 class Model
 {
 public:
   Model();
   
-  /**
-  * Sets the m_ModelListener to point to the currently active presenter. Called automatically
-  * when switching screen.
-  */
+  /*Sets the m_ModelListener to point to the currently active presenter. Called automatically*/
   void bind(ModelListener* listener)
   {
     m_ModelListener = listener;
   }
   
-  /**
-  * This function will be called automatically every frame. Can be used to e.g. sample hardware
-  * peripherals or read events from the surrounding system and inject events to the GUI through
-  * the ModelListener interface.
-  */
+  /*This function will be called automatically every frame*/
   void tick();
+  
   void setNewValueToSet(const UARTFrameStruct_t & frameStructure);
     
   /*Module 1 initialization parameters*/  
@@ -73,18 +55,17 @@ public:
 #endif
   
 protected:
-  /**
-  * Pointer to the currently active presenter.
-  */
+  /*Pointer to the currently active presenter*/
   ModelListener* m_ModelListener;
+  
 private:
-#ifndef SIMULATOR
+  void processPacket(int module);
+  
   uint8_t* mp_ReceivedUART_TXValue;
   uint8_t m_ReceivedInitFrameCount;
   static bool module1Connected;
   static bool module2Connected;
   static bool module3Connected;
-#endif
 };
 
 #endif /* MODEL_HPP */

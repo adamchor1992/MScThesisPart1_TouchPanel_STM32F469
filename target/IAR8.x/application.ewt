@@ -1196,16 +1196,25 @@
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\ApplicationFontProvider.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\CachedFont.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp_0.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\FontGetters.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp_0.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_60_4bpp_0.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\FontCache.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\GeneratedFont.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_10_4bpp.cpp</name>
@@ -1217,6 +1226,9 @@
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_40_4bpp.cpp</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_60_4bpp.cpp</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_10_4bpp.cpp</name>
                 </file>
                 <file>
@@ -1224,6 +1236,9 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_40_4bpp.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_60_4bpp.cpp</name>
                 </file>
             </group>
             <group>
@@ -1237,7 +1252,7 @@
                 <group>
                     <name>containers</name>
                     <file>
-                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\containers\ExponentContainerBase.cpp</name>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp</name>
                     </file>
                 </group>
                 <group>
@@ -1409,7 +1424,7 @@
             <group>
                 <name>containers</name>
                 <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\containers\ExponentContainer.cpp</name>
+                    <name>$PROJ_DIR$\..\..\gui\src\containers\DigitTemplate.cpp</name>
                 </file>
             </group>
             <group>
@@ -1526,26 +1541,20 @@
                     <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplateView.cpp</name>
                 </file>
             </group>
+            <file>
+                <name>$PROJ_DIR$\..\..\gui\src\init.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\gui\src\utilities.cpp</name>
+            </file>
         </group>
         <group>
             <name>main</name>
-            <file>
-                <name>$PROJ_DIR$\..\init.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\init.h</name>
-            </file>
             <file>
                 <name>$PROJ_DIR$\..\main.cpp</name>
                 <configuration>
                     <name>Debug</name>
                 </configuration>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\utilities.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\utilities.h</name>
             </file>
         </group>
     </group>
