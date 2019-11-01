@@ -308,7 +308,7 @@
       <UniqueIdentifier>D5C92D5D-38DC-411C-99C5-995F48AA9A2B</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>A5EA5A08-E772-5C8D-6B4C-1A937FEDCAD7</UniqueIdentifier>
+      <UniqueIdentifier>D619D55D-402A-C1AE-5E2F-3EE2C750F7B4</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -458,6 +458,12 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp">
       <Filter>Source Files\generated\gui_generated\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\init.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\utilities.cpp">
+      <Filter>Source Files\gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1020,6 +1026,15 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DigitTemplateBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\crc32.h">
+      <Filter>Source Files\gui\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\init.h">
+      <Filter>Source Files\gui\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\utilities.h">
+      <Filter>Source Files\gui\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

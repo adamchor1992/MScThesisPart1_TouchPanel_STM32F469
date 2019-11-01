@@ -165,12 +165,29 @@ static void UART_RxTask(void* params)
     {
       /*Ensure that there is no context switch during frame processing*/
       taskENTER_CRITICAL();
-            
+      
       //CRC check
-      if(checkCRC(UART_ReceivedFrame) == false)
+      if(checkCRC(UART_ReceivedFrame) == true)
       {
+        /*Frame is correct and can be further processed*/
+        
+        /*Frame parsing to structure*/  
+        convertFrameTableToUARTstruct(UART_ReceivedFrame, s_UARTFrame);
+        
+        xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
+        
+        /*Reset frame table to all zeroes*/
+        clearFrameTable(UART_ReceivedFrame);
+        
+        /*Reset frame structure to all zeroes*/
+        clearFrameStructure(s_UARTFrame);
+      }
+      else
+      {
+        /*Frame is corrupted and will not be further processed*/
+        
         printf("WRONG CRC\n");
-        /*Frame is corrupted and should be discarded*/
+        
         BSP_LED_On(LED1);
         BSP_LED_On(LED2);
         BSP_LED_On(LED3);
@@ -181,22 +198,7 @@ static void UART_RxTask(void* params)
         
         /*Reset frame structure to all zeroes*/
         clearFrameStructure(s_UARTFrame);
-        
-        /*Stop processing corrupted frame*/
-        continue;
       }
-      /*Frame is correct and can be further processed*/
-      
-      /*Frame parsing to structure*/  
-      convertFrameTableToUARTstruct(UART_ReceivedFrame, s_UARTFrame);
-      
-      xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
-      
-      /*Reset frame table to all zeroes*/
-      clearFrameTable(UART_ReceivedFrame);
-      
-      /*Reset frame structure to all zeroes*/
-      clearFrameStructure(s_UARTFrame);
       
       taskEXIT_CRITICAL();
     }
@@ -215,7 +217,7 @@ static void UART_TxTask(void* params)
     if(xSemaphoreTake(UART_TxSemaphore, portMAX_DELAY) == pdPASS)
     {
       taskENTER_CRITICAL(); 
-            
+      
       xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);                  
       appendCRCtoFrame(UART_MessageToTransmit);
       

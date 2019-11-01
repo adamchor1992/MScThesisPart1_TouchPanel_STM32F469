@@ -11,7 +11,9 @@ public:
   virtual ~Screen_MainView() {}
   virtual void setupScreen();
   virtual void tearDownScreen();
-  
+
+  virtual void clearLeds();
+
   void processInitFrame(UARTFrameStruct_t & s_UARTFrame);
   void updateCpuUsage(uint8_t value);
 };

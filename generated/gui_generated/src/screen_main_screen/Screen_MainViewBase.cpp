@@ -65,6 +65,13 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_Module3.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module3.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
+    buttonWithLabel_ClearLeds.setXY(630, 274);
+    buttonWithLabel_ClearLeds.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_ClearLeds.setLabelText(touchgfx::TypedText(T_SINGLEUSEID409));
+    buttonWithLabel_ClearLeds.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_ClearLeds.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_ClearLeds.setAction(buttonCallback);
+
     add(backgroundBox_Black);
     add(buttonWithLabel_UART_Debug);
     add(textArea_CPU_Usage);
@@ -74,6 +81,7 @@ Screen_MainViewBase::Screen_MainViewBase() :
     add(buttonWithLabel_Graph_Debug);
     add(textArea_ActiveModule);
     add(buttonWithLabel_Module3);
+    add(buttonWithLabel_ClearLeds);
 }
 
 void Screen_MainViewBase::setupScreen()
@@ -110,5 +118,12 @@ void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
         //When buttonWithLabel_Graph_Debug clicked change screen to Template
         //Go to Template with no screen transition
         application().gotoTemplateScreenNoTransition();
+    }
+    else if (&src == &buttonWithLabel_ClearLeds)
+    {
+        //Interaction_ClearLeds
+        //When buttonWithLabel_ClearLeds clicked call virtual function
+        //Call clearLeds
+        clearLeds();
     }
 }

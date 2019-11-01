@@ -739,6 +739,11 @@
               <FilePath>../../gui/src/common/graphline.cpp</FilePath>
             </File>
             <File>
+              <FileName>init.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/init.cpp</FilePath>
+            </File>
+            <File>
               <FileName>Model.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/model/model.cpp</FilePath>
@@ -862,6 +867,11 @@
               <FileName>TemplateView.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/template_screen/templateview.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>utilities.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/utilities.cpp</FilePath>
             </File>
           </Files>
         </Group>

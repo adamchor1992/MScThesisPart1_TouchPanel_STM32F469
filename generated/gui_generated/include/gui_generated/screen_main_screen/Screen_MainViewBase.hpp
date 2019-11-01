@@ -19,6 +19,14 @@ public:
     virtual ~Screen_MainViewBase() {}
     virtual void setupScreen();
 
+    /*
+     * Virtual Action Handlers
+     */
+    virtual void clearLeds()
+    {
+        // Override and implement this function in Screen_Main
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -36,6 +44,7 @@ protected:
     touchgfx::ButtonWithLabel buttonWithLabel_Graph_Debug;
     touchgfx::TextAreaWithOneWildcard textArea_ActiveModule;
     touchgfx::ButtonWithLabel buttonWithLabel_Module3;
+    touchgfx::ButtonWithLabel buttonWithLabel_ClearLeds;
 
     /*
      * Wildcard Buffers

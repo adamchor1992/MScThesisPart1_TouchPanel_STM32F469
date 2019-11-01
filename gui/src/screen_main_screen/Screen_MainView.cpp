@@ -1,6 +1,10 @@
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 #include <cstring>
 
+#ifndef SIMULATOR
+#include "stm32469i_discovery.h" //for LED driving
+#endif
+
 Screen_MainView::Screen_MainView()
 {
 
@@ -81,6 +85,16 @@ void Screen_MainView::setupScreen()
 void Screen_MainView::tearDownScreen()
 {
   
+}
+
+void Screen_MainView::clearLeds()
+{
+#ifndef SIMULATOR
+  BSP_LED_Off(LED1);
+  BSP_LED_Off(LED2);
+  BSP_LED_Off(LED3); 
+  BSP_LED_Off(LED4);
+#endif
 }
 
 void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)

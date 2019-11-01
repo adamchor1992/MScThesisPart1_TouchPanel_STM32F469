@@ -245,6 +245,35 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId409",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "buttonWithLabel_ClearLeds",
+            "X": 630,
+            "Y": 274,
+            "Width": 170,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
           }
         ],
         "Interactions": [
@@ -309,6 +338,18 @@
             },
             "Action": {
               "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "Interaction_ClearLeds",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonWithLabel_ClearLeds",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "clearLeds",
+              "Type": "ActionCustom"
             }
           }
         ],
@@ -5620,6 +5661,10 @@
       },
       {
         "TextEntryId": "SingleUseId408",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId409",
         "IsResource": false
       }
     ],

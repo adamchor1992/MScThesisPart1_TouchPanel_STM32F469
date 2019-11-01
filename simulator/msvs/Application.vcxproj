@@ -60,6 +60,8 @@
     <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\DigitTemplate.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\init.cpp"/>
+    <ClCompile Include="..\..\gui\src\utilities.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\assets\texts\texts.xlsx"/>
@@ -250,6 +252,9 @@
     <ClInclude Include="..\..\gui\include\gui\containers\DigitContainer.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\DigitTemplate.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DigitTemplateBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\crc32.h"/>
+    <ClInclude Include="..\..\gui\include\init.h"/>
+    <ClInclude Include="..\..\gui\include\utilities.h"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\touchgfx.rc"/>

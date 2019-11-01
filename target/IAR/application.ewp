@@ -1232,6 +1232,9 @@
           <name>$PROJ_DIR$\..\..\gui\src\containers\DigitTemplate.cpp</name>
         </file>
       </group>
+      <file>
+        <name>$PROJ_DIR$\..\..\gui\src\init.cpp</name>
+      </file>
       <group>
         <name>model</name>
         <file>
@@ -1346,6 +1349,9 @@
           <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplateView.cpp</name>
         </file>
       </group>
+      <file>
+        <name>$PROJ_DIR$\..\..\gui\src\utilities.cpp</name>
+      </file>
     </group>
     <group>
       <name>main</name>
