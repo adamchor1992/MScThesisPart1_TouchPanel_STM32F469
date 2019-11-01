@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <ItemGroup>
     <Filter Include="Header Files">
@@ -308,7 +308,7 @@
       <UniqueIdentifier>D5C92D5D-38DC-411C-99C5-995F48AA9A2B</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>D619D55D-402A-C1AE-5E2F-3EE2C750F7B4</UniqueIdentifier>
+      <UniqueIdentifier>9A99916B-42AE-8402-1669-01B1E0FA0040</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -473,6 +473,9 @@
     <None Include="..\..\config\msvs\Application.props">
       <Filter>Resource Files\config\msvs</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(TouchGFXReleasePath)\framework\include\common\AbstractPartition.hpp">

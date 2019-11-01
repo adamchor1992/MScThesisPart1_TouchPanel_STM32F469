@@ -5674,7 +5674,7 @@
       "Height": 480
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Screen_Main",
+    "StartupScreenName": "Screen_Module1_Graph",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "touchgfx",

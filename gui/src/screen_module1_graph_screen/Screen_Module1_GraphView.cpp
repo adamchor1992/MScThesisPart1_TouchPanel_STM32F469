@@ -113,61 +113,52 @@ void Screen_Module1_GraphView::tearDownScreen()
 
 void Screen_Module1_GraphView::handleTickEvent()
 {
-  if (m_AutoRangeEnabled == true)
-  {
-    for (int i = 0; i < GRAPHS_COUNT; i++)
-    {
-      /*Check if value is higher than any graph's top range*/
-      if (m_Value > m_Graphs[i]->getRangeTop())
-      {
-        m_GraphRangeTopChangedFlag = true;
-        m_GraphRangeTop = m_Value;
-      }
-      /*Check if value is lower than graph bottom range*/
-      else if (m_Value < m_Graphs[i]->getRangeBottom())
-      {
-        m_GraphRangeBottomChangedFlag = true;
-        m_GraphRangeBottom = m_Value;
-      }
-    }
-  }
-  
-  if (m_AutoRangeEnabled == true)
-  {
-    if (m_GraphRangeBottomChangedFlag)
-    {
-      m_GraphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      m_GraphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      m_GraphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      m_GraphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      
-      Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", m_GraphRangeBottom / SCALE_FACTOR);
-      textArea_GraphRangeBottom.invalidate();
-      
-      /*Reset flag*/
-      m_GraphRangeBottomChangedFlag = false;
-    }
-    
-    if (m_GraphRangeTopChangedFlag)
-    {
-      m_GraphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      m_GraphRed.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      m_GraphBlue.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      m_GraphGreen.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-      
-      Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", m_GraphRangeTop / SCALE_FACTOR);
-      textArea_GraphRangeTop.invalidate();
-      
-      /*Reset flag*/
-      m_GraphRangeTopChangedFlag = false;
-    }
-  }
+  //if (m_AutoRangeEnabled == true)
+  //{
+  //  for (int i = 0; i < GRAPHS_COUNT; i++)
+  //  {
+  //    /*Check if value is higher than any graph's top range*/
+  //    if (m_Value > m_Graphs[i]->getRangeTop())
+  //    {
+  //      m_GraphRangeTopChangedFlag = true;
+  //      m_GraphRangeTop = m_Value;
+  //    }
+  //    /*Check if value is lower than graph bottom range*/
+  //    else if (m_Value < m_Graphs[i]->getRangeBottom())
+  //    {
+  //      m_GraphRangeBottomChangedFlag = true;
+  //      m_GraphRangeBottom = m_Value;
+  //    }
+  //  }
+  //}
+  //
+  //if (m_AutoRangeEnabled == true)
+  //{
+  //  if (m_GraphRangeBottomChangedFlag)
+  //  {
+  //    m_GraphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
+  //    
+  //    Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", m_GraphRangeBottom / SCALE_FACTOR);
+  //    textArea_GraphRangeBottom.invalidate();
+  //    
+  //    /*Reset flag*/
+  //    m_GraphRangeBottomChangedFlag = false;
+  //  }
+  //  
+  //  if (m_GraphRangeTopChangedFlag)
+  //  {
+  //    m_GraphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
+  //    
+  //    Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", m_GraphRangeTop / SCALE_FACTOR);
+  //    textArea_GraphRangeTop.invalidate();
+  //    
+  //    /*Reset flag*/
+  //    m_GraphRangeTopChangedFlag = false;
+  //  }
+  //}
   
 #ifdef SIMULATOR
   static int value1 = INITIAL_GRAPH_RANGE_BOTTOM;
-  static int value2 = INITIAL_GRAPH_RANGE_BOTTOM + 40;
-  static int value3 = INITIAL_GRAPH_RANGE_BOTTOM + 80;
-  static int value4 = INITIAL_GRAPH_RANGE_BOTTOM + 120;
   
   static bool rising = true;
   
@@ -197,56 +188,20 @@ void Screen_Module1_GraphView::handleTickEvent()
   
   //value1 = multiplier * sin(m_TickCounter * 3.14159/180) * 100.0;
   
-  value2 = value2 + increment;
-  value3 = value3 + increment;
-  value4 = value4 + increment;
-  
   if (m_TickCounter >= m_GraphRangeRight)
   {
     m_GraphYellow.clear();
     m_GraphYellow.invalidate();
     
-    m_GraphRed.clear();
-    m_GraphRed.invalidate();
-    
-    m_GraphBlue.clear();
-    m_GraphBlue.invalidate();
-    
-    m_GraphGreen.clear();
-    m_GraphGreen.invalidate();
-    
     m_PreviousYellow_X = 0;
-    m_PreviousRed_X = 0;
-    m_PreviousBlue_X = 0;
-    m_PreviousGreen_X = 0;
     
     m_TickCounter = 0;
   }
   
-  char text_buffer1[40] = { 0 }; //temporary buffer
-  sprintf(text_buffer1, "Graph bottom range %d\n", m_GraphRangeBottom); // convert
-  OutputDebugString(text_buffer1); // print
-  char text_buffer11[40] = { 0 }; //temporary buffer
-  sprintf(text_buffer11, "Graph bottom range %d\n", m_GraphYellow.getRangeBottom()); // convert
-  OutputDebugString(text_buffer11); // print
-  
-  char text_buffer2[40] = { 0 }; //temporary buffer
-  sprintf(text_buffer2, "Graph top range %d\n", m_GraphRangeTop); // convert
-  OutputDebugString(text_buffer2); // print
-  char text_buffer22[40] = { 0 }; //temporary buffer
-  sprintf(text_buffer22, "Graph top range %d\n", m_GraphYellow.getRangeTop()); // convert
-  OutputDebugString(text_buffer22); // print
-  
-  char text_buffer3[40] = { 0 }; //temporary buffer
-  sprintf(text_buffer3, "Value1 after scaling %d\n", value1); // convert
-  OutputDebugString(text_buffer3); // print
-  //char text_buffer33[40] = { 0 }; //temporary buffer
-  //sprintf(text_buffer33, "Value1 after scaling %d\n", graphYellow.getRangeBottom()); // convert
-  //OutputDebugString(text_buffer33); // print
-  
-  //cout << "Graph bottom range :" << m_GraphRangeBottom << endl;
-  //cout << "Graph top range :" << m_GraphRangeTop << endl;
-  //cout << "nValue after scaling :" << value << endl;
+  touchgfx_printf("Graph bottom range %d\n", m_GraphRangeBottom);
+  touchgfx_printf("Graph bottom range %d\n", m_GraphYellow.getRangeBottom());
+  touchgfx_printf("Graph top range %d\n", m_GraphYellow.getRangeTop());
+  touchgfx_printf("Value1 after scaling %d\n", value1);
   
   if (m_Parameter1GraphEnabled == true)
   {
@@ -260,48 +215,6 @@ void Screen_Module1_GraphView::handleTickEvent()
       m_PreviousYellow_X = m_TickCounter;
     }
     m_GraphYellow.addValue(m_TickCounter, value1);
-  }
-  
-  if (m_Parameter2GraphEnabled == true)
-  {
-    if (m_PreviousRed_X == m_TickCounter)
-    {
-      ++m_TickCounter;
-      m_PreviousRed_X = m_TickCounter;
-    }
-    else
-    {
-      m_PreviousRed_X = m_TickCounter;
-    }
-    m_GraphRed.addValue(m_TickCounter, value2);
-  }
-  
-  if (m_Parameter3GraphEnabled == true)
-  {
-    if (m_PreviousBlue_X == m_TickCounter)
-    {
-      ++m_TickCounter;
-      m_PreviousBlue_X = m_TickCounter;
-    }
-    else
-    {
-      m_PreviousBlue_X = m_TickCounter;
-    }
-    m_GraphBlue.addValue(m_TickCounter, value3);
-  }
-  
-  if (m_Parameter4GraphEnabled == true)
-  {
-    if (m_PreviousGreen_X == m_TickCounter)
-    {
-      ++m_TickCounter;
-      m_PreviousGreen_X = m_TickCounter;
-    }
-    else
-    {
-      m_PreviousGreen_X = m_TickCounter;
-    }
-    m_GraphGreen.addValue(m_TickCounter, value4);
   }
 #endif
 }
