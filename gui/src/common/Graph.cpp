@@ -23,7 +23,7 @@ void Graph::setup(int newWidth, int newHeight, uint16_t lineColor, int graphLine
     graphLine.setPainter(graphLinePainter);
     graphLine.setBuffer(graphBuffer, NUMBER_OF_POINTS);
     graphLine.setLineWidth(2);
-    graphLine.setRange(0, 720, graphLineRangeBottom, graphLineRangeTop);
+    graphLine.setRange(0, 720, -2500, +2500);
 
     add(graphLine);
 }

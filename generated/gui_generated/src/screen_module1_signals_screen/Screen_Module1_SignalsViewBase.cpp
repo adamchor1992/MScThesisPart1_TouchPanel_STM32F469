@@ -14,19 +14,19 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
     toggleButton_Parameter1.setXY(235, 120);
-    toggleButton_Parameter1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
     toggleButton_Parameter1.setAction(buttonCallback);
 
     toggleButton_Parameter2.setXY(235, 170);
-    toggleButton_Parameter2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
     toggleButton_Parameter2.setAction(buttonCallback);
 
     toggleButton_Parameter3.setXY(235, 220);
-    toggleButton_Parameter3.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter3.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
     toggleButton_Parameter3.setAction(buttonCallback);
 
     toggleButton_Parameter4.setXY(235, 270);
-    toggleButton_Parameter4.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_LARGE_BUTTON_ON_ID));
+    toggleButton_Parameter4.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
     toggleButton_Parameter4.setAction(buttonCallback);
 
     textArea_Title.setXY(328, 0);
@@ -58,7 +58,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     slider_Y_AxisMin.setXY(410, 220);
     slider_Y_AxisMin.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_Y_AxisMin.setupHorizontalSlider(2, 19, 2, 0, 310);
-    slider_Y_AxisMin.setValueRange(1, 10);
+    slider_Y_AxisMin.setValueRange(1, 100);
     slider_Y_AxisMin.setValue(1);
     slider_Y_AxisMin.setNewValueCallback(sliderValueChangedCallback);
 
@@ -79,7 +79,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     slider_Y_AxisMax.setXY(410, 320);
     slider_Y_AxisMax.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_BACK_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_SLIDER_ROUND_FILL_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_MEDIUM_INDICATORS_SLIDER_ROUND_NOB_ID));
     slider_Y_AxisMax.setupHorizontalSlider(2, 19, 2, 0, 310);
-    slider_Y_AxisMax.setValueRange(1, 10);
+    slider_Y_AxisMax.setValueRange(1, 100);
     slider_Y_AxisMax.setValue(1);
     slider_Y_AxisMax.setNewValueCallback(sliderValueChangedCallback);
 

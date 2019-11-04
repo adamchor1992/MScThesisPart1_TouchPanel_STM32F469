@@ -959,16 +959,6 @@
               <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_medium_slider_round_fill.cpp</FilePath>
             </File>
             <File>
-              <FileName>blue_togglebars_toggle_round_large_button_off.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_large_button_off.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>blue_togglebars_toggle_round_large_button_on.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_large_button_on.cpp</FilePath>
-            </File>
-            <File>
               <FileName>blue_togglebars_toggle_round_small_button_off.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_off.cpp</FilePath>

@@ -14,13 +14,16 @@
 using namespace std;
 #endif
 
-#define INITIAL_GRAPH_RANGE_BOTTOM -1000
-#define INITIAL_GRAPH_RANGE_TOP 1000
+#define GRAPH_CONSTANT_RANGE_BOTTOM -2500
+#define GRAPH_CONSTANT_RANGE_TOP +2500
+#define GRAPH_CONSTANT_MAX_MIN_INTERVAL 5000
+
+#define INITIAL_GRAPH_RANGE_BOTTOM -10000
+#define INITIAL_GRAPH_RANGE_TOP 10000
 #define INITIAL_GRAPH_RANGE_LEFT 0
 #define INITIAL_GRAPH_RANGE_RIGHT 720
 
 #define GRAPHS_COUNT 4
-#define SCALE_FACTOR 1000
 
 bool Screen_Module1_GraphView::m_Parameter1GraphEnabled = true;
 bool Screen_Module1_GraphView::m_Parameter2GraphEnabled = true;
@@ -74,10 +77,10 @@ void Screen_Module1_GraphView::setupScreen()
   m_TickCounter = 0;
   
   // Set the outer dimensions and color of the graphs
-  m_GraphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC), m_GraphRangeBottom, m_GraphRangeTop);
-  m_GraphRed.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0x00, 0x00), m_GraphRangeBottom, m_GraphRangeTop);
-  m_GraphBlue.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0x00, 0xFF), m_GraphRangeBottom, m_GraphRangeTop);
-  m_GraphGreen.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0xFF, 0x00), m_GraphRangeBottom, m_GraphRangeTop);
+  m_GraphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  m_GraphRed.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0x00, 0x00), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  m_GraphBlue.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0x00, 0xFF), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  m_GraphGreen.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0xFF, 0x00), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
   
   // Initialize graphs
   for (int i = 0; i < GRAPHS_COUNT; i++)
@@ -85,19 +88,19 @@ void Screen_Module1_GraphView::setupScreen()
     // Place graphs on the screen
     m_Graphs[i]->setXY(55, 0);
     // Set the ranges for the x and y axis of the graphs
-    m_Graphs[i]->setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
+    m_Graphs[i]->setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
     // Set line width of the graphs
     m_Graphs[i]->setLineWidth(1);
   }
   
   /*Initialize graph ranges text areas */
-  Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", m_GraphRangeTop / SCALE_FACTOR);
+  Unicode::snprintf(textArea_GraphRangeTopBuffer, 10, "%d", m_GraphRangeTop);
   textArea_GraphRangeTop.invalidate();
   
-  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", m_GraphRangeBottom / SCALE_FACTOR);
+  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 10, "%d", m_GraphRangeBottom);
   textArea_GraphRangeBottom.invalidate();
   
-  Unicode::snprintf(textArea_GraphRangeRightBuffer, 6, "%d", m_GraphRangeRight);
+  Unicode::snprintf(textArea_GraphRangeRightBuffer, 10, "%d", m_GraphRangeRight);
   textArea_GraphRangeBottom.invalidate();
   
   add(m_GraphYellow);
@@ -113,53 +116,13 @@ void Screen_Module1_GraphView::tearDownScreen()
 
 void Screen_Module1_GraphView::handleTickEvent()
 {
-  //if (m_AutoRangeEnabled == true)
-  //{
-  //  for (int i = 0; i < GRAPHS_COUNT; i++)
-  //  {
-  //    /*Check if value is higher than any graph's top range*/
-  //    if (m_Value > m_Graphs[i]->getRangeTop())
-  //    {
-  //      m_GraphRangeTopChangedFlag = true;
-  //      m_GraphRangeTop = m_Value;
-  //    }
-  //    /*Check if value is lower than graph bottom range*/
-  //    else if (m_Value < m_Graphs[i]->getRangeBottom())
-  //    {
-  //      m_GraphRangeBottomChangedFlag = true;
-  //      m_GraphRangeBottom = m_Value;
-  //    }
-  //  }
-  //}
-  //
-  //if (m_AutoRangeEnabled == true)
-  //{
-  //  if (m_GraphRangeBottomChangedFlag)
-  //  {
-  //    m_GraphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-  //    
-  //    Unicode::snprintf(textArea_GraphRangeBottomBuffer, 6, "%d", m_GraphRangeBottom / SCALE_FACTOR);
-  //    textArea_GraphRangeBottom.invalidate();
-  //    
-  //    /*Reset flag*/
-  //    m_GraphRangeBottomChangedFlag = false;
-  //  }
-  //  
-  //  if (m_GraphRangeTopChangedFlag)
-  //  {
-  //    m_GraphYellow.setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, m_GraphRangeBottom, m_GraphRangeTop);
-  //    
-  //    Unicode::snprintf(textArea_GraphRangeTopBuffer, 6, "%d", m_GraphRangeTop / SCALE_FACTOR);
-  //    textArea_GraphRangeTop.invalidate();
-  //    
-  //    /*Reset flag*/
-  //    m_GraphRangeTopChangedFlag = false;
-  //  }
-  //}
-  
 #ifdef SIMULATOR
   static int value1 = INITIAL_GRAPH_RANGE_BOTTOM;
   
+  static int valueGraph;
+
+  valueGraph = (((1 - (double(m_GraphRangeTop - value1) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP;
+
   static bool rising = true;
   
   static int multiplier = 1;
@@ -175,11 +138,11 @@ void Screen_Module1_GraphView::handleTickEvent()
     value1 = value1 - increment;
   }
   
-  if (value1 >= 1000)
+  if (value1 >= 10000)
   {
     rising = false;
   }
-  else if(value1 <= -1000)
+  else if(value1 <= -10000)
   {
     rising = true;
   }
@@ -214,7 +177,8 @@ void Screen_Module1_GraphView::handleTickEvent()
     {
       m_PreviousYellow_X = m_TickCounter;
     }
-    m_GraphYellow.addValue(m_TickCounter, value1);
+
+    m_GraphYellow.addValue(m_TickCounter, valueGraph);
   }
 #endif
 }
@@ -224,8 +188,10 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
 #ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
   
-  m_Value = int(std::stof((char*)(s_UARTFrame.payload)) * SCALE_FACTOR); //scale by 1000
+  m_Value = int(std::stof((char*)(s_UARTFrame.payload)));
   
+  m_Value = int((((1 - (double(m_GraphRangeTop - m_Value) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
+    
   if (s_UARTFrame.sign == '2')
   {
     /*Make value_int negative*/
@@ -275,8 +241,8 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     m_TickCounter = 0;
   }
   
-  printf("Graph bottom range: %d\n", m_GraphRangeBottom);
-  printf("Graph top range: %d\n", m_GraphRangeTop);
+  printf("Graph bottom range: %d\n", m_GraphYellow.getRangeBottom());
+  printf("Graph top range: %d\n", m_GraphYellow.getRangeTop());
   printf("Value after scaling: %d\n", m_Value);
   
   switch (s_UARTFrame.parameter)
