@@ -1087,10 +1087,10 @@
           <name>$PROJ_DIR$\..\..\generated\fonts\src\CachedFont.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp_0.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_30_4bpp_0.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp_0.cpp</name>
@@ -1099,16 +1099,19 @@
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_60_4bpp_0.cpp</name>
         </file>
         <file>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_8_4bpp_0.cpp</name>
+        </file>
+        <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\FontCache.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\GeneratedFont.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_10_4bpp.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_20_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_20_4bpp.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_30_4bpp.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_40_4bpp.cpp</name>
@@ -1117,16 +1120,22 @@
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_60_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_10_4bpp.cpp</name>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_8_4bpp.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_20_4bpp.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_30_4bpp.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_40_4bpp.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_60_4bpp.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_8_4bpp.cpp</name>
         </file>
       </group>
       <group>
@@ -1258,6 +1267,15 @@
           </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_fill.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_knob.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_slider_horizontal_small_round_back.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_slider_horizontal_small_round_fill.cpp</name>
           </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_off.cpp</name>

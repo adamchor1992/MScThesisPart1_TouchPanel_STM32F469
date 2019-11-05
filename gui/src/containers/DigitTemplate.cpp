@@ -10,11 +10,9 @@ void DigitTemplate::initialize()
     DigitTemplateBase::initialize();
 }
 
-void DigitTemplate::setDigit(int no)
+void DigitTemplate::setDigitWithComma(int no)
 {
-	currentDigit = no;
-
-	if (no == 0)
+	if ( no == 0)
 	{
 		Unicode::snprintf(textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, "%c", '.');
 		return;
@@ -23,3 +21,7 @@ void DigitTemplate::setDigit(int no)
 	Unicode::itoa(no - 1, textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, 10);
 }
 
+void DigitTemplate::setDigitWithoutComma(int no)
+{
+	Unicode::itoa(no, textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, 10);
+}

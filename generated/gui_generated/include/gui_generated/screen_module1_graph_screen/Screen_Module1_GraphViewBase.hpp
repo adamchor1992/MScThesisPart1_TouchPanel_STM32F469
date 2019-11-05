@@ -47,9 +47,9 @@ protected:
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
-    static const uint16_t TEXTAREA_GRAPHRANGETOP_SIZE = 10;
+    static const uint16_t TEXTAREA_GRAPHRANGETOP_SIZE = 11;
     touchgfx::Unicode::UnicodeChar textArea_GraphRangeTopBuffer[TEXTAREA_GRAPHRANGETOP_SIZE];
-    static const uint16_t TEXTAREA_GRAPHRANGEBOTTOM_SIZE = 10;
+    static const uint16_t TEXTAREA_GRAPHRANGEBOTTOM_SIZE = 12;
     touchgfx::Unicode::UnicodeChar textArea_GraphRangeBottomBuffer[TEXTAREA_GRAPHRANGEBOTTOM_SIZE];
     static const uint16_t TEXTAREA_GRAPHRANGELEFT_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea_GraphRangeLeftBuffer[TEXTAREA_GRAPHRANGELEFT_SIZE];

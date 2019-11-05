@@ -16,9 +16,9 @@ DigitTemplateBase::DigitTemplateBase()
     textArea_Digit.setPosition(0, 0, 38, 68);
     textArea_Digit.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Digit.setLinespacing(0);
-    Unicode::snprintf(textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID406).getText());
+    Unicode::snprintf(textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID453).getText());
     textArea_Digit.setWildcard(textArea_DigitBuffer);
-    textArea_Digit.setTypedText(touchgfx::TypedText(T_SINGLEUSEID378));
+    textArea_Digit.setTypedText(touchgfx::TypedText(T_SINGLEUSEID450));
 
     add(backgroundBox_Black);
     add(textArea_Digit);

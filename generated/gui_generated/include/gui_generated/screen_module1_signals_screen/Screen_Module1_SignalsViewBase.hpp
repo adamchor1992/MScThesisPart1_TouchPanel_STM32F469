@@ -13,14 +13,116 @@
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/containers/Slider.hpp>
-#include <touchgfx/mixins/ClickListener.hpp>
+#include <touchgfx/containers/scrollers/ScrollWheel.hpp>
+#include <gui/containers/DigitTemplate.hpp>
 
+#include <touchgfx/mixins/ClickListener.hpp>
 class Screen_Module1_SignalsViewBase : public touchgfx::View<Screen_Module1_SignalsPresenter>
 {
 public:
     Screen_Module1_SignalsViewBase();
     virtual ~Screen_Module1_SignalsViewBase() {}
     virtual void setupScreen();
+
+    virtual void scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MaxDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
 
     /*
      * Virtual Action Handlers
@@ -50,17 +152,12 @@ public:
         // Override and implement this function in Screen_Module1_Signals
     }
 
-    virtual void updateY_AxisMin(int value)
-    {
-        // Override and implement this function in Screen_Module1_Signals
-    }
-
-    virtual void updateY_AxisMax(int value)
-    {
-        // Override and implement this function in Screen_Module1_Signals
-    }
-
     virtual void pressedAutoRangeToggleButton()
+    {
+        // Override and implement this function in Screen_Module1_Signals
+    }
+
+    virtual void setRanges()
     {
         // Override and implement this function in Screen_Module1_Signals
     }
@@ -74,25 +171,84 @@ protected:
      * Member Declarations
      */
     touchgfx::Box backgroundBox_Black;
-    touchgfx::ToggleButton toggleButton_Parameter1;
-    touchgfx::ToggleButton toggleButton_Parameter2;
-    touchgfx::ToggleButton toggleButton_Parameter3;
     touchgfx::ToggleButton toggleButton_Parameter4;
+    touchgfx::ToggleButton toggleButton_Parameter3;
+    touchgfx::ToggleButton toggleButton_Parameter2;
+    touchgfx::ToggleButton toggleButton_Parameter1;
     touchgfx::TextArea textArea_Title;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
     touchgfx::ButtonWithLabel buttonWithLabel_Back;
     touchgfx::Slider slider_TimeRange;
-    touchgfx::Slider slider_Y_AxisMin;
     touchgfx::TextAreaWithOneWildcard textArea_TimeRange;
-    touchgfx::TextAreaWithOneWildcard textArea_Y_AxisMin;
-    touchgfx::Slider slider_Y_AxisMax;
-    touchgfx::TextAreaWithOneWildcard textArea_Y_AxisMax;
+    touchgfx::TextArea textArea_Y_AxisMax;
+    touchgfx::TextArea textArea_Y_AxisMin;
     touchgfx::TextArea textArea_Auto_Y_Range;
     touchgfx::ToggleButton toggleButton_Auto_Y_Range;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter1Name;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter2Name;
-    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter3Name;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter4Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter3Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter2Name;
+    touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter1Name;
+    touchgfx::ScrollWheel scrollWheel_MaxDigit10;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit10ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit9;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit9ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit8;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit8ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit7;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit7ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit6;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit6ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit5;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit5ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit4;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit4ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit3;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit3ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit2;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit2ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MaxDigit1;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MaxDigit1ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit10;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit10ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit9;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit9ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit8;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit8ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit7;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit7ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit6;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit6ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit5;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit5ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit4;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit4ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit3;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit3ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit2;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit2ListItems;
+
+    touchgfx::ScrollWheel scrollWheel_MinDigit1;
+    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_MinDigit1ListItems;
+
+    touchgfx::ButtonWithLabel buttonWithLabel_SetRanges;
 
     /*
      * Wildcard Buffers
@@ -101,18 +257,14 @@ protected:
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
     static const uint16_t TEXTAREA_TIMERANGE_SIZE = 10;
     touchgfx::Unicode::UnicodeChar textArea_TimeRangeBuffer[TEXTAREA_TIMERANGE_SIZE];
-    static const uint16_t TEXTAREA_Y_AXISMIN_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea_Y_AxisMinBuffer[TEXTAREA_Y_AXISMIN_SIZE];
-    static const uint16_t TEXTAREA_Y_AXISMAX_SIZE = 10;
-    touchgfx::Unicode::UnicodeChar textArea_Y_AxisMaxBuffer[TEXTAREA_Y_AXISMAX_SIZE];
-    static const uint16_t TEXTAREA_PARAMETER1NAME_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_Parameter1NameBuffer[TEXTAREA_PARAMETER1NAME_SIZE];
-    static const uint16_t TEXTAREA_PARAMETER2NAME_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_Parameter2NameBuffer[TEXTAREA_PARAMETER2NAME_SIZE];
-    static const uint16_t TEXTAREA_PARAMETER3NAME_SIZE = 11;
-    touchgfx::Unicode::UnicodeChar textArea_Parameter3NameBuffer[TEXTAREA_PARAMETER3NAME_SIZE];
     static const uint16_t TEXTAREA_PARAMETER4NAME_SIZE = 11;
     touchgfx::Unicode::UnicodeChar textArea_Parameter4NameBuffer[TEXTAREA_PARAMETER4NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER3NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter3NameBuffer[TEXTAREA_PARAMETER3NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER2NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter2NameBuffer[TEXTAREA_PARAMETER2NAME_SIZE];
+    static const uint16_t TEXTAREA_PARAMETER1NAME_SIZE = 11;
+    touchgfx::Unicode::UnicodeChar textArea_Parameter1NameBuffer[TEXTAREA_PARAMETER1NAME_SIZE];
 
 private:
 
@@ -121,12 +273,14 @@ private:
      */
     touchgfx::Callback<Screen_Module1_SignalsViewBase, const touchgfx::AbstractButton&> buttonCallback;
     touchgfx::Callback<Screen_Module1_SignalsViewBase, const touchgfx::Slider&, int> sliderValueChangedCallback;
+    touchgfx::Callback<Screen_Module1_SignalsViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
     void sliderValueChangedCallbackHandler(const touchgfx::Slider& src, int value);
+    void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
 };
 

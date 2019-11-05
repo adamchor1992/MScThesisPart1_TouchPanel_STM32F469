@@ -12,15 +12,17 @@ struct Typography
     static const touchgfx::FontId LARGE = 1;
     static const touchgfx::FontId SMALL = 2;
     static const touchgfx::FontId EXTRALARGE = 3;
+    static const touchgfx::FontId MEDIUM = 4;
 };
 
 struct TypographyFontIndex
 {
     static const touchgfx::FontId DEFAULT = 0;    // verdana_20_4bpp
     static const touchgfx::FontId LARGE = 1;      // verdana_40_4bpp
-    static const touchgfx::FontId SMALL = 2;      // verdana_10_4bpp
+    static const touchgfx::FontId SMALL = 2;      // verdana_8_4bpp
     static const touchgfx::FontId EXTRALARGE = 3; // verdana_60_4bpp
-    static const uint16_t NUMBER_OF_FONTS = 4;
+    static const touchgfx::FontId MEDIUM = 4;     // verdana_30_4bpp
+    static const uint16_t NUMBER_OF_FONTS = 5;
 };
 
 class ApplicationFontProvider : public touchgfx::FontProvider

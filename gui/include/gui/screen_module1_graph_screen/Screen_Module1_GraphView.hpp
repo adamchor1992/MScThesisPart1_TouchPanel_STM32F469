@@ -15,6 +15,7 @@ using namespace touchgfx;
 class Screen_Module1_GraphView : public Screen_Module1_GraphViewBase
 {
   friend class Screen_Module1_SignalsView;
+
 public:
   Screen_Module1_GraphView();
   virtual ~Screen_Module1_GraphView() {}
@@ -27,6 +28,9 @@ public:
   void updateCpuUsage(uint8_t value);
   
   static void setGraphRanges(int bottom, int top, int right);
+
+  static int getGraphRangeBottom() { return m_GraphRangeBottom; }
+  static int getGraphRangeTop() { return m_GraphRangeTop; }
   
 private:
   int m_TickCounter;

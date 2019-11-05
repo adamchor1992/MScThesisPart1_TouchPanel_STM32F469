@@ -28,14 +28,14 @@ Screen_Module1_GraphViewBase::Screen_Module1_GraphViewBase() :
     buttonWithLabel_Back.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setAction(buttonCallback);
 
-    textArea_GraphRangeTop.setPosition(0, 0, 55, 15);
+    textArea_GraphRangeTop.setPosition(0, 0, 60, 11);
     textArea_GraphRangeTop.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_GraphRangeTop.setLinespacing(0);
     Unicode::snprintf(textArea_GraphRangeTopBuffer, TEXTAREA_GRAPHRANGETOP_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID270).getText());
     textArea_GraphRangeTop.setWildcard(textArea_GraphRangeTopBuffer);
     textArea_GraphRangeTop.setTypedText(touchgfx::TypedText(T_SINGLEUSEID268));
 
-    textArea_GraphRangeBottom.setPosition(0, 370, 55, 15);
+    textArea_GraphRangeBottom.setPosition(0, 374, 60, 11);
     textArea_GraphRangeBottom.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_GraphRangeBottom.setLinespacing(0);
     Unicode::snprintf(textArea_GraphRangeBottomBuffer, TEXTAREA_GRAPHRANGEBOTTOM_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID271).getText());

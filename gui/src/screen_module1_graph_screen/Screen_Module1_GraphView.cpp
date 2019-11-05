@@ -94,10 +94,10 @@ void Screen_Module1_GraphView::setupScreen()
   }
   
   /*Initialize graph ranges text areas */
-  Unicode::snprintf(textArea_GraphRangeTopBuffer, 10, "%d", m_GraphRangeTop);
+  Unicode::snprintf(textArea_GraphRangeTopBuffer, 12, "%d", m_GraphRangeTop);
   textArea_GraphRangeTop.invalidate();
   
-  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 10, "%d", m_GraphRangeBottom);
+  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 12, "%d", m_GraphRangeBottom);
   textArea_GraphRangeBottom.invalidate();
   
   Unicode::snprintf(textArea_GraphRangeRightBuffer, 10, "%d", m_GraphRangeRight);
@@ -121,7 +121,7 @@ void Screen_Module1_GraphView::handleTickEvent()
   
   static int valueGraph;
 
-  valueGraph = (((1 - (double(m_GraphRangeTop - value1) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP;
+  valueGraph = int((((1 - (double(m_GraphRangeTop - value1) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
 
   static bool rising = true;
   
@@ -161,10 +161,10 @@ void Screen_Module1_GraphView::handleTickEvent()
     m_TickCounter = 0;
   }
   
-  touchgfx_printf("Graph bottom range %d\n", m_GraphRangeBottom);
-  touchgfx_printf("Graph bottom range %d\n", m_GraphYellow.getRangeBottom());
-  touchgfx_printf("Graph top range %d\n", m_GraphYellow.getRangeTop());
-  touchgfx_printf("Value1 after scaling %d\n", value1);
+  //touchgfx_printf("Graph bottom range %d\n", m_GraphRangeBottom);
+  //touchgfx_printf("Graph bottom range %d\n", m_GraphYellow.getRangeBottom());
+  //touchgfx_printf("Graph top range %d\n", m_GraphYellow.getRangeTop());
+  //touchgfx_printf("Value1 after scaling %d\n", value1);
   
   if (m_Parameter1GraphEnabled == true)
   {

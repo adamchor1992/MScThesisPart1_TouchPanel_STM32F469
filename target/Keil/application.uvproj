@@ -959,6 +959,21 @@
               <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_medium_slider_round_fill.cpp</FilePath>
             </File>
             <File>
+              <FileName>Blue_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_knob.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_small_indicators_slider_horizontal_small_round_knob.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Slider_Horizontal_Small_slider_horizontal_small_round_back.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_small_slider_horizontal_small_round_back.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Slider_Horizontal_Small_slider_horizontal_small_round_fill.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_small_slider_horizontal_small_round_fill.cpp</FilePath>
+            </File>
+            <File>
               <FileName>blue_togglebars_toggle_round_small_button_off.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_off.cpp</FilePath>
@@ -979,14 +994,14 @@
               <FilePath>../../generated/gui_generated/src/containers/digittemplatebase.cpp</FilePath>
             </File>
             <File>
-              <FileName>Font_verdana_10_4bpp_0.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/fonts/src/font_verdana_10_4bpp_0.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Font_verdana_20_4bpp_0.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/font_verdana_20_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_verdana_30_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/font_verdana_30_4bpp_0.cpp</FilePath>
             </File>
             <File>
               <FileName>Font_verdana_40_4bpp_0.cpp</FileName>
@@ -997,6 +1012,11 @@
               <FileName>Font_verdana_60_4bpp_0.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/font_verdana_60_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_verdana_8_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/font_verdana_8_4bpp_0.cpp</FilePath>
             </File>
             <File>
               <FileName>FontCache.cpp</FileName>
@@ -1014,14 +1034,14 @@
               <FilePath>../../generated/fonts/src/generatedfont.cpp</FilePath>
             </File>
             <File>
-              <FileName>Kerning_verdana_10_4bpp.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/fonts/src/kerning_verdana_10_4bpp.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Kerning_verdana_20_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/kerning_verdana_20_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_verdana_30_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/kerning_verdana_30_4bpp.cpp</FilePath>
             </File>
             <File>
               <FileName>Kerning_verdana_40_4bpp.cpp</FileName>
@@ -1032,6 +1052,11 @@
               <FileName>Kerning_verdana_60_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/kerning_verdana_60_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_verdana_8_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/kerning_verdana_8_4bpp.cpp</FilePath>
             </File>
             <File>
               <FileName>LanguageGb.cpp</FileName>
@@ -1094,14 +1119,14 @@
               <FilePath>../../generated/gui_generated/src/screen_uart_rx_debug_screen/screen_uart_rx_debugviewbase.cpp</FilePath>
             </File>
             <File>
-              <FileName>Table_verdana_10_4bpp.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/fonts/src/table_verdana_10_4bpp.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Table_verdana_20_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/table_verdana_20_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_verdana_30_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/table_verdana_30_4bpp.cpp</FilePath>
             </File>
             <File>
               <FileName>Table_verdana_40_4bpp.cpp</FileName>
@@ -1112,6 +1137,11 @@
               <FileName>Table_verdana_60_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/table_verdana_60_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_verdana_8_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/fonts/src/table_verdana_8_4bpp.cpp</FilePath>
             </File>
             <File>
               <FileName>TemplateViewBase.cpp</FileName>

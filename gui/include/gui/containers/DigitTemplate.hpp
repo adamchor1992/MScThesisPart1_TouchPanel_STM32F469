@@ -11,12 +11,8 @@ public:
 
     virtual void initialize();
 
-	void setDigit(int no);
-
-	int getDigit() { return currentDigit; }
-
-private:
-	int currentDigit;
+	void setDigitWithComma(int no);
+	void setDigitWithoutComma(int no);
 };
 
 #endif // DIGITTEMPLATE_HPP
