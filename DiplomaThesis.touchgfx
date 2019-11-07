@@ -41,7 +41,7 @@
             "Style": "Style4",
             "Name": "buttonWithLabel_UART_Debug",
             "X": 0,
-            "Y": 149,
+            "Y": 0,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -126,8 +126,8 @@
             "TextRotation": "0",
             "Style": "Style4",
             "Name": "buttonWithLabel_Module1",
-            "X": 315,
-            "Y": 100,
+            "X": 0,
+            "Y": 210,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -154,35 +154,6 @@
             "Width": 216,
             "Height": 49,
             "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_edge_small.png",
-            "Alpha": 255,
-            "TextId": "SingleUseId123",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Style": "Style4",
-            "Name": "buttonWithLabel_Graph_Debug",
-            "X": 0,
-            "Y": 274,
-            "Width": 170,
-            "Height": 60,
-            "Type": "ButtonWithLabel",
             "Visible": true,
             "Draggable": false,
             "Clickable": false,
@@ -235,8 +206,8 @@
             "TextRotation": "0",
             "Style": "Style4",
             "Name": "buttonWithLabel_Module3",
-            "X": 315,
-            "Y": 320,
+            "X": 630,
+            "Y": 210,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -265,7 +236,7 @@
             "Style": "Style4",
             "Name": "buttonWithLabel_ClearLeds",
             "X": 630,
-            "Y": 274,
+            "Y": 0,
             "Width": 170,
             "Height": 60,
             "Type": "ButtonWithLabel",
@@ -313,19 +284,6 @@
             "Action": {
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Screen_Module2_Data",
-              "Type": "ActionGotoScreen"
-            }
-          },
-          {
-            "InteractionName": "Interaction_GoToGraphScreen",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "TriggerComponent": "buttonWithLabel_Graph_Debug",
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Template",
               "Type": "ActionGotoScreen"
             }
           },
@@ -773,7 +731,7 @@
             "Name": "textArea_Title",
             "X": 309,
             "Y": 0,
-            "Width": 183,
+            "Width": 182,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -5128,131 +5086,6 @@
         "Name": "Screen_UART_RX_Debug",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 0
-      },
-      {
-        "Components": [
-          {
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "Name": "backgroundBox_Black",
-            "X": 0,
-            "Y": 0,
-            "Width": 800,
-            "Height": 480,
-            "Type": "Box",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_edge_small.png",
-            "Alpha": 255,
-            "TextId": "SingleUseId124",
-            "ReleasedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "TextRotation": "0",
-            "Style": "Style4",
-            "Name": "buttonWithLabel_GoToMainMenu",
-            "X": 315,
-            "Y": 420,
-            "Width": 170,
-            "Height": 60,
-            "Type": "ButtonWithLabel",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId125",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": false,
-            "LineSpacing": 0,
-            "Wildcard1": {
-              "TextId": "SingleUseId126",
-              "UseBuffer": true,
-              "BufferSize": 6
-            },
-            "Name": "textArea_CPU_Usage",
-            "X": 618,
-            "Y": 451,
-            "Width": 182,
-            "Height": 29,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction_GoBackToMainMenu",
-            "HasCompletedTrigger": false,
-            "Trigger": {
-              "TriggerComponent": "buttonWithLabel_GoToMainMenu",
-              "Type": "TriggerClicked"
-            },
-            "Action": {
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Screen_Main",
-              "Type": "ActionGotoScreen"
-            }
-          }
-        ],
-        "Name": "Template",
-        "OverrideDefaultBufferSize": true,
-        "CanvasBufferSize": 12000
-      },
-      {
-        "Components": [
-          {
-            "Color": {
-              "Red": 0,
-              "Green": 0,
-              "Blue": 0
-            },
-            "Alpha": 255,
-            "Name": "backgroundBox_Black",
-            "X": 0,
-            "Y": 0,
-            "Width": 800,
-            "Height": 480,
-            "Type": "Box",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          }
-        ],
-        "Interactions": [],
-        "Name": "Screen1",
-        "OverrideDefaultBufferSize": false,
-        "CanvasBufferSize": 0
       }
     ],
     "CustomContainerDefinitions": [
@@ -5357,22 +5190,6 @@
       },
       {
         "TextEntryId": "SingleUseId79",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId123",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId124",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId125",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId126",
         "IsResource": false
       },
       {

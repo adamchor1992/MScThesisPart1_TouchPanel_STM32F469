@@ -12,7 +12,7 @@ Screen_MainViewBase::Screen_MainViewBase() :
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    buttonWithLabel_UART_Debug.setXY(0, 149);
+    buttonWithLabel_UART_Debug.setXY(0, 0);
     buttonWithLabel_UART_Debug.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_UART_Debug.setLabelText(touchgfx::TypedText(T_SINGLEUSEID7));
     buttonWithLabel_UART_Debug.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -33,7 +33,7 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_Module2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setAction(buttonCallback);
 
-    buttonWithLabel_Module1.setXY(315, 100);
+    buttonWithLabel_Module1.setXY(0, 210);
     buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_Module1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID41));
     buttonWithLabel_Module1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -45,13 +45,6 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_MainMenu.setLinespacing(0);
     textArea_MainMenu.setTypedText(touchgfx::TypedText(T_SINGLEUSEID44));
 
-    buttonWithLabel_Graph_Debug.setXY(0, 274);
-    buttonWithLabel_Graph_Debug.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_Graph_Debug.setLabelText(touchgfx::TypedText(T_SINGLEUSEID123));
-    buttonWithLabel_Graph_Debug.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel_Graph_Debug.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel_Graph_Debug.setAction(buttonCallback);
-
     textArea_ActiveModule.setPosition(0, 431, 528, 49);
     textArea_ActiveModule.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_ActiveModule.setLinespacing(0);
@@ -59,13 +52,13 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_ActiveModule.setWildcard(textArea_ActiveModuleBuffer);
     textArea_ActiveModule.setTypedText(touchgfx::TypedText(T_SINGLEUSEID129));
 
-    buttonWithLabel_Module3.setXY(315, 320);
+    buttonWithLabel_Module3.setXY(630, 210);
     buttonWithLabel_Module3.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_Module3.setLabelText(touchgfx::TypedText(T_SINGLEUSEID408));
     buttonWithLabel_Module3.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module3.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
 
-    buttonWithLabel_ClearLeds.setXY(630, 274);
+    buttonWithLabel_ClearLeds.setXY(630, 0);
     buttonWithLabel_ClearLeds.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_ClearLeds.setLabelText(touchgfx::TypedText(T_SINGLEUSEID409));
     buttonWithLabel_ClearLeds.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -78,7 +71,6 @@ Screen_MainViewBase::Screen_MainViewBase() :
     add(buttonWithLabel_Module2);
     add(buttonWithLabel_Module1);
     add(textArea_MainMenu);
-    add(buttonWithLabel_Graph_Debug);
     add(textArea_ActiveModule);
     add(buttonWithLabel_Module3);
     add(buttonWithLabel_ClearLeds);
@@ -111,13 +103,6 @@ void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
         //When buttonWithLabel_Module1 clicked change screen to Screen_Module1_Data
         //Go to Screen_Module1_Data with no screen transition
         application().gotoScreen_Module1_DataScreenNoTransition();
-    }
-    else if (&src == &buttonWithLabel_Graph_Debug)
-    {
-        //Interaction_GoToGraphScreen
-        //When buttonWithLabel_Graph_Debug clicked change screen to Template
-        //Go to Template with no screen transition
-        application().gotoTemplateScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_ClearLeds)
     {

@@ -749,16 +749,6 @@
               <FilePath>../../gui/src/model/model.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen1Presenter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen1_screen/screen1presenter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen1View.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen1_screen/screen1view.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Screen_MainPresenter.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/screen_main_screen/screen_mainpresenter.cpp</FilePath>
@@ -857,16 +847,6 @@
               <FileName>Screen_UART_RX_DebugView.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/screen_uart_rx_debug_screen/screen_uart_rx_debugview.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>TemplatePresenter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/template_screen/templatepresenter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>TemplateView.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/template_screen/templateview.cpp</FilePath>
             </File>
             <File>
               <FileName>utilities.cpp</FileName>
@@ -1064,11 +1044,6 @@
               <FilePath>../../generated/texts/src/languagegb.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen1ViewBase.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen1_screen/screen1viewbase.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Screen_MainViewBase.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/gui_generated/src/screen_main_screen/screen_mainviewbase.cpp</FilePath>
@@ -1142,11 +1117,6 @@
               <FileName>Table_verdana_8_4bpp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/table_verdana_8_4bpp.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>TemplateViewBase.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/template_screen/templateviewbase.cpp</FilePath>
             </File>
             <File>
               <FileName>Texts.cpp</FileName>

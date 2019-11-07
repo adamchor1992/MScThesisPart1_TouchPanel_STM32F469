@@ -22,9 +22,6 @@
     <ClCompile Include="..\..\gui\src\screen_main_screen\Screen_MainView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_main_screen\Screen_MainViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
-    <ClCompile Include="..\..\gui\src\template_screen\TemplatePresenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\template_screen\TemplateView.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\template_screen\TemplateViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\common\AbstractGraph.cpp"/>
     <ClCompile Include="..\..\gui\src\common\Graph.cpp"/>
     <ClCompile Include="..\..\gui\src\common\GraphLine.cpp"/>
@@ -55,9 +52,6 @@
     <ClCompile Include="..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp"/>
     <ClCompile Include="..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp"/>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp"/>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\containers\DigitTemplate.cpp"/>
     <ClCompile Include="..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp"/>
     <ClCompile Include="..\..\gui\src\init.cpp"/>
@@ -66,9 +60,6 @@
   <ItemGroup>
     <None Include="..\..\assets\texts\texts.xlsx"/>
     <None Include="..\..\config\msvs\Application.props"/>
-    <None Include="ClassDiagram.cd"/>
-    <None Include="ClassDiagram1.cd"/>
-    <None Include="ClassDiagram2.cd"/>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(TouchGFXReleasePath)\framework\include\common\AbstractPartition.hpp"/>
@@ -215,9 +206,6 @@
     <ClInclude Include="..\..\gui\include\gui\model\Model.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\target\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery.h"/>
-    <ClInclude Include="..\..\gui\include\gui\template_screen\TemplatePresenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\template_screen\TemplateView.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\template_screen\TemplateViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\common\AbstractGraph.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\common\Graph.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\common\GraphLine.hpp"/>
@@ -249,9 +237,6 @@
     <ClInclude Include="..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\screen_module1_signals_screen\Screen_Module1_SignalsView.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp"/>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp"/>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\DigitContainer.hpp"/>
     <ClInclude Include="..\..\gui\include\gui\containers\DigitTemplate.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DigitTemplateBase.hpp"/>
@@ -266,14 +251,14 @@
     <ProjectGuid>{3C47683C-0505-487F-A1FD-75B8490BF72C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Application</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>

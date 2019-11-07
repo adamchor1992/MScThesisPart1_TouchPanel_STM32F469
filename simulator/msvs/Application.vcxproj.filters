@@ -163,18 +163,6 @@
     <Filter Include="Header Files\gui\model">
       <UniqueIdentifier>61402186-D0B7-4338-8F4B-3414D10AC55B</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\template_screen">
-      <UniqueIdentifier>7840D4F0-5480-4361-B9D2-11C08903E9BD</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\gui\template_screen">
-      <UniqueIdentifier>60F53513-5A27-455A-BD85-7A4DE73AB24B</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\template_screen">
-      <UniqueIdentifier>74259D69-220F-4936-9971-9EA7547E6B12</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\template_screen">
-      <UniqueIdentifier>C129E186-CB7F-40FA-A302-E99B2FA3CB28</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\screen_module1_settings_screen">
       <UniqueIdentifier>8E70D4A3-6AA5-47CB-94BE-05A35CB9E07B</UniqueIdentifier>
     </Filter>
@@ -283,18 +271,6 @@
     <Filter Include="Header Files\generated\gui_generated\screen_module1_signals_screen">
       <UniqueIdentifier>06147071-7304-4193-A565-366D5CF37DC1</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\gui\screen1_screen">
-      <UniqueIdentifier>38746458-2041-45AD-9076-C018CDA9625A</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\gui\screen1_screen">
-      <UniqueIdentifier>5EF8B679-8450-4EAE-9AB6-163086EB761D</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>7E8665F6-C086-45DE-B821-BED7B1092BD0</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen1_screen">
-      <UniqueIdentifier>3DA4C38B-BAAD-4569-B526-18FF694E285D</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\gui\containers">
       <UniqueIdentifier>4CE6675F-FC51-4104-9E2D-0D7A97BB01CF</UniqueIdentifier>
     </Filter>
@@ -308,7 +284,7 @@
       <UniqueIdentifier>D5C92D5D-38DC-411C-99C5-995F48AA9A2B</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>A9541310-DC63-61DF-3B92-BC8F2060BB46</UniqueIdentifier>
+      <UniqueIdentifier>0BB67E84-0FD7-E435-F902-65E4E7E5DBAC</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -344,15 +320,6 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\model\Model.cpp">
       <Filter>Source Files\gui\model</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\template_screen\TemplatePresenter.cpp">
-      <Filter>Source Files\gui\template_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\template_screen\TemplateView.cpp">
-      <Filter>Source Files\gui\template_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\template_screen\TemplateViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\template_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\common\AbstractGraph.cpp">
       <Filter>Source Files\gui\common</Filter>
@@ -444,15 +411,6 @@
     <ClCompile Include="..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\screen_module1_signals_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1Presenter.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\gui\src\screen1_screen\Screen1View.cpp">
-      <Filter>Source Files\gui\screen1_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen1_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\containers\DigitTemplate.cpp">
       <Filter>Source Files\gui\containers</Filter>
     </ClCompile>
@@ -473,9 +431,6 @@
     <None Include="..\..\config\msvs\Application.props">
       <Filter>Resource Files\config\msvs</Filter>
     </None>
-    <None Include="ClassDiagram.cd"/>
-    <None Include="ClassDiagram1.cd"/>
-    <None Include="ClassDiagram2.cd"/>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(TouchGFXReleasePath)\framework\include\common\AbstractPartition.hpp">
@@ -907,15 +862,6 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp">
       <Filter>Header Files\gui\model</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\template_screen\TemplatePresenter.hpp">
-      <Filter>Header Files\gui\template_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\template_screen\TemplateView.hpp">
-      <Filter>Header Files\gui\template_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\template_screen\TemplateViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\template_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\common\AbstractGraph.hpp">
       <Filter>Header Files\gui\common</Filter>
     </ClInclude>
@@ -1011,15 +957,6 @@
     </ClInclude>
     <ClInclude Include="..\..\target\bsp\source\vendor\STM32469I-Discovery\stm32469i_discovery.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1Presenter.hpp">
-      <Filter>Header Files\gui\screen1_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\gui\screen1_screen\Screen1View.hpp">
-      <Filter>Header Files\gui\screen1_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen1_screen\Screen1ViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen1_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\containers\DigitContainer.hpp">
       <Filter>Header Files\gui\containers</Filter>
