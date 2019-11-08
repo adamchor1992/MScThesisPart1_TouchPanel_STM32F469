@@ -16,14 +16,14 @@ void Screen_Module1_GraphPresenter::deactivate()
 
 }
 
-void Screen_Module1_GraphPresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module1_GraphPresenter::notifyNewUartRxParsedPacket(UartPacket & uartPacket)
 {
-  view.addNewValueToGraphFromUART(s_UARTFrame);
+  view.addNewValueToGraphFromUART(uartPacket);
 }
 
-void Screen_Module1_GraphPresenter::notifyNewGraphRange(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module1_GraphPresenter::notifyNewGraphRange(UartPacket & uartPacket)
 {
-  view.setNewGraphRange(s_UARTFrame);
+  view.setNewGraphRange(uartPacket);
 }
 
 void Screen_Module1_GraphPresenter::notifyNewCpuUsageValue(uint8_t value)

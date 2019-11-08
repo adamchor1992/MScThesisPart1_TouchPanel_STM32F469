@@ -1,111 +1,115 @@
 #include "utilities.h"
 
 /*This function merely copies table elements to structure fields, no additional logic included*/
-void convertFrameTableToUARTstruct(const uint8_t frameTable[],UARTFrameStruct_t & frameStructure)
+void convertUartPacketTableToUartStructure(const uint8_t uartPacketTable[],UartPacket & uartPacket)
 {
-  frameStructure.source = frameTable[0];
-  frameStructure.module = frameTable[1];
-  frameStructure.function = frameTable[2];
-  frameStructure.parameter = frameTable[3];
-  frameStructure.sign = frameTable[4];
-  frameStructure.length = frameTable[5];
+  uartPacket.source = uartPacketTable[0];
+  uartPacket.module = uartPacketTable[1];
+  uartPacket.function = uartPacketTable[2];
+  uartPacket.parameter = uartPacketTable[3];
+  uartPacket.sign = uartPacketTable[4];
+  uartPacket.length = uartPacketTable[5];
   
-  uint8_t length_int = frameStructure.length - '0'; //convert char to int length
+  uint8_t length_int = uartPacket.length - '0'; //convert char to int length
   
   for(uint8_t i=0; i < length_int; i++)
   {
-    frameStructure.payload[i] = frameTable[6 + i];
+    uartPacket.payload[i] = uartPacketTable[6 + i];
   }
 }
 
 /*This function merely copies structure fields to table elements, no additional logic included*/
-void convertUARTstructToFrameTable(const UARTFrameStruct_t & frameStructure, uint8_t frameTable[])
+void convertUartStructureToUartPacketTable(const UartPacket & uartPacket, uint8_t uartPacketTable[])
 {
-  frameTable[0] = frameStructure.source;
-  frameTable[1] = frameStructure.module;
-  frameTable[2] = frameStructure.function;
-  frameTable[3] = frameStructure.parameter;
-  frameTable[4] = frameStructure.sign;
-  frameTable[5] = frameStructure.length;
+  uartPacketTable[0] = uartPacket.source;
+  uartPacketTable[1] = uartPacket.module;
+  uartPacketTable[2] = uartPacket.function;
+  uartPacketTable[3] = uartPacket.parameter;
+  uartPacketTable[4] = uartPacket.sign;
+  uartPacketTable[5] = uartPacket.length;
   
-  uint8_t length_int = frameStructure.length - '0'; //convert char to int length
+  uint8_t length_int = uartPacket.length - '0'; //convert char to int length
   
   for(uint8_t i=0; i < length_int; i++)
   {
-    frameTable[6 + i] = frameStructure.payload[i]; //payload starts from 6th element up to [6 + length] element
+    uartPacketTable[6 + i] = uartPacket.payload[i]; //payload starts from 6th element up to [6 + length] element
   }
 }
 
-uint32_t Calculate_CRC32 (char *data, int len)
+uint32_t calculateCrc32 (char* data, int len)
 {
   uint32_t crc = 0xffffffff;
+  
   while (len--)
-    crc = (crc << 8) ^ crc_table[((crc >> 24) ^ *data++) & 0xff];
+  {
+    crc = (crc << 8) ^ crcTable[((crc >> 24) ^ *data++) & 0xff];
+  }
+  
   return crc;
 }
 
-bool checkCRC(const uint8_t frameTable[])
+bool checkCrc32(const uint8_t uartPacketTable[])
 {
-  uint8_t CRC_Value_Received_Raw_8Bit[4];
-  uint32_t CRC_Value_Calculated;
-  uint32_t CRC_Value_Received;
-  
-  CRC_Value_Calculated = Calculate_CRC32((char*)frameTable, 16);
-  
-  CRC_Value_Received_Raw_8Bit[0] = frameTable[16];
-  CRC_Value_Received_Raw_8Bit[1] = frameTable[17];
-  CRC_Value_Received_Raw_8Bit[2] = frameTable[18];
-  CRC_Value_Received_Raw_8Bit[3] = frameTable[19];
-  
-  CRC_Value_Received = CRC_Value_Received_Raw_8Bit[3] | CRC_Value_Received_Raw_8Bit[2] << 8 | CRC_Value_Received_Raw_8Bit[1] << 16 | CRC_Value_Received_Raw_8Bit[0] << 24;
-  
-  if(CRC_Value_Calculated == CRC_Value_Received)
+  uint8_t crcValueReceivedRaw8Bit[4];
+  uint32_t crcValueCalculated;
+  uint32_t crcValueReceived;
+
+  crcValueCalculated = calculateCrc32((char*)uartPacketTable, 16);
+
+  crcValueReceivedRaw8Bit[0] = uartPacketTable[16];
+  crcValueReceivedRaw8Bit[1] = uartPacketTable[17];
+  crcValueReceivedRaw8Bit[2] = uartPacketTable[18];
+  crcValueReceivedRaw8Bit[3] = uartPacketTable[19];
+
+  crcValueReceived = crcValueReceivedRaw8Bit[3] | crcValueReceivedRaw8Bit[2] << 8 | crcValueReceivedRaw8Bit[1] << 16 | crcValueReceivedRaw8Bit[0] << 24;
+
+  if(crcValueCalculated == crcValueReceived)
     return true;
   else
     return false;
 }
 
-void appendCRCtoFrame(uint8_t frame[])
+void appendCrcToPacket(uint8_t uartPacketTable[])
 {
-  uint32_t CRC_Value_Calculated = Calculate_CRC32((char*)frame, 16);
-  uint32_t* CRC_Address = &CRC_Value_Calculated;
-  uint8_t *p1, *p2, *p3, *p4;
-  
-  p1 = ((uint8_t*)CRC_Address);
-  p2 = ((uint8_t*)CRC_Address + 1);
-  p3 = ((uint8_t*)CRC_Address + 2);
-  p4 = ((uint8_t*)CRC_Address + 3);
-  
-  frame[19] = *p1;
-  frame[18] = *p2;
-  frame[17] = *p3;
-  frame[16] = *p4;
+    uint32_t crcValueCalculated = calculateCrc32((char*)uartPacketTable, 16);
+    uint32_t* crcAddress = &crcValueCalculated;
+    uint8_t *p1, *p2, *p3, *p4;
+
+    p1 = ((uint8_t*)crcAddress);
+    p2 = ((uint8_t*)crcAddress + 1);
+    p3 = ((uint8_t*)crcAddress + 2);
+    p4 = ((uint8_t*)crcAddress + 3);
+
+    uartPacketTable[19] = *p1;
+    uartPacketTable[18] = *p2;
+    uartPacketTable[17] = *p3;
+    uartPacketTable[16] = *p4;
 }
 
-void clearFrameTable(uint8_t frameTable[])
+void clearPacketTable(uint8_t uartPacketTable[])
 {
-  for(uint8_t i=0; i < FRAME_SIZE; i++)
+  for(uint8_t i=0; i < PACKET_SIZE; i++)
   {
-    frameTable[i] = 0;
+    uartPacketTable[i] = 0;
   }
 }
 
-void clearFrameStructure(UARTFrameStruct_t & frameStructure)
+void clearPacket(UartPacket & uartPacket)
 {
-  frameStructure.source = 0;
-  frameStructure.module = 0;
-  frameStructure.function = 0;
-  frameStructure.parameter = 0;
-  frameStructure.sign = 0;
-  frameStructure.length = 0;
+  uartPacket.source = 0;
+  uartPacket.module = 0;
+  uartPacket.function = 0;
+  uartPacket.parameter = 0;
+  uartPacket.sign = 0;
+  uartPacket.length = 0;
   
   for(uint8_t i=0; i < PAYLOAD_SIZE; i++)
   {
-    frameStructure.payload[i] = 0;
+    uartPacket.payload[i] = 0;
   }
   
   for(uint8_t i=0; i < CRC_SIZE; i++)
   {
-    frameStructure.crc[i] = 0;
+    uartPacket.crc[i] = 0;
   }
 }

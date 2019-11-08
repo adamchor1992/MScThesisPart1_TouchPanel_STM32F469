@@ -10,23 +10,23 @@
 #include "semphr.h"
 #include "task.h"
 #include "string.h"
-#include "UART_Frame_Struct.h"
+#include "uart_packet.h"
 #include "utilities.h"
 
-extern xQueueHandle msgQueueUART_RX_ProcessedFrame;
-extern xQueueHandle msgQueueUARTTransmit;
-extern xSemaphoreHandle UART_TxSemaphore;
+extern xQueueHandle msgQueueUartRxProcessedPacket;
+extern xQueueHandle msgQueueUartTransmit;
+extern xSemaphoreHandle uartTxSemaphore;
 
 extern UART_HandleTypeDef huart6;
 UART_HandleTypeDef* Model::m_pHuart6 = &huart6;
 
-/*Structure to which UART task writes processed UART frame*/
-UARTFrameStruct_t s_UARTFrame;
+/*Structure to which UART task writes processed UART packet*/
+UartPacket uartPacket;
 #endif
 
-uint8_t Model::m_InitParametersModule1[INIT_FRAME_COUNT][PAYLOAD_SIZE] = {{0}};
-uint8_t Model::m_InitParametersModule2[INIT_FRAME_COUNT][PAYLOAD_SIZE] = {{0}};
-uint8_t Model::m_InitParametersModule3[INIT_FRAME_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule1[INIT_PACKET_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule2[INIT_PACKET_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule3[INIT_PACKET_COUNT][PAYLOAD_SIZE] = {{0}};
 
 bool Model::module1Connected = false;
 bool Model::module2Connected = false;
@@ -35,7 +35,7 @@ bool Model::module3Connected = false;
 Model::Model() : m_ModelListener(0)
 {
 #ifndef SIMULATOR
-  m_ReceivedInitFrameCount = 0;
+  m_ReceivedInitPacketCount = 0;
 #endif
 }
 
@@ -43,15 +43,15 @@ void Model::tick()
 {
 #ifndef SIMULATOR
   //get new UART message from message queue (if any)
-  if (uxQueueMessagesWaiting(msgQueueUART_RX_ProcessedFrame) > 0)
+  if (uxQueueMessagesWaiting(msgQueueUartRxProcessedPacket) > 0)
   {
-    /*Reset frame to all zeroes*/
-    clearFrameStructure(s_UARTFrame);
+    /*Reset packet to all zeroes*/
+    clearPacket(uartPacket);
     
-    /*Frame is validated at this point and can be directly recovered from queue and copied to local s_UARTFrame structure*/    
-    xQueueReceive(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, 0);
+    /*Packet is validated at this point and can be directly recovered from queue and copied to local uartPacket structure*/    
+    xQueueReceive(msgQueueUartRxProcessedPacket, &uartPacket, 0);
     
-    switch(s_UARTFrame.module)
+    switch(uartPacket.module)
     {
     case '1':
       processPacket(1);
@@ -78,13 +78,13 @@ void Model::processPacket(int module)
 #ifndef SIMULATOR
   if(isModuleActive(module) == true)
   {
-    if(s_UARTFrame.function == '1') //data type frame
+    if(uartPacket.function == '1') //data type packet
     {
-      m_ModelListener->notifyNewUART_RX_ParsedFrame(s_UARTFrame);
+      m_ModelListener->notifyNewUartRxParsedPacket(uartPacket);
     }
-    else if(s_UARTFrame.function == '3') //deinit connection
+    else if(uartPacket.function == '3') //deinit connection
     {
-      printf("Deinit frame received\n");
+      printf("Deinit packet received\n");
       
       /*Set module not active*/
       deactivateModule(module);
@@ -92,49 +92,49 @@ void Model::processPacket(int module)
       /*Go back to main menu screen*/
       static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
     }
-    else if(s_UARTFrame.function == '7') //set graph range minimum
+    else if(uartPacket.function == '7') //set graph range minimum
     {
       printf("Set graph range minimum packet received\n");
-      m_ModelListener->notifyNewGraphRange(s_UARTFrame);
+      m_ModelListener->notifyNewGraphRange(uartPacket);
     }
-    else if(s_UARTFrame.function == '8') //set graph range maximum
+    else if(uartPacket.function == '8') //set graph range maximum
     {
       printf("Set graph range maximum packet received\n");
-      m_ModelListener->notifyNewGraphRange(s_UARTFrame);
+      m_ModelListener->notifyNewGraphRange(uartPacket);
     }
     else
     {
-      printf("Wrong frame type for module %d in active state\n", module);
+      printf("Wrong packet type for module %d in active state\n", module);
     }
   }
   /*Module inactive*/
   else
   {
-    if(s_UARTFrame.function == '2') //init frame
+    if(uartPacket.function == '2') //init packet
     {
-      if(m_ReceivedInitFrameCount < INIT_FRAME_COUNT)
+      if(m_ReceivedInitPacketCount < INIT_PACKET_COUNT)
       {
-        uint8_t length_int = s_UARTFrame.length - '0'; //convert char to int length 
+        uint8_t length_int = uartPacket.length - '0'; //convert char to int length 
         
-        memcpy(m_InitParametersModule1[m_ReceivedInitFrameCount], s_UARTFrame.payload, length_int);
+        memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.payload, length_int);
         
-        ++m_ReceivedInitFrameCount;
+        ++m_ReceivedInitPacketCount;
       }
       
-      printf("Received %d out of %d required init frames\n", m_ReceivedInitFrameCount, INIT_FRAME_COUNT);
+      printf("Received %d out of %d required init packets\n", m_ReceivedInitPacketCount, INIT_PACKET_COUNT);
       
-      if(m_ReceivedInitFrameCount == INIT_FRAME_COUNT)
+      if(m_ReceivedInitPacketCount == INIT_PACKET_COUNT)
       {
-        printf("Received all of %d init frames\n", INIT_FRAME_COUNT);
-        m_ModelListener->notifyAllInitFrameReceived(s_UARTFrame); 
+        printf("Received all of %d init packets\n", INIT_PACKET_COUNT);
+        m_ModelListener->notifyAllInitPacketsReceived(uartPacket); 
         
-        /*Set m_ReceivedInitFrameCount back to 0 to make another connection initialization possible after connection deinitialization*/
-        m_ReceivedInitFrameCount = 0;
+        /*Set m_ReceivedInitPacketCount back to 0 to make another connection initialization possible after connection deinitialization*/
+        m_ReceivedInitPacketCount = 0;
       }
     }
     else
     {
-      printf("Wrong frame type for module %d in inactive state\n", module);
+      printf("Wrong packet type for module %d in inactive state\n", module);
     }
   }
 #endif
@@ -210,16 +210,16 @@ bool Model::isModuleActive(int module)
   }
 }
 
-void Model::setNewValueToSet(const UARTFrameStruct_t & frameStructure)
+void Model::setNewValueToSet(const UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
-  uint8_t UART_ValueToTransmit[FRAME_SIZE] = {0};
+  uint8_t UART_ValueToTransmit[PACKET_SIZE] = {0};
   
-  convertUARTstructToFrameTable(frameStructure, UART_ValueToTransmit);
+  convertUartStructureToUartPacketTable(uartPacket, UART_ValueToTransmit);
   
-  xQueueSendToBack(msgQueueUARTTransmit, UART_ValueToTransmit, 0);
+  xQueueSendToBack(msgQueueUartTransmit, UART_ValueToTransmit, 0);
   
   /*Give semaphore to activate UART_Tx task*/
-  xSemaphoreGive(UART_TxSemaphore);
+  xSemaphoreGive(uartTxSemaphore);
 #endif
 }

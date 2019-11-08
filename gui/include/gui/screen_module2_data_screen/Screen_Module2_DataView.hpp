@@ -12,7 +12,7 @@ public:
     virtual void setupScreen();
     virtual void tearDownScreen();
     
-    void updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame);
+    void updateGuiPacketData(UartPacket & uartPacket);
     void updateCpuUsage(uint8_t value);
 };
 

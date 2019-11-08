@@ -15,7 +15,7 @@ public:
   // Declaring callback handler
   void TextAreaClickHandler(const TextAreaWithOneWildcard& b, const ClickEvent& e);
   
-  void updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame);
+  void updateGuiPacketData(UartPacket & uartPacket);
   void updateCpuUsage(uint8_t value);
   
   // Show all text areas again

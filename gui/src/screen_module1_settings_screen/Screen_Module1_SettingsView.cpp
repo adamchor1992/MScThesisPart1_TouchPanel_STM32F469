@@ -60,78 +60,78 @@ void Screen_Module1_SettingsView::setupScreen()
 void Screen_Module1_SettingsView::tearDownScreen()
 {
 #ifndef SIMULATOR
-  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+  extern uint8_t uartReceivedPacket[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
 #endif
 }
 
 void Screen_Module1_SettingsView::setNewValue()
 {
 #ifndef SIMULATOR
-  /*Structure used to propagate UART frame contents up to Model class*/
-  UARTFrameStruct_t s_UARTFrame;
+  /*Structure used to propagate UART packet contents up to Model class*/
+  UartPacket uartPacket;
     
-  s_UARTFrame.source = '1';
-  s_UARTFrame.module = '1';
-  s_UARTFrame.function = '6';  //set parameter
-  s_UARTFrame.parameter = '0'; //this should be overwritten by following instructions
+  uartPacket.source = '1';
+  uartPacket.module = '1';
+  uartPacket.function = '6';  //set parameter
+  uartPacket.parameter = '0'; //this should be overwritten by following instructions
   
   if (radioButtonParameter1.getSelected())
   {
-    s_UARTFrame.parameter = '1';
+    uartPacket.parameter = '1';
   }
   else if (radioButtonParameter2.getSelected())
   {
-    s_UARTFrame.parameter = '2';
+    uartPacket.parameter = '2';
   }
   else if (radioButtonParameter3.getSelected())
   {
-    s_UARTFrame.parameter = '3';
+    uartPacket.parameter = '3';
   }
   else if (radioButtonParameter4.getSelected())
   {
-    s_UARTFrame.parameter = '4';
+    uartPacket.parameter = '4';
   }
   else if (radioButtonParameter5.getSelected())
   {
-    s_UARTFrame.parameter = '5';
+    uartPacket.parameter = '5';
   }
   else if (radioButtonParameter6.getSelected())
   {
-    s_UARTFrame.parameter = '6';
+    uartPacket.parameter = '6';
   }
   else if (radioButtonParameter7.getSelected())
   {
-    s_UARTFrame.parameter = '7';
+    uartPacket.parameter = '7';
   }
   else if (radioButtonParameter8.getSelected())
   {
-    s_UARTFrame.parameter = '8';
+    uartPacket.parameter = '8';
   }
   else if (radioButtonParameter9.getSelected())
   {
-    s_UARTFrame.parameter = '9';
+    uartPacket.parameter = '9';
   }
   else if (radioButtonParameter10.getSelected())
   {
-    s_UARTFrame.parameter = 'a';
+    uartPacket.parameter = 'a';
   }
   
   if(radioButton_Plus.getSelected())
   {
     /*Value is positive*/
-    s_UARTFrame.sign = '1'; 
+    uartPacket.sign = '1'; 
   }
   else
   {
     /*Value is negative*/
-    s_UARTFrame.sign = '2';
+    uartPacket.sign = '2';
   }
      
   char valueBuffer[PAYLOAD_SIZE] = {0};
@@ -145,14 +145,14 @@ void Screen_Module1_SettingsView::setNewValue()
      
   sprintf(valueBuffer, "%10lf", value);
 
-  s_UARTFrame.length = PAYLOAD_SIZE + '0'; //convert 10 to ASCII ':'
+  uartPacket.length = PAYLOAD_SIZE + '0'; //convert 10 to ASCII ':'
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    s_UARTFrame.payload[i] = valueBuffer[i];
+    uartPacket.payload[i] = valueBuffer[i];
   }
   
-  this->presenter->notifyNewValueToSet(s_UARTFrame);
+  this->presenter->notifyNewValueToSet(uartPacket);
 #endif
 }
 
@@ -229,118 +229,118 @@ double Screen_Module1_SettingsView::processScrollWheelValues(const int values[])
 
 void Screen_Module1_SettingsView::enableParameterButtonPushed()
 {
-  /*Structure used to propagate UART frame contents up to Model class*/
-  UARTFrameStruct_t s_UARTFrame;
+  /*Structure used to propagate UART packet contents up to Model class*/
+  UartPacket uartPacket;
   
-  s_UARTFrame.source = '1';
-  s_UARTFrame.module = '1';
-  s_UARTFrame.function = '4';  //enable parameter
-  s_UARTFrame.parameter = '0'; //this should be overwritten by following instructions
+  uartPacket.source = '1';
+  uartPacket.module = '1';
+  uartPacket.function = '4';  //enable parameter
+  uartPacket.parameter = '0'; //this should be overwritten by following instructions
   
   if (radioButtonParameter1.getSelected())
   {
-    s_UARTFrame.parameter = '1';
+    uartPacket.parameter = '1';
   }
   else if (radioButtonParameter2.getSelected())
   {
-    s_UARTFrame.parameter = '2';
+    uartPacket.parameter = '2';
   }
   else if (radioButtonParameter3.getSelected())
   {
-    s_UARTFrame.parameter = '3';
+    uartPacket.parameter = '3';
   }
   else if (radioButtonParameter4.getSelected())
   {
-    s_UARTFrame.parameter = '4';
+    uartPacket.parameter = '4';
   }
   else if (radioButtonParameter5.getSelected())
   {
-    s_UARTFrame.parameter = '5';
+    uartPacket.parameter = '5';
   }
   else if (radioButtonParameter6.getSelected())
   {
-    s_UARTFrame.parameter = '6';
+    uartPacket.parameter = '6';
   }
   else if (radioButtonParameter7.getSelected())
   {
-    s_UARTFrame.parameter = '7';
+    uartPacket.parameter = '7';
   }
   else if (radioButtonParameter8.getSelected())
   {
-    s_UARTFrame.parameter = '8';
+    uartPacket.parameter = '8';
   }
   else if (radioButtonParameter9.getSelected())
   {
-    s_UARTFrame.parameter = '9';
+    uartPacket.parameter = '9';
   }
   else if (radioButtonParameter10.getSelected())
   {
-    s_UARTFrame.parameter = 'a';
+    uartPacket.parameter = 'a';
   }
   
-  s_UARTFrame.sign = '1'; //sign is always positive
-  s_UARTFrame.length = '1';
-  s_UARTFrame.payload[6] = 0;
+  uartPacket.sign = '1'; //sign is always positive
+  uartPacket.length = '1';
+  uartPacket.payload[6] = 0;
   
-  this->presenter->notifyNewValueToSet(s_UARTFrame);
+  this->presenter->notifyNewValueToSet(uartPacket);
 }
 
 void Screen_Module1_SettingsView::disableParameterButtonPushed()
 {
-  /*Structure used to propagate UART frame contents up to Model class*/
-  UARTFrameStruct_t s_UARTFrame;
+  /*Structure used to propagate UART packet contents up to Model class*/
+  UartPacket uartPacket;
   
-  s_UARTFrame.source = '1';
-  s_UARTFrame.module = '1';
-  s_UARTFrame.function = '5';  //disable parameter
-  s_UARTFrame.parameter = '0'; //this should be overwritten by following instructions
+  uartPacket.source = '1';
+  uartPacket.module = '1';
+  uartPacket.function = '5';  //disable parameter
+  uartPacket.parameter = '0'; //this should be overwritten by following instructions
   
   if (radioButtonParameter1.getSelected())
   {
-    s_UARTFrame.parameter = '1';
+    uartPacket.parameter = '1';
   }
   else if (radioButtonParameter2.getSelected())
   {
-    s_UARTFrame.parameter = '2';
+    uartPacket.parameter = '2';
   }
   else if (radioButtonParameter3.getSelected())
   {
-    s_UARTFrame.parameter = '3';
+    uartPacket.parameter = '3';
   }
   else if (radioButtonParameter4.getSelected())
   {
-    s_UARTFrame.parameter = '4';
+    uartPacket.parameter = '4';
   }
   else if (radioButtonParameter5.getSelected())
   {
-    s_UARTFrame.parameter = '5';
+    uartPacket.parameter = '5';
   }
   else if (radioButtonParameter6.getSelected())
   {
-    s_UARTFrame.parameter = '6';
+    uartPacket.parameter = '6';
   }
   else if (radioButtonParameter7.getSelected())
   {
-    s_UARTFrame.parameter = '7';
+    uartPacket.parameter = '7';
   }
   else if (radioButtonParameter8.getSelected())
   {
-    s_UARTFrame.parameter = '8';
+    uartPacket.parameter = '8';
   }
   else if (radioButtonParameter9.getSelected())
   {
-    s_UARTFrame.parameter = '9';
+    uartPacket.parameter = '9';
   }
   else if (radioButtonParameter10.getSelected())
   {
-    s_UARTFrame.parameter = 'a';
+    uartPacket.parameter = 'a';
   }
   
-  s_UARTFrame.sign = '1'; //sign is always positive
-  s_UARTFrame.length = '1';
-  s_UARTFrame.payload[6] = 0;
+  uartPacket.sign = '1'; //sign is always positive
+  uartPacket.length = '1';
+  uartPacket.payload[6] = 0;
   
-  this->presenter->notifyNewValueToSet(s_UARTFrame);
+  this->presenter->notifyNewValueToSet(uartPacket);
 }
 
 void Screen_Module1_SettingsView::updateCpuUsage(uint8_t value)

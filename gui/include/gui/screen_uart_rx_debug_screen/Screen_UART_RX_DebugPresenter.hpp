@@ -13,7 +13,7 @@ class Screen_UART_RX_DebugPresenter : public Presenter, public ModelListener
 public:
     Screen_UART_RX_DebugPresenter(Screen_UART_RX_DebugView& v);
 
-    virtual void notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame); 
+    virtual void notifyNewUartRxParsedPacket(UartPacket & uartPacket); 
     void notifyNewCpuUsageValue(uint8_t value);
     
     /**

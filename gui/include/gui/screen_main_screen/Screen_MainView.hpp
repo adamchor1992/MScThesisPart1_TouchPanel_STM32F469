@@ -14,7 +14,7 @@ public:
 
   virtual void clearLeds();
 
-  void processInitFrame(UARTFrameStruct_t & s_UARTFrame);
+  void processInitPacket(UartPacket & uartPacket);
   void updateCpuUsage(uint8_t value);
 };
 

@@ -29,7 +29,7 @@ public:
   
   virtual ~Screen_MainPresenter() {};
   
-  void notifyAllInitFrameReceived(UARTFrameStruct_t & s_UARTFrame);
+  void notifyAllInitPacketsReceived(UartPacket & uartPacket);
 
 private:
   Screen_MainPresenter();

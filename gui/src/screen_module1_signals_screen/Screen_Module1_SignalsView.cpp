@@ -83,14 +83,14 @@ void Screen_Module1_SignalsView::tearDownScreen()
 {
 #ifndef SIMULATOR
 	/*Restart UART RX*/
-	extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+	extern uint8_t uartReceivedPacket[PACKET_SIZE];
 
 	HAL_UART_DeInit(Model::m_pHuart6);
 	HAL_UART_Init(Model::m_pHuart6);
 
 	NVIC_EnableIRQ(USART6_IRQn);
 
-	HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+	HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
 #endif
 }
 

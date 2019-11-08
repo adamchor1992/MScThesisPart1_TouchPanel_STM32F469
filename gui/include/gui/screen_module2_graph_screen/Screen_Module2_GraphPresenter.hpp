@@ -13,7 +13,7 @@ class Screen_Module2_GraphPresenter : public Presenter, public ModelListener
 public:
   Screen_Module2_GraphPresenter(Screen_Module2_GraphView& v);
   
-  virtual void notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame); 
+  virtual void notifyNewUartRxParsedPacket(UartPacket & uartPacket); 
   void notifyNewCpuUsageValue(uint8_t value);
 
     /**

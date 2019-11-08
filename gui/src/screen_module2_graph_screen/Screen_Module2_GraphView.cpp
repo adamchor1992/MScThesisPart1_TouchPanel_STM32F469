@@ -43,7 +43,7 @@ void Screen_Module2_GraphView::handleTickEvent()
   
 }
 
-void Screen_Module2_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module2_GraphView::addNewValueToGraphFromUART(UartPacket & uartPacket)
 {
   
 }

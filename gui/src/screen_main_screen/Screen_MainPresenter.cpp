@@ -16,9 +16,9 @@ void Screen_MainPresenter::deactivate()
   
 }
 
-void Screen_MainPresenter::notifyAllInitFrameReceived(UARTFrameStruct_t & s_UARTFrame)
+void Screen_MainPresenter::notifyAllInitPacketsReceived(UartPacket & uartPacket)
 {
-  view.processInitFrame(s_UARTFrame);
+  view.processInitPacket(uartPacket);
 }
 
 void Screen_MainPresenter::notifyNewCpuUsageValue(uint8_t value)

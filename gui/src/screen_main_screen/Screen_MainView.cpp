@@ -14,14 +14,14 @@ void Screen_MainView::setupScreen()
 {
 #ifndef SIMULATOR
   /*Restart UART RX*/
-  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+  extern uint8_t uartReceivedPacket[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
   
   char activeModuleString[10] = {0};
   
@@ -97,12 +97,12 @@ void Screen_MainView::clearLeds()
 #endif
 }
 
-void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
+void Screen_MainView::processInitPacket(UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
-  printf("Processing init frame\n");
+  printf("Processing init packet\n");
   
-  switch(s_UARTFrame.module)
+  switch(uartPacket.module)
   {
   case '1':
     buttonWithLabel_Module1.setAlpha(255);
@@ -134,7 +134,7 @@ void Screen_MainView::processInitFrame(UARTFrameStruct_t & s_UARTFrame)
   buttonWithLabel_Module3.invalidate();
   textArea_ActiveModule.invalidate();
   
-  printf("Init frame processed\n");
+  printf("Init packet processed\n");
   
   setupScreen();
 #endif

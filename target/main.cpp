@@ -5,7 +5,7 @@
 #include <touchgfx/hal/BoardConfiguration.hpp>
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 #include "string.h"
-#include "UART_Frame_Struct.h"
+#include "uart_packet.h"
 #include <stdio.h>
 #include "utilities.h"
 
@@ -32,15 +32,15 @@
 
 #define CANVAS_BUFFER_SIZE 10000
 
-xQueueHandle msgQueueUARTReceive;
-xQueueHandle msgQueueUARTTransmit;
-xQueueHandle msgQueueUART_RX_ProcessedFrame;
-xSemaphoreHandle UART_RxSemaphore;
-xSemaphoreHandle UART_TxSemaphore;
+xQueueHandle msgQueueUartReceive;
+xQueueHandle msgQueueUartTransmit;
+xQueueHandle msgQueueUartRxProcessedPacket;
+xSemaphoreHandle uartRxSemaphore;
+xSemaphoreHandle uartTxSemaphore;
 
-static void GUI_Task(void* params);
-static void UART_RxTask(void* params);
-static void UART_TxTask(void* params);
+static void guiTask(void* params);
+static void uartRxTask(void* params);
+static void uartTxTask(void* params);
 /* FreeRTOS stuff end*/
 
 /* General stuff begin*/
@@ -53,7 +53,7 @@ void MX_USART6_UART_Init(UART_HandleTypeDef *huart);
 void Error_Handler(void);
 
 /*Table to which UART interrupt writes*/
-uint8_t UART_ReceivedFrame[FRAME_SIZE] = {0};
+uint8_t uartReceivedPacket[PACKET_SIZE] = {0};
 /* General stuff end*/
 
 /*UART receive interrupt callback function*/
@@ -62,14 +62,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   BSP_LED_Toggle(LED4);
   signed long xHigherPriorityTaskWoken;
   
-  /*Insert UART_ReceivedFrame table filled by UART interrupt to queue for UART task to process*/
-  xQueueSendToBackFromISR(msgQueueUARTReceive, UART_ReceivedFrame, &xHigherPriorityTaskWoken); 
+  /*Insert uartReceivedPacket table filled by UART interrupt to queue for UART task to process*/
+  xQueueSendToBackFromISR(msgQueueUartReceive, uartReceivedPacket, &xHigherPriorityTaskWoken); 
   
   /*Enable interrupt listening again*/
-  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartReceivedPacket, PACKET_SIZE);
   
   /*Give semaphore to activate UART_Rx task*/
-  xSemaphoreGiveFromISR(UART_RxSemaphore, &xHigherPriorityTaskWoken);
+  xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
 }
 
 #if DEBUG == 1
@@ -100,32 +100,35 @@ int main(void)
   static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
   CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
   
-  xTaskCreate(GUI_Task, (TASKCREATE_NAME_TYPE)"GUITask",
+  xTaskCreate(guiTask, 
+              (TASKCREATE_NAME_TYPE)"GuiTask",
               GUI_TASK_STACK_SIZE,
               NULL,
               LOW_PRIORITY,
               NULL);
   
-  xTaskCreate(UART_RxTask, (TASKCREATE_NAME_TYPE)"UARTRxTask",
+  xTaskCreate(uartRxTask, 
+              (TASKCREATE_NAME_TYPE)"UartRxTask",
               UART_TASK_STACK_SIZE,
               NULL,
               MEDIUM_PRIORITY,
               NULL);
   
-  xTaskCreate(UART_TxTask, (TASKCREATE_NAME_TYPE)"UART_TxTask",
+  xTaskCreate(uartTxTask, 
+              (TASKCREATE_NAME_TYPE)"UartTxTask",
               UART_TASK_STACK_SIZE,
               NULL,
               HIGH_PRIORITY,
               NULL);
   
   /*Create message queues for UART task*/
-  msgQueueUARTReceive = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
-  msgQueueUART_RX_ProcessedFrame = xQueueCreate(QUEUES_SIZE, sizeof(UARTFrameStruct_t));
-  msgQueueUARTTransmit = xQueueCreate(QUEUES_SIZE, FRAME_SIZE * sizeof(uint8_t));
+  msgQueueUartReceive = xQueueCreate(QUEUES_SIZE, sizeof(UartPacket));
+  msgQueueUartRxProcessedPacket = xQueueCreate(QUEUES_SIZE, sizeof(UartPacket));
+  msgQueueUartTransmit = xQueueCreate(QUEUES_SIZE, PACKET_SIZE * sizeof(uint8_t));
   
   /*Create UART semaphore*/
-  UART_RxSemaphore = xSemaphoreCreateBinary();
-  UART_TxSemaphore = xSemaphoreCreateBinary();
+  uartRxSemaphore = xSemaphoreCreateBinary();
+  uartTxSemaphore = xSemaphoreCreateBinary();
   
   /*Initialize LEDS for debugging purposes*/
   BSP_LED_Init(LED1);
@@ -142,49 +145,49 @@ int main(void)
 }
 
 /* Task definitions begin */
-static void GUI_Task(void* params)
+static void guiTask(void* params)
 {
   printf("GUI task initialized\n");
   touchgfx::HAL::getInstance()->taskEntry();
 }
 
-static void UART_RxTask(void* params)
+static void uartRxTask(void* params)
 {  
-  /*Structure to which UART task writes processed UART frame*/
-  UARTFrameStruct_t s_UARTFrame = {0};
+  /*Structure to which UART task writes processed UART packet*/
+  UartPacket uartPacket = {0};
   
   /*Start receiving*/
-  HAL_UART_Receive_IT(&huart6, UART_ReceivedFrame, FRAME_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartReceivedPacket, PACKET_SIZE);
   
   printf("RX task initialized\n");
   
   while(true)
   {   
-    /*Check if interrupt occured so there is new data in UART_ReceivedFrame table*/
-    if(xSemaphoreTake(UART_RxSemaphore, portMAX_DELAY) == pdPASS)
+    /*Check if interrupt occured so there is new data in uartReceivedPacket table*/
+    if(xSemaphoreTake(uartRxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Ensure that there is no context switch during frame processing*/
+      /*Ensure that there is no context switch during packet processing*/
       taskENTER_CRITICAL();
       
       //CRC check
-      if(checkCRC(UART_ReceivedFrame) == true)
+      if(checkCrc32(uartReceivedPacket) == true)
       {
-        /*Frame is correct and can be further processed*/
+        /*Packet is correct and can be further processed*/
         
-        /*Frame parsing to structure*/  
-        convertFrameTableToUARTstruct(UART_ReceivedFrame, s_UARTFrame);
+        /*Packet parsing to structure*/  
+        convertUartPacketTableToUartStructure(uartReceivedPacket, uartPacket);
         
-        xQueueSendToBack(msgQueueUART_RX_ProcessedFrame, &s_UARTFrame, NO_WAITING);
+        xQueueSendToBack(msgQueueUartRxProcessedPacket, &uartPacket, NO_WAITING);
         
-        /*Reset frame table to all zeroes*/
-        clearFrameTable(UART_ReceivedFrame);
+        /*Reset packet table to all zeroes*/
+        clearPacketTable(uartReceivedPacket);
         
-        /*Reset frame structure to all zeroes*/
-        clearFrameStructure(s_UARTFrame);
+        /*Reset packet structure to all zeroes*/
+        clearPacket(uartPacket);
       }
       else
       {
-        /*Frame is corrupted and will not be further processed*/
+        /*Packet is corrupted and will not be further processed*/
         
         printf("WRONG CRC\n");
         
@@ -193,11 +196,11 @@ static void UART_RxTask(void* params)
         BSP_LED_On(LED3);
         BSP_LED_On(LED4);
         
-        /*Reset frame to all zeroes*/
-        clearFrameTable(UART_ReceivedFrame);
+        /*Reset packet to all zeroes*/
+        clearPacketTable(uartReceivedPacket);
         
-        /*Reset frame structure to all zeroes*/
-        clearFrameStructure(s_UARTFrame);
+        /*Reset packet structure to all zeroes*/
+        clearPacket(uartPacket);
       }
       
       taskEXIT_CRITICAL();
@@ -205,25 +208,25 @@ static void UART_RxTask(void* params)
   }
 }
 
-static void UART_TxTask(void* params)
+static void uartTxTask(void* params)
 {
-  uint8_t UART_MessageToTransmit[FRAME_SIZE] = {0};
+  uint8_t uartMessageToTransmit[PACKET_SIZE] = {0};
   
   printf("TX task initialized\n");
   
   while(true)
   {  
     /*Take TxSemaphore*/
-    if(xSemaphoreTake(UART_TxSemaphore, portMAX_DELAY) == pdPASS)
+    if(xSemaphoreTake(uartTxSemaphore, portMAX_DELAY) == pdPASS)
     {
       taskENTER_CRITICAL(); 
       
-      xQueueReceive(msgQueueUARTTransmit, UART_MessageToTransmit, NO_WAITING);                  
-      appendCRCtoFrame(UART_MessageToTransmit);
+      xQueueReceive(msgQueueUartTransmit, uartMessageToTransmit, NO_WAITING);                  
+      appendCrcToPacket(uartMessageToTransmit);
       
-      printf("TX Frame is: %.16s\n", UART_MessageToTransmit);
+      printf("TX Packet is: %.16s\n", uartMessageToTransmit);
       
-      HAL_UART_Transmit(&huart6, UART_MessageToTransmit, FRAME_SIZE, UART_TX_WAITING); //show table contents
+      HAL_UART_Transmit(&huart6, uartMessageToTransmit, PACKET_SIZE, UART_TX_WAITING);
       
       taskEXIT_CRITICAL(); 
     }

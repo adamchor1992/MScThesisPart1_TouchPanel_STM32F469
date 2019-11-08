@@ -19,7 +19,7 @@ public:
   virtual void tearDownScreen();
   
   virtual void handleTickEvent();
-  virtual void addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame);
+  virtual void addNewValueToGraphFromUART(UartPacket & uartPacket);
   void updateCpuUsage(uint8_t value);
   
 private:

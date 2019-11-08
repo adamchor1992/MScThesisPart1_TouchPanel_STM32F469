@@ -85,14 +85,14 @@ void Screen_Module1_GraphView::setupScreen()
 {
 #ifndef SIMULATOR
   /*Restart UART RX*/
-  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+  extern uint8_t uartReceivedPacket[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
 #endif
   
   m_TickCounter = 0;
@@ -204,16 +204,16 @@ void Screen_Module1_GraphView::handleTickEvent()
 #endif
 }
 
-void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module1_GraphView::addNewValueToGraphFromUART(UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
   
-  m_Value = int(std::stof((char*)(s_UARTFrame.payload)));
+  m_Value = int(std::stof((char*)(uartPacket.payload)));
   
   m_Value = int((((1 - (double(m_GraphRangeTop - m_Value) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
     
-  if (s_UARTFrame.sign == '2')
+  if (uartPacket.sign == '2')
   {
     /*Make value_int negative*/
     m_Value = m_Value * (-1);
@@ -266,7 +266,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
   printf("Graph virtual top range: %d\n", m_GraphRangeTop);
   printf("Value after scaling: %d\n", m_Value);
   
-  switch (s_UARTFrame.parameter)
+  switch (uartPacket.parameter)
   {
   case 'v':
     if (m_Parameter1GraphEnabled == true)
@@ -332,16 +332,16 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
 #endif
 }
 
-void Screen_Module1_GraphView::setNewGraphRange(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module1_GraphView::setNewGraphRange(UartPacket & uartPacket)
 {
   int value = 0;
   
-  switch(s_UARTFrame.function)
+  switch(uartPacket.function)
   {
   case '7':
-    value = int(std::stof((char*)(s_UARTFrame.payload)));
+    value = int(std::stof((char*)(uartPacket.payload)));
     
-    if(s_UARTFrame.sign == '2')
+    if(uartPacket.sign == '2')
     {
       value = value * (-1);
     }
@@ -353,9 +353,9 @@ void Screen_Module1_GraphView::setNewGraphRange(UARTFrameStruct_t & s_UARTFrame)
     break;
     
   case '8':    
-    value = int(std::stof((char*)(s_UARTFrame.payload)));
+    value = int(std::stof((char*)(uartPacket.payload)));
     
-    if(s_UARTFrame.sign == '2')
+    if(uartPacket.sign == '2')
     {
       value = value * (-1);
     }

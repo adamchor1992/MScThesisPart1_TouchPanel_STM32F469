@@ -64,14 +64,14 @@ void Screen_Module1_DataView::setupScreen()
 {
 #ifndef SIMULATOR
   /*Restart UART RX*/
-  extern uint8_t UART_ReceivedFrame[FRAME_SIZE];
+  extern uint8_t uartReceivedPacket[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, UART_ReceivedFrame, FRAME_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
 #endif
   
   textArea_Parameter1Name.setClickAction(TextAreaClickedCallback);
@@ -85,22 +85,22 @@ void Screen_Module1_DataView::tearDownScreen()
   
 }
 
-void Screen_Module1_DataView::updateGUIFrameData(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module1_DataView::updateGuiPacketData(UartPacket & uartPacket)
 {
   //value to display
   uint16_t stringToDisplay[10] = { 0 };
   
-  uint8_t length_int = s_UARTFrame.length - '0'; //convert char to int length
+  uint8_t length_int = uartPacket.length - '0'; //convert char to int length
   
   for (int i = 0; i < length_int; i++)
   {
-    stringToDisplay[i] = s_UARTFrame.payload[i];
+    stringToDisplay[i] = uartPacket.payload[i];
   }
   
 #ifndef SIMULATOR
-  if (s_UARTFrame.module == '1')
+  if (uartPacket.module == '1')
   {
-    switch(s_UARTFrame.parameter)
+    switch(uartPacket.parameter)
     {
     case '1':
       Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", stringToDisplay);

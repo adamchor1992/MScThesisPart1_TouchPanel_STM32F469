@@ -16,9 +16,9 @@ void Screen_Module2_GraphPresenter::deactivate()
 
 }
 
-void Screen_Module2_GraphPresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module2_GraphPresenter::notifyNewUartRxParsedPacket(UartPacket & uartPacket)
 {
-  view.addNewValueToGraphFromUART(s_UARTFrame);
+  view.addNewValueToGraphFromUART(uartPacket);
 }
 
 void Screen_Module2_GraphPresenter::notifyNewCpuUsageValue(uint8_t value)

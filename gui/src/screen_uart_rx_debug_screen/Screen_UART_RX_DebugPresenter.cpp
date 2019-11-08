@@ -16,9 +16,9 @@ void Screen_UART_RX_DebugPresenter::deactivate()
 
 }
 
-void Screen_UART_RX_DebugPresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame)
+void Screen_UART_RX_DebugPresenter::notifyNewUartRxParsedPacket(UartPacket & uartPacket)
 {
-  view.updateGUIFrameData(s_UARTFrame);
+  view.updateGuiPacketData(uartPacket);
 }
 
 void Screen_UART_RX_DebugPresenter::notifyNewCpuUsageValue(uint8_t value)

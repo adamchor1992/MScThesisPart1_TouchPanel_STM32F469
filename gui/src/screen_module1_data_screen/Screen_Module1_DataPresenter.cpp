@@ -16,9 +16,9 @@ void Screen_Module1_DataPresenter::deactivate()
 
 }
 
-void Screen_Module1_DataPresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module1_DataPresenter::notifyNewUartRxParsedPacket(UartPacket & uartPacket)
 {
-  view.updateGUIFrameData(s_UARTFrame);
+  view.updateGuiPacketData(uartPacket);
 }
 
 void Screen_Module1_DataPresenter::notifyNewCpuUsageValue(uint8_t value)

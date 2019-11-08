@@ -16,9 +16,9 @@ void Screen_Module1_SettingsPresenter::deactivate()
 
 }
 
-void Screen_Module1_SettingsPresenter::notifyNewValueToSet(UARTFrameStruct_t & s_UARTFrame)
+void Screen_Module1_SettingsPresenter::notifyNewValueToSet(UartPacket & uartPacket)
 {
-  model->setNewValueToSet(s_UARTFrame);
+  model->setNewValueToSet(uartPacket);
 }
 
 void Screen_Module1_SettingsPresenter::notifyNewCpuUsageValue(uint8_t value)
