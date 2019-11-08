@@ -1248,6 +1248,12 @@
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_pressed.cpp</name>
           </file>
           <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Check_buttons_custom_Check_mark_fill_minus.cpp</name>
+          </file>
+          <file>
+            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Check_buttons_custom_Check_mark_fill_plus.cpp</name>
+          </file>
+          <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</name>
           </file>
           <file>

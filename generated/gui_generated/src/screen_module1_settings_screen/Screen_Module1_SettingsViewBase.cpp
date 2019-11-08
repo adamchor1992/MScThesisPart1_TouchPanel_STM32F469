@@ -201,7 +201,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit10.setDragAcceleration(10);
     scrollWheel_Digit10.setNumberOfItems(11);
     scrollWheel_Digit10.setSelectedItemOffset(10);
-    scrollWheel_Digit10.setDrawableSize(96, 10);
+    scrollWheel_Digit10.setDrawableSize(68, 10);
     scrollWheel_Digit10.setDrawables(scrollWheel_Digit10ListItems, updateItemCallback);
     scrollWheel_Digit10.animateToItem(1, 0);
 
@@ -213,7 +213,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit9.setDragAcceleration(10);
     scrollWheel_Digit9.setNumberOfItems(11);
     scrollWheel_Digit9.setSelectedItemOffset(10);
-    scrollWheel_Digit9.setDrawableSize(96, 10);
+    scrollWheel_Digit9.setDrawableSize(68, 10);
     scrollWheel_Digit9.setDrawables(scrollWheel_Digit9ListItems, updateItemCallback);
     scrollWheel_Digit9.animateToItem(1, 0);
 
@@ -225,7 +225,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit8.setDragAcceleration(10);
     scrollWheel_Digit8.setNumberOfItems(11);
     scrollWheel_Digit8.setSelectedItemOffset(10);
-    scrollWheel_Digit8.setDrawableSize(96, 10);
+    scrollWheel_Digit8.setDrawableSize(68, 10);
     scrollWheel_Digit8.setDrawables(scrollWheel_Digit8ListItems, updateItemCallback);
     scrollWheel_Digit8.animateToItem(1, 0);
 
@@ -237,7 +237,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit7.setDragAcceleration(10);
     scrollWheel_Digit7.setNumberOfItems(11);
     scrollWheel_Digit7.setSelectedItemOffset(10);
-    scrollWheel_Digit7.setDrawableSize(96, 10);
+    scrollWheel_Digit7.setDrawableSize(68, 10);
     scrollWheel_Digit7.setDrawables(scrollWheel_Digit7ListItems, updateItemCallback);
     scrollWheel_Digit7.animateToItem(1, 0);
 
@@ -249,7 +249,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit6.setDragAcceleration(10);
     scrollWheel_Digit6.setNumberOfItems(11);
     scrollWheel_Digit6.setSelectedItemOffset(10);
-    scrollWheel_Digit6.setDrawableSize(96, 10);
+    scrollWheel_Digit6.setDrawableSize(68, 10);
     scrollWheel_Digit6.setDrawables(scrollWheel_Digit6ListItems, updateItemCallback);
     scrollWheel_Digit6.animateToItem(1, 0);
 
@@ -261,7 +261,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit5.setDragAcceleration(10);
     scrollWheel_Digit5.setNumberOfItems(11);
     scrollWheel_Digit5.setSelectedItemOffset(10);
-    scrollWheel_Digit5.setDrawableSize(96, 10);
+    scrollWheel_Digit5.setDrawableSize(68, 10);
     scrollWheel_Digit5.setDrawables(scrollWheel_Digit5ListItems, updateItemCallback);
     scrollWheel_Digit5.animateToItem(0, 0);
 
@@ -273,7 +273,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit4.setDragAcceleration(10);
     scrollWheel_Digit4.setNumberOfItems(11);
     scrollWheel_Digit4.setSelectedItemOffset(10);
-    scrollWheel_Digit4.setDrawableSize(96, 10);
+    scrollWheel_Digit4.setDrawableSize(68, 10);
     scrollWheel_Digit4.setDrawables(scrollWheel_Digit4ListItems, updateItemCallback);
     scrollWheel_Digit4.animateToItem(1, 0);
 
@@ -285,7 +285,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit3.setDragAcceleration(10);
     scrollWheel_Digit3.setNumberOfItems(11);
     scrollWheel_Digit3.setSelectedItemOffset(10);
-    scrollWheel_Digit3.setDrawableSize(96, 10);
+    scrollWheel_Digit3.setDrawableSize(68, 10);
     scrollWheel_Digit3.setDrawables(scrollWheel_Digit3ListItems, updateItemCallback);
     scrollWheel_Digit3.animateToItem(1, 0);
 
@@ -297,7 +297,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit2.setDragAcceleration(10);
     scrollWheel_Digit2.setNumberOfItems(11);
     scrollWheel_Digit2.setSelectedItemOffset(10);
-    scrollWheel_Digit2.setDrawableSize(96, 10);
+    scrollWheel_Digit2.setDrawableSize(68, 10);
     scrollWheel_Digit2.setDrawables(scrollWheel_Digit2ListItems, updateItemCallback);
     scrollWheel_Digit2.animateToItem(1, 0);
 
@@ -309,7 +309,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     scrollWheel_Digit1.setDragAcceleration(10);
     scrollWheel_Digit1.setNumberOfItems(11);
     scrollWheel_Digit1.setSelectedItemOffset(10);
-    scrollWheel_Digit1.setDrawableSize(96, 10);
+    scrollWheel_Digit1.setDrawableSize(68, 10);
     scrollWheel_Digit1.setDrawables(scrollWheel_Digit1ListItems, updateItemCallback);
     scrollWheel_Digit1.animateToItem(1, 0);
 

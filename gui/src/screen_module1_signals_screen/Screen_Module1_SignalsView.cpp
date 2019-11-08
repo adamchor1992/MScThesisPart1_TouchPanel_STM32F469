@@ -30,8 +30,29 @@ Screen_Module1_SignalsView::Screen_Module1_SignalsView()
 	textArea_Parameter4Name.invalidate();
 #endif
 
-	int bottom = Screen_Module1_GraphView::m_GraphRangeBottom * (-1); //make bottom value positive for sake of calculations
+	int bottom = Screen_Module1_GraphView::m_GraphRangeBottom; //make bottom value positive for sake of calculations
+	
+	if (bottom < 0)
+	{
+		bottom = bottom * (-1); //make bottom value positive for sake of calculations
+		setSignMin(Sign::NEGATIVE);
+	}
+	else
+	{
+		setSignMin(Sign::POSITIVE);
+	}
+	
 	int top = Screen_Module1_GraphView::m_GraphRangeTop;
+
+	if (top < 0)
+	{
+		top = top * (-1); //make top value positive for sake of calculations
+		setSignMax(Sign::NEGATIVE);
+	}
+	else
+	{
+		setSignMax(Sign::POSITIVE);
+	}
 
 	setMinScrollWheelValues(bottom);
 	setMaxScrollWheelValues(top);
@@ -84,8 +105,18 @@ void Screen_Module1_SignalsView::setRanges()
 	translateScrollWheelValues(minRangeValues);
 	translateScrollWheelValues(maxRangeValues);
 
-	int minRangeValue = processScrollWheelValues(minRangeValues) * (-1); //negate min range value
+	int minRangeValue = processScrollWheelValues(minRangeValues);
 	int maxRangeValue = processScrollWheelValues(maxRangeValues);
+
+	if (getSignMin() == Sign::NEGATIVE)
+	{
+		minRangeValue = minRangeValue * (-1);
+	}
+
+	if (getSignMax() == Sign::NEGATIVE)
+	{
+		maxRangeValue = maxRangeValue * (-1);
+	}
 
 	if (minRangeValue >= maxRangeValue)
 	{
@@ -165,7 +196,6 @@ void Screen_Module1_SignalsView::setMinScrollWheelValues(int bottom)
 	rest = bottom % 10;
 	scrollWheel_MinDigit10.animateToItem(rest);
 }
-
 
 void Screen_Module1_SignalsView::setMaxScrollWheelValues(int top)
 {
@@ -347,16 +377,6 @@ void Screen_Module1_SignalsView::updateTimeRange(int value)
 	textArea_TimeRange.invalidate();
 }
 
-void Screen_Module1_SignalsView::updateY_AxisMin(int value)
-{
-
-}
-
-void Screen_Module1_SignalsView::updateY_AxisMax(int value)
-{
-
-}
-
 void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
 {
 	if (toggleButton_Auto_Y_Range.getState() == true)
@@ -368,7 +388,6 @@ void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
 
 		textArea_Y_AxisMin.invalidate();
 		textArea_Y_AxisMax.invalidate();
-
 	}
 	else
 	{
@@ -382,15 +401,59 @@ void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
 	}
 }
 
+void Screen_Module1_SignalsView::setSignMin(Sign sign)
+{
+	if (sign == Sign::POSITIVE)
+	{
+		toggleButton_SignMin.forceState(true);
+	}
+	else if(sign == Sign::NEGATIVE)
+	{
+		toggleButton_SignMin.forceState(false);
+	}
+}
+
+void Screen_Module1_SignalsView::setSignMax(Sign sign)
+{
+	if (sign == Sign::POSITIVE)
+	{
+		toggleButton_SignMax.forceState(true);
+	}
+	else if (sign == Sign::NEGATIVE)
+	{
+		toggleButton_SignMax.forceState(false);
+	}
+}
+
+Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::getSignMin()
+{
+	if (toggleButton_SignMin.getState() == true)
+	{
+		return Sign::POSITIVE;
+	}
+	else
+	{
+		return Sign::NEGATIVE;
+	}
+}
+
+Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::getSignMax()
+{
+	if (toggleButton_SignMax.getState() == true)
+	{
+		return Sign::POSITIVE;
+	}
+	else
+	{
+		return Sign::NEGATIVE;
+	}
+}
+
 void Screen_Module1_SignalsView::updateCpuUsage(uint8_t value)
 {
 	Unicode::snprintf(textArea_CPU_UsageBuffer, 4, "%d", value);
 	textArea_CPU_Usage.invalidate();
 }
-
-
-
-
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit1UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
@@ -441,9 +504,6 @@ void Screen_Module1_SignalsView::scrollWheel_MinDigit10UpdateItem(DigitTemplate 
 {
 	item.setDigitWithoutComma(itemIndex);
 }
-
-
-
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit1UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {

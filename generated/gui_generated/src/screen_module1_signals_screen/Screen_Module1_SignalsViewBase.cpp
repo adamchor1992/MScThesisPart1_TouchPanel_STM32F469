@@ -63,12 +63,12 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     textArea_TimeRange.setWildcard(textArea_TimeRangeBuffer);
     textArea_TimeRange.setTypedText(touchgfx::TypedText(T_SINGLEUSEID289));
 
-    textArea_Y_AxisMax.setPosition(477, 192, 173, 38);
+    textArea_Y_AxisMax.setPosition(467, 225, 173, 38);
     textArea_Y_AxisMax.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Y_AxisMax.setLinespacing(0);
     textArea_Y_AxisMax.setTypedText(touchgfx::TypedText(T_SINGLEUSEID292));
 
-    textArea_Y_AxisMin.setPosition(477, 49, 161, 38);
+    textArea_Y_AxisMin.setPosition(473, 87, 161, 38);
     textArea_Y_AxisMin.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Y_AxisMin.setLinespacing(0);
     textArea_Y_AxisMin.setTypedText(touchgfx::TypedText(T_SINGLEUSEID290));
@@ -110,7 +110,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     textArea_Parameter1Name.setWildcard(textArea_Parameter1NameBuffer);
     textArea_Parameter1Name.setTypedText(touchgfx::TypedText(T_SINGLEUSEID320));
 
-    scrollWheel_MaxDigit10.setPosition(311, 230, 38, 105);
+    scrollWheel_MaxDigit10.setPosition(311, 261, 38, 105);
     scrollWheel_MaxDigit10.setHorizontal(false);
     scrollWheel_MaxDigit10.setCircular(true);
     scrollWheel_MaxDigit10.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -118,11 +118,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit10.setDragAcceleration(10);
     scrollWheel_MaxDigit10.setNumberOfItems(10);
     scrollWheel_MaxDigit10.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit10.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit10.setDrawableSize(68, 10);
     scrollWheel_MaxDigit10.setDrawables(scrollWheel_MaxDigit10ListItems, updateItemCallback);
     scrollWheel_MaxDigit10.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit9.setPosition(361, 230, 38, 105);
+    scrollWheel_MaxDigit9.setPosition(361, 261, 38, 105);
     scrollWheel_MaxDigit9.setHorizontal(false);
     scrollWheel_MaxDigit9.setCircular(true);
     scrollWheel_MaxDigit9.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -130,11 +130,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit9.setDragAcceleration(10);
     scrollWheel_MaxDigit9.setNumberOfItems(10);
     scrollWheel_MaxDigit9.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit9.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit9.setDrawableSize(68, 10);
     scrollWheel_MaxDigit9.setDrawables(scrollWheel_MaxDigit9ListItems, updateItemCallback);
     scrollWheel_MaxDigit9.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit8.setPosition(411, 230, 38, 105);
+    scrollWheel_MaxDigit8.setPosition(411, 261, 38, 105);
     scrollWheel_MaxDigit8.setHorizontal(false);
     scrollWheel_MaxDigit8.setCircular(true);
     scrollWheel_MaxDigit8.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -142,11 +142,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit8.setDragAcceleration(10);
     scrollWheel_MaxDigit8.setNumberOfItems(10);
     scrollWheel_MaxDigit8.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit8.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit8.setDrawableSize(68, 10);
     scrollWheel_MaxDigit8.setDrawables(scrollWheel_MaxDigit8ListItems, updateItemCallback);
     scrollWheel_MaxDigit8.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit7.setPosition(461, 230, 38, 105);
+    scrollWheel_MaxDigit7.setPosition(461, 261, 38, 105);
     scrollWheel_MaxDigit7.setHorizontal(false);
     scrollWheel_MaxDigit7.setCircular(true);
     scrollWheel_MaxDigit7.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -154,11 +154,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit7.setDragAcceleration(10);
     scrollWheel_MaxDigit7.setNumberOfItems(10);
     scrollWheel_MaxDigit7.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit7.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit7.setDrawableSize(68, 10);
     scrollWheel_MaxDigit7.setDrawables(scrollWheel_MaxDigit7ListItems, updateItemCallback);
     scrollWheel_MaxDigit7.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit6.setPosition(511, 230, 38, 105);
+    scrollWheel_MaxDigit6.setPosition(511, 261, 38, 105);
     scrollWheel_MaxDigit6.setHorizontal(false);
     scrollWheel_MaxDigit6.setCircular(true);
     scrollWheel_MaxDigit6.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -166,11 +166,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit6.setDragAcceleration(10);
     scrollWheel_MaxDigit6.setNumberOfItems(10);
     scrollWheel_MaxDigit6.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit6.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit6.setDrawableSize(68, 10);
     scrollWheel_MaxDigit6.setDrawables(scrollWheel_MaxDigit6ListItems, updateItemCallback);
     scrollWheel_MaxDigit6.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit5.setPosition(561, 230, 38, 105);
+    scrollWheel_MaxDigit5.setPosition(561, 261, 38, 105);
     scrollWheel_MaxDigit5.setHorizontal(false);
     scrollWheel_MaxDigit5.setCircular(true);
     scrollWheel_MaxDigit5.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -178,11 +178,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit5.setDragAcceleration(10);
     scrollWheel_MaxDigit5.setNumberOfItems(10);
     scrollWheel_MaxDigit5.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit5.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit5.setDrawableSize(68, 10);
     scrollWheel_MaxDigit5.setDrawables(scrollWheel_MaxDigit5ListItems, updateItemCallback);
     scrollWheel_MaxDigit5.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit4.setPosition(611, 230, 38, 105);
+    scrollWheel_MaxDigit4.setPosition(611, 261, 38, 105);
     scrollWheel_MaxDigit4.setHorizontal(false);
     scrollWheel_MaxDigit4.setCircular(true);
     scrollWheel_MaxDigit4.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -190,11 +190,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit4.setDragAcceleration(10);
     scrollWheel_MaxDigit4.setNumberOfItems(10);
     scrollWheel_MaxDigit4.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit4.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit4.setDrawableSize(68, 10);
     scrollWheel_MaxDigit4.setDrawables(scrollWheel_MaxDigit4ListItems, updateItemCallback);
     scrollWheel_MaxDigit4.animateToItem(1, 0);
 
-    scrollWheel_MaxDigit3.setPosition(661, 230, 38, 105);
+    scrollWheel_MaxDigit3.setPosition(661, 261, 38, 105);
     scrollWheel_MaxDigit3.setHorizontal(false);
     scrollWheel_MaxDigit3.setCircular(true);
     scrollWheel_MaxDigit3.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -202,11 +202,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit3.setDragAcceleration(10);
     scrollWheel_MaxDigit3.setNumberOfItems(10);
     scrollWheel_MaxDigit3.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit3.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit3.setDrawableSize(68, 10);
     scrollWheel_MaxDigit3.setDrawables(scrollWheel_MaxDigit3ListItems, updateItemCallback);
     scrollWheel_MaxDigit3.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit2.setPosition(711, 230, 38, 105);
+    scrollWheel_MaxDigit2.setPosition(711, 261, 38, 105);
     scrollWheel_MaxDigit2.setHorizontal(false);
     scrollWheel_MaxDigit2.setCircular(true);
     scrollWheel_MaxDigit2.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -214,11 +214,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit2.setDragAcceleration(10);
     scrollWheel_MaxDigit2.setNumberOfItems(10);
     scrollWheel_MaxDigit2.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit2.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit2.setDrawableSize(68, 10);
     scrollWheel_MaxDigit2.setDrawables(scrollWheel_MaxDigit2ListItems, updateItemCallback);
     scrollWheel_MaxDigit2.animateToItem(0, 0);
 
-    scrollWheel_MaxDigit1.setPosition(762, 230, 38, 105);
+    scrollWheel_MaxDigit1.setPosition(762, 261, 38, 105);
     scrollWheel_MaxDigit1.setHorizontal(false);
     scrollWheel_MaxDigit1.setCircular(true);
     scrollWheel_MaxDigit1.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -226,11 +226,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MaxDigit1.setDragAcceleration(10);
     scrollWheel_MaxDigit1.setNumberOfItems(10);
     scrollWheel_MaxDigit1.setSelectedItemOffset(10);
-    scrollWheel_MaxDigit1.setDrawableSize(96, 10);
+    scrollWheel_MaxDigit1.setDrawableSize(68, 10);
     scrollWheel_MaxDigit1.setDrawables(scrollWheel_MaxDigit1ListItems, updateItemCallback);
     scrollWheel_MaxDigit1.animateToItem(0, 0);
 
-    scrollWheel_MinDigit10.setPosition(311, 87, 38, 105);
+    scrollWheel_MinDigit10.setPosition(311, 119, 38, 105);
     scrollWheel_MinDigit10.setHorizontal(false);
     scrollWheel_MinDigit10.setCircular(true);
     scrollWheel_MinDigit10.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -238,11 +238,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit10.setDragAcceleration(10);
     scrollWheel_MinDigit10.setNumberOfItems(10);
     scrollWheel_MinDigit10.setSelectedItemOffset(10);
-    scrollWheel_MinDigit10.setDrawableSize(96, 10);
+    scrollWheel_MinDigit10.setDrawableSize(68, 10);
     scrollWheel_MinDigit10.setDrawables(scrollWheel_MinDigit10ListItems, updateItemCallback);
     scrollWheel_MinDigit10.animateToItem(0, 0);
 
-    scrollWheel_MinDigit9.setPosition(361, 87, 38, 105);
+    scrollWheel_MinDigit9.setPosition(361, 119, 38, 105);
     scrollWheel_MinDigit9.setHorizontal(false);
     scrollWheel_MinDigit9.setCircular(true);
     scrollWheel_MinDigit9.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -250,11 +250,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit9.setDragAcceleration(10);
     scrollWheel_MinDigit9.setNumberOfItems(10);
     scrollWheel_MinDigit9.setSelectedItemOffset(10);
-    scrollWheel_MinDigit9.setDrawableSize(96, 10);
+    scrollWheel_MinDigit9.setDrawableSize(68, 10);
     scrollWheel_MinDigit9.setDrawables(scrollWheel_MinDigit9ListItems, updateItemCallback);
     scrollWheel_MinDigit9.animateToItem(0, 0);
 
-    scrollWheel_MinDigit8.setPosition(411, 87, 38, 105);
+    scrollWheel_MinDigit8.setPosition(411, 119, 38, 105);
     scrollWheel_MinDigit8.setHorizontal(false);
     scrollWheel_MinDigit8.setCircular(true);
     scrollWheel_MinDigit8.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -262,11 +262,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit8.setDragAcceleration(10);
     scrollWheel_MinDigit8.setNumberOfItems(10);
     scrollWheel_MinDigit8.setSelectedItemOffset(10);
-    scrollWheel_MinDigit8.setDrawableSize(96, 10);
+    scrollWheel_MinDigit8.setDrawableSize(68, 10);
     scrollWheel_MinDigit8.setDrawables(scrollWheel_MinDigit8ListItems, updateItemCallback);
     scrollWheel_MinDigit8.animateToItem(0, 0);
 
-    scrollWheel_MinDigit7.setPosition(461, 87, 38, 105);
+    scrollWheel_MinDigit7.setPosition(461, 119, 38, 105);
     scrollWheel_MinDigit7.setHorizontal(false);
     scrollWheel_MinDigit7.setCircular(true);
     scrollWheel_MinDigit7.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -274,11 +274,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit7.setDragAcceleration(10);
     scrollWheel_MinDigit7.setNumberOfItems(10);
     scrollWheel_MinDigit7.setSelectedItemOffset(10);
-    scrollWheel_MinDigit7.setDrawableSize(96, 10);
+    scrollWheel_MinDigit7.setDrawableSize(68, 10);
     scrollWheel_MinDigit7.setDrawables(scrollWheel_MinDigit7ListItems, updateItemCallback);
     scrollWheel_MinDigit7.animateToItem(0, 0);
 
-    scrollWheel_MinDigit6.setPosition(511, 87, 38, 105);
+    scrollWheel_MinDigit6.setPosition(511, 119, 38, 105);
     scrollWheel_MinDigit6.setHorizontal(false);
     scrollWheel_MinDigit6.setCircular(true);
     scrollWheel_MinDigit6.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -286,11 +286,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit6.setDragAcceleration(10);
     scrollWheel_MinDigit6.setNumberOfItems(10);
     scrollWheel_MinDigit6.setSelectedItemOffset(10);
-    scrollWheel_MinDigit6.setDrawableSize(96, 10);
+    scrollWheel_MinDigit6.setDrawableSize(68, 10);
     scrollWheel_MinDigit6.setDrawables(scrollWheel_MinDigit6ListItems, updateItemCallback);
     scrollWheel_MinDigit6.animateToItem(0, 0);
 
-    scrollWheel_MinDigit5.setPosition(561, 87, 38, 105);
+    scrollWheel_MinDigit5.setPosition(561, 119, 38, 105);
     scrollWheel_MinDigit5.setHorizontal(false);
     scrollWheel_MinDigit5.setCircular(true);
     scrollWheel_MinDigit5.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -298,11 +298,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit5.setDragAcceleration(10);
     scrollWheel_MinDigit5.setNumberOfItems(10);
     scrollWheel_MinDigit5.setSelectedItemOffset(10);
-    scrollWheel_MinDigit5.setDrawableSize(96, 10);
+    scrollWheel_MinDigit5.setDrawableSize(68, 10);
     scrollWheel_MinDigit5.setDrawables(scrollWheel_MinDigit5ListItems, updateItemCallback);
     scrollWheel_MinDigit5.animateToItem(0, 0);
 
-    scrollWheel_MinDigit4.setPosition(611, 87, 38, 105);
+    scrollWheel_MinDigit4.setPosition(611, 119, 38, 105);
     scrollWheel_MinDigit4.setHorizontal(false);
     scrollWheel_MinDigit4.setCircular(true);
     scrollWheel_MinDigit4.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -310,11 +310,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit4.setDragAcceleration(10);
     scrollWheel_MinDigit4.setNumberOfItems(10);
     scrollWheel_MinDigit4.setSelectedItemOffset(10);
-    scrollWheel_MinDigit4.setDrawableSize(96, 10);
+    scrollWheel_MinDigit4.setDrawableSize(68, 10);
     scrollWheel_MinDigit4.setDrawables(scrollWheel_MinDigit4ListItems, updateItemCallback);
     scrollWheel_MinDigit4.animateToItem(1, 0);
 
-    scrollWheel_MinDigit3.setPosition(661, 87, 38, 105);
+    scrollWheel_MinDigit3.setPosition(661, 119, 38, 105);
     scrollWheel_MinDigit3.setHorizontal(false);
     scrollWheel_MinDigit3.setCircular(true);
     scrollWheel_MinDigit3.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -322,11 +322,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit3.setDragAcceleration(10);
     scrollWheel_MinDigit3.setNumberOfItems(10);
     scrollWheel_MinDigit3.setSelectedItemOffset(10);
-    scrollWheel_MinDigit3.setDrawableSize(96, 10);
+    scrollWheel_MinDigit3.setDrawableSize(68, 10);
     scrollWheel_MinDigit3.setDrawables(scrollWheel_MinDigit3ListItems, updateItemCallback);
     scrollWheel_MinDigit3.animateToItem(0, 0);
 
-    scrollWheel_MinDigit2.setPosition(711, 87, 38, 105);
+    scrollWheel_MinDigit2.setPosition(711, 119, 38, 105);
     scrollWheel_MinDigit2.setHorizontal(false);
     scrollWheel_MinDigit2.setCircular(true);
     scrollWheel_MinDigit2.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -334,11 +334,11 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit2.setDragAcceleration(10);
     scrollWheel_MinDigit2.setNumberOfItems(10);
     scrollWheel_MinDigit2.setSelectedItemOffset(10);
-    scrollWheel_MinDigit2.setDrawableSize(96, 10);
+    scrollWheel_MinDigit2.setDrawableSize(68, 10);
     scrollWheel_MinDigit2.setDrawables(scrollWheel_MinDigit2ListItems, updateItemCallback);
     scrollWheel_MinDigit2.animateToItem(0, 0);
 
-    scrollWheel_MinDigit1.setPosition(762, 87, 38, 105);
+    scrollWheel_MinDigit1.setPosition(762, 119, 38, 105);
     scrollWheel_MinDigit1.setHorizontal(false);
     scrollWheel_MinDigit1.setCircular(true);
     scrollWheel_MinDigit1.setEasingEquation(touchgfx::EasingEquations::backEaseOut);
@@ -346,16 +346,22 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     scrollWheel_MinDigit1.setDragAcceleration(10);
     scrollWheel_MinDigit1.setNumberOfItems(10);
     scrollWheel_MinDigit1.setSelectedItemOffset(10);
-    scrollWheel_MinDigit1.setDrawableSize(96, 10);
+    scrollWheel_MinDigit1.setDrawableSize(68, 10);
     scrollWheel_MinDigit1.setDrawables(scrollWheel_MinDigit1ListItems, updateItemCallback);
     scrollWheel_MinDigit1.animateToItem(0, 0);
 
-    buttonWithLabel_SetRanges.setXY(468, 350);
+    buttonWithLabel_SetRanges.setXY(468, 368);
     buttonWithLabel_SetRanges.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
     buttonWithLabel_SetRanges.setLabelText(touchgfx::TypedText(T_SINGLEUSEID452));
     buttonWithLabel_SetRanges.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetRanges.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_SetRanges.setAction(buttonCallback);
+
+    toggleButton_SignMax.setXY(260, 286);
+    toggleButton_SignMax.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CUSTOM_CHECK_MARK_FILL_MINUS_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CUSTOM_CHECK_MARK_FILL_PLUS_ID));
+
+    toggleButton_SignMin.setXY(260, 144);
+    toggleButton_SignMin.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CUSTOM_CHECK_MARK_FILL_MINUS_ID), touchgfx::Bitmap(BITMAP_BLUE_CHECK_BUTTONS_CUSTOM_CHECK_MARK_FILL_PLUS_ID));
 
     add(backgroundBox_Black);
     add(toggleButton_Parameter4);
@@ -396,6 +402,8 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     add(scrollWheel_MinDigit2);
     add(scrollWheel_MinDigit1);
     add(buttonWithLabel_SetRanges);
+    add(toggleButton_SignMax);
+    add(toggleButton_SignMin);
 }
 
 void Screen_Module1_SignalsViewBase::setupScreen()

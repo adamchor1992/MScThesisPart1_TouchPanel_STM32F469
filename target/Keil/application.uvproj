@@ -924,6 +924,16 @@
               <FilePath>../../generated/images/src/__designer/blue_check_buttons_check_mark_pressed.cpp</FilePath>
             </File>
             <File>
+              <FileName>Blue_Check_buttons_custom_Check_mark_fill_minus.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_check_buttons_custom_check_mark_fill_minus.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Check_buttons_custom_Check_mark_fill_plus.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/__designer/blue_check_buttons_custom_check_mark_fill_plus.cpp</FilePath>
+            </File>
+            <File>
               <FileName>blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</FilePath>

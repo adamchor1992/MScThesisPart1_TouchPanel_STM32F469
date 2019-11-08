@@ -133,34 +133,34 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter9Name;
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter10Name;
     touchgfx::ScrollWheel scrollWheel_Digit10;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit10ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit10ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit9;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit9ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit9ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit8;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit8ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit8ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit7;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit7ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit7ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit6;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit6ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit6ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit5;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit5ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit5ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit4;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit4ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit4ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit3;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit3ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit3ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit2;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit2ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit2ListItems;
 
     touchgfx::ScrollWheel scrollWheel_Digit1;
-    touchgfx::DrawableListItems<DigitTemplate, 2> scrollWheel_Digit1ListItems;
+    touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit1ListItems;
 
     touchgfx::TextArea textArea_Plus;
     touchgfx::RadioButton radioButton_Plus;

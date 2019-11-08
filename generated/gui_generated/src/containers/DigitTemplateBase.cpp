@@ -8,12 +8,12 @@
 DigitTemplateBase::DigitTemplateBase()
 {
     setWidth(38);
-    setHeight(96);
+    setHeight(68);
 
-    backgroundBox_Black.setPosition(0, 0, 38, 96);
+    backgroundBox_Black.setPosition(0, 0, 38, 68);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
-    textArea_Digit.setPosition(0, 0, 38, 68);
+    textArea_Digit.setPosition(0, -12, 38, 65);
     textArea_Digit.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Digit.setLinespacing(0);
     Unicode::snprintf(textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID453).getText());
