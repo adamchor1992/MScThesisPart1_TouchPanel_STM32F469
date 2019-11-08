@@ -42,6 +42,27 @@ void Screen_Module1_GraphView::setGraphRanges(int bottom, int top, int right)
   m_GraphRangeRight = right;
 }
 
+void Screen_Module1_GraphView::resetGraph()
+{
+  for (int i = 0; i < GRAPHS_COUNT; i++)
+  {
+    m_Graphs[i]->clear();
+    m_Graphs[i]->invalidate();
+    
+    m_TickCounter = 0;
+  }
+  
+  /*Initialize graph ranges text areas */
+  Unicode::snprintf(textArea_GraphRangeTopBuffer, 12, "%d", m_GraphRangeTop);
+  textArea_GraphRangeTop.invalidate();
+  
+  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 12, "%d", m_GraphRangeBottom);
+  textArea_GraphRangeBottom.invalidate();
+  
+  Unicode::snprintf(textArea_GraphRangeRightBuffer, 10, "%d", m_GraphRangeRight);
+  textArea_GraphRangeBottom.invalidate();
+}
+
 Screen_Module1_GraphView::Screen_Module1_GraphView()
 {
   m_GraphRangeBottomChangedFlag = false;
@@ -198,8 +219,6 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     m_Value = m_Value * (-1);
   }
   
-  printf("Graph frame has value: %d\n", m_Value);
-  
   if (m_AutoRangeEnabled == true)
   {
     for (int i = 0; i < GRAPHS_COUNT; i++)
@@ -241,8 +260,10 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     m_TickCounter = 0;
   }
   
-  printf("Graph bottom range: %d\n", m_GraphYellow.getRangeBottom());
-  printf("Graph top range: %d\n", m_GraphYellow.getRangeTop());
+  printf("Graph real bottom range: %d\n", m_GraphYellow.getRangeBottom());
+  printf("Graph real top range: %d\n", m_GraphYellow.getRangeTop());
+  printf("Graph virtual bottom range: %d\n", m_GraphRangeBottom);
+  printf("Graph virtual top range: %d\n", m_GraphRangeTop);
   printf("Value after scaling: %d\n", m_Value);
   
   switch (s_UARTFrame.parameter)
@@ -309,6 +330,45 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UARTFrameStruct_t & s_
     break;
   }
 #endif
+}
+
+void Screen_Module1_GraphView::setNewGraphRange(UARTFrameStruct_t & s_UARTFrame)
+{
+  int value = 0;
+  
+  switch(s_UARTFrame.function)
+  {
+  case '7':
+    value = int(std::stof((char*)(s_UARTFrame.payload)));
+    
+    if(s_UARTFrame.sign == '2')
+    {
+      value = value * (-1);
+    }
+    
+    setGraphRanges(value, m_GraphRangeTop, m_GraphRangeRight);
+    
+    resetGraph();
+    
+    break;
+    
+  case '8':    
+    value = int(std::stof((char*)(s_UARTFrame.payload)));
+    
+    if(s_UARTFrame.sign == '2')
+    {
+      value = value * (-1);
+    }
+    
+    setGraphRanges(m_GraphRangeBottom, value, m_GraphRangeRight);
+    
+    resetGraph();
+    
+    break;
+    
+  default:
+    printf("Unknown function in graph view\n");
+  }
 }
 
 uint8_t Screen_Module1_GraphView::activeSignalsCount()

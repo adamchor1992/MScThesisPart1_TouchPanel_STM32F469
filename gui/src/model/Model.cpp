@@ -92,6 +92,16 @@ void Model::processPacket(int module)
       /*Go back to main menu screen*/
       static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
     }
+    else if(s_UARTFrame.function == '7') //set graph range minimum
+    {
+      printf("Set graph range minimum packet received\n");
+      m_ModelListener->notifyNewGraphRange(s_UARTFrame);
+    }
+    else if(s_UARTFrame.function == '8') //set graph range maximum
+    {
+      printf("Set graph range maximum packet received\n");
+      m_ModelListener->notifyNewGraphRange(s_UARTFrame);
+    }
     else
     {
       printf("Wrong frame type for module %d in active state\n", module);

@@ -24,11 +24,15 @@ public:
   
   virtual void handleTickEvent();
   virtual void addNewValueToGraphFromUART(UARTFrameStruct_t & s_UARTFrame);
+  void setNewGraphRange(UARTFrameStruct_t & s_UARTFrame);
+  
   uint8_t activeSignalsCount();
   void updateCpuUsage(uint8_t value);
   
   static void setGraphRanges(int bottom, int top, int right);
 
+  void resetGraph();
+  
   static int getGraphRangeBottom() { return m_GraphRangeBottom; }
   static int getGraphRangeTop() { return m_GraphRangeTop; }
   

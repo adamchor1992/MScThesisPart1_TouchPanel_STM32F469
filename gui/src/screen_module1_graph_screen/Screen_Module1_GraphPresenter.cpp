@@ -21,6 +21,11 @@ void Screen_Module1_GraphPresenter::notifyNewUART_RX_ParsedFrame(UARTFrameStruct
   view.addNewValueToGraphFromUART(s_UARTFrame);
 }
 
+void Screen_Module1_GraphPresenter::notifyNewGraphRange(UARTFrameStruct_t & s_UARTFrame)
+{
+  view.setNewGraphRange(s_UARTFrame);
+}
+
 void Screen_Module1_GraphPresenter::notifyNewCpuUsageValue(uint8_t value)
 {
   view.updateCpuUsage(value);
