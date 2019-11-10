@@ -32,9 +32,9 @@
 
 #define CANVAS_BUFFER_SIZE 10000
 
-xQueueHandle msgQueueUartReceive;
-xQueueHandle msgQueueUartTransmit;
-xQueueHandle msgQueueUartRxProcessedPacket;
+xQueueHandle msgQueueUartRx;
+xQueueHandle msgQueueUartTx;
+
 xSemaphoreHandle uartRxSemaphore;
 xSemaphoreHandle uartTxSemaphore;
 
@@ -52,8 +52,8 @@ void MX_USART6_UART_Init(UART_HandleTypeDef *huart);
 
 void Error_Handler(void);
 
-/*Table to which UART interrupt writes*/
-uint8_t uartReceivedPacketTable[PACKET_SIZE] = {0};
+/*Object to which UART interrupt writes*/
+UartPacket uartPacket;
 /* General stuff end*/
 
 /*UART receive interrupt callback function*/
@@ -62,11 +62,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   BSP_LED_Toggle(LED4);
   signed long xHigherPriorityTaskWoken;
   
-  /*Insert uartReceivedPacketTable table filled by UART interrupt to queue for UART task to process*/
-  xQueueSendToBackFromISR(msgQueueUartReceive, uartReceivedPacketTable, &xHigherPriorityTaskWoken); 
-  
   /*Enable interrupt listening again*/
-  HAL_UART_Receive_IT(&huart6, uartReceivedPacketTable, PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartPacket.getPacketTable(), PACKET_SIZE);
   
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
@@ -122,9 +119,8 @@ int main(void)
               NULL);
   
   /*Create message queues for UART task*/
-  msgQueueUartReceive = xQueueCreate(QUEUES_SIZE, sizeof(UartPacket));
-  msgQueueUartRxProcessedPacket = xQueueCreate(QUEUES_SIZE, sizeof(UartPacket));
-  msgQueueUartTransmit = xQueueCreate(QUEUES_SIZE, PACKET_SIZE * sizeof(uint8_t));
+  msgQueueUartRx = xQueueCreate(QUEUES_SIZE, sizeof(UartPacket));
+  msgQueueUartTx = xQueueCreate(QUEUES_SIZE, sizeof(UartPacket));
   
   /*Create UART semaphore*/
   uartRxSemaphore = xSemaphoreCreateBinary();
@@ -154,29 +150,29 @@ static void guiTask(void* params)
 static void uartRxTask(void* params)
 {  
   /*Start receiving*/
-  HAL_UART_Receive_IT(&huart6, uartReceivedPacketTable, PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartPacket.getPacketTable(), PACKET_SIZE);
   
   printf("RX task initialized\n");
   
   while(true)
   {   
-    /*Check if interrupt occured so there is new data in uartReceivedPacketTable table*/
+    /*Check if interrupt occured so there is new data in uartPacket table*/
     if(xSemaphoreTake(uartRxSemaphore, portMAX_DELAY) == pdPASS)
     {
       /*Ensure that there is no context switch during packet processing*/
       taskENTER_CRITICAL();
       
       //CRC check
-      if(checkCrc32(uartReceivedPacketTable) == true)
+      if(uartPacket.checkCrc32() == true)
       {
         /*Packet is correct and can be further processed*/
         
-        UartPacket uartPacket(uartReceivedPacketTable);
+        uartPacket.updateFields();
+      
+        xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
         
-        xQueueSendToBack(msgQueueUartRxProcessedPacket, &uartPacket, NO_WAITING);
-        
-        /*Reset packet table to all zeroes*/
-        clearPacketTable(uartReceivedPacketTable);
+        /*Reset packet to all zeroes*/
+        uartPacket.clearPacket();
       }
       else
       {
@@ -190,7 +186,7 @@ static void uartRxTask(void* params)
         BSP_LED_On(LED4);
         
         /*Reset packet to all zeroes*/
-        clearPacketTable(uartReceivedPacketTable);
+         uartPacket.clearPacket();
       }
       
       taskEXIT_CRITICAL();
@@ -200,8 +196,6 @@ static void uartRxTask(void* params)
 
 static void uartTxTask(void* params)
 {
-  uint8_t uartMessageToTransmit[PACKET_SIZE] = {0};
-  
   printf("TX task initialized\n");
   
   while(true)
@@ -209,16 +203,18 @@ static void uartTxTask(void* params)
     /*Take TxSemaphore*/
     if(xSemaphoreTake(uartTxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      taskENTER_CRITICAL(); 
+      taskENTER_CRITICAL();
       
-      xQueueReceive(msgQueueUartTransmit, uartMessageToTransmit, NO_WAITING);                  
-      appendCrcToPacketTable(uartMessageToTransmit);
+      UartPacket uartPacket;
       
-      printf("TX Packet is: %.16s\n", uartMessageToTransmit);
+      xQueueReceive(msgQueueUartTx, &uartPacket, NO_WAITING);
       
-      HAL_UART_Transmit(&huart6, uartMessageToTransmit, PACKET_SIZE, UART_TX_WAITING);
+      uartPacket.updatePacketTable();
+      uartPacket.appendCrcToPacket();
       
-      taskEXIT_CRITICAL(); 
+      HAL_UART_Transmit(&huart6, static_cast<uint8_t*>(uartPacket), PACKET_SIZE, UART_TX_WAITING);
+      
+      taskEXIT_CRITICAL();
     }
   }
 }

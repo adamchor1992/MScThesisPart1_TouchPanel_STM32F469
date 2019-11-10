@@ -13,8 +13,10 @@
 #include "uart_packet.h"
 #include "utilities.h"
 
-extern xQueueHandle msgQueueUartRxProcessedPacket;
-extern xQueueHandle msgQueueUartTransmit;
+#define NO_WAITING 0
+
+extern xQueueHandle msgQueueUartRx;
+extern xQueueHandle msgQueueUartTx;
 extern xSemaphoreHandle uartTxSemaphore;
 
 extern UART_HandleTypeDef huart6;
@@ -40,12 +42,12 @@ void Model::tick()
 {
 #ifndef SIMULATOR
   //get new UART message from message queue (if any)
-  if (uxQueueMessagesWaiting(msgQueueUartRxProcessedPacket) > 0)
+  if (uxQueueMessagesWaiting(msgQueueUartRx) > 0)
   {    
     UartPacket uartPacket;
     
     /*Packet is validated at this point and can be directly recovered from queue and copied to local uartPacket structure*/    
-    xQueueReceive(msgQueueUartRxProcessedPacket, &uartPacket, 0);
+    xQueueReceive(msgQueueUartRx, &uartPacket, 0);
     
     switch(uartPacket.getModule())
     {
@@ -208,11 +210,7 @@ bool Model::isModuleActive(ModuleID module)
 void Model::setNewValueToSet(const UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
-  uint8_t UART_ValueToTransmit[PACKET_SIZE] = {0};
-  
-  uartPacket.convertToUartPacketTable(UART_ValueToTransmit);
-  
-  xQueueSendToBack(msgQueueUartTransmit, UART_ValueToTransmit, 0);
+  xQueueSendToBack(msgQueueUartTx, &uartPacket, NO_WAITING);
   
   /*Give semaphore to activate UART_Tx task*/
   xSemaphoreGive(uartTxSemaphore);

@@ -25,6 +25,11 @@ UartPacket::UartPacket(const uint8_t uartPacketTable[]) : m_Payload {0}, m_Crc{0
   {
     m_Payload[i] = uartPacketTable[6 + i];
   }
+  
+  m_Crc[0] = uartPacketTable[16];
+  m_Crc[1] = uartPacketTable[17];
+  m_Crc[2] = uartPacketTable[18];
+  m_Crc[3] = uartPacketTable[19];
 }
 
 void UartPacket::setSource(Source source)
@@ -193,7 +198,7 @@ void UartPacket::setLengthAscii(int length)
 
 uint8_t* UartPacket::setPayload()
 {
-    return m_Payload;
+  return m_Payload;
 }
 
 Source UartPacket::getSource() const
@@ -362,19 +367,167 @@ const uint8_t* UartPacket::getPayload() const
   return m_Payload;
 }
 
-void UartPacket::convertToUartPacketTable(uint8_t uartPacketTable[]) const
+void UartPacket::appendCrcToPacket()
 {
-  uartPacketTable[0] = m_Source;
-  uartPacketTable[1] = m_Module;
-  uartPacketTable[2] = m_Function;
-  uartPacketTable[3] = m_Parameter;
-  uartPacketTable[4] = m_Sign;
-  uartPacketTable[5] = m_Length;
+  uint32_t crcValueCalculated = calculateCrc32((char*)m_PacketTable, 16);
+  uint32_t* crcAddress = &crcValueCalculated;
+  uint8_t *p1, *p2, *p3, *p4;
+  
+  p1 = ((uint8_t*)crcAddress);
+  p2 = ((uint8_t*)crcAddress + 1);
+  p3 = ((uint8_t*)crcAddress + 2);
+  p4 = ((uint8_t*)crcAddress + 3);
+  
+  m_Crc[3] = *p1;
+  m_Crc[2] = *p2;
+  m_Crc[1] = *p3;
+  m_Crc[0] = *p4;
+}
+
+UartPacket::operator uint8_t*()
+{
+  for(int i=0; i<PACKET_SIZE; i++)
+  {
+    m_PacketTable[i] = 0;
+  }
+  
+  m_PacketTable[0] = m_Source;
+  m_PacketTable[1] = m_Module;
+  m_PacketTable[2] = m_Function;
+  m_PacketTable[3] = m_Parameter;
+  m_PacketTable[4] = m_Sign;
+  m_PacketTable[5] = m_Length;
   
   uint8_t lengthInt = m_Length - '0';
   
   for(uint8_t i=0; i < lengthInt; i++)
   {
-    uartPacketTable[6 + i] = m_Payload[i]; //payload starts from 6th element up to [6 + length] element
+    m_PacketTable[6 + i] = m_Payload[i]; //payload starts from 6th element up to [6 + length] element
+  }
+  
+  m_PacketTable[16] = m_Crc[0]; 
+  m_PacketTable[17] = m_Crc[1] ;
+  m_PacketTable[18] = m_Crc[2] ;
+  m_PacketTable[19] = m_Crc[3];
+  
+  return m_PacketTable;
+}
+
+void UartPacket::printCrc()
+{
+  printf("CRC1: %d\n", m_Crc[0]);
+  printf("CRC2: %d\n", m_Crc[1]);
+  printf("CRC3: %d\n", m_Crc[2]);
+  printf("CRC4: %d\n", m_Crc[3]);
+}
+
+bool UartPacket::checkCrc32() const
+{
+  uint8_t crcValueReceivedRaw8Bit[4];
+  uint32_t crcValueCalculated;
+  uint32_t crcValueReceived;
+  
+  crcValueCalculated = calculateCrc32((char*)m_PacketTable, 16);
+  
+  crcValueReceivedRaw8Bit[0] = m_PacketTable[16];
+  crcValueReceivedRaw8Bit[1] = m_PacketTable[17];
+  crcValueReceivedRaw8Bit[2] = m_PacketTable[18];
+  crcValueReceivedRaw8Bit[3] = m_PacketTable[19];
+  
+  crcValueReceived = crcValueReceivedRaw8Bit[3] | crcValueReceivedRaw8Bit[2] << 8 | crcValueReceivedRaw8Bit[1] << 16 | crcValueReceivedRaw8Bit[0] << 24;
+  
+  if(crcValueCalculated == crcValueReceived)
+    return true;
+  else
+    return false;
+}
+
+void UartPacket::printPacket()
+{
+  printf("Source %c\n", m_Source);
+  printf("Module %c\n", m_Module);
+  printf("Function %c\n", m_Function);
+  printf("Parameter %c\n", m_Parameter);
+  printf("Sign %c\n", m_Sign);
+  printf("Length char %c\n", m_Length);
+  printf("Length int %d\n", m_Length);
+  printf("Payload %.10s\n", m_Payload);
+  printf("CRC1: %d\n", m_Crc[0]);
+  printf("CRC2: %d\n", m_Crc[1]);
+  printf("CRC3: %d\n", m_Crc[2]);
+  printf("CRC4: %d\n", m_Crc[3]);
+}
+
+void UartPacket::updateFields()
+{
+  m_Source = m_PacketTable[0];
+  m_Module = m_PacketTable[1];
+  m_Function = m_PacketTable[2];
+  m_Parameter = m_PacketTable[3];
+  m_Sign = m_PacketTable[4];
+  m_Length = m_PacketTable[5];
+  
+  uint8_t length_int = m_Length - '0';
+  
+  for(uint8_t i=0; i < length_int; i++)
+  {
+    m_Payload[i] = m_PacketTable[6 + i];
+  }
+  
+  m_Crc[0] = m_PacketTable[16];
+  m_Crc[1] = m_PacketTable[17];
+  m_Crc[2] = m_PacketTable[18];
+  m_Crc[3] = m_PacketTable[19];
+}
+
+void UartPacket::updatePacketTable()
+{
+  for(int i=0; i<PACKET_SIZE; i++)
+  {
+    m_PacketTable[i] = 0;
+  }
+  
+  m_PacketTable[0] = m_Source;
+  m_PacketTable[1] = m_Module;
+  m_PacketTable[2] = m_Function;
+  m_PacketTable[3] = m_Parameter;
+  m_PacketTable[4] = m_Sign;
+  m_PacketTable[5] = m_Length;
+  
+  uint8_t lengthInt = m_Length - '0';
+  
+  for(uint8_t i=0; i < lengthInt; i++)
+  {
+    m_PacketTable[6 + i] = m_Payload[i]; //payload starts from 6th element up to [6 + length] element
+  }
+  
+  m_PacketTable[16] = m_Crc[0]; 
+  m_PacketTable[17] = m_Crc[1] ;
+  m_PacketTable[18] = m_Crc[2] ;
+  m_PacketTable[19] = m_Crc[3];
+}
+
+void UartPacket::clearPacket()
+{
+  m_Source = 0;
+  m_Module = 0;
+  m_Function = 0;
+  m_Parameter = 0;
+  m_Sign = 0;
+  m_Length = 0;
+  
+  for(uint8_t i=0; i < PAYLOAD_SIZE; i++)
+  {
+    m_Payload[i] = 0;
+  }
+  
+  m_Crc[0] = 0;
+  m_Crc[1] = 0;
+  m_Crc[2] = 0;
+  m_Crc[3] = 0;
+  
+  for(int i=0; i<PACKET_SIZE; i++)
+  {
+    m_PacketTable[i] = 0;
   }
 }
