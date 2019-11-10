@@ -23,7 +23,7 @@ public:
   virtual void tearDownScreen();
   
   virtual void handleTickEvent();
-  virtual void addNewValueToGraphFromUART(UartPacket & uartPacket);
+  virtual void addNewValueToGraphFromUart(UartPacket & uartPacket);
   void setNewGraphRange(UartPacket & uartPacket);
   
   uint8_t activeSignalsCount();
@@ -37,8 +37,7 @@ public:
   static int getGraphRangeTop() { return m_GraphRangeTop; }
   
 private:
-  int m_TickCounter;
-  int m_Value;
+  int m_TimeBase;
   
   Image m_Background;
   Graph m_GraphYellow;

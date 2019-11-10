@@ -849,6 +849,11 @@
               <FilePath>../../gui/src/screen_uart_rx_debug_screen/screen_uart_rx_debugview.cpp</FilePath>
             </File>
             <File>
+              <FileName>uart_packet.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../gui/src/uart_packet.cpp</FilePath>
+            </File>
+            <File>
               <FileName>utilities.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/utilities.cpp</FilePath>
@@ -932,21 +937,6 @@
               <FileName>Blue_Check_buttons_custom_Check_mark_fill_plus.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/images/src/__designer/blue_check_buttons_custom_check_mark_fill_plus.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>blue_slider_horizontal_medium_slider_round_back.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_medium_slider_round_back.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>blue_slider_horizontal_medium_slider_round_fill.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/images/src/__designer/blue_slider_horizontal_medium_slider_round_fill.cpp</FilePath>
             </File>
             <File>
               <FileName>Blue_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_knob.cpp</FileName>
@@ -1082,21 +1072,6 @@
               <FileName>Screen_Module1_SignalsViewBase.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/gui_generated/src/screen_module1_signals_screen/screen_module1_signalsviewbase.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_DataViewBase.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_module2_data_screen/screen_module2_dataviewbase.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_GraphViewBase.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_module2_graph_screen/screen_module2_graphviewbase.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_SettingsViewBase.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_module2_settings_screen/screen_module2_settingsviewbase.cpp</FilePath>
             </File>
             <File>
               <FileName>Screen_UART_RX_DebugViewBase.cpp</FileName>

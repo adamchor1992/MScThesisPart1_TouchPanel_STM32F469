@@ -64,14 +64,14 @@ void Screen_Module1_DataView::setupScreen()
 {
 #ifndef SIMULATOR
   /*Restart UART RX*/
-  extern uint8_t uartReceivedPacket[PACKET_SIZE];
+  extern uint8_t uartReceivedPacketTable[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacketTable, PACKET_SIZE);
 #endif
   
   textArea_Parameter1Name.setClickAction(TextAreaClickedCallback);
@@ -87,34 +87,33 @@ void Screen_Module1_DataView::tearDownScreen()
 
 void Screen_Module1_DataView::updateGuiPacketData(UartPacket & uartPacket)
 {
-  //value to display
   uint16_t stringToDisplay[10] = { 0 };
   
-  uint8_t length_int = uartPacket.length - '0'; //convert char to int length
+  uint8_t length_int = uartPacket.getLength();
   
   for (int i = 0; i < length_int; i++)
   {
-    stringToDisplay[i] = uartPacket.payload[i];
+    stringToDisplay[i] = uartPacket.getPayload()[i];
   }
   
 #ifndef SIMULATOR
-  if (uartPacket.module == '1')
+  if (uartPacket.getModule() == ModuleID::MODULE1)
   {
-    switch(uartPacket.parameter)
+    switch(uartPacket.getParameter())
     {
-    case '1':
+    case Parameter::PARAMETER1:
       Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", stringToDisplay);
       textArea_Parameter1Value.invalidate();
       break;
-    case '2':
+    case Parameter::PARAMETER2:
       Unicode::snprintf(textArea_Parameter2ValueBuffer, TEXTAREA_PARAMETER2VALUE_SIZE, "%s", stringToDisplay);
       textArea_Parameter2Value.invalidate();
       break;
-    case '3':
+    case Parameter::PARAMETER3:
       Unicode::snprintf(textArea_Parameter3ValueBuffer, TEXTAREA_PARAMETER3VALUE_SIZE, "%s", stringToDisplay);
       textArea_Parameter3Value.invalidate();
       break;
-    case '4':
+    case Parameter::PARAMETER4:
       Unicode::snprintf(textArea_Parameter4ValueBuffer, TEXTAREA_PARAMETER4VALUE_SIZE, "%s", stringToDisplay);
       textArea_Parameter4Value.invalidate();
       break;

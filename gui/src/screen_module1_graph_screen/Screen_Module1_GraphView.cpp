@@ -49,7 +49,7 @@ void Screen_Module1_GraphView::resetGraph()
     m_Graphs[i]->clear();
     m_Graphs[i]->invalidate();
     
-    m_TickCounter = 0;
+    m_TimeBase = 0;
   }
   
   /*Initialize graph ranges text areas */
@@ -73,7 +73,7 @@ Screen_Module1_GraphView::Screen_Module1_GraphView()
   m_PreviousBlue_X = 0;
   m_PreviousGreen_X = 0;
   
-  m_TickCounter = 0;
+  m_TimeBase = 0;
   
   m_Graphs[0] = &m_GraphYellow;
   m_Graphs[1] = &m_GraphRed;
@@ -85,17 +85,17 @@ void Screen_Module1_GraphView::setupScreen()
 {
 #ifndef SIMULATOR
   /*Restart UART RX*/
-  extern uint8_t uartReceivedPacket[PACKET_SIZE];
+  extern uint8_t uartReceivedPacketTable[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacketTable, PACKET_SIZE);
 #endif
   
-  m_TickCounter = 0;
+  m_TimeBase = 0;
   
   // Set the outer dimensions and color of the graphs
   m_GraphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
@@ -138,12 +138,12 @@ void Screen_Module1_GraphView::tearDownScreen()
 void Screen_Module1_GraphView::handleTickEvent()
 {
 #ifdef SIMULATOR
-  static int value1 = INITIAL_GRAPH_RANGE_BOTTOM;
+  static int value = INITIAL_GRAPH_RANGE_BOTTOM;
   
   static int valueGraph;
-
-  valueGraph = int((((1 - (double(m_GraphRangeTop - value1) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
-
+  
+  valueGraph = int((((1 - (double(m_GraphRangeTop - value) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
+  
   static bool rising = true;
   
   static int multiplier = 1;
@@ -152,25 +152,25 @@ void Screen_Module1_GraphView::handleTickEvent()
   
   if (rising)
   {
-    value1 = value1 + increment;
+    value = value + increment;
   }
   else
   {
-    value1 = value1 - increment;
+    value = value - increment;
   }
   
-  if (value1 >= 10000)
+  if (value >= 10000)
   {
     rising = false;
   }
-  else if(value1 <= -10000)
+  else if(value <= -10000)
   {
     rising = true;
   }
   
   m_TickCounter += 1;
   
-  //value1 = multiplier * sin(m_TickCounter * 3.14159/180) * 100.0;
+  //value = multiplier * sin(m_TickCounter * 3.14159/180) * 100.0;
   
   if (m_TickCounter >= m_GraphRangeRight)
   {
@@ -185,7 +185,7 @@ void Screen_Module1_GraphView::handleTickEvent()
   //touchgfx_printf("Graph bottom range %d\n", m_GraphRangeBottom);
   //touchgfx_printf("Graph bottom range %d\n", m_GraphYellow.getRangeBottom());
   //touchgfx_printf("Graph top range %d\n", m_GraphYellow.getRangeTop());
-  //touchgfx_printf("Value1 after scaling %d\n", value1);
+  //touchgfx_printf("Value1 after scaling %d\n", value);
   
   if (m_Parameter1GraphEnabled == true)
   {
@@ -198,25 +198,25 @@ void Screen_Module1_GraphView::handleTickEvent()
     {
       m_PreviousYellow_X = m_TickCounter;
     }
-
+    
     m_GraphYellow.addValue(m_TickCounter, valueGraph);
   }
 #endif
 }
 
-void Screen_Module1_GraphView::addNewValueToGraphFromUART(UartPacket & uartPacket)
+void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
   BSP_LED_Toggle(LED3);
   
-  m_Value = int(std::stof((char*)(uartPacket.payload)));
+  int value = int(std::stof((char*)(uartPacket.getPayload())));
   
-  m_Value = int((((1 - (double(m_GraphRangeTop - m_Value) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
-    
-  if (uartPacket.sign == '2')
+  value = int((((1 - (double(m_GraphRangeTop - value) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
+  
+  if (uartPacket.getSign() == Sign::NEGATIVE_SIGN)
   {
     /*Make value_int negative*/
-    m_Value = m_Value * (-1);
+    value = value * (-1);
   }
   
   if (m_AutoRangeEnabled == true)
@@ -224,21 +224,21 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UartPacket & uartPacke
     for (int i = 0; i < GRAPHS_COUNT; i++)
     {
       /*Check if value is higher than any graph's top range*/
-      if (m_Value > m_Graphs[i]->getRangeTop())
+      if (value > m_Graphs[i]->getRangeTop())
       {
         m_GraphRangeTopChangedFlag = true;
-        m_GraphRangeTop = m_Value;
+        m_GraphRangeTop = value;
       }
       /*Check if value is lower than graph bottom range*/
-      else if (m_Value < m_Graphs[i]->getRangeBottom())
+      else if (value < m_Graphs[i]->getRangeBottom())
       {
         m_GraphRangeBottomChangedFlag = true;
-        m_GraphRangeBottom = m_Value;
+        m_GraphRangeBottom = value;
       }
     }
   }
   
-  if (m_TickCounter >= m_GraphRangeRight)
+  if (m_TimeBase >= m_GraphRangeRight)
   {
     m_GraphYellow.clear();
     m_GraphYellow.invalidate();
@@ -257,75 +257,75 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUART(UartPacket & uartPacke
     m_PreviousBlue_X = 0;
     m_PreviousGreen_X = 0;
     
-    m_TickCounter = 0;
+    m_TimeBase = 0;
   }
   
   printf("Graph real bottom range: %d\n", m_GraphYellow.getRangeBottom());
   printf("Graph real top range: %d\n", m_GraphYellow.getRangeTop());
   printf("Graph virtual bottom range: %d\n", m_GraphRangeBottom);
   printf("Graph virtual top range: %d\n", m_GraphRangeTop);
-  printf("Value after scaling: %d\n", m_Value);
+  printf("Value after scaling: %d\n", value);
   
-  switch (uartPacket.parameter)
+  switch (uartPacket.getParameter())
   {
-  case 'v':
+  case Parameter::VOLTAGE_PARAMETER:
     if (m_Parameter1GraphEnabled == true)
     {
-      if (m_PreviousYellow_X == m_TickCounter)
+      if (m_PreviousYellow_X == m_TimeBase)
       {
-        ++m_TickCounter;
-        m_PreviousYellow_X = m_TickCounter;
+        ++m_TimeBase;
+        m_PreviousYellow_X = m_TimeBase;
       }
       else
       {
-        m_PreviousYellow_X = m_TickCounter;
+        m_PreviousYellow_X = m_TimeBase;
       }
-      m_GraphYellow.addValue(m_TickCounter, m_Value);
+      m_GraphYellow.addValue(m_TimeBase, value);
     }
     break;
-  case 'c':
+  case Parameter::CURRENT_PARAMETER:
     if (m_Parameter2GraphEnabled == true)
     {
-      if (m_PreviousRed_X == m_TickCounter)
+      if (m_PreviousRed_X == m_TimeBase)
       {
-        ++m_TickCounter;
-        m_PreviousRed_X = m_TickCounter;
+        ++m_TimeBase;
+        m_PreviousRed_X = m_TimeBase;
       }
       else
       {
-        m_PreviousRed_X = m_TickCounter;
+        m_PreviousRed_X = m_TimeBase;
       }
-      m_GraphRed.addValue(m_TickCounter, m_Value);
+      m_GraphRed.addValue(m_TimeBase, value);
     }
     break;
-  case 'f':
+  case Parameter::FREQUENCY_PARAMETER:
     if (m_Parameter3GraphEnabled == true)
     {
-      if (m_PreviousBlue_X == m_TickCounter)
+      if (m_PreviousBlue_X == m_TimeBase)
       {
-        ++m_TickCounter;
-        m_PreviousBlue_X = m_TickCounter;
+        ++m_TimeBase;
+        m_PreviousBlue_X = m_TimeBase;
       }
       else
       {
-        m_PreviousBlue_X = m_TickCounter;
+        m_PreviousBlue_X = m_TimeBase;
       }
-      m_GraphBlue.addValue(m_TickCounter, m_Value);
+      m_GraphBlue.addValue(m_TimeBase, value);
     }
     break;
-  case 'p':
+  case Parameter::POWER_PARAMETER:
     if (m_Parameter4GraphEnabled == true)
     {
-      if (m_PreviousGreen_X == m_TickCounter)
+      if (m_PreviousGreen_X == m_TimeBase)
       {
-        ++m_TickCounter;
-        m_PreviousGreen_X = m_TickCounter;
+        ++m_TimeBase;
+        m_PreviousGreen_X = m_TimeBase;
       }
       else
       {
-        m_PreviousGreen_X = m_TickCounter;
+        m_PreviousGreen_X = m_TimeBase;
       }
-      m_GraphGreen.addValue(m_TickCounter, m_Value);
+      m_GraphGreen.addValue(m_TimeBase, value);
     }
     break;
   }
@@ -336,12 +336,18 @@ void Screen_Module1_GraphView::setNewGraphRange(UartPacket & uartPacket)
 {
   int value = 0;
   
-  switch(uartPacket.function)
+  printf("Dlugosc pakietu jako znak %c\n", uartPacket.getLength());
+  printf("Dlugosc pakietu jako liczba %d\n", uartPacket.getLength());
+  printf("Payload pakietu %.10s\n", uartPacket.getPayload());
+  
+  switch(uartPacket.getFunction())
   {
-  case '7':
-    value = int(std::stof((char*)(uartPacket.payload)));
+  case Function::SET_GRAPH_RANGE_MIN:
+    value = int(std::stof((char*)(uartPacket.getPayload())));
     
-    if(uartPacket.sign == '2')
+    printf("Min value after casting to int: %d\n", value);
+    
+    if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
     {
       value = value * (-1);
     }
@@ -352,10 +358,12 @@ void Screen_Module1_GraphView::setNewGraphRange(UartPacket & uartPacket)
     
     break;
     
-  case '8':    
-    value = int(std::stof((char*)(uartPacket.payload)));
+  case Function::SET_GRAPH_RANGE_MAX:    
+    value = int(std::stof((char*)(uartPacket.getPayload())));
     
-    if(uartPacket.sign == '2')
+    printf("Max value after casting to int: %d\n", value);
+    
+    if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
     {
       value = value * (-1);
     }

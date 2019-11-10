@@ -31,7 +31,6 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_Module2.setLabelText(touchgfx::TypedText(T_SINGLEUSEID42));
     buttonWithLabel_Module2.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel_Module2.setAction(buttonCallback);
 
     buttonWithLabel_Module1.setXY(0, 210);
     buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -89,13 +88,6 @@ void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
         //When buttonWithLabel_UART_Debug clicked change screen to Screen_UART_RX_Debug
         //Go to Screen_UART_RX_Debug with no screen transition
         application().gotoScreen_UART_RX_DebugScreenNoTransition();
-    }
-    else if (&src == &buttonWithLabel_Module2)
-    {
-        //Interaction_GoToModule2Screen
-        //When buttonWithLabel_Module2 clicked change screen to Screen_Module2_Data
-        //Go to Screen_Module2_Data with no screen transition
-        application().gotoScreen_Module2_DataScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_Module1)
     {

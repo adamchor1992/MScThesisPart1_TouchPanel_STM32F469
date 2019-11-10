@@ -18,7 +18,7 @@ void Screen_Module1_GraphPresenter::deactivate()
 
 void Screen_Module1_GraphPresenter::notifyNewUartRxParsedPacket(UartPacket & uartPacket)
 {
-  view.addNewValueToGraphFromUART(uartPacket);
+  view.addNewValueToGraphFromUart(uartPacket);
 }
 
 void Screen_Module1_GraphPresenter::notifyNewGraphRange(UartPacket & uartPacket)

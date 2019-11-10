@@ -19,9 +19,6 @@ extern xSemaphoreHandle uartTxSemaphore;
 
 extern UART_HandleTypeDef huart6;
 UART_HandleTypeDef* Model::m_pHuart6 = &huart6;
-
-/*Structure to which UART task writes processed UART packet*/
-UartPacket uartPacket;
 #endif
 
 uint8_t Model::m_InitParametersModule1[INIT_PACKET_COUNT][PAYLOAD_SIZE] = {{0}};
@@ -44,25 +41,24 @@ void Model::tick()
 #ifndef SIMULATOR
   //get new UART message from message queue (if any)
   if (uxQueueMessagesWaiting(msgQueueUartRxProcessedPacket) > 0)
-  {
-    /*Reset packet to all zeroes*/
-    clearPacket(uartPacket);
+  {    
+    UartPacket uartPacket;
     
     /*Packet is validated at this point and can be directly recovered from queue and copied to local uartPacket structure*/    
     xQueueReceive(msgQueueUartRxProcessedPacket, &uartPacket, 0);
     
-    switch(uartPacket.module)
+    switch(uartPacket.getModule())
     {
-    case '1':
-      processPacket(1);
+    case ModuleID::MODULE1:
+      processPacket(uartPacket, ModuleID::MODULE1);
       break;
       
-    case '2':
-      processPacket(2);
+    case ModuleID::MODULE2:
+      processPacket(uartPacket, ModuleID::MODULE2);
       break;
       
-    case '3':
-      processPacket(3);
+    case ModuleID::MODULE3:
+      processPacket(uartPacket, ModuleID::MODULE3);
       break;
       
     default:
@@ -73,50 +69,49 @@ void Model::tick()
 #endif
 }
 
-void Model::processPacket(int module)
+void Model::processPacket(UartPacket & uartPacket, ModuleID module)
 {
 #ifndef SIMULATOR
   if(isModuleActive(module) == true)
   {
-    if(uartPacket.function == '1') //data type packet
+    if(uartPacket.getFunction() == Function::DATA_PACKET)
     {
       m_ModelListener->notifyNewUartRxParsedPacket(uartPacket);
     }
-    else if(uartPacket.function == '3') //deinit connection
+    else if(uartPacket.getFunction() == Function::DEINIT_PACKET)
     {
       printf("Deinit packet received\n");
       
-      /*Set module not active*/
       deactivateModule(module);
       
       /*Go back to main menu screen*/
       static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
     }
-    else if(uartPacket.function == '7') //set graph range minimum
+    else if(uartPacket.getFunction() == Function::SET_GRAPH_RANGE_MIN)
     {
       printf("Set graph range minimum packet received\n");
       m_ModelListener->notifyNewGraphRange(uartPacket);
     }
-    else if(uartPacket.function == '8') //set graph range maximum
+    else if(uartPacket.getFunction() == Function::SET_GRAPH_RANGE_MAX)
     {
       printf("Set graph range maximum packet received\n");
       m_ModelListener->notifyNewGraphRange(uartPacket);
     }
     else
     {
-      printf("Wrong packet type for module %d in active state\n", module);
+      printf("Wrong packet type for module %c in active state\n", module);
     }
   }
   /*Module inactive*/
   else
   {
-    if(uartPacket.function == '2') //init packet
+    if(uartPacket.getFunction() == Function::INIT_PACKET)
     {
       if(m_ReceivedInitPacketCount < INIT_PACKET_COUNT)
       {
-        uint8_t length_int = uartPacket.length - '0'; //convert char to int length 
+        uint8_t lengthInt = uartPacket.getLength();
         
-        memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.payload, length_int);
+        memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
         
         ++m_ReceivedInitPacketCount;
       }
@@ -134,27 +129,27 @@ void Model::processPacket(int module)
     }
     else
     {
-      printf("Wrong packet type for module %d in inactive state\n", module);
+      printf("Wrong packet type for module %c in inactive state\n", module);
     }
   }
 #endif
 }
 
-void Model::activateModule(int module)
+void Model::activateModule(ModuleID module)
 {
   switch(module)
   {
-  case 1:
+  case ModuleID::MODULE1:
     module1Connected = true;
     printf("Module 1 activated\n");
     break;
     
-  case 2:
+  case ModuleID::MODULE2:
     module2Connected = true;
     printf("Module 2 activated\n");
     break;
     
-  case 3:
+  case ModuleID::MODULE3:
     module3Connected = true;
     printf("Module 3 activated\n");
     break;
@@ -164,21 +159,21 @@ void Model::activateModule(int module)
   }
 }
 
-void Model::deactivateModule(int module)
+void Model::deactivateModule(ModuleID module)
 {
   switch(module)
   {
-  case 1:
+  case ModuleID::MODULE1:
     module1Connected = false;
     printf("Module 1 deactivated\n");
     break;
     
-  case 2:
+  case ModuleID::MODULE2:
     module2Connected = false;
     printf("Module 2 deactivated\n");
     break;
     
-  case 3:
+  case ModuleID::MODULE3:
     module3Connected = false;
     printf("Module 3 deactivated\n");
     break;
@@ -188,19 +183,19 @@ void Model::deactivateModule(int module)
   }
 }
 
-bool Model::isModuleActive(int module)
+bool Model::isModuleActive(ModuleID module)
 {
   switch(module)
   {
-  case 1:
+  case ModuleID::MODULE1:
     return module1Connected;
     break;
     
-  case 2:
+  case ModuleID::MODULE2:
     return module2Connected;
     break;
     
-  case 3:
+  case ModuleID::MODULE3:
     return module3Connected;
     break;
     
@@ -215,7 +210,7 @@ void Model::setNewValueToSet(const UartPacket & uartPacket)
 #ifndef SIMULATOR
   uint8_t UART_ValueToTransmit[PACKET_SIZE] = {0};
   
-  convertUartStructureToUartPacketTable(uartPacket, UART_ValueToTransmit);
+  uartPacket.convertToUartPacketTable(UART_ValueToTransmit);
   
   xQueueSendToBack(msgQueueUartTransmit, UART_ValueToTransmit, 0);
   

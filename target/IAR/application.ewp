@@ -1106,24 +1106,6 @@
           </file>
         </group>
         <group>
-          <name>screen_module2_data_screen</name>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp</name>
-          </file>
-        </group>
-        <group>
-          <name>screen_module2_graph_screen</name>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp</name>
-          </file>
-        </group>
-        <group>
-          <name>screen_module2_settings_screen</name>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp</name>
-          </file>
-        </group>
-        <group>
           <name>screen_uart_rx_debug_screen</name>
           <file>
             <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp</name>
@@ -1169,15 +1151,6 @@
           </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Check_buttons_custom_Check_mark_fill_plus.cpp</name>
-          </file>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</name>
-          </file>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_back.cpp</name>
-          </file>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_fill.cpp</name>
           </file>
           <file>
             <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_knob.cpp</name>
@@ -1337,6 +1310,9 @@
           <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp</name>
         </file>
       </group>
+      <file>
+        <name>$PROJ_DIR$\..\..\gui\src\uart_packet.cpp</name>
+      </file>
       <file>
         <name>$PROJ_DIR$\..\..\gui\src\utilities.cpp</name>
       </file>

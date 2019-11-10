@@ -14,19 +14,19 @@ void Screen_MainView::setupScreen()
 {
 #ifndef SIMULATOR
   /*Restart UART RX*/
-  extern uint8_t uartReceivedPacket[PACKET_SIZE];
+  extern uint8_t uartReceivedPacketTable[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacketTable, PACKET_SIZE);
   
   char activeModuleString[10] = {0};
   
   /*Activate Module buttons of active modules*/
-  if(Model::isModuleActive(1) == true)
+  if(Model::isModuleActive(ModuleID::MODULE1) == true)
   {
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
@@ -39,7 +39,7 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module1.setTouchable(false);
   }
   
-  if(Model::isModuleActive(2) == true)
+  if(Model::isModuleActive(ModuleID::MODULE2) == true)
   {
     buttonWithLabel_Module2.setAlpha(255);
     buttonWithLabel_Module2.setTouchable(true);
@@ -52,7 +52,7 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module2.setTouchable(false);
   }
   
-  if(Model::isModuleActive(3) == true)
+  if(Model::isModuleActive(ModuleID::MODULE3) == true)
   {
     buttonWithLabel_Module3.setAlpha(255);
     buttonWithLabel_Module3.setTouchable(true);
@@ -66,7 +66,7 @@ void Screen_MainView::setupScreen()
   }
   
   /*If no modules active*/
-  if(Model::isModuleActive(1) == false && Model::isModuleActive(2) == false && Model::isModuleActive(3) == false)
+  if(Model::isModuleActive(ModuleID::MODULE1) == false && Model::isModuleActive(ModuleID::MODULE2) == false && Model::isModuleActive(ModuleID::MODULE3) == false)
   {
     Unicode::strncpy(textArea_ActiveModuleBuffer,"None", 10);
   }
@@ -102,29 +102,29 @@ void Screen_MainView::processInitPacket(UartPacket & uartPacket)
 #ifndef SIMULATOR
   printf("Processing init packet\n");
   
-  switch(uartPacket.module)
+  switch(uartPacket.getModule())
   {
-  case '1':
+  case ModuleID::MODULE1:
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
     
-    Model::activateModule(1);
+    Model::activateModule(ModuleID::MODULE1);
     printf("Active module 1\n");
     break;
     
-  case '2':
+  case ModuleID::MODULE2:
     buttonWithLabel_Module2.setAlpha(255);
     buttonWithLabel_Module2.setTouchable(true);
     
-    Model::activateModule(2);
+    Model::activateModule(ModuleID::MODULE2);
     printf("Active module 2\n");
     break;
     
-  case '3':
+  case ModuleID::MODULE3:
     buttonWithLabel_Module3.setAlpha(255);
     buttonWithLabel_Module3.setTouchable(true);
     
-    Model::activateModule(3);
+    Model::activateModule(ModuleID::MODULE3);
     printf("Active module 3\n");
     break;
   }

@@ -34,7 +34,7 @@ public:
   void tick();
   
   void setNewValueToSet(const UartPacket & uartPacket);
-    
+  
   /*Module 1 initialization parameters*/  
   static uint8_t m_InitParametersModule1[INIT_PACKET_COUNT][PAYLOAD_SIZE];
   
@@ -43,10 +43,10 @@ public:
   
   /*Module 3 initialization parameters*/
   static uint8_t m_InitParametersModule3[INIT_PACKET_COUNT][PAYLOAD_SIZE];
-
-  static void activateModule(int module);
-  static void deactivateModule(int module);
-  static bool isModuleActive(int module);
+  
+  static void activateModule(ModuleID module);
+  static void deactivateModule(ModuleID module);
+  static bool isModuleActive(ModuleID module);
   
 #ifndef SIMULATOR
   static UART_HandleTypeDef* m_pHuart6;
@@ -57,13 +57,11 @@ protected:
   ModelListener* m_ModelListener;
   
 private:
-  void processPacket(int module);
+  void processPacket(UartPacket & uartPacket, ModuleID module);
   
-  uint8_t* mp_ReceivedUART_TXValue;
   uint8_t m_ReceivedInitPacketCount;
   static bool module1Connected;
   static bool module2Connected;
   static bool module3Connected;
 };
-
 #endif

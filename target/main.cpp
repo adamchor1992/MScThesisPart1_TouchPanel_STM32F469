@@ -53,7 +53,7 @@ void MX_USART6_UART_Init(UART_HandleTypeDef *huart);
 void Error_Handler(void);
 
 /*Table to which UART interrupt writes*/
-uint8_t uartReceivedPacket[PACKET_SIZE] = {0};
+uint8_t uartReceivedPacketTable[PACKET_SIZE] = {0};
 /* General stuff end*/
 
 /*UART receive interrupt callback function*/
@@ -62,11 +62,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   BSP_LED_Toggle(LED4);
   signed long xHigherPriorityTaskWoken;
   
-  /*Insert uartReceivedPacket table filled by UART interrupt to queue for UART task to process*/
-  xQueueSendToBackFromISR(msgQueueUartReceive, uartReceivedPacket, &xHigherPriorityTaskWoken); 
+  /*Insert uartReceivedPacketTable table filled by UART interrupt to queue for UART task to process*/
+  xQueueSendToBackFromISR(msgQueueUartReceive, uartReceivedPacketTable, &xHigherPriorityTaskWoken); 
   
   /*Enable interrupt listening again*/
-  HAL_UART_Receive_IT(&huart6, uartReceivedPacket, PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartReceivedPacketTable, PACKET_SIZE);
   
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
@@ -153,37 +153,30 @@ static void guiTask(void* params)
 
 static void uartRxTask(void* params)
 {  
-  /*Structure to which UART task writes processed UART packet*/
-  UartPacket uartPacket = {0};
-  
   /*Start receiving*/
-  HAL_UART_Receive_IT(&huart6, uartReceivedPacket, PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartReceivedPacketTable, PACKET_SIZE);
   
   printf("RX task initialized\n");
   
   while(true)
   {   
-    /*Check if interrupt occured so there is new data in uartReceivedPacket table*/
+    /*Check if interrupt occured so there is new data in uartReceivedPacketTable table*/
     if(xSemaphoreTake(uartRxSemaphore, portMAX_DELAY) == pdPASS)
     {
       /*Ensure that there is no context switch during packet processing*/
       taskENTER_CRITICAL();
       
       //CRC check
-      if(checkCrc32(uartReceivedPacket) == true)
+      if(checkCrc32(uartReceivedPacketTable) == true)
       {
         /*Packet is correct and can be further processed*/
         
-        /*Packet parsing to structure*/  
-        convertUartPacketTableToUartStructure(uartReceivedPacket, uartPacket);
+        UartPacket uartPacket(uartReceivedPacketTable);
         
         xQueueSendToBack(msgQueueUartRxProcessedPacket, &uartPacket, NO_WAITING);
         
         /*Reset packet table to all zeroes*/
-        clearPacketTable(uartReceivedPacket);
-        
-        /*Reset packet structure to all zeroes*/
-        clearPacket(uartPacket);
+        clearPacketTable(uartReceivedPacketTable);
       }
       else
       {
@@ -197,10 +190,7 @@ static void uartRxTask(void* params)
         BSP_LED_On(LED4);
         
         /*Reset packet to all zeroes*/
-        clearPacketTable(uartReceivedPacket);
-        
-        /*Reset packet structure to all zeroes*/
-        clearPacket(uartPacket);
+        clearPacketTable(uartReceivedPacketTable);
       }
       
       taskEXIT_CRITICAL();
@@ -222,7 +212,7 @@ static void uartTxTask(void* params)
       taskENTER_CRITICAL(); 
       
       xQueueReceive(msgQueueUartTransmit, uartMessageToTransmit, NO_WAITING);                  
-      appendCrcToPacket(uartMessageToTransmit);
+      appendCrcToPacketTable(uartMessageToTransmit);
       
       printf("TX Packet is: %.16s\n", uartMessageToTransmit);
       

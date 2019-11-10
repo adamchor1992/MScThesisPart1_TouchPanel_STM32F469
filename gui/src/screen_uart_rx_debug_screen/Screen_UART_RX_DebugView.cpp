@@ -9,14 +9,14 @@ void Screen_UART_RX_DebugView::setupScreen()
 {
 #ifndef SIMULATOR
   /*Restart UART RX*/
-  extern uint8_t uartReceivedPacket[PACKET_SIZE];
+  extern uint8_t uartReceivedPacketTable[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacketTable, PACKET_SIZE);
 #endif
 }
 
@@ -27,32 +27,32 @@ void Screen_UART_RX_DebugView::tearDownScreen()
 
 void Screen_UART_RX_DebugView::updateGuiPacketData(UartPacket & uartPacket)
 {
-  Unicode::snprintf(textArea_SourceIDBuffer, TEXTAREA_SOURCEID_SIZE, "%c", uartPacket.source);
+  Unicode::snprintf(textArea_SourceIDBuffer, TEXTAREA_SOURCEID_SIZE, "%c", uartPacket.getSource());
   textArea_SourceID.invalidate();
   
-  Unicode::snprintf(textArea_ModuleIDBuffer, TEXTAREA_MODULEID_SIZE, "%c", uartPacket.module);
+  Unicode::snprintf(textArea_ModuleIDBuffer, TEXTAREA_MODULEID_SIZE, "%c", uartPacket.getModule());
   textArea_ModuleID.invalidate();
   
-  Unicode::snprintf(textArea_TypeIDBuffer, TEXTAREA_TYPEID_SIZE, "%c", uartPacket.function);
+  Unicode::snprintf(textArea_TypeIDBuffer, TEXTAREA_TYPEID_SIZE, "%c", uartPacket.getFunction());
   textArea_TypeID.invalidate();
   
-  Unicode::snprintf(textArea_ParameterIDBuffer, TEXTAREA_PARAMETERID_SIZE, "%c", uartPacket.parameter);
+  Unicode::snprintf(textArea_ParameterIDBuffer, TEXTAREA_PARAMETERID_SIZE, "%c", uartPacket.getParameter());
   textArea_ParameterID.invalidate();
   
-  Unicode::snprintf(textArea_SignIDBuffer, TEXTAREA_SIGNID_SIZE, "%c", uartPacket.sign);
+  Unicode::snprintf(textArea_SignIDBuffer, TEXTAREA_SIGNID_SIZE, "%c", uartPacket.getSign());
   textArea_SignID.invalidate();
   
-  //value displaying
   uint16_t stringToDisplay[10] = { 0 };
   
-  uartPacket.length = uartPacket.length - '0'; //convert char to int length
+  uint8_t lengthInt = uartPacket.getLength();
   
-  for (int i = 0; i < uartPacket.length; i++)
+  for (int i = 0; i < lengthInt; i++)
   {
-    stringToDisplay[i] = uartPacket.payload[i];
+    stringToDisplay[i] = uartPacket.getPayload()[i];
   }
   
-  Unicode::snprintf(textArea_ValueBuffer, uartPacket.length + 1, "%s", stringToDisplay); //length + 1 because it is null-terminated string
+  /*lengthInt + 1 because it is null-terminated string*/
+  Unicode::snprintf(textArea_ValueBuffer, lengthInt + 1, "%s", stringToDisplay); 
   textArea_Value.invalidate();
 }
 

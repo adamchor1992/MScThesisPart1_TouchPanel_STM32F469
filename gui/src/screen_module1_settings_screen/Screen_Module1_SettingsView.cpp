@@ -37,7 +37,7 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
   Unicode::snprintf(textArea_SettableParameter10NameBuffer, TEXTAREA_SETTABLEPARAMETER10NAME_SIZE, "%s", settableParameterStringDisplay[9]);
   textArea_SettableParameter10Name.invalidate();
 #endif
-
+  
   scrollWheel_Digit1.initialize();
   scrollWheel_Digit2.initialize();
   scrollWheel_Digit3.initialize();
@@ -60,171 +60,174 @@ void Screen_Module1_SettingsView::setupScreen()
 void Screen_Module1_SettingsView::tearDownScreen()
 {
 #ifndef SIMULATOR
-  extern uint8_t uartReceivedPacket[PACKET_SIZE];
+  extern uint8_t uartReceivedPacketTable[PACKET_SIZE];
   
   HAL_UART_DeInit(Model::m_pHuart6);
   HAL_UART_Init(Model::m_pHuart6);
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacket, PACKET_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, uartReceivedPacketTable, PACKET_SIZE);
 #endif
 }
 
 void Screen_Module1_SettingsView::setNewValue()
 {
 #ifndef SIMULATOR
-  /*Structure used to propagate UART packet contents up to Model class*/
   UartPacket uartPacket;
-    
-  uartPacket.source = '1';
-  uartPacket.module = '1';
-  uartPacket.function = '6';  //set parameter
-  uartPacket.parameter = '0'; //this should be overwritten by following instructions
+  
+  uartPacket.setSource(Source::SOURCE_TARGET1);
+  uartPacket.setModule(ModuleID::MODULE1);
+  uartPacket.setFunction(Function::SET_PARAMETER_PACKET);
   
   if (radioButtonParameter1.getSelected())
   {
-    uartPacket.parameter = '1';
+    uartPacket.setParameter(Parameter::PARAMETER1);
   }
   else if (radioButtonParameter2.getSelected())
   {
-    uartPacket.parameter = '2';
+    uartPacket.setParameter(Parameter::PARAMETER2);
   }
   else if (radioButtonParameter3.getSelected())
   {
-    uartPacket.parameter = '3';
+    uartPacket.setParameter(Parameter::PARAMETER3);
   }
   else if (radioButtonParameter4.getSelected())
   {
-    uartPacket.parameter = '4';
+    uartPacket.setParameter(Parameter::PARAMETER4);
   }
   else if (radioButtonParameter5.getSelected())
   {
-    uartPacket.parameter = '5';
+    uartPacket.setParameter(Parameter::PARAMETER5);
   }
   else if (radioButtonParameter6.getSelected())
   {
-    uartPacket.parameter = '6';
+    uartPacket.setParameter(Parameter::PARAMETER6);
   }
   else if (radioButtonParameter7.getSelected())
   {
-    uartPacket.parameter = '7';
+    uartPacket.setParameter(Parameter::PARAMETER7);
   }
   else if (radioButtonParameter8.getSelected())
   {
-    uartPacket.parameter = '8';
+    uartPacket.setParameter(Parameter::PARAMETER8);
   }
   else if (radioButtonParameter9.getSelected())
   {
-    uartPacket.parameter = '9';
+    uartPacket.setParameter(Parameter::PARAMETER9);
   }
   else if (radioButtonParameter10.getSelected())
   {
-    uartPacket.parameter = 'a';
+    uartPacket.setParameter(Parameter::PARAMETER10);
+  }
+  else
+  {
+    /*Error*/
+    uartPacket.setParameter(Parameter::NULL_PARAMETER);
   }
   
   if(radioButton_Plus.getSelected())
   {
     /*Value is positive*/
-    uartPacket.sign = '1'; 
+    uartPacket.setSign(Sign::POSITIVE_SIGN);
   }
   else
   {
     /*Value is negative*/
-    uartPacket.sign = '2';
+    uartPacket.setSign(Sign::NEGATIVE_SIGN);
   }
-     
+  
   char valueBuffer[PAYLOAD_SIZE] = {0};
-     
+  
   int values[PAYLOAD_SIZE];
-     
+  
   getScrollWheelValues(values);
   translateScrollWheelValues(values);
   
   double value = processScrollWheelValues(values);
-     
+  
   sprintf(valueBuffer, "%10lf", value);
-
-  uartPacket.length = PAYLOAD_SIZE + '0'; //convert 10 to ASCII ':'
+  
+  uartPacket.setLengthAscii(PAYLOAD_SIZE);
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    uartPacket.payload[i] = valueBuffer[i];
+    uartPacket.setPayload()[i] = valueBuffer[i];
   }
-  
+    
   this->presenter->notifyNewValueToSet(uartPacket);
 #endif
 }
 
 void Screen_Module1_SettingsView::getScrollWheelValues(int values[])
 {
-	values[9] = scrollWheel_Digit1.getSelectedItem();
-	values[8] = scrollWheel_Digit2.getSelectedItem();
-	values[7] = scrollWheel_Digit3.getSelectedItem();
-	values[6] = scrollWheel_Digit4.getSelectedItem();
-	values[5] = scrollWheel_Digit5.getSelectedItem();
-	values[4] = scrollWheel_Digit6.getSelectedItem();
-	values[3] = scrollWheel_Digit7.getSelectedItem();
-	values[2] = scrollWheel_Digit8.getSelectedItem();
-	values[1] = scrollWheel_Digit9.getSelectedItem();
-	values[0] = scrollWheel_Digit10.getSelectedItem();
+  values[9] = scrollWheel_Digit1.getSelectedItem();
+  values[8] = scrollWheel_Digit2.getSelectedItem();
+  values[7] = scrollWheel_Digit3.getSelectedItem();
+  values[6] = scrollWheel_Digit4.getSelectedItem();
+  values[5] = scrollWheel_Digit5.getSelectedItem();
+  values[4] = scrollWheel_Digit6.getSelectedItem();
+  values[3] = scrollWheel_Digit7.getSelectedItem();
+  values[2] = scrollWheel_Digit8.getSelectedItem();
+  values[1] = scrollWheel_Digit9.getSelectedItem();
+  values[0] = scrollWheel_Digit10.getSelectedItem();
 }
 
 void Screen_Module1_SettingsView::translateScrollWheelValues(int values[])
 {
-	for (int i = 0; i < PAYLOAD_SIZE; i++)
-	{
-		switch (values[i])
-		{
-		case 0:
-			values[i] = '.';
-			break;
-		case 1:
-			values[i] = '0';
-			break;
-		case 2:
-			values[i] = '1';
-			break;
-		case 3:
-			values[i] = '2';
-			break;
-		case 4:
-			values[i] = '3';
-			break;
-		case 5:
-			values[i] = '4';
-			break;
-		case 6:
-			values[i] = '5';
-			break;
-		case 7:
-			values[i] = '6';
-			break;
-		case 8:
-			values[i] = '7';
-			break;
-		case 9:
-			values[i] = '8';
-			break;
-		case 10:
-			values[i] = '9';
-			break;
-		}
-	}
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
+  {
+    switch (values[i])
+    {
+    case 0:
+      values[i] = '.';
+      break;
+    case 1:
+      values[i] = '0';
+      break;
+    case 2:
+      values[i] = '1';
+      break;
+    case 3:
+      values[i] = '2';
+      break;
+    case 4:
+      values[i] = '3';
+      break;
+    case 5:
+      values[i] = '4';
+      break;
+    case 6:
+      values[i] = '5';
+      break;
+    case 7:
+      values[i] = '6';
+      break;
+    case 8:
+      values[i] = '7';
+      break;
+    case 9:
+      values[i] = '8';
+      break;
+    case 10:
+      values[i] = '9';
+      break;
+    }
+  }
 }
 
 double Screen_Module1_SettingsView::processScrollWheelValues(const int values[])
 {
-	char asciiScrollWheelValues[PAYLOAD_SIZE + 1];
-
-	for (int i = 0; i < PAYLOAD_SIZE; i++)
-	{
-		asciiScrollWheelValues[i] = values[i];
-	}
-
-	asciiScrollWheelValues[PAYLOAD_SIZE] = '\0';
-
-	return atof(asciiScrollWheelValues);
+  char asciiScrollWheelValues[PAYLOAD_SIZE + 1];
+  
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
+  {
+    asciiScrollWheelValues[i] = values[i];
+  }
+  
+  asciiScrollWheelValues[PAYLOAD_SIZE] = '\0';
+  
+  return atof(asciiScrollWheelValues);
 }
 
 void Screen_Module1_SettingsView::enableParameterButtonPushed()
@@ -232,55 +235,58 @@ void Screen_Module1_SettingsView::enableParameterButtonPushed()
   /*Structure used to propagate UART packet contents up to Model class*/
   UartPacket uartPacket;
   
-  uartPacket.source = '1';
-  uartPacket.module = '1';
-  uartPacket.function = '4';  //enable parameter
-  uartPacket.parameter = '0'; //this should be overwritten by following instructions
+  uartPacket.setSource(Source::SOURCE_TARGET1);
+  uartPacket.setModule(ModuleID::MODULE1);
+  uartPacket.setFunction(Function::ENABLE_PARAMETER_PACKET);
   
   if (radioButtonParameter1.getSelected())
   {
-    uartPacket.parameter = '1';
+    uartPacket.setParameter(Parameter::PARAMETER1);
   }
   else if (radioButtonParameter2.getSelected())
   {
-    uartPacket.parameter = '2';
+    uartPacket.setParameter(Parameter::PARAMETER2);
   }
   else if (radioButtonParameter3.getSelected())
   {
-    uartPacket.parameter = '3';
+    uartPacket.setParameter(Parameter::PARAMETER3);
   }
   else if (radioButtonParameter4.getSelected())
   {
-    uartPacket.parameter = '4';
+    uartPacket.setParameter(Parameter::PARAMETER4);
   }
   else if (radioButtonParameter5.getSelected())
   {
-    uartPacket.parameter = '5';
+    uartPacket.setParameter(Parameter::PARAMETER5);
   }
   else if (radioButtonParameter6.getSelected())
   {
-    uartPacket.parameter = '6';
+    uartPacket.setParameter(Parameter::PARAMETER6);
   }
   else if (radioButtonParameter7.getSelected())
   {
-    uartPacket.parameter = '7';
+    uartPacket.setParameter(Parameter::PARAMETER7);
   }
   else if (radioButtonParameter8.getSelected())
   {
-    uartPacket.parameter = '8';
+    uartPacket.setParameter(Parameter::PARAMETER8);
   }
   else if (radioButtonParameter9.getSelected())
   {
-    uartPacket.parameter = '9';
+    uartPacket.setParameter(Parameter::PARAMETER9);
   }
   else if (radioButtonParameter10.getSelected())
   {
-    uartPacket.parameter = 'a';
+    uartPacket.setParameter(Parameter::PARAMETER10);
+  }
+  else
+  {
+    /*Error*/
+    uartPacket.setParameter(Parameter::NULL_PARAMETER);
   }
   
-  uartPacket.sign = '1'; //sign is always positive
-  uartPacket.length = '1';
-  uartPacket.payload[6] = 0;
+  uartPacket.setSign(Sign::POSITIVE_SIGN);
+  uartPacket.setLength(Length::NO_PAYLOAD);
   
   this->presenter->notifyNewValueToSet(uartPacket);
 }
@@ -290,56 +296,59 @@ void Screen_Module1_SettingsView::disableParameterButtonPushed()
   /*Structure used to propagate UART packet contents up to Model class*/
   UartPacket uartPacket;
   
-  uartPacket.source = '1';
-  uartPacket.module = '1';
-  uartPacket.function = '5';  //disable parameter
-  uartPacket.parameter = '0'; //this should be overwritten by following instructions
+  uartPacket.setSource(Source::SOURCE_TARGET1);
+  uartPacket.setModule(ModuleID::MODULE1);
+  uartPacket.setFunction(Function::DISABLE_PARAMETER_PACKET);
   
   if (radioButtonParameter1.getSelected())
   {
-    uartPacket.parameter = '1';
+    uartPacket.setParameter(Parameter::PARAMETER1);
   }
   else if (radioButtonParameter2.getSelected())
   {
-    uartPacket.parameter = '2';
+    uartPacket.setParameter(Parameter::PARAMETER2);
   }
   else if (radioButtonParameter3.getSelected())
   {
-    uartPacket.parameter = '3';
+    uartPacket.setParameter(Parameter::PARAMETER3);
   }
   else if (radioButtonParameter4.getSelected())
   {
-    uartPacket.parameter = '4';
+    uartPacket.setParameter(Parameter::PARAMETER4);
   }
   else if (radioButtonParameter5.getSelected())
   {
-    uartPacket.parameter = '5';
+    uartPacket.setParameter(Parameter::PARAMETER5);
   }
   else if (radioButtonParameter6.getSelected())
   {
-    uartPacket.parameter = '6';
+    uartPacket.setParameter(Parameter::PARAMETER6);
   }
   else if (radioButtonParameter7.getSelected())
   {
-    uartPacket.parameter = '7';
+    uartPacket.setParameter(Parameter::PARAMETER7);
   }
   else if (radioButtonParameter8.getSelected())
   {
-    uartPacket.parameter = '8';
+    uartPacket.setParameter(Parameter::PARAMETER8);
   }
   else if (radioButtonParameter9.getSelected())
   {
-    uartPacket.parameter = '9';
+    uartPacket.setParameter(Parameter::PARAMETER9);
   }
   else if (radioButtonParameter10.getSelected())
   {
-    uartPacket.parameter = 'a';
+    uartPacket.setParameter(Parameter::PARAMETER10);
+  }
+  else
+  {
+    /*Error*/
+    uartPacket.setParameter(Parameter::NULL_PARAMETER);
   }
   
-  uartPacket.sign = '1'; //sign is always positive
-  uartPacket.length = '1';
-  uartPacket.payload[6] = 0;
-  
+  uartPacket.setSign(Sign::POSITIVE_SIGN);
+  uartPacket.setLength(Length::NO_PAYLOAD);
+    
   this->presenter->notifyNewValueToSet(uartPacket);
 }
 
@@ -351,50 +360,50 @@ void Screen_Module1_SettingsView::updateCpuUsage(uint8_t value)
 
 void Screen_Module1_SettingsView::scrollWheel_Digit1UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit2UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit3UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit4UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit5UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit6UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit7UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit8UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit9UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }
 
 void Screen_Module1_SettingsView::scrollWheel_Digit10UpdateItem(DigitTemplate & item, int16_t itemIndex)
 {
-	item.setDigitWithComma(itemIndex);
+  item.setDigitWithComma(itemIndex);
 }

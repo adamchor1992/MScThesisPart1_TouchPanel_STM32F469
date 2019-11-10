@@ -205,35 +205,17 @@
     <Filter Include="Header Files\gui\screen_module2_data_screen">
       <UniqueIdentifier>254227E0-1653-4C87-97D4-E1DC506CFADE</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen_module2_data_screen">
-      <UniqueIdentifier>8D451D33-F29A-498F-BBF8-E855B3D25278</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen_module2_data_screen">
-      <UniqueIdentifier>7E7A2E68-2168-4567-95CD-9B8018997DF6</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\gui\screen_module2_settings_screen">
       <UniqueIdentifier>35C107F8-16B5-441D-BDB6-D1F5E64CF164</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\screen_module2_settings_screen">
       <UniqueIdentifier>9C82CDBB-CAE9-4BF0-940F-507D7D446E16</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen_module2_settings_screen">
-      <UniqueIdentifier>1B193E4E-D252-4C51-86F7-FBFA84CD71B3</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen_module2_settings_screen">
-      <UniqueIdentifier>397F2F90-3AF2-44F1-A8B4-61241844E656</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\gui\screen_module2_graph_screen">
       <UniqueIdentifier>8DCE4345-F096-4253-8BC4-5801F32D5FBD</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\gui\screen_module2_graph_screen">
       <UniqueIdentifier>AA2A80CC-078F-458A-A0A0-FDE69FDE6736</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\generated\gui_generated\screen_module2_graph_screen">
-      <UniqueIdentifier>5878C390-34E7-4D30-B502-09CBAD56ADFF</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\generated\gui_generated\screen_module2_graph_screen">
-      <UniqueIdentifier>D3D6E511-DBB4-423B-A932-C8C6D5DA303A</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\screen_uart_rx_debug_screen">
       <UniqueIdentifier>741444E6-68BB-4280-A5BD-02F624B1C0C5</UniqueIdentifier>
@@ -284,7 +266,7 @@
       <UniqueIdentifier>D5C92D5D-38DC-411C-99C5-995F48AA9A2B</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>FD72F9B9-92B1-DFFB-86FD-44DB4AC79C57</UniqueIdentifier>
+      <UniqueIdentifier>9BB8E69D-748A-88FE-E103-9F2D592A411C</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -363,26 +345,17 @@
     <ClCompile Include="..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp">
       <Filter>Source Files\gui\screen_module2_data_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen_module2_data_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp">
       <Filter>Source Files\gui\screen_module2_settings_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp">
       <Filter>Source Files\gui\screen_module2_settings_screen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen_module2_settings_screen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp">
       <Filter>Source Files\gui\screen_module2_graph_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp">
       <Filter>Source Files\gui\screen_module2_graph_screen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp">
-      <Filter>Source Files\generated\gui_generated\screen_module2_graph_screen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp">
       <Filter>Source Files\gui\screen_uart_rx_debug_screen</Filter>
@@ -421,6 +394,9 @@
       <Filter>Source Files\gui</Filter>
     </ClCompile>
     <ClCompile Include="..\..\gui\src\utilities.cpp">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\uart_packet.cpp">
       <Filter>Source Files\gui</Filter>
     </ClCompile>
   </ItemGroup>
@@ -871,9 +847,6 @@
     <ClInclude Include="..\..\gui\include\gui\common\GraphLine.hpp">
       <Filter>Header Files\gui\common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\gui\include\UART_Frame_Struct.h">
-      <Filter>Source Files\gui\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.hpp">
       <Filter>Header Files\gui\screen_module1_settings_screen</Filter>
     </ClInclude>
@@ -907,26 +880,17 @@
     <ClInclude Include="..\..\gui\include\gui\screen_module2_data_screen\Screen_Module2_DataView.hpp">
       <Filter>Header Files\gui\screen_module2_data_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_data_screen\Screen_Module2_DataViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen_module2_data_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.hpp">
       <Filter>Header Files\gui\screen_module2_settings_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen_module2_settings_screen\Screen_Module2_SettingsView.hpp">
       <Filter>Header Files\gui\screen_module2_settings_screen</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen_module2_settings_screen</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphPresenter.hpp">
       <Filter>Header Files\gui\screen_module2_graph_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphView.hpp">
       <Filter>Header Files\gui\screen_module2_graph_screen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_graph_screen\Screen_Module2_GraphViewBase.hpp">
-      <Filter>Header Files\generated\gui_generated\screen_module2_graph_screen</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.hpp">
       <Filter>Header Files\gui\screen_uart_rx_debug_screen</Filter>
@@ -974,6 +938,12 @@
       <Filter>Source Files\gui\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\utilities.h">
+      <Filter>Source Files\gui\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\defines.h">
+      <Filter>Source Files\gui\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\uart_packet.h">
       <Filter>Source Files\gui\include</Filter>
     </ClInclude>
   </ItemGroup>

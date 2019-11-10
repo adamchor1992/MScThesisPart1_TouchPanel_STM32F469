@@ -21,12 +21,6 @@
 
 
 
-
-
-
-
-
-
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
@@ -42,12 +36,6 @@
 #include <gui/screen_module1_signals_screen/Screen_Module1_SignalsPresenter.hpp>
 #include <gui/screen_module1_info_screen/Screen_Module1_InfoView.hpp>
 #include <gui/screen_module1_info_screen/Screen_Module1_InfoPresenter.hpp>
-#include <gui/screen_module2_data_screen/Screen_Module2_DataView.hpp>
-#include <gui/screen_module2_data_screen/Screen_Module2_DataPresenter.hpp>
-#include <gui/screen_module2_settings_screen/Screen_Module2_SettingsView.hpp>
-#include <gui/screen_module2_settings_screen/Screen_Module2_SettingsPresenter.hpp>
-#include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
-#include <gui/screen_module2_graph_screen/Screen_Module2_GraphPresenter.hpp>
 #include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugView.hpp>
 #include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugPresenter.hpp>
 
@@ -78,11 +66,8 @@ public:
             touchgfx::meta::TypeList< Screen_Module1_GraphView,
             touchgfx::meta::TypeList< Screen_Module1_SignalsView,
             touchgfx::meta::TypeList< Screen_Module1_InfoView,
-            touchgfx::meta::TypeList< Screen_Module2_DataView,
-            touchgfx::meta::TypeList< Screen_Module2_SettingsView,
-            touchgfx::meta::TypeList< Screen_Module2_GraphView,
             touchgfx::meta::TypeList< Screen_UART_RX_DebugView,
-            touchgfx::meta::Nil > > > > > > > > >
+            touchgfx::meta::Nil > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -100,11 +85,8 @@ public:
             touchgfx::meta::TypeList< Screen_Module1_GraphPresenter,
             touchgfx::meta::TypeList< Screen_Module1_SignalsPresenter,
             touchgfx::meta::TypeList< Screen_Module1_InfoPresenter,
-            touchgfx::meta::TypeList< Screen_Module2_DataPresenter,
-            touchgfx::meta::TypeList< Screen_Module2_SettingsPresenter,
-            touchgfx::meta::TypeList< Screen_Module2_GraphPresenter,
             touchgfx::meta::TypeList< Screen_UART_RX_DebugPresenter,
-            touchgfx::meta::Nil > > > > > > > > >
+            touchgfx::meta::Nil > > > > > >
             > GeneratedPresenterTypes;
 
     /**

@@ -1199,10 +1199,10 @@
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\CachedFont.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_10_4bpp_0.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_30_4bpp_0.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp_0.cpp</name>
@@ -1211,16 +1211,19 @@
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_60_4bpp_0.cpp</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_8_4bpp_0.cpp</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\FontCache.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\GeneratedFont.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_10_4bpp.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_20_4bpp.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_20_4bpp.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_30_4bpp.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_40_4bpp.cpp</name>
@@ -1229,16 +1232,22 @@
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_60_4bpp.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_10_4bpp.cpp</name>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_8_4bpp.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_20_4bpp.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_30_4bpp.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_40_4bpp.cpp</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_60_4bpp.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_8_4bpp.cpp</name>
                 </file>
             </group>
             <group>
@@ -1253,12 +1262,6 @@
                     <name>containers</name>
                     <file>
                         <name>$PROJ_DIR$\..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp</name>
-                    </file>
-                </group>
-                <group>
-                    <name>screen1_screen</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen1_screen\Screen1ViewBase.cpp</name>
                     </file>
                 </group>
                 <group>
@@ -1298,33 +1301,9 @@
                     </file>
                 </group>
                 <group>
-                    <name>screen_module2_data_screen</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp</name>
-                    </file>
-                </group>
-                <group>
-                    <name>screen_module2_graph_screen</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp</name>
-                    </file>
-                </group>
-                <group>
-                    <name>screen_module2_settings_screen</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp</name>
-                    </file>
-                </group>
-                <group>
                     <name>screen_uart_rx_debug_screen</name>
                     <file>
                         <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp</name>
-                    </file>
-                </group>
-                <group>
-                    <name>template_screen</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\template_screen\TemplateViewBase.cpp</name>
                     </file>
                 </group>
             </group>
@@ -1363,19 +1342,19 @@
                         <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_pressed.cpp</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_indicators_slider_round_nob.cpp</name>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Check_buttons_custom_Check_mark_fill_minus.cpp</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_back.cpp</name>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Check_buttons_custom_Check_mark_fill_plus.cpp</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_slider_horizontal_medium_slider_round_fill.cpp</name>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_knob.cpp</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_off.cpp</name>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_slider_horizontal_small_round_back.cpp</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_large_button_on.cpp</name>
+                        <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_slider_horizontal_small_round_fill.cpp</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_off.cpp</name>
@@ -1434,15 +1413,6 @@
                 </file>
             </group>
             <group>
-                <name>screen1_screen</name>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen1_screen\Screen1Presenter.cpp</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen1_screen\Screen1View.cpp</name>
-                </file>
-            </group>
-            <group>
                 <name>screen_main_screen</name>
                 <file>
                     <name>$PROJ_DIR$\..\..\gui\src\screen_main_screen\Screen_MainPresenter.cpp</name>
@@ -1497,33 +1467,6 @@
                 </file>
             </group>
             <group>
-                <name>screen_module2_data_screen</name>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp</name>
-                </file>
-            </group>
-            <group>
-                <name>screen_module2_graph_screen</name>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp</name>
-                </file>
-            </group>
-            <group>
-                <name>screen_module2_settings_screen</name>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp</name>
-                </file>
-            </group>
-            <group>
                 <name>screen_uart_rx_debug_screen</name>
                 <file>
                     <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp</name>
@@ -1532,17 +1475,11 @@
                     <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp</name>
                 </file>
             </group>
-            <group>
-                <name>template_screen</name>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplatePresenter.cpp</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\template_screen\TemplateView.cpp</name>
-                </file>
-            </group>
             <file>
                 <name>$PROJ_DIR$\..\..\gui\src\init.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\..\gui\src\uart_packet.cpp</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\gui\src\utilities.cpp</name>
