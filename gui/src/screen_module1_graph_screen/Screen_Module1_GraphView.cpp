@@ -49,6 +49,8 @@ void Screen_Module1_GraphView::resetGraph()
     m_Graphs[i]->clear();
     m_Graphs[i]->invalidate();
     
+    m_Graphs[i]->setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+    
     m_TimeBase = 0;
   }
   
@@ -59,8 +61,8 @@ void Screen_Module1_GraphView::resetGraph()
   Unicode::snprintf(textArea_GraphRangeBottomBuffer, 12, "%d", m_GraphRangeBottom);
   textArea_GraphRangeBottom.invalidate();
   
-  Unicode::snprintf(textArea_GraphRangeRightBuffer, 10, "%d", m_GraphRangeRight);
-  textArea_GraphRangeBottom.invalidate();
+  Unicode::snprintf(textArea_GraphRangeRightBuffer, 12, "%d", m_GraphRangeRight);
+  textArea_GraphRangeRight.invalidate();
 }
 
 Screen_Module1_GraphView::Screen_Module1_GraphView()
@@ -98,10 +100,10 @@ void Screen_Module1_GraphView::setupScreen()
   m_TimeBase = 0;
   
   // Set the outer dimensions and color of the graphs
-  m_GraphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
-  m_GraphRed.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0x00, 0x00), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
-  m_GraphBlue.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0x00, 0xFF), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
-  m_GraphGreen.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0xFF, 0x00), GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  m_GraphYellow.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0xFF, 0xAC), m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  m_GraphRed.setup(745, 385, Color::getColorFrom24BitRGB(0xFF, 0x00, 0x00), m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  m_GraphBlue.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0x00, 0xFF), m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  m_GraphGreen.setup(745, 385, Color::getColorFrom24BitRGB(0x00, 0xFF, 0x00), m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
   
   // Initialize graphs
   for (int i = 0; i < GRAPHS_COUNT; i++)
@@ -168,18 +170,18 @@ void Screen_Module1_GraphView::handleTickEvent()
     rising = true;
   }
   
-  m_TickCounter += 1;
+  m_TimeBase += 1;
   
-  //value = multiplier * sin(m_TickCounter * 3.14159/180) * 100.0;
+  //value = multiplier * sin(m_TimeBase * 3.14159/180) * 100.0;
   
-  if (m_TickCounter >= m_GraphRangeRight)
+  if (m_TimeBase >= m_GraphRangeRight)
   {
     m_GraphYellow.clear();
     m_GraphYellow.invalidate();
     
     m_PreviousYellow_X = 0;
     
-    m_TickCounter = 0;
+    m_TimeBase = 0;
   }
   
   //touchgfx_printf("Graph bottom range %d\n", m_GraphRangeBottom);
@@ -189,17 +191,17 @@ void Screen_Module1_GraphView::handleTickEvent()
   
   if (m_Parameter1GraphEnabled == true)
   {
-    if (m_PreviousYellow_X == m_TickCounter)
+    if (m_PreviousYellow_X == m_TimeBase)
     {
-      ++m_TickCounter;
-      m_PreviousYellow_X = m_TickCounter;
+      ++m_TimeBase;
+      m_PreviousYellow_X = m_TimeBase;
     }
     else
     {
-      m_PreviousYellow_X = m_TickCounter;
+      m_PreviousYellow_X = m_TimeBase;
     }
     
-    m_GraphYellow.addValue(m_TickCounter, valueGraph);
+    m_GraphYellow.addValue(m_TimeBase, valueGraph);
   }
 #endif
 }
@@ -334,7 +336,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
 
 void Screen_Module1_GraphView::setNewGraphRange(UartPacket & uartPacket)
 {
-  int value = 0;
+  int newValue = 0;
   
   printf("Dlugosc pakietu jako znak %c\n", uartPacket.getLength());
   printf("Dlugosc pakietu jako liczba %d\n", uartPacket.getLength());
@@ -343,32 +345,49 @@ void Screen_Module1_GraphView::setNewGraphRange(UartPacket & uartPacket)
   switch(uartPacket.getFunction())
   {
   case Function::SET_GRAPH_RANGE_MIN:
-    value = int(std::stof((char*)(uartPacket.getPayload())));
+    newValue = int(std::stof((char*)(uartPacket.getPayload())));
     
-    printf("Min value after casting to int: %d\n", value);
+    printf("New minimum value after casting to int: %d\n", newValue);
     
     if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
     {
-      value = value * (-1);
+      newValue = newValue * (-1);
     }
     
-    setGraphRanges(value, m_GraphRangeTop, m_GraphRangeRight);
+    setGraphRanges(newValue, m_GraphRangeTop, m_GraphRangeRight);
     
     resetGraph();
     
     break;
     
   case Function::SET_GRAPH_RANGE_MAX:    
-    value = int(std::stof((char*)(uartPacket.getPayload())));
+    newValue = int(std::stof((char*)(uartPacket.getPayload())));
     
-    printf("Max value after casting to int: %d\n", value);
+    printf("New maximum value after casting to int: %d\n", newValue);
     
     if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
     {
-      value = value * (-1);
+      newValue = newValue * (-1);
     }
     
-    setGraphRanges(m_GraphRangeBottom, value, m_GraphRangeRight);
+    setGraphRanges(m_GraphRangeBottom, newValue, m_GraphRangeRight);
+    
+    resetGraph();
+    
+    break;
+    
+  case Function::SET_GRAPH_TIME_RANGE:    
+    newValue = int(std::stof((char*)(uartPacket.getPayload())));
+    
+    printf("New time range value after casting to int: %d\n", newValue);
+    
+    if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
+    {
+      printf("Time range cannot be negative, packet discarded\n");
+      return;
+    }
+    
+    setGraphRanges(m_GraphRangeBottom, m_GraphRangeTop, newValue);
     
     resetGraph();
     

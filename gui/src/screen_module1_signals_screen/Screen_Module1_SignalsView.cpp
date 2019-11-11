@@ -371,12 +371,6 @@ void Screen_Module1_SignalsView::setParameter4GraphVisible()
 	}
 }
 
-void Screen_Module1_SignalsView::updateTimeRange(int value)
-{
-	Unicode::snprintf(textArea_TimeRangeBuffer, 6, "%d", value * SINE_PERIOD_DEGREES);
-	textArea_TimeRange.invalidate();
-}
-
 void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
 {
 	if (toggleButton_Auto_Y_Range.getState() == true)

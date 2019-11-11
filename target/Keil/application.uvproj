@@ -809,36 +809,6 @@
               <FilePath>../../gui/src/screen_module1_signals_screen/screen_module1_signalsview.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_Module2_DataPresenter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_data_screen/screen_module2_datapresenter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_DataView.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_data_screen/screen_module2_dataview.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_GraphPresenter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_graph_screen/screen_module2_graphpresenter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_GraphView.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_graph_screen/screen_module2_graphview.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_SettingsPresenter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_settings_screen/screen_module2_settingspresenter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_Module2_SettingsView.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_module2_settings_screen/screen_module2_settingsview.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Screen_UART_RX_DebugPresenter.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/screen_uart_rx_debug_screen/screen_uart_rx_debugpresenter.cpp</FilePath>

@@ -99,6 +99,11 @@ void Model::processPacket(UartPacket & uartPacket, ModuleID module)
       printf("Set graph range maximum packet received\n");
       m_ModelListener->notifyNewGraphRange(uartPacket);
     }
+    else if(uartPacket.getFunction() == Function::SET_GRAPH_TIME_RANGE)
+    {
+      printf("Set graph time range packet received\n");
+      m_ModelListener->notifyNewGraphRange(uartPacket);
+    }
     else
     {
       printf("Wrong packet type for module %c in active state\n", module);

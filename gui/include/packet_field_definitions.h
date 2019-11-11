@@ -9,7 +9,7 @@ const int INIT_PACKETS_COUNT = 24;
 enum class Source 
 {
   SOURCE_TARGET1 = '1',
-  ERROR = 0
+  SOURCE_ERROR = 0
 };
 
 /*Module field*/
@@ -18,7 +18,7 @@ enum class ModuleID
   MODULE1 = '1', 
   MODULE2 = '2', 
   MODULE3 = '3', 
-  ERROR = 0
+  MODULEID_ERROR = 0
 };
 
 /*Function field*/
@@ -32,7 +32,8 @@ enum class Function
   SET_PARAMETER_PACKET = '6',
   SET_GRAPH_RANGE_MIN = '7',
   SET_GRAPH_RANGE_MAX = '8',
-  ERROR = 0
+  SET_GRAPH_TIME_RANGE = '9',
+  FUNCTION_ERROR = 0
 };
 
 /*Parameter field*/
@@ -53,7 +54,7 @@ enum class Parameter
   PARAMETER8 = '8',
   PARAMETER9 = '9',
   PARAMETER10 = 'a',
-  ERROR = 0
+  PARAMETER_ERROR = 0
 };
 
 /*Sign field*/
@@ -61,12 +62,12 @@ enum class Sign
 {
   POSITIVE_SIGN = '1',
   NEGATIVE_SIGN = '2',
-  ERROR = 0
+  SIGN_ERROR = 0
 };
 
 /*Length field*/
 enum class Length 
 {
   NO_PAYLOAD = '0',
-  ERROR = 0
+  LENGTH_ERROR = 0
 };

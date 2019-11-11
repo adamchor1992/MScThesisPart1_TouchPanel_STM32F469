@@ -18,23 +18,17 @@ public:
 	virtual void setRanges();
 
 	void initializeScrollWheels();
-
 	void setMinScrollWheelValues(int bottom);
 	void setMaxScrollWheelValues(int top);
-
 	void getScrollWheelMinValues(int values[]);
 	void getScrollWheelMaxValues(int values[]);
-
 	void translateScrollWheelValues(int values[]);
-
 	int processScrollWheelValues(const int values[]);
 
 	virtual void setParameter1GraphVisible();
 	virtual void setParameter2GraphVisible();
 	virtual void setParameter3GraphVisible();
 	virtual void setParameter4GraphVisible();
-
-	virtual void updateTimeRange(int value);
 
 	virtual void pressedAutoRangeToggleButton();
 

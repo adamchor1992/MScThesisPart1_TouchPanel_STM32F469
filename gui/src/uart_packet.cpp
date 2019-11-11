@@ -209,7 +209,7 @@ Source UartPacket::getSource() const
   }
   else
   {
-    return Source::ERROR;
+    return Source::SOURCE_ERROR;
   }
 }
 
@@ -229,7 +229,7 @@ ModuleID UartPacket::getModule() const
   }
   else
   {
-    return ModuleID::ERROR;
+    return ModuleID::MODULEID_ERROR;
   }
 }
 
@@ -267,9 +267,13 @@ Function UartPacket::getFunction() const
   {
     return Function::SET_GRAPH_RANGE_MAX;
   }
+  else if(m_Function == '9')
+  {
+    return Function::SET_GRAPH_TIME_RANGE;
+  }
   else
   {
-    return Function::ERROR;
+    return Function::FUNCTION_ERROR;
   }
 }
 
@@ -337,7 +341,7 @@ Parameter UartPacket::getParameter() const
   }
   else
   {
-    return Parameter::ERROR;
+    return Parameter::PARAMETER_ERROR;
   }
 }
 
@@ -353,7 +357,7 @@ Sign UartPacket::getSign() const
   }
   else
   {
-    return Sign::ERROR;
+    return Sign::SIGN_ERROR;
   }
 }
 

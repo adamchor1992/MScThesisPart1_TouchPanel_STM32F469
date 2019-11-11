@@ -49,14 +49,14 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     buttonWithLabel_Back.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Back.setAction(buttonCallback);
 
-    slider_TimeRange.setXY(53, 376);
+    slider_TimeRange.setXY(49, 398);
     slider_TimeRange.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_SMALL_SLIDER_HORIZONTAL_SMALL_ROUND_BACK_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_SMALL_SLIDER_HORIZONTAL_SMALL_ROUND_FILL_ID), touchgfx::Bitmap(BITMAP_BLUE_SLIDER_HORIZONTAL_SMALL_INDICATORS_SLIDER_HORIZONTAL_SMALL_ROUND_KNOB_ID));
     slider_TimeRange.setupHorizontalSlider(3, 7, 0, 0, 125);
-    slider_TimeRange.setValueRange(1, 3);
+    slider_TimeRange.setValueRange(1, 10);
     slider_TimeRange.setValue(2);
     slider_TimeRange.setNewValueCallback(sliderValueChangedCallback);
 
-    textArea_TimeRange.setPosition(17, 310, 276, 38);
+    textArea_TimeRange.setPosition(0, 347, 276, 38);
     textArea_TimeRange.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_TimeRange.setLinespacing(0);
     Unicode::snprintf(textArea_TimeRangeBuffer, TEXTAREA_TIMERANGE_SIZE, "%s", touchgfx::TypedText(T_SINGLEUSEID295).getText());

@@ -1275,33 +1275,6 @@
         </file>
       </group>
       <group>
-        <name>screen_module2_data_screen</name>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp</name>
-        </file>
-      </group>
-      <group>
-        <name>screen_module2_graph_screen</name>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp</name>
-        </file>
-      </group>
-      <group>
-        <name>screen_module2_settings_screen</name>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp</name>
-        </file>
-      </group>
-      <group>
         <name>screen_uart_rx_debug_screen</name>
         <file>
           <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp</name>

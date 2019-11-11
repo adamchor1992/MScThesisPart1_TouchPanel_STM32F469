@@ -50,7 +50,7 @@ public:
      * @param newHeight       Height of the new.
      * @param lineColor       The line color.
      */
-    void setup(int newWidth, int newHeight, uint16_t lineColor, int graphLineRangeBottom, int graphLineRangeTop);
+    void setup(int newWidth, int newHeight, uint16_t lineColor, int graphLineRangeRight, int graphLineRangeBottom, int graphLineRangeTop);
 
     /**
      * @fn bool Graph::addValue(int x, int y)
@@ -216,7 +216,7 @@ public:
     uint8_t getAlpha();
 
 protected:
-    static const int NUMBER_OF_POINTS = 1080; ///< Max number of points in the graph
+    static const int NUMBER_OF_POINTS = 3600; ///< Max number of points in the graph
 
     GraphLine graphLine;           ///< The line of the graph
 
