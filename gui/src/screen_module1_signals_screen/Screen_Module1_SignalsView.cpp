@@ -362,23 +362,131 @@ void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
   if (toggleButton_Auto_Y_Range.getState() == true)
   {
     Screen_Module1_GraphView::m_AutoRangeEnabled = true;
-    
-    textArea_Y_AxisMin.setVisible(false);
-    textArea_Y_AxisMax.setVisible(false);
-    
-    textArea_Y_AxisMin.invalidate();
-    textArea_Y_AxisMax.invalidate();
+    hideManualRangeSettings();
   }
   else
   {
     Screen_Module1_GraphView::m_AutoRangeEnabled = false;
-    
-    textArea_Y_AxisMin.setVisible(true);
-    textArea_Y_AxisMax.setVisible(true);
-    
-    textArea_Y_AxisMin.invalidate();
-    textArea_Y_AxisMax.invalidate();
+    showManualRangeSettings();
   }
+}
+
+void Screen_Module1_SignalsView::hideManualRangeSettings()
+{
+  textArea_Y_AxisMin.setVisible(false);
+  textArea_Y_AxisMax.setVisible(false);
+  
+  toggleButton_SignMin.setVisible(false);
+  toggleButton_SignMax.setVisible(false);
+  
+  scrollWheel_MinDigit1.setVisible(false);
+  scrollWheel_MinDigit2.setVisible(false);
+  scrollWheel_MinDigit3.setVisible(false);
+  scrollWheel_MinDigit4.setVisible(false);
+  scrollWheel_MinDigit5.setVisible(false);
+  scrollWheel_MinDigit6.setVisible(false);
+  scrollWheel_MinDigit7.setVisible(false);
+  scrollWheel_MinDigit8.setVisible(false);
+  scrollWheel_MinDigit9.setVisible(false);
+  scrollWheel_MinDigit10.setVisible(false);
+  
+  scrollWheel_MaxDigit1.setVisible(false);
+  scrollWheel_MaxDigit2.setVisible(false);
+  scrollWheel_MaxDigit3.setVisible(false);
+  scrollWheel_MaxDigit4.setVisible(false);
+  scrollWheel_MaxDigit5.setVisible(false);
+  scrollWheel_MaxDigit6.setVisible(false);
+  scrollWheel_MaxDigit7.setVisible(false);
+  scrollWheel_MaxDigit8.setVisible(false);
+  scrollWheel_MaxDigit9.setVisible(false);
+  scrollWheel_MaxDigit10.setVisible(false);
+  
+  textArea_Y_AxisMin.invalidate();
+  textArea_Y_AxisMax.invalidate();
+  
+  toggleButton_SignMin.invalidate();
+  toggleButton_SignMax.invalidate();
+  
+  scrollWheel_MinDigit1.invalidate();
+  scrollWheel_MinDigit2.invalidate();
+  scrollWheel_MinDigit3.invalidate();
+  scrollWheel_MinDigit4.invalidate();
+  scrollWheel_MinDigit5.invalidate();
+  scrollWheel_MinDigit6.invalidate();
+  scrollWheel_MinDigit7.invalidate();
+  scrollWheel_MinDigit8.invalidate();
+  scrollWheel_MinDigit9.invalidate();
+  scrollWheel_MinDigit10.invalidate();
+  
+  scrollWheel_MaxDigit1.invalidate();
+  scrollWheel_MaxDigit2.invalidate();
+  scrollWheel_MaxDigit3.invalidate();
+  scrollWheel_MaxDigit4.invalidate();
+  scrollWheel_MaxDigit5.invalidate();
+  scrollWheel_MaxDigit6.invalidate();
+  scrollWheel_MaxDigit7.invalidate();
+  scrollWheel_MaxDigit8.invalidate();
+  scrollWheel_MaxDigit9.invalidate();
+  scrollWheel_MaxDigit10.invalidate();
+}
+
+void Screen_Module1_SignalsView::showManualRangeSettings()
+{
+  textArea_Y_AxisMin.setVisible(true);
+  textArea_Y_AxisMax.setVisible(true);
+  
+  toggleButton_SignMin.setVisible(true);
+  toggleButton_SignMax.setVisible(true);
+  
+  scrollWheel_MinDigit1.setVisible(true);
+  scrollWheel_MinDigit2.setVisible(true);
+  scrollWheel_MinDigit3.setVisible(true);
+  scrollWheel_MinDigit4.setVisible(true);
+  scrollWheel_MinDigit5.setVisible(true);
+  scrollWheel_MinDigit6.setVisible(true);
+  scrollWheel_MinDigit7.setVisible(true);
+  scrollWheel_MinDigit8.setVisible(true);
+  scrollWheel_MinDigit9.setVisible(true);
+  scrollWheel_MinDigit10.setVisible(true);
+  
+  scrollWheel_MaxDigit1.setVisible(true);
+  scrollWheel_MaxDigit2.setVisible(true);
+  scrollWheel_MaxDigit3.setVisible(true);
+  scrollWheel_MaxDigit4.setVisible(true);
+  scrollWheel_MaxDigit5.setVisible(true);
+  scrollWheel_MaxDigit6.setVisible(true);
+  scrollWheel_MaxDigit7.setVisible(true);
+  scrollWheel_MaxDigit8.setVisible(true);
+  scrollWheel_MaxDigit9.setVisible(true);
+  scrollWheel_MaxDigit10.setVisible(true);
+  
+  textArea_Y_AxisMin.invalidate();
+  textArea_Y_AxisMax.invalidate();
+  
+  toggleButton_SignMin.invalidate();
+  toggleButton_SignMax.invalidate();
+  
+  scrollWheel_MinDigit1.invalidate();
+  scrollWheel_MinDigit2.invalidate();
+  scrollWheel_MinDigit3.invalidate();
+  scrollWheel_MinDigit4.invalidate();
+  scrollWheel_MinDigit5.invalidate();
+  scrollWheel_MinDigit6.invalidate();
+  scrollWheel_MinDigit7.invalidate();
+  scrollWheel_MinDigit8.invalidate();
+  scrollWheel_MinDigit9.invalidate();
+  scrollWheel_MinDigit10.invalidate();
+  
+  scrollWheel_MaxDigit1.invalidate();
+  scrollWheel_MaxDigit2.invalidate();
+  scrollWheel_MaxDigit3.invalidate();
+  scrollWheel_MaxDigit4.invalidate();
+  scrollWheel_MaxDigit5.invalidate();
+  scrollWheel_MaxDigit6.invalidate();
+  scrollWheel_MaxDigit7.invalidate();
+  scrollWheel_MaxDigit8.invalidate();
+  scrollWheel_MaxDigit9.invalidate();
+  scrollWheel_MaxDigit10.invalidate();
 }
 
 void Screen_Module1_SignalsView::setSignMin(Sign sign)

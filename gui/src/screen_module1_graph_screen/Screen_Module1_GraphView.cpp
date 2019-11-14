@@ -14,16 +14,16 @@
 using namespace std;
 #endif
 
-#define GRAPH_CONSTANT_RANGE_BOTTOM -2500
-#define GRAPH_CONSTANT_RANGE_TOP +2500
-#define GRAPH_CONSTANT_MAX_MIN_INTERVAL 5000
+const int GRAPH_CONSTANT_RANGE_BOTTOM = -2500;
+const int GRAPH_CONSTANT_RANGE_TOP = +2500;
+const int GRAPH_CONSTANT_MAX_MIN_INTERVAL = 5000;
 
-#define INITIAL_GRAPH_RANGE_BOTTOM -10000
-#define INITIAL_GRAPH_RANGE_TOP 10000
-#define INITIAL_GRAPH_RANGE_LEFT 0
-#define INITIAL_GRAPH_RANGE_RIGHT 720
+const int INITIAL_GRAPH_RANGE_BOTTOM = -10000;
+const int INITIAL_GRAPH_RANGE_TOP = 10000;
+const int INITIAL_GRAPH_RANGE_LEFT = 0;
+const int INITIAL_GRAPH_RANGE_RIGHT = 720;
 
-#define GRAPHS_COUNT 4
+const int GRAPHS_COUNT = 4;
 
 bool Screen_Module1_GraphView::m_Parameter1GraphEnabled = true;
 bool Screen_Module1_GraphView::m_Parameter2GraphEnabled = true;
@@ -35,52 +35,19 @@ int Screen_Module1_GraphView::m_GraphRangeBottom = INITIAL_GRAPH_RANGE_BOTTOM;
 int Screen_Module1_GraphView::m_GraphRangeTop = INITIAL_GRAPH_RANGE_TOP;
 int Screen_Module1_GraphView::m_GraphRangeRight = INITIAL_GRAPH_RANGE_RIGHT;
 
-void Screen_Module1_GraphView::setGraphRanges(int bottom, int top, int right)
-{
-  m_GraphRangeBottom = bottom;
-  m_GraphRangeTop = top;
-  m_GraphRangeRight = right;
-}
-
-void Screen_Module1_GraphView::resetGraph()
-{
-  for (int i = 0; i < GRAPHS_COUNT; i++)
-  {
-    m_Graphs[i]->clear();
-    m_Graphs[i]->invalidate();
-    
-    m_Graphs[i]->setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
-    
-    m_TimeBase = 0;
-  }
-  
-  /*Initialize graph ranges text areas */
-  Unicode::snprintf(textArea_GraphRangeTopBuffer, 12, "%d", m_GraphRangeTop);
-  textArea_GraphRangeTop.invalidate();
-  
-  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 12, "%d", m_GraphRangeBottom);
-  textArea_GraphRangeBottom.invalidate();
-  
-  Unicode::snprintf(textArea_GraphRangeRightBuffer, 12, "%d", m_GraphRangeRight);
-  textArea_GraphRangeRight.invalidate();
-}
-
 Screen_Module1_GraphView::Screen_Module1_GraphView()
 {
-  m_GraphRangeBottomChangedFlag = false;
-  m_GraphRangeTopChangedFlag = false;
-  
   m_PreviousYellow_X = 0;
   m_PreviousRed_X = 0;
   m_PreviousBlue_X = 0;
   m_PreviousGreen_X = 0;
   
-  m_TimeBase = 0;
-  
   m_Graphs[0] = &m_GraphYellow;
   m_Graphs[1] = &m_GraphRed;
   m_Graphs[2] = &m_GraphBlue;
   m_Graphs[3] = &m_GraphGreen;
+  
+  m_TimeBase = 0;
 }
 
 void Screen_Module1_GraphView::setupScreen()
@@ -123,6 +90,40 @@ void Screen_Module1_GraphView::setupScreen()
 void Screen_Module1_GraphView::tearDownScreen()
 {
   
+}
+
+void Screen_Module1_GraphView::setGraphRanges(int bottom, int top, int right)
+{
+  m_GraphRangeBottom = bottom;
+  m_GraphRangeTop = top;
+  m_GraphRangeRight = right;
+}
+
+void Screen_Module1_GraphView::resetGraph()
+{
+  for (int i = 0; i < GRAPHS_COUNT; i++)
+  {
+    m_Graphs[i]->clear();
+    m_Graphs[i]->invalidate();
+    m_Graphs[i]->setRange(INITIAL_GRAPH_RANGE_LEFT, m_GraphRangeRight, GRAPH_CONSTANT_RANGE_BOTTOM, GRAPH_CONSTANT_RANGE_TOP);
+  }
+  
+  m_TimeBase = 0;
+  
+  m_PreviousYellow_X = 0;
+  m_PreviousRed_X = 0;
+  m_PreviousBlue_X = 0;
+  m_PreviousGreen_X = 0;
+  
+  /*Initialize graph ranges text areas */
+  Unicode::snprintf(textArea_GraphRangeTopBuffer, 12, "%d", m_GraphRangeTop);
+  textArea_GraphRangeTop.invalidate();
+  
+  Unicode::snprintf(textArea_GraphRangeBottomBuffer, 12, "%d", m_GraphRangeBottom);
+  textArea_GraphRangeBottom.invalidate();
+  
+  Unicode::snprintf(textArea_GraphRangeRightBuffer, 12, "%d", m_GraphRangeRight);
+  textArea_GraphRangeRight.invalidate();
 }
 
 void Screen_Module1_GraphView::handleTickEvent()
@@ -197,62 +198,61 @@ void Screen_Module1_GraphView::handleTickEvent()
 void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
-  int value = int(std::stof((char*)(uartPacket.getPayload())));
+  static int rawValue, scaledValue;
   
-  value = int((((1 - (double(m_GraphRangeTop - value) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
+  rawValue = int(std::stof((char*)(uartPacket.getPayload())));
   
   if (uartPacket.getSign() == Sign::NEGATIVE_SIGN)
   {
-    /*Make value_int negative*/
-    value = value * (-1);
+    /*Make rawValue negative*/
+    rawValue = rawValue * (-1);
   }
   
   if (m_AutoRangeEnabled == true)
-  {
-    for (int i = 0; i < GRAPHS_COUNT; i++)
+  { 
+    /*Check if raw value is higher than graph's top range*/
+    if (rawValue > m_GraphRangeTop)
+    { 
+      m_GraphRangeTop = rawValue;
+      
+      Unicode::snprintf(textArea_GraphRangeTopBuffer, 12, "%d", m_GraphRangeTop);
+      textArea_GraphRangeTop.invalidate();
+    }
+    /*Check if raw value is lower than graph bottom range*/
+    else if (rawValue < m_GraphRangeBottom)
     {
-      /*Check if value is higher than any graph's top range*/
-      if (value > m_Graphs[i]->getRangeTop())
-      {
-        m_GraphRangeTopChangedFlag = true;
-        m_GraphRangeTop = value;
-      }
-      /*Check if value is lower than graph bottom range*/
-      else if (value < m_Graphs[i]->getRangeBottom())
-      {
-        m_GraphRangeBottomChangedFlag = true;
-        m_GraphRangeBottom = value;
-      }
+      m_GraphRangeBottom = rawValue;
+      
+      Unicode::snprintf(textArea_GraphRangeBottomBuffer, 12, "%d", m_GraphRangeBottom);
+      textArea_GraphRangeBottom.invalidate();
+    }
+  }
+  
+  scaledValue = int((((1 - (double(m_GraphRangeTop - rawValue) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
+  
+  /*If autorange is not enabled the scaled value must be constrained within constant upper and lower graph range*/
+  if(m_AutoRangeEnabled == false)
+  {
+    if(scaledValue > GRAPH_CONSTANT_RANGE_TOP)
+    {
+      scaledValue = GRAPH_CONSTANT_RANGE_TOP;
+    }
+    else if(scaledValue < GRAPH_CONSTANT_RANGE_BOTTOM)
+    {
+      scaledValue = GRAPH_CONSTANT_RANGE_BOTTOM;
     }
   }
   
   if (m_TimeBase >= m_GraphRangeRight)
   {
-    m_GraphYellow.clear();
-    m_GraphYellow.invalidate();
-    
-    m_GraphRed.clear();
-    m_GraphRed.invalidate();
-    
-    m_GraphBlue.clear();
-    m_GraphBlue.invalidate();
-    
-    m_GraphGreen.clear();
-    m_GraphGreen.invalidate();
-    
-    m_PreviousYellow_X = 0;
-    m_PreviousRed_X = 0;
-    m_PreviousBlue_X = 0;
-    m_PreviousGreen_X = 0;
-    
-    m_TimeBase = 0;
+    resetGraph();
   }
   
   printf("Graph real bottom range: %d\n", m_GraphYellow.getRangeBottom());
   printf("Graph real top range: %d\n", m_GraphYellow.getRangeTop());
   printf("Graph virtual bottom range: %d\n", m_GraphRangeBottom);
   printf("Graph virtual top range: %d\n", m_GraphRangeTop);
-  printf("Value after scaling: %d\n", value);
+  printf("Value after scaling: %d\n", scaledValue);
   
   switch (uartPacket.getParameter())
   {
@@ -268,7 +268,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
       {
         m_PreviousYellow_X = m_TimeBase;
       }
-      m_GraphYellow.addValue(m_TimeBase, value);
+      m_GraphYellow.addValue(m_TimeBase, scaledValue);
     }
     break;
   case Parameter::CURRENT_PARAMETER:
@@ -283,7 +283,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
       {
         m_PreviousRed_X = m_TimeBase;
       }
-      m_GraphRed.addValue(m_TimeBase, value);
+      m_GraphRed.addValue(m_TimeBase, scaledValue);
     }
     break;
   case Parameter::FREQUENCY_PARAMETER:
@@ -298,7 +298,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
       {
         m_PreviousBlue_X = m_TimeBase;
       }
-      m_GraphBlue.addValue(m_TimeBase, value);
+      m_GraphBlue.addValue(m_TimeBase, scaledValue);
     }
     break;
   case Parameter::POWER_PARAMETER:
@@ -313,7 +313,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
       {
         m_PreviousGreen_X = m_TimeBase;
       }
-      m_GraphGreen.addValue(m_TimeBase, value);
+      m_GraphGreen.addValue(m_TimeBase, scaledValue);
     }
     break;
   }

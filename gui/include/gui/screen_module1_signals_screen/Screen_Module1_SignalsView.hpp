@@ -32,13 +32,14 @@ public:
 
 	virtual void pressedAutoRangeToggleButton();
 
+        void hideManualRangeSettings();
+        void showManualRangeSettings();       
+        
 	void setSignMin(Sign sign);
 	void setSignMax(Sign sign);
 
 	Sign getSignMin();
 	Sign getSignMax();
-
-	void updateCpuUsage(uint8_t value);
 
 	virtual void scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_MinDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex);
@@ -61,6 +62,8 @@ public:
 	virtual void scrollWheel_MaxDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_MaxDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex);
+        
+        void updateCpuUsage(uint8_t value);
 
 private:
 	enum class Sign { NEGATIVE = 0, POSITIVE = 1};

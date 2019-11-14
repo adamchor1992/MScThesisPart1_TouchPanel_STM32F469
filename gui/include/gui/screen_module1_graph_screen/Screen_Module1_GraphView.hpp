@@ -45,10 +45,7 @@ private:
   Graph m_GraphBlue;
   Graph m_GraphGreen;
   Graph* m_Graphs[4];
-  
-  bool m_GraphRangeBottomChangedFlag;
-  bool m_GraphRangeTopChangedFlag;
-    
+      
   int m_PreviousYellow_X;
   int m_PreviousRed_X;
   int m_PreviousBlue_X;
@@ -58,6 +55,7 @@ private:
   static bool m_Parameter2GraphEnabled;
   static bool m_Parameter3GraphEnabled;
   static bool m_Parameter4GraphEnabled;
+
   static bool m_AutoRangeEnabled;
   
   static int m_GraphRangeBottom;

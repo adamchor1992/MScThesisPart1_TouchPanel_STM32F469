@@ -42,11 +42,11 @@ Screen_Module1_GraphViewBase::Screen_Module1_GraphViewBase() :
     textArea_GraphRangeBottom.setWildcard(textArea_GraphRangeBottomBuffer);
     textArea_GraphRangeBottom.setTypedText(touchgfx::TypedText(T_SINGLEUSEID269));
 
-    line_VericalAxis.setPosition(55, 0, 2, 385);
+    line_VericalAxis.setPosition(55, 0, 2, 388);
     line_VericalAxisPainter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     line_VericalAxis.setPainter(line_VericalAxisPainter);
     line_VericalAxis.setStart(1, 0);
-    line_VericalAxis.setEnd(1, 385);
+    line_VericalAxis.setEnd(1, 388);
     line_VericalAxis.setLineWidth(2);
     line_VericalAxis.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
 
@@ -71,11 +71,11 @@ Screen_Module1_GraphViewBase::Screen_Module1_GraphViewBase() :
     buttonWithLabel_Signals.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Signals.setAction(buttonCallback);
 
-    line_HorizontalAxis_1.setPosition(55, 385, 741, 2);
+    line_HorizontalAxis_1.setPosition(55, 388, 745, 2);
     line_HorizontalAxis_1Painter.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     line_HorizontalAxis_1.setPainter(line_HorizontalAxis_1Painter);
     line_HorizontalAxis_1.setStart(0, 1);
-    line_HorizontalAxis_1.setEnd(740, 1);
+    line_HorizontalAxis_1.setEnd(745, 1);
     line_HorizontalAxis_1.setLineWidth(2);
     line_HorizontalAxis_1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
 
