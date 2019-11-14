@@ -7,21 +7,12 @@
 
 Screen_MainView::Screen_MainView()
 {
-
+  
 }
 
 void Screen_MainView::setupScreen()
 {
 #ifndef SIMULATOR
-  /*Restart UART RX*/
-  extern UartPacket uartPacket;
-  
-  HAL_UART_DeInit(Model::m_pHuart6);
-  HAL_UART_Init(Model::m_pHuart6);
-  
-  NVIC_EnableIRQ(USART6_IRQn);
-  
-  HAL_UART_Receive_IT(Model::m_pHuart6, static_cast<uint8_t*>(uartPacket), PACKET_SIZE);
   
   char activeModuleString[10] = {0};
   

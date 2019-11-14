@@ -52,6 +52,7 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 
 void Screen_Module1_SettingsView::setupScreen()
 {  
+  /*Disable UART interrupts for this screen*/
 #ifndef SIMULATOR
   NVIC_DisableIRQ(USART6_IRQn);
 #endif
@@ -59,6 +60,7 @@ void Screen_Module1_SettingsView::setupScreen()
 
 void Screen_Module1_SettingsView::tearDownScreen()
 {
+  /*Reenable UART interrupts when leaving this screen*/
 #ifndef SIMULATOR
   extern UartPacket uartPacket;
   

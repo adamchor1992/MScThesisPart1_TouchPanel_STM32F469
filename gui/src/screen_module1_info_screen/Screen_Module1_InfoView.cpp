@@ -58,24 +58,12 @@ Screen_Module1_InfoView::Screen_Module1_InfoView()
 
 void Screen_Module1_InfoView::setupScreen()
 {
-#ifndef SIMULATOR
-  NVIC_DisableIRQ(USART6_IRQn);
-#endif
+
 }
 
 void Screen_Module1_InfoView::tearDownScreen()
 {
-#ifndef SIMULATOR
-  /*Restart UART RX*/
-  extern UartPacket uartPacket;
   
-  HAL_UART_DeInit(Model::m_pHuart6);
-  HAL_UART_Init(Model::m_pHuart6);
-  
-  NVIC_EnableIRQ(USART6_IRQn);
-  
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartPacket.getPacketTable(), PACKET_SIZE);
-#endif
 }
 
 void Screen_Module1_InfoView::updateCpuUsage(uint8_t value)

@@ -84,19 +84,7 @@ Screen_Module1_GraphView::Screen_Module1_GraphView()
 }
 
 void Screen_Module1_GraphView::setupScreen()
-{
-#ifndef SIMULATOR
-  /*Restart UART RX*/
-  extern UartPacket uartPacket;
-  
-  HAL_UART_DeInit(Model::m_pHuart6);
-  HAL_UART_Init(Model::m_pHuart6);
-  
-  NVIC_EnableIRQ(USART6_IRQn);
-  
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartPacket.getPacketTable(), PACKET_SIZE);
-#endif
-  
+{  
   m_TimeBase = 0;
   
   // Set the outer dimensions and color of the graphs
@@ -209,8 +197,6 @@ void Screen_Module1_GraphView::handleTickEvent()
 void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
-  BSP_LED_Toggle(LED3);
-  
   int value = int(std::stof((char*)(uartPacket.getPayload())));
   
   value = int((((1 - (double(m_GraphRangeTop - value) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);

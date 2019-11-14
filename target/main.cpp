@@ -37,6 +37,7 @@ xQueueHandle msgQueueUartTx;
 
 xSemaphoreHandle uartRxSemaphore;
 xSemaphoreHandle uartTxSemaphore;
+xSemaphoreHandle uartMutex;
 
 static void guiTask(void* params);
 static void uartRxTask(void* params);
@@ -125,6 +126,7 @@ int main(void)
   /*Create UART semaphore*/
   uartRxSemaphore = xSemaphoreCreateBinary();
   uartTxSemaphore = xSemaphoreCreateBinary();
+  uartMutex = xSemaphoreCreateMutex();
   
   /*Initialize LEDS for debugging purposes*/
   BSP_LED_Init(LED1);
@@ -159,37 +161,53 @@ static void uartRxTask(void* params)
     /*Check if interrupt occured so there is new data in uartPacket table*/
     if(xSemaphoreTake(uartRxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Ensure that there is no context switch during packet processing*/
-      taskENTER_CRITICAL();
-      
-      //CRC check
-      if(uartPacket.checkCrc32() == true)
+      /*Check if UART mutex is available to take. Wait 10 ticks*/
+      if( xSemaphoreTake( uartMutex, NO_WAITING) == pdTRUE )
       {
-        /*Packet is correct and can be further processed*/
+        /*Ensure that there is no context switch during packet processing*/
+        taskENTER_CRITICAL();
+       
+        //CRC check
+        if(uartPacket.checkCrc32() == true)
+        {
+          /*Packet is correct and can be further processed*/
+          
+          uartPacket.updateFields();
+          
+#ifdef DEBUG
+          printf("Rx packet:\n");
+          uartPacket.printPacket();
+#endif
+          
+          xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
+          
+          /*Reset packet to all zeroes*/
+          uartPacket.clearPacket();
+        }
+        else
+        {
+          /*Packet is corrupted and will not be further processed*/
+          
+          printf("WRONG CRC\n");
+          
+          BSP_LED_On(LED1);
+          BSP_LED_On(LED2);
+          BSP_LED_On(LED3);
+          BSP_LED_On(LED4);
+          
+          /*Reset packet to all zeroes*/
+          uartPacket.clearPacket();
+        }
         
-        uartPacket.updateFields();
-      
-        xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
+        /*Give back mutex*/
+        xSemaphoreGive(uartMutex);
         
-        /*Reset packet to all zeroes*/
-        uartPacket.clearPacket();
+        taskEXIT_CRITICAL();
       }
       else
       {
-        /*Packet is corrupted and will not be further processed*/
-        
-        printf("WRONG CRC\n");
-        
-        BSP_LED_On(LED1);
-        BSP_LED_On(LED2);
-        BSP_LED_On(LED3);
-        BSP_LED_On(LED4);
-        
-        /*Reset packet to all zeroes*/
-         uartPacket.clearPacket();
+        printf("MUTEX RX: Nie udalo sie pobrac mutexa\n");
       }
-      
-      taskEXIT_CRITICAL();
     }
   }
 }
@@ -203,18 +221,34 @@ static void uartTxTask(void* params)
     /*Take TxSemaphore*/
     if(xSemaphoreTake(uartTxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      taskENTER_CRITICAL();
-      
-      UartPacket uartPacket;
-      
-      xQueueReceive(msgQueueUartTx, &uartPacket, NO_WAITING);
-      
-      uartPacket.updatePacketTable();
-      uartPacket.appendCrcToPacket();
-      
-      HAL_UART_Transmit(&huart6, static_cast<uint8_t*>(uartPacket), PACKET_SIZE, UART_TX_WAITING);
-      
-      taskEXIT_CRITICAL();
+      /*Check if UART mutex is available to take. Wait 10 ticks*/
+      if( xSemaphoreTake( uartMutex, NO_WAITING) == pdTRUE )
+      {
+        taskENTER_CRITICAL();
+        
+        UartPacket uartTxPacket;
+        
+        xQueueReceive(msgQueueUartTx, &uartTxPacket, NO_WAITING);
+        
+#ifdef DEBUG
+        printf("Tx packet:\n");
+        uartTxPacket.printPacket();
+#endif
+        
+        uartTxPacket.updatePacketTable();
+        uartTxPacket.appendCrcToPacket();
+        
+        HAL_UART_Transmit(&huart6, static_cast<uint8_t*>(uartTxPacket), PACKET_SIZE, UART_TX_WAITING);
+        
+        /*Give back mutex*/
+        xSemaphoreGive(uartMutex);
+        
+        taskEXIT_CRITICAL();
+      } 
+      else
+      {
+        printf("MUTEX TX: Nie udalo sie pobrac mutexa\n");
+      }
     }
   }
 }

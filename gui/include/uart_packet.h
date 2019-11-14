@@ -44,7 +44,7 @@ public:
   void clearPacket();
   
   void printCrc();
-  void printPacket();
+  void printPacket(bool crc = false);
   
   void updateFields();
   void updatePacketTable();
