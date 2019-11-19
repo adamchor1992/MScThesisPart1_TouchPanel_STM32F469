@@ -33,7 +33,7 @@ public:
   Function getFunction() const;
   Parameter getParameter() const;
   Sign getSign() const;
-  uint8_t getLength() const;
+  uint8_t getLengthInt() const;
   const uint8_t* getPayload() const;
   uint8_t* getPacketTable() {return m_PacketTable;}
   
@@ -44,7 +44,7 @@ public:
   void clearPacket();
   
   void printCrc();
-  void printPacket(bool crc = false);
+  void printPacket(bool withCrc = false);
   
   void updateFields();
   void updatePacketTable();

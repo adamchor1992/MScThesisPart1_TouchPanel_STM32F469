@@ -10,7 +10,6 @@ public:
   Screen_Module1_DataView();
   virtual ~Screen_Module1_DataView() {}
   virtual void setupScreen();
-  virtual void tearDownScreen();
   
   // Declaring callback handler
   void TextAreaClickHandler(const TextAreaWithOneWildcard& b, const ClickEvent& e);
@@ -26,4 +25,4 @@ protected:
   Callback<Screen_Module1_DataView, const TextAreaWithOneWildcard&, const ClickEvent&> TextAreaClickedCallback;
 };
 
-#endif // SCREEN_MODULE1_DATA_VIEW_HPP
+#endif

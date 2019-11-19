@@ -6,16 +6,6 @@ Screen_Module1_SignalsPresenter::Screen_Module1_SignalsPresenter(Screen_Module1_
 {
 }
 
-void Screen_Module1_SignalsPresenter::activate()
-{
-
-}
-
-void Screen_Module1_SignalsPresenter::deactivate()
-{
-
-}
-
 void Screen_Module1_SignalsPresenter::notifyNewCpuUsageValue(uint8_t value)
 {
   view.updateCpuUsage(value);

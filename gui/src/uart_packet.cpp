@@ -6,7 +6,7 @@ UartPacket::UartPacket() : m_Payload {0}, m_Crc{0}
   m_Module = 0;           //module ID
   m_Function = 0;         //packet type
   m_Parameter = 0;        //parameter ID
-  m_Sign = 0;             //sign of payload value, '1' - positive, '2' - negative
+  m_Sign = 0;             //sign of payload value
   m_Length = 0;           //length of payload
 }
 
@@ -36,7 +36,7 @@ void UartPacket::setSource(Source source)
 {
   if(source == Source::SOURCE_TARGET1)
   {
-    m_Source = '1';
+    m_Source = static_cast<uint8_t>(Source::SOURCE_TARGET1);
   }
 }
 
@@ -44,15 +44,15 @@ void UartPacket::setModule(ModuleID module)
 {
   if(module == ModuleID::MODULE1)
   {
-    m_Module = '1';
+    m_Module = static_cast<uint8_t>(ModuleID::MODULE1);
   }
   else if(module == ModuleID::MODULE2)
   {
-    m_Module = '2';
+    m_Module = static_cast<uint8_t>(ModuleID::MODULE2);
   }
   else if(module == ModuleID::MODULE3)
   {
-    m_Module = '3';
+    m_Module = static_cast<uint8_t>(ModuleID::MODULE3);
   }
 }
 
@@ -65,35 +65,35 @@ void UartPacket::setFunction(Function function)
 {
   if(function == Function::DATA_PACKET)
   {
-    m_Function = '1';
+    m_Function = static_cast<uint8_t>(Function::DATA_PACKET);
   }
   else if(function == Function::INIT_PACKET)
   {
-    m_Function = '2';
+    m_Function = static_cast<uint8_t>(Function::INIT_PACKET);
   }
   else if(function == Function::DEINIT_PACKET)
   {
-    m_Function = '3';
+    m_Function = static_cast<uint8_t>(Function::DEINIT_PACKET);
   }
   else if(function == Function::ENABLE_PARAMETER_PACKET)
   {
-    m_Function = '4';
+    m_Function = static_cast<uint8_t>(Function::ENABLE_PARAMETER_PACKET);
   }
   else if(function == Function::DISABLE_PARAMETER_PACKET)
   {
-    m_Function = '5';
+    m_Function = static_cast<uint8_t>(Function::DISABLE_PARAMETER_PACKET);
   }
   else if(function == Function::SET_PARAMETER_PACKET)
   {
-    m_Function = '6';
+    m_Function = static_cast<uint8_t>(Function::SET_PARAMETER_PACKET);
   }
   else if(function == Function::SET_GRAPH_RANGE_MIN)
   {
-    m_Function = '7';
+    m_Function = static_cast<uint8_t>(Function::SET_GRAPH_RANGE_MIN);
   }
   else if(function == Function::SET_GRAPH_RANGE_MAX)
   {
-    m_Function = '8';
+    m_Function = static_cast<uint8_t>(Function::SET_GRAPH_RANGE_MAX);
   }
 }
 
@@ -101,63 +101,63 @@ void UartPacket::setParameter(Parameter parameter)
 {
   if(parameter == Parameter::NULL_PARAMETER)
   {
-    m_Parameter = '0';
+    m_Parameter = static_cast<uint8_t>(Parameter::NULL_PARAMETER);
   }
-  else if(parameter == Parameter::VOLTAGE_PARAMETER)
+  else if(parameter == Parameter::GRAPH_PARAMETER1)
   {
-    m_Parameter = 'v';
+    m_Parameter = static_cast<uint8_t>(Parameter::GRAPH_PARAMETER1);
   }
-  else if(parameter == Parameter::CURRENT_PARAMETER)
+  else if(parameter == Parameter::GRAPH_PARAMETER2)
   {
-    m_Parameter = 'c';
+    m_Parameter = static_cast<uint8_t>(Parameter::GRAPH_PARAMETER2);
   }
-  else if(parameter == Parameter::FREQUENCY_PARAMETER)
+  else if(parameter == Parameter::GRAPH_PARAMETER3)
   {
-    m_Parameter = 'f';
+    m_Parameter = static_cast<uint8_t>(Parameter::GRAPH_PARAMETER3);
   }
-  else if(parameter == Parameter::POWER_PARAMETER)
+  else if(parameter == Parameter::GRAPH_PARAMETER4)
   {
-    m_Parameter = 'p';
+    m_Parameter = static_cast<uint8_t>(Parameter::GRAPH_PARAMETER4);
   }
   else if(parameter == Parameter::PARAMETER1)
   {
-    m_Parameter = '1';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER1);
   }
   else if(parameter == Parameter::PARAMETER2)
   {
-    m_Parameter = '2';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER2);
   }
   else if(parameter == Parameter::PARAMETER3)
   {
-    m_Parameter = '3';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER3);
   }
   else if(parameter == Parameter::PARAMETER4)
   {
-    m_Parameter = '4';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER4);
   }
   else if(parameter == Parameter::PARAMETER5)
   {
-    m_Parameter = '5';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER5);
   }
   else if(parameter == Parameter::PARAMETER6)
   {
-    m_Parameter = '6';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER6);
   }
   else if(parameter == Parameter::PARAMETER7)
   {
-    m_Parameter = '7';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER7);
   }
   else if(parameter == Parameter::PARAMETER8)
   {
-    m_Parameter = '8';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER8);
   }
   else if(parameter == Parameter::PARAMETER9)
   {
-    m_Parameter = '9';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER9);
   }
   else if(parameter == Parameter::PARAMETER10)
   {
-    m_Parameter = 'a';
+    m_Parameter = static_cast<uint8_t>(Parameter::PARAMETER10);
   }
 }
 
@@ -170,11 +170,11 @@ void UartPacket::setSign(Sign sign)
 {
   if(sign == Sign::POSITIVE_SIGN)
   {
-    m_Sign = '1';
+    m_Sign = static_cast<uint8_t>(Sign::POSITIVE_SIGN);
   }
   else if(sign == Sign::NEGATIVE_SIGN)
   {
-    m_Sign = '2';
+    m_Sign = static_cast<uint8_t>(Sign::NEGATIVE_SIGN);
   }
 }
 
@@ -187,7 +187,7 @@ void UartPacket::setLength(Length length)
 {
   if(length == Length::NO_PAYLOAD)
   {
-    m_Length = '0';
+    m_Length = static_cast<uint8_t>(Length::NO_PAYLOAD);
   }
 }
 
@@ -203,7 +203,7 @@ uint8_t* UartPacket::setPayload()
 
 Source UartPacket::getSource() const
 {
-  if(m_Source == '1')
+  if(m_Source == static_cast<uint8_t>(Source::SOURCE_TARGET1))
   {
     return Source::SOURCE_TARGET1;
   }
@@ -215,15 +215,15 @@ Source UartPacket::getSource() const
 
 ModuleID UartPacket::getModule() const
 {
-  if(m_Module == '1')
+  if(m_Module == static_cast<uint8_t>(ModuleID::MODULE1))
   {
     return ModuleID::MODULE1;
   }
-  else if(m_Module == '2')
+  else if(m_Module == static_cast<uint8_t>(ModuleID::MODULE2))
   {
     return ModuleID::MODULE2;
   }
-  else if(m_Module == '3')
+  else if(m_Module == static_cast<uint8_t>(ModuleID::MODULE3))
   {
     return ModuleID::MODULE3;
   }
@@ -235,39 +235,39 @@ ModuleID UartPacket::getModule() const
 
 Function UartPacket::getFunction() const
 {
-  if(m_Function == '1')
+  if(m_Function == static_cast<uint8_t>(Function::DATA_PACKET))
   {
     return Function::DATA_PACKET;
   }
-  else if(m_Function == '2')
+  else if(m_Function == static_cast<uint8_t>(Function::INIT_PACKET))
   {
     return Function::INIT_PACKET;
   }
-  else if(m_Function == '3')
+  else if(m_Function == static_cast<uint8_t>(Function::DEINIT_PACKET))
   {
     return Function::DEINIT_PACKET;
   }
-  else if(m_Function == '4')
+  else if(m_Function == static_cast<uint8_t>(Function::ENABLE_PARAMETER_PACKET))
   {
     return Function::ENABLE_PARAMETER_PACKET;
   }
-  else if(m_Function == '5')
+  else if(m_Function == static_cast<uint8_t>(Function::DISABLE_PARAMETER_PACKET))
   {
     return Function::DISABLE_PARAMETER_PACKET;
   }
-  else if(m_Function == '6')
+  else if(m_Function == static_cast<uint8_t>(Function::SET_PARAMETER_PACKET))
   {
     return Function::SET_PARAMETER_PACKET;
   }
-  else if(m_Function == '7')
+  else if(m_Function == static_cast<uint8_t>(Function::SET_GRAPH_RANGE_MIN))
   {
     return Function::SET_GRAPH_RANGE_MIN;
   }
-  else if(m_Function == '8')
+  else if(m_Function == static_cast<uint8_t>(Function::SET_GRAPH_RANGE_MAX))
   {
     return Function::SET_GRAPH_RANGE_MAX;
   }
-  else if(m_Function == '9')
+  else if(m_Function == static_cast<uint8_t>(Function::SET_GRAPH_TIME_RANGE))
   {
     return Function::SET_GRAPH_TIME_RANGE;
   }
@@ -279,63 +279,63 @@ Function UartPacket::getFunction() const
 
 Parameter UartPacket::getParameter() const
 {
-  if(m_Parameter == '0')
+  if(m_Parameter == static_cast<uint8_t>(Parameter::NULL_PARAMETER))
   {
     return Parameter::NULL_PARAMETER;
   }
-  else if(m_Parameter == 'v')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::GRAPH_PARAMETER1))
   {
-    return Parameter::VOLTAGE_PARAMETER;
+    return Parameter::GRAPH_PARAMETER1;
   }
-  else if(m_Parameter == 'c')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::GRAPH_PARAMETER2))
   {
-    return Parameter::CURRENT_PARAMETER;
+    return Parameter::GRAPH_PARAMETER2;
   }
-  else if(m_Parameter == 'f')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::GRAPH_PARAMETER3))
   {
-    return Parameter::FREQUENCY_PARAMETER;
+    return Parameter::GRAPH_PARAMETER3;
   }
-  else if(m_Parameter == 'p')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::GRAPH_PARAMETER4))
   {
-    return Parameter::POWER_PARAMETER;
+    return Parameter::GRAPH_PARAMETER4;
   }
-  else if(m_Parameter == '1')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER1))
   {
     return Parameter::PARAMETER1;
   }
-  else if(m_Parameter == '2')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER2))
   {
     return Parameter::PARAMETER2;
   }
-  else if(m_Parameter == '3')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER3))
   {
     return Parameter::PARAMETER3;
   }
-  else if(m_Parameter == '4')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER4))
   {
     return Parameter::PARAMETER4;
   }
-  else if(m_Parameter == '5')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER5))
   {
     return Parameter::PARAMETER5;
   }
-  else if(m_Parameter == '6')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER6))
   {
     return Parameter::PARAMETER6;
   }
-  else if(m_Parameter == '7')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER7))
   {
     return Parameter::PARAMETER7;
   }
-  else if(m_Parameter == '8')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER8))
   {
     return Parameter::PARAMETER8;
   }
-  else if(m_Parameter == '9')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER9))
   {
     return Parameter::PARAMETER9;
   }
-  else if(m_Parameter == 'a')
+  else if(m_Parameter == static_cast<uint8_t>(Parameter::PARAMETER10))
   {
     return Parameter::PARAMETER10;
   }
@@ -347,11 +347,11 @@ Parameter UartPacket::getParameter() const
 
 Sign UartPacket::getSign() const
 {
-  if(m_Sign == '1')
+  if(m_Sign == static_cast<uint8_t>(Sign::POSITIVE_SIGN))
   {
     return Sign::POSITIVE_SIGN;
   }
-  else if(m_Sign == '2')
+  else if(m_Sign == static_cast<uint8_t>(Sign::NEGATIVE_SIGN))
   {
     return Sign::NEGATIVE_SIGN;
   }
@@ -361,7 +361,7 @@ Sign UartPacket::getSign() const
   }
 }
 
-uint8_t UartPacket::getLength() const
+uint8_t UartPacket::getLengthInt() const
 {
   return m_Length - '0';
 }
@@ -446,7 +446,7 @@ bool UartPacket::checkCrc32() const
     return false;
 }
 
-void UartPacket::printPacket(bool crc)
+void UartPacket::printPacket(bool withCrc)
 {
   printf("Source %c\n", m_Source);
   printf("Module %c\n", m_Module);
@@ -456,7 +456,7 @@ void UartPacket::printPacket(bool crc)
   printf("Length char %c\n", m_Length);
   printf("Length int %d\n", m_Length);
   printf("Payload %.10s\n", m_Payload);
-  if(crc == true)
+  if(withCrc == true)
   {
       printCrc();
   }

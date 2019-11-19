@@ -15,18 +15,6 @@ public:
     
     void notifyNewCpuUsageValue(uint8_t value);
 
-    /**
-     * The activate function is called automatically when this screen is "switched in"
-     * (ie. made active). Initialization logic can be placed here.
-     */
-    virtual void activate();
-
-    /**
-     * The deactivate function is called automatically when this screen is "switched out"
-     * (ie. made inactive). Teardown functionality can be placed here.
-     */
-    virtual void deactivate();
-
     virtual ~Screen_Module1_SignalsPresenter() {};
 
 private:
@@ -35,5 +23,4 @@ private:
     Screen_Module1_SignalsView& view;
 };
 
-
-#endif // SCREEN_MODULE1_SIGNALS_PRESENTER_HPP
+#endif

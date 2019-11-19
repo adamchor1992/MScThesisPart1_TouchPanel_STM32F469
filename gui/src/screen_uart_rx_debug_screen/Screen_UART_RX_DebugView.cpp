@@ -1,20 +1,5 @@
 #include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugView.hpp>
 
-Screen_UART_RX_DebugView::Screen_UART_RX_DebugView()
-{
-  
-}
-
-void Screen_UART_RX_DebugView::setupScreen()
-{
-  
-}
-
-void Screen_UART_RX_DebugView::tearDownScreen()
-{
-  
-}
-
 void Screen_UART_RX_DebugView::updateGuiPacketData(UartPacket & uartPacket)
 {
   Unicode::snprintf(textArea_SourceIDBuffer, TEXTAREA_SOURCEID_SIZE, "%c", uartPacket.getSource());
@@ -34,7 +19,7 @@ void Screen_UART_RX_DebugView::updateGuiPacketData(UartPacket & uartPacket)
   
   uint16_t stringToDisplay[10] = { 0 };
   
-  uint8_t lengthInt = uartPacket.getLength();
+  uint8_t lengthInt = uartPacket.getLengthInt();
   
   for (int i = 0; i < lengthInt; i++)
   {

@@ -87,11 +87,6 @@ void Screen_Module1_GraphView::setupScreen()
   add(m_GraphGreen);
 }
 
-void Screen_Module1_GraphView::tearDownScreen()
-{
-  
-}
-
 void Screen_Module1_GraphView::setGraphRanges(int bottom, int top, int right)
 {
   m_GraphRangeBottom = bottom;
@@ -198,6 +193,13 @@ void Screen_Module1_GraphView::handleTickEvent()
 void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacket)
 {
 #ifndef SIMULATOR
+  
+  /*Skip packet if it is not addressed to this module*/
+  if(uartPacket.getModule() != ModuleID::MODULE1)
+  {
+    return;
+  }
+  
   static int rawValue, scaledValue;
   
   rawValue = int(std::stof((char*)(uartPacket.getPayload())));
@@ -256,7 +258,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
   
   switch (uartPacket.getParameter())
   {
-  case Parameter::VOLTAGE_PARAMETER:
+  case Parameter::GRAPH_PARAMETER1:
     if (m_Parameter1GraphEnabled == true)
     {
       if (m_PreviousYellow_X == m_TimeBase)
@@ -271,7 +273,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
       m_GraphYellow.addValue(m_TimeBase, scaledValue);
     }
     break;
-  case Parameter::CURRENT_PARAMETER:
+  case Parameter::GRAPH_PARAMETER2:
     if (m_Parameter2GraphEnabled == true)
     {
       if (m_PreviousRed_X == m_TimeBase)
@@ -286,7 +288,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
       m_GraphRed.addValue(m_TimeBase, scaledValue);
     }
     break;
-  case Parameter::FREQUENCY_PARAMETER:
+  case Parameter::GRAPH_PARAMETER3:
     if (m_Parameter3GraphEnabled == true)
     {
       if (m_PreviousBlue_X == m_TimeBase)
@@ -301,7 +303,7 @@ void Screen_Module1_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
       m_GraphBlue.addValue(m_TimeBase, scaledValue);
     }
     break;
-  case Parameter::POWER_PARAMETER:
+  case Parameter::GRAPH_PARAMETER4:
     if (m_Parameter4GraphEnabled == true)
     {
       if (m_PreviousGreen_X == m_TimeBase)
@@ -324,8 +326,8 @@ void Screen_Module1_GraphView::setNewGraphRange(UartPacket & uartPacket)
 {
   int newValue = 0;
   
-  printf("Dlugosc pakietu jako znak %c\n", uartPacket.getLength());
-  printf("Dlugosc pakietu jako liczba %d\n", uartPacket.getLength());
+  printf("Dlugosc pakietu jako znak %c\n", uartPacket.getLengthInt());
+  printf("Dlugosc pakietu jako liczba %d\n", uartPacket.getLengthInt());
   printf("Payload pakietu %.10s\n", uartPacket.getPayload());
   
   switch(uartPacket.getFunction())

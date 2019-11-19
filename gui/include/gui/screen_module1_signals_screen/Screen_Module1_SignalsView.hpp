@@ -69,4 +69,4 @@ private:
 	enum class Sign { NEGATIVE = 0, POSITIVE = 1};
 };
 
-#endif // SCREEN_MODULE1_SIGNALS_VIEW_HPP
+#endif

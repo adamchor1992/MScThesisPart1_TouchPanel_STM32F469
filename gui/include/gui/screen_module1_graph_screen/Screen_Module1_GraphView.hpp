@@ -20,7 +20,6 @@ public:
   Screen_Module1_GraphView();
   virtual ~Screen_Module1_GraphView() {}
   virtual void setupScreen();
-  virtual void tearDownScreen();
   
   virtual void handleTickEvent();
   virtual void addNewValueToGraphFromUart(UartPacket & uartPacket);
@@ -63,4 +62,4 @@ private:
   static int m_GraphRangeRight;
 };
 
-#endif // SCREEN_MODULE1_GRAPH_VIEW_HPP
+#endif

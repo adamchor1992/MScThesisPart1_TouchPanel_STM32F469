@@ -31,6 +31,7 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_Module2.setLabelText(touchgfx::TypedText(T_SINGLEUSEID42));
     buttonWithLabel_Module2.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_Module2.setAction(buttonCallback);
 
     buttonWithLabel_Module1.setXY(0, 210);
     buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -56,6 +57,7 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_Module3.setLabelText(touchgfx::TypedText(T_SINGLEUSEID408));
     buttonWithLabel_Module3.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module3.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    buttonWithLabel_Module3.setAction(buttonCallback);
 
     buttonWithLabel_ClearLeds.setXY(630, 0);
     buttonWithLabel_ClearLeds.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
@@ -89,12 +91,26 @@ void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
         //Go to Screen_UART_RX_Debug with no screen transition
         application().gotoScreen_UART_RX_DebugScreenNoTransition();
     }
+    else if (&src == &buttonWithLabel_Module2)
+    {
+        //Interaction_GoToModule2Screen
+        //When buttonWithLabel_Module2 clicked change screen to Screen_Module2_Data
+        //Go to Screen_Module2_Data with no screen transition
+        application().gotoScreen_Module2_DataScreenNoTransition();
+    }
     else if (&src == &buttonWithLabel_Module1)
     {
         //Interaction_GoToModule1Screen
         //When buttonWithLabel_Module1 clicked change screen to Screen_Module1_Data
         //Go to Screen_Module1_Data with no screen transition
         application().gotoScreen_Module1_DataScreenNoTransition();
+    }
+    else if (&src == &buttonWithLabel_Module3)
+    {
+        //Interaction_GoToModule3Screen
+        //When buttonWithLabel_Module3 clicked change screen to Screen_Module3_Data
+        //Go to Screen_Module3_Data with no screen transition
+        application().gotoScreen_Module3_DataScreenNoTransition();
     }
     else if (&src == &buttonWithLabel_ClearLeds)
     {

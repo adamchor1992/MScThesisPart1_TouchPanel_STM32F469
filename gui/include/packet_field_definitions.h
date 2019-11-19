@@ -40,10 +40,10 @@ enum class Function
 enum class Parameter 
 { 
   NULL_PARAMETER = '0',
-  VOLTAGE_PARAMETER = 'v',
-  CURRENT_PARAMETER = 'c',
-  FREQUENCY_PARAMETER = 'f',
-  POWER_PARAMETER = 'p',
+  GRAPH_PARAMETER1 = 'b',
+  GRAPH_PARAMETER2 = 'c',
+  GRAPH_PARAMETER3 = 'd',
+  GRAPH_PARAMETER4 = 'e',
   PARAMETER1 = '1',
   PARAMETER2 = '2',
   PARAMETER3 = '3',

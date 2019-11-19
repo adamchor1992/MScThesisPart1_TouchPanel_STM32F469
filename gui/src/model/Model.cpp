@@ -116,11 +116,26 @@ void Model::processPacket(UartPacket & uartPacket, ModuleID module)
     {
       if(m_ReceivedInitPacketCount < INIT_PACKET_COUNT)
       {
-        uint8_t lengthInt = uartPacket.getLength();
+        uint8_t lengthInt = uartPacket.getLengthInt();
         
-        memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
+        if(module == ModuleID::MODULE1)
+        {
+          memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
+        }
+        else if(module == ModuleID::MODULE2)
+        {
+          memcpy(m_InitParametersModule2[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
+        }
+        else if(module == ModuleID::MODULE3)
+        {
+          memcpy(m_InitParametersModule3[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
+        }
         
         ++m_ReceivedInitPacketCount;
+      }
+      else
+      {
+        printf("Wrong module\n");
       }
       
       printf("Received %d out of %d required init packets\n", m_ReceivedInitPacketCount, INIT_PACKET_COUNT);

@@ -68,16 +68,11 @@ void Screen_Module1_DataView::setupScreen()
   textArea_Parameter4Name.setClickAction(TextAreaClickedCallback);
 }
 
-void Screen_Module1_DataView::tearDownScreen()
-{
-  
-}
-
 void Screen_Module1_DataView::updateGuiPacketData(UartPacket & uartPacket)
 {
   uint16_t stringToDisplay[10] = { 0 };
   
-  uint8_t length_int = uartPacket.getLength();
+  uint8_t length_int = uartPacket.getLengthInt();
   
   for (int i = 0; i < length_int; i++)
   {

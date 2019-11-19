@@ -7,13 +7,10 @@
 class Screen_UART_RX_DebugView : public Screen_UART_RX_DebugViewBase
 {
 public:
-    Screen_UART_RX_DebugView();
     virtual ~Screen_UART_RX_DebugView() {}
-    virtual void setupScreen();
-    virtual void tearDownScreen();
     
     void updateGuiPacketData(UartPacket & uartPacket);
     void updateCpuUsage(uint8_t value);
 };
 
-#endif // SCREEN_UART_RX_DEBUG_VIEW_HPP
+#endif

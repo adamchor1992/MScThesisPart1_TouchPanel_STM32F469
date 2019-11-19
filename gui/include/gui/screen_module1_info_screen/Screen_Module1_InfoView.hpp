@@ -9,10 +9,8 @@ class Screen_Module1_InfoView : public Screen_Module1_InfoViewBase
 public:
     Screen_Module1_InfoView();
     virtual ~Screen_Module1_InfoView() {}
-    virtual void setupScreen();
-    virtual void tearDownScreen();
     
     void updateCpuUsage(uint8_t value);
 };
 
-#endif // SCREEN_MODULE1_INFO_VIEW_HPP
+#endif

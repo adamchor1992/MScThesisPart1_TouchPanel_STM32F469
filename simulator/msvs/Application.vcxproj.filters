@@ -247,8 +247,128 @@
     <Filter Include="Header Files\generated\gui_generated\containers">
       <UniqueIdentifier>D5C92D5D-38DC-411C-99C5-995F48AA9A2B</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\gui\screen_module2_settings_screen">
+      <UniqueIdentifier>833668D4-22B4-33F6-1943-4D86DD8685B2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module2_settings_screen">
+      <UniqueIdentifier>A733EE82-9F36-F75B-8803-6AE0B144101E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module2_info_screen">
+      <UniqueIdentifier>ACD4B670-5353-B6DA-DBBB-4CD6EA08F3DB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module2_info_screen">
+      <UniqueIdentifier>740CAF66-16B3-5D3B-1905-9E1E6C784CF6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module2_signals_screen">
+      <UniqueIdentifier>832CD6D7-DF54-0318-89E3-EEF1455D63F9</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module2_signals_screen">
+      <UniqueIdentifier>536691B5-698F-3454-B751-B5B4E0F4564A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module2_graph_screen">
+      <UniqueIdentifier>817631FE-16F2-8003-09AB-71BE5F3011E3</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module2_graph_screen">
+      <UniqueIdentifier>D89FDE95-9809-D341-DA70-079798A6B8D9</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module3_data_screen">
+      <UniqueIdentifier>17043D6B-6498-6C89-E3C2-09106EC9FA51</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module2_data_screen">
+      <UniqueIdentifier>9C42954E-449C-010E-DD4B-C90FB33956B6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module2_data_screen">
+      <UniqueIdentifier>067FB650-AF5F-087A-E30D-09B5C87F8A12</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module3_data_screen">
+      <UniqueIdentifier>1D0255A6-0CB1-860B-F35F-17C313F7A710</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module3_graph_screen">
+      <UniqueIdentifier>60653AF7-AE4C-20B5-A2D1-78B8FF4C5645</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module3_graph_screen">
+      <UniqueIdentifier>07D180E8-A81C-A1C5-1240-BFF98A4F27E8</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module3_info_screen">
+      <UniqueIdentifier>0832C439-7E15-A5D9-3598-8D9C37D8182B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module3_info_screen">
+      <UniqueIdentifier>D3D9D3F9-6681-0B10-E19B-5846A9CC48AE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module3_settings_screen">
+      <UniqueIdentifier>7A544E22-534E-23B1-4580-BE404FB8C5CD</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module3_settings_screen">
+      <UniqueIdentifier>E4263718-F0F3-A2F1-E366-B744E399FBFB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\screen_module3_signals_screen">
+      <UniqueIdentifier>CC3AE5C6-753C-F25A-8F3B-B875E021A355</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\screen_module3_signals_screen">
+      <UniqueIdentifier>7936E8EF-B797-1FD9-A573-09F4D48EDAB4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module3_signals_screen">
+      <UniqueIdentifier>C7057D92-A21A-3F57-A235-A1D31ACC8C07</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module3_settings_screen">
+      <UniqueIdentifier>9A47AAA5-939C-930A-9665-07139BCB4AA7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module3_settings_screen">
+      <UniqueIdentifier>786ACE7F-C4F1-B41A-8A2F-C7E4E3C976FA</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module3_signals_screen">
+      <UniqueIdentifier>1C60148E-BBB2-C3DD-85EC-E63293E1957E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module3_info_screen">
+      <UniqueIdentifier>6393AB52-4AF8-77C6-35DA-D1E5016F387E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module3_info_screen">
+      <UniqueIdentifier>B4867F19-693C-C2D4-DBA2-068FABF7BB18</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module3_graph_screen">
+      <UniqueIdentifier>0B60A4E2-80FA-6F86-AB91-A6280C86E440</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module3_graph_screen">
+      <UniqueIdentifier>B327E679-30C2-6099-6AB9-9F7E94F1F7BC</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module3_data_screen">
+      <UniqueIdentifier>133F6A93-F03D-F358-A631-DB86255A5442</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module3_data_screen">
+      <UniqueIdentifier>6289DDB5-E17D-9A35-AF8C-0AE2E0F78EA6</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module2_data_screen">
+      <UniqueIdentifier>74E60EF7-25A8-3071-B837-5A43DE1BCA2D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module2_signals_screen">
+      <UniqueIdentifier>DBB80CFA-C0F3-743A-56AF-5D81505E40DC</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module2_data_screen">
+      <UniqueIdentifier>A8FC15AE-DD9D-2146-E8DD-30C64097E085</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module2_signals_screen">
+      <UniqueIdentifier>BC8A9A26-02C6-84E7-3385-939CCCDBC6F2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module2_graph_screen">
+      <UniqueIdentifier>167347BB-12A4-B76B-A41A-C852D9A87EE2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module2_graph_screen">
+      <UniqueIdentifier>D0E44FC6-388D-8F64-2493-3DC52B7BDB1F</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module2_settings_screen">
+      <UniqueIdentifier>ED8FF8D4-BBD2-C001-900D-C4F15D897BFB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module2_settings_screen">
+      <UniqueIdentifier>2BD532BD-FA0F-BD4A-F646-2F42B8EA9983</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\screen_module2_info_screen">
+      <UniqueIdentifier>BACC0677-40BD-C620-3E77-4236070AA74D</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\screen_module2_info_screen">
+      <UniqueIdentifier>75F6507F-C298-A123-C0E8-27932738A021</UniqueIdentifier>
+    </Filter>
     <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>0FFDC8D7-E3AF-5B12-1E6E-5B4DC04C1986</UniqueIdentifier>
+      <UniqueIdentifier>F565165B-184E-79E0-65A5-8799B11FA77D</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +482,96 @@
     </ClCompile>
     <ClCompile Include="..\..\gui\src\uart_packet.cpp">
       <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp">
+      <Filter>Source Files\gui\screen_module2_data_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp">
+      <Filter>Source Files\gui\screen_module2_data_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module2_data_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp">
+      <Filter>Source Files\gui\screen_module2_graph_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp">
+      <Filter>Source Files\gui\screen_module2_graph_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module2_graph_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_info_screen\Screen_Module2_InfoPresenter.cpp">
+      <Filter>Source Files\gui\screen_module2_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_info_screen\Screen_Module2_InfoView.cpp">
+      <Filter>Source Files\gui\screen_module2_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_info_screen\Screen_Module2_InfoViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module2_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp">
+      <Filter>Source Files\gui\screen_module2_settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp">
+      <Filter>Source Files\gui\screen_module2_settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module2_settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_signals_screen\Screen_Module2_SignalsPresenter.cpp">
+      <Filter>Source Files\gui\screen_module2_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module2_signals_screen\Screen_Module2_SignalsView.cpp">
+      <Filter>Source Files\gui\screen_module2_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module2_signals_screen\Screen_Module2_SignalsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module2_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_data_screen\Screen_Module3_DataPresenter.cpp">
+      <Filter>Source Files\gui\screen_module3_data_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_data_screen\Screen_Module3_DataView.cpp">
+      <Filter>Source Files\gui\screen_module3_data_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module3_data_screen\Screen_Module3_DataViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module3_data_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_graph_screen\Screen_Module3_GraphPresenter.cpp">
+      <Filter>Source Files\gui\screen_module3_graph_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_graph_screen\Screen_Module3_GraphView.cpp">
+      <Filter>Source Files\gui\screen_module3_graph_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module3_graph_screen\Screen_Module3_GraphViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module3_graph_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_info_screen\Screen_Module3_InfoPresenter.cpp">
+      <Filter>Source Files\gui\screen_module3_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_info_screen\Screen_Module3_InfoView.cpp">
+      <Filter>Source Files\gui\screen_module3_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module3_info_screen\Screen_Module3_InfoViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module3_info_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_settings_screen\Screen_Module3_SettingsPresenter.cpp">
+      <Filter>Source Files\gui\screen_module3_settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_settings_screen\Screen_Module3_SettingsView.cpp">
+      <Filter>Source Files\gui\screen_module3_settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module3_settings_screen\Screen_Module3_SettingsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module3_settings_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsPresenter.cpp">
+      <Filter>Source Files\gui\screen_module3_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsView.cpp">
+      <Filter>Source Files\gui\screen_module3_signals_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\screen_module3_signals_screen\Screen_Module3_SignalsViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\screen_module3_signals_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -891,6 +1101,96 @@
     </ClInclude>
     <ClInclude Include="..\..\gui\include\packet_field_definitions.h">
       <Filter>Source Files\gui\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_data_screen\Screen_Module2_DataPresenter.hpp">
+      <Filter>Header Files\gui\screen_module2_data_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_data_screen\Screen_Module2_DataView.hpp">
+      <Filter>Header Files\gui\screen_module2_data_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_data_screen\Screen_Module2_DataViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module2_data_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphPresenter.hpp">
+      <Filter>Header Files\gui\screen_module2_graph_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_graph_screen\Screen_Module2_GraphView.hpp">
+      <Filter>Header Files\gui\screen_module2_graph_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_graph_screen\Screen_Module2_GraphViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module2_graph_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_info_screen\Screen_Module2_InfoPresenter.hpp">
+      <Filter>Header Files\gui\screen_module2_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_info_screen\Screen_Module2_InfoView.hpp">
+      <Filter>Header Files\gui\screen_module2_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_info_screen\Screen_Module2_InfoViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module2_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.hpp">
+      <Filter>Header Files\gui\screen_module2_settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_settings_screen\Screen_Module2_SettingsView.hpp">
+      <Filter>Header Files\gui\screen_module2_settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module2_settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_signals_screen\Screen_Module2_SignalsPresenter.hpp">
+      <Filter>Header Files\gui\screen_module2_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module2_signals_screen\Screen_Module2_SignalsView.hpp">
+      <Filter>Header Files\gui\screen_module2_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module2_signals_screen\Screen_Module2_SignalsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module2_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_data_screen\Screen_Module3_DataPresenter.hpp">
+      <Filter>Header Files\gui\screen_module3_data_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_data_screen\Screen_Module3_DataView.hpp">
+      <Filter>Header Files\gui\screen_module3_data_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module3_data_screen\Screen_Module3_DataViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module3_data_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_graph_screen\Screen_Module3_GraphPresenter.hpp">
+      <Filter>Header Files\gui\screen_module3_graph_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_graph_screen\Screen_Module3_GraphView.hpp">
+      <Filter>Header Files\gui\screen_module3_graph_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module3_graph_screen\Screen_Module3_GraphViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module3_graph_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_info_screen\Screen_Module3_InfoPresenter.hpp">
+      <Filter>Header Files\gui\screen_module3_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_info_screen\Screen_Module3_InfoView.hpp">
+      <Filter>Header Files\gui\screen_module3_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module3_info_screen\Screen_Module3_InfoViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module3_info_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_settings_screen\Screen_Module3_SettingsPresenter.hpp">
+      <Filter>Header Files\gui\screen_module3_settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_settings_screen\Screen_Module3_SettingsView.hpp">
+      <Filter>Header Files\gui\screen_module3_settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module3_settings_screen\Screen_Module3_SettingsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module3_settings_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_signals_screen\Screen_Module3_SignalsPresenter.hpp">
+      <Filter>Header Files\gui\screen_module3_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\screen_module3_signals_screen\Screen_Module3_SignalsView.hpp">
+      <Filter>Header Files\gui\screen_module3_signals_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\screen_module3_signals_screen\Screen_Module3_SignalsViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\screen_module3_signals_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

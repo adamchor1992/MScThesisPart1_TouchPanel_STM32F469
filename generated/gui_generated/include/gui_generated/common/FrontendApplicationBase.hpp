@@ -39,6 +39,46 @@ public:
     void gotoScreen_Module1_InfoScreenNoTransition();
 
 
+    // Screen_Module2_Data
+    void gotoScreen_Module2_DataScreenNoTransition();
+
+
+    // Screen_Module2_Settings
+    void gotoScreen_Module2_SettingsScreenNoTransition();
+
+
+    // Screen_Module2_Graph
+    void gotoScreen_Module2_GraphScreenNoTransition();
+
+
+    // Screen_Module2_Signals
+    void gotoScreen_Module2_SignalsScreenNoTransition();
+
+
+    // Screen_Module2_Info
+    void gotoScreen_Module2_InfoScreenNoTransition();
+
+
+    // Screen_Module3_Data
+    void gotoScreen_Module3_DataScreenNoTransition();
+
+
+    // Screen_Module3_Settings
+    void gotoScreen_Module3_SettingsScreenNoTransition();
+
+
+    // Screen_Module3_Graph
+    void gotoScreen_Module3_GraphScreenNoTransition();
+
+
+    // Screen_Module3_Signals
+    void gotoScreen_Module3_SignalsScreenNoTransition();
+
+
+    // Screen_Module3_Info
+    void gotoScreen_Module3_InfoScreenNoTransition();
+
+
     // Screen_UART_RX_Debug
     void gotoScreen_UART_RX_DebugScreenNoTransition();
 
@@ -69,6 +109,46 @@ protected:
 
     // Screen_Module1_Info
     void gotoScreen_Module1_InfoScreenNoTransitionImpl();
+
+
+    // Screen_Module2_Data
+    void gotoScreen_Module2_DataScreenNoTransitionImpl();
+
+
+    // Screen_Module2_Settings
+    void gotoScreen_Module2_SettingsScreenNoTransitionImpl();
+
+
+    // Screen_Module2_Graph
+    void gotoScreen_Module2_GraphScreenNoTransitionImpl();
+
+
+    // Screen_Module2_Signals
+    void gotoScreen_Module2_SignalsScreenNoTransitionImpl();
+
+
+    // Screen_Module2_Info
+    void gotoScreen_Module2_InfoScreenNoTransitionImpl();
+
+
+    // Screen_Module3_Data
+    void gotoScreen_Module3_DataScreenNoTransitionImpl();
+
+
+    // Screen_Module3_Settings
+    void gotoScreen_Module3_SettingsScreenNoTransitionImpl();
+
+
+    // Screen_Module3_Graph
+    void gotoScreen_Module3_GraphScreenNoTransitionImpl();
+
+
+    // Screen_Module3_Signals
+    void gotoScreen_Module3_SignalsScreenNoTransitionImpl();
+
+
+    // Screen_Module3_Info
+    void gotoScreen_Module3_InfoScreenNoTransitionImpl();
 
 
     // Screen_UART_RX_Debug

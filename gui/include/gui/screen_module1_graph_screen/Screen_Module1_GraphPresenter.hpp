@@ -17,9 +17,6 @@ public:
     virtual void notifyNewGraphRange(UartPacket & uartPacket);
       
     void notifyNewCpuUsageValue(uint8_t value);
-    
-    virtual void activate();
-    virtual void deactivate();
 
     virtual ~Screen_Module1_GraphPresenter() {};
 
@@ -29,4 +26,4 @@ private:
     Screen_Module1_GraphView& view;
 };
 
-#endif // SCREEN_MODULE1_GRAPH_PRESENTER_HPP
+#endif
