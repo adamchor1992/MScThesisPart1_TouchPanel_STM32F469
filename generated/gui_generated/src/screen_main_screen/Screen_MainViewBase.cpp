@@ -3,21 +3,14 @@
 /*********************************************************************************/
 #include <gui_generated/screen_main_screen/Screen_MainViewBase.hpp>
 #include <touchgfx/Color.hpp>
-#include "BitmapDatabase.hpp"
 #include <texts/TextKeysAndLanguages.hpp>
+#include "BitmapDatabase.hpp"
 
 Screen_MainViewBase::Screen_MainViewBase() :
     buttonCallback(this, &Screen_MainViewBase::buttonCallbackHandler)
 {
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
-
-    buttonWithLabel_UART_Debug.setXY(0, 0);
-    buttonWithLabel_UART_Debug.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_UART_Debug.setLabelText(touchgfx::TypedText(T_SINGLEUSEID7));
-    buttonWithLabel_UART_Debug.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel_UART_Debug.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    buttonWithLabel_UART_Debug.setAction(buttonCallback);
 
     textArea_CPU_Usage.setPosition(618, 451, 182, 29);
     textArea_CPU_Usage.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -67,7 +60,6 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_ClearLeds.setAction(buttonCallback);
 
     add(backgroundBox_Black);
-    add(buttonWithLabel_UART_Debug);
     add(textArea_CPU_Usage);
     add(buttonWithLabel_Module2);
     add(buttonWithLabel_Module1);
@@ -84,14 +76,7 @@ void Screen_MainViewBase::setupScreen()
 
 void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
 {
-    if (&src == &buttonWithLabel_UART_Debug)
-    {
-        //Interaction_GoToUARTScreen
-        //When buttonWithLabel_UART_Debug clicked change screen to Screen_UART_RX_Debug
-        //Go to Screen_UART_RX_Debug with no screen transition
-        application().gotoScreen_UART_RX_DebugScreenNoTransition();
-    }
-    else if (&src == &buttonWithLabel_Module2)
+    if (&src == &buttonWithLabel_Module2)
     {
         //Interaction_GoToModule2Screen
         //When buttonWithLabel_Module2 clicked change screen to Screen_Module2_Data

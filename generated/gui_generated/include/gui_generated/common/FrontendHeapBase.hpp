@@ -39,8 +39,6 @@
 
 
 
-
-
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
@@ -76,8 +74,6 @@
 #include <gui/screen_module3_signals_screen/Screen_Module3_SignalsPresenter.hpp>
 #include <gui/screen_module3_info_screen/Screen_Module3_InfoView.hpp>
 #include <gui/screen_module3_info_screen/Screen_Module3_InfoPresenter.hpp>
-#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugView.hpp>
-#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugPresenter.hpp>
 
 
 /**
@@ -116,8 +112,7 @@ public:
             touchgfx::meta::TypeList< Screen_Module3_GraphView,
             touchgfx::meta::TypeList< Screen_Module3_SignalsView,
             touchgfx::meta::TypeList< Screen_Module3_InfoView,
-            touchgfx::meta::TypeList< Screen_UART_RX_DebugView,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > >
+            touchgfx::meta::Nil > > > > > > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -145,8 +140,7 @@ public:
             touchgfx::meta::TypeList< Screen_Module3_GraphPresenter,
             touchgfx::meta::TypeList< Screen_Module3_SignalsPresenter,
             touchgfx::meta::TypeList< Screen_Module3_InfoPresenter,
-            touchgfx::meta::TypeList< Screen_UART_RX_DebugPresenter,
-            touchgfx::meta::Nil > > > > > > > > > > > > > > > >
+            touchgfx::meta::Nil > > > > > > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**

@@ -78,10 +78,6 @@ public:
     // Screen_Module3_Info
     void gotoScreen_Module3_InfoScreenNoTransition();
 
-
-    // Screen_UART_RX_Debug
-    void gotoScreen_UART_RX_DebugScreenNoTransition();
-
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
@@ -149,10 +145,6 @@ protected:
 
     // Screen_Module3_Info
     void gotoScreen_Module3_InfoScreenNoTransitionImpl();
-
-
-    // Screen_UART_RX_Debug
-    void gotoScreen_UART_RX_DebugScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

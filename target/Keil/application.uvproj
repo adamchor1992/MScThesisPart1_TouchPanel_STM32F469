@@ -909,16 +909,6 @@
               <FilePath>../../gui/src/screen_module3_signals_screen/screen_module3_signalsview.cpp</FilePath>
             </File>
             <File>
-              <FileName>Screen_UART_RX_DebugPresenter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_uart_rx_debug_screen/screen_uart_rx_debugpresenter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_UART_RX_DebugView.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/screen_uart_rx_debug_screen/screen_uart_rx_debugview.cpp</FilePath>
-            </File>
-            <File>
               <FileName>uart_packet.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/uart_packet.cpp</FilePath>
@@ -1192,11 +1182,6 @@
               <FileName>Screen_Module3_SignalsViewBase.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/gui_generated/src/screen_module3_signals_screen/screen_module3_signalsviewbase.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Screen_UART_RX_DebugViewBase.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/gui_generated/src/screen_uart_rx_debug_screen/screen_uart_rx_debugviewbase.cpp</FilePath>
             </File>
             <File>
               <FileName>Table_verdana_20_4bpp.cpp</FileName>

@@ -40,8 +40,6 @@
 #include <gui/screen_module3_signals_screen/Screen_Module3_SignalsPresenter.hpp>
 #include <gui/screen_module3_info_screen/Screen_Module3_InfoView.hpp>
 #include <gui/screen_module3_info_screen/Screen_Module3_InfoPresenter.hpp>
-#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugView.hpp>
-#include <gui/screen_uart_rx_debug_screen/Screen_UART_RX_DebugPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -265,18 +263,5 @@ void FrontendApplicationBase::gotoScreen_Module3_InfoScreenNoTransition()
 void FrontendApplicationBase::gotoScreen_Module3_InfoScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Screen_Module3_InfoView, Screen_Module3_InfoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
-}
-
-// Screen_UART_RX_Debug
-
-void FrontendApplicationBase::gotoScreen_UART_RX_DebugScreenNoTransition()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoScreen_UART_RX_DebugScreenNoTransitionImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
-
-void FrontendApplicationBase::gotoScreen_UART_RX_DebugScreenNoTransitionImpl()
-{
-    touchgfx::makeTransition<Screen_UART_RX_DebugView, Screen_UART_RX_DebugPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 

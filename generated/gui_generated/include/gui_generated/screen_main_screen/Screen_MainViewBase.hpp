@@ -8,8 +8,8 @@
 #include <mvp/View.hpp>
 #include <gui/screen_main_screen/Screen_MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
-#include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/widgets/ButtonWithLabel.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 
 class Screen_MainViewBase : public touchgfx::View<Screen_MainPresenter>
@@ -36,7 +36,6 @@ protected:
      * Member Declarations
      */
     touchgfx::Box backgroundBox_Black;
-    touchgfx::ButtonWithLabel buttonWithLabel_UART_Debug;
     touchgfx::TextAreaWithOneWildcard textArea_CPU_Usage;
     touchgfx::ButtonWithLabel buttonWithLabel_Module2;
     touchgfx::ButtonWithLabel buttonWithLabel_Module1;

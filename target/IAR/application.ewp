@@ -1165,12 +1165,6 @@
             <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_signals_screen\Screen_Module3_SignalsViewBase.cpp</name>
           </file>
         </group>
-        <group>
-          <name>screen_uart_rx_debug_screen</name>
-          <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp</name>
-          </file>
-        </group>
       </group>
       <group>
         <name>images</name>
@@ -1422,15 +1416,6 @@
         </file>
         <file>
           <name>$PROJ_DIR$\..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsView.cpp</name>
-        </file>
-      </group>
-      <group>
-        <name>screen_uart_rx_debug_screen</name>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp</name>
-        </file>
-        <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp</name>
         </file>
       </group>
       <file>
