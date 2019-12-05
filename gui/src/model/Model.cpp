@@ -66,8 +66,8 @@ void Model::tick()
     default:
       printf("Unsupported module in Model.cpp\n");
     }
-    m_ModelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
   }
+  m_ModelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
 #endif
 }
 
