@@ -13,8 +13,8 @@
 #include <touchgfx/widgets/canvas/Line.hpp>
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/containers/Container.hpp>
-
 #include <touchgfx/widgets/TextArea.hpp>
+
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/mixins/ClickListener.hpp>
 class Screen_Module3_DataViewBase : public touchgfx::View<Screen_Module3_DataPresenter>
@@ -56,6 +56,7 @@ protected:
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter2Value;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter3Value;
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter4Value;
+    touchgfx::ClickListener< touchgfx::TextArea > textArea_ShowAll;
 
     touchgfx::TextArea textArea_Title;
     touchgfx::Button button1_ShowAll;

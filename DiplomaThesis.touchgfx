@@ -662,13 +662,36 @@
                 "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId9581",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea_ShowAll",
+                "X": 598,
+                "Y": 100,
+                "Width": 85,
+                "Height": 25,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": true,
+                "Fadeable": false,
+                "Moveable": false
               }
             ],
             "IsCacheableContainer": false,
             "Name": "textAreaContainer",
             "X": -1,
             "Y": 65,
-            "Width": 610,
+            "Width": 683,
             "Height": 298,
             "Type": "Container",
             "Visible": true,
@@ -691,7 +714,7 @@
             "Name": "textArea_Title",
             "X": 309,
             "Y": 0,
-            "Width": 182,
+            "Width": 183,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -4277,13 +4300,36 @@
                 "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId9582",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea_ShowAll",
+                "X": 598,
+                "Y": 100,
+                "Width": 85,
+                "Height": 25,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": true,
+                "Fadeable": false,
+                "Moveable": false
               }
             ],
             "IsCacheableContainer": false,
             "Name": "textAreaContainer",
             "X": -1,
             "Y": 65,
-            "Width": 610,
+            "Width": 683,
             "Height": 298,
             "Type": "Container",
             "Visible": true,
@@ -7892,13 +7938,36 @@
                 "Clickable": true,
                 "Fadeable": false,
                 "Moveable": false
+              },
+              {
+                "TextId": "SingleUseId9583",
+                "TextRotation": "0",
+                "Color": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "Alpha": 255,
+                "AutoSize": true,
+                "LineSpacing": 0,
+                "Name": "textArea_ShowAll",
+                "X": 598,
+                "Y": 100,
+                "Width": 85,
+                "Height": 25,
+                "Type": "TextArea",
+                "Visible": true,
+                "Draggable": false,
+                "Clickable": true,
+                "Fadeable": false,
+                "Moveable": false
               }
             ],
             "IsCacheableContainer": false,
             "Name": "textAreaContainer",
             "X": -1,
             "Y": 65,
-            "Width": 610,
+            "Width": 683,
             "Height": 298,
             "Type": "Container",
             "Visible": true,
@@ -48507,6 +48576,18 @@
       },
       {
         "TextEntryId": "SingleUseId9580",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9581",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9582",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9583",
         "IsResource": false
       }
     ],

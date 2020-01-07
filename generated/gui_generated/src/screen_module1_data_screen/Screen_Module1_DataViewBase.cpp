@@ -50,7 +50,7 @@ Screen_Module1_DataViewBase::Screen_Module1_DataViewBase() :
     line1.setLineWidth(5);
     line1.setLineEndingStyle(touchgfx::Line::ROUND_CAP_ENDING);
 
-    textAreaContainer.setPosition(-1, 65, 610, 298);
+    textAreaContainer.setPosition(-1, 65, 683, 298);
 
     textArea_Parameter1Name.setPosition(0, 9, 249, 49);
     textArea_Parameter1Name.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
@@ -115,6 +115,12 @@ Screen_Module1_DataViewBase::Screen_Module1_DataViewBase() :
     textArea_Parameter4Value.setWildcard(textArea_Parameter4ValueBuffer);
     textArea_Parameter4Value.setTypedText(touchgfx::TypedText(T_SINGLEUSEID318));
     textAreaContainer.add(textArea_Parameter4Value);
+
+    textArea_ShowAll.setXY(598, 100);
+    textArea_ShowAll.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
+    textArea_ShowAll.setLinespacing(0);
+    textArea_ShowAll.setTypedText(touchgfx::TypedText(T_SINGLEUSEID9581));
+    textAreaContainer.add(textArea_ShowAll);
 
     textArea_Title.setXY(309, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));

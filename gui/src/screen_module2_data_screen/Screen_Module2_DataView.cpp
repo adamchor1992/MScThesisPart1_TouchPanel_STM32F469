@@ -5,12 +5,21 @@ Screen_Module2_DataView::Screen_Module2_DataView() : TextAreaClickedCallback(thi
 {
 #ifndef SIMULATOR       
   uint16_t parameterStringDisplay[CUSTOM_PARAMETER_NAME_COUNT][PAYLOAD_SIZE] = {{ 0 }};
+  uint16_t valueStringDisplay[CUSTOM_PARAMETER_VALUE_COUNT][PAYLOAD_SIZE] = {{ 0 }};
   
   for(int i = 0; i < CUSTOM_PARAMETER_NAME_COUNT; i++)
   {
     for (int character = 0; character < PAYLOAD_SIZE; character++)
     {
       parameterStringDisplay[i][character] = Model::m_InitParametersModule2[i + CUSTOM_PARAMETER_NAME_OFFSET][character];
+    }
+  }
+  
+  for(int i = 0; i < CUSTOM_PARAMETER_VALUE_COUNT; i++)
+  {
+    for (int character = 0; character < PAYLOAD_SIZE; character++)
+    {
+      valueStringDisplay[i][character] = Model::m_InitParametersModule2[i + CUSTOM_PARAMETER_VALUE_OFFSET][character];
     }
   }
   
@@ -25,6 +34,18 @@ Screen_Module2_DataView::Screen_Module2_DataView() : TextAreaClickedCallback(thi
   
   Unicode::snprintf(textArea_Parameter4NameBuffer, TEXTAREA_PARAMETER4NAME_SIZE, "%s", parameterStringDisplay[3]);
   textArea_Parameter4Name.invalidate();
+  
+  Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", valueStringDisplay[0]);
+  textArea_Parameter1Value.invalidate();
+  
+  Unicode::snprintf(textArea_Parameter2ValueBuffer, TEXTAREA_PARAMETER2VALUE_SIZE, "%s", valueStringDisplay[1]);
+  textArea_Parameter2Value.invalidate();
+  
+  Unicode::snprintf(textArea_Parameter3ValueBuffer, TEXTAREA_PARAMETER3VALUE_SIZE, "%s", valueStringDisplay[2]);
+  textArea_Parameter3Value.invalidate();
+  
+  Unicode::snprintf(textArea_Parameter4ValueBuffer, TEXTAREA_PARAMETER4VALUE_SIZE, "%s", valueStringDisplay[3]);
+  textArea_Parameter4Value.invalidate();
 #endif
 }
 
