@@ -13,6 +13,9 @@ class Screen_Module3_DataPresenter : public touchgfx::Presenter, public ModelLis
 public:
     Screen_Module3_DataPresenter(Screen_Module3_DataView& v);
 
+    virtual void notifyNewUartRxParsedPacket(UartPacket& uartPacket); 
+    void notifyNewCpuUsageValue(uint8_t value);
+    
     /**
      * The activate function is called automatically when this screen is "switched in"
      * (ie. made active). Initialization logic can be placed here.
@@ -34,4 +37,4 @@ private:
 };
 
 
-#endif // SCREEN_MODULE3_DATAPRESENTER_HPP
+#endif // SCREEN_MODULE3_DATA_PRESENTER_HPP

@@ -16,7 +16,7 @@ void Screen_Module1_DataPresenter::deactivate()
 
 }
 
-void Screen_Module1_DataPresenter::notifyNewUartRxParsedPacket(UartPacket & uartPacket)
+void Screen_Module1_DataPresenter::notifyNewUartRxParsedPacket(UartPacket& uartPacket)
 {
   view.updateGuiPacketData(uartPacket);
 }

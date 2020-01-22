@@ -59,7 +59,7 @@ protected:
   ModelListener* m_ModelListener;
   
 private:
-  void processPacket(UartPacket & uartPacket, ModuleID module);
+  void processPacket(UartPacket& uartPacket, ModuleID module);
   
   uint8_t m_ReceivedInitPacketCount;
   static bool module1Connected;

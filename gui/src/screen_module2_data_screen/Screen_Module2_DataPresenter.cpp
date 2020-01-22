@@ -15,3 +15,13 @@ void Screen_Module2_DataPresenter::deactivate()
 {
 
 }
+
+void Screen_Module2_DataPresenter::notifyNewUartRxParsedPacket(UartPacket& uartPacket)
+{
+  view.updateGuiPacketData(uartPacket);
+}
+
+void Screen_Module2_DataPresenter::notifyNewCpuUsageValue(uint8_t value)
+{
+  view.updateCpuUsage(value);
+}

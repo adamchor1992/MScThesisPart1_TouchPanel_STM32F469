@@ -71,16 +71,18 @@ void Model::tick()
 #endif
 }
 
-void Model::processPacket(UartPacket & uartPacket, ModuleID module)
+void Model::processPacket(UartPacket& uartPacket, ModuleID module)
 {
 #ifndef SIMULATOR
+  Function function = uartPacket.getFunction();
+  
   if(isModuleActive(module) == true)
   {
-    if(uartPacket.getFunction() == Function::DATA_PACKET)
+    if(function == Function::DATA_PACKET)
     {
       m_ModelListener->notifyNewUartRxParsedPacket(uartPacket);
     }
-    else if(uartPacket.getFunction() == Function::DEINIT_PACKET)
+    else if(function == Function::DEINIT_PACKET)
     {
       printf("Deinit packet received\n");
       
@@ -89,30 +91,30 @@ void Model::processPacket(UartPacket & uartPacket, ModuleID module)
       /*Go back to main menu screen*/
       static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
     }
-    else if(uartPacket.getFunction() == Function::SET_GRAPH_RANGE_MIN)
+    else if(function == Function::SET_GRAPH_RANGE_MIN)
     {
       printf("Set graph range minimum packet received\n");
       m_ModelListener->notifyNewGraphRange(uartPacket);
     }
-    else if(uartPacket.getFunction() == Function::SET_GRAPH_RANGE_MAX)
+    else if(function == Function::SET_GRAPH_RANGE_MAX)
     {
       printf("Set graph range maximum packet received\n");
       m_ModelListener->notifyNewGraphRange(uartPacket);
     }
-    else if(uartPacket.getFunction() == Function::SET_GRAPH_TIME_RANGE)
+    else if(function == Function::SET_GRAPH_TIME_RANGE)
     {
       printf("Set graph time range packet received\n");
       m_ModelListener->notifyNewGraphRange(uartPacket);
     }
     else
     {
-      printf("Wrong packet type for module %c in active state\n", module);
+      printf("Wrong packet function for module %c in active state\n", module);
     }
   }
   /*Module inactive*/
   else
   {
-    if(uartPacket.getFunction() == Function::INIT_PACKET)
+    if(function == Function::INIT_PACKET)
     {
       if(m_ReceivedInitPacketCount < INIT_PACKET_COUNT)
       {

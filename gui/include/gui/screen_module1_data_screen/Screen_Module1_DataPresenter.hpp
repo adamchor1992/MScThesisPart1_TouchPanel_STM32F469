@@ -13,7 +13,7 @@ class Screen_Module1_DataPresenter : public Presenter, public ModelListener
 public:
     Screen_Module1_DataPresenter(Screen_Module1_DataView& v);
     
-    virtual void notifyNewUartRxParsedPacket(UartPacket & uartPacket); 
+    virtual void notifyNewUartRxParsedPacket(UartPacket& uartPacket); 
     void notifyNewCpuUsageValue(uint8_t value);
 
     /**
