@@ -2773,6 +2773,10 @@
                     <file> 48</file>
                 </tool>
                 <tool>
+                    <name>ICCARM</name>
+                    <file> 719</file>
+                </tool>
+                <tool>
                     <name>BICOMP</name>
                     <file> 395</file>
                 </tool>
@@ -3181,6 +3185,10 @@
                 <tool>
                     <name>__cstat</name>
                     <file> 923</file>
+                </tool>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 346</file>
                 </tool>
                 <tool>
                     <name>BICOMP</name>

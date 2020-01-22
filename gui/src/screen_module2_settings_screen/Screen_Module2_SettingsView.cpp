@@ -360,52 +360,52 @@ void Screen_Module2_SettingsView::updateCpuUsage(uint8_t value)
 	textArea_CPU_Usage.invalidate();
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit1UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit2UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit3UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit4UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit5UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit6UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit7UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit8UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit9UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }
 
-void Screen_Module2_SettingsView::scrollWheel_Digit10UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module2_SettingsView::scrollWheel_Digit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithComma(itemIndex);
 }

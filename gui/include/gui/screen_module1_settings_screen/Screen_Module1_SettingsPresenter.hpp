@@ -13,7 +13,7 @@ class Screen_Module1_SettingsPresenter : public Presenter, public ModelListener
 public:
     Screen_Module1_SettingsPresenter(Screen_Module1_SettingsView& v);
     
-    virtual void notifyNewValueToSet(UartPacket & uartPacket);
+    virtual void notifyNewValueToSet(UartPacket& uartPacket);
     void notifyNewCpuUsageValue(uint8_t value);
 
     virtual ~Screen_Module1_SettingsPresenter() {};

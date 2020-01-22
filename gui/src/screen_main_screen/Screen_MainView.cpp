@@ -88,7 +88,7 @@ void Screen_MainView::clearLeds()
 #endif
 }
 
-void Screen_MainView::processInitPacket(UartPacket & uartPacket)
+void Screen_MainView::processInitPacket(UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
   printf("Processing init packet\n");

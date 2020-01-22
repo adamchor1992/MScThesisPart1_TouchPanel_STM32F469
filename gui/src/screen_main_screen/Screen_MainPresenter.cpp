@@ -16,7 +16,7 @@ void Screen_MainPresenter::deactivate()
   
 }
 
-void Screen_MainPresenter::notifyAllInitPacketsReceived(UartPacket & uartPacket)
+void Screen_MainPresenter::notifyAllInitPacketsReceived(UartPacket& uartPacket)
 {
   view.processInitPacket(uartPacket);
 }

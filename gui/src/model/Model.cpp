@@ -229,7 +229,7 @@ bool Model::isModuleActive(ModuleID module)
   }
 }
 
-void Model::setNewValueToSet(const UartPacket & uartPacket)
+void Model::setNewValueToSet(const UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
   xQueueSendToBack(msgQueueUartTx, &uartPacket, NO_WAITING);

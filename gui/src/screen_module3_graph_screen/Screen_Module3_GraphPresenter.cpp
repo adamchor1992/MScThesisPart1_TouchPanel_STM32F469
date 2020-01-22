@@ -6,12 +6,12 @@ Screen_Module3_GraphPresenter::Screen_Module3_GraphPresenter(Screen_Module3_Grap
 {
 }
 
-void Screen_Module3_GraphPresenter::notifyNewUartRxParsedPacket(UartPacket & uartPacket)
+void Screen_Module3_GraphPresenter::notifyNewUartRxParsedPacket(UartPacket& uartPacket)
 {
   view.addNewValueToGraphFromUart(uartPacket);
 }
 
-void Screen_Module3_GraphPresenter::notifyNewGraphRange(UartPacket & uartPacket)
+void Screen_Module3_GraphPresenter::notifyNewGraphRange(UartPacket& uartPacket)
 {
   view.setNewGraphRange(uartPacket);
 }

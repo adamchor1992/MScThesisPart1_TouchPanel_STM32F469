@@ -29,7 +29,7 @@ public:
   
   virtual ~Screen_MainPresenter() {};
   
-  void notifyAllInitPacketsReceived(UartPacket & uartPacket);
+  void notifyAllInitPacketsReceived(UartPacket& uartPacket);
 
 private:
   Screen_MainPresenter();

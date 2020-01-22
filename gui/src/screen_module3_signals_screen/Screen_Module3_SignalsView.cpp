@@ -543,102 +543,102 @@ void Screen_Module3_SignalsView::updateCpuUsage(uint8_t value)
 	textArea_CPU_Usage.invalidate();
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit1UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit2UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit3UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit4UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit5UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit6UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit7UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit8UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit9UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MinDigit10UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MinDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit1UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit2UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit3UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit4UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit5UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit6UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit7UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit8UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit9UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module3_SignalsView::scrollWheel_MaxDigit10UpdateItem(DigitTemplate & item, int16_t itemIndex)
+void Screen_Module3_SignalsView::scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
 }

@@ -89,7 +89,7 @@ void Screen_Module3_DataView::setupScreen()
   textArea_Parameter4Name.setClickAction(TextAreaClickedCallback);
 }
 
-void Screen_Module3_DataView::updateGuiPacketData(UartPacket & uartPacket)
+void Screen_Module3_DataView::updateGuiPacketData(UartPacket& uartPacket)
 {
   uint16_t stringToDisplay[10] = { 0 };
   

@@ -9,9 +9,9 @@ class ModelListener
 public:
   ModelListener() : model(0) {}
   
-  virtual void notifyAllInitPacketsReceived(UartPacket & uartPacket) {}
-  virtual void notifyNewUartRxParsedPacket(UartPacket & uartPacket) {}
-  virtual void notifyNewGraphRange(UartPacket & uartPacket) {}
+  virtual void notifyAllInitPacketsReceived(UartPacket& uartPacket) {}
+  virtual void notifyNewUartRxParsedPacket(UartPacket& uartPacket) {}
+  virtual void notifyNewGraphRange(UartPacket& uartPacket) {}
   virtual void notifyNewUartTxValue(uint8_t* newValue) {}
   virtual void notifyNewCpuUsageValue(uint8_t value) {}
   

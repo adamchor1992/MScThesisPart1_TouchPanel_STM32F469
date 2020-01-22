@@ -13,8 +13,8 @@ class Screen_Module3_GraphPresenter : public Presenter, public ModelListener
 public:
     Screen_Module3_GraphPresenter(Screen_Module3_GraphView& v);
 
-    virtual void notifyNewUartRxParsedPacket(UartPacket & uartPacket);
-    virtual void notifyNewGraphRange(UartPacket & uartPacket);
+    virtual void notifyNewUartRxParsedPacket(UartPacket& uartPacket);
+    virtual void notifyNewGraphRange(UartPacket& uartPacket);
       
     void notifyNewCpuUsageValue(uint8_t value);
 

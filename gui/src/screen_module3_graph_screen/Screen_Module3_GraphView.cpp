@@ -190,7 +190,7 @@ void Screen_Module3_GraphView::handleTickEvent()
 #endif
 }
 
-void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacket)
+void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
   /*Skip packet if it is not addressed to this module*/
@@ -321,7 +321,7 @@ void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
 #endif
 }
 
-void Screen_Module3_GraphView::setNewGraphRange(UartPacket & uartPacket)
+void Screen_Module3_GraphView::setNewGraphRange(UartPacket& uartPacket)
 {
   int newValue = 0;
   

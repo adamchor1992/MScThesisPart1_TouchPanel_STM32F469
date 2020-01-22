@@ -6,7 +6,7 @@ Screen_Module3_SettingsPresenter::Screen_Module3_SettingsPresenter(Screen_Module
 {
 }
 
-void Screen_Module3_SettingsPresenter::notifyNewValueToSet(UartPacket & uartPacket)
+void Screen_Module3_SettingsPresenter::notifyNewValueToSet(UartPacket& uartPacket)
 {
 	model->setNewValueToSet(uartPacket);
 }

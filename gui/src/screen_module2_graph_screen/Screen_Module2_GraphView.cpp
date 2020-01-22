@@ -190,7 +190,7 @@ void Screen_Module2_GraphView::handleTickEvent()
 #endif
 }
 
-void Screen_Module2_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacket)
+void Screen_Module2_GraphView::addNewValueToGraphFromUart(UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
   
@@ -322,7 +322,7 @@ void Screen_Module2_GraphView::addNewValueToGraphFromUart(UartPacket & uartPacke
 #endif
 }
 
-void Screen_Module2_GraphView::setNewGraphRange(UartPacket & uartPacket)
+void Screen_Module2_GraphView::setNewGraphRange(UartPacket& uartPacket)
 {
   int newValue = 0;
   

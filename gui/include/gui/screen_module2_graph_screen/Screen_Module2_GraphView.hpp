@@ -22,8 +22,8 @@ public:
 	virtual void setupScreen();
 
 	virtual void handleTickEvent();
-	virtual void addNewValueToGraphFromUart(UartPacket & uartPacket);
-	void setNewGraphRange(UartPacket & uartPacket);
+	virtual void addNewValueToGraphFromUart(UartPacket& uartPacket);
+	void setNewGraphRange(UartPacket& uartPacket);
 
 	uint8_t activeSignalsCount();
 	void updateCpuUsage(uint8_t value);
