@@ -51,7 +51,7 @@ Screen_Module1_SettingsView::Screen_Module1_SettingsView()
 }
 
 void Screen_Module1_SettingsView::setupScreen()
-{  
+{
   /*Disable UART interrupts for this screen*/
 #ifndef SIMULATOR
   NVIC_DisableIRQ(USART6_IRQn);
@@ -122,64 +122,58 @@ void Screen_Module1_SettingsView::setNewValue()
   {
     uartPacket.setParameter(Parameter::PARAMETER10);
   }
-  else
-  {
-    /*Error*/
-    uartPacket.setParameter(Parameter::NULL_PARAMETER);
-  }
   
   if(radioButton_Plus.getSelected())
   {
     /*Value is positive*/
     uartPacket.setSign(Sign::POSITIVE_SIGN);
   }
-  else
+  else if(radioButton_Minus.getSelected())
   {
     /*Value is negative*/
     uartPacket.setSign(Sign::NEGATIVE_SIGN);
   }
   
-  char valueBuffer[PAYLOAD_SIZE] = {0};
+  /*Position 0 is '.', position 1 is digit 0, position 2 is digit 1 and so on*/
+  int scrollWheelPositions[PAYLOAD_SIZE] = { 0 };
   
-  int values[PAYLOAD_SIZE];
+  getScrollWheelsPositions(scrollWheelPositions);
   
-  getScrollWheelValues(values);
-  translateScrollWheelValues(values);
+  char scrollWheelsAsciiValues[PAYLOAD_SIZE] = { 0 };
   
-  double value = processScrollWheelValues(values);
+  translateScrollWheelPositionsToAsciiValues(scrollWheelPositions, scrollWheelsAsciiValues);
   
-  sprintf(valueBuffer, "%10lf", value);
-  
+  /*Send all 10 bytes*/;
   uartPacket.setLengthAscii(PAYLOAD_SIZE);
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    uartPacket.setPayload()[i] = valueBuffer[i];
+    uartPacket.setPayload()[i] = scrollWheelsAsciiValues[i];
   }
-    
+  
   this->presenter->notifyNewValueToSet(uartPacket);
 #endif
 }
 
-void Screen_Module1_SettingsView::getScrollWheelValues(int values[])
+void Screen_Module1_SettingsView::getScrollWheelsPositions(int positions[])
 {
-  values[9] = scrollWheel_Digit1.getSelectedItem();
-  values[8] = scrollWheel_Digit2.getSelectedItem();
-  values[7] = scrollWheel_Digit3.getSelectedItem();
-  values[6] = scrollWheel_Digit4.getSelectedItem();
-  values[5] = scrollWheel_Digit5.getSelectedItem();
-  values[4] = scrollWheel_Digit6.getSelectedItem();
-  values[3] = scrollWheel_Digit7.getSelectedItem();
-  values[2] = scrollWheel_Digit8.getSelectedItem();
-  values[1] = scrollWheel_Digit9.getSelectedItem();
-  values[0] = scrollWheel_Digit10.getSelectedItem();
+  positions[9] = scrollWheel_Digit1.getSelectedItem();
+  positions[8] = scrollWheel_Digit2.getSelectedItem();
+  positions[7] = scrollWheel_Digit3.getSelectedItem();
+  positions[6] = scrollWheel_Digit4.getSelectedItem();
+  positions[5] = scrollWheel_Digit5.getSelectedItem();
+  positions[4] = scrollWheel_Digit6.getSelectedItem();
+  positions[3] = scrollWheel_Digit7.getSelectedItem();
+  positions[2] = scrollWheel_Digit8.getSelectedItem();
+  positions[1] = scrollWheel_Digit9.getSelectedItem();
+  positions[0] = scrollWheel_Digit10.getSelectedItem();
 }
 
-void Screen_Module1_SettingsView::translateScrollWheelValues(int values[])
+void Screen_Module1_SettingsView::translateScrollWheelPositionsToAsciiValues(const int positions[], char values[])
 {
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    switch (values[i])
+    switch (positions[i])
     {
     case 0:
       values[i] = '.';
@@ -216,20 +210,6 @@ void Screen_Module1_SettingsView::translateScrollWheelValues(int values[])
       break;
     }
   }
-}
-
-double Screen_Module1_SettingsView::processScrollWheelValues(const int values[])
-{
-  char asciiScrollWheelValues[PAYLOAD_SIZE + 1];
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    asciiScrollWheelValues[i] = values[i];
-  }
-  
-  asciiScrollWheelValues[PAYLOAD_SIZE] = '\0';
-  
-  return atof(asciiScrollWheelValues);
 }
 
 void Screen_Module1_SettingsView::enableParameterButtonPushed()
@@ -280,11 +260,6 @@ void Screen_Module1_SettingsView::enableParameterButtonPushed()
   else if (radioButtonParameter10.getSelected())
   {
     uartPacket.setParameter(Parameter::PARAMETER10);
-  }
-  else
-  {
-    /*Error*/
-    uartPacket.setParameter(Parameter::NULL_PARAMETER);
   }
   
   uartPacket.setSign(Sign::POSITIVE_SIGN);
@@ -342,15 +317,10 @@ void Screen_Module1_SettingsView::disableParameterButtonPushed()
   {
     uartPacket.setParameter(Parameter::PARAMETER10);
   }
-  else
-  {
-    /*Error*/
-    uartPacket.setParameter(Parameter::NULL_PARAMETER);
-  }
   
   uartPacket.setSign(Sign::POSITIVE_SIGN);
   uartPacket.setLength(Length::NO_PAYLOAD);
-    
+  
   this->presenter->notifyNewValueToSet(uartPacket);
 }
 

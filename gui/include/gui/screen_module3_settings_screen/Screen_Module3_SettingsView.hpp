@@ -18,20 +18,19 @@ public:
 
 	void updateCpuUsage(uint8_t value);
 
-	void getScrollWheelValues(int values[]);
-	void translateScrollWheelValues(int values[]);
-	double processScrollWheelValues(const int values[]);
+	void getScrollWheelsPositions(int positions[]);
+	void translateScrollWheelPositionsToAsciiValues(const int positions[], char values[]);
 
 	virtual void scrollWheel_Digit1UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_Digit2UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_Digit3UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_Digit4UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_Digit5UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_Digit6UpdateItem(DigitTemplate& item, int16_t itemIndex);
+	virtual void scrollWheel_Digit6UpdateItem(DigitTemplate& item, int16_t itemIndex);	
 	virtual void scrollWheel_Digit7UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_Digit8UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_Digit9UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_Digit10UpdateItem(DigitTemplate& item, int16_t itemIndex);
+	virtual void scrollWheel_Digit10UpdateItem(DigitTemplate& item, int16_t itemIndex);	
 };
 
-#endif
+#endif // SCREEN_MODULE3_SETTINGS_VIEW_HPP

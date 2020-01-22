@@ -18,9 +18,8 @@ public:
 
 	void updateCpuUsage(uint8_t value);
 
-	void getScrollWheelValues(int values[]);
-	void translateScrollWheelValues(int values[]);
-	double processScrollWheelValues(const int values[]);
+	void getScrollWheelsPositions(int positions[]);
+	void translateScrollWheelPositionsToAsciiValues(const int positions[], char values[]);
 
 	virtual void scrollWheel_Digit1UpdateItem(DigitTemplate& item, int16_t itemIndex);
 	virtual void scrollWheel_Digit2UpdateItem(DigitTemplate& item, int16_t itemIndex);
