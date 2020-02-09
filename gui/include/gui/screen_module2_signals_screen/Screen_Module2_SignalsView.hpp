@@ -13,17 +13,16 @@ public:
 	Screen_Module2_SignalsView();
 	virtual ~Screen_Module2_SignalsView() {}
 	virtual void setupScreen();
-	virtual void tearDownScreen();
 
 	virtual void setRanges();
 
 	void initializeScrollWheels();
 	void setMinScrollWheelValues(int bottom);
 	void setMaxScrollWheelValues(int top);
-	void getScrollWheelMinValues(int values[]);
-	void getScrollWheelMaxValues(int values[]);
-	void translateScrollWheelValues(int values[]);
-	int processScrollWheelValues(const int values[]);
+
+        void getMinRangeScrollWheelsPositions(int positions[]);
+        void getMaxRangeScrollWheelsPositions(int positions[]);
+	void translateScrollWheelPositionsToAsciiValues(const int positions[], char values[]);
 
 	virtual void setParameter1GraphVisible();
 	virtual void setParameter2GraphVisible();

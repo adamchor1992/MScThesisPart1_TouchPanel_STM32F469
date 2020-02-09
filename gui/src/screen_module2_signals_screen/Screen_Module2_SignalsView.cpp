@@ -75,43 +75,48 @@ void Screen_Module2_SignalsView::setupScreen()
 	textArea_TimeRange.invalidate();
 }
 
-void Screen_Module2_SignalsView::tearDownScreen()
-{
-
-}
-
 void Screen_Module2_SignalsView::setRanges()
 {
-	int minRangeValues[PAYLOAD_SIZE] = { 0 };
-	int maxRangeValues[PAYLOAD_SIZE] = { 0 };
-
-	getScrollWheelMinValues(minRangeValues);
-	getScrollWheelMaxValues(maxRangeValues);
-
-	translateScrollWheelValues(minRangeValues);
-	translateScrollWheelValues(maxRangeValues);
-
-	int minRangeValue = processScrollWheelValues(minRangeValues);
-	int maxRangeValue = processScrollWheelValues(maxRangeValues);
-
-	if (getSignMin() == Sign::NEGATIVE)
-	{
-		minRangeValue = minRangeValue * (-1);
-	}
-
-	if (getSignMax() == Sign::NEGATIVE)
-	{
-		maxRangeValue = maxRangeValue * (-1);
-	}
-
-	if (minRangeValue >= maxRangeValue)
-	{
-		return;
-	}
-	else
-	{
-		Screen_Module2_GraphView::setGraphRanges(minRangeValue, maxRangeValue, slider_TimeRange.getValue() * SINE_PERIOD_DEGREES);
-	}
+  /*Position 0 is '.', position 1 is digit 0, position 2 is digit 1 and so on*/
+  int minRangeScrollWheelPositions[PAYLOAD_SIZE] = { 0 };
+  int maxRangeScrollWheelPositions[PAYLOAD_SIZE] = { 0 };
+  
+  getMinRangeScrollWheelsPositions(minRangeScrollWheelPositions);
+  getMaxRangeScrollWheelsPositions(maxRangeScrollWheelPositions);
+  
+  char minRangeScrollWheelsAsciiValues[PAYLOAD_SIZE] = { 0 };
+  char maxRangeScrollWheelsAsciiValues[PAYLOAD_SIZE] = { 0 };
+  
+  translateScrollWheelPositionsToAsciiValues(minRangeScrollWheelPositions, minRangeScrollWheelsAsciiValues);
+  translateScrollWheelPositionsToAsciiValues(maxRangeScrollWheelPositions, maxRangeScrollWheelsAsciiValues);
+  
+  int minRangeValue = atoi(minRangeScrollWheelsAsciiValues); 
+  int maxRangeValue = atoi(maxRangeScrollWheelsAsciiValues);
+  
+  if (getSignMin() == Sign::NEGATIVE)
+  {
+    minRangeValue = minRangeValue * (-1);
+  }
+  
+  if (getSignMax() == Sign::NEGATIVE)
+  {
+    maxRangeValue = maxRangeValue * (-1);
+  }
+  
+  if (minRangeValue >= maxRangeValue)
+  {
+    printf("Error, Min range value equal or less than max range value  min range value\n");
+    printf("Min range value %d\n", minRangeValue);
+    printf("Max range value %d\n", maxRangeValue);
+    return;
+  }
+  else
+  {
+    printf("New min range value %d\n", minRangeValue);
+    printf("New max range value %d\n", maxRangeValue);
+    
+    Screen_Module2_GraphView::setGraphRanges(minRangeValue, maxRangeValue, slider_TimeRange.getValue() * SINE_PERIOD_DEGREES);
+  }
 }
 
 void Screen_Module2_SignalsView::initializeScrollWheels()
@@ -227,86 +232,72 @@ void Screen_Module2_SignalsView::setMaxScrollWheelValues(int top)
 	scrollWheel_MaxDigit10.animateToItem(rest);
 }
 
-void Screen_Module2_SignalsView::getScrollWheelMinValues(int values[])
+void Screen_Module2_SignalsView::getMinRangeScrollWheelsPositions(int positions[])
 {
-	values[9] = scrollWheel_MinDigit1.getSelectedItem();
-	values[8] = scrollWheel_MinDigit2.getSelectedItem();
-	values[7] = scrollWheel_MinDigit3.getSelectedItem();
-	values[6] = scrollWheel_MinDigit4.getSelectedItem();
-	values[5] = scrollWheel_MinDigit5.getSelectedItem();
-	values[4] = scrollWheel_MinDigit6.getSelectedItem();
-	values[3] = scrollWheel_MinDigit7.getSelectedItem();
-	values[2] = scrollWheel_MinDigit8.getSelectedItem();
-	values[1] = scrollWheel_MinDigit9.getSelectedItem();
-	values[0] = scrollWheel_MinDigit10.getSelectedItem();
+  positions[9] = scrollWheel_MinDigit1.getSelectedItem();
+  positions[8] = scrollWheel_MinDigit2.getSelectedItem();
+  positions[7] = scrollWheel_MinDigit3.getSelectedItem();
+  positions[6] = scrollWheel_MinDigit4.getSelectedItem();
+  positions[5] = scrollWheel_MinDigit5.getSelectedItem();
+  positions[4] = scrollWheel_MinDigit6.getSelectedItem();
+  positions[3] = scrollWheel_MinDigit7.getSelectedItem();
+  positions[2] = scrollWheel_MinDigit8.getSelectedItem();
+  positions[1] = scrollWheel_MinDigit9.getSelectedItem();
+  positions[0] = scrollWheel_MinDigit10.getSelectedItem();
 }
 
-void Screen_Module2_SignalsView::getScrollWheelMaxValues(int values[])
+void Screen_Module2_SignalsView::getMaxRangeScrollWheelsPositions(int positions[])
 {
-	values[9] = scrollWheel_MaxDigit1.getSelectedItem();
-	values[8] = scrollWheel_MaxDigit2.getSelectedItem();
-	values[7] = scrollWheel_MaxDigit3.getSelectedItem();
-	values[6] = scrollWheel_MaxDigit4.getSelectedItem();
-	values[5] = scrollWheel_MaxDigit5.getSelectedItem();
-	values[4] = scrollWheel_MaxDigit6.getSelectedItem();
-	values[3] = scrollWheel_MaxDigit7.getSelectedItem();
-	values[2] = scrollWheel_MaxDigit8.getSelectedItem();
-	values[1] = scrollWheel_MaxDigit9.getSelectedItem();
-	values[0] = scrollWheel_MaxDigit10.getSelectedItem();
+  positions[9] = scrollWheel_MaxDigit1.getSelectedItem();
+  positions[8] = scrollWheel_MaxDigit2.getSelectedItem();
+  positions[7] = scrollWheel_MaxDigit3.getSelectedItem();
+  positions[6] = scrollWheel_MaxDigit4.getSelectedItem();
+  positions[5] = scrollWheel_MaxDigit5.getSelectedItem();
+  positions[4] = scrollWheel_MaxDigit6.getSelectedItem();
+  positions[3] = scrollWheel_MaxDigit7.getSelectedItem();
+  positions[2] = scrollWheel_MaxDigit8.getSelectedItem();
+  positions[1] = scrollWheel_MaxDigit9.getSelectedItem();
+  positions[0] = scrollWheel_MaxDigit10.getSelectedItem();
 }
 
-void Screen_Module2_SignalsView::translateScrollWheelValues(int values[])
+void Screen_Module2_SignalsView::translateScrollWheelPositionsToAsciiValues(const int positions[], char values[])
 {
-	for (int i = 0; i < PAYLOAD_SIZE; i++)
-	{
-		switch (values[i])
-		{
-		case 0:
-			values[i] = '0';
-			break;
-		case 1:
-			values[i] = '1';
-			break;
-		case 2:
-			values[i] = '2';
-			break;
-		case 3:
-			values[i] = '3';
-			break;
-		case 4:
-			values[i] = '4';
-			break;
-		case 5:
-			values[i] = '5';
-			break;
-		case 6:
-			values[i] = '6';
-			break;
-		case 7:
-			values[i] = '7';
-			break;
-		case 8:
-			values[i] = '8';
-			break;
-		case 9:
-			values[i] = '9';
-			break;
-		}
-	}
-}
-
-int Screen_Module2_SignalsView::processScrollWheelValues(const int values[])
-{
-	char asciiScrollWheelValues[PAYLOAD_SIZE + 1];
-
-	for (int i = 0; i < PAYLOAD_SIZE; i++)
-	{
-		asciiScrollWheelValues[i] = values[i];
-	}
-
-	asciiScrollWheelValues[PAYLOAD_SIZE] = '\0';
-
-	return atoi(asciiScrollWheelValues);
+  for (int i = 0; i < PAYLOAD_SIZE; i++)
+  {
+    switch (positions[i])
+    {
+    case 0:
+      values[i] = '0';
+      break;
+    case 1:
+      values[i] = '1';
+      break;
+    case 2:
+      values[i] = '2';
+      break;
+    case 3:
+      values[i] = '3';
+      break;
+    case 4:
+      values[i] = '4';
+      break;
+    case 5:
+      values[i] = '5';
+      break;
+    case 6:
+      values[i] = '6';
+      break;
+    case 7:
+      values[i] = '7';
+      break;
+    case 8:
+      values[i] = '8';
+      break;
+    case 9:
+      values[i] = '9';
+      break;
+    }
+  }
 }
 
 void Screen_Module2_SignalsView::setParameter1GraphVisible()
@@ -537,12 +528,6 @@ Screen_Module2_SignalsView::Sign Screen_Module2_SignalsView::getSignMax()
 	}
 }
 
-void Screen_Module2_SignalsView::updateCpuUsage(uint8_t value)
-{
-	Unicode::snprintf(textArea_CPU_UsageBuffer, 4, "%d", value);
-	textArea_CPU_Usage.invalidate();
-}
-
 void Screen_Module2_SignalsView::scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
@@ -641,4 +626,10 @@ void Screen_Module2_SignalsView::scrollWheel_MaxDigit9UpdateItem(DigitTemplate& 
 void Screen_Module2_SignalsView::scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
 	item.setDigitWithoutComma(itemIndex);
+}
+
+void Screen_Module2_SignalsView::updateCpuUsage(uint8_t value)
+{
+	Unicode::snprintf(textArea_CPU_UsageBuffer, 4, "%d", value);
+	textArea_CPU_Usage.invalidate();
 }

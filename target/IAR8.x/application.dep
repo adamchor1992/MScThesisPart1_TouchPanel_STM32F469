@@ -2296,10 +2296,6 @@
             <name>$PROJ_DIR$\..\..\gui\src\screen_module2_signals_screen\Screen_Module2_SignalsView.cpp</name>
             <outputs>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 361</file>
-                </tool>
-                <tool>
                     <name>__cstat</name>
                     <file> 904</file>
                 </tool>
@@ -2364,10 +2360,6 @@
         <file>
             <name>$PROJ_DIR$\..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsView.cpp</name>
             <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 454</file>
-                </tool>
                 <tool>
                     <name>__cstat</name>
                     <file> 970</file>

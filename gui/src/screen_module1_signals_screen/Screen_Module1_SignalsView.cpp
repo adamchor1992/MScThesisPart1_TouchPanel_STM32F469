@@ -75,24 +75,23 @@ void Screen_Module1_SignalsView::setupScreen()
   textArea_TimeRange.invalidate();
 }
 
-void Screen_Module1_SignalsView::tearDownScreen()
-{
-  
-}
-
 void Screen_Module1_SignalsView::setRanges()
 {
-  int minRangeValues[PAYLOAD_SIZE] = { 0 };
-  int maxRangeValues[PAYLOAD_SIZE] = { 0 };
+  /*Position 0 is '.', position 1 is digit 0, position 2 is digit 1 and so on*/
+  int minRangeScrollWheelPositions[PAYLOAD_SIZE] = { 0 };
+  int maxRangeScrollWheelPositions[PAYLOAD_SIZE] = { 0 };
   
-  getScrollWheelMinValues(minRangeValues);
-  getScrollWheelMaxValues(maxRangeValues);
+  getMinRangeScrollWheelsPositions(minRangeScrollWheelPositions);
+  getMaxRangeScrollWheelsPositions(maxRangeScrollWheelPositions);
   
-  translateScrollWheelValues(minRangeValues);
-  translateScrollWheelValues(maxRangeValues);
+  char minRangeScrollWheelsAsciiValues[PAYLOAD_SIZE] = { 0 };
+  char maxRangeScrollWheelsAsciiValues[PAYLOAD_SIZE] = { 0 };
   
-  int minRangeValue = processScrollWheelValues(minRangeValues);
-  int maxRangeValue = processScrollWheelValues(maxRangeValues);
+  translateScrollWheelPositionsToAsciiValues(minRangeScrollWheelPositions, minRangeScrollWheelsAsciiValues);
+  translateScrollWheelPositionsToAsciiValues(maxRangeScrollWheelPositions, maxRangeScrollWheelsAsciiValues);
+    
+  int minRangeValue = atoi(minRangeScrollWheelsAsciiValues); 
+  int maxRangeValue = atoi(maxRangeScrollWheelsAsciiValues);
   
   if (getSignMin() == Sign::NEGATIVE)
   {
@@ -106,10 +105,16 @@ void Screen_Module1_SignalsView::setRanges()
   
   if (minRangeValue >= maxRangeValue)
   {
+    printf("Error, Min range value equal or less than max range value  min range value\n");
+    printf("Min range value %d\n", minRangeValue);
+    printf("Max range value %d\n", maxRangeValue);
     return;
   }
   else
   {
+    printf("New min range value %d\n", minRangeValue);
+    printf("New max range value %d\n", maxRangeValue);
+    
     Screen_Module1_GraphView::setGraphRanges(minRangeValue, maxRangeValue, slider_TimeRange.getValue() * SINE_PERIOD_DEGREES);
   }
 }
@@ -227,39 +232,39 @@ void Screen_Module1_SignalsView::setMaxScrollWheelValues(int top)
   scrollWheel_MaxDigit10.animateToItem(rest);
 }
 
-void Screen_Module1_SignalsView::getScrollWheelMinValues(int values[])
+void Screen_Module1_SignalsView::getMinRangeScrollWheelsPositions(int positions[])
 {
-  values[9] = scrollWheel_MinDigit1.getSelectedItem();
-  values[8] = scrollWheel_MinDigit2.getSelectedItem();
-  values[7] = scrollWheel_MinDigit3.getSelectedItem();
-  values[6] = scrollWheel_MinDigit4.getSelectedItem();
-  values[5] = scrollWheel_MinDigit5.getSelectedItem();
-  values[4] = scrollWheel_MinDigit6.getSelectedItem();
-  values[3] = scrollWheel_MinDigit7.getSelectedItem();
-  values[2] = scrollWheel_MinDigit8.getSelectedItem();
-  values[1] = scrollWheel_MinDigit9.getSelectedItem();
-  values[0] = scrollWheel_MinDigit10.getSelectedItem();
+  positions[9] = scrollWheel_MinDigit1.getSelectedItem();
+  positions[8] = scrollWheel_MinDigit2.getSelectedItem();
+  positions[7] = scrollWheel_MinDigit3.getSelectedItem();
+  positions[6] = scrollWheel_MinDigit4.getSelectedItem();
+  positions[5] = scrollWheel_MinDigit5.getSelectedItem();
+  positions[4] = scrollWheel_MinDigit6.getSelectedItem();
+  positions[3] = scrollWheel_MinDigit7.getSelectedItem();
+  positions[2] = scrollWheel_MinDigit8.getSelectedItem();
+  positions[1] = scrollWheel_MinDigit9.getSelectedItem();
+  positions[0] = scrollWheel_MinDigit10.getSelectedItem();
 }
 
-void Screen_Module1_SignalsView::getScrollWheelMaxValues(int values[])
+void Screen_Module1_SignalsView::getMaxRangeScrollWheelsPositions(int positions[])
 {
-  values[9] = scrollWheel_MaxDigit1.getSelectedItem();
-  values[8] = scrollWheel_MaxDigit2.getSelectedItem();
-  values[7] = scrollWheel_MaxDigit3.getSelectedItem();
-  values[6] = scrollWheel_MaxDigit4.getSelectedItem();
-  values[5] = scrollWheel_MaxDigit5.getSelectedItem();
-  values[4] = scrollWheel_MaxDigit6.getSelectedItem();
-  values[3] = scrollWheel_MaxDigit7.getSelectedItem();
-  values[2] = scrollWheel_MaxDigit8.getSelectedItem();
-  values[1] = scrollWheel_MaxDigit9.getSelectedItem();
-  values[0] = scrollWheel_MaxDigit10.getSelectedItem();
+  positions[9] = scrollWheel_MaxDigit1.getSelectedItem();
+  positions[8] = scrollWheel_MaxDigit2.getSelectedItem();
+  positions[7] = scrollWheel_MaxDigit3.getSelectedItem();
+  positions[6] = scrollWheel_MaxDigit4.getSelectedItem();
+  positions[5] = scrollWheel_MaxDigit5.getSelectedItem();
+  positions[4] = scrollWheel_MaxDigit6.getSelectedItem();
+  positions[3] = scrollWheel_MaxDigit7.getSelectedItem();
+  positions[2] = scrollWheel_MaxDigit8.getSelectedItem();
+  positions[1] = scrollWheel_MaxDigit9.getSelectedItem();
+  positions[0] = scrollWheel_MaxDigit10.getSelectedItem();
 }
 
-void Screen_Module1_SignalsView::translateScrollWheelValues(int values[])
+void Screen_Module1_SignalsView::translateScrollWheelPositionsToAsciiValues(const int positions[], char values[])
 {
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
-    switch (values[i])
+    switch (positions[i])
     {
     case 0:
       values[i] = '0';
@@ -293,20 +298,6 @@ void Screen_Module1_SignalsView::translateScrollWheelValues(int values[])
       break;
     }
   }
-}
-
-int Screen_Module1_SignalsView::processScrollWheelValues(const int values[])
-{
-  char asciiScrollWheelValues[PAYLOAD_SIZE + 1];
-  
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    asciiScrollWheelValues[i] = values[i];
-  }
-  
-  asciiScrollWheelValues[PAYLOAD_SIZE] = '\0';
-  
-  return atoi(asciiScrollWheelValues);
 }
 
 void Screen_Module1_SignalsView::setParameter1GraphVisible()
@@ -537,12 +528,6 @@ Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::getSignMax()
   }
 }
 
-void Screen_Module1_SignalsView::updateCpuUsage(uint8_t value)
-{
-  Unicode::snprintf(textArea_CPU_UsageBuffer, 4, "%d", value);
-  textArea_CPU_Usage.invalidate();
-}
-
 void Screen_Module1_SignalsView::scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
   item.setDigitWithoutComma(itemIndex);
@@ -641,4 +626,10 @@ void Screen_Module1_SignalsView::scrollWheel_MaxDigit9UpdateItem(DigitTemplate& 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
   item.setDigitWithoutComma(itemIndex);
+}
+
+void Screen_Module1_SignalsView::updateCpuUsage(uint8_t value)
+{
+  Unicode::snprintf(textArea_CPU_UsageBuffer, 4, "%d", value);
+  textArea_CPU_Usage.invalidate();
 }
