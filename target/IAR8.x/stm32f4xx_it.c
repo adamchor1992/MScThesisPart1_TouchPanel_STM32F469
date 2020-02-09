@@ -70,7 +70,7 @@ extern UART_HandleTypeDef huart6;
 void NMI_Handler(void)
 {
   /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
-
+    printf("NON-MASKABLE INTERRUPT OCCURED (NMI_Handler)\n");
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
 
@@ -83,7 +83,7 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
-
+  printf("HARD FAULT INTERRUPT OCCURED (HardFault_Handler)\n");
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
@@ -98,7 +98,7 @@ void HardFault_Handler(void)
 void MemManage_Handler(void)
 {
   /* USER CODE BEGIN MemoryManagement_IRQn 0 */
-
+  printf("MEMORY MANAGEMENT FAULT INTERRUPT OCCURED (MemManage_Handler)\n");
   /* USER CODE END MemoryManagement_IRQn 0 */
   while (1)
   {
@@ -113,7 +113,7 @@ void MemManage_Handler(void)
 void BusFault_Handler(void)
 {
   /* USER CODE BEGIN BusFault_IRQn 0 */
-
+  printf("BUS FAULT INTERRUPT OCCURED (BusFault_Handler)\n");
   /* USER CODE END BusFault_IRQn 0 */
   while (1)
   {
@@ -128,7 +128,7 @@ void BusFault_Handler(void)
 void UsageFault_Handler(void)
 {
   /* USER CODE BEGIN UsageFault_IRQn 0 */
-
+  printf("USAGE FAULT INTERRUPT OCCURED (UsageFault_Handler)\n");
   /* USER CODE END UsageFault_IRQn 0 */
   while (1)
   {
@@ -143,7 +143,7 @@ void UsageFault_Handler(void)
 void DebugMon_Handler(void)
 {
   /* USER CODE BEGIN DebugMonitor_IRQn 0 */
-
+  printf("DEBUG MONITOR INTERRUPT OCCURED (DebugMon_Handler)\n");
   /* USER CODE END DebugMonitor_IRQn 0 */
   /* USER CODE BEGIN DebugMonitor_IRQn 1 */
 
@@ -163,7 +163,7 @@ void DebugMon_Handler(void)
 void USART6_IRQHandler(void)
 {
   /* USER CODE BEGIN USART6_IRQn 0 */
-
+  
   /* USER CODE END USART6_IRQn 0 */
   HAL_UART_IRQHandler(&huart6);
   /* USER CODE BEGIN USART6_IRQn 1 */

@@ -1206,6 +1206,8 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
   /* UART parity error interrupt occurred ------------------------------------*/
   if((tmp1 != RESET) && (tmp2 != RESET))
   { 
+    printf("-----------------------UART PARITY ERROR-----------------------\n");
+    
     __HAL_UART_CLEAR_PEFLAG(huart);
     
     huart->ErrorCode |= HAL_UART_ERROR_PE;
@@ -1216,6 +1218,8 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
   /* UART frame error interrupt occurred -------------------------------------*/
   if((tmp1 != RESET) && (tmp2 != RESET))
   { 
+    printf("-----------------------UART FRAME ERROR-----------------------\n");
+    
     __HAL_UART_CLEAR_FEFLAG(huart);
     
     huart->ErrorCode |= HAL_UART_ERROR_FE;
@@ -1226,6 +1230,8 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
   /* UART noise error interrupt occurred -------------------------------------*/
   if((tmp1 != RESET) && (tmp2 != RESET))
   { 
+    printf("-----------------------UART NOISE ERROR-----------------------\n");
+    
     __HAL_UART_CLEAR_NEFLAG(huart);
     
     huart->ErrorCode |= HAL_UART_ERROR_NE;
@@ -1236,6 +1242,8 @@ void HAL_UART_IRQHandler(UART_HandleTypeDef *huart)
   /* UART Over-Run interrupt occurred ----------------------------------------*/
   if((tmp1 != RESET) && (tmp2 != RESET))
   { 
+    printf("-----------------------UART OVER-RUN ERROR-----------------------\n");
+    
     __HAL_UART_CLEAR_OREFLAG(huart);
     
     huart->ErrorCode |= HAL_UART_ERROR_ORE;
