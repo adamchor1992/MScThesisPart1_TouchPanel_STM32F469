@@ -448,17 +448,13 @@ bool UartPacket::checkCrc32() const
 
 void UartPacket::printPacket(bool withCrc)
 {
-  printf("Source %c\n", m_Source);
-  printf("Module %c\n", m_Module);
-  printf("Function %c\n", m_Function);
-  printf("Parameter %c\n", m_Parameter);
-  printf("Sign %c\n", m_Sign);
-  printf("Length char %c\n", m_Length);
-  printf("Length int %d\n", m_Length);
-  printf("Payload %.10s\n", m_Payload);
-  if(withCrc == true)
+  if(withCrc)
   {
-      printCrc();
+    printf("S %c M %c F %c P %c Sign %c L %c Payload %.10s CRC1 %d CRC2 %d CRC3 %d CRC4 %d\n", m_Source, m_Module, m_Function, m_Parameter, m_Sign, m_Length, m_Payload, m_Crc[0], m_Crc[1], m_Crc[2], m_Crc[3]);
+  }
+  else
+  {
+    printf("S %c M %c F %c P %c Sign %c L %c Payload %.10s\n", m_Source, m_Module, m_Function, m_Parameter, m_Sign, m_Length, m_Payload);
   }
 }
 
