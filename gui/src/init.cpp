@@ -47,10 +47,12 @@ void MX_USART6_UART_Init(UART_HandleTypeDef *huart)
 
 void Error_Handler(void)
 {
-  printf("ERROR HANDLER INVOKED\n");
+  /*In case of error turn on all LEDs*/
   BSP_LED_On(LED1);
   BSP_LED_On(LED2);
   BSP_LED_On(LED3);
-  BSP_LED_On(LED4);; //in case of error turn on all LEDs
+  BSP_LED_On(LED4);
+  
+  printf("ERROR HANDLER INVOKED\n");
 }
 #endif

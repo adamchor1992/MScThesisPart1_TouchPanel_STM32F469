@@ -60,7 +60,8 @@ UartPacket uartPacket;
 /*UART receive interrupt callback function*/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) 
 {
-  BSP_LED_Toggle(LED4);
+  /*Toggle green LED*/
+  BSP_LED_Toggle(LED1);
   signed long xHigherPriorityTaskWoken;
   
   /*Enable interrupt listening again*/
@@ -190,10 +191,8 @@ static void uartRxTask(void* params)
           
           printf("WRONG CRC\n");
           
-          BSP_LED_On(LED1);
-          BSP_LED_On(LED2);
+          /*Turn on red LED*/
           BSP_LED_On(LED3);
-          BSP_LED_On(LED4);
           
           /*Reset packet to all zeroes*/
           uartPacket.clearPacket();
@@ -206,7 +205,7 @@ static void uartRxTask(void* params)
       }
       else
       {
-        printf("MUTEX RX: Nie udalo sie pobrac mutexa\n");
+        printf("MUTEX RX: Mutex not available\n");
       }
     }
   }
@@ -238,6 +237,9 @@ static void uartTxTask(void* params)
         uartTxPacket.updatePacketTable();
         uartTxPacket.appendCrcToPacket();
         
+        /*Toggle blue LED*/
+        BSP_LED_Toggle(LED4);
+        
         HAL_UART_Transmit(&huart6, static_cast<uint8_t*>(uartTxPacket), PACKET_SIZE, UART_TX_WAITING);
         
         /*Give back mutex*/
@@ -247,7 +249,7 @@ static void uartTxTask(void* params)
       } 
       else
       {
-        printf("MUTEX TX: Nie udalo sie pobrac mutexa\n");
+        printf("MUTEX TX: Mutex not available\n");
       }
     }
   }
