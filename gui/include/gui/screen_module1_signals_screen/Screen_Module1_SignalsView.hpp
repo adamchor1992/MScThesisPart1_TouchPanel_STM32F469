@@ -17,20 +17,21 @@ public:
 	virtual void setRanges();
 
 	void initializeScrollWheels();
-	void setMinScrollWheelValues(int bottom);
-	void setMaxScrollWheelValues(int top);
+	void setMinScrollWheelValues(long long int bottom);
+	void setMaxScrollWheelValues(long long int top);
         
 	void getMinRangeScrollWheelsPositions(int positions[]);
         void getMaxRangeScrollWheelsPositions(int positions[]);
-	void translateScrollWheelPositionsToAsciiValues(const int positions[], char values[]);
+	void translateScrollWheelPositionsToAsciiValues(int const positions[], char values[]);
         
 	virtual void setParameter1GraphVisible();
 	virtual void setParameter2GraphVisible();
 	virtual void setParameter3GraphVisible();
 	virtual void setParameter4GraphVisible();
 
-	virtual void pressedAutoRangeToggleButton();
-
+	virtual void pressedAutoRangeToggleButton() override;
+        virtual void updateTimeRange(int value) override;
+        
         void hideManualRangeSettings();
         void showManualRangeSettings();       
         
@@ -40,27 +41,27 @@ public:
 	Sign getSignMin();
 	Sign getSignMax();
 
-	virtual void scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MinDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex);
+	virtual void scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MinDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
 
-	virtual void scrollWheel_MaxDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex);
-	virtual void scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex);
+	virtual void scrollWheel_MaxDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+	virtual void scrollWheel_MaxDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex) override ;
+	virtual void scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
         
         void updateCpuUsage(uint8_t value);
 

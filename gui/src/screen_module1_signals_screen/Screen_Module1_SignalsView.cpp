@@ -2,7 +2,7 @@
 #include <gui/screen_module1_graph_screen/Screen_Module1_GraphView.hpp>
 #include <gui/model/Model.hpp>
 
-#define SINE_PERIOD_DEGREES 360
+int const SINE_PERIOD_DEGREES = 360;
 
 Screen_Module1_SignalsView::Screen_Module1_SignalsView()
 {
@@ -30,11 +30,13 @@ Screen_Module1_SignalsView::Screen_Module1_SignalsView()
   textArea_Parameter4Name.invalidate();
 #endif
   
-  int bottom = Screen_Module1_GraphView::m_GraphRangeBottom; //make bottom value positive for sake of calculations
+  long long int bottom = Screen_Module1_GraphView::m_GraphRangeBottom;
   
   if (bottom < 0)
   {
-    bottom = bottom * (-1); //make bottom value positive for sake of calculations
+    /*Make bottom value positive for sake of calculations*/
+    bottom = bottom * (-1); 
+    
     setSignMin(Sign::NEGATIVE);
   }
   else
@@ -42,11 +44,13 @@ Screen_Module1_SignalsView::Screen_Module1_SignalsView()
     setSignMin(Sign::POSITIVE);
   }
   
-  int top = Screen_Module1_GraphView::m_GraphRangeTop;
+  long long int top = Screen_Module1_GraphView::m_GraphRangeTop;
   
   if (top < 0)
   {
-    top = top * (-1); //make top value positive for sake of calculations
+    /*Make top value positive for sake of calculations*/
+    top = top * (-1);
+    
     setSignMax(Sign::NEGATIVE);
   }
   else
@@ -69,6 +73,15 @@ void Screen_Module1_SignalsView::setupScreen()
   toggleButton_Parameter4.forceState(Screen_Module1_GraphView::m_Parameter4GraphEnabled);
   toggleButton_Auto_Y_Range.forceState(Screen_Module1_GraphView::m_AutoRangeEnabled);
   
+  if (Screen_Module1_GraphView::m_AutoRangeEnabled == true)
+  {
+    hideManualRangeSettings();
+  }
+  else
+  {
+    showManualRangeSettings();
+  }
+  
   /*Initialize sliders' values */
   slider_TimeRange.setValue(Screen_Module1_GraphView::m_GraphRangeRight / SINE_PERIOD_DEGREES);
   Unicode::snprintf(textArea_TimeRangeBuffer, 6, "%d", Screen_Module1_GraphView::m_GraphRangeRight);
@@ -89,9 +102,12 @@ void Screen_Module1_SignalsView::setRanges()
   
   translateScrollWheelPositionsToAsciiValues(minRangeScrollWheelPositions, minRangeScrollWheelsAsciiValues);
   translateScrollWheelPositionsToAsciiValues(maxRangeScrollWheelPositions, maxRangeScrollWheelsAsciiValues);
-    
-  int minRangeValue = atoi(minRangeScrollWheelsAsciiValues); 
-  int maxRangeValue = atoi(maxRangeScrollWheelsAsciiValues);
+  
+  printf("MIN range scroll wheels ASCII values %.10s\n", minRangeScrollWheelsAsciiValues);
+  printf("MAX range scroll wheels ASCII values %.10s\n", maxRangeScrollWheelsAsciiValues);
+  
+  long long int minRangeValue = atoll(minRangeScrollWheelsAsciiValues); 
+  long long int maxRangeValue = atoll(maxRangeScrollWheelsAsciiValues);
   
   if (getSignMin() == Sign::NEGATIVE)
   {
@@ -105,15 +121,15 @@ void Screen_Module1_SignalsView::setRanges()
   
   if (minRangeValue >= maxRangeValue)
   {
-    printf("Error, Min range value equal or less than max range value  min range value\n");
-    printf("Min range value %d\n", minRangeValue);
-    printf("Max range value %d\n", maxRangeValue);
+    printf("Error, MIN range value equal or less than MAX range value\n");
+    printf("Current MIN range value %lld\n", minRangeValue);
+    printf("Current MAX range value %lld\n", maxRangeValue);
     return;
   }
   else
   {
-    printf("New min range value %d\n", minRangeValue);
-    printf("New max range value %d\n", maxRangeValue);
+    printf("New MIN range value %lld\n", minRangeValue);
+    printf("New MAX range value %lld\n", maxRangeValue);
     
     Screen_Module1_GraphView::setGraphRanges(minRangeValue, maxRangeValue, slider_TimeRange.getValue() * SINE_PERIOD_DEGREES);
   }
@@ -144,9 +160,9 @@ void Screen_Module1_SignalsView::initializeScrollWheels()
   scrollWheel_MaxDigit10.initialize();
 }
 
-void Screen_Module1_SignalsView::setMinScrollWheelValues(int bottom)
+void Screen_Module1_SignalsView::setMinScrollWheelValues(long long int bottom)
 {
-  int rest = 0;
+  long long int rest = 0;
   
   rest = bottom % 10;
   scrollWheel_MinDigit1.animateToItem(rest);
@@ -188,9 +204,9 @@ void Screen_Module1_SignalsView::setMinScrollWheelValues(int bottom)
   scrollWheel_MinDigit10.animateToItem(rest);
 }
 
-void Screen_Module1_SignalsView::setMaxScrollWheelValues(int top)
+void Screen_Module1_SignalsView::setMaxScrollWheelValues(long long int top)
 {
-  int rest = 0;
+  long long int rest = 0;
   
   rest = top % 10;
   scrollWheel_MaxDigit1.animateToItem(rest);
@@ -260,7 +276,7 @@ void Screen_Module1_SignalsView::getMaxRangeScrollWheelsPositions(int positions[
   positions[0] = scrollWheel_MaxDigit10.getSelectedItem();
 }
 
-void Screen_Module1_SignalsView::translateScrollWheelPositionsToAsciiValues(const int positions[], char values[])
+void Screen_Module1_SignalsView::translateScrollWheelPositionsToAsciiValues(int const positions[], char values[])
 {
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
@@ -360,6 +376,15 @@ void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
     Screen_Module1_GraphView::m_AutoRangeEnabled = false;
     showManualRangeSettings();
   }
+}
+
+void Screen_Module1_SignalsView::updateTimeRange(int value)
+{
+  Screen_Module1_GraphView::m_GraphRangeRight = value * SINE_PERIOD_DEGREES;
+  
+  /*Update time range value*/
+  Unicode::snprintf(textArea_TimeRangeBuffer, TEXTAREA_TIMERANGE_SIZE, "%d", Screen_Module1_GraphView::m_GraphRangeRight);
+  textArea_TimeRange.invalidate();
 }
 
 void Screen_Module1_SignalsView::hideManualRangeSettings()

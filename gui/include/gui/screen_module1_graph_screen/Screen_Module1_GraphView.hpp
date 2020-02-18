@@ -28,12 +28,13 @@ public:
   uint8_t activeSignalsCount();
   void updateCpuUsage(uint8_t value);
   
-  static void setGraphRanges(int bottom, int top, int right);
+  void setGraphRangeTextAreas(long long int bottom, long long int top, int right);
+  static void setGraphRanges(long long int bottom, long long int top, int right);
 
   void resetGraph();
   
-  static int getGraphRangeBottom() { return m_GraphRangeBottom; }
-  static int getGraphRangeTop() { return m_GraphRangeTop; }
+  static long long int getGraphRangeBottom() { return m_GraphRangeBottom; }
+  static long long int getGraphRangeTop() { return m_GraphRangeTop; }
   
 private:
   int m_TimeBase;
@@ -57,8 +58,8 @@ private:
 
   static bool m_AutoRangeEnabled;
   
-  static int m_GraphRangeBottom;
-  static int m_GraphRangeTop;
+  static long long int m_GraphRangeBottom;
+  static long long int m_GraphRangeTop;
   static int m_GraphRangeRight;
 };
 

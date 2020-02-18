@@ -257,7 +257,7 @@ protected:
      */
     static const uint16_t TEXTAREA_CPU_USAGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_CPU_UsageBuffer[TEXTAREA_CPU_USAGE_SIZE];
-    static const uint16_t TEXTAREA_TIMERANGE_SIZE = 10;
+    static const uint16_t TEXTAREA_TIMERANGE_SIZE = 6;
     touchgfx::Unicode::UnicodeChar textArea_TimeRangeBuffer[TEXTAREA_TIMERANGE_SIZE];
     static const uint16_t TEXTAREA_PARAMETER4NAME_SIZE = 11;
     touchgfx::Unicode::UnicodeChar textArea_Parameter4NameBuffer[TEXTAREA_PARAMETER4NAME_SIZE];

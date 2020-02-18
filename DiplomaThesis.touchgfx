@@ -2552,7 +2552,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId295",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 6
             },
             "Name": "textArea_TimeRange",
             "X": 0,
@@ -6190,7 +6190,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId1574",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 6
             },
             "Name": "textArea_TimeRange",
             "X": 0,
@@ -9828,7 +9828,7 @@
             "Wildcard1": {
               "TextId": "SingleUseId6206",
               "UseBuffer": true,
-              "BufferSize": 10
+              "BufferSize": 6
             },
             "Name": "textArea_TimeRange",
             "X": 0,

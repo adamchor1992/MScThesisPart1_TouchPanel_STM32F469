@@ -69,6 +69,15 @@ void Screen_Module3_SignalsView::setupScreen()
 	toggleButton_Parameter4.forceState(Screen_Module3_GraphView::m_Parameter4GraphEnabled);
 	toggleButton_Auto_Y_Range.forceState(Screen_Module3_GraphView::m_AutoRangeEnabled);
 
+        if (Screen_Module3_GraphView::m_AutoRangeEnabled == true)
+        {
+          hideManualRangeSettings();
+        }
+        else
+        {
+          showManualRangeSettings();
+        }
+        
 	/*Initialize sliders' values */
 	slider_TimeRange.setValue(Screen_Module3_GraphView::m_GraphRangeRight / SINE_PERIOD_DEGREES);
 	Unicode::snprintf(textArea_TimeRangeBuffer, 6, "%d", Screen_Module3_GraphView::m_GraphRangeRight);
