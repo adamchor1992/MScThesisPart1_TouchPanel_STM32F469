@@ -49,44 +49,44 @@ void Model::tick()
     /*Packet is validated at this point and can be directly recovered from queue and copied to local uartPacket structure*/    
     xQueueReceive(msgQueueUartRx, &uartPacket, 0);
     
-    switch(uartPacket.getModule())
+    switch(uartPacket.GetModule())
     {
     case ModuleID::MODULE1:
-      processPacket(uartPacket, ModuleID::MODULE1);
+      ProcessPacket(uartPacket, ModuleID::MODULE1);
       break;
       
     case ModuleID::MODULE2:
-      processPacket(uartPacket, ModuleID::MODULE2);
+      ProcessPacket(uartPacket, ModuleID::MODULE2);
       break;
       
     case ModuleID::MODULE3:
-      processPacket(uartPacket, ModuleID::MODULE3);
+      ProcessPacket(uartPacket, ModuleID::MODULE3);
       break;
       
     default:
       printf("Unsupported module in Model.cpp\n");
     }
   }
-  m_ModelListener->notifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
+  m_ModelListener->NotifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
 #endif
 }
 
-void Model::processPacket(UartPacket& uartPacket, ModuleID module)
+void Model::ProcessPacket(UartPacket& uartPacket, ModuleID module)
 {
 #ifndef SIMULATOR
-  Function function = uartPacket.getFunction();
+  Function function = uartPacket.GetFunction();
   
-  if(isModuleActive(module) == true)
+  if(IsModuleActive(module) == true)
   {
     if(function == Function::DATA_PACKET)
     {
-      m_ModelListener->notifyNewUartRxParsedPacket(uartPacket);
+      m_ModelListener->NotifyNewUartRxParsedPacket(uartPacket);
     }
     else if(function == Function::DEINIT_PACKET)
     {
       printf("Deinit packet received\n");
       
-      deactivateModule(module);
+      DeactivateModule(module);
       
       /*Go back to main menu screen*/
       static_cast<FrontendApplication*>(Application::getInstance())->gotoScreen_MainScreenNoTransition();
@@ -94,17 +94,17 @@ void Model::processPacket(UartPacket& uartPacket, ModuleID module)
     else if(function == Function::SET_GRAPH_RANGE_MIN)
     {
       printf("Set graph range minimum packet received\n");
-      m_ModelListener->notifyNewGraphRange(uartPacket);
+      m_ModelListener->NotifyNewGraphRange(uartPacket);
     }
     else if(function == Function::SET_GRAPH_RANGE_MAX)
     {
       printf("Set graph range maximum packet received\n");
-      m_ModelListener->notifyNewGraphRange(uartPacket);
+      m_ModelListener->NotifyNewGraphRange(uartPacket);
     }
     else if(function == Function::SET_GRAPH_TIME_RANGE)
     {
       printf("Set graph time range packet received\n");
-      m_ModelListener->notifyNewGraphRange(uartPacket);
+      m_ModelListener->NotifyNewGraphRange(uartPacket);
     }
     else
     {
@@ -118,28 +118,28 @@ void Model::processPacket(UartPacket& uartPacket, ModuleID module)
     {
       if(m_ReceivedInitPacketCount < INIT_PACKET_COUNT)
       {
-        uint8_t lengthInt = uartPacket.getLengthInt();
+        uint8_t lengthInt = uartPacket.GetLengthInt();
         
         if(module == ModuleID::MODULE1)
         {
           /*Clear buffer before writing new values*/
           memset(m_InitParametersModule1[m_ReceivedInitPacketCount], 0, PAYLOAD_SIZE);
 
-          memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
+          memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.GetPayload(), lengthInt);
         }
         else if(module == ModuleID::MODULE2)
         {
           /*Clear buffer before writing new values*/
           memset(m_InitParametersModule2[m_ReceivedInitPacketCount], 0, PAYLOAD_SIZE);
 
-          memcpy(m_InitParametersModule2[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
+          memcpy(m_InitParametersModule2[m_ReceivedInitPacketCount], uartPacket.GetPayload(), lengthInt);
         }
         else if(module == ModuleID::MODULE3)
         {
           /*Clear buffer before writing new values*/
           memset(m_InitParametersModule3[m_ReceivedInitPacketCount], 0, PAYLOAD_SIZE);
 
-          memcpy(m_InitParametersModule3[m_ReceivedInitPacketCount], uartPacket.getPayload(), lengthInt);
+          memcpy(m_InitParametersModule3[m_ReceivedInitPacketCount], uartPacket.GetPayload(), lengthInt);
         }
         
         ++m_ReceivedInitPacketCount;
@@ -154,7 +154,7 @@ void Model::processPacket(UartPacket& uartPacket, ModuleID module)
       if(m_ReceivedInitPacketCount == INIT_PACKET_COUNT)
       {
         printf("Received all of %d init packets\n", INIT_PACKET_COUNT);
-        m_ModelListener->notifyAllInitPacketsReceived(uartPacket); 
+        m_ModelListener->NotifyAllInitPacketsReceived(uartPacket); 
         
         /*Set m_ReceivedInitPacketCount back to 0 to make another connection initialization possible after connection deinitialization*/
         m_ReceivedInitPacketCount = 0;
@@ -168,7 +168,7 @@ void Model::processPacket(UartPacket& uartPacket, ModuleID module)
 #endif
 }
 
-void Model::activateModule(ModuleID module)
+void Model::ActivateModule(ModuleID module)
 {
   switch(module)
   {
@@ -192,7 +192,7 @@ void Model::activateModule(ModuleID module)
   }
 }
 
-void Model::deactivateModule(ModuleID module)
+void Model::DeactivateModule(ModuleID module)
 {
   switch(module)
   {
@@ -216,7 +216,7 @@ void Model::deactivateModule(ModuleID module)
   }
 }
 
-bool Model::isModuleActive(ModuleID module)
+bool Model::IsModuleActive(ModuleID module)
 {
   switch(module)
   {
@@ -238,7 +238,7 @@ bool Model::isModuleActive(ModuleID module)
   }
 }
 
-void Model::setNewValueToSet(const UartPacket& uartPacket)
+void Model::SetNewValueToSet(const UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
   xQueueSendToBack(msgQueueUartTx, &uartPacket, NO_WAITING);

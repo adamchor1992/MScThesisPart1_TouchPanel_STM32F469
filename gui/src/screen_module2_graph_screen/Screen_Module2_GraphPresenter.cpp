@@ -6,17 +6,17 @@ Screen_Module2_GraphPresenter::Screen_Module2_GraphPresenter(Screen_Module2_Grap
 {
 }
 
-void Screen_Module2_GraphPresenter::notifyNewUartRxParsedPacket(UartPacket& uartPacket)
+void Screen_Module2_GraphPresenter::NotifyNewUartRxParsedPacket(UartPacket& uartPacket)
 {
-  view.addNewValueToGraphFromUart(uartPacket);
+  view.AddNewValueToGraphFromUart(uartPacket);
 }
 
-void Screen_Module2_GraphPresenter::notifyNewGraphRange(UartPacket& uartPacket)
+void Screen_Module2_GraphPresenter::NotifyNewGraphRange(UartPacket& uartPacket)
 {
-  view.setNewGraphRange(uartPacket);
+  view.SetNewGraphRange(uartPacket);
 }
 
-void Screen_Module2_GraphPresenter::notifyNewCpuUsageValue(uint8_t value)
+void Screen_Module2_GraphPresenter::NotifyNewCpuUsageValue(uint8_t value)
 {
-  view.updateCpuUsage(value);
+  view.UpdateCpuUsage(value);
 }

@@ -2,11 +2,11 @@
 #include <gui/screen_module3_signals_screen/Screen_Module3_SignalsPresenter.hpp>
 
 Screen_Module3_SignalsPresenter::Screen_Module3_SignalsPresenter(Screen_Module3_SignalsView& v)
-	: view(v)
+: view(v)
 {
 }
 
-void Screen_Module3_SignalsPresenter::notifyNewCpuUsageValue(uint8_t value)
+void Screen_Module3_SignalsPresenter::NotifyNewCpuUsageValue(uint8_t value)
 {
-	view.updateCpuUsage(value);
+  view.UpdateCpuUsage(value);
 }

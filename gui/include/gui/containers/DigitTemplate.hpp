@@ -1,18 +1,15 @@
-#ifndef DIGITTEMPLATE_HPP
-#define DIGITTEMPLATE_HPP
+#pragma once
 
 #include <gui_generated/containers/DigitTemplateBase.hpp>
 
 class DigitTemplate : public DigitTemplateBase
 {
 public:
-    DigitTemplate();
-    virtual ~DigitTemplate() {}
-
-    virtual void initialize();
-
-	void setDigitWithComma(int no);
-	void setDigitWithoutComma(int no);
+  DigitTemplate();
+  virtual ~DigitTemplate() override {}
+  
+  virtual void initialize() override;
+  
+  void SetDigitWithComma(int no);
+  void SetDigitWithoutComma(int no);
 };
-
-#endif // DIGITTEMPLATE_HPP

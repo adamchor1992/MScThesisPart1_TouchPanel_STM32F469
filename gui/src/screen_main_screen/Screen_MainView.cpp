@@ -2,22 +2,17 @@
 #include <cstring>
 
 #ifndef SIMULATOR
-#include "stm32469i_discovery.h" //for LED driving
+#include "stm32469i_discovery.h"
 #endif
-
-Screen_MainView::Screen_MainView()
-{
-  
-}
 
 void Screen_MainView::setupScreen()
 {
 #ifndef SIMULATOR
   
-  char activeModuleString[10] = {0};
+  char activeModuleString[PAYLOAD_SIZE] = {0};
   
   /*Activate Module buttons of active modules*/
-  if(Model::isModuleActive(ModuleID::MODULE1) == true)
+  if(Model::IsModuleActive(ModuleID::MODULE1) == true)
   {
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
@@ -30,7 +25,7 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module1.setTouchable(false);
   }
   
-  if(Model::isModuleActive(ModuleID::MODULE2) == true)
+  if(Model::IsModuleActive(ModuleID::MODULE2) == true)
   {
     buttonWithLabel_Module2.setAlpha(255);
     buttonWithLabel_Module2.setTouchable(true);
@@ -43,7 +38,7 @@ void Screen_MainView::setupScreen()
     buttonWithLabel_Module2.setTouchable(false);
   }
   
-  if(Model::isModuleActive(ModuleID::MODULE3) == true)
+  if(Model::IsModuleActive(ModuleID::MODULE3) == true)
   {
     buttonWithLabel_Module3.setAlpha(255);
     buttonWithLabel_Module3.setTouchable(true);
@@ -57,14 +52,14 @@ void Screen_MainView::setupScreen()
   }
   
   /*If no modules active*/
-  if(Model::isModuleActive(ModuleID::MODULE1) == false && Model::isModuleActive(ModuleID::MODULE2) == false && Model::isModuleActive(ModuleID::MODULE3) == false)
+  if(Model::IsModuleActive(ModuleID::MODULE1) == false && Model::IsModuleActive(ModuleID::MODULE2) == false && Model::IsModuleActive(ModuleID::MODULE3) == false)
   {
-    Unicode::strncpy(textArea_ActiveModuleBuffer,"None", 10);
+    Unicode::strncpy(textArea_ActiveModuleBuffer,"None", PAYLOAD_SIZE);
   }
   
   strcat(activeModuleString, "\n");
   
-  Unicode::strncpy(textArea_ActiveModuleBuffer, activeModuleString, 10);
+  Unicode::strncpy(textArea_ActiveModuleBuffer, activeModuleString, PAYLOAD_SIZE);
   
   buttonWithLabel_Module1.invalidate();
   buttonWithLabel_Module2.invalidate();
@@ -78,7 +73,7 @@ void Screen_MainView::tearDownScreen()
   
 }
 
-void Screen_MainView::clearLeds()
+void Screen_MainView::ClearLeds()
 {
 #ifndef SIMULATOR
   BSP_LED_Off(LED1);
@@ -88,18 +83,18 @@ void Screen_MainView::clearLeds()
 #endif
 }
 
-void Screen_MainView::processInitPacket(UartPacket& uartPacket)
+void Screen_MainView::ProcessInitPacket(UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
   printf("Processing init packet\n");
   
-  switch(uartPacket.getModule())
+  switch(uartPacket.GetModule())
   {
   case ModuleID::MODULE1:
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
     
-    Model::activateModule(ModuleID::MODULE1);
+    Model::ActivateModule(ModuleID::MODULE1);
     printf("Active module 1\n");
     break;
     
@@ -107,7 +102,7 @@ void Screen_MainView::processInitPacket(UartPacket& uartPacket)
     buttonWithLabel_Module2.setAlpha(255);
     buttonWithLabel_Module2.setTouchable(true);
     
-    Model::activateModule(ModuleID::MODULE2);
+    Model::ActivateModule(ModuleID::MODULE2);
     printf("Active module 2\n");
     break;
     
@@ -115,7 +110,7 @@ void Screen_MainView::processInitPacket(UartPacket& uartPacket)
     buttonWithLabel_Module3.setAlpha(255);
     buttonWithLabel_Module3.setTouchable(true);
     
-    Model::activateModule(ModuleID::MODULE3);
+    Model::ActivateModule(ModuleID::MODULE3);
     printf("Active module 3\n");
     break;
   }
@@ -131,7 +126,7 @@ void Screen_MainView::processInitPacket(UartPacket& uartPacket)
 #endif
 }
 
-void Screen_MainView::updateCpuUsage(uint8_t value)
+void Screen_MainView::UpdateCpuUsage(uint8_t value)
 {  
   Unicode::snprintf(textArea_CPU_UsageBuffer,4,"%d",value);
   textArea_CPU_Usage.invalidate();

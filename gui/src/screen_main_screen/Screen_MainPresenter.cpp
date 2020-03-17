@@ -6,22 +6,12 @@ Screen_MainPresenter::Screen_MainPresenter(Screen_MainView& v)
 {
 }
 
-void Screen_MainPresenter::activate()
+void Screen_MainPresenter::NotifyAllInitPacketsReceived(UartPacket& uartPacket)
 {
-  
+  view.ProcessInitPacket(uartPacket);
 }
 
-void Screen_MainPresenter::deactivate()
+void Screen_MainPresenter::NotifyNewCpuUsageValue(uint8_t value)
 {
-  
-}
-
-void Screen_MainPresenter::notifyAllInitPacketsReceived(UartPacket& uartPacket)
-{
-  view.processInitPacket(uartPacket);
-}
-
-void Screen_MainPresenter::notifyNewCpuUsageValue(uint8_t value)
-{
-  view.updateCpuUsage(value);
+  view.UpdateCpuUsage(value);
 }

@@ -6,7 +6,7 @@
 #include <touchgfx/canvas_widget_renderer/CanvasWidgetRenderer.hpp>
 #include "string.h"
 #include "uart_packet.h"
-#include <stdio.h>
+#include <cstdio>
 #include "utilities.h"
 
 /* FreeRTOS Kernel includes. */
@@ -65,7 +65,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   signed long xHigherPriorityTaskWoken;
   
   /*Enable interrupt listening again*/
-  HAL_UART_Receive_IT(&huart6, uartPacket.getPacketTable(), PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartPacket.GetPacketTable(), PACKET_SIZE);
   
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
@@ -153,7 +153,7 @@ static void guiTask(void* params)
 static void uartRxTask(void* params)
 {  
   /*Start receiving*/
-  HAL_UART_Receive_IT(&huart6, uartPacket.getPacketTable(), PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, uartPacket.GetPacketTable(), PACKET_SIZE);
   
   printf("RX task initialized\n");
   
@@ -169,21 +169,21 @@ static void uartRxTask(void* params)
         taskENTER_CRITICAL();
        
         //CRC check
-        if(uartPacket.checkCrc32() == true)
+        if(uartPacket.CheckCrc32() == true)
         {
           /*Packet is correct and can be further processed*/
           
-          uartPacket.updateFields();
+          uartPacket.UpdateFields();
           
 #ifdef DEBUG
           printf("Rx packet:\n");
-          uartPacket.printPacket();
+          uartPacket.PrintPacket();
 #endif
           
           xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
           
           /*Reset packet to all zeroes*/
-          uartPacket.clearPacket();
+          uartPacket.ClearPacket();
         }
         else
         {
@@ -195,7 +195,7 @@ static void uartRxTask(void* params)
           BSP_LED_On(LED3);
           
           /*Reset packet to all zeroes*/
-          uartPacket.clearPacket();
+          uartPacket.ClearPacket();
         }
         
         /*Give back mutex*/
@@ -231,11 +231,11 @@ static void uartTxTask(void* params)
         
 #ifdef DEBUG
         printf("Tx packet:\n");
-        uartTxPacket.printPacket();
+        uartTxPacket.PrintPacket();
 #endif
         
-        uartTxPacket.updatePacketTable();
-        uartTxPacket.appendCrcToPacket();
+        uartTxPacket.UpdatePacketTable();
+        uartTxPacket.AppendCrcToPacket();
         
         /*Toggle blue LED*/
         BSP_LED_Toggle(LED4);

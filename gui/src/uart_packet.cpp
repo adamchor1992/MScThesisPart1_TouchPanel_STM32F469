@@ -2,16 +2,16 @@
 
 UartPacket::UartPacket() : m_Payload {0}, m_Crc{0}
 {
-  m_Source = 0;           //source/target ID
-  m_Module = 0;           //module ID
-  m_Function = 0;         //packet type
-  m_Parameter = 0;        //parameter ID
-  m_Sign = 0;             //sign of payload value
-  m_Length = 0;           //length of payload
+  m_Source = 0;
+  m_Module = 0;
+  m_Function = 0;
+  m_Parameter = 0;
+  m_Sign = 0;
+  m_Length = 0;
 }
 
 UartPacket::UartPacket(const uint8_t uartPacketTable[]) : m_Payload {0}, m_Crc{0}
-{  
+{
   m_Source = uartPacketTable[0];
   m_Module = uartPacketTable[1];
   m_Function = uartPacketTable[2];
@@ -32,7 +32,7 @@ UartPacket::UartPacket(const uint8_t uartPacketTable[]) : m_Payload {0}, m_Crc{0
   m_Crc[3] = uartPacketTable[19];
 }
 
-void UartPacket::setSource(Source source)
+void UartPacket::SetSource(Source source)
 {
   if(source == Source::SOURCE_TARGET1)
   {
@@ -40,7 +40,7 @@ void UartPacket::setSource(Source source)
   }
 }
 
-void UartPacket::setModule(ModuleID module)
+void UartPacket::SetModule(ModuleID module)
 {
   if(module == ModuleID::MODULE1)
   {
@@ -56,12 +56,12 @@ void UartPacket::setModule(ModuleID module)
   }
 }
 
-void UartPacket::setModule(uint8_t module)
+void UartPacket::SetModule(uint8_t module)
 {
   m_Module = module;
 }
 
-void UartPacket::setFunction(Function function)
+void UartPacket::SetFunction(Function function)
 {
   if(function == Function::DATA_PACKET)
   {
@@ -97,7 +97,7 @@ void UartPacket::setFunction(Function function)
   }
 }
 
-void UartPacket::setParameter(Parameter parameter)
+void UartPacket::SetParameter(Parameter parameter)
 {
   if(parameter == Parameter::NULL_PARAMETER)
   {
@@ -161,12 +161,12 @@ void UartPacket::setParameter(Parameter parameter)
   }
 }
 
-void UartPacket::setParameter(uint8_t parameter)
+void UartPacket::SetParameter(uint8_t parameter)
 {
   m_Parameter = parameter;
 }
 
-void UartPacket::setSign(Sign sign)
+void UartPacket::SetSign(Sign sign)
 {
   if(sign == Sign::POSITIVE_SIGN)
   {
@@ -178,12 +178,12 @@ void UartPacket::setSign(Sign sign)
   }
 }
 
-void UartPacket::setSign(uint8_t sign)
+void UartPacket::SetSign(uint8_t sign)
 {
   m_Sign = sign;
 }
 
-void UartPacket::setLength(Length length)
+void UartPacket::SetLength(Length length)
 {
   if(length == Length::NO_PAYLOAD)
   {
@@ -191,17 +191,17 @@ void UartPacket::setLength(Length length)
   }
 }
 
-void UartPacket::setLengthAscii(int length)
+void UartPacket::SetLengthAscii(int length)
 {
   m_Length = length + '0';
 }
 
-uint8_t* UartPacket::setPayload()
+uint8_t* UartPacket::SetPayload()
 {
   return m_Payload;
 }
 
-Source UartPacket::getSource() const
+Source UartPacket::GetSource() const
 {
   if(m_Source == static_cast<uint8_t>(Source::SOURCE_TARGET1))
   {
@@ -213,7 +213,7 @@ Source UartPacket::getSource() const
   }
 }
 
-ModuleID UartPacket::getModule() const
+ModuleID UartPacket::GetModule() const
 {
   if(m_Module == static_cast<uint8_t>(ModuleID::MODULE1))
   {
@@ -233,7 +233,7 @@ ModuleID UartPacket::getModule() const
   }
 }
 
-Function UartPacket::getFunction() const
+Function UartPacket::GetFunction() const
 {
   if(m_Function == static_cast<uint8_t>(Function::DATA_PACKET))
   {
@@ -277,7 +277,7 @@ Function UartPacket::getFunction() const
   }
 }
 
-Parameter UartPacket::getParameter() const
+Parameter UartPacket::GetParameter() const
 {
   if(m_Parameter == static_cast<uint8_t>(Parameter::NULL_PARAMETER))
   {
@@ -345,7 +345,7 @@ Parameter UartPacket::getParameter() const
   }
 }
 
-Sign UartPacket::getSign() const
+Sign UartPacket::GetSign() const
 {
   if(m_Sign == static_cast<uint8_t>(Sign::POSITIVE_SIGN))
   {
@@ -361,17 +361,17 @@ Sign UartPacket::getSign() const
   }
 }
 
-uint8_t UartPacket::getLengthInt() const
+uint8_t UartPacket::GetLengthInt() const
 {
   return m_Length - '0';
 }
 
-const uint8_t* UartPacket::getPayload() const
+const uint8_t* UartPacket::GetPayload() const
 {
   return m_Payload;
 }
 
-void UartPacket::appendCrcToPacket()
+void UartPacket::AppendCrcToPacket()
 {
   uint32_t crcValueCalculated = calculateCrc32((char*)m_PacketTable, 16);
   uint32_t* crcAddress = &crcValueCalculated;
@@ -417,7 +417,7 @@ UartPacket::operator uint8_t*()
   return m_PacketTable;
 }
 
-void UartPacket::printCrc()
+void UartPacket::PrintCrc()
 {
   printf("CRC1: %d\n", m_Crc[0]);
   printf("CRC2: %d\n", m_Crc[1]);
@@ -425,7 +425,7 @@ void UartPacket::printCrc()
   printf("CRC4: %d\n", m_Crc[3]);
 }
 
-bool UartPacket::checkCrc32() const
+bool UartPacket::CheckCrc32() const
 {
   uint8_t crcValueReceivedRaw8Bit[4];
   uint32_t crcValueCalculated;
@@ -446,7 +446,7 @@ bool UartPacket::checkCrc32() const
     return false;
 }
 
-void UartPacket::printPacket(bool withCrc)
+void UartPacket::PrintPacket(bool withCrc)
 {
   if(withCrc)
   {
@@ -458,7 +458,7 @@ void UartPacket::printPacket(bool withCrc)
   }
 }
 
-void UartPacket::updateFields()
+void UartPacket::UpdateFields()
 {
   m_Source = m_PacketTable[0];
   m_Module = m_PacketTable[1];
@@ -480,7 +480,7 @@ void UartPacket::updateFields()
   m_Crc[3] = m_PacketTable[19];
 }
 
-void UartPacket::updatePacketTable()
+void UartPacket::UpdatePacketTable()
 {
   for(int i=0; i<PACKET_SIZE; i++)
   {
@@ -507,7 +507,7 @@ void UartPacket::updatePacketTable()
   m_PacketTable[19] = m_Crc[3];
 }
 
-void UartPacket::clearPacket()
+void UartPacket::ClearPacket()
 {
   m_Source = 0;
   m_Module = 0;

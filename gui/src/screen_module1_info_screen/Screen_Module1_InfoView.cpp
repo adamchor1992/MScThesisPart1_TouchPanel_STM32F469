@@ -56,7 +56,7 @@ Screen_Module1_InfoView::Screen_Module1_InfoView()
 #endif
 }
 
-void Screen_Module1_InfoView::updateCpuUsage(uint8_t value)
+void Screen_Module1_InfoView::UpdateCpuUsage(uint8_t value)
 {  
   Unicode::snprintf(textArea_CPU_UsageBuffer,4,"%d",value);
   textArea_CPU_Usage.invalidate();

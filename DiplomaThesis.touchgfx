@@ -253,7 +253,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "clearLeds",
+              "FunctionName": "ClearLeds",
               "Type": "ActionCustom"
             }
           },
@@ -818,7 +818,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "showAll",
+              "FunctionName": "ShowAll",
               "Type": "ActionCustom"
             }
           },
@@ -2002,7 +2002,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setNewValue",
+              "FunctionName": "SetNewValue",
               "Type": "ActionCustom"
             }
           },
@@ -2014,7 +2014,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "enableParameterButtonPushed",
+              "FunctionName": "EnableParameterButtonPushed",
               "Type": "ActionCustom"
             }
           },
@@ -2026,7 +2026,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "disableParameterButtonPushed",
+              "FunctionName": "DisableParameterButtonPushed",
               "Type": "ActionCustom"
             }
           }
@@ -3431,7 +3431,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter1GraphVisible",
+              "FunctionName": "SetParameter1GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -3443,7 +3443,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter2GraphVisible",
+              "FunctionName": "SetParameter2GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -3455,7 +3455,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter3GraphVisible",
+              "FunctionName": "SetParameter3GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -3467,7 +3467,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter4GraphVisible",
+              "FunctionName": "SetParameter4GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -3479,7 +3479,7 @@
               "Type": "TriggerSliderValueChanged"
             },
             "Action": {
-              "FunctionName": "updateTimeRange",
+              "FunctionName": "UpdateTimeRange",
               "Type": "ActionCustom"
             }
           },
@@ -3491,7 +3491,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "pressedAutoRangeToggleButton",
+              "FunctionName": "PressedAutoRangeToggleButton",
               "Type": "ActionCustom"
             }
           },
@@ -3503,7 +3503,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setRanges",
+              "FunctionName": "SetRanges",
               "Type": "ActionCustom"
             }
           }
@@ -4456,7 +4456,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "showAll",
+              "FunctionName": "ShowAll",
               "Type": "ActionCustom"
             }
           },
@@ -5640,7 +5640,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setNewValue",
+              "FunctionName": "SetNewValue",
               "Type": "ActionCustom"
             }
           },
@@ -5652,7 +5652,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "enableParameterButtonPushed",
+              "FunctionName": "EnableParameterButtonPushed",
               "Type": "ActionCustom"
             }
           },
@@ -5664,7 +5664,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "disableParameterButtonPushed",
+              "FunctionName": "DisableParameterButtonPushed",
               "Type": "ActionCustom"
             }
           }
@@ -7069,7 +7069,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter1GraphVisible",
+              "FunctionName": "SetParameter1GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -7081,7 +7081,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter2GraphVisible",
+              "FunctionName": "SetParameter2GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -7093,7 +7093,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter3GraphVisible",
+              "FunctionName": "SetParameter3GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -7105,7 +7105,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter4GraphVisible",
+              "FunctionName": "SetParameter4GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -7117,7 +7117,7 @@
               "Type": "TriggerSliderValueChanged"
             },
             "Action": {
-              "FunctionName": "updateTimeRange",
+              "FunctionName": "UpdateTimeRange",
               "Type": "ActionCustom"
             }
           },
@@ -7129,7 +7129,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "pressedAutoRangeToggleButton",
+              "FunctionName": "PressedAutoRangeToggleButton",
               "Type": "ActionCustom"
             }
           },
@@ -7141,7 +7141,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setRanges",
+              "FunctionName": "SetRanges",
               "Type": "ActionCustom"
             }
           }
@@ -8094,7 +8094,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "showAll",
+              "FunctionName": "ShowAll",
               "Type": "ActionCustom"
             }
           },
@@ -9278,7 +9278,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setNewValue",
+              "FunctionName": "SetNewValue",
               "Type": "ActionCustom"
             }
           },
@@ -9290,7 +9290,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "enableParameterButtonPushed",
+              "FunctionName": "EnableParameterButtonPushed",
               "Type": "ActionCustom"
             }
           },
@@ -9302,7 +9302,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "disableParameterButtonPushed",
+              "FunctionName": "DisableParameterButtonPushed",
               "Type": "ActionCustom"
             }
           }
@@ -10707,7 +10707,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter1GraphVisible",
+              "FunctionName": "SetParameter1GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -10719,7 +10719,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter2GraphVisible",
+              "FunctionName": "SetParameter2GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -10731,7 +10731,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter3GraphVisible",
+              "FunctionName": "SetParameter3GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -10743,7 +10743,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setParameter4GraphVisible",
+              "FunctionName": "SetParameter4GraphVisible",
               "Type": "ActionCustom"
             }
           },
@@ -10755,7 +10755,7 @@
               "Type": "TriggerSliderValueChanged"
             },
             "Action": {
-              "FunctionName": "updateTimeRange",
+              "FunctionName": "UpdateTimeRange",
               "Type": "ActionCustom"
             }
           },
@@ -10767,7 +10767,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "pressedAutoRangeToggleButton",
+              "FunctionName": "PressedAutoRangeToggleButton",
               "Type": "ActionCustom"
             }
           },
@@ -10779,7 +10779,7 @@
               "Type": "TriggerClicked"
             },
             "Action": {
-              "FunctionName": "setRanges",
+              "FunctionName": "SetRanges",
               "Type": "ActionCustom"
             }
           }

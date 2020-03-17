@@ -1,5 +1,4 @@
-#ifndef MODEL_HPP
-#define MODEL_HPP
+#pragma once
 
 #include <touchgfx/Utils.hpp>
 #include "uart_packet.h"
@@ -35,7 +34,7 @@ public:
   
   void tick();
   
-  void setNewValueToSet(const UartPacket & uartPacket);
+  void SetNewValueToSet(UartPacket const& uartPacket);
   
   /*Module 1 initialization parameters*/  
   static uint8_t m_InitParametersModule1[INIT_PACKET_COUNT][PAYLOAD_SIZE];
@@ -46,9 +45,9 @@ public:
   /*Module 3 initialization parameters*/
   static uint8_t m_InitParametersModule3[INIT_PACKET_COUNT][PAYLOAD_SIZE];
   
-  static void activateModule(ModuleID module);
-  static void deactivateModule(ModuleID module);
-  static bool isModuleActive(ModuleID module);
+  static void ActivateModule(ModuleID module);
+  static void DeactivateModule(ModuleID module);
+  static bool IsModuleActive(ModuleID module);
   
 #ifndef SIMULATOR
   static UART_HandleTypeDef* m_pHuart6;
@@ -59,11 +58,11 @@ protected:
   ModelListener* m_ModelListener;
   
 private:
-  void processPacket(UartPacket& uartPacket, ModuleID module);
+  void ProcessPacket(UartPacket& uartPacket, ModuleID module);
   
   uint8_t m_ReceivedInitPacketCount;
+  
   static bool module1Connected;
   static bool module2Connected;
   static bool module3Connected;
 };
-#endif

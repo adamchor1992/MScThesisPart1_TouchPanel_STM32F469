@@ -1,5 +1,4 @@
-#ifndef SCREEN_MODULE2_SIGNALS_PRESENTER_HPP
-#define SCREEN_MODULE2_SIGNALS_PRESENTER_HPP
+#pragma once
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
@@ -11,16 +10,13 @@ class Screen_Module2_SignalsView;
 class Screen_Module2_SignalsPresenter : public Presenter, public ModelListener
 {
 public:
-	Screen_Module2_SignalsPresenter(Screen_Module2_SignalsView& v);
-
-	void notifyNewCpuUsageValue(uint8_t value);
-
-	virtual ~Screen_Module2_SignalsPresenter() {};
-
+  Screen_Module2_SignalsPresenter(Screen_Module2_SignalsView& v);
+  virtual ~Screen_Module2_SignalsPresenter() override {};
+  
+  void NotifyNewCpuUsageValue(uint8_t value);
+  
 private:
-	Screen_Module2_SignalsPresenter();
-
-	Screen_Module2_SignalsView& view;
+  Screen_Module2_SignalsPresenter();
+  
+  Screen_Module2_SignalsView& view;
 };
-
-#endif

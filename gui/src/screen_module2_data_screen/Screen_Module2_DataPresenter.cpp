@@ -6,22 +6,12 @@ Screen_Module2_DataPresenter::Screen_Module2_DataPresenter(Screen_Module2_DataVi
 {
 }
 
-void Screen_Module2_DataPresenter::activate()
+void Screen_Module2_DataPresenter::NotifyNewUartRxParsedPacket(UartPacket& uartPacket)
 {
-
+  view.UpdateGuiPacketData(uartPacket);
 }
 
-void Screen_Module2_DataPresenter::deactivate()
+void Screen_Module2_DataPresenter::NotifyNewCpuUsageValue(uint8_t value)
 {
-
-}
-
-void Screen_Module2_DataPresenter::notifyNewUartRxParsedPacket(UartPacket& uartPacket)
-{
-  view.updateGuiPacketData(uartPacket);
-}
-
-void Screen_Module2_DataPresenter::notifyNewCpuUsageValue(uint8_t value)
-{
-  view.updateCpuUsage(value);
+  view.UpdateCpuUsage(value);
 }

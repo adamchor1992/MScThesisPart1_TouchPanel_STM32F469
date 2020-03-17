@@ -6,17 +6,7 @@ Screen_Module1_InfoPresenter::Screen_Module1_InfoPresenter(Screen_Module1_InfoVi
 {
 }
 
-void Screen_Module1_InfoPresenter::activate()
+void Screen_Module1_InfoPresenter::NotifyNewCpuUsageValue(uint8_t value)
 {
-
-}
-
-void Screen_Module1_InfoPresenter::deactivate()
-{
-
-}
-
-void Screen_Module1_InfoPresenter::notifyNewCpuUsageValue(uint8_t value)
-{
-  view.updateCpuUsage(value);
+  view.UpdateCpuUsage(value);
 }

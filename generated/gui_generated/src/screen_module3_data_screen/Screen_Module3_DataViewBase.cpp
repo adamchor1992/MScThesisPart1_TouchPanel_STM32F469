@@ -182,8 +182,8 @@ void Screen_Module3_DataViewBase::buttonCallbackHandler(const touchgfx::Abstract
     {
         //Interaction_ShowAll
         //When button1_ShowAll clicked call virtual function
-        //Call showAll
-        showAll();
+        //Call ShowAll
+        ShowAll();
     }
     else if (&src == &buttonWithLabel_Info)
     {

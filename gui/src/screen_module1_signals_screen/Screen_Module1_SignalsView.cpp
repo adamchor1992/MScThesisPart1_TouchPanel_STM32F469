@@ -37,11 +37,11 @@ Screen_Module1_SignalsView::Screen_Module1_SignalsView()
     /*Make bottom value positive for sake of calculations*/
     bottom = bottom * (-1); 
     
-    setSignMin(Sign::NEGATIVE);
+    SetSignMin(Sign::NEGATIVE);
   }
   else
   {
-    setSignMin(Sign::POSITIVE);
+    SetSignMin(Sign::POSITIVE);
   }
   
   long long int top = Screen_Module1_GraphView::m_GraphRangeTop;
@@ -51,17 +51,17 @@ Screen_Module1_SignalsView::Screen_Module1_SignalsView()
     /*Make top value positive for sake of calculations*/
     top = top * (-1);
     
-    setSignMax(Sign::NEGATIVE);
+    SetSignMax(Sign::NEGATIVE);
   }
   else
   {
-    setSignMax(Sign::POSITIVE);
+    SetSignMax(Sign::POSITIVE);
   }
   
-  setMinScrollWheelValues(bottom);
-  setMaxScrollWheelValues(top);
+  SetMinScrollWheelValues(bottom);
+  SetMaxScrollWheelValues(top);
   
-  initializeScrollWheels();
+  InitializeScrollWheels();
 }
 
 void Screen_Module1_SignalsView::setupScreen()
@@ -75,11 +75,11 @@ void Screen_Module1_SignalsView::setupScreen()
   
   if (Screen_Module1_GraphView::m_AutoRangeEnabled == true)
   {
-    hideManualRangeSettings();
+    HideManualRangeSettings();
   }
   else
   {
-    showManualRangeSettings();
+    ShowManualRangeSettings();
   }
   
   /*Initialize sliders' values */
@@ -88,20 +88,20 @@ void Screen_Module1_SignalsView::setupScreen()
   textArea_TimeRange.invalidate();
 }
 
-void Screen_Module1_SignalsView::setRanges()
+void Screen_Module1_SignalsView::SetRanges()
 {
   /*Position 0 is '.', position 1 is digit 0, position 2 is digit 1 and so on*/
   int minRangeScrollWheelPositions[PAYLOAD_SIZE] = { 0 };
   int maxRangeScrollWheelPositions[PAYLOAD_SIZE] = { 0 };
   
-  getMinRangeScrollWheelsPositions(minRangeScrollWheelPositions);
-  getMaxRangeScrollWheelsPositions(maxRangeScrollWheelPositions);
+  GetMinRangeScrollWheelsPositions(minRangeScrollWheelPositions);
+  GetMaxRangeScrollWheelsPositions(maxRangeScrollWheelPositions);
   
   char minRangeScrollWheelsAsciiValues[PAYLOAD_SIZE] = { 0 };
   char maxRangeScrollWheelsAsciiValues[PAYLOAD_SIZE] = { 0 };
   
-  translateScrollWheelPositionsToAsciiValues(minRangeScrollWheelPositions, minRangeScrollWheelsAsciiValues);
-  translateScrollWheelPositionsToAsciiValues(maxRangeScrollWheelPositions, maxRangeScrollWheelsAsciiValues);
+  TranslateScrollWheelPositionsToAsciiValues(minRangeScrollWheelPositions, minRangeScrollWheelsAsciiValues);
+  TranslateScrollWheelPositionsToAsciiValues(maxRangeScrollWheelPositions, maxRangeScrollWheelsAsciiValues);
   
   printf("MIN range scroll wheels ASCII values %.10s\n", minRangeScrollWheelsAsciiValues);
   printf("MAX range scroll wheels ASCII values %.10s\n", maxRangeScrollWheelsAsciiValues);
@@ -109,12 +109,12 @@ void Screen_Module1_SignalsView::setRanges()
   long long int minRangeValue = atoll(minRangeScrollWheelsAsciiValues); 
   long long int maxRangeValue = atoll(maxRangeScrollWheelsAsciiValues);
   
-  if (getSignMin() == Sign::NEGATIVE)
+  if (GetSignMin() == Sign::NEGATIVE)
   {
     minRangeValue = minRangeValue * (-1);
   }
   
-  if (getSignMax() == Sign::NEGATIVE)
+  if (GetSignMax() == Sign::NEGATIVE)
   {
     maxRangeValue = maxRangeValue * (-1);
   }
@@ -131,11 +131,11 @@ void Screen_Module1_SignalsView::setRanges()
     printf("New MIN range value %lld\n", minRangeValue);
     printf("New MAX range value %lld\n", maxRangeValue);
     
-    Screen_Module1_GraphView::setGraphRanges(minRangeValue, maxRangeValue, slider_TimeRange.getValue() * SINE_PERIOD_DEGREES);
+    Screen_Module1_GraphView::SetGraphRanges(minRangeValue, maxRangeValue, slider_TimeRange.getValue() * SINE_PERIOD_DEGREES);
   }
 }
 
-void Screen_Module1_SignalsView::initializeScrollWheels()
+void Screen_Module1_SignalsView::InitializeScrollWheels()
 {
   scrollWheel_MinDigit1.initialize();
   scrollWheel_MinDigit2.initialize();
@@ -160,7 +160,7 @@ void Screen_Module1_SignalsView::initializeScrollWheels()
   scrollWheel_MaxDigit10.initialize();
 }
 
-void Screen_Module1_SignalsView::setMinScrollWheelValues(long long int bottom)
+void Screen_Module1_SignalsView::SetMinScrollWheelValues(long long int bottom)
 {
   long long int rest = 0;
   
@@ -204,7 +204,7 @@ void Screen_Module1_SignalsView::setMinScrollWheelValues(long long int bottom)
   scrollWheel_MinDigit10.animateToItem(rest);
 }
 
-void Screen_Module1_SignalsView::setMaxScrollWheelValues(long long int top)
+void Screen_Module1_SignalsView::SetMaxScrollWheelValues(long long int top)
 {
   long long int rest = 0;
   
@@ -248,7 +248,7 @@ void Screen_Module1_SignalsView::setMaxScrollWheelValues(long long int top)
   scrollWheel_MaxDigit10.animateToItem(rest);
 }
 
-void Screen_Module1_SignalsView::getMinRangeScrollWheelsPositions(int positions[])
+void Screen_Module1_SignalsView::GetMinRangeScrollWheelsPositions(int positions[])
 {
   positions[9] = scrollWheel_MinDigit1.getSelectedItem();
   positions[8] = scrollWheel_MinDigit2.getSelectedItem();
@@ -262,7 +262,7 @@ void Screen_Module1_SignalsView::getMinRangeScrollWheelsPositions(int positions[
   positions[0] = scrollWheel_MinDigit10.getSelectedItem();
 }
 
-void Screen_Module1_SignalsView::getMaxRangeScrollWheelsPositions(int positions[])
+void Screen_Module1_SignalsView::GetMaxRangeScrollWheelsPositions(int positions[])
 {
   positions[9] = scrollWheel_MaxDigit1.getSelectedItem();
   positions[8] = scrollWheel_MaxDigit2.getSelectedItem();
@@ -276,7 +276,7 @@ void Screen_Module1_SignalsView::getMaxRangeScrollWheelsPositions(int positions[
   positions[0] = scrollWheel_MaxDigit10.getSelectedItem();
 }
 
-void Screen_Module1_SignalsView::translateScrollWheelPositionsToAsciiValues(int const positions[], char values[])
+void Screen_Module1_SignalsView::TranslateScrollWheelPositionsToAsciiValues(int const positions[], char values[])
 {
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {
@@ -316,7 +316,7 @@ void Screen_Module1_SignalsView::translateScrollWheelPositionsToAsciiValues(int 
   }
 }
 
-void Screen_Module1_SignalsView::setParameter1GraphVisible()
+void Screen_Module1_SignalsView::SetParameter1GraphVisible()
 {
   if (toggleButton_Parameter1.getState() == true)
   {
@@ -328,7 +328,7 @@ void Screen_Module1_SignalsView::setParameter1GraphVisible()
   }
 }
 
-void Screen_Module1_SignalsView::setParameter2GraphVisible()
+void Screen_Module1_SignalsView::SetParameter2GraphVisible()
 {
   if (toggleButton_Parameter2.getState() == true)
   {
@@ -340,7 +340,7 @@ void Screen_Module1_SignalsView::setParameter2GraphVisible()
   }
 }
 
-void Screen_Module1_SignalsView::setParameter3GraphVisible()
+void Screen_Module1_SignalsView::SetParameter3GraphVisible()
 {
   if (toggleButton_Parameter3.getState() == true)
   {
@@ -352,7 +352,7 @@ void Screen_Module1_SignalsView::setParameter3GraphVisible()
   }
 }
 
-void Screen_Module1_SignalsView::setParameter4GraphVisible()
+void Screen_Module1_SignalsView::SetParameter4GraphVisible()
 {
   if (toggleButton_Parameter4.getState() == true)
   {
@@ -364,21 +364,21 @@ void Screen_Module1_SignalsView::setParameter4GraphVisible()
   }
 }
 
-void Screen_Module1_SignalsView::pressedAutoRangeToggleButton()
+void Screen_Module1_SignalsView::PressedAutoRangeToggleButton()
 {
   if (toggleButton_Auto_Y_Range.getState() == true)
   {
     Screen_Module1_GraphView::m_AutoRangeEnabled = true;
-    hideManualRangeSettings();
+    HideManualRangeSettings();
   }
   else
   {
     Screen_Module1_GraphView::m_AutoRangeEnabled = false;
-    showManualRangeSettings();
+    ShowManualRangeSettings();
   }
 }
 
-void Screen_Module1_SignalsView::updateTimeRange(int value)
+void Screen_Module1_SignalsView::UpdateTimeRange(int value)
 {
   Screen_Module1_GraphView::m_GraphRangeRight = value * SINE_PERIOD_DEGREES;
   
@@ -387,7 +387,7 @@ void Screen_Module1_SignalsView::updateTimeRange(int value)
   textArea_TimeRange.invalidate();
 }
 
-void Screen_Module1_SignalsView::hideManualRangeSettings()
+void Screen_Module1_SignalsView::HideManualRangeSettings()
 {
   textArea_Y_AxisMin.setVisible(false);
   textArea_Y_AxisMax.setVisible(false);
@@ -446,7 +446,7 @@ void Screen_Module1_SignalsView::hideManualRangeSettings()
   scrollWheel_MaxDigit10.invalidate();
 }
 
-void Screen_Module1_SignalsView::showManualRangeSettings()
+void Screen_Module1_SignalsView::ShowManualRangeSettings()
 {
   textArea_Y_AxisMin.setVisible(true);
   textArea_Y_AxisMax.setVisible(true);
@@ -505,7 +505,7 @@ void Screen_Module1_SignalsView::showManualRangeSettings()
   scrollWheel_MaxDigit10.invalidate();
 }
 
-void Screen_Module1_SignalsView::setSignMin(Sign sign)
+void Screen_Module1_SignalsView::SetSignMin(Sign sign)
 {
   if (sign == Sign::POSITIVE)
   {
@@ -517,7 +517,7 @@ void Screen_Module1_SignalsView::setSignMin(Sign sign)
   }
 }
 
-void Screen_Module1_SignalsView::setSignMax(Sign sign)
+void Screen_Module1_SignalsView::SetSignMax(Sign sign)
 {
   if (sign == Sign::POSITIVE)
   {
@@ -529,7 +529,7 @@ void Screen_Module1_SignalsView::setSignMax(Sign sign)
   }
 }
 
-Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::getSignMin()
+Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::GetSignMin()
 {
   if (toggleButton_SignMin.getState() == true)
   {
@@ -541,7 +541,7 @@ Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::getSignMin()
   }
 }
 
-Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::getSignMax()
+Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::GetSignMax()
 {
   if (toggleButton_SignMax.getState() == true)
   {
@@ -555,105 +555,105 @@ Screen_Module1_SignalsView::Sign Screen_Module1_SignalsView::getSignMax()
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MinDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit1UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit2UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit3UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit4UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit5UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit6UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit7UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit8UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit9UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
 void Screen_Module1_SignalsView::scrollWheel_MaxDigit10UpdateItem(DigitTemplate& item, int16_t itemIndex)
 {
-  item.setDigitWithoutComma(itemIndex);
+  item.SetDigitWithoutComma(itemIndex);
 }
 
-void Screen_Module1_SignalsView::updateCpuUsage(uint8_t value)
+void Screen_Module1_SignalsView::UpdateCpuUsage(uint8_t value)
 {
   Unicode::snprintf(textArea_CPU_UsageBuffer, 4, "%d", value);
   textArea_CPU_Usage.invalidate();

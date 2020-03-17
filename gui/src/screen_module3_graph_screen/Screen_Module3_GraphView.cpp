@@ -5,7 +5,7 @@
 #include <cmath>
 
 #ifndef SIMULATOR
-#include "stm32469i_discovery.h" //for led driving
+#include "stm32469i_discovery.h"
 #include <stdlib.h>
 #endif
 
@@ -77,7 +77,7 @@ void Screen_Module3_GraphView::setupScreen()
   }
   
   /*Initialize graph range text areas */
-  setGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
+  SetGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
   
   add(m_GraphYellow);
   add(m_GraphRed);
@@ -85,14 +85,14 @@ void Screen_Module3_GraphView::setupScreen()
   add(m_GraphGreen);
 }
 
-void Screen_Module3_GraphView::setGraphRanges(long long int bottom, long long int top, int right)
+void Screen_Module3_GraphView::SetGraphRanges(long long int bottom, long long int top, int right)
 {
   m_GraphRangeBottom = bottom;
   m_GraphRangeTop = top;
   m_GraphRangeRight = right;
 }
 
-void Screen_Module3_GraphView::setGraphRangeTextAreas(long long int bottom, long long int top, int right)
+void Screen_Module3_GraphView::SetGraphRangeTextAreas(long long int bottom, long long int top, int right)
 {
   /*Buffer for range bottom string - up to 10 digits + optional sign + null character*/
   char graphRangeBottomString[PAYLOAD_SIZE + 2];
@@ -106,12 +106,7 @@ void Screen_Module3_GraphView::setGraphRangeTextAreas(long long int bottom, long
   
   Unicode::strncpy(graphRangeBottomUnicodeString, graphRangeBottomString, PAYLOAD_SIZE + 2);
   Unicode::strncpy(graphRangeTopUnicodeString, graphRangeTopString, PAYLOAD_SIZE + 2);
-  
-//  printf("Graph range bottom: string %s\n", graphRangeBottomString);
-//  printf("Graph range bottom string length: %d\n", strlen(graphRangeBottomString));
-//  printf("Graph range top string: %s\n", graphRangeTopString);
-//  printf("Graph range top string length: %d\n", strlen(graphRangeTopString));
-  
+    
   Unicode::snprintf(textArea_GraphRangeBottomBuffer, PAYLOAD_SIZE + 2, "%s", graphRangeBottomUnicodeString);
   textArea_GraphRangeBottom.invalidate();
   
@@ -122,7 +117,7 @@ void Screen_Module3_GraphView::setGraphRangeTextAreas(long long int bottom, long
   textArea_GraphRangeRight.invalidate();
 }
 
-void Screen_Module3_GraphView::resetGraph()
+void Screen_Module3_GraphView::ResetGraph()
 {
   for (int i = 0; i < GRAPHS_COUNT; i++)
   {
@@ -138,7 +133,7 @@ void Screen_Module3_GraphView::resetGraph()
   m_PreviousBlue_X = 0;
   m_PreviousGreen_X = 0;
   
-  setGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
+  SetGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
 }
 
 void Screen_Module3_GraphView::handleTickEvent()
@@ -185,12 +180,7 @@ void Screen_Module3_GraphView::handleTickEvent()
     
     m_TimeBase = 0;
   }
-  
-  //touchgfx_printf("Graph bottom range %d\n", m_GraphRangeBottom);
-  //touchgfx_printf("Graph bottom range %d\n", m_GraphYellow.getRangeBottom());
-  //touchgfx_printf("Graph top range %d\n", m_GraphYellow.getRangeTop());
-  //touchgfx_printf("Value1 after scaling %d\n", value);
-  
+    
   if (m_Parameter1GraphEnabled == true)
   {
     if (m_PreviousYellow_X == m_TimeBase)
@@ -208,12 +198,12 @@ void Screen_Module3_GraphView::handleTickEvent()
 #endif
 }
 
-void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket& uartPacket)
+void Screen_Module3_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
   
   /*Skip packet if it is not addressed to this module*/
-  if(uartPacket.getModule() != ModuleID::MODULE3)
+  if(uartPacket.GetModule() != ModuleID::MODULE3)
   {
     printf("Packet skipped because it is not addressed to current module (3)");
     return;
@@ -222,9 +212,9 @@ void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket& uartPacket
   static long long int rawValue;
   static long long int scaledValue;
   
-  rawValue = static_cast<long long int>(std::stoll((char*)(uartPacket.getPayload())));
+  rawValue = static_cast<long long int>(std::stoll((char*)(uartPacket.GetPayload())));
   
-  if (uartPacket.getSign() == Sign::NEGATIVE_SIGN)
+  if (uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
   {
     /*Make rawValue negative*/
     rawValue = rawValue * (-1);
@@ -237,14 +227,14 @@ void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket& uartPacket
     { 
       m_GraphRangeTop = rawValue;
       
-      setGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
+      SetGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
     }
     /*Check if raw value is lower than graph bottom range*/
     else if (rawValue < m_GraphRangeBottom)
     {
       m_GraphRangeBottom = rawValue;
       
-      setGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
+      SetGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
     }
   }
   
@@ -265,14 +255,14 @@ void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket& uartPacket
   
   if (m_TimeBase >= m_GraphRangeRight)
   {
-    resetGraph();
+    ResetGraph();
   }
   
   printf("Graph virtual bottom range: %lld\n", m_GraphRangeBottom);
   printf("Graph virtual top range: %lld\n", m_GraphRangeTop);
   printf("Value after scaling: %lld\n", scaledValue);
   
-  switch (uartPacket.getParameter())
+  switch (uartPacket.GetParameter())
   {
   case Parameter::GRAPH_PARAMETER1:
     if (m_Parameter1GraphEnabled == true)
@@ -338,72 +328,72 @@ void Screen_Module3_GraphView::addNewValueToGraphFromUart(UartPacket& uartPacket
 #endif
 }
 
-void Screen_Module3_GraphView::setNewGraphRange(UartPacket& uartPacket)
+void Screen_Module3_GraphView::SetNewGraphRange(UartPacket& uartPacket)
 {
   /*Skip packet if it is not addressed to this module*/
-  if(uartPacket.getModule() != ModuleID::MODULE3)
+  if(uartPacket.GetModule() != ModuleID::MODULE3)
   {
     printf("Packet skipped because it is not addressed to current module (3)");
     return;
   }
   
-  printf("Packet length: %d\n", uartPacket.getLengthInt());
-  printf("Packet payload: %.10s\n", uartPacket.getPayload());
+  printf("Packet length: %d\n", uartPacket.GetLengthInt());
+  printf("Packet payload: %.10s\n", uartPacket.GetPayload());
   
-  switch(uartPacket.getFunction())
+  switch(uartPacket.GetFunction())
   {
   case Function::SET_GRAPH_RANGE_MIN:
     static long long int newGraphRangeMinValue = 0;
     
-    newGraphRangeMinValue = static_cast<long long int>(std::stoll((char*)(uartPacket.getPayload())));
+    newGraphRangeMinValue = static_cast<long long int>(std::stoll((char*)(uartPacket.GetPayload())));
     
     printf("New graph range MINIMUM value after casting to long long int: %lld\n", newGraphRangeMinValue);
     
-    if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
+    if(uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
     {
       newGraphRangeMinValue = newGraphRangeMinValue * (-1);
     }
     
-    setGraphRanges(newGraphRangeMinValue, m_GraphRangeTop, m_GraphRangeRight);
+    SetGraphRanges(newGraphRangeMinValue, m_GraphRangeTop, m_GraphRangeRight);
     
-    resetGraph();
+    ResetGraph();
     
     break;
     
   case Function::SET_GRAPH_RANGE_MAX: 
     static long long int newGraphRangeMaxValue = 0;
     
-    newGraphRangeMaxValue = static_cast<long long int>(std::stoll((char*)(uartPacket.getPayload())));
+    newGraphRangeMaxValue = static_cast<long long int>(std::stoll((char*)(uartPacket.GetPayload())));
     
     printf("New graph range MAXIMUM value after casting to long long int: %lld\n", newGraphRangeMaxValue);
     
-    if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
+    if(uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
     {
       newGraphRangeMaxValue = newGraphRangeMaxValue * (-1);
     }
     
-    setGraphRanges(m_GraphRangeBottom, newGraphRangeMaxValue, m_GraphRangeRight);
+    SetGraphRanges(m_GraphRangeBottom, newGraphRangeMaxValue, m_GraphRangeRight);
     
-    resetGraph();
+    ResetGraph();
     
     break;
     
   case Function::SET_GRAPH_TIME_RANGE:    
     static int newTimeRangeValue = 0;
     
-    newTimeRangeValue = int(std::stoi((char*)(uartPacket.getPayload())));
+    newTimeRangeValue = int(std::stoi((char*)(uartPacket.GetPayload())));
     
     printf("New time range value after casting to int: %d\n", newTimeRangeValue);
     
-    if(uartPacket.getSign() == Sign::NEGATIVE_SIGN)
+    if(uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
     {
       printf("Time range cannot be negative, packet discarded\n");
       return;
     }
     
-    setGraphRanges(m_GraphRangeBottom, m_GraphRangeTop, newTimeRangeValue);
+    SetGraphRanges(m_GraphRangeBottom, m_GraphRangeTop, newTimeRangeValue);
     
-    resetGraph();
+    ResetGraph();
     
     break;
     
@@ -412,7 +402,7 @@ void Screen_Module3_GraphView::setNewGraphRange(UartPacket& uartPacket)
   }
 }
 
-uint8_t Screen_Module3_GraphView::activeSignalsCount()
+uint8_t Screen_Module3_GraphView::ActiveSignalsCount()
 {
   /*How many signals active/visible?*/
   uint8_t activeSignals = 0;
@@ -429,7 +419,7 @@ uint8_t Screen_Module3_GraphView::activeSignalsCount()
   return activeSignals;
 }
 
-void Screen_Module3_GraphView::updateCpuUsage(uint8_t value)
+void Screen_Module3_GraphView::UpdateCpuUsage(uint8_t value)
 {
   Unicode::snprintf(textArea_CPU_UsageBuffer, 4, "%d", value);
   textArea_CPU_Usage.invalidate();

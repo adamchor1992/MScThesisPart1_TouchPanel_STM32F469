@@ -451,8 +451,8 @@ void Screen_Module2_SettingsViewBase::buttonCallbackHandler(const touchgfx::Abst
     {
         //Interaction_SetValueButtonPushed
         //When buttonWithLabel_SetValue clicked call virtual function
-        //Call setNewValue
-        setNewValue();
+        //Call SetNewValue
+        SetNewValue();
     }
     else if (&src == &buttonWithLabel_Back)
     {
@@ -465,15 +465,15 @@ void Screen_Module2_SettingsViewBase::buttonCallbackHandler(const touchgfx::Abst
     {
         //Interaction_EnableParameterButtonPushed
         //When buttonWithLabel_EnableParameter clicked call virtual function
-        //Call enableParameterButtonPushed
-        enableParameterButtonPushed();
+        //Call EnableParameterButtonPushed
+        EnableParameterButtonPushed();
     }
     else if (&src == &buttonWithLabel_DisableParameter)
     {
         //Interaction_DisableParameterButtonPushed
         //When buttonWithLabel_DisableParameter clicked call virtual function
-        //Call disableParameterButtonPushed
-        disableParameterButtonPushed();
+        //Call DisableParameterButtonPushed
+        DisableParameterButtonPushed();
     }
 }
 

@@ -89,21 +89,21 @@ void Screen_Module2_DataView::setupScreen()
   textArea_Parameter4Name.setClickAction(TextAreaClickedCallback);
 }
 
-void Screen_Module2_DataView::updateGuiPacketData(UartPacket& uartPacket)
+void Screen_Module2_DataView::UpdateGuiPacketData(UartPacket& uartPacket)
 {
-  uint16_t stringToDisplay[10] = { 0 };
+  uint16_t stringToDisplay[PAYLOAD_SIZE] = { 0 };
   
-  uint8_t length_int = uartPacket.getLengthInt();
+  uint8_t length_int = uartPacket.GetLengthInt();
   
   for (int i = 0; i < length_int; i++)
   {
-    stringToDisplay[i] = uartPacket.getPayload()[i];
+    stringToDisplay[i] = uartPacket.GetPayload()[i];
   }
   
 #ifndef SIMULATOR
-  if (uartPacket.getModule() == ModuleID::MODULE2)
+  if (uartPacket.GetModule() == ModuleID::MODULE2)
   {
-    switch(uartPacket.getParameter())
+    switch(uartPacket.GetParameter())
     {
     case Parameter::PARAMETER1:
       Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", stringToDisplay);
@@ -126,7 +126,7 @@ void Screen_Module2_DataView::updateGuiPacketData(UartPacket& uartPacket)
 #endif
 }
 
-void Screen_Module2_DataView::showAll()
+void Screen_Module2_DataView::ShowAll()
 {
   textArea_Parameter1Name.setVisible(true);
   textArea_Parameter1Value.setVisible(true);
@@ -147,7 +147,7 @@ void Screen_Module2_DataView::showAll()
   textArea_Parameter4Value.invalidate();
 }
 
-void Screen_Module2_DataView::updateCpuUsage(uint8_t value)
+void Screen_Module2_DataView::UpdateCpuUsage(uint8_t value)
 {  
   Unicode::snprintf(textArea_CPU_UsageBuffer,4,"%d",value);
   textArea_CPU_Usage.invalidate();

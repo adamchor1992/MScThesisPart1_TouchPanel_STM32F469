@@ -127,37 +127,37 @@ public:
     /*
      * Virtual Action Handlers
      */
-    virtual void setParameter1GraphVisible()
+    virtual void SetParameter1GraphVisible()
     {
         // Override and implement this function in Screen_Module1_Signals
     }
 
-    virtual void setParameter2GraphVisible()
+    virtual void SetParameter2GraphVisible()
     {
         // Override and implement this function in Screen_Module1_Signals
     }
 
-    virtual void setParameter3GraphVisible()
+    virtual void SetParameter3GraphVisible()
     {
         // Override and implement this function in Screen_Module1_Signals
     }
 
-    virtual void setParameter4GraphVisible()
+    virtual void SetParameter4GraphVisible()
     {
         // Override and implement this function in Screen_Module1_Signals
     }
 
-    virtual void updateTimeRange(int value)
+    virtual void UpdateTimeRange(int value)
     {
         // Override and implement this function in Screen_Module1_Signals
     }
 
-    virtual void pressedAutoRangeToggleButton()
+    virtual void PressedAutoRangeToggleButton()
     {
         // Override and implement this function in Screen_Module1_Signals
     }
 
-    virtual void setRanges()
+    virtual void SetRanges()
     {
         // Override and implement this function in Screen_Module1_Signals
     }

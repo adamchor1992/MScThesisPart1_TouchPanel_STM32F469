@@ -516,29 +516,29 @@ void Screen_Module3_SignalsViewBase::buttonCallbackHandler(const touchgfx::Abstr
     {
         //Interaction_SetParameter4Graph
         //When toggleButton_Parameter4 clicked call virtual function
-        //Call setParameter4GraphVisible
-        setParameter4GraphVisible();
+        //Call SetParameter4GraphVisible
+        SetParameter4GraphVisible();
     }
     else if (&src == &toggleButton_Parameter3)
     {
         //Interaction_SetParameter3Graph
         //When toggleButton_Parameter3 clicked call virtual function
-        //Call setParameter3GraphVisible
-        setParameter3GraphVisible();
+        //Call SetParameter3GraphVisible
+        SetParameter3GraphVisible();
     }
     else if (&src == &toggleButton_Parameter2)
     {
         //Interaction_SetParameter2Graph
         //When toggleButton_Parameter2 clicked call virtual function
-        //Call setParameter2GraphVisible
-        setParameter2GraphVisible();
+        //Call SetParameter2GraphVisible
+        SetParameter2GraphVisible();
     }
     else if (&src == &toggleButton_Parameter1)
     {
         //Interaction_SetParameter1Graph
         //When toggleButton_Parameter1 clicked call virtual function
-        //Call setParameter1GraphVisible
-        setParameter1GraphVisible();
+        //Call SetParameter1GraphVisible
+        SetParameter1GraphVisible();
     }
     else if (&src == &buttonWithLabel_Back)
     {
@@ -551,15 +551,15 @@ void Screen_Module3_SignalsViewBase::buttonCallbackHandler(const touchgfx::Abstr
     {
         //Interaction_PressedAutoRangeToggleButton
         //When toggleButton_Auto_Y_Range clicked call virtual function
-        //Call pressedAutoRangeToggleButton
-        pressedAutoRangeToggleButton();
+        //Call PressedAutoRangeToggleButton
+        PressedAutoRangeToggleButton();
     }
     else if (&src == &buttonWithLabel_SetRanges)
     {
         //Interaction_PressedSetRanges
         //When buttonWithLabel_SetRanges clicked call virtual function
-        //Call setRanges
-        setRanges();
+        //Call SetRanges
+        SetRanges();
     }
 }
 
@@ -569,8 +569,8 @@ void Screen_Module3_SignalsViewBase::sliderValueChangedCallbackHandler(const tou
     {
         //Interaction_UpdateTimeRange
         //When slider_TimeRange value changed call virtual function
-        //Call updateTimeRange
-        updateTimeRange(value);
+        //Call UpdateTimeRange
+        UpdateTimeRange(value);
     }
 }
 

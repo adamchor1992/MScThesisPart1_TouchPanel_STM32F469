@@ -6,12 +6,12 @@ Screen_Module1_SettingsPresenter::Screen_Module1_SettingsPresenter(Screen_Module
 {
 }
 
-void Screen_Module1_SettingsPresenter::notifyNewValueToSet(UartPacket& uartPacket)
+void Screen_Module1_SettingsPresenter::NotifyNewValueToSet(UartPacket& uartPacket)
 {
-	model->setNewValueToSet(uartPacket);
+	model->SetNewValueToSet(uartPacket);
 }
 
-void Screen_Module1_SettingsPresenter::notifyNewCpuUsageValue(uint8_t value)
+void Screen_Module1_SettingsPresenter::NotifyNewCpuUsageValue(uint8_t value)
 {
-	view.updateCpuUsage(value);
+	view.UpdateCpuUsage(value);
 }

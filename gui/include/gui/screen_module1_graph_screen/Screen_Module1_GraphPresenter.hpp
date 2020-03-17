@@ -1,5 +1,4 @@
-#ifndef SCREEN_MODULE1_GRAPH_PRESENTER_HPP
-#define SCREEN_MODULE1_GRAPH_PRESENTER_HPP
+#pragma once
 
 #include <gui/model/ModelListener.hpp>
 #include <mvp/Presenter.hpp>
@@ -13,17 +12,15 @@ class Screen_Module1_GraphPresenter : public Presenter, public ModelListener
 public:
     Screen_Module1_GraphPresenter(Screen_Module1_GraphView& v);
 
-    virtual void notifyNewUartRxParsedPacket(UartPacket& uartPacket);
-    virtual void notifyNewGraphRange(UartPacket& uartPacket);
+    virtual void NotifyNewUartRxParsedPacket(UartPacket& uartPacket);
+    virtual void NotifyNewGraphRange(UartPacket& uartPacket);
       
-    void notifyNewCpuUsageValue(uint8_t value);
+    void NotifyNewCpuUsageValue(uint8_t value);
 
-    virtual ~Screen_Module1_GraphPresenter() {};
+    virtual ~Screen_Module1_GraphPresenter() override {};
 
 private:
     Screen_Module1_GraphPresenter();
 
     Screen_Module1_GraphView& view;
 };
-
-#endif

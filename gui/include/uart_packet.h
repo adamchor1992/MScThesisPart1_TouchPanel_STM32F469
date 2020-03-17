@@ -1,10 +1,9 @@
-#ifndef UART_PACKET_H
-#define UART_PACKET_H
+#pragma once
 
 #include "packet_field_definitions.h"
 #include <cstdint>
 #include "utilities.h"
-#include <stdio.h>
+#include <cstdio>
 
 class UartPacket
 {
@@ -16,49 +15,48 @@ public:
   
   explicit operator uint8_t*();
   
-  void setSource(Source source);
-  void setModule(ModuleID module);
-  void setModule(uint8_t module);
-  void setFunction(Function function);
-  void setParameter(Parameter parameter);
-  void setParameter(uint8_t parameter);
-  void setSign(Sign sign);
-  void setSign(uint8_t sign);
-  void setLength(Length length);
-  void setLengthAscii(int length);
-  uint8_t* setPayload();
+  void SetSource(Source source);
+  void SetModule(ModuleID module);
+  void SetModule(uint8_t module);
+  void SetFunction(Function function);
+  void SetParameter(Parameter parameter);
+  void SetParameter(uint8_t parameter);
+  void SetSign(Sign sign);
+  void SetSign(uint8_t sign);
+  void SetLength(Length length);
+  void SetLengthAscii(int length);
+  uint8_t* SetPayload();
   
-  Source getSource() const;
-  ModuleID getModule() const;
-  Function getFunction() const;
-  Parameter getParameter() const;
-  Sign getSign() const;
-  uint8_t getLengthInt() const;
-  const uint8_t* getPayload() const;
-  uint8_t* getPacketTable() {return m_PacketTable;}
+  Source GetSource() const;
+  ModuleID GetModule() const;
+  Function GetFunction() const;
+  Parameter GetParameter() const;
+  Sign GetSign() const;
+  uint8_t GetLengthInt() const;
+  const uint8_t* GetPayload() const;
+  uint8_t* GetPacketTable() {return m_PacketTable;}
   
-  void appendCrcToPacket();
+  void AppendCrcToPacket();
   
-  bool checkCrc32() const;
+  bool CheckCrc32() const;
   
-  void clearPacket();
+  void ClearPacket();
   
-  void printCrc();
-  void printPacket(bool withCrc = false);
+  void PrintCrc();
+  void PrintPacket(bool withCrc = false);
   
-  void updateFields();
-  void updatePacketTable();
+  void UpdateFields();
+  void UpdatePacketTable();
   
 private:
-  uint8_t m_Source;           //source/target ID
-  uint8_t m_Module;           //module ID
-  uint8_t m_Function;         //packet type
-  uint8_t m_Parameter;        //parameter ID
-  uint8_t m_Sign;             //sign of payload value, '1' - positive, '2' - negative
-  uint8_t m_Length;           //length of payload
-  uint8_t m_Payload[10];      //payload
-  uint8_t m_Crc[4];           //32 bit CRC
+  uint8_t m_Source;
+  uint8_t m_Module;
+  uint8_t m_Function;
+  uint8_t m_Parameter;
+  uint8_t m_Sign;
+  uint8_t m_Length;
+  uint8_t m_Payload[PAYLOAD_SIZE];
+  uint8_t m_Crc[CRC_SIZE];
   
-  uint8_t m_PacketTable[PACKET_SIZE]; //table containing all fields data
+  uint8_t m_PacketTable[PACKET_SIZE];
 };
-#endif

@@ -1,5 +1,4 @@
-#ifndef SCREEN_MODULE2_GRAPH_VIEW_HPP
-#define SCREEN_MODULE2_GRAPH_VIEW_HPP
+#pragma once
 
 #include <mvp/View.hpp>
 #include <gui_generated/screen_module2_graph_screen/Screen_Module2_GraphViewBase.hpp>
@@ -18,23 +17,23 @@ class Screen_Module2_GraphView : public Screen_Module2_GraphViewBase
 
 public:
   Screen_Module2_GraphView();
-  virtual ~Screen_Module2_GraphView() {}
-  virtual void setupScreen();
+  virtual ~Screen_Module2_GraphView() override {}
+  virtual void setupScreen() override;
+  virtual void handleTickEvent() override;
   
-  virtual void handleTickEvent();
-  virtual void addNewValueToGraphFromUart(UartPacket& uartPacket);
-  void setNewGraphRange(UartPacket& uartPacket);
+  virtual void AddNewValueToGraphFromUart(UartPacket& uartPacket);
+  void SetNewGraphRange(UartPacket& uartPacket);
   
-  uint8_t activeSignalsCount();
-  void updateCpuUsage(uint8_t value);
+  uint8_t ActiveSignalsCount();
+  void UpdateCpuUsage(uint8_t value);
   
-  void setGraphRangeTextAreas(long long int bottom, long long int top, int right);
-  static void setGraphRanges(long long int bottom, long long int top, int right);
+  void SetGraphRangeTextAreas(long long int bottom, long long int top, int right);
+  static void SetGraphRanges(long long int bottom, long long int top, int right);
 
-  void resetGraph();
+  void ResetGraph();
   
-  static long long int getGraphRangeBottom() { return m_GraphRangeBottom; }
-  static long long int getGraphRangeTop() { return m_GraphRangeTop; }
+  static long long int GetGraphRangeBottom() { return m_GraphRangeBottom; }
+  static long long int GetGraphRangeTop() { return m_GraphRangeTop; }
   
 private:
   int m_TimeBase;
@@ -62,5 +61,3 @@ private:
   static long long int m_GraphRangeTop;
   static int m_GraphRangeRight;
 };
-
-#endif

@@ -22,7 +22,7 @@ public:
     /*
      * Virtual Action Handlers
      */
-    virtual void clearLeds()
+    virtual void ClearLeds()
     {
         // Override and implement this function in Screen_Main
     }

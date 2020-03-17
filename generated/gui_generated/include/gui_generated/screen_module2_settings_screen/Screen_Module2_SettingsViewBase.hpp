@@ -78,17 +78,17 @@ public:
     /*
      * Virtual Action Handlers
      */
-    virtual void setNewValue()
+    virtual void SetNewValue()
     {
         // Override and implement this function in Screen_Module2_Settings
     }
 
-    virtual void enableParameterButtonPushed()
+    virtual void EnableParameterButtonPushed()
     {
         // Override and implement this function in Screen_Module2_Settings
     }
 
-    virtual void disableParameterButtonPushed()
+    virtual void DisableParameterButtonPushed()
     {
         // Override and implement this function in Screen_Module2_Settings
     }

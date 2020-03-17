@@ -101,7 +101,7 @@ void Screen_MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& 
     {
         //Interaction_ClearLeds
         //When buttonWithLabel_ClearLeds clicked call virtual function
-        //Call clearLeds
-        clearLeds();
+        //Call ClearLeds
+        ClearLeds();
     }
 }

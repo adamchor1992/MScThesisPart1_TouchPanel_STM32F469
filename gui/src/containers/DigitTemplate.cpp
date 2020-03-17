@@ -10,7 +10,7 @@ void DigitTemplate::initialize()
   DigitTemplateBase::initialize();
 }
 
-void DigitTemplate::setDigitWithComma(int no)
+void DigitTemplate::SetDigitWithComma(int no)
 {
   /*Position 0 is reserved for comma '.'*/
   if ( no == 0)
@@ -23,7 +23,7 @@ void DigitTemplate::setDigitWithComma(int no)
   Unicode::itoa(no - 1, textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, 10);
 }
 
-void DigitTemplate::setDigitWithoutComma(int no)
+void DigitTemplate::SetDigitWithoutComma(int no)
 {
   Unicode::itoa(no, textArea_DigitBuffer, TEXTAREA_DIGIT_SIZE, 10);
 }
