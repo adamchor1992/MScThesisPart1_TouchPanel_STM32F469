@@ -373,7 +373,7 @@ const uint8_t* UartPacket::GetPayload() const
 
 void UartPacket::AppendCrcToPacket()
 {
-  uint32_t crcValueCalculated = calculateCrc32((char*)m_PacketTable, 16);
+  uint32_t crcValueCalculated = CalculateCrc32((char*)m_PacketTable, 16);
   uint32_t* crcAddress = &crcValueCalculated;
   uint8_t *p1, *p2, *p3, *p4;
   
@@ -431,7 +431,7 @@ bool UartPacket::CheckCrc32() const
   uint32_t crcValueCalculated;
   uint32_t crcValueReceived;
   
-  crcValueCalculated = calculateCrc32((char*)m_PacketTable, 16);
+  crcValueCalculated = CalculateCrc32((char*)m_PacketTable, 16);
   
   crcValueReceivedRaw8Bit[0] = m_PacketTable[16];
   crcValueReceivedRaw8Bit[1] = m_PacketTable[17];

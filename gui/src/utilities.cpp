@@ -1,6 +1,6 @@
 #include "utilities.h"
 
-uint32_t calculateCrc32 (char* data, int len)
+uint32_t CalculateCrc32 (char* data, int len)
 {
   uint32_t crc = 0xffffffff;
   
@@ -12,13 +12,13 @@ uint32_t calculateCrc32 (char* data, int len)
   return crc;
 }
 
-bool checkCrc32(const uint8_t uartPacketTable[])
+bool CheckCrc32(const uint8_t uartPacketTable[])
 {
   uint8_t crcValueReceivedRaw8Bit[4];
   uint32_t crcValueCalculated;
   uint32_t crcValueReceived;
 
-  crcValueCalculated = calculateCrc32((char*)uartPacketTable, 16);
+  crcValueCalculated = CalculateCrc32((char*)uartPacketTable, 16);
 
   crcValueReceivedRaw8Bit[0] = uartPacketTable[16];
   crcValueReceivedRaw8Bit[1] = uartPacketTable[17];
@@ -33,9 +33,9 @@ bool checkCrc32(const uint8_t uartPacketTable[])
     return false;
 }
 
-void appendCrcToPacketTable(uint8_t uartPacketTable[])
+void AppendCrcToPacketTable(uint8_t uartPacketTable[])
 {
-    uint32_t crcValueCalculated = calculateCrc32((char*)uartPacketTable, 16);
+    uint32_t crcValueCalculated = CalculateCrc32((char*)uartPacketTable, 16);
     uint32_t* crcAddress = &crcValueCalculated;
     uint8_t *p1, *p2, *p3, *p4;
 
@@ -50,7 +50,7 @@ void appendCrcToPacketTable(uint8_t uartPacketTable[])
     uartPacketTable[16] = *p4;
 }
 
-void clearPacketTable(uint8_t uartPacketTable[])
+void ClearPacketTable(uint8_t uartPacketTable[])
 {
   for(uint8_t i=0; i < PACKET_SIZE; i++)
   {

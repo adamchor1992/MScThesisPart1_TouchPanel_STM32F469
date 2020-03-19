@@ -13,8 +13,6 @@
 #include "uart_packet.h"
 #include "utilities.h"
 
-#define NO_WAITING 0
-
 extern xQueueHandle msgQueueUartRx;
 extern xQueueHandle msgQueueUartTx;
 extern xSemaphoreHandle uartTxSemaphore;
@@ -23,9 +21,9 @@ extern UART_HandleTypeDef huart6;
 UART_HandleTypeDef* Model::m_pHuart6 = &huart6;
 #endif
 
-uint8_t Model::m_InitParametersModule1[INIT_PACKET_COUNT][PAYLOAD_SIZE] = {{0}};
-uint8_t Model::m_InitParametersModule2[INIT_PACKET_COUNT][PAYLOAD_SIZE] = {{0}};
-uint8_t Model::m_InitParametersModule3[INIT_PACKET_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule1[INIT_PACKETS_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule2[INIT_PACKETS_COUNT][PAYLOAD_SIZE] = {{0}};
+uint8_t Model::m_InitParametersModule3[INIT_PACKETS_COUNT][PAYLOAD_SIZE] = {{0}};
 
 bool Model::module1Connected = false;
 bool Model::module2Connected = false;
@@ -116,7 +114,7 @@ void Model::ProcessPacket(UartPacket& uartPacket, ModuleID module)
   {
     if(function == Function::INIT_PACKET)
     {
-      if(m_ReceivedInitPacketCount < INIT_PACKET_COUNT)
+      if(m_ReceivedInitPacketCount < INIT_PACKETS_COUNT)
       {
         uint8_t lengthInt = uartPacket.GetLengthInt();
         
@@ -149,11 +147,11 @@ void Model::ProcessPacket(UartPacket& uartPacket, ModuleID module)
         printf("Wrong module\n");
       }
       
-      printf("Received %d out of %d required init packets\n", m_ReceivedInitPacketCount, INIT_PACKET_COUNT);
+      printf("Received %d out of %d required init packets\n", m_ReceivedInitPacketCount, INIT_PACKETS_COUNT);
       
-      if(m_ReceivedInitPacketCount == INIT_PACKET_COUNT)
+      if(m_ReceivedInitPacketCount == INIT_PACKETS_COUNT)
       {
-        printf("Received all of %d init packets\n", INIT_PACKET_COUNT);
+        printf("Received all of %d init packets\n", INIT_PACKETS_COUNT);
         m_ModelListener->NotifyAllInitPacketsReceived(uartPacket); 
         
         /*Set m_ReceivedInitPacketCount back to 0 to make another connection initialization possible after connection deinitialization*/

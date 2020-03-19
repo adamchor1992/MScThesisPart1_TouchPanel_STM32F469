@@ -1,4 +1,3 @@
-/* General Includes. */
 #include "init.h"
 #include <touchgfx/hal/HAL.hpp>
 #include <touchgfx/hal/GPIO.hpp>
@@ -16,22 +15,6 @@
 #include "portmacro.h"
 #include "semphr.h"
 
-/* Defines */
-#define QUEUES_SIZE 1
-#define DEBUG_UART_WAITING 50
-#define UART_TX_WAITING 50
-#define NO_WAITING 0
-#define LOW_PRIORITY 1
-#define MEDIUM_PRIORITY 2
-#define HIGH_PRIORITY 3
-#define DEBUG 1
-
-/* FreeRTOS stuff begin*/
-#define GUI_TASK_STACK_SIZE 1700
-#define UART_TASK_STACK_SIZE 200
-
-#define CANVAS_BUFFER_SIZE 10000
-
 xQueueHandle msgQueueUartRx;
 xQueueHandle msgQueueUartTx;
 
@@ -42,9 +25,7 @@ xSemaphoreHandle uartMutex;
 static void guiTask(void* params);
 static void uartRxTask(void* params);
 static void uartTxTask(void* params);
-/* FreeRTOS stuff end*/
 
-/* General stuff begin*/
 UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart6;
 
@@ -55,7 +36,6 @@ void Error_Handler(void);
 
 /*Object to which UART interrupt writes*/
 UartPacket uartPacket;
-/* General stuff end*/
 
 /*UART receive interrupt callback function*/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) 
@@ -70,20 +50,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
 }
-
-#if DEBUG == 1
-int fputc(int ch, FILE *f)
-{
-  HAL_UART_Transmit(&huart3, (uint8_t*)&ch, 1, DEBUG_UART_WAITING);
-  
-  return ch;
-}
-#else
-int fputc(int ch, FILE *f)
-{
-  return 0;
-}
-#endif
 
 using namespace touchgfx;
 
@@ -162,12 +128,12 @@ static void uartRxTask(void* params)
     /*Check if interrupt occured so there is new data in uartPacket table*/
     if(xSemaphoreTake(uartRxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Check if UART mutex is available to take. Wait 10 ticks*/
+      /*Check if UART mutex is available to take*/
       if( xSemaphoreTake( uartMutex, NO_WAITING) == pdTRUE )
       {
         /*Ensure that there is no context switch during packet processing*/
         taskENTER_CRITICAL();
-       
+        
         //CRC check
         if(uartPacket.CheckCrc32() == true)
         {
@@ -220,7 +186,7 @@ static void uartTxTask(void* params)
     /*Take TxSemaphore*/
     if(xSemaphoreTake(uartTxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Check if UART mutex is available to take. Wait 10 ticks*/
+      /*Check if UART mutex is available to take*/
       if( xSemaphoreTake( uartMutex, NO_WAITING) == pdTRUE )
       {
         taskENTER_CRITICAL();

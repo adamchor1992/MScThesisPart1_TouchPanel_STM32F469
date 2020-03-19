@@ -7,19 +7,6 @@
 #include <stm32f4xx_hal_uart.h>
 #endif
 
-#define PAYLOAD_SIZE 10
-#define INIT_PACKET_COUNT 28
-#define INIT_PARAMETER_NAME_COUNT 5
-#define INIT_PARAMETER_NAME_OFFSET 0
-#define INIT_PARAMETER_VALUE_COUNT 5
-#define INIT_PARAMETER_VALUE_OFFSET 5
-#define CUSTOM_PARAMETER_NAME_COUNT 4
-#define CUSTOM_PARAMETER_NAME_OFFSET 10
-#define CUSTOM_PARAMETER_VALUE_COUNT 4
-#define CUSTOM_PARAMETER_VALUE_OFFSET 14
-#define SETTABLE_PARAMETER_NAME_COUNT 10
-#define SETTABLE_PARAMETER_NAME_OFFSET 18
-
 class ModelListener;
 
 class Model
@@ -37,13 +24,13 @@ public:
   void SetNewValueToSet(UartPacket const& uartPacket);
   
   /*Module 1 initialization parameters*/  
-  static uint8_t m_InitParametersModule1[INIT_PACKET_COUNT][PAYLOAD_SIZE];
+  static uint8_t m_InitParametersModule1[INIT_PACKETS_COUNT][PAYLOAD_SIZE];
   
   /*Module 2 initialization parameters*/
-  static uint8_t m_InitParametersModule2[INIT_PACKET_COUNT][PAYLOAD_SIZE];
+  static uint8_t m_InitParametersModule2[INIT_PACKETS_COUNT][PAYLOAD_SIZE];
   
   /*Module 3 initialization parameters*/
-  static uint8_t m_InitParametersModule3[INIT_PACKET_COUNT][PAYLOAD_SIZE];
+  static uint8_t m_InitParametersModule3[INIT_PACKETS_COUNT][PAYLOAD_SIZE];
   
   static void ActivateModule(ModuleID module);
   static void DeactivateModule(ModuleID module);

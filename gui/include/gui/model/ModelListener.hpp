@@ -1,5 +1,4 @@
-#ifndef MODELLISTENER_HPP
-#define MODELLISTENER_HPP
+#pragma once
 
 #include <gui/model/Model.hpp>
 #include "uart_packet.h"
@@ -25,5 +24,3 @@ public:
 protected:
   Model* model;
 };
-
-#endif

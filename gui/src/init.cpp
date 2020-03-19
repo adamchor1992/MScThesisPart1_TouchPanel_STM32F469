@@ -3,6 +3,22 @@
 #include "init.h"
 #include "stm32f4xx_hal_uart.h"
 
+extern UART_HandleTypeDef huart3;
+
+#if DEBUG == 1
+int fputc(int ch, FILE *f)
+{
+  HAL_UART_Transmit(&huart3, (uint8_t*)&ch, 1, DEBUG_UART_WAITING);
+  
+  return ch;
+}
+#else
+int fputc(int ch, FILE *f)
+{
+  return 0;
+}
+#endif
+
 /**
   * @brief USART3 Initialization Function
   * @param None

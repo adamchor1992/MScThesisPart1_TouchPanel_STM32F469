@@ -1,28 +1,29 @@
 #pragma once
 
-const int PACKET_SIZE = 20;
-const int PAYLOAD_SIZE = 10;
-const int CRC_SIZE = 4;
-const int INIT_PACKETS_COUNT = 24;
+int const PACKET_SIZE = 20;
+int const PAYLOAD_SIZE = 10;
+int const CRC_SIZE = 4;
+int const INIT_PACKETS_COUNT = 28;
+int const PARAMETERS_COUNT = 10;
 
 /*Source/target field*/
-enum class Source 
+enum class Source
 {
   SOURCE_TARGET1 = '1',
   SOURCE_ERROR = 0
 };
 
 /*Module field*/
-enum class ModuleID 
+enum class ModuleID
 {
-  MODULE1 = '1', 
-  MODULE2 = '2', 
-  MODULE3 = '3', 
+  MODULE1 = '1',
+  MODULE2 = '2',
+  MODULE3 = '3',
   MODULEID_ERROR = 0
 };
 
 /*Function field*/
-enum class Function 
+enum class Function
 {
   DATA_PACKET = '1',
   INIT_PACKET = '2',
@@ -37,28 +38,28 @@ enum class Function
 };
 
 /*Parameter field*/
-enum class Parameter 
-{ 
-  NULL_PARAMETER = '0',
-  GRAPH_PARAMETER1 = 'b',
-  GRAPH_PARAMETER2 = 'c',
-  GRAPH_PARAMETER3 = 'd',
-  GRAPH_PARAMETER4 = 'e',
-  PARAMETER1 = '1',
-  PARAMETER2 = '2',
-  PARAMETER3 = '3',
-  PARAMETER4 = '4',
-  PARAMETER5 = '5',
-  PARAMETER6 = '6',
-  PARAMETER7 = '7',
-  PARAMETER8 = '8',
-  PARAMETER9 = '9',
-  PARAMETER10 = 'a',
-  PARAMETER_ERROR = 0
+enum class Parameter
+{
+    NULL_PARAMETER = '0',
+    PARAMETER1 = '1',
+    PARAMETER2 = '2',
+    PARAMETER3 = '3',
+    PARAMETER4 = '4',
+    PARAMETER5 = '5',
+    PARAMETER6 = '6',
+    PARAMETER7 = '7',
+    PARAMETER8 = '8',
+    PARAMETER9 = '9',
+    PARAMETER10 = 'a',
+    GRAPH_PARAMETER1 = 'b',
+    GRAPH_PARAMETER2 = 'c',
+    GRAPH_PARAMETER3 = 'd',
+    GRAPH_PARAMETER4 = 'e',
+    PARAMETER_ERROR = 0
 };
 
 /*Sign field*/
-enum class Sign 
+enum class Sign
 {
   POSITIVE_SIGN = '1',
   NEGATIVE_SIGN = '2',
@@ -66,7 +67,7 @@ enum class Sign
 };
 
 /*Length field*/
-enum class Length 
+enum class Length
 {
   NO_PAYLOAD = '0',
   LENGTH_ERROR = 0
