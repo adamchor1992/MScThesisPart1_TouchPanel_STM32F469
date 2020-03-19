@@ -144,7 +144,7 @@ void Screen_Module3_SettingsView::SetNewValue()
   TranslateScrollWheelPositionsToAsciiValues(scrollWheelPositions, scrollWheelsAsciiValues);
   
   /*Send all 10 bytes*/;
-  uartPacket.SetLengthAscii(PAYLOAD_SIZE);
+  uartPacket.SetLength(PAYLOAD_SIZE);
   
   for (int i = 0; i < PAYLOAD_SIZE; i++)
   {

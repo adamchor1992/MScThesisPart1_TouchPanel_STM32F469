@@ -47,7 +47,9 @@ void Model::tick()
     /*Packet is validated at this point and can be directly recovered from queue and copied to local uartPacket structure*/    
     xQueueReceive(msgQueueUartRx, &uartPacket, 0);
     
-    switch(uartPacket.GetModule())
+    ModuleID module = uartPacket.GetModule();
+    
+    switch(module)
     {
     case ModuleID::MODULE1:
       ProcessPacket(uartPacket, ModuleID::MODULE1);
@@ -62,7 +64,8 @@ void Model::tick()
       break;
       
     default:
-      printf("Unsupported module in Model.cpp\n");
+      printf("Unsupported module %c in Model.cpp\n", module);
+      printf("Unsupported module %d in Model.cpp\n", module);
     }
   }
   m_ModelListener->NotifyNewCpuUsageValue(touchgfx::HAL::getInstance()->getMCULoadPct());
@@ -116,7 +119,7 @@ void Model::ProcessPacket(UartPacket& uartPacket, ModuleID module)
     {
       if(m_ReceivedInitPacketCount < INIT_PACKETS_COUNT)
       {
-        uint8_t lengthInt = uartPacket.GetLengthInt();
+        uint8_t lengthInt = uartPacket.GetLength();
         
         if(module == ModuleID::MODULE1)
         {

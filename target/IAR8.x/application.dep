@@ -913,6 +913,7 @@
             <file>$PROJ_DIR$\Debug\Obj\DigitTemplate.o</file>
             <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
             <file>$PROJ_DIR$\..\..\gui\include\gui\screen_module1_info_screen\Screen_Module1_InfoPresenter.hpp</file>
+            <file>$TOOLKIT_DIR$\src\lib\dlib\edg\main.h</file>
         </outputs>
         <file>
             <name>[ROOT_NODE]</name>
@@ -1905,6 +1906,12 @@
                     <file> 756</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 724 561 149 366 445 353 761 624 599 324 274 656 187 481 886 338 80 384 894 392 88 847 645 207 436 474 789 335 587 400 486 713 496 607 459 501 168 429 227 637 608 212 602 251 336 232 252 557 204 650 489 509 214 134 329 199 906 248 245 385 171 313 663 181 631 284 443 882 141 190 339 186 359 718 888 234 255 857 144 495 373 202 362 462 520 219 749 747 731 316 434 183 545 858 549 257 901 588 283 466 185 632 887 346 498 282 236 230 340 745 566 367 411 342 469 358 472 287 326 331 851 583 415 409 868 382 604 162 449 478 428 484 265 885 147</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp</name>
@@ -2037,6 +2044,12 @@
                     <file> 797</file>
                 </tool>
             </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 724 561 149 366 445 353 761 624 599 324 274 656 187 481 886 338 80 384 894 392 88 847 645 207 436 474 789 335 587 400 486 713 496 607 459 501 168 429 227 637 608 212 602 251 336 232 252 557 204 650 489 509 214 134 329 199 906 248 245 385 171 313 663 181 631 284 443 882 141 190 339 186 359 718 888 234 255 857 144 495 373 202 362 462 520 219 749 747 731 316 434 183 545 858 549 257 901 588 283 466 185 632 887 346 498 282 236 230 340 745 566</file>
+                </tool>
+            </inputs>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\gui\src\screen_module3_data_screen\Screen_Module3_DataPresenter.cpp</name>
@@ -2225,10 +2238,6 @@
         <file>
             <name>$PROJ_DIR$\..\..\gui\src\uart_packet.cpp</name>
             <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 580</file>
-                </tool>
                 <tool>
                     <name>BICOMP</name>
                     <file> 403</file>

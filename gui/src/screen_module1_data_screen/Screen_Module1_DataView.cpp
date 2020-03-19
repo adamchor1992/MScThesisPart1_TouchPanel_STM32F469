@@ -93,7 +93,7 @@ void Screen_Module1_DataView::UpdateGuiPacketData(UartPacket& uartPacket)
 {
   uint16_t stringToDisplay[PAYLOAD_SIZE] = { 0 };
   
-  uint8_t length_int = uartPacket.GetLengthInt();
+  uint8_t length_int = uartPacket.GetLength();
   
   for (int i = 0; i < length_int; i++)
   {

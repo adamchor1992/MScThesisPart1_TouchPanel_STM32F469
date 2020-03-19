@@ -45,7 +45,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   signed long xHigherPriorityTaskWoken;
   
   /*Enable interrupt listening again*/
-  HAL_UART_Receive_IT(&huart6, uartPacket.GetPacketTable(), PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, static_cast<uint8_t*>(uartPacket), PACKET_SIZE); //uartPacket.GetPacketTable()
   
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
@@ -119,7 +119,7 @@ static void guiTask(void* params)
 static void uartRxTask(void* params)
 {  
   /*Start receiving*/
-  HAL_UART_Receive_IT(&huart6, uartPacket.GetPacketTable(), PACKET_SIZE);
+  HAL_UART_Receive_IT(&huart6, static_cast<uint8_t*>(uartPacket) , PACKET_SIZE); //uartPacket.GetPacketTable()
   
   printf("RX task initialized\n");
   
@@ -138,9 +138,7 @@ static void uartRxTask(void* params)
         if(uartPacket.CheckCrc32() == true)
         {
           /*Packet is correct and can be further processed*/
-          
-          uartPacket.UpdateFields();
-          
+                    
 #ifdef DEBUG
           printf("Rx packet:\n");
           uartPacket.PrintPacket();
@@ -149,7 +147,7 @@ static void uartRxTask(void* params)
           xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
           
           /*Reset packet to all zeroes*/
-          uartPacket.ClearPacket();
+          //uartPacket.ClearPacket();
         }
         else
         {
@@ -161,7 +159,7 @@ static void uartRxTask(void* params)
           BSP_LED_On(LED3);
           
           /*Reset packet to all zeroes*/
-          uartPacket.ClearPacket();
+          //uartPacket.ClearPacket();
         }
         
         /*Give back mutex*/
@@ -200,7 +198,6 @@ static void uartTxTask(void* params)
         uartTxPacket.PrintPacket();
 #endif
         
-        uartTxPacket.UpdatePacketTable();
         uartTxPacket.AppendCrcToPacket();
         
         /*Toggle blue LED*/

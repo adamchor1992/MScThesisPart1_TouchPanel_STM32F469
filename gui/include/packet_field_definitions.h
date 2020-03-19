@@ -3,6 +3,7 @@
 int const PACKET_SIZE = 20;
 int const PAYLOAD_SIZE = 10;
 int const CRC_SIZE = 4;
+int const PACKET_SIZE_WITHOUT_CRC = PACKET_SIZE - CRC_SIZE;
 int const INIT_PACKETS_COUNT = 28;
 int const PARAMETERS_COUNT = 10;
 

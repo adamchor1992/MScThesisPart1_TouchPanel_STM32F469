@@ -337,7 +337,7 @@ void Screen_Module1_GraphView::SetNewGraphRange(UartPacket& uartPacket)
     return;
   }
   
-  printf("Packet length: %d\n", uartPacket.GetLengthInt());
+  printf("Packet length: %d\n", uartPacket.GetLength());
   printf("Packet payload: %.10s\n", uartPacket.GetPayload());
   
   switch(uartPacket.GetFunction())
