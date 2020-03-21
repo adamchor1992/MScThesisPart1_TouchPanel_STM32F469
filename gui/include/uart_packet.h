@@ -4,6 +4,7 @@
 #include <cstdint>
 #include "utilities.h"
 #include <cstdio>
+#include <array>
 
 class UartPacket
 {
@@ -14,9 +15,7 @@ public:
   explicit UartPacket(const uint8_t uartPacketTable[]);
   
   explicit operator uint8_t*();
-  
-  void AddressAssignment();
-  
+    
   void SetSource(Source source);
   void SetModule(ModuleID module);
   void SetFunction(Function function);
@@ -24,7 +23,7 @@ public:
   void SetSign(Sign sign);
   void SetLength(Length length);
   void SetLength(int length);
-  uint8_t* SetPayload();
+  void SetPayload(uint8_t* payload);
   
   Source GetSource() const;
   ModuleID GetModule() const;
@@ -32,24 +31,21 @@ public:
   Parameter GetParameter() const;
   Sign GetSign() const;
   uint8_t GetLength() const;
-  const uint8_t* GetPayload() const;
-  uint8_t* GetPacketTable() {return m_PacketTable;}
+  uint8_t const* GetPayload() const {return m_Payload;}
   
   void AppendCrcToPacket();
   bool CheckCrc32() const;
-    
-  void PrintCrc();
-  void PrintPacket(bool withCrc = false);
+  void PrintPacket(bool withCrc = false) const;
   
 private:
-  uint8_t m_PacketTable[PACKET_SIZE] = {0};
   
-  uint8_t* m_pSource = nullptr;
-  uint8_t* m_pModule = nullptr;
-  uint8_t* m_pFunction = nullptr;
-  uint8_t* m_pParameter = nullptr;
-  uint8_t* m_pSign = nullptr;
-  uint8_t* m_pLength = nullptr;
-  uint8_t* m_Payload[PAYLOAD_SIZE] = {nullptr};
-  uint8_t* m_Crc[CRC_SIZE] = {nullptr};
+  std::array<uint8_t, PACKET_SIZE> m_PacketTable = {0};
+  
+  uint8_t& m_Source = m_PacketTable[0];
+  uint8_t& m_Module = m_PacketTable[1];
+  uint8_t& m_Function = m_PacketTable[2];
+  uint8_t& m_Parameter = m_PacketTable[3];
+  uint8_t& m_Sign = m_PacketTable[4];
+  uint8_t& m_Length = m_PacketTable[5];
+  uint8_t* m_Payload = &m_PacketTable[6];
 };

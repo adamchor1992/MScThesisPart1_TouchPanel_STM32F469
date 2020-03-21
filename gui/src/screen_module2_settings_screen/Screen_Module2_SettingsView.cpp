@@ -69,7 +69,7 @@ void Screen_Module2_SettingsView::tearDownScreen()
   
   NVIC_EnableIRQ(USART6_IRQn);
   
-  HAL_UART_Receive_IT(Model::m_pHuart6, uartPacket.GetPacketTable(), PACKET_SIZE);
+  HAL_UART_Receive_IT(Model::m_pHuart6, static_cast<uint8_t*>(uartPacket), PACKET_SIZE);
 #endif
 }
 
@@ -146,10 +146,7 @@ void Screen_Module2_SettingsView::SetNewValue()
   /*Send all 10 bytes*/;
   uartPacket.SetLength(PAYLOAD_SIZE);
   
-  for (int i = 0; i < PAYLOAD_SIZE; i++)
-  {
-    uartPacket.SetPayload()[i] = scrollWheelsAsciiValues[i];
-  }
+  uartPacket.SetPayload(reinterpret_cast<uint8_t*>(scrollWheelsAsciiValues));
   
   this->presenter->NotifyNewValueToSet(uartPacket);
 #endif

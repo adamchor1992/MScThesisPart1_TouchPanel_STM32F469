@@ -138,28 +138,19 @@ static void uartRxTask(void* params)
         if(uartPacket.CheckCrc32() == true)
         {
           /*Packet is correct and can be further processed*/
-                    
-#ifdef DEBUG
           printf("Rx packet:\n");
-          uartPacket.PrintPacket();
-#endif
+          uartPacket.PrintPacket(true);
           
           xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
-          
-          /*Reset packet to all zeroes*/
-          //uartPacket.ClearPacket();
         }
         else
         {
-          /*Packet is corrupted and will not be further processed*/
+          /*Packet is invalid and will not be further processed*/
           
           printf("WRONG CRC\n");
           
           /*Turn on red LED*/
           BSP_LED_On(LED3);
-          
-          /*Reset packet to all zeroes*/
-          //uartPacket.ClearPacket();
         }
         
         /*Give back mutex*/
@@ -193,10 +184,8 @@ static void uartTxTask(void* params)
         
         xQueueReceive(msgQueueUartTx, &uartTxPacket, NO_WAITING);
         
-#ifdef DEBUG
         printf("Tx packet:\n");
-        uartTxPacket.PrintPacket();
-#endif
+        uartTxPacket.PrintPacket(true);
         
         uartTxPacket.AppendCrcToPacket();
         
