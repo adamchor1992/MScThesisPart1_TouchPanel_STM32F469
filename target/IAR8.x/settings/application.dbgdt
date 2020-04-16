@@ -1083,7 +1083,7 @@
                     <item>p2</item>
                     <item>p3</item>
                     <item>p4</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>

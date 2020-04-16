@@ -1301,9 +1301,63 @@
                     </file>
                 </group>
                 <group>
-                    <name>screen_uart_rx_debug_screen</name>
+                    <name>screen_module2_data_screen</name>
                     <file>
-                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugViewBase.cpp</name>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module2_graph_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module2_info_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_info_screen\Screen_Module2_InfoViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module2_settings_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module2_signals_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_signals_screen\Screen_Module2_SignalsViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module3_data_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_data_screen\Screen_Module3_DataViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module3_graph_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_graph_screen\Screen_Module3_GraphViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module3_info_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_info_screen\Screen_Module3_InfoViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module3_settings_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_settings_screen\Screen_Module3_SettingsViewBase.cpp</name>
+                    </file>
+                </group>
+                <group>
+                    <name>screen_module3_signals_screen</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_signals_screen\Screen_Module3_SignalsViewBase.cpp</name>
                     </file>
                 </group>
             </group>
@@ -1467,31 +1521,109 @@
                 </file>
             </group>
             <group>
-                <name>screen_uart_rx_debug_screen</name>
+                <name>screen_module2_data_screen</name>
                 <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugPresenter.cpp</name>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\gui\src\screen_uart_rx_debug_screen\Screen_UART_RX_DebugView.cpp</name>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp</name>
                 </file>
             </group>
-            <file>
-                <name>$PROJ_DIR$\..\..\gui\src\init.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\gui\src\uart_packet.cpp</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\gui\src\utilities.cpp</name>
-            </file>
+            <group>
+                <name>screen_module2_graph_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module2_info_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_info_screen\Screen_Module2_InfoPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_info_screen\Screen_Module2_InfoView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module2_settings_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module2_signals_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_signals_screen\Screen_Module2_SignalsPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module2_signals_screen\Screen_Module2_SignalsView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module3_data_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_data_screen\Screen_Module3_DataPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_data_screen\Screen_Module3_DataView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module3_graph_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_graph_screen\Screen_Module3_GraphPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_graph_screen\Screen_Module3_GraphView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module3_info_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_info_screen\Screen_Module3_InfoPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_info_screen\Screen_Module3_InfoView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module3_settings_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_settings_screen\Screen_Module3_SettingsPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_settings_screen\Screen_Module3_SettingsView.cpp</name>
+                </file>
+            </group>
+            <group>
+                <name>screen_module3_signals_screen</name>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsPresenter.cpp</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsView.cpp</name>
+                </file>
+            </group>
         </group>
         <group>
             <name>main</name>
             <file>
-                <name>$PROJ_DIR$\..\main.cpp</name>
-                <configuration>
-                    <name>Debug</name>
-                </configuration>
+                <name>$PROJ_DIR$\..\src\init.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\src\main.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\src\tasks_definitions.cpp</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\src\uart_packet.cpp</name>
             </file>
         </group>
     </group>

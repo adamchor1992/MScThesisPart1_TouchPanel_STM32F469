@@ -1,8 +1,6 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
-#include <touchgfx/hal/HAL.hpp>
 #include <gui/common/FrontendApplication.hpp>
-#include <gui_generated/common/FrontendApplicationBase.hpp>
 
 #ifndef SIMULATOR
 #include "FreeRTOS.h"
@@ -11,7 +9,6 @@
 #include "task.h"
 #include "string.h"
 #include "uart_packet.h"
-#include "utilities.h"
 
 extern xQueueHandle msgQueueUartRx;
 extern xQueueHandle msgQueueUartTx;
@@ -20,6 +17,8 @@ extern xSemaphoreHandle uartTxSemaphore;
 extern UART_HandleTypeDef huart6;
 UART_HandleTypeDef* Model::m_pHuart6 = &huart6;
 #endif
+
+#define NO_WAITING 0
 
 uint8_t Model::m_InitParametersModule1[INIT_PACKETS_COUNT][PAYLOAD_SIZE] = {{0}};
 uint8_t Model::m_InitParametersModule2[INIT_PACKETS_COUNT][PAYLOAD_SIZE] = {{0}};

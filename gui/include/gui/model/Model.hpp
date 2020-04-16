@@ -7,6 +7,17 @@
 #include <stm32f4xx_hal_uart.h>
 #endif
 
+int const INIT_PARAMETER_NAME_COUNT = 5;
+int const INIT_PARAMETER_NAME_OFFSET = 0;
+int const INIT_PARAMETER_VALUE_COUNT = 5;
+int const INIT_PARAMETER_VALUE_OFFSET = 5;
+int const CUSTOM_PARAMETER_NAME_COUNT = 4;
+int const CUSTOM_PARAMETER_NAME_OFFSET = 10;
+int const CUSTOM_PARAMETER_VALUE_COUNT = 4;
+int const CUSTOM_PARAMETER_VALUE_OFFSET = 14;
+int const SETTABLE_PARAMETER_NAME_COUNT = 10;
+int const SETTABLE_PARAMETER_NAME_OFFSET = 18;
+
 class ModelListener;
 
 class Model
