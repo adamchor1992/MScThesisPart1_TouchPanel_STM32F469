@@ -1,5 +1,6 @@
 #include <gui/screen_module3_data_screen/Screen_Module3_DataView.hpp>
 #include <gui/model/Model.hpp>
+#include <string>
 
 Screen_Module3_DataView::Screen_Module3_DataView() : TextAreaClickedCallback(this, &Screen_Module3_DataView::TextAreaClickHandler)
 {
@@ -91,14 +92,23 @@ void Screen_Module3_DataView::setupScreen()
 
 void Screen_Module3_DataView::UpdateGuiPacketData(UartPacket& uartPacket)
 {
-  uint16_t stringToDisplay[PAYLOAD_SIZE] = { 0 };
+  double value = std::stod((char*)(uartPacket.GetPayload()));
   
-  uint8_t length_int = uartPacket.GetLength();
-  
-  for (int i = 0; i < length_int; i++)
+  if (uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
   {
-    stringToDisplay[i] = uartPacket.GetPayload()[i];
+    /*Make value negative*/
+    value = value * (-1);
   }
+  
+  char stringToDisplayChar[PAYLOAD_SIZE + 2];
+  
+  /*Convert long double value to char string*/ 
+  snprintf(stringToDisplayChar, PAYLOAD_SIZE + 2, "%lf", value);
+  
+  Unicode::UnicodeChar stringToDisplayUnicode[PAYLOAD_SIZE + 2];
+  
+  /*Convert char string to unicode string*/
+  Unicode::strncpy(stringToDisplayUnicode, stringToDisplayChar, PAYLOAD_SIZE + 2);
   
 #ifndef SIMULATOR
   if (uartPacket.GetModule() == ModuleID::MODULE3)
@@ -106,19 +116,19 @@ void Screen_Module3_DataView::UpdateGuiPacketData(UartPacket& uartPacket)
     switch(uartPacket.GetParameter())
     {
     case Parameter::PARAMETER1:
-      Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", stringToDisplay);
+      Unicode::snprintf(textArea_Parameter1ValueBuffer, TEXTAREA_PARAMETER1VALUE_SIZE, "%s", stringToDisplayUnicode);
       textArea_Parameter1Value.invalidate();
       break;
     case Parameter::PARAMETER2:
-      Unicode::snprintf(textArea_Parameter2ValueBuffer, TEXTAREA_PARAMETER2VALUE_SIZE, "%s", stringToDisplay);
+      Unicode::snprintf(textArea_Parameter2ValueBuffer, TEXTAREA_PARAMETER2VALUE_SIZE, "%s", stringToDisplayUnicode);
       textArea_Parameter2Value.invalidate();
       break;
     case Parameter::PARAMETER3:
-      Unicode::snprintf(textArea_Parameter3ValueBuffer, TEXTAREA_PARAMETER3VALUE_SIZE, "%s", stringToDisplay);
+      Unicode::snprintf(textArea_Parameter3ValueBuffer, TEXTAREA_PARAMETER3VALUE_SIZE, "%s", stringToDisplayUnicode);
       textArea_Parameter3Value.invalidate();
       break;
     case Parameter::PARAMETER4:
-      Unicode::snprintf(textArea_Parameter4ValueBuffer, TEXTAREA_PARAMETER4VALUE_SIZE, "%s", stringToDisplay);
+      Unicode::snprintf(textArea_Parameter4ValueBuffer, TEXTAREA_PARAMETER4VALUE_SIZE, "%s", stringToDisplayUnicode);
       textArea_Parameter4Value.invalidate();
       break;
     }

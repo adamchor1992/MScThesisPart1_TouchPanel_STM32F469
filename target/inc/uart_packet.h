@@ -2,7 +2,6 @@
 
 #include "packet_field_definitions.h"
 #include <cstdint>
-#include <cstdio>
 #include <array>
 
 class UartPacket

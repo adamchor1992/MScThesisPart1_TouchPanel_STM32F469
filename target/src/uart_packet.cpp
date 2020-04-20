@@ -1,3 +1,4 @@
+#include <cstdio>
 #include "uart_packet.h"
 #include "crc32.h"
 

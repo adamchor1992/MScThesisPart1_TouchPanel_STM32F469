@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+uint32_t CalculateCrc32 (uint8_t const* uartPacketTable, int length);
+
 /* CRC32 lookup table for polynomial 0x04C11DB7 - CRC-32/MPEG-2, no reflections should be applied */
 static uint32_t const crcLookupTable[256] =
 {
@@ -70,22 +72,3 @@ static uint32_t const crcLookupTable[256] =
   0xAFB010B1U,0xAB710D06U,0xA6322BDFU,0xA2F33668U,
   0xBCB4666DU,0xB8757BDAU,0xB5365D03U,0xB1F740B4U
 };
-
-uint32_t CalculateCrc32 (uint8_t const*  uartPacketTable, int length)
-{
-  uint32_t crcValue = 0xFFFFFFFF;
-  
-  uint8_t dataTable[PACKET_SIZE] = {0};
-  
-  memcpy(dataTable, uartPacketTable, PACKET_SIZE);
-  
-  uint8_t* dataTablePointer = dataTable;
-  
-  while (length > 0)
-  {
-    crcValue = (crcValue << 8) ^ crcLookupTable[((crcValue >> 24) ^ *dataTablePointer++) & 0xFF];
-    --length;
-  }
-  
-  return crcValue;
-}

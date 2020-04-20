@@ -1503,6 +1503,9 @@
         <group>
             <name>main</name>
             <file>
+                <name>$PROJ_DIR$\..\src\crc32.cpp</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\src\init.cpp</name>
             </file>
             <file>
