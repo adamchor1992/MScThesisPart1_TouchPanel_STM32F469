@@ -12,21 +12,10 @@
 #include "queue.h"
 #include "semphr.h"
 
+/*User includes*/
+#include "init.h"
 #include "uart_packet.h"
 #include "tasks.h"
-
-#define QUEUES_SIZE 1
-#define LOW_PRIORITY 1
-#define MEDIUM_PRIORITY 2
-#define HIGH_PRIORITY 3
-#define GUI_TASK_STACK_SIZE 1700
-#define UART_TASK_STACK_SIZE 200
-#define CANVAS_BUFFER_SIZE 10000
-
-/*Function declarations*/
-void MX_USART3_UART_Init(UART_HandleTypeDef *huart);
-void MX_USART6_UART_Init(UART_HandleTypeDef *huart);
-void Error_Handler(void);
 
 xQueueHandle msgQueueUartRx;
 xQueueHandle msgQueueUartTx;
@@ -49,25 +38,23 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   signed long xHigherPriorityTaskWoken;
   
   /*Enable interrupt listening again*/
-  HAL_UART_Receive_IT(&huart6, static_cast<uint8_t*>(uartPacket), PACKET_SIZE); //uartPacket.GetPacketTable()
+  HAL_UART_Receive_IT(&huart6, static_cast<uint8_t*>(uartPacket), PACKET_SIZE);
   
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
 }
 
-using namespace touchgfx;
-
 int main(void)
 {
-  hw_init();
-  touchgfx_init();
+  touchgfx::hw_init();
+  touchgfx::touchgfx_init();
   
   /*UART init*/
   MX_USART3_UART_Init(&huart3);
   MX_USART6_UART_Init(&huart6);
   
   static uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
-  CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
+  touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
   
   xTaskCreate(guiTask, 
               (TASKCREATE_NAME_TYPE)"GuiTask",

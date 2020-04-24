@@ -153,7 +153,6 @@ void Model::ProcessPacket(UartPacket& uartPacket, ModuleID module)
       
       if(m_ReceivedInitPacketCount == INIT_PACKETS_COUNT)
       {
-        printf("Received all of %d init packets\n", INIT_PACKETS_COUNT);
         m_ModelListener->NotifyAllInitPacketsReceived(uartPacket); 
         
         /*Set m_ReceivedInitPacketCount back to 0 to make another connection initialization possible after connection deinitialization*/

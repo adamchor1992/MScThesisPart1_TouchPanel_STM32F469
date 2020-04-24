@@ -49,7 +49,7 @@ void uartRxTask(void* params)
         {
           /*Packet is correct and can be further processed*/
           printf("Rx packet:\n");
-          uartPacket.PrintPacket(true);
+          uartPacket.PrintPacket(false);
           
           xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
         }
@@ -58,6 +58,7 @@ void uartRxTask(void* params)
           /*Packet is invalid and will not be further processed*/
           
           printf("WRONG CRC\n");
+          uartPacket.PrintPacket(true);
           
           /*Turn on red LED*/
           BSP_LED_On(LED3);
@@ -95,7 +96,7 @@ void uartTxTask(void* params)
         xQueueReceive(msgQueueUartTx, &uartTxPacket, NO_WAITING);
         
         printf("Tx packet:\n");
-        uartTxPacket.PrintPacket(true);
+        uartTxPacket.PrintPacket(false);
         
         uartTxPacket.AppendCrcToPacket();
         

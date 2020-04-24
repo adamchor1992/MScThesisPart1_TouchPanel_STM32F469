@@ -1,6 +1,7 @@
 #pragma once
 
 #include <touchgfx/Utils.hpp>
+#include "packet_field_definitions.h"
 #include "uart_packet.h"
 
 #ifndef SIMULATOR

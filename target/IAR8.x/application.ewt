@@ -1725,7 +1725,7 @@
                 <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_hal_usart.c</name>
             </file>
             <file>
-                <name>$PROJ_DIR$\stm32f4xx_it.c</name>
+                <name>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery\stm32f4xx_it.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\bsp\source\platform\hal\mcu\stm32f4cube\STM32F4xx_HAL_Driver\stm32f4xx_ll_fmc.c</name>

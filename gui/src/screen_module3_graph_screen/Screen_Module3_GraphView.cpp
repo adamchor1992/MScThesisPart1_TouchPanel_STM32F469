@@ -1,18 +1,8 @@
+#include <gui/screen_module3_graph_screen/Screen_Module3_GraphView.hpp>
 #include <BitmapDatabase.hpp>
 #include <texts/TextKeysAndLanguages.hpp>
-#include <gui/screen_module3_graph_screen/Screen_Module3_GraphView.hpp>
 #include <string>
 #include <cmath>
-
-#ifndef SIMULATOR
-#include "stm32469i_discovery.h"
-#include <stdlib.h>
-#endif
-
-#ifdef SIMULATOR
-#include <iostream>
-using namespace std;
-#endif
 
 /*Real graph range minimum value which is used for graph drawing. 
 Values to be drawn on graph are scaled in terms of this value*/
@@ -330,6 +320,7 @@ void Screen_Module3_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
 
 void Screen_Module3_GraphView::SetNewGraphRange(UartPacket& uartPacket)
 {
+#ifndef SIMULATOR
   /*Skip packet if it is not addressed to this module*/
   if(uartPacket.GetModule() != ModuleID::MODULE3)
   {
@@ -400,6 +391,7 @@ void Screen_Module3_GraphView::SetNewGraphRange(UartPacket& uartPacket)
   default:
     printf("Unknown function in graph view\n");
   }
+#endif
 }
 
 uint8_t Screen_Module3_GraphView::ActiveSignalsCount()

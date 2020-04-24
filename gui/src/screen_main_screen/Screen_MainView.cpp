@@ -95,7 +95,6 @@ void Screen_MainView::ProcessInitPacket(UartPacket& uartPacket)
     buttonWithLabel_Module1.setTouchable(true);
     
     Model::ActivateModule(ModuleID::MODULE1);
-    printf("Active module 1\n");
     break;
     
   case ModuleID::MODULE2:
@@ -103,7 +102,6 @@ void Screen_MainView::ProcessInitPacket(UartPacket& uartPacket)
     buttonWithLabel_Module2.setTouchable(true);
     
     Model::ActivateModule(ModuleID::MODULE2);
-    printf("Active module 2\n");
     break;
     
   case ModuleID::MODULE3:
@@ -111,7 +109,6 @@ void Screen_MainView::ProcessInitPacket(UartPacket& uartPacket)
     buttonWithLabel_Module3.setTouchable(true);
     
     Model::ActivateModule(ModuleID::MODULE3);
-    printf("Active module 3\n");
     break;
   }
   

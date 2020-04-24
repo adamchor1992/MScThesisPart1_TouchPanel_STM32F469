@@ -1,6 +1,6 @@
 #ifndef SIMULATOR
 
-#include "stm32f4xx_hal_uart.h"
+#include "init.h"
 #include "stm32469i_discovery.h"
 
 extern UART_HandleTypeDef huart3;
@@ -8,7 +8,7 @@ extern UART_HandleTypeDef huart3;
 #if DEBUG == 1
 int fputc(int ch, FILE *f)
 {
-  HAL_UART_Transmit(&huart3, (uint8_t*)&ch, 1, DEBUG_UART_WAITING);
+  HAL_UART_Transmit(&huart3, reinterpret_cast<uint8_t*>(&ch), 1, UART_TX_WAITING);
   
   return ch;
 }
