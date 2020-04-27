@@ -16,7 +16,6 @@ extern UART_HandleTypeDef huart6;
 extern UartPacket uartPacket;
 extern xSemaphoreHandle uartRxSemaphore;
 extern xSemaphoreHandle uartTxSemaphore;
-extern xSemaphoreHandle uartMutex;
 extern xQueueHandle msgQueueUartRx;
 extern xQueueHandle msgQueueUartTx;
 
@@ -38,40 +37,29 @@ void uartRxTask(void* params)
     /*Check if interrupt occured so there is new data in uartPacket table*/
     if(xSemaphoreTake(uartRxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Check if UART mutex is available to take*/
-      if( xSemaphoreTake( uartMutex, NO_WAITING) == pdTRUE )
+      /*Ensure that there is no context switch during packet processing*/
+      taskENTER_CRITICAL();
+      
+      if(uartPacket.CheckCrc32() == true)
       {
-        /*Ensure that there is no context switch during packet processing*/
-        taskENTER_CRITICAL();
+        /*Packet is correct and can be further processed*/
+        printf("Rx packet:\n");
+        uartPacket.PrintPacket(false);
         
-        if(uartPacket.CheckCrc32() == true)
-        {
-          /*Packet is correct and can be further processed*/
-          printf("Rx packet:\n");
-          uartPacket.PrintPacket(false);
-          
-          xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
-        }
-        else
-        {
-          /*Packet is invalid and will not be further processed*/
-          
-          printf("WRONG CRC\n");
-          uartPacket.PrintPacket(true);
-          
-          /*Turn on red LED*/
-          BSP_LED_On(LED3);
-        }
-        
-        /*Give back mutex*/
-        xSemaphoreGive(uartMutex);
-        
-        taskEXIT_CRITICAL();
+        xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
       }
       else
       {
-        printf("MUTEX RX: Mutex not available\n");
+        /*Packet is invalid and will not be further processed*/
+        
+        printf("WRONG CRC\n");
+        uartPacket.PrintPacket(true);
+        
+        /*Turn on red LED*/
+        BSP_LED_On(LED3);
       }
+      
+      taskEXIT_CRITICAL();
     }
   }
 }
@@ -85,34 +73,23 @@ void uartTxTask(void* params)
     /*Take TxSemaphore*/
     if(xSemaphoreTake(uartTxSemaphore, portMAX_DELAY) == pdPASS)
     {
-      /*Check if UART mutex is available to take*/
-      if( xSemaphoreTake( uartMutex, NO_WAITING) == pdTRUE )
-      {
-        taskENTER_CRITICAL();
-        
-        UartPacket uartTxPacket;
-        
-        xQueueReceive(msgQueueUartTx, &uartTxPacket, NO_WAITING);
-        
-        printf("Tx packet:\n");
-        uartTxPacket.PrintPacket(false);
-        
-        uartTxPacket.AppendCrcToPacket();
-        
-        /*Toggle blue LED*/
-        BSP_LED_Toggle(LED4);
-        
-        HAL_UART_Transmit(&huart6, static_cast<uint8_t*>(uartTxPacket), PACKET_SIZE, UART_TX_WAITING);
-        
-        /*Give back mutex*/
-        xSemaphoreGive(uartMutex);
-        
-        taskEXIT_CRITICAL();
-      } 
-      else
-      {
-        printf("MUTEX TX: Mutex not available\n");
-      }
+      taskENTER_CRITICAL();
+      
+      UartPacket uartTxPacket;
+      
+      xQueueReceive(msgQueueUartTx, &uartTxPacket, NO_WAITING);
+      
+      printf("Tx packet:\n");
+      uartTxPacket.PrintPacket(false);
+      
+      uartTxPacket.AppendCrcToPacket();
+      
+      /*Toggle blue LED*/
+      BSP_LED_Toggle(LED4);
+      
+      HAL_UART_Transmit(&huart6, static_cast<uint8_t*>(uartTxPacket), PACKET_SIZE, UART_TX_WAITING);
+      
+      taskEXIT_CRITICAL();
     }
   }
 }

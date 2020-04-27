@@ -22,7 +22,6 @@ xQueueHandle msgQueueUartTx;
 
 xSemaphoreHandle uartRxSemaphore;
 xSemaphoreHandle uartTxSemaphore;
-xSemaphoreHandle uartMutex;
 
 UART_HandleTypeDef huart3;
 UART_HandleTypeDef huart6;
@@ -84,7 +83,6 @@ int main(void)
   /*Create UART semaphore*/
   uartRxSemaphore = xSemaphoreCreateBinary();
   uartTxSemaphore = xSemaphoreCreateBinary();
-  uartMutex = xSemaphoreCreateMutex();
   
   /*Initialize LEDS for debugging purposes*/
   BSP_LED_Init(LED1);
