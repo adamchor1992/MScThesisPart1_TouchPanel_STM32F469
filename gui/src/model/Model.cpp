@@ -118,28 +118,26 @@ void Model::ProcessPacket(UartPacket& uartPacket, ModuleID module)
     {
       if(m_ReceivedInitPacketCount < INIT_PACKETS_COUNT)
       {
-        uint8_t lengthInt = uartPacket.GetLength();
-        
         if(module == ModuleID::MODULE1)
         {
           /*Clear buffer before writing new values*/
           memset(m_InitParametersModule1[m_ReceivedInitPacketCount], 0, PAYLOAD_SIZE);
-
-          memcpy(m_InitParametersModule1[m_ReceivedInitPacketCount], uartPacket.GetPayload(), lengthInt);
+          
+          uartPacket.GetPayload(m_InitParametersModule1[m_ReceivedInitPacketCount]);
         }
         else if(module == ModuleID::MODULE2)
         {
           /*Clear buffer before writing new values*/
           memset(m_InitParametersModule2[m_ReceivedInitPacketCount], 0, PAYLOAD_SIZE);
-
-          memcpy(m_InitParametersModule2[m_ReceivedInitPacketCount], uartPacket.GetPayload(), lengthInt);
+          
+          uartPacket.GetPayload(m_InitParametersModule2[m_ReceivedInitPacketCount]);
         }
         else if(module == ModuleID::MODULE3)
         {
           /*Clear buffer before writing new values*/
           memset(m_InitParametersModule3[m_ReceivedInitPacketCount], 0, PAYLOAD_SIZE);
-
-          memcpy(m_InitParametersModule3[m_ReceivedInitPacketCount], uartPacket.GetPayload(), lengthInt);
+          
+          uartPacket.GetPayload(m_InitParametersModule3[m_ReceivedInitPacketCount]);
         }
         
         ++m_ReceivedInitPacketCount;

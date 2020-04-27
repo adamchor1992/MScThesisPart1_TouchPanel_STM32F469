@@ -341,6 +341,17 @@ uint8_t UartPacket::GetLength() const
   return m_Length - '0';
 }
 
+uint8_t const* UartPacket::GetPayload(uint8_t* data) const 
+{
+  if(data != nullptr)
+  {
+    /*Copy all payload data to provided location*/
+    memcpy(data, m_Payload, PAYLOAD_SIZE);
+  }
+  
+  return m_Payload;
+}
+
 void UartPacket::AppendCrcToPacket()
 {
   uint32_t crcValueCalculated = CalculateCrc32(m_PacketTable.data(), PACKET_SIZE_WITHOUT_CRC);

@@ -29,7 +29,7 @@ public:
   Parameter GetParameter() const;
   Sign GetSign() const;
   uint8_t GetLength() const;
-  uint8_t const* GetPayload() const {return m_Payload;}
+  uint8_t const* GetPayload(uint8_t* data = nullptr) const;
   
   void AppendCrcToPacket();
   bool CheckCrc32() const;

@@ -29,7 +29,7 @@ void guiTask(void* params)
 void uartRxTask(void* params)
 {
   /*Start receiving*/
-  HAL_UART_Receive_IT(&huart6, static_cast<uint8_t*>(uartPacket) , PACKET_SIZE); //uartPacket.GetPacketTable()
+  HAL_UART_Receive_IT(&huart6, static_cast<uint8_t*>(uartPacket) , PACKET_SIZE);
   
   printf("RX task initialized\n");
   
@@ -44,7 +44,6 @@ void uartRxTask(void* params)
         /*Ensure that there is no context switch during packet processing*/
         taskENTER_CRITICAL();
         
-        //CRC check
         if(uartPacket.CheckCrc32() == true)
         {
           /*Packet is correct and can be further processed*/
@@ -80,9 +79,9 @@ void uartRxTask(void* params)
 void uartTxTask(void* params)
 {
   printf("TX task initialized\n");
-
+  
   while(true)
-  {  
+  {
     /*Take TxSemaphore*/
     if(xSemaphoreTake(uartTxSemaphore, portMAX_DELAY) == pdPASS)
     {

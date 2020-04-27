@@ -1,24 +1,21 @@
 #include <gui/screen_module1_graph_screen/Screen_Module1_GraphView.hpp>
-#include <BitmapDatabase.hpp>
-#include <texts/TextKeysAndLanguages.hpp>
 #include <string>
-#include <cmath>
 
 /*Real graph range minimum value which is used for graph drawing. 
 Values to be drawn on graph are scaled in terms of this value*/
-int const GRAPH_CONSTANT_RANGE_BOTTOM = -2500;
+const int GRAPH_CONSTANT_RANGE_BOTTOM = -2500;
 /*Real graph range maximum value which is used for graph drawing. 
 Values to be drawn on graph are scaled in terms of this value*/
-int const GRAPH_CONSTANT_RANGE_TOP = +2500;
+const int GRAPH_CONSTANT_RANGE_TOP = +2500;
 /*Real graph resolution (Number of distinct points which can be drawn on Y axis)*/
-int const GRAPH_CONSTANT_MAX_MIN_INTERVAL = 5000;
+const int GRAPH_CONSTANT_MAX_MIN_INTERVAL = 5000;
 
-int const INITIAL_GRAPH_RANGE_BOTTOM = -10000;
-int const INITIAL_GRAPH_RANGE_TOP = 10000;
-int const INITIAL_GRAPH_RANGE_LEFT = 0;
-int const INITIAL_GRAPH_RANGE_RIGHT = 720;
+const int INITIAL_GRAPH_RANGE_BOTTOM = -10000;
+const int INITIAL_GRAPH_RANGE_TOP = 10000;
+const int INITIAL_GRAPH_RANGE_LEFT = 0;
+const int INITIAL_GRAPH_RANGE_RIGHT = 720;
 
-int const GRAPHS_COUNT = 4;
+const int GRAPHS_COUNT = 4;
 
 bool Screen_Module1_GraphView::m_Parameter1GraphEnabled = true;
 bool Screen_Module1_GraphView::m_Parameter2GraphEnabled = true;
@@ -96,7 +93,7 @@ void Screen_Module1_GraphView::SetGraphRangeTextAreas(long long int bottom, long
   
   Unicode::strncpy(graphRangeBottomUnicodeString, graphRangeBottomString, PAYLOAD_SIZE + 2);
   Unicode::strncpy(graphRangeTopUnicodeString, graphRangeTopString, PAYLOAD_SIZE + 2);
-    
+  
   Unicode::snprintf(textArea_GraphRangeBottomBuffer, PAYLOAD_SIZE + 2, "%s", graphRangeBottomUnicodeString);
   textArea_GraphRangeBottom.invalidate();
   
@@ -139,7 +136,7 @@ void Screen_Module1_GraphView::handleTickEvent()
   
   static int multiplier = 1;
   
-  static int const increment = 10;
+  static const int increment = 10;
   
   if (rising)
   {
@@ -170,7 +167,7 @@ void Screen_Module1_GraphView::handleTickEvent()
     
     m_TimeBase = 0;
   }
-    
+  
   if (m_Parameter1GraphEnabled == true)
   {
     if (m_PreviousYellow_X == m_TimeBase)
@@ -199,10 +196,14 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
     return;
   }
   
-  static long long int rawValue;
-  static long long int scaledValue;
+  long long int rawValue;
+  int scaledValue;
   
-  rawValue = static_cast<long long int>(std::stoll((char*)(uartPacket.GetPayload())));
+  static uint8_t numericValueBuffer[PAYLOAD_SIZE];
+  
+  uartPacket.GetPayload(numericValueBuffer);
+  
+  rawValue = std::stoll(reinterpret_cast<const char*>(numericValueBuffer));
   
   if (uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
   {
@@ -228,7 +229,9 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
     }
   }
   
-  scaledValue = static_cast<long long int>((((1 - (double(m_GraphRangeTop - rawValue) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
+  scaledValue = int((((1 - (double(m_GraphRangeTop - rawValue) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
+  
+  printf("Value after scaling: %d\n", scaledValue);
   
   /*If autorange is not enabled the scaled value must be constrained within constant upper and lower graph range*/
   if(m_AutoRangeEnabled == false)
@@ -248,10 +251,6 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
     ResetGraph();
   }
   
-  printf("Graph virtual bottom range: %lld\n", m_GraphRangeBottom);
-  printf("Graph virtual top range: %lld\n", m_GraphRangeTop);
-  printf("Value after scaling: %lld\n", scaledValue);
-  
   switch (uartPacket.GetParameter())
   {
   case Parameter::GRAPH_PARAMETER1:
@@ -269,6 +268,7 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
       m_GraphYellow.addValue(m_TimeBase, scaledValue);
     }
     break;
+    
   case Parameter::GRAPH_PARAMETER2:
     if (m_Parameter2GraphEnabled == true)
     {
@@ -284,6 +284,7 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
       m_GraphRed.addValue(m_TimeBase, scaledValue);
     }
     break;
+    
   case Parameter::GRAPH_PARAMETER3:
     if (m_Parameter3GraphEnabled == true)
     {
@@ -299,6 +300,7 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
       m_GraphBlue.addValue(m_TimeBase, scaledValue);
     }
     break;
+    
   case Parameter::GRAPH_PARAMETER4:
     if (m_Parameter4GraphEnabled == true)
     {
@@ -314,6 +316,7 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
       m_GraphGreen.addValue(m_TimeBase, scaledValue);
     }
     break;
+    
   }
 #endif
 }
@@ -321,7 +324,7 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
 void Screen_Module1_GraphView::SetNewGraphRange(UartPacket& uartPacket)
 {
 #ifndef SIMULATOR
-
+  
   /*Skip packet if it is not addressed to this module*/
   if(uartPacket.GetModule() != ModuleID::MODULE1)
   {
@@ -337,7 +340,7 @@ void Screen_Module1_GraphView::SetNewGraphRange(UartPacket& uartPacket)
   case Function::SET_GRAPH_RANGE_MIN:
     static long long int newGraphRangeMinValue = 0;
     
-    newGraphRangeMinValue = static_cast<long long int>(std::stoll((char*)(uartPacket.GetPayload())));
+    newGraphRangeMinValue = std::stoll((char*)(uartPacket.GetPayload()));
     
     printf("New graph range MINIMUM value after casting to long long int: %lld\n", newGraphRangeMinValue);
     
@@ -355,7 +358,7 @@ void Screen_Module1_GraphView::SetNewGraphRange(UartPacket& uartPacket)
   case Function::SET_GRAPH_RANGE_MAX: 
     static long long int newGraphRangeMaxValue = 0;
     
-    newGraphRangeMaxValue = static_cast<long long int>(std::stoll((char*)(uartPacket.GetPayload())));
+    newGraphRangeMaxValue = std::stoll((char*)(uartPacket.GetPayload()));
     
     printf("New graph range MAXIMUM value after casting to long long int: %lld\n", newGraphRangeMaxValue);
     
@@ -373,7 +376,7 @@ void Screen_Module1_GraphView::SetNewGraphRange(UartPacket& uartPacket)
   case Function::SET_GRAPH_TIME_RANGE:    
     static int newTimeRangeValue = 0;
     
-    newTimeRangeValue = int(std::stoi((char*)(uartPacket.GetPayload())));
+    newTimeRangeValue = std::stoi((char*)(uartPacket.GetPayload()));
     
     printf("New time range value after casting to int: %d\n", newTimeRangeValue);
     
@@ -392,6 +395,9 @@ void Screen_Module1_GraphView::SetNewGraphRange(UartPacket& uartPacket)
   default:
     printf("Unknown function in graph view\n");
   }
+  
+  printf("Graph virtual bottom range: %lld\n", m_GraphRangeBottom);
+  printf("Graph virtual top range: %lld\n", m_GraphRangeTop);
 #endif
 }
 
