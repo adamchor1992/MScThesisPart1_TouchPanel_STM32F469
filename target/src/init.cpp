@@ -19,9 +19,9 @@ int fputc(int ch, FILE *f)
 }
 #endif
 
-void Error_Handler(void)
+void Error_Handler()
 {
-  /*In case of error turn on all LEDs*/
+  /*Turn on all LEDs in case of error*/
   BSP_LED_On(LED1);
   BSP_LED_On(LED2);
   BSP_LED_On(LED3);

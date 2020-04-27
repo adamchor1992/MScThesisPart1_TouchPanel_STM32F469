@@ -1,5 +1,6 @@
 #include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
 #include <string>
+#include "stm32469i_discovery.h"
 
 /*Real graph range minimum value which is used for graph drawing. 
 Values to be drawn on graph are scaled in terms of this value*/
@@ -192,7 +193,9 @@ void Screen_Module2_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
   /*Skip packet if it is not addressed to this module*/
   if(uartPacket.GetModule() != ModuleID::MODULE2)
   {
-    printf("Packet skipped because it is not addressed to current module (1)");
+    BSP_LED_On(LED2);
+    
+    printf("Packet skipped because it is not addressed to current module (2)\n");
     return;
   }
   
@@ -328,12 +331,11 @@ void Screen_Module2_GraphView::SetNewGraphRange(UartPacket& uartPacket)
   /*Skip packet if it is not addressed to this module*/
   if(uartPacket.GetModule() != ModuleID::MODULE2)
   {
-    printf("Packet skipped because it is not addressed to current module (1)");
+    BSP_LED_On(LED2);
+    
+    printf("Packet skipped because it is not addressed to current module (2)\n");
     return;
   }
-  
-  printf("Packet length: %d\n", uartPacket.GetLength());
-  printf("Packet payload: %.10s\n", uartPacket.GetPayload());
   
   switch(uartPacket.GetFunction())
   {
@@ -342,11 +344,18 @@ void Screen_Module2_GraphView::SetNewGraphRange(UartPacket& uartPacket)
     
     newGraphRangeMinValue = std::stoll((char*)(uartPacket.GetPayload()));
     
-    printf("New graph range MINIMUM value after casting to long long int: %lld\n", newGraphRangeMinValue);
-    
     if(uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
     {
       newGraphRangeMinValue = newGraphRangeMinValue * (-1);
+    }
+    
+    if(newGraphRangeMinValue >= m_GraphRangeTop)
+    {
+      BSP_LED_On(LED2);
+      
+      printf("New graph range minimum value (%lld) is higher than or equal to current graph maximum value (%lld), aborting\n", newGraphRangeMinValue, m_GraphRangeTop); 
+      
+      return;
     }
     
     SetGraphRanges(newGraphRangeMinValue, m_GraphRangeTop, m_GraphRangeRight);
@@ -360,11 +369,18 @@ void Screen_Module2_GraphView::SetNewGraphRange(UartPacket& uartPacket)
     
     newGraphRangeMaxValue = std::stoll((char*)(uartPacket.GetPayload()));
     
-    printf("New graph range MAXIMUM value after casting to long long int: %lld\n", newGraphRangeMaxValue);
-    
     if(uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
     {
       newGraphRangeMaxValue = newGraphRangeMaxValue * (-1);
+    }
+    
+    if(newGraphRangeMaxValue <= m_GraphRangeBottom)
+    {
+      BSP_LED_On(LED2);
+      
+      printf("New graph range maximum value (%lld) is lower than or equal to current graph minimum value (%lld), aborting\n", newGraphRangeMaxValue, m_GraphRangeBottom); 
+      
+      return;
     }
     
     SetGraphRanges(m_GraphRangeBottom, newGraphRangeMaxValue, m_GraphRangeRight);
@@ -378,10 +394,10 @@ void Screen_Module2_GraphView::SetNewGraphRange(UartPacket& uartPacket)
     
     newTimeRangeValue = std::stoi((char*)(uartPacket.GetPayload()));
     
-    printf("New time range value after casting to int: %d\n", newTimeRangeValue);
-    
     if(uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
     {
+      BSP_LED_On(LED2);
+      
       printf("Time range cannot be negative, packet discarded\n");
       return;
     }
@@ -393,11 +409,10 @@ void Screen_Module2_GraphView::SetNewGraphRange(UartPacket& uartPacket)
     break;
     
   default:
+    BSP_LED_On(LED2);
+    
     printf("Unknown function in graph view\n");
   }
-  
-  printf("Graph virtual bottom range: %lld\n", m_GraphRangeBottom);
-  printf("Graph virtual top range: %lld\n", m_GraphRangeTop);
 #endif
 }
 

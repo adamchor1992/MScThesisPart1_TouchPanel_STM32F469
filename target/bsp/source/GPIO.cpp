@@ -72,58 +72,17 @@ void GPIO::init()
 
 void GPIO::set(GPIO_ID id)
 {
-//    gpioState[id] = 1;
-//    if (id == VSYNC_FREQ)
-//    {
-//        BSP_LED_Off(LED1);
-//    }
-//    else if (id == RENDER_TIME)
-//    {
-//        BSP_LED_Off(LED2);
-//    }
-//
-//    else if (id == FRAME_RATE)
-//    {
-//        BSP_LED_Off(LED3);
-//    }
-//    else if (id == MCU_ACTIVE)
-//    {
-//        BSP_LED_Off(LED4);
-//    }
+  
 }
 
 void GPIO::clear(GPIO_ID id)
 {
-//    gpioState[id] = 0;
-//    if (id == VSYNC_FREQ)
-//    {
-//        BSP_LED_On(LED1);
-//    }
-//    else if (id == RENDER_TIME)
-//    {
-//        BSP_LED_On(LED2);
-//    }
-//
-//    else if (id == FRAME_RATE)
-//    {
-//        BSP_LED_On(LED3);
-//    }
-//    else if (id == MCU_ACTIVE)
-//    {
-//        BSP_LED_On(LED4);
-//    }
+  
 }
 
 void GPIO::toggle(GPIO_ID id)
 {
-   // if (get(id))
-  //  {
-   //     clear(id);
-   // }
-   // else
-   // {
-  //      set(id);
-  //  }
+  
 }
 
 bool GPIO::get(GPIO_ID id)

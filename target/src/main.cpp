@@ -32,7 +32,7 @@ UartPacket uartPacket;
 /*UART receive interrupt callback function*/
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) 
 {
-  /*Toggle green LED*/
+  /*Toggle green LED after RX interrupt*/
   BSP_LED_Toggle(LED1);
   signed long xHigherPriorityTaskWoken;
   
@@ -41,6 +41,12 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
   
   /*Give semaphore to activate UART_Rx task*/
   xSemaphoreGiveFromISR(uartRxSemaphore, &xHigherPriorityTaskWoken);
+}
+
+void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
+{
+  printf("-----------------------UART ERROR CALLBACK-----------------------\n");
+  Error_Handler();
 }
 
 int main(void)

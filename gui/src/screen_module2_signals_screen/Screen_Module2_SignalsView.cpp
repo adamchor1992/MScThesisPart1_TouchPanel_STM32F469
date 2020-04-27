@@ -1,6 +1,7 @@
 #include <gui/screen_module2_signals_screen/Screen_Module2_SignalsView.hpp>
 #include <gui/screen_module2_graph_screen/Screen_Module2_GraphView.hpp>
 #include <gui/model/Model.hpp>
+#include "stm32469i_discovery.h"
 
 int const SINE_PERIOD_DEGREES = 360;
 
@@ -121,6 +122,8 @@ void Screen_Module2_SignalsView::SetRanges()
   
   if (minRangeValue >= maxRangeValue)
   {
+    BSP_LED_On(LED2);
+    
     printf("Error, MIN range value equal or less than MAX range value\n");
     printf("Current MIN range value %lld\n", minRangeValue);
     printf("Current MAX range value %lld\n", maxRangeValue);

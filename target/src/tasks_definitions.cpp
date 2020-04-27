@@ -55,7 +55,7 @@ void uartRxTask(void* params)
         printf("WRONG CRC\n");
         uartPacket.PrintPacket(true);
         
-        /*Turn on red LED*/
+        /*Turn on red LED after receiving wrong CRC packet*/
         BSP_LED_On(LED3);
       }
       
@@ -84,10 +84,10 @@ void uartTxTask(void* params)
       
       uartTxPacket.AppendCrcToPacket();
       
-      /*Toggle blue LED*/
-      BSP_LED_Toggle(LED4);
-      
       HAL_UART_Transmit(&huart6, static_cast<uint8_t*>(uartTxPacket), PACKET_SIZE, UART_TX_WAITING);
+      
+      /*Toggle blue LED after TX complete*/
+      BSP_LED_Toggle(LED4);
       
       taskEXIT_CRITICAL();
     }
