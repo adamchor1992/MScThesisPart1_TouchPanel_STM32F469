@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -17,25 +17,30 @@
 
 namespace touchgfx
 {
-int16_t TextAreaWithWildcardBase::calculateTextHeight(const Unicode::UnicodeChar* format, ...) const
+void TextAreaWithOneWildcard::draw(const Rect& area) const
 {
-    if (!typedText.hasValidId())
+    if (typedText.hasValidId())
     {
-        return 0;
+        const Font* fontToDraw = typedText.getFont();
+        if (fontToDraw != 0)
+        {
+            LCD::StringVisuals visuals(fontToDraw, color, alpha, typedText.getAlignment(), linespace, rotation, typedText.getTextDirection(), indentation, wideTextAction);
+            HAL::lcd().drawString(getAbsoluteRect(), area, visuals, typedText.getText(), wildcard, 0);
+        }
     }
-
-    va_list pArg;
-    va_start(pArg, format);
-
-    const Font* fontToDraw = typedText.getFont();
-    int16_t textHeight = fontToDraw->getMinimumTextHeight();
-
-    TextProvider textProvider;
-    textProvider.initialize(format, pArg, fontToDraw->getGSUBTable());
-
-    int16_t numLines = LCD::getNumLines(textProvider, wideTextAction, typedText.getTextDirection(), typedText.getFont(), getWidth());
-
-    va_end(pArg);
-    return (textHeight + linespace > 0) ? (numLines * textHeight + (numLines - 1) * linespace) : (numLines > 0) ? (textHeight) : 0;
 }
+
+void TextAreaWithTwoWildcards::draw(const Rect& area) const
+{
+    if (typedText.hasValidId())
+    {
+        const Font* fontToDraw = typedText.getFont();
+        if (fontToDraw != 0)
+        {
+            LCD::StringVisuals visuals(fontToDraw, color, alpha, typedText.getAlignment(), linespace, rotation, typedText.getTextDirection(), indentation, wideTextAction);
+            HAL::lcd().drawString(getAbsoluteRect(), area, visuals, typedText.getText(), wc1, wc2);
+        }
+    }
+}
+
 } // namespace touchgfx

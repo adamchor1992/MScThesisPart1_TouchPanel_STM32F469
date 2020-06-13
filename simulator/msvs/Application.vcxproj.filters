@@ -355,9 +355,6 @@
     <Filter Include="Header Files\generated\gui_generated\screen_module2_info_screen">
       <UniqueIdentifier>75F6507F-C298-A123-C0E8-27932738A021</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\gui\include">
-      <UniqueIdentifier>C9136DF7-342F-9635-9ED9-5681868759BC</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -1053,21 +1050,6 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\containers\DigitTemplateBase.hpp">
       <Filter>Header Files\generated\gui_generated\containers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\crc32.h">
-      <Filter>Source Files\gui\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\init.h">
-      <Filter>Source Files\gui\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\utilities.h">
-      <Filter>Source Files\gui\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\uart_packet.h">
-      <Filter>Source Files\gui\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\gui\include\packet_field_definitions.h">
-      <Filter>Source Files\gui\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\gui\include\gui\screen_module2_data_screen\Screen_Module2_DataPresenter.hpp">
       <Filter>Header Files\gui\screen_module2_data_screen</Filter>

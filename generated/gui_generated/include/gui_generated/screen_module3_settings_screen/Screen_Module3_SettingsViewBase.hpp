@@ -16,8 +16,8 @@
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/containers/scrollers/ScrollWheel.hpp>
 #include <gui/containers/DigitTemplate.hpp>
-
 #include <touchgfx/widgets/RadioButtonGroup.hpp>
+
 class Screen_Module3_SettingsViewBase : public touchgfx::View<Screen_Module3_SettingsPresenter>
 {
 public:
@@ -134,34 +134,24 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_SettableParameter10Name;
     touchgfx::ScrollWheel scrollWheel_Digit10;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit10ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit9;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit9ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit8;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit8ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit7;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit7ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit6;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit6ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit5;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit5ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit4;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit4ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit3;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit3ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit2;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit2ListItems;
-
     touchgfx::ScrollWheel scrollWheel_Digit1;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_Digit1ListItems;
-
     touchgfx::TextArea textArea_Plus;
     touchgfx::RadioButton radioButton_Plus;
     touchgfx::RadioButton radioButton_Minus;
@@ -214,7 +204,6 @@ private:
      */
     static const uint16_t CANVAS_BUFFER_SIZE = 12000;
     uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
-
 };
 
 #endif // SCREEN_MODULE3_SETTINGSVIEWBASE_HPP

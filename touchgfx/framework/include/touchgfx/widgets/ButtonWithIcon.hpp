@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -155,19 +155,6 @@ public:
 
     virtual void draw(const Rect& invalidatedArea) const;
 
-    /**
-     * @fn virtual uint16_t ButtonWithIcon::getType() const
-     *
-     * @brief For GUI testing only. Returns type of this drawable.
-     *
-     *        For GUI testing only. Returns type of this drawable.
-     *
-     * @return TYPE_BUTTONWITHICON.
-     */
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_BUTTONWITHICON;
-    }
 protected:
     Bitmap  iconReleased; ///< Icon to display when button is not pressed.
     Bitmap  iconPressed;  ///< Icon to display when button is pressed.

@@ -5,7 +5,7 @@
     <UseBPP>16</UseBPP>
     <RotateImage90>false</RotateImage90>
     <TouchGFXReleasePath>..\..\touchgfx</TouchGFXReleasePath>
-    <TouchGFXEnvPath>C:\TouchGFX\4.12.3\env</TouchGFXEnvPath>
+    <TouchGFXEnvPath>C:\TouchGFX\4.13.0\env</TouchGFXEnvPath>
     <AlphaDitherImage>yes</AlphaDitherImage>
     <DitherAlgorithm>2</DitherAlgorithm>
     <OpaqueImageOutputFormat>RGB565</OpaqueImageOutputFormat>

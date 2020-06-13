@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -25,6 +25,27 @@
 namespace touchgfx
 {
 /**
+ * @fn void simulator_enable_stdio();
+ *
+ * @brief Simulator enable stdio
+ *
+ *        Simulator enable stdio
+ */
+void simulator_enable_stdio();
+
+/**
+ * @fn void simulator_printf(const char* format, va_list pArg);
+ *
+ * @brief Simulator printf
+ *
+ *        Simulator printf
+ *
+ * @param format Describes the format to use.
+ * @param pArg   The argument list.
+ */
+void simulator_printf(const char* format, va_list pArg);
+
+/**
  * @class HALSDL2 HALSDL2.hpp platform/hal/simulator/sdl/HALSDL2.hpp
  *
  * @brief HAL implementation for the TouchGFX simulator.
@@ -36,7 +57,6 @@ namespace touchgfx
 class HALSDL2 : public HAL
 {
 public:
-
     /**
      * @fn HALSDL2::HALSDL2(DMA_Interface& dma, LCD& lcd, TouchController& touchCtrl, uint16_t width, uint16_t height)
      *
@@ -50,17 +70,17 @@ public:
      * @param width          Width of the display.
      * @param height         Height of the display.
      */
-    HALSDL2(DMA_Interface& dma, LCD& lcd, TouchController& touchCtrl, uint16_t width, uint16_t height) :
-        HAL(dma, lcd, touchCtrl, width, height),
-        debugInfoEnabled(false),
-        customTitle(0),
-        portraitSkin(),
-        landscapeSkin(),
-        currentSkin(0),
-        isSkinActive(true),
-        borderless(false),
-        flashInvalidatedRect(false),
-        windowDrag(false)
+    HALSDL2(DMA_Interface& dma, LCD& lcd, TouchController& touchCtrl, uint16_t width, uint16_t height)
+        : HAL(dma, lcd, touchCtrl, width, height),
+          debugInfoEnabled(false),
+          customTitle(0),
+          portraitSkin(),
+          landscapeSkin(),
+          currentSkin(0),
+          isSkinActive(true),
+          isWindowBorderless(false),
+          isWindowVisible(true),
+          windowDrag(false)
     {
         setVsyncInterval(30.f); // Simulate 20Hz per default for backward compatibility
         updateCurrentSkin();
@@ -336,6 +356,40 @@ public:
      */
     static uint8_t* doRotate(uint8_t* dst, uint8_t* src);
 
+    /**
+     * @fn void HALSDL2::setWindowVisible(bool visible, bool redrawWindow = true)
+     *
+     * @brief Change visibility of window (hidden vs. shown).
+     *
+     *        Change visibility of window (hidden vs. shown).
+     *
+     * @param visible      Should the window be visible?
+     * @param redrawWindow (Optional) Should the window be redrawn? Default = yes.
+     */
+    void setWindowVisible(bool visible, bool redrawWindow = true)
+    {
+        isWindowVisible = visible;
+        if (redrawWindow)
+        {
+            recreateWindow();
+            touchgfx::simulator_enable_stdio();
+        }
+    }
+
+    /**
+     * @fn bool HALSDL2::getWindowVisible() const
+     *
+     * @brief Are windows visible?
+     *
+     *        Are windows visible?
+     *
+     * @return True if it is visible, false if it is hidden.
+     */
+    bool getWindowVisible() const
+    {
+        return isWindowVisible;
+    }
+
 protected:
     /**
      * @fn virtual uint16_t* HALSDL2::getTFTFrameBuffer() const;
@@ -366,8 +420,8 @@ protected:
      *
      *        Update frame buffer using an SDL Surface.
      *
-     * @param _rectToUpdate    Area to update.
-     * @param [in] frameBuffer Target frame buffer.
+     * @param      _rectToUpdate Area to update.
+     * @param [in] frameBuffer   Target frame buffer.
      */
     virtual void renderLCD_FrameBufferToMemory(const Rect& _rectToUpdate, uint8_t* frameBuffer);
 
@@ -462,8 +516,13 @@ private:
         bool hasSemiTransparency;
         int offsetX;
         int offsetY;
-        SkinInfo() : surface(0), isOpaque(true), hasSemiTransparency(false), offsetX(0), offsetY(0) {}
-        virtual ~SkinInfo() {}
+        SkinInfo()
+            : surface(0), isOpaque(true), hasSemiTransparency(false), offsetX(0), offsetY(0)
+        {
+        }
+        virtual ~SkinInfo()
+        {
+        }
     };
 
     char programPath[300];
@@ -471,7 +530,8 @@ private:
     SkinInfo landscapeSkin;
     SkinInfo* currentSkin;
     bool isSkinActive;
-    bool borderless;
+    bool isWindowBorderless;
+    bool isWindowVisible;
     bool flashInvalidatedRect;
 
     bool windowDrag;
@@ -493,6 +553,7 @@ private:
 
     static uint8_t keyPressed;
 };
+
 } // namespace touchgfx
 
 #endif // HALSDL2_HPP

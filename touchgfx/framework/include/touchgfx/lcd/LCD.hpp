@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -20,6 +20,7 @@
 #include <touchgfx/Bitmap.hpp>
 #include <touchgfx/Font.hpp>
 #include <touchgfx/TextProvider.hpp>
+#include <touchgfx/TextureMapTypes.hpp>
 #include <touchgfx/Unicode.hpp>
 #include <touchgfx/Utils.hpp>
 #include <touchgfx/hal/Types.hpp>
@@ -434,6 +435,39 @@ public:
     virtual uint8_t getBlueColor(colortype color) const = 0;
 
     /**
+     * @fn void LCD::setDefaultColor(colortype color)
+     *
+     * @brief Sets default color as used by alpha level only bitmap formats, e.g. A4.
+     *
+     *        Sets default color as used by alpha level only bitmap formats, e.g. A4. The
+     *        default color, if no color is set, is black.
+     *
+     * @param color The color.
+     *
+     * @see getDefaultColor
+     */
+    void setDefaultColor(colortype color)
+    {
+        defaultColor = color;
+    }
+
+    /**
+     * @fn colortype LCD::getDefaultColor() const
+     *
+     * @brief Gets default color previously set using setDefaultColor.
+     *
+     *        Gets default color previously set using setDefaultColor.
+     *
+     * @return The default color.
+     *
+     * @see setDefaultColor
+     */
+    colortype getDefaultColor() const
+    {
+        return defaultColor;
+    }
+
+    /**
      * @fn void LCD::drawTextureMapTriangle(const DrawingSurface& dest, const Point3D* vertices, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha = 255, uint16_t subDivisionSize = 12);
      *
      * @brief Texture map triangle. Draw a perspective correct texture mapped triangle. The
@@ -517,8 +551,231 @@ public:
 protected:
     static const uint16_t newLine = 10; ///< NewLine value.
 
+    static colortype defaultColor; ///< Default Color to use when displaying transparency-only elements, e.g. A4 bitmaps
+
     /**
-     * @fn virtual void LCD::drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionLength) = 0;
+     * @class DrawTextureMapScanLineBase LCD.hpp touchgfx/lcd/LCD.hpp
+     *
+     * @brief Base class for drawing scanline by the texture mapper.
+     *
+     *        Base class for drawing scanline by the texture mapper.
+     */
+    class DrawTextureMapScanLineBase
+    {
+    public:
+        /**
+         * @fn virtual DrawTextureMapScanLineBase::~DrawTextureMapScanLineBase()
+         *
+         * @brief Default destructor
+         */
+        virtual ~DrawTextureMapScanLineBase()
+        {
+        }
+
+        /**
+         * @fn virtual void DrawTextureMapScanLineBase::drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff) = 0;
+         *
+         * @brief Draw texture map scan line subdivisions
+         *
+         * @param subdivisions   The number of subdivisions.
+         * @param widthModLength Remainder of length (after subdivisions).
+         * @param pixelsToDraw   The pixels to draw.
+         * @param affineLength   Length of one subdivision.
+         * @param oneOverZRight  1/Z right.
+         * @param UOverZRight    U/Z right.
+         * @param VOverZRight    V/Z right.
+         * @param U              U Coordinate in fixed16_16 notation.
+         * @param V              V Coordinate in fixed16_16 notation.
+         * @param deltaU         U delta to get to next pixel coordinate.
+         * @param deltaV         V delta to get to next pixel coordinate.
+         * @param ULeft          The left U.
+         * @param VLeft          The left V.
+         * @param URight         The right U.
+         * @param VRight         The right V.
+         * @param ZRight         The right Z.
+         * @param dest           Destination drawing surface.
+         * @param destX          Destination x coordinate.
+         * @param destY          Destination y coordinate.
+         * @param bitmapWidth    Width of the bitmap.
+         * @param bitmapHeight   Height of the bitmap.
+         * @param texture        The texture.
+         * @param alpha          The global alpha.
+         * @param dOneOverZdXAff 1/ZdX affine.
+         * @param dUOverZdXAff   U/ZdX affine.
+         * @param dVOverZdXAff   V/ZdX affine.
+         */
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff) = 0;
+
+    protected:
+        static const fixed16_16 half = 0x8000; ///< 1/2 in fixed16_16 format
+
+        /**
+         * @fn FORCE_INLINE_FUNCTION void DrawTextureMapScanLineBase::drawTextureMapNextSubdivision(float& ULeft, float& VLeft, float& ZRight, float& URight, float& VRight, float& oneOverZRight, const float dOneOverZdXAff, float& UOverZRight, const float dUOverZdXAff, float& VOverZRight, const float dVOverZdXAff, const int affineLength, fixed16_16& U, fixed16_16& V, fixed16_16& deltaU, fixed16_16& deltaV)
+         *
+         * @brief Draw texture map next subdivision
+         *
+         * @param [out]    ULeft          U left.
+         * @param [out]    VLeft          V left.
+         * @param [out]    ZRight         Z right.
+         * @param [out]    URight         U right.
+         * @param [out]    VRight         V right.
+         * @param [in,out] oneOverZRight  1/Z right.
+         * @param          dOneOverZdXAff d1/ZdX affine.
+         * @param [in,out] UOverZRight    U/Z right.
+         * @param          dUOverZdXAff   dU/ZdX affine.
+         * @param [in,out] VOverZRight    V/Z right.
+         * @param          dVOverZdXAff   dV/ZdX affine.
+         * @param          affineLength   Length of the affine.
+         * @param [out]    U              Bitmap X in fixed16_16.
+         * @param [out]    V              Bitmap Y in fixed16_16.
+         * @param [out]    deltaU         U delta.
+         * @param [out]    deltaV         V delta.
+         */
+        FORCE_INLINE_FUNCTION void drawTextureMapNextSubdivision(float& ULeft, float& VLeft, float& ZRight, float& URight, float& VRight, float& oneOverZRight, const float dOneOverZdXAff, float& UOverZRight, const float dUOverZdXAff, float& VOverZRight, const float dVOverZdXAff, const int affineLength, fixed16_16& U, fixed16_16& V, fixed16_16& deltaU, fixed16_16& deltaV)
+        {
+            ULeft = URight;
+            VLeft = VRight;
+
+            oneOverZRight += dOneOverZdXAff;
+            UOverZRight += dUOverZdXAff;
+            VOverZRight += dVOverZdXAff;
+
+            ZRight = 1 / oneOverZRight;
+            URight = ZRight * UOverZRight;
+            VRight = ZRight * VOverZRight;
+
+            U = floatToFixed16_16(ULeft);
+            V = floatToFixed16_16(VLeft);
+            deltaU = floatToFixed16_16(URight - ULeft) / affineLength;
+            deltaV = floatToFixed16_16(VRight - VLeft) / affineLength;
+        }
+
+        /**
+         * @fn FORCE_INLINE_FUNCTION bool DrawTextureMapScanLineBase::is1Inside(int value, int limit)
+         *
+         * @brief Check if value is inside [0..limit[
+         *
+         *        Check if value is inside [0..limit[
+         *
+         * @param [in] value Value to check.
+         * @param [in] limit Upper limit.
+         *
+         * @return true if value is inside given limit.
+         */
+        FORCE_INLINE_FUNCTION bool is1Inside(int value, int limit)
+        {
+            return (value >= 0 && value < limit);
+        }
+
+        /**
+         * @fn FORCE_INLINE_FUNCTION bool DrawTextureMapScanLineBase::is1x1Inside(int x, int y, int width, int height)
+         *
+         * @brief Check if (x,y) is inside ([0..width[, [0..height[)
+         *
+         *        Check if (x,y) is inside ([0..width[, [0..height[)
+         *
+         * @param [in] x      X coordinate.
+         * @param [in] y      Y coordinate.
+         * @param [in] width  X limit.
+         * @param [in] height Y limit.
+         *
+         * @return true if (x,y) is inside given limits.
+         */
+        FORCE_INLINE_FUNCTION bool is1x1Inside(int x, int y, int width, int height)
+        {
+            return is1Inside(x, width) && is1Inside(y, height);
+        }
+
+        /**
+         * @fn FORCE_INLINE_FUNCTION bool DrawTextureMapScanLineBase::is2Inside(int value, int limit)
+         *
+         * @brief Check if both value and value+1 are inside [0..limit[
+         *
+         *        Check if both value and value+1 are inside [0..limit[
+         *
+         * @param [in] value Value to check.
+         * @param [in] limit Upper limit.
+         *
+         * @return true if value and value+1 are inside given limit.
+         */
+        FORCE_INLINE_FUNCTION bool is2Inside(int value, int limit)
+        {
+            return (value >= 0 && value + 1 < limit);
+        }
+
+        /**
+         * @fn FORCE_INLINE_FUNCTION bool DrawTextureMapScanLineBase::is2x2Inside(int x, int y, int width, int height)
+         *
+         * @brief Check if both (x,y) and (x+1,y+1) are inside ([0..width[,[0..height[)
+         *
+         *        Check if both (x,y) and (x+1,y+1) are inside ([0..width[,[0..height[)
+         *
+         * @param [in] x      X coordinate.
+         * @param [in] y      Y coordinate.
+         * @param [in] width  X limit.
+         * @param [in] height Y limit.
+         *
+         * @return true if (x,y) and (x+1,y+1) are inside given limits.
+         */
+        FORCE_INLINE_FUNCTION bool is2x2Inside(int x, int y, int width, int height)
+        {
+            return is2Inside(x, width) && is2Inside(y, height);
+        }
+
+        /**
+         * @fn FORCE_INLINE_FUNCTION bool DrawTextureMapScanLineBase::is2PartiallyInside(int value, int limit)
+         *
+         * @brief Check if either value or value+1 is inside [0..limit[
+         *
+         *        Check if either value or value+1 is inside [0..limit[
+         *
+         * @param [in] value Value to check.
+         * @param [in] limit Upper limit.
+         *
+         * @return true if either value or value+1 is inside given limit.
+         */
+        FORCE_INLINE_FUNCTION bool is2PartiallyInside(int value, int limit)
+        {
+            return (value >= -1 && value < limit);
+        }
+
+        /**
+         * @fn FORCE_INLINE_FUNCTION bool DrawTextureMapScanLineBase::is2x2PartiallyInside(int x, int y, int width, int height)
+         *
+         * @brief Check if either (x,y) or (x+1,y+1) is inside ([0..width[,[0..height[)
+         *
+         *        Check if either (x,y) or (x+1,y+1) is inside ([0..width[,[0..height[)
+         *
+         * @param [in] x      X coordinate.
+         * @param [in] y      Y coordinate.
+         * @param [in] width  X limit.
+         * @param [in] height Y limit.
+         *
+         * @return true if either (x,y) or (x+1,y+1) is inside given limits.
+         */
+        FORCE_INLINE_FUNCTION bool is2x2PartiallyInside(int x, int y, int width, int height)
+        {
+            return is2PartiallyInside(x, width) && is2PartiallyInside(y, height);
+        }
+    };
+
+    /**
+     * @fn virtual DrawTextureMapScanLineBase* LCD::getTextureMapperDrawScanLine(const TextureSurface& texture, RenderingVariant renderVariant, uint8_t alpha);
+     *
+     * @brief Gets pointer to object that can draw a scan line.
+     *
+     *        Gets pointer to object that can draw a scan line which allows for highly specialized and optimized implementation.
+     *
+     * @param texture       The texture Surface.
+     * @param renderVariant The render variant.
+     * @param alpha         The global alpha.
+     *
+     * @return Null if it fails, else the pointer to the texture mapper draw scan line object.
+     */
+    virtual DrawTextureMapScanLineBase* getTextureMapperDrawScanLine(const TextureSurface& texture, RenderingVariant renderVariant, uint8_t alpha);
+
+    /**
+     * @fn virtual void LCD::drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize);
      *
      * @brief Draw scan line. Draw one horizontal line of the texture map on screen. The scan line
      *        will be drawn using perspective correct texture mapping. The appearance of the
@@ -544,11 +801,11 @@ protected:
      * @param dirtyAreaAbsolute The dirty area in absolute coordinates.
      * @param renderVariant     The render variant - includes the algorithm and the pixel format.
      * @param alpha             The alpha.
-     * @param subDivisionLength The size of the subdivisions of the scan line. A value of 1 will
+     * @param subDivisionSize   The size of the subdivisions of the scan line. A value of 1 will
      *                          give a completely perspective correct texture mapped scan line. A
      *                          large value will give an affine texture mapped scan line.
      */
-    virtual void drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionLength) = 0;
+    virtual void drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize);
 
     /**
      * @fn virtual void LCD::drawGlyph(uint16_t* wbuf, Rect widgetArea, int16_t x, int16_t y, uint16_t offsetX, uint16_t offsetY, const Rect& invalidatedArea, const GlyphNode* glyph, const uint8_t* glyphData, uint8_t dataFormatA4, colortype color, uint8_t bitsPerPixel, uint8_t alpha, TextRotation rotation) = 0;
@@ -720,7 +977,27 @@ protected:
     friend class TextArea;
     friend class TextAreaWithWildcardBase;
 
+    /**
+     * @fn FORCE_INLINE_FUNCTION static uint8_t LCD::getAlphaFromA4(const uint16_t* data, uint32_t offset)
+     *
+     * @brief Gets alpha from A4 image at given offset
+     *
+     *        Gets alpha from A4 image at given offset. The value is scaled up from range 0-15
+     *        to 0-255.
+     *
+     * @param data   A pointer to the start of the A4 data.
+     * @param offset The offset into the A4 image.
+     *
+     * @return The alpha from A4 (0-255).
+     */
+    FORCE_INLINE_FUNCTION static uint8_t getAlphaFromA4(const uint16_t* data, uint32_t offset)
+    {
+        uint8_t byte = reinterpret_cast<const uint8_t*>(data)[offset / 2];
+        return ((offset & 1) == 0 ? byte & 0xF : byte >> 4) * 0x11;
+    }
+
 private:
+    DrawTextureMapScanLineBase* textureMapperClass; ///< Used during faster TextureMapper rendering
     typedef void (LCD::*DrawStringFunctionPointer)(const Rect& widgetArea, const Rect& invalidatedArea, const StringVisuals& stringVisuals, const Unicode::UnicodeChar* format, va_list _pArg);
     static DrawStringFunctionPointer drawStringFunction; ///< The draw string function, either LTR or RTL
 
@@ -816,12 +1093,13 @@ public:
         : debugString(0), debugRegion(Rect(0, 0, 0, 0)), debugForegroundColor(colortype(0xffffffff)), debugScale(1)
     {
     }
+
     virtual ~DebugPrinter()
     {
     }
 
     /**
-     * @fn void setDebugString(const char* string);
+     * @fn void setString(const char* string);
      *
      * @brief Sets the debug string to be displayed on top of the framebuffer.
      *
@@ -829,13 +1107,13 @@ public:
      *
      * @param [in] string The string to be displayed.
      */
-    void setDebugString(const char* string)
+    void setString(const char* string)
     {
         debugString = string;
     }
 
     /**
-     * @fn void setDebugPosition(uint16_t x, uint16_t y, uint16_t w, uint16_t h);
+     * @fn void setPosition(uint16_t x, uint16_t y, uint16_t w, uint16_t h);
      *
      * @brief Sets the position of the debug string.
      *
@@ -846,13 +1124,13 @@ public:
      * @param [in] w The width of the region where the debug string is displayed.
      * @param [in] h The height of the region where the debug string is displayed.
      */
-    void setDebugPosition(uint16_t x, uint16_t y, uint16_t w, uint16_t h)
+    void setPosition(uint16_t x, uint16_t y, uint16_t w, uint16_t h)
     {
         debugRegion = Rect(x, y, w, h);
     }
 
     /**
-     * @fn void setDebugScale(uint8_t scale);
+     * @fn void setScale(uint8_t scale);
      *
      * @brief Sets the font scale of the debug string.
      *
@@ -860,7 +1138,7 @@ public:
      *
      * @param [in] scale The font scale of the debug string.
      */
-    void setDebugScale(uint8_t scale)
+    void setScale(uint8_t scale)
     {
         if (!scale)
         {
@@ -871,7 +1149,7 @@ public:
     }
 
     /**
-     * @fn void setDebugColor(colortype fg);
+     * @fn void setColor(colortype fg);
      *
      * @brief Sets the foreground color of the debug string.
      *
@@ -879,24 +1157,24 @@ public:
      *
      * @param [in] fg The foreground color of the debug string.
      */
-    void setDebugColor(colortype fg)
+    void setColor(colortype fg)
     {
         debugForegroundColor = fg;
     }
 
     /**
-     * @fn virtual void draw(const LCD& lcd) const = 0;
+     * @fn virtual void draw(const Rect& rect) const = 0;
      *
      * @brief Draws the debug string on top of the framebuffer content.
      *
      *        Draws the debug string on top of the framebuffer content.
      *
-     * @param [in] lcd Reference on the LCD object to use for drawing the debug string.
+     * @param [in] rect The rect to draw inside.
      */
-    virtual void draw(const LCD& lcd) const = 0;
+    virtual void draw(const Rect& rect) const = 0;
 
     /**
-     * @fn const Rect& region();
+     * @fn const Rect& getRegion();
      *
      * @brief Returns the region of the debug string.
      *
@@ -904,12 +1182,49 @@ public:
      *
      * @return Rect The debug string region.
      */
-    const Rect& region() const
+    const Rect& getRegion() const
     {
         return debugRegion;
     }
 
 protected:
+    /**
+     * @fn uint16_t DebugPrinter::getGlyph(uint8_t c) const
+     *
+     * @brief Gets a glyph
+     *
+     *        Gets a glyph (15 bits) arranged with 3 bits wide, 5 bits high in a single
+     *        uint16_t value
+     *
+     * @param c The character to get a glyph for.
+     *
+     * @return The glyph.
+     */
+    uint16_t getGlyph(uint8_t c) const
+    {
+        static const uint16_t builtin_debug_font[] =
+        {
+            000000, 022202, 055000, 057575, 026532, 051245, 025253, 022000,
+            012221, 042224, 005250, 002720, 000024, 000700, 000002, 011244,
+            025752, 026222, 061247, 061216, 045571, 074616, 034652, 071222,
+            025252, 025312, 002020, 002024, 012421, 007070, 042124, 061202,
+            025543, 025755, 065656, 034443, 065556, 074647, 074644, 034553,
+            055755, 072227, 011152, 055655, 044447, 057555, 015754, 025552,
+            065644, 025573, 065655, 034216, 072222, 055557, 055522, 055575,
+            055255, 055222, 071247, 032223, 044211, 062226, 025000, 000007,
+            042000, 003553, 046556, 003443, 013553, 002743, 012722, 002716,
+            046555, 020627, 010316, 045655, 062227, 006777, 006555, 002552,
+            006564, 003531, 006544, 003636, 022721, 005553, 005522, 005575,
+            005255, 005316, 007247, 032623, 022222, 062326, 063000, 077777
+        };
+
+        if (c < ' ' || c > '~')
+        {
+            c = 0x7F;
+        }
+        return builtin_debug_font[c - ' '];
+    }
+
     const char* debugString;        ///< Debug string to be displayed onscreen.
     Rect debugRegion;               ///< Region onscreen where the debug message is displayed.
     colortype debugForegroundColor; ///< Font color to use when displaying the debug string.

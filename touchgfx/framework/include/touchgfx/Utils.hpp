@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -198,6 +198,7 @@ int32_t clz(int32_t x);
  * @return An int32_t.
  */
 int32_t muldiv(int32_t factor1, int32_t factor2, int32_t divisor, int32_t& remainder);
+
 } // namespace touchgfx
 
 #endif // UTILS_HPP

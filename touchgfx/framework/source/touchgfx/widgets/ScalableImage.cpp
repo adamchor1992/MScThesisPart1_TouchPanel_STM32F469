@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -13,17 +13,17 @@
   ******************************************************************************
   */
 
-#include <touchgfx/widgets/ScalableImage.hpp>
-#include <touchgfx/transforms/DisplayTransformation.hpp>
 #include <touchgfx/TextureMapTypes.hpp>
 #include <touchgfx/hal/HAL.hpp>
+#include <touchgfx/transforms/DisplayTransformation.hpp>
+#include <touchgfx/widgets/ScalableImage.hpp>
 
 namespace touchgfx
 {
-ScalableImage::ScalableImage() :
-    Widget(),
-    currentScalingAlgorithm(BILINEAR_INTERPOLATION),
-    alpha(255)
+ScalableImage::ScalableImage()
+    : Widget(),
+      currentScalingAlgorithm(BILINEAR_INTERPOLATION),
+      alpha(255)
 {
 }
 
@@ -140,8 +140,8 @@ void ScalableImage::draw(const Rect& invalidatedArea) const
     triangleZs[2] = 100.f;
 
     // Setup texture coordinates
-    float right = (float)(bitmap.getWidth() - 1);
-    float bottom = (float)(bitmap.getHeight() - 1);
+    float right = (float)(bitmap.getWidth());
+    float bottom = (float)(bitmap.getHeight());
     float textureU0 = 0.0f;
     float textureV0 = 0.0f;
     float textureU1 = right;

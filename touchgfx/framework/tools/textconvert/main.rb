@@ -1,5 +1,5 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.12.3 distribution.
+# This file is part of the TouchGFX 4.13.0 distribution.
 #
 # <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
@@ -43,9 +43,11 @@ BANNER
   end
 
   if __FILE__ == $0
-    if ARGV.count < 7
+
+    if ARGV.count < 6
       abort self.banner
     end
+
     file_name = ARGV.shift
     font_convert_path = ARGV.shift
     @fonts_output_path = ARGV.shift
@@ -90,6 +92,40 @@ BANNER
     require 'fileutils'
     require 'json'
     require 'lib/file_io'
+
+    if File.file?("application.config")
+      text_conf = JSON.parse(File.read("application.config"))["text_configuration"] || {}
+
+      remap = text_conf["remap"]
+      if !remap.nil?
+        remap_identical_texts = remap == "yes" ? "yes" : "no"
+      end
+
+      a4 = text_conf["a4"]
+      if !a4.nil?
+        data_format = a4 == "yes" ? "A4" : ""
+      end
+
+      binary_translations = text_conf["binary_translations"]
+      if !binary_translations.nil?
+        generate_binary_language_files = binary_translations == "yes" ? "yes" : ""
+        if generate_binary_language_files == "yes" && remap_identical_texts == "yes"
+          puts "Disabling remapping of identical texts, because binary language files are generated"
+          remap_identical_texts = "no"
+        end
+      end
+
+      binary_fonts = text_conf["binary_fonts"]
+       if !binary_fonts.nil?
+        generate_binary_font_files = binary_fonts== "yes" ? "yes" : "no"
+      end
+
+      bpp = text_conf["framebuffer_bpp"]
+       if !bpp.nil?
+        framebuffer_bpp = "BPP" + bpp
+      end
+    end
+
     begin
       # 1. if text_converter is newer than compile_time.cache, remove all files under generated/texts and generated/fonts
       # 1b if generated/fonts/include/fonts/ApplicationFontProvider.hpp is missing, force generation of TextKeysAndLanguages.hpp
@@ -121,7 +157,14 @@ BANNER
       force_run = false
       options_file = "#{@localization_output_path}/cache/options.cache"
       options = File.exists?(options_file) && File.read(options_file)
-      new_options = ARGV.to_json      
+
+      new_options = ""
+      if File.file?("application.config")
+        new_options = JSON.parse(File.read("application.config"))["text_configuration"]
+      else
+        new_options = ARGV.to_json
+      end
+
       if(options != new_options)
         force_run = true
         FileIO.write_file_silent(options_file, new_options)
@@ -150,10 +193,8 @@ BANNER
       require 'rubygems'
       require 'lib/generator'
       require 'lib/emitters/fonts_cpp'
-
       FontsCpp.font_convert = font_convert_path
       Generator.new.run(file_name, @fonts_output_path, @localization_output_path, font_asset_path, data_format, remap_identical_texts, generate_binary_language_files, generate_binary_font_files, framebuffer_bpp)
-
       #touch the cache compile time that we rely on in the makefile
       FileUtils.touch "#{@localization_output_path}/cache/compile_time.cache"
 

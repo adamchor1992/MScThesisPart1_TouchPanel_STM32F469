@@ -9,7 +9,6 @@ DigitTemplateBase::DigitTemplateBase()
 {
     setWidth(38);
     setHeight(68);
-
     backgroundBox_Black.setPosition(0, 0, 38, 68);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 
@@ -26,5 +25,5 @@ DigitTemplateBase::DigitTemplateBase()
 
 void DigitTemplateBase::initialize()
 {
-	
+
 }

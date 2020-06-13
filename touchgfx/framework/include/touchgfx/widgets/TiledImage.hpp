@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -39,7 +39,6 @@ namespace touchgfx
 class TiledImage : public Image
 {
 public:
-
     /**
      * @fn TiledImage::TiledImage(const Bitmap& bmp = Bitmap())
      *
@@ -173,19 +172,6 @@ public:
      */
     virtual Rect getSolidRect() const;
 
-    /**
-     * @fn virtual uint16_t TiledImage::getType() const
-     *
-     * @brief For GUI testing only.
-     *
-     *        For GUI testing only. Returns type of this drawable.
-     *
-     * @return TYPE_IMAGE.
-     */
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_TILEDIMAGE;
-    }
 protected:
     int16_t xOffset; ///< The X offset into the bitmap to start drawing
     int16_t yOffset; ///< The Y offset into the bitmap to start drawing

@@ -73,7 +73,6 @@ private:
      */
     static const uint16_t CANVAS_BUFFER_SIZE = 24000;
     uint8_t canvasBuffer[CANVAS_BUFFER_SIZE];
-
 };
 
 #endif // SCREEN_MODULE1_GRAPHVIEWBASE_HPP

@@ -27,6 +27,6 @@ text_data_format := A4
 remap_identical_texts := yes
 
 # Location of the TouchGFX Environment
-touchgfx_env := C:/TouchGFX/4.12.3/env
+touchgfx_env := C:/TouchGFX/4.13.0/env
 
 text_converter_options := remap A4 BPP16

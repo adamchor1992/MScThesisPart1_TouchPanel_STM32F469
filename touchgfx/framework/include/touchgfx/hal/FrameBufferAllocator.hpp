@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -19,7 +19,6 @@
 
 namespace touchgfx
 {
-
 /**
  * @fn void FrameBufferAllocatorWaitOnTransfer();
  *
@@ -121,7 +120,9 @@ public:
      */
     virtual void freeBlockAfterTransfer() = 0;
 
-    virtual ~FrameBufferAllocator() { }
+    virtual ~FrameBufferAllocator()
+    {
+    }
 };
 
 /**
@@ -139,7 +140,11 @@ template <uint16_t block_size, uint32_t bytes_pr_pixel>
 class SingleBlockAllocator : public FrameBufferAllocator
 {
 public:
-    SingleBlockAllocator() : state(EMPTY) {}
+    SingleBlockAllocator()
+        : state(EMPTY)
+    {
+    }
+
     /**
      * @fn virtual uint16_t allocateBlock(const uint16_t x, const uint16_t y, const uint16_t width, const uint16_t height, uint8_t** block);
      *
@@ -239,6 +244,7 @@ public:
         assert(state == SENDING);
         state = EMPTY;
     }
+
 private:
     enum BlockState
     {
@@ -251,7 +257,6 @@ private:
     uint32_t memory[block_size / 4];
     volatile Rect blockRect;
 };
-
 
 /**
  * @class ManyBlockAllocator FrameBufferAllocator.hpp touchgfx/hal/FrameBufferAllocator.hpp
@@ -318,7 +323,6 @@ public:
         blockRect[drawingBlock].y = y;
         blockRect[drawingBlock].width = width;
         blockRect[drawingBlock].height = MIN(height, lines);
-        //touchgfx_printf("Draw: %d, %dx%d\n", drawingBlock, width, blockRect[drawingBlock].height);
         return blockRect[drawingBlock].height;
     }
 
@@ -377,7 +381,6 @@ public:
         {
             sendingBlock = 0;
         }
-        //touchgfx_printf("Trans: %d\n", sendingBlock);
         assert(state[sendingBlock] == DRAWN);
         rect = blockRect[sendingBlock];
         state[sendingBlock] = SENDING;
@@ -398,6 +401,7 @@ public:
         assert(state[sendingBlock] == SENDING);
         state[sendingBlock] = EMPTY;
     }
+
 private:
     enum BlockState
     {
@@ -413,6 +417,6 @@ private:
     int drawingBlock;
 };
 
-}
+} // namespace touchgfx
 
 #endif // FRAMEBUFFERALLOCATOR_HPP

@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -34,7 +34,6 @@ namespace touchgfx
 class Button : public AbstractButton
 {
 public:
-
     /**
      * @fn Button::Button()
      *
@@ -129,20 +128,6 @@ public:
     Bitmap getCurrentlyDisplayedBitmap() const
     {
         return (AbstractButton::pressed ? down : up);
-    }
-
-    /**
-     * @fn virtual uint16_t Button::getType() const
-     *
-     * @brief For GUI testing only.
-     *
-     *        For GUI testing only. Returns type of this drawable.
-     *
-     * @return TYPE_BUTTON.
-     */
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_BUTTON;
     }
 
 protected:

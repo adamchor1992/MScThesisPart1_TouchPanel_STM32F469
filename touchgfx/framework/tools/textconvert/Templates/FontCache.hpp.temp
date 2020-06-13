@@ -27,14 +27,16 @@ class FontCache
 public:
     FontCache();
     void setReader(FontDataReader* reader);
-    void clear();
+    void clear(bool keepGsubTable = false);
     void setMemory(uint8_t* memory, uint32_t size);
-    void initializeCachedFont(TypedText t, CachedFont* font);
+    void initializeCachedFont(TypedText t, CachedFont* font, bool loadGsubTable = false);
     bool cacheString(TypedText t, const Unicode::UnicodeChar* string);
+    bool cacheLigatures(CachedFont* font, TypedText t, const Unicode::UnicodeChar* string);
+
     const GlyphNode* getGlyph(Unicode::UnicodeChar unicode, FontId font) const;
     uint32_t getMemoryUsage()
     {
-        return top - memory;
+        return memorySize - (gsubStart - top);
     }
 
     void open();
@@ -57,7 +59,10 @@ private:
     uint8_t* copyGlyph(uint8_t* top, Unicode::UnicodeChar unicode, FontId font, uint32_t bpp, bool& outOfMemory);
 
     void cacheData(uint32_t bpp, GlyphNode* first);
+    bool cacheSortedString(TypedText t);
     bool createSortedString(const Unicode::UnicodeChar* string);
+    bool createSortedLigatures(CachedFont* font, TypedText t, const Unicode::UnicodeChar* string, ...);
+    bool sortSortedString(int n);
 
     void setPosition(uint32_t position);
     void readData(void* out, uint32_t numberOfBytes);
@@ -69,8 +74,9 @@ private:
     } fontTable[MAX(TypographyFontIndex::NUMBER_OF_FONTS, 1)];
 
     uint32_t memorySize;
-    uint8_t* memory; //start of memory
-    uint8_t* top;    //first unused byte
+    uint8_t* memory;    //start of memory
+    uint8_t* top;       //first unused byte
+    uint8_t* gsubStart; //first address of GSUB tables, allocated in the end of the cache
 
     FontDataReader* reader;
 
@@ -78,14 +84,10 @@ private:
     //Must be bigger than BinaryFontData
     static const uint32_t MAX_BUFFER_SIZE = 64;
     char buffer[MAX_BUFFER_SIZE];
-    uint32_t glyphNodeOffset;
     uint32_t glyphDataOffset;
-    uint32_t kerningTableOffset;
-    uint32_t gsubOffset;
-    uint32_t numGlyphs;
+    uint16_t numGlyphs;
+    uint16_t currentFileGlyphNumber;
     GlyphNode currentFileGlyphNode;
-    uint32_t currentFileGlyphNumber;
-    bool readTooFar;
 };
 } // namespace touchgfx
 

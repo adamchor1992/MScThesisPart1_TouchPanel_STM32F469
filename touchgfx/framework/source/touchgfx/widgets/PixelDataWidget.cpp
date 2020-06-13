@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -13,16 +13,16 @@
   ******************************************************************************
   */
 
-#include <touchgfx/widgets/PixelDataWidget.hpp>
 #include <touchgfx/hal/HAL.hpp>
+#include <touchgfx/widgets/PixelDataWidget.hpp>
 
 namespace touchgfx
 {
-PixelDataWidget::PixelDataWidget() :
-    Widget(),
-    buffer(0),
-    format(Bitmap::RGB888),
-    alpha(255)
+PixelDataWidget::PixelDataWidget()
+    : Widget(),
+      buffer(0),
+      format(Bitmap::RGB888),
+      alpha(255)
 {
 }
 
@@ -65,12 +65,12 @@ touchgfx::Rect PixelDataWidget::getSolidRect() const
         // There are at least some solid pixels
         switch (format)
         {
-        case Bitmap::BW:       ///< 1-bit, black / white, no alpha channel
-        case Bitmap::BW_RLE:   ///< 1-bit, black / white, no alpha channel compressed with horizontal RLE
-        case Bitmap::GRAY2:    ///< 2-bit, gray scale, no alpha channel
-        case Bitmap::GRAY4:    ///< 4-bit, gray scale, no alpha channel
-        case Bitmap::RGB565:   ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
-        case Bitmap::RGB888:   ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
+        case Bitmap::BW:     ///< 1-bit, black / white, no alpha channel
+        case Bitmap::BW_RLE: ///< 1-bit, black / white, no alpha channel compressed with horizontal RLE
+        case Bitmap::GRAY2:  ///< 2-bit, gray scale, no alpha channel
+        case Bitmap::GRAY4:  ///< 4-bit, gray scale, no alpha channel
+        case Bitmap::RGB565: ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
+        case Bitmap::RGB888: ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
             //All solid pixels
             solidRect.width = getWidth();
             solidRect.height = getHeight();
@@ -81,6 +81,7 @@ touchgfx::Rect PixelDataWidget::getSolidRect() const
         case Bitmap::RGBA2222: ///< 8-bit color
         case Bitmap::BGRA2222: ///< 8-bit color
         case Bitmap::L8:       ///< 8-bit indexed color
+        case Bitmap::A4:       ///< 4-bit alpha level
             //No knowledge about solid pixels
             break;
         }

@@ -103,6 +103,7 @@ protected:
 struct BinaryFontData
 {
     uint32_t fontIndex;                // The font index (as used by TypedTextDatabase)
+    uint32_t sizeOfFontData;           // Size of the complete BinaryFont
     uint32_t offsetToTable;            // GlyphNode[]
     uint32_t offsetToKerning;          // KerningNode[]
     uint32_t offsetToGlyphs;           // uint8_t[]

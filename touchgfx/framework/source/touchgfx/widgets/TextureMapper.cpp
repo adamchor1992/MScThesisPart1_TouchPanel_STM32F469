@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -13,43 +13,43 @@
   ******************************************************************************
   */
 
-#include <touchgfx/widgets/TextureMapper.hpp>
-#include <touchgfx/transforms/DisplayTransformation.hpp>
 #include <touchgfx/Math3D.hpp>
 #include <touchgfx/TextureMapTypes.hpp>
 #include <touchgfx/hal/HAL.hpp>
+#include <touchgfx/transforms/DisplayTransformation.hpp>
+#include <touchgfx/widgets/TextureMapper.hpp>
 
 namespace touchgfx
 {
-TextureMapper::TextureMapper() :
-    Widget(),
-    currentRenderingAlgorithm(NEAREST_NEIGHBOR),
-    alpha(255),
-    xBitmapPosition(0.0f),
-    yBitmapPosition(0.0f),
-    xAngle(0.0f),
-    yAngle(0.0f),
-    zAngle(0.0f),
-    scale(1.0f),
-    xOrigo(0.0f),
-    yOrigo(0.0f),
-    zOrigo(1000.0f),
-    xCamera(0.0f),
-    yCamera(0.0f),
-    cameraDistance(1000.0f),
-    imageX0(0.0f),
-    imageY0(0.0f),
-    imageZ0(1.0f),
-    imageX1(0.0f),
-    imageY1(0.0f),
-    imageZ1(1.0f),
-    imageX2(0.0f),
-    imageY2(0.0f),
-    imageZ2(1.0f),
-    imageX3(0.0f),
-    imageY3(0.0f),
-    imageZ3(1.0f),
-    subDivisionSize(12)
+TextureMapper::TextureMapper()
+    : Widget(),
+      currentRenderingAlgorithm(NEAREST_NEIGHBOR),
+      alpha(255),
+      xBitmapPosition(0.0f),
+      yBitmapPosition(0.0f),
+      xAngle(0.0f),
+      yAngle(0.0f),
+      zAngle(0.0f),
+      scale(1.0f),
+      xOrigo(0.0f),
+      yOrigo(0.0f),
+      zOrigo(1000.0f),
+      xCamera(0.0f),
+      yCamera(0.0f),
+      cameraDistance(1000.0f),
+      imageX0(0.0f),
+      imageY0(0.0f),
+      imageZ0(1.0f),
+      imageX1(0.0f),
+      imageY1(0.0f),
+      imageZ1(1.0f),
+      imageX2(0.0f),
+      imageY2(0.0f),
+      imageZ2(1.0f),
+      imageX3(0.0f),
+      imageY3(0.0f),
+      imageZ3(1.0f),
+      subDivisionSize(12)
 {
 }
 
@@ -69,15 +69,15 @@ void TextureMapper::applyTransformation()
 {
     const uint8_t n = 4;
 
-    int imgWidth = Bitmap(bitmap).getWidth();
-    int imgHeight = Bitmap(bitmap).getHeight();
+    int imgWidth = Bitmap(bitmap).getWidth() + 1;
+    int imgHeight = Bitmap(bitmap).getHeight() + 1;
 
     touchgfx::Point4 vertices[n] =
     {
-        touchgfx::Point4(xBitmapPosition,          yBitmapPosition,           cameraDistance),
-        touchgfx::Point4(xBitmapPosition + imgWidth, yBitmapPosition,           cameraDistance),
-        touchgfx::Point4(xBitmapPosition + imgWidth, yBitmapPosition + imgHeight, cameraDistance),
-        touchgfx::Point4(xBitmapPosition,          yBitmapPosition + imgHeight, cameraDistance),
+        touchgfx::Point4(xBitmapPosition - 1, yBitmapPosition - 1, cameraDistance),
+        touchgfx::Point4(xBitmapPosition - 1 + imgWidth, yBitmapPosition - 1, cameraDistance),
+        touchgfx::Point4(xBitmapPosition - 1 + imgWidth, yBitmapPosition - 1 + imgHeight, cameraDistance),
+        touchgfx::Point4(xBitmapPosition - 1, yBitmapPosition - 1 + imgHeight, cameraDistance),
     };
     touchgfx::Point4 transformed[n];
 
@@ -190,24 +190,24 @@ void TextureMapper::draw(const Rect& invalidatedArea) const
     uint16_t* fb = HAL::getInstance()->lockFrameBuffer();
 
     // Setup texture coordinates
-    float right = (float)(bitmap.getWidth() - 1);
-    float bottom = (float)(bitmap.getHeight() - 1);
-    float textureU0 = 0.0f;
-    float textureV0 = 0.0f;
+    float right = (float)(bitmap.getWidth());
+    float bottom = (float)(bitmap.getHeight());
+    float textureU0 = -1.0f;
+    float textureV0 = -1.0f;
     float textureU1 = right;
-    float textureV1 = 0.0f;
+    float textureV1 = -1.0f;
     float textureU2 = right;
     float textureV2 = bottom;
-    float textureU3 = 0.0f;
+    float textureU3 = -1.0f;
     float textureV3 = bottom;
     if (HAL::DISPLAY_ROTATION == rotate90)
     {
-        textureU0 = 0.0f;
+        textureU0 = -1.0f;
         textureV0 = right;
-        textureU1 = 0.0f;
-        textureV1 = 0.0f;
+        textureU1 = -1.0f;
+        textureV1 = -1.0f;
         textureU2 = bottom;
-        textureV2 = 0.0f;
+        textureV2 = -1.0f;
         textureU3 = bottom;
         textureV3 = right;
     }
@@ -356,7 +356,12 @@ void TextureMapper::drawTriangle(const Rect& invalidatedArea, uint16_t* fb, cons
     DrawingSurface dest = { fb, HAL::FRAME_BUFFER_WIDTH };
     TextureSurface src = { textmap, bitmap.getExtraData(), bitmap.getWidth(), bitmap.getHeight(), bitmap.getWidth() };
 
-    HAL::lcd().drawTextureMapTriangle(dest, vertices, src, absoluteRect, dirtyAreaAbsolute, lookupRenderVariant(), alpha, subDivisionSize);
+    uint16_t subDivs = subDivisionSize;
+    if (point0.Z == point1.Z && point1.Z == point2.Z)
+    {
+        subDivs = 0xFFFF; // Max: One sweep
+    }
+    HAL::lcd().drawTextureMapTriangle(dest, vertices, src, absoluteRect, dirtyAreaAbsolute, lookupRenderVariant(), alpha, subDivs);
 }
 
 RenderingVariant TextureMapper::lookupRenderVariant() const
@@ -375,10 +380,6 @@ RenderingVariant TextureMapper::lookupRenderVariant() const
 
 Rect TextureMapper::getSolidRect() const
 {
-    if (alpha < 255)
-    {
-        return Rect(0, 0, 0, 0);
-    }
     return Rect(0, 0, 0, 0);
 }
 } // namespace touchgfx

@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -14,32 +14,33 @@
   */
 
 #include <platform/hal/simulator/sdl2/HALSDL2.hpp>
-#include <vector>
-#include <cmath>
-#include <string>
-#include <time.h>
-#include <stdio.h>
-#include <string.h>
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_shape.h>
 #include <SDL2/SDL_syswm.h>
+#include <cmath>
+#include <stdio.h>
+#include <string.h>
+#include <string>
+#include <time.h>
+#include <vector>
 #include <touchgfx/Utils.hpp>
 
 #if defined(WIN32) || defined(_WIN32)
 #include <windows.h>
 #elif defined(__GNUC__)
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #endif
 
 #ifdef __GNUC__
 #define sprintf_s snprintf
-#define freopen_s(pFile,filename,mode,pStream) (((*(pFile))=freopen((filename),(mode),(pStream)))==NULL)
-#define localtime_s(timeinfo,rawtime) memcpy(timeinfo,localtime(rawtime),sizeof(tm))
-#define strncpy_s(dst,dstsize,src,srcsize) strncpy(dst,src,dstsize<srcsize?dstsize:srcsize)
-#define wcstombs_s(result,dst,dstsize,src,srcsize) *result=wcstombs(dst,src,dstsize<srcsize?dstsize:srcsize)
-#define memcpy_s(dst,dstsize,src,srcsize) memcpy(dst,src,dstsize<srcsize?dstsize:srcsize)
+#define freopen_s(pFile, filename, mode, pStream) (((*(pFile)) = freopen((filename), (mode), (pStream))) == NULL)
+#define localtime_s(timeinfo, rawtime) memcpy(timeinfo, localtime(rawtime), sizeof(tm))
+#define strncpy_s(dst, dstsize, src, srcsize) strncpy(dst, src, dstsize < srcsize ? dstsize : srcsize)
+#define wcstombs_s(result, dst, dstsize, src, srcsize) *result = wcstombs(dst, src, dstsize < srcsize ? dstsize : srcsize)
+#define memcpy_s(dst, dstsize, src, srcsize) memcpy(dst, src, dstsize < srcsize ? dstsize : srcsize)
 #endif
 
 namespace touchgfx
@@ -174,11 +175,15 @@ bool HALSDL2::sdl_init(int /*argcount*/, char** args)
     }
 
 #if defined(SIMULATOR) && !defined(__linux__)
-    touchgfx_enable_stdio(); // This will create a console window
-    HWND hwnd = GetConsoleWindow(); // Get a handle to the console window
-    if (hwnd) // Was it actually created?
+    if (getWindowVisible())
     {
-        ShowWindow(hwnd, SW_HIDE); // Hide it until first use
+        // Create window and hide it ASAP to prevent problems with files being closed when stdio is redirected to the new console
+        touchgfx_enable_stdio();        // This will create a console window
+        HWND hwnd = GetConsoleWindow(); // Get a handle to the console window
+        if (hwnd)                       // If the console exists, quickly hide it
+        {
+            ShowWindow(hwnd, SW_HIDE);
+        }
     }
 #endif
 
@@ -187,7 +192,7 @@ bool HALSDL2::sdl_init(int /*argcount*/, char** args)
     char* filenamePos = strrchr(programPath, '\\');
     if (filenamePos)
     {
-        filenamePos++;    // Skip path separator
+        filenamePos++; // Skip path separator
     }
     else
     {
@@ -199,7 +204,7 @@ bool HALSDL2::sdl_init(int /*argcount*/, char** args)
     char* filenamePos = strrchr(programPath, '/');
     if (filenamePos)
     {
-        filenamePos++;    // Skip path separator
+        filenamePos++; // Skip path separator
     }
     else
     {
@@ -252,8 +257,12 @@ bool HALSDL2::sdl_init(int /*argcount*/, char** args)
     //sdl has hijacked output and error on windows
     const char* confile = "CONOUT$";
     // ignore error codes from calling freopen_s
-    if (!freopen_s(&stream, confile, "w", stdout)) {}
-    if (!freopen_s(&stream, confile, "w", stderr)) {}
+    if (!freopen_s(&stream, confile, "w", stdout))
+    {
+    }
+    if (!freopen_s(&stream, confile, "w", stderr))
+    {
+    }
 #endif
 
     lcd().init();
@@ -635,7 +644,7 @@ void HALSDL2::taskEntry()
                     }
                     else
                     {
-                        borderless = !borderless;
+                        isWindowBorderless = !isWindowBorderless;
                     }
                     recreateWindow();
                 }
@@ -682,7 +691,7 @@ void HALSDL2::recreateWindow(bool updateContent /*= true*/)
     }
     if (isSkinActive && currentSkin != 0)
     {
-        simulatorWindow = SDL_CreateShapedWindow(getWindowTitle(), windowX, windowY, width, height, SDL_WINDOW_BORDERLESS);
+        simulatorWindow = SDL_CreateShapedWindow(getWindowTitle(), windowX, windowY, width, height, SDL_WINDOW_BORDERLESS | (isWindowVisible ? 0 : SDL_WINDOW_HIDDEN));
         SDL_WindowShapeMode mode;
         mode.mode = ShapeModeBinarizeAlpha;
         mode.parameters.binarizationCutoff = 255;
@@ -692,7 +701,7 @@ void HALSDL2::recreateWindow(bool updateContent /*= true*/)
     }
     else
     {
-        simulatorWindow = SDL_CreateWindow(getWindowTitle(), windowX, windowY, width, height, borderless ? SDL_WINDOW_BORDERLESS : 0);
+        simulatorWindow = SDL_CreateWindow(getWindowTitle(), windowX, windowY, width, height, (isWindowBorderless ? SDL_WINDOW_BORDERLESS : 0) | (isWindowVisible ? 0 : SDL_WINDOW_HIDDEN));
     }
     simulatorRenderer = SDL_CreateRenderer(simulatorWindow, -1, 0);
     SDL_SetRenderDrawBlendMode(simulatorRenderer, SDL_BLENDMODE_ADD);
@@ -1273,5 +1282,54 @@ char** HALSDL2::getArgv(int* argc)
     }
     return argv;
 }
+
+void simulator_enable_stdio()
+{
+#ifdef __GNUC__
+#define freopen_s(pFile, filename, mode, pStream) (((*(pFile)) = freopen((filename), (mode), (pStream))) == NULL)
 #endif
+    touchgfx::HAL* hal = touchgfx::HAL::getInstance();
+    if (static_cast<touchgfx::HALSDL2*>(hal)->getWindowVisible())
+    {
+        HWND consoleHwnd = GetConsoleWindow(); // Get handle of console window
+        if (!consoleHwnd)                      // No console window yet?
+        {
+            HWND activeHwnd = GetActiveWindow(); // Remember which window is active
+
+            AllocConsole();                   // Allocate a new console
+            consoleHwnd = GetConsoleWindow(); // Get handle of console window
+
+            FILE* dummy;
+            freopen_s(&dummy, "CONIN$", "r", stdin); // Redirect stdin/stdout/stderr to the new console
+            freopen_s(&dummy, "CONOUT$", "w", stdout);
+            freopen_s(&dummy, "CONOUT$", "w", stderr);
+
+            SwitchToThisWindow(activeHwnd, true); // Switch back to the originally active window
+        }
+        if (consoleHwnd)
+        {
+            ShowWindow(consoleHwnd, SW_SHOW); // Show/hide it!
+        }
+    }
+    else
+    {
+        HWND consoleHwnd = GetConsoleWindow(); // Get handle of console window
+        if (consoleHwnd)
+        {
+            ShowWindow(consoleHwnd, SW_HIDE);
+        }
+    }
+}
+
+void simulator_printf(const char* format, va_list pArg)
+{
+    // Create a console window, if window is visible.
+    simulator_enable_stdio();
+    if (GetConsoleWindow()) // Only print if we have a console window
+    {
+        vprintf(format, pArg);
+    }
+}
+#endif
+
 } // namespace touchgfx

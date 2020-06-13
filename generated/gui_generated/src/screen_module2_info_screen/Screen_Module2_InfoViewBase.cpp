@@ -9,6 +9,7 @@
 Screen_Module2_InfoViewBase::Screen_Module2_InfoViewBase() :
     buttonCallback(this, &Screen_Module2_InfoViewBase::buttonCallbackHandler)
 {
+
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 

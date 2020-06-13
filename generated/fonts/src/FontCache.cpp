@@ -4,26 +4,34 @@
 #include <fonts/FontCache.hpp>
 #include <fonts/CachedFont.hpp>
 #include <texts/TypedTextDatabase.hpp>
+#include <touchgfx/TextProvider.hpp>
 #include <touchgfx/Utils.hpp>
 #include <cstring>
 
 namespace touchgfx
 {
 FontCache::FontCache()
-    : memorySize(0), memory(0), top(0), reader(0)
+    : memorySize(0), memory(0), top(0), gsubStart(0), reader(0)
 {
 }
 
-void FontCache::clear()
+void FontCache::clear(bool keepGsubTable /* = false */)
 {
-    memset(memory, 0, memorySize);
     memset(fontTable, 0, sizeof(fontTable));
+
+    //top is beginning of memory, no glyphs are cached yet
+    top = memory;
+
+    if (!keepGsubTable)
+    {
+        //gsubStart points to end of memory (nothing loaded yet)
+        gsubStart = memory + memorySize;
+    }
 }
 
 void FontCache::setMemory(uint8_t* _memory, uint32_t size)
 {
     memory = _memory;
-    top = memory;
     memorySize = size;
 
     clear();
@@ -65,54 +73,87 @@ void FontCache::close()
     }
 }
 
-void FontCache::initializeCachedFont(TypedText t, CachedFont* font)
+void FontCache::initializeCachedFont(TypedText t, CachedFont* font, bool loadGsubTable /*= false*/)
 {
     //get font index from typed text
     FontId fontId = t.getFontId();
     //reset to start of file
+    open();
     setPosition(0);
 
     assert(sizeof(touchgfx::BinaryFontData) < MAX_BUFFER_SIZE);
     readData(buffer, sizeof(touchgfx::BinaryFontData));
+    const struct touchgfx::BinaryFontData* binaryFontData = reinterpret_cast<const struct touchgfx::BinaryFontData*>(buffer);
+
     const Font** flashFonts = TypedTextDatabase::getFonts();
     const GeneratedFont* flashFont = static_cast<const GeneratedFont*>(flashFonts[fontId]);
-    *font = CachedFont((const struct touchgfx::BinaryFontData*)buffer, fontId, this, flashFont);
+    *font = CachedFont(reinterpret_cast<const struct touchgfx::BinaryFontData*>(buffer), fontId, this, flashFont);
+
+    if (loadGsubTable)
+    {
+        setPosition(binaryFontData->offsetToGSUB);
+
+        const uint32_t sizeOfGSUB = binaryFontData->sizeOfFontData - binaryFontData->offsetToGSUB;
+        if (top + sizeOfGSUB < gsubStart) //room for this GSUB table
+        {
+            uint8_t* const gsubPosition = gsubStart - sizeOfGSUB;
+            readData(gsubPosition, sizeOfGSUB);
+            font->setGSUBTable(reinterpret_cast<uint16_t*>(gsubPosition));
+            gsubStart -= sizeOfGSUB;
+        }
+        else
+        {
+            font->setGSUBTable(0);
+        }
+    }
+    close();
 }
 
 bool FontCache::cacheString(TypedText t, const Unicode::UnicodeChar* string)
 {
-    //get font index from typed text
-    FontId fontId = t.getFontId();
-    //get BPP from standard font
-    const Font* font = t.getFont();
-    uint32_t bpp = font->getBitsPerPixel();
-    uint32_t* data = reinterpret_cast<uint32_t*>(buffer);
-
+    open();
     if (!createSortedString(string))
     {
+        close();
         return false;
     }
+    const bool result = cacheSortedString(t);
+    close();
+    return result;
+}
 
-    setPosition(4); //skip font index
-    assert(sizeof(uint32_t) < MAX_BUFFER_SIZE);
-    readData(data, sizeof(uint32_t));
-    glyphNodeOffset = *data;
-    readData(data, sizeof(uint32_t));
-    kerningTableOffset = *data;
-    readData(data, sizeof(uint32_t));
-    glyphDataOffset = *data;
-    readData(data, sizeof(uint32_t));
-    gsubOffset = *data;
-    readData(data, sizeof(uint16_t));
-    numGlyphs = *data;
+bool FontCache::cacheLigatures(CachedFont* font, TypedText t, const Unicode::UnicodeChar* string)
+{
+    open();
+    if (!createSortedLigatures(font, t, string, 0, 0))
+    {
+        close();
+        return false;
+    }
+    const bool result = cacheSortedString(t);
+    close();
+    return result;
+}
 
-    //go to glyph nodes for font
-    setPosition(glyphNodeOffset);
+bool FontCache::cacheSortedString(TypedText t)
+{
+    setPosition(8); //skip font index and size
+    uint32_t glyphNodeOffset;
+    uint32_t dummy;
+    readData(&glyphNodeOffset, sizeof(uint32_t));
+    readData(&dummy, sizeof(uint32_t));
+    readData(&glyphDataOffset, sizeof(uint32_t));
+    readData(&dummy, sizeof(uint32_t));
+    readData(&numGlyphs, sizeof(uint16_t));
+
+    FontId fontId = t.getFontId(); // Get font index from typed text
+    uint32_t bpp = t.getFont()->getBitsPerPixel(); // Get BPP from standard font
+
+    setPosition(glyphNodeOffset); // Go to glyph nodes for font
     currentFileGlyphNumber = 0;
-    //toBeCachedSize = 0;
-    readTooFar = false;
+    currentFileGlyphNode.unicode = 0; // Force reading of first glyph
 
-    string = sortedString;
+    const Unicode::UnicodeChar* string = sortedString;
     Unicode::UnicodeChar last = 0;
     GlyphNode* firstNewGlyph = 0;
     bool outOfMemory = false;
@@ -187,41 +228,24 @@ void FontCache::insert(Unicode::UnicodeChar unicode, FontId font, uint32_t bpp, 
 
 uint8_t* FontCache::copyGlyph(uint8_t* top, Unicode::UnicodeChar unicode, FontId font, uint32_t bpp, bool& outOfMemory)
 {
-    while (currentFileGlyphNumber < numGlyphs)
+    while (currentFileGlyphNumber < numGlyphs && currentFileGlyphNode.unicode < unicode)
     {
-        if (!readTooFar)
-        {
-            readData(&currentFileGlyphNode, sizeof(GlyphNode));
-            currentFileGlyphNumber++;
-        }
-        else
-        {
-            readTooFar = false;
-        }
-        if (currentFileGlyphNode.unicode == unicode)
-        {
-            break;
-        }
-        else if (currentFileGlyphNode.unicode > unicode)
-        {
-            //glyph not found
-            readTooFar = true;
-            return top;
-        }
+        readData(&currentFileGlyphNode, sizeof(GlyphNode));
+        currentFileGlyphNumber++;
     }
-
-    //glyph not found
     if (currentFileGlyphNode.unicode != unicode)
     {
+        //glyphnode not found
         return top;
     }
 
-    //glyphnode found;
+    //glyphnode found
     uint32_t glyphSize = ((currentFileGlyphNode.width() + 1) & ~1) * currentFileGlyphNode.height() * bpp / 8;
     glyphSize = (glyphSize + 3) & ~0x03;
+    uint32_t requiredMem = SizeGlyphNode + 4 + glyphSize; // GlyphNode + next ptr + glyph
 
     //is space available before sortedString
-    if (top + SizeGlyphNode + 4 + glyphSize > (uint8_t*)sortedString)
+    if (top + requiredMem > (uint8_t*)sortedString)
     {
         outOfMemory = true;
         return top;
@@ -229,12 +253,10 @@ uint8_t* FontCache::copyGlyph(uint8_t* top, Unicode::UnicodeChar unicode, FontId
 
     *(GlyphNode*)top = currentFileGlyphNode;
 
-    top += SizeGlyphNode;
-    //next pointer zero
-    top += 4;
-
-    //increase top to reserve spacer for deferred copying
-    top += glyphSize;
+    //clear next pointer
+    uint8_t** next = (uint8_t**)(top + SizeGlyphNode);
+    *next = 0;
+    top += requiredMem;
     return top;
 }
 
@@ -244,7 +266,7 @@ void FontCache::cacheData(uint32_t bpp, GlyphNode* first)
     while (gn)
     {
         uint8_t* p = (uint8_t*)gn;
-        if(gn->dataOffset != 0xFFFFFFFF)
+        if (gn->dataOffset != 0xFFFFFFFF)
         {
             p += SizeGlyphNode;
             //next pointer
@@ -268,7 +290,7 @@ bool FontCache::createSortedString(const Unicode::UnicodeChar* string)
 {
     int length = Unicode::strlen(string);
     //sorted string is allocated at end of buffer
-    sortedString = (Unicode::UnicodeChar*)(memory + memorySize - (length + 1) * 2);
+    sortedString = (Unicode::UnicodeChar*)(gsubStart - (length + 1) * 2);
     if ((uint8_t*)sortedString < top)
     {
         //unable to allocate string buffer in end of memory
@@ -282,14 +304,43 @@ bool FontCache::createSortedString(const Unicode::UnicodeChar* string)
         n++;
     }
     *uc = 0;
+    return sortSortedString(n);
+}
 
-    uc = sortedString;
-    int i, j;
-    bool swapped;
-    for (i = 0; i < n - 1; i++)
+bool FontCache::createSortedLigatures(CachedFont* font, TypedText t, const Unicode::UnicodeChar* string, ...)
+{
+    va_list pArg;
+    va_start(pArg, string);
+    TextProvider tp;
+    tp.initialize(string, pArg, font->getGSUBTable());
+    va_end(pArg);
+    Unicode::UnicodeChar ligature;
+    sortedString = (Unicode::UnicodeChar*)(gsubStart);
+    if ((uint8_t*)(sortedString - 1) < top)
     {
-        swapped = false;
-        for (j = 0; j < n - i - 1; j++)
+        return false;
+    }
+    *--sortedString = 0;
+    int n = 0;
+    while ((ligature = tp.getNextLigature(t.getTextDirection())) != 0)
+    {
+        if ((uint8_t*)(sortedString - 1) < top)
+        {
+            return false;
+        }
+        *--sortedString = ligature;
+        n++;
+    }
+    return sortSortedString(n);
+}
+
+bool FontCache::sortSortedString(int n)
+{
+    Unicode::UnicodeChar* uc = sortedString;
+    for (int i = 0; i < n - 1; i++)
+    {
+        bool swapped = false;
+        for (int j = 0; j < n - i - 1; j++)
         {
             if (uc[j] > uc[j + 1])
             {
@@ -301,7 +352,7 @@ bool FontCache::createSortedString(const Unicode::UnicodeChar* string)
         }
 
         //if no two elements were swapped by inner loop, then break
-        if (swapped == false)
+        if (!swapped)
         {
             break;
         }

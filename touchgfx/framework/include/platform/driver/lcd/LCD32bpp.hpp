@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -45,8 +45,11 @@ namespace touchgfx
 class LCD32bpp : public LCD
 {
 public:
+    LCD32bpp();
 
-    virtual ~LCD32bpp() {}
+    virtual ~LCD32bpp()
+    {
+    }
 
     /**
      * @fn virtual void LCD32bpp::init();
@@ -345,39 +348,320 @@ public:
         return color.getColor32() & 0xFF;
     }
 
-protected:
     /**
-     * @fn virtual void LCD32bpp::drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize);
+     * @fn void LCD32bpp::enableTextureMapperAll();
      *
-     * @brief Draw scan line. Draw one horizontal line of the texture map on screen. The scan line
-     *        will be drawn using perspective correct texture mapping. The appearance of the
-     *        line is determined by the left and right edge and the gradients structure. The
-     *        edges contain the information about the x,y,z coordinates of the left and right
-     *        side respectively and also information about the u,v coordinates of the texture
-     *        map used. The gradients structure contains information about how to interpolate
-     *        all the values across the scan line. The data drawn should be present in the
-     *        texture argument.
+     * @brief Enables the texture mappers for all image formats.
      *
-     *        The scan line will be drawn using the additional arguments. The scan line will be
-     *        placed and clipped using the absolute and dirty rectangles The alpha will
-     *        determine how the scan line should be alpha blended. The subDivisionSize will
-     *        determine the size of the piecewise affine texture mapped lines.
-     *
-     * @param dest              The description of where the texture is drawn - can be used to
-     *                          issue a draw off screen.
-     * @param gradients         The gradients using in interpolation across the scan line.
-     * @param leftEdge          The left edge of the scan line.
-     * @param rightEdge         The right edge of the scan line.
-     * @param texture           The texture.
-     * @param absoluteRect      The containing rectangle in absolute coordinates.
-     * @param dirtyAreaAbsolute The dirty area in absolute coordinates.
-     * @param renderVariant     The render variant - includes the algorithm and the pixel format.
-     * @param alpha             The alpha.
-     * @param subDivisionSize   The size of the subdivisions of the scan line. A value of 1 will
-     *                          give a completely perspective correct texture mapped scan line. A
-     *                          large value will give an affine texture mapped scan line.
+     *        Enables the texture mappers for all image formats. This allows drawing any image
+     *        using Bilinear Interpolation and Nearest Neighbor algorithms, but might use a
+     *        lot of memory for the drawing algorithms.
      */
-    virtual void drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize);
+    void enableTextureMapperAll();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_RGB565();
+     *
+     * @brief Enables the texture mappers for L8_RGB565 image format.
+     *
+     *        Enables the texture mappers for L8_RGB565 image format. This allows drawing
+     *        L8_RGB565 images using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperL8_RGB565_BilinearInterpolation
+     * @see enableTextureMapperL8_RGB565_NearestNeighbor
+     */
+    void enableTextureMapperL8_RGB565();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_RGB565_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for L8_RGB565 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for L8_RGB565 image format. This allows drawing
+     *        L8_RGB565 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperL8_RGB565
+     * @see enableTextureMapperL8_RGB565_NearestNeighbor
+     */
+    void enableTextureMapperL8_RGB565_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_RGB565_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for L8_RGB565 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for L8_RGB565 image format. This allows drawing
+     *        L8_RGB565 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperL8_RGB565
+     * @see enableTextureMapperL8_RGB565_BilinearInterpolation
+     */
+    void enableTextureMapperL8_RGB565_NearestNeighbor();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_RGB888();
+     *
+     * @brief Enables the texture mappers for L8_RGB888 image format.
+     *
+     *        Enables the texture mappers for L8_RGB888 image format. This allows drawing
+     *        L8_RGB888 images using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperL8_RGB888_BilinearInterpolation
+     * @see enableTextureMapperL8_RGB888_NearestNeighbor
+     */
+    void enableTextureMapperL8_RGB888();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_RGB888_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for L8_RGB888 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for L8_RGB888 image format. This allows drawing
+     *        L8_RGB888 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperL8_RGB888
+     * @see enableTextureMapperL8_RGB888_NearestNeighbor
+     */
+    void enableTextureMapperL8_RGB888_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_RGB888_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for L8_RGB888 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for L8_RGB888 image format. This allows drawing
+     *        L8_RGB888 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperL8_RGB888
+     * @see enableTextureMapperL8_RGB888_BilinearInterpolation
+     */
+    void enableTextureMapperL8_RGB888_NearestNeighbor();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_ARGB8888();
+     *
+     * @brief Enables the texture mappers for L8_ARGB8888 image format.
+     *
+     *        Enables the texture mappers for L8_ARGB8888 image format. This allows drawing
+     *        L8_ARGB8888 images using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperL8_ARGB8888_BilinearInterpolation
+     * @see enableTextureMapperL8_ARGB8888_NearestNeighbor
+     */
+    void enableTextureMapperL8_ARGB8888();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_ARGB8888_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for L8_ARGB8888 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for L8_ARGB8888 image format. This allows drawing
+     *        L8_ARGB8888 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperL8_ARGB8888
+     * @see enableTextureMapperL8_ARGB8888_NearestNeighbor
+     */
+    void enableTextureMapperL8_ARGB8888_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperL8_ARGB8888_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for L8_ARGB8888 image format for NearestNeighbor
+     *        algorithm.
+     *
+     *        Enables the texture mappers for L8_ARGB8888 image format. This allows drawing
+     *        L8_ARGB8888 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperL8_ARGB8888
+     * @see enableTextureMapperL8_ARGB8888_BilinearInterpolation
+     */
+    void enableTextureMapperL8_ARGB8888_NearestNeighbor();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB565();
+     *
+     * @brief Enables the texture mappers for RGB565 image format.
+     *
+     *        Enables the texture mappers for RGB565 image format. This allows drawing RGB565
+     *        images using Bilinear Interpolation and Nearest Neighbor algorithms.
+     */
+    void enableTextureMapperRGB565();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB565_Opaque_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for Opaque RGB565 image format for Bilinear Interpolation
+     *        algorithm.
+     *
+     *        Enables the texture mappers for Opaque RGB565 image format. This allows drawing
+     *        RGB565 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperRGB565
+     * @see enableTextureMapperRGB565_NonOpaque_BilinearInterpolation
+     */
+    void enableTextureMapperRGB565_Opaque_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB565_NonOpaque_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for NonOpaque RGB565 image format for Bilinear
+     *        Interpolation algorithm.
+     *
+     *        Enables the texture mappers for NonOpaque RGB565 image format. This allows
+     *        drawing RGB565 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperRGB565
+     * @see enableTextureMapperRGB565_Opaque_BilinearInterpolation
+     */
+    void enableTextureMapperRGB565_NonOpaque_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB565_Opaque_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for Opaque RGB565 image format for Nearest Neighbor
+     *        algorithm.
+     *
+     *        Enables the texture mappers for Opaque RGB565 image format. This allows drawing
+     *        RGB565 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperRGB565
+     * @see enableTextureMapperRGB565_NonOpaque_NearestNeighbor
+     */
+    void enableTextureMapperRGB565_Opaque_NearestNeighbor();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB565_NonOpaque_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for NonOpaque RGB565 image format for Nearest Neighbor
+     *        algorithm.
+     *
+     *        Enables the texture mappers for NonOpaque RGB565 image format. This allows
+     *        drawing RGB565 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperRGB565
+     * @see enableTextureMapperRGB565_Opaque_NearestNeighbor
+     */
+    void enableTextureMapperRGB565_NonOpaque_NearestNeighbor();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB888();
+     *
+     * @brief Enables the texture mappers for RGB888 image format.
+     *
+     *        Enables the texture mappers for RGB888 image format. This allows drawing RGB888
+     *        images using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperRGB888_BilinearInterpolation
+     * @see enableTextureMapperRGB888_NearestNeighbor
+     */
+    void enableTextureMapperRGB888();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB888_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for RGB888 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for RGB888 image format. This allows drawing RGB888
+     *        images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperRGB888
+     * @see enableTextureMapperRGB888_NearestNeighbor
+     */
+    void enableTextureMapperRGB888_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperRGB888_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for RGB888 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for RGB888 image format. This allows drawing RGB888
+     *        images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperRGB888
+     * @see enableTextureMapperRGB888_BilinearInterpolation
+     */
+    void enableTextureMapperRGB888_NearestNeighbor();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperARGB8888();
+     *
+     * @brief Enables the texture mappers for ARGB8888 image format.
+     *
+     *        Enables the texture mappers for ARGB8888 image format. This allows drawing
+     *        ARGB8888 images using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperARGB8888_BilinearInterpolation
+     * @see enableTextureMapperARGB8888_NearestNeighbor
+     */
+    void enableTextureMapperARGB8888();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperARGB8888_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for ARGB8888 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for ARGB8888 image format. This allows drawing
+     *        ARGB8888 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperARGB8888
+     * @see enableTextureMapperARGB8888_NearestNeighbor
+     */
+    void enableTextureMapperARGB8888_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperARGB8888_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for ARGB8888 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for ARGB8888 image format. This allows drawing
+     *        ARGB8888 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperARGB8888
+     * @see enableTextureMapperARGB8888_BilinearInterpolation
+     */
+    void enableTextureMapperARGB8888_NearestNeighbor();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperA4();
+     *
+     * @brief Enables the texture mappers for A4 image format.
+     *
+     *        Enables the texture mappers for A4 image format. This allows drawing A4 images
+     *        using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperA4_BilinearInterpolation
+     * @see enableTextureMapperA4_NearestNeighbor
+     */
+    void enableTextureMapperA4();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperA4_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for A4 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for A4 image format. This allows drawing A4 images
+     *        using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperA4
+     * @see enableTextureMapperA4_NearestNeighbor
+     */
+    void enableTextureMapperA4_BilinearInterpolation();
+
+    /**
+     * @fn void LCD32bpp::enableTextureMapperA4_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for A4 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for A4 image format. This allows drawing A4 images
+     *        using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperA4
+     * @see enableTextureMapperA4_BilinearInterpolation
+     */
+    void enableTextureMapperA4_NearestNeighbor();
+
+protected:
+    virtual DrawTextureMapScanLineBase* getTextureMapperDrawScanLine(const TextureSurface& texture, RenderingVariant renderVariant, uint8_t alpha);
 
     /**
      * @fn static int LCD32bpp::nextPixel(bool rotatedDisplay, TextRotation textRotation);
@@ -544,42 +828,465 @@ protected:
     static void blitCopyL8_RGB565(const uint8_t* sourceData, const uint8_t* clutData, const Rect& source, const Rect& blitRect, uint8_t alpha);
 
 private:
-    FORCE_INLINE_FUNCTION uint32_t expandRgb565(uint16_t c) const
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB565_Opaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB565_Opaque_NearestNeighbor_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB565_Opaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB565_Opaque_BilinearInterpolation_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB888_Opaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB888_Opaque_NearestNeighbor_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB888_Opaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_L8_RGB888_Opaque_BilinearInterpolation_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_L8_ARGB8888_NonOpaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_L8_ARGB8888_NonOpaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_NonOpaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_NonOpaque_NearestNeighbor_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_Opaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_Opaque_NearestNeighbor_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_NonOpaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_NonOpaque_BilinearInterpolation_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_Opaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_RGB565_Opaque_BilinearInterpolation_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_RGB888_Opaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_RGB888_Opaque_NearestNeighbor_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_RGB888_Opaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_RGB888_Opaque_BilinearInterpolation_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_ARGB8888_NonOpaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_ARGB8888_NonOpaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_A4_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_A4_NearestNeighbor_NoGA;
+    DrawTextureMapScanLineBase* textureMapper_A4_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_A4_BilinearInterpolation_NoGA;
+
+    FORCE_INLINE_FUNCTION static uint32_t expandRgb565(uint16_t c)
     {
         return ((c & 0x07E0) << 16) | (c & ~0x07E0);
     }
 
-    FORCE_INLINE_FUNCTION uint16_t compactRgb565(uint32_t c) const
+    FORCE_INLINE_FUNCTION static uint16_t compactRgb565(uint32_t c)
     {
         return ((c >> 16) & 0x07E0) | (c & ~0x07E0);
     }
 
-    FORCE_INLINE_FUNCTION uint16_t bilinearInterpolation565(uint16_t tl, uint16_t tr, uint16_t bl, uint16_t br, int x, int y) const
+    FORCE_INLINE_FUNCTION static uint32_t convertRgb565toArgb8888(uint16_t rgb565)
     {
-        uint32_t a00 = expandRgb565(tl);
-        uint32_t a01 = expandRgb565(tr);
-        uint32_t a10 = expandRgb565(bl);
-        uint32_t a11 = expandRgb565(br);
-
-        int xy = (x * y) >> 3;
-        return compactRgb565((a00 * (32 - 2 * y - 2 * x + xy) + a01 * (2 * x - xy) + a10 * (2 * y - xy) + a11 * xy) >> 5);
+        uint8_t r = (rgb565 & 0xF800) >> 8;
+        r |= r >> 5;
+        uint8_t g = (rgb565 & 0x07E0) >> 3;
+        g |= g >> 6;
+        uint8_t b = rgb565 << 3;
+        b |= b >> 5;
+        return (r << 16) | (g << 8) | b;
     }
 
-    FORCE_INLINE_FUNCTION uint8_t bilinearInterpolation8(uint8_t tl, uint8_t tr, uint8_t bl, uint8_t br, int x, int y) const
+    FORCE_INLINE_FUNCTION static void copy888(const uint8_t* const rgb888, uint8_t* const destBits)
     {
-        int xy = (x * y) >> 3;
-        return (tl * (32 - 2 * y - 2 * x + xy) + tr * (2 * x - xy) + bl * (2 * y - xy) + br * xy) >> 5;
+        destBits[0] = rgb888[0];
+        destBits[1] = rgb888[1];
+        destBits[2] = rgb888[2];
     }
 
-    FORCE_INLINE_FUNCTION float bilinearInterpolate1D(float s, float e, float t) const
+    FORCE_INLINE_FUNCTION static void alphaBlend888(const uint8_t r, const uint8_t g, const uint8_t b, uint8_t* const destBits, const uint8_t alpha, const uint8_t ialpha)
     {
-        return s + (e - s) * t;
+        destBits[0] = div255(b * alpha + destBits[0] * ialpha);
+        destBits[1] = div255(g * alpha + destBits[1] * ialpha);
+        destBits[2] = div255(r * alpha + destBits[2] * ialpha);
     }
 
-    FORCE_INLINE_FUNCTION uint8_t bilinearInterpolate2D(uint8_t c00, uint8_t c10, uint8_t c01, uint8_t c11, float tx, float ty) const
+    FORCE_INLINE_FUNCTION static void alphaBlend888(const uint8_t* const rgb888, uint8_t* const destBits, const uint8_t alpha, const uint8_t ialpha)
     {
-        return (uint8_t)(bilinearInterpolate1D(bilinearInterpolate1D((float)c00, (float)c10, tx), bilinearInterpolate1D((float)c01, (float)c11, tx), ty) + 0.5f);
+        alphaBlend888(rgb888[2], rgb888[1], rgb888[0], destBits, alpha, ialpha);
     }
+
+    FORCE_INLINE_FUNCTION static void alphaBlend565(const uint16_t rgb565, uint8_t* const destBits, const uint8_t alpha, const uint8_t ialpha)
+    {
+        const uint8_t r = (rgb565 & 0xF800) >> 8;
+        const uint8_t g = (rgb565 & 0x07E0) >> 3;
+        const uint8_t b = rgb565 << 3;
+        alphaBlend888(r, g, b, destBits, alpha, ialpha);
+    }
+
+    FORCE_INLINE_FUNCTION static uint16_t bilinearInterpolate565(uint16_t c00, uint16_t c10, uint16_t c01, uint16_t c11, uint8_t x, uint8_t y)
+    {
+        assert(x < 16 && y < 16);
+        uint32_t a00 = expandRgb565(c00);
+        uint32_t a10 = expandRgb565(c10);
+        uint32_t a01 = expandRgb565(c01);
+        uint32_t a11 = expandRgb565(c11);
+
+        uint8_t xy = (x * y) >> 3;
+        return compactRgb565((a00 * (32 - 2 * y - 2 * x + xy) + a10 * (2 * x - xy) + a01 * (2 * y - xy) + a11 * xy) >> 5);
+    }
+
+    FORCE_INLINE_FUNCTION static uint16_t bilinearInterpolate565(uint16_t c00, uint16_t c10, uint8_t x)
+    {
+        assert(x < 16);
+        uint32_t a00 = expandRgb565(c00);
+        uint32_t a10 = expandRgb565(c10);
+
+        return compactRgb565((a00 * (32 - 2 * x) + a10 * (2 * x)) >> 5);
+    }
+
+    FORCE_INLINE_FUNCTION static uint8_t bilinearInterpolate8(uint8_t c00, uint8_t c10, uint8_t x)
+    {
+        assert(x < 16);
+        uint16_t xy10 = 16 * x;
+        uint16_t xy00 = 256 - xy10;
+
+        return (c00 * xy00 + c10 * xy10) >> 8;
+    }
+
+    FORCE_INLINE_FUNCTION static uint8_t bilinearInterpolate8(uint8_t c00, uint8_t c10, uint8_t c01, uint8_t c11, uint8_t x, uint8_t y)
+    {
+        assert(x < 16 && y < 16);
+        uint16_t xy11 = x * y;
+        uint16_t xy10 = 16 * x - xy11;
+        uint16_t xy01 = 16 * y - xy11;
+        uint16_t xy00 = 256 - (xy11 + xy10 + xy01);
+
+        return (c00 * xy00 + c10 * xy10 + c01 * xy01 + c11 * xy11) >> 8;
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t bilinearInterpolate888(uint32_t c00, uint32_t c10, uint8_t x)
+    {
+        assert(x < 16);
+        uint16_t xy10 = 16 * x;
+        uint16_t xy00 = 256 - xy10;
+
+        return ((((c00 & 0xFF00FF) * xy00 + (c10 & 0xFF00FF) * xy10) >> 8) & 0xFF00FF)
+               | ((((c00 & 0x00FF00) * xy00 + (c10 & 0x00FF00) * xy10) >> 8) & 0x00FF00);
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t bilinearInterpolate888(uint32_t c00, uint32_t c10, uint32_t c01, uint32_t c11, uint8_t x, uint8_t y)
+    {
+        assert(x < 16 && y < 16);
+        uint16_t xy11 = x * y;
+        uint16_t xy10 = 16 * x - xy11;
+        uint16_t xy01 = 16 * y - xy11;
+        uint16_t xy00 = 256 - (xy11 + xy10 + xy01);
+
+        return ((((c00 & 0xFF00FF) * xy00 + (c10 & 0xFF00FF) * xy10 + (c01 & 0xFF00FF) * xy01 + (c11 & 0xFF00FF) * xy11) >> 8) & 0xFF00FF)
+               | ((((c00 & 0x00FF00) * xy00 + (c10 & 0x00FF00) * xy10 + (c01 & 0x00FF00) * xy01 + (c11 & 0x00FF00) * xy11) >> 8) & 0x00FF00);
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div255_888(uint32_t val, uint8_t factor)
+    {
+        return div255rb((val & 0xFF00FF) * factor) | div255g((val & 0x00FF00) * factor);
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div255_888_FFcheck(uint32_t val, uint8_t factor)
+    {
+        return factor < 0xFF ? div255_888(val, factor) : val;
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div31rb(uint16_t val, uint8_t factor)
+    {
+        uint32_t val32 = (val & 0xF81F) * (factor >> 3);
+        return ((val32 + 0x0801 + ((val32 >> 5) & 0xF81F)) >> 5) & 0xF81F;
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div31g(uint16_t val, uint8_t factor)
+    {
+        uint32_t val32 = (val & 0x07E0) * factor;
+        return ((val32 + 0x0020 + (val32 >> 8)) >> 8) & 0x07E0;
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div255_565(uint16_t val, uint8_t factor)
+    {
+        return div31rb(val, factor) | div31g(val, factor);
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div255_565_FFcheck(uint16_t val, uint8_t factor)
+    {
+        return factor < 0xFF ? div31rb(val, factor) | div31g(val, factor) : val;
+    }
+
+    class DrawTextureMapScanLineBase32 : public DrawTextureMapScanLineBase
+    {
+    protected:
+        FORCE_INLINE_FUNCTION bool overrunCheckNearestNeighbor(uint32_t*& destBits, int& pixelsToDraw, fixed16_16& U, fixed16_16& V, fixed16_16 deltaU, fixed16_16 deltaV, const int16_t maxWidth, const int16_t maxHeight);
+        FORCE_INLINE_FUNCTION bool overrunCheckBilinearInterpolation(uint32_t*& destBits, int& pixelsToDraw, fixed16_16& U, fixed16_16& V, fixed16_16 deltaU, fixed16_16 deltaV, const int16_t maxWidth, const int16_t maxHeight);
+    };
+
+    class TextureMapper_L8_RGB565_Opaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint16_t* const palette16, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_L8_RGB565_Opaque_NearestNeighbor_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint16_t* const palette16, const int16_t bitmapWidth, const int UInt, const int VInt);
+    };
+
+    class TextureMapper_L8_RGB565_Opaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint16_t* const palette16, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint8_t* const textureBits8, const uint16_t* const palette16, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_L8_RGB565_Opaque_BilinearInterpolation_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint16_t* const palette16, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+        void writePixelOnEdge(uint32_t* const destBits, const uint8_t* const textureBits8, const uint16_t* const palette16, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+    };
+
+    class TextureMapper_L8_RGB888_Opaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint8_t* const palette8, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_L8_RGB888_Opaque_NearestNeighbor_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint8_t* const palette8, const int16_t bitmapWidth, const int UInt, const int VInt);
+    };
+
+    class TextureMapper_L8_RGB888_Opaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint8_t* const palette8, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint8_t* const textureBits8, const uint8_t* const palette8, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_L8_RGB888_Opaque_BilinearInterpolation_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint8_t* const palette8, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+        void writePixelOnEdge(uint32_t* const destBits, const uint8_t* const textureBits8, const uint8_t* const palette8, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+    };
+
+    class TextureMapper_L8_ARGB8888_NonOpaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint32_t* const palette32, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_L8_ARGB8888_NonOpaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const uint32_t* const palette32, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint8_t* const textureBits8, const uint32_t* const palette32, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_RGB565_NonOpaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const uint8_t* alphaBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_RGB565_NonOpaque_NearestNeighbor_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const uint8_t* alphaBits, const int16_t bitmapWidth, const int UInt, const int VInt);
+    };
+
+    class TextureMapper_RGB565_NonOpaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const uint8_t* alphaBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint16_t* const textureBits, const uint8_t* alphaBits, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_RGB565_NonOpaque_BilinearInterpolation_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const uint8_t* alphaBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+        void writePixelOnEdge(uint32_t* const destBits, const uint16_t* const textureBits, const uint8_t* alphaBits, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+    };
+
+    class TextureMapper_RGB565_Opaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_RGB565_Opaque_NearestNeighbor_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt);
+    };
+
+    class TextureMapper_RGB565_Opaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_RGB565_Opaque_BilinearInterpolation_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+        void writePixelOnEdge(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+    };
+
+    class TextureMapper_RGB888_Opaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_RGB888_Opaque_NearestNeighbor_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const int16_t bitmapWidth, const int UInt, const int VInt);
+    };
+
+    class TextureMapper_RGB888_Opaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint8_t* const textureBits8, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_RGB888_Opaque_BilinearInterpolation_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t* const textureBits8, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+        void writePixelOnEdge(uint32_t* const destBits, const uint8_t* const textureBits8, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+    };
+
+    class TextureMapper_ARGB8888_NonOpaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint32_t* const textureBits32, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_ARGB8888_NonOpaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint32_t* const textureBits32, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint32_t* const textureBits32, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_A4_NearestNeighbor_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t a4, const uint8_t alpha);
+    };
+
+    class TextureMapper_A4_NearestNeighbor_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint8_t a4);
+    };
+
+    class TextureMapper_A4_BilinearInterpolation_GA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapStride, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapStride, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_A4_BilinearInterpolation_NoGA : public DrawTextureMapScanLineBase32
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapStride, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+        void writePixelOnEdge(uint32_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapStride, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac);
+    };
+};
+
+/**
+ * @class LCD32DebugPrinter LCD32bpp.hpp platform/driver/lcd/LCD32bpp.hpp
+ *
+ * @brief The class LCD32DebugPrinter implements the DebugPrinter interface for printing debug messages on top of 32bit framebuffer.
+ *
+ *        The class LCD32DebugPrinter implements the DebugPrinter interface for printing debug messages on top of 32bit framebuffer.
+ *
+ * @see DebugPrinter
+ */
+class LCD32DebugPrinter : public DebugPrinter
+{
+public:
+    virtual void draw(const Rect& rect) const;
 };
 } // namespace touchgfx
 #endif // LCD32BPP_HPP

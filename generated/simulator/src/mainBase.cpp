@@ -4,6 +4,7 @@
 #include <simulator/mainBase.hpp>
 #include <platform/hal/simulator/sdl2/HALSDL2.hpp>
 #include <common/TouchGFXInit.hpp>
+#include <platform/driver/lcd/LCD16bpp.hpp>
 
 void setupSimulator(int argc, char** argv, touchgfx::HAL& hal) {
     // Simulate hardware running at 60Hz generating a vsync every 16.6667 ms
@@ -14,4 +15,9 @@ void setupSimulator(int argc, char** argv, touchgfx::HAL& hal) {
     bool sdl_init_result = static_cast<touchgfx::HALSDL2&>(hal).sdl_init(argc, argv);
     assert(sdl_init_result && "Error during SDL initialization");
 
+}
+
+touchgfx::LCD16bpp lcd;
+touchgfx::LCD& setupLCD() {
+    return lcd;
 }

@@ -374,7 +374,7 @@
               <MiscControls></MiscControls>
               <Define>ST STM32F469xx USE_OS_SYSTICK USE_BPP=16</Define>
               <Undefine></Undefine>
-              <IncludePath>../../touchgfx/framework/include;../../gui/include;../../target/include;../../platform/os;../../generated/fonts/include;../../generated/images/include;../../generated/texts/include;../../generated/gui_generated/include;../bsp/include;../bsp/include/platform/core/arm/cortex-m/CMSIS;../bsp/include/platform/hal/mcu/stm32f4cube;../bsp/include/platform/hal/mcu/stm32f4cube/STM32F4xx_HAL_Driver;../bsp/include/platform/hal/mcu/stm32f4cube/CMSIS;../bsp/include;../bsp/include/bsp;../bsp/source/vendor/STM32469I-Discovery;../os/FreeRTOS7.6.0/Source/include;../os/FreeRTOS7.6.0/Source/portable/RVDS/ARM_CM4F</IncludePath>
+              <IncludePath>../../target/include;../../platform/os;../bsp/include;../bsp/include/platform/core/arm/cortex-m/CMSIS;../bsp/include/platform/hal/mcu/stm32f4cube;../bsp/include/platform/hal/mcu/stm32f4cube/STM32F4xx_HAL_Driver;../bsp/include/platform/hal/mcu/stm32f4cube/CMSIS;../bsp/include;../bsp/include/bsp;../bsp/source/vendor/STM32469I-Discovery;../os/FreeRTOS7.6.0/Source/include;../os/FreeRTOS7.6.0/Source/portable/RVDS/ARM_CM4F;../../touchgfx/framework/include;../../generated/fonts/include;../../generated/gui_generated/include;../../generated/images/include;../../generated/texts/include;../../gui/include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -739,11 +739,6 @@
               <FilePath>../../gui/src/common/graphline.cpp</FilePath>
             </File>
             <File>
-              <FileName>init.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/init.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Model.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/model/model.cpp</FilePath>
@@ -907,16 +902,6 @@
               <FileName>Screen_Module3_SignalsView.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../gui/src/screen_module3_signals_screen/screen_module3_signalsview.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>uart_packet.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/uart_packet.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>utilities.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../gui/src/utilities.cpp</FilePath>
             </File>
           </Files>
         </Group>

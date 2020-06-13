@@ -1,5 +1,5 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.12.3 distribution.
+# This file is part of the TouchGFX 4.13.0 distribution.
 #
 # <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>
@@ -47,7 +47,7 @@ class FontsCpp
       end
     end
 
-    #4, scan for Font files
+    #4, scan for Font files, remove unused
     Dir["#{local_path}/Font_*.cpp"].each do |font_file|
       if font_names.none? {|font_name| font_file.match /#{local_path}\/Font_#{font_name}_\d+.cpp/ }
         FileUtils.rm(font_file)
@@ -58,7 +58,6 @@ class FontsCpp
     local_path = "#{@output_directory}/cache".gsub('\\','/')
     Dir["#{local_path}/Font_*Cpp.cache"].each do |cache_file|
       if font_names.none? {|font_name| cache_file == "#{local_path}/Font_#{font_name}Cpp.cache" }
-        puts "removing #{cache_file}"
         FileUtils.rm(cache_file)
       end
     end
@@ -95,6 +94,7 @@ class FontsCpp
       end
     end
   end
+
   def fonts
     @fonts ||=
       begin

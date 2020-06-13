@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -85,7 +85,7 @@ void CircleProgress::setStartEndAngle(int startAngle, int endAngle)
     assert(startAngle != endAngle);
     circle.setArc(startAngle, endAngle);
     circleEndAngle = endAngle;
-    setValue(getValue());
+    CircleProgress::setValue(CircleProgress::getValue());
 }
 
 int CircleProgress::getStartAngle() const
@@ -125,4 +125,4 @@ void CircleProgress::setValue(int value)
         circle.updateArcEnd<CWRUtil::Q5>(startAngle + progress);
     }
 }
-}
+} // namespace touchgfx

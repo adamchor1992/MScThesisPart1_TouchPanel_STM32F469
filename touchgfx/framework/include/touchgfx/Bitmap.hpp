@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -61,9 +61,9 @@ public:
      */
     enum ClutFormat
     {
-        CLUT_FORMAT_L8_ARGB8888,       ///< 32-bit, 8 bits for each of red, green, blue and per pixel alpha channel
-        CLUT_FORMAT_L8_RGB888,         ///< 24-bit, 8 bits for each of red, green and blue, no per pixel alpha channel
-        CLUT_FORMAT_L8_RGB565          ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no per pixel alpha channel
+        CLUT_FORMAT_L8_ARGB8888, ///< 32-bit, 8 bits for each of red, green, blue and per pixel alpha channel
+        CLUT_FORMAT_L8_RGB888,   ///< 24-bit, 8 bits for each of red, green and blue, no per pixel alpha channel
+        CLUT_FORMAT_L8_RGB565    ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no per pixel alpha channel
     };
 
     /**
@@ -75,18 +75,19 @@ public:
      */
     enum BitmapFormat
     {
-        RGB565,             ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
-        RGB888,             ///< 24-bit, 8 bits for each of red, green and blue, no alpha channel
-        ARGB8888,           ///< 32-bit, 8 bits for each of red, green, blue and alpha channel
-        BW,                 ///< 1-bit, black / white, no alpha channel
-        BW_RLE,             ///< 1-bit, black / white, no alpha channel compressed with horizontal RLE
-        GRAY2,              ///< 2-bit grayscale
-        GRAY4,              ///< 4-bit grayscale
-        ARGB2222,           ///< 8-bit color
-        ABGR2222,           ///< 8-bit color
-        RGBA2222,           ///< 8-bit color
-        BGRA2222,           ///< 8-bit color
-        L8                  ///< 8-bit indexed color
+        RGB565,   ///< 16-bit, 5 bits for red, 6 bits for green, 5 bits for blue, no alpha channel
+        RGB888,   ///< 24-bit, 8 bits for each of red, green and blue, no alpha channel
+        ARGB8888, ///< 32-bit, 8 bits for each of red, green, blue and alpha channel
+        BW,       ///< 1-bit, black / white, no alpha channel
+        BW_RLE,   ///< 1-bit, black / white, no alpha channel compressed with horizontal RLE
+        GRAY2,    ///< 2-bit grayscale
+        GRAY4,    ///< 4-bit grayscale
+        ARGB2222, ///< 8-bit color
+        ABGR2222, ///< 8-bit color
+        RGBA2222, ///< 8-bit color
+        BGRA2222, ///< 8-bit color
+        L8,       ///< 8-bit indexed color
+        A4        ///< 4-bit alpha level
     };
 
     /**
@@ -98,16 +99,16 @@ public:
      */
     struct BitmapData
     {
-        const uint8_t* const data;                  ///< The data of this bitmap
-        const uint8_t* const extraData;             ///< The data of either the alpha channel if exist or clut data in case of indexed color bitmap (contains 0 if no alpha channel neither clut exist)
-        const uint16_t       width;                 ///< The width of the bitmap
-        const uint16_t       height;                ///< The height of the bitmap
-        const uint16_t       solidRect_x;           ///< The x coordinate of the maximum solid rectangle of the bitmap
-        const uint16_t       solidRect_y;           ///< The y coordinate of the maximum solid rectangle of the bitmap
-        const uint16_t       solidRect_width : 13;  ///< The width of the maximum solid rectangle of the bitmap
-        const uint16_t       format_hi : 3;         ///< Determine the format of the data (high 3 bits)
-        const uint16_t       solidRect_height : 13; ///< The height of the maximum solid rectangle of the bitmap
-        const uint16_t       format_lo : 3;         ///< Determine the format of the data (low 3 bits)
+        const uint8_t* const data;            ///< The data of this bitmap
+        const uint8_t* const extraData;       ///< The data of either the alpha channel if exist or clut data in case of indexed color bitmap (contains 0 if no alpha channel neither clut exist)
+        const uint16_t width;                 ///< The width of the bitmap
+        const uint16_t height;                ///< The height of the bitmap
+        const uint16_t solidRect_x;           ///< The x coordinate of the maximum solid rectangle of the bitmap
+        const uint16_t solidRect_y;           ///< The y coordinate of the maximum solid rectangle of the bitmap
+        const uint16_t solidRect_width : 13;  ///< The width of the maximum solid rectangle of the bitmap
+        const uint16_t format_hi : 3;         ///< Determine the format of the data (high 3 bits)
+        const uint16_t solidRect_height : 13; ///< The height of the maximum solid rectangle of the bitmap
+        const uint16_t format_lo : 3;         ///< Determine the format of the data (low 3 bits)
 
         /**
          * @fn BitmapFormat getFormat() const
@@ -133,12 +134,12 @@ public:
      */
     struct DynamicBitmapData
     {
-        Rect     solid;     ///< The solidRect of this bitmap
+        Rect solid;         ///< The solidRect of this bitmap
         uint16_t width;     ///< The width of the bitmap
         uint16_t height;    ///< The height of the bitmap
-        uint8_t  format: 5; ///< Determine the format of the data
-        uint8_t  inuse: 1;  ///< Zero if not in use
-        uint8_t  extra: 2;  ///< Extra data field, dependent on format
+        uint8_t format : 5; ///< Determine the format of the data
+        uint8_t inuse : 1;  ///< Zero if not in use
+        uint8_t extra : 2;  ///< Extra data field, dependent on format
     };
 
     /**
@@ -164,7 +165,8 @@ public:
      *
      * @param id The unique bitmap identifier.
      */
-    explicit Bitmap(const BitmapId id = BITMAP_INVALID) : bitmapId(id)
+    explicit Bitmap(const BitmapId id = BITMAP_INVALID)
+        : bitmapId(id)
     {
     }
 
@@ -618,18 +620,18 @@ private:
 
     static bool copyBitmapToCache(BitmapId id, uint8_t* const dst);
 
-    BitmapId                  bitmapId;
-    static const BitmapData*  bitmaps;
+    BitmapId bitmapId;
+    static const BitmapData* bitmaps;
     static DynamicBitmapData* dynBitmaps;
-    static CacheTableEntry*   cacheTable;      //address of allocation point cache
-    static BitmapId*          allocationTable; //order of allocations in cache
-    static uint8_t*           nextFreeData;
-    static uint16_t           nextAllocationIndex;
-    static uint32_t           memoryRemaining;
-    static uint32_t           totalMemory;
-    static uint16_t           numberOfBitmaps;
-    static uint16_t           numberOfDynamicBitmaps;
-    static uint16_t           uncachedCount;  //uncached images, sort of ...
+    static CacheTableEntry* cacheTable; //address of allocation point cache
+    static BitmapId* allocationTable;   //order of allocations in cache
+    static uint8_t* nextFreeData;
+    static uint16_t nextAllocationIndex;
+    static uint32_t memoryRemaining;
+    static uint32_t totalMemory;
+    static uint16_t numberOfBitmaps;
+    static uint16_t numberOfDynamicBitmaps;
+    static uint16_t uncachedCount; //uncached images, sort of ...
 };
 } // namespace touchgfx
 

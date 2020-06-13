@@ -10,6 +10,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonCallback(this, &Screen_Module1_SettingsViewBase::buttonCallbackHandler),
     updateItemCallback(this, &Screen_Module1_SettingsViewBase::updateItemCallbackHandler)
 {
+
     touchgfx::CanvasWidgetRenderer::setupBuffer(canvasBuffer, CANVAS_BUFFER_SIZE);
 
     backgroundBox_Black.setPosition(-1, 0, 800, 480);

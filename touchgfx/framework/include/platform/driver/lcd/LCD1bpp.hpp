@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -16,14 +16,14 @@
 #ifndef LCD1BPP_HPP
 #define LCD1BPP_HPP
 
-#include <touchgfx/hal/Types.hpp>
-#include <touchgfx/hal/HAL.hpp>
-#include <touchgfx/lcd/LCD.hpp>
-#include <touchgfx/Font.hpp>
-#include <touchgfx/Bitmap.hpp>
-#include <touchgfx/Unicode.hpp>
-#include <touchgfx/TextProvider.hpp>
 #include <stdarg.h>
+#include <touchgfx/Bitmap.hpp>
+#include <touchgfx/Font.hpp>
+#include <touchgfx/TextProvider.hpp>
+#include <touchgfx/Unicode.hpp>
+#include <touchgfx/hal/HAL.hpp>
+#include <touchgfx/hal/Types.hpp>
+#include <touchgfx/lcd/LCD.hpp>
 
 namespace touchgfx
 {
@@ -45,8 +45,9 @@ namespace touchgfx
 class LCD1bpp : public LCD
 {
 public:
-
-    virtual ~LCD1bpp() {}
+    virtual ~LCD1bpp()
+    {
+    }
 
     /**
      * @fn virtual void LCD1bpp::drawPartialBitmap(const Bitmap& bitmap, int16_t x, int16_t y, const Rect& rect, uint8_t alpha = 255, bool useOptimized = true);
@@ -336,6 +337,16 @@ public:
         return (color & 0x1) * 0xFF;
     }
 
+    /**
+     * @fn void LCD1bpp::enableTextureMapperAll();
+     *
+     * @brief Enables the texture mappers for all image formats.
+     *
+     *        Enables the texture mappers for all image formats. Currently texture mapping is
+     *        not supported on 1bpp displays, so this function does not do anything.
+     */
+    void enableTextureMapperAll();
+
 protected:
     /**
      * @fn virtual void LCD1bpp::drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize)
@@ -468,7 +479,8 @@ private:
     class bwRLEdata
     {
     public:
-        bwRLEdata(const uint8_t* src = 0) : data(src), rleByte(0), firstHalfByte(true), color(0)
+        bwRLEdata(const uint8_t* src = 0)
+            : data(src), thisHalfByte(0), nextHalfByte(0), rleByte(0), firstHalfByte(true), color(0), length(0)
         {
             init(src);
         }
@@ -493,12 +505,12 @@ private:
                 if (length > skip) // is the current length enough?
                 {
                     length -= skip; // Reduce the length
-                    skip = 0; // No more to skip
-                    break; // Done!
+                    skip = 0;       // No more to skip
+                    break;          // Done!
                 }
                 else
                 {
-                    skip -= length; // Skip the entire run
+                    skip -= length;  // Skip the entire run
                     getNextLength(); // Swap colors and Read length of next run
                 }
             }
@@ -511,6 +523,7 @@ private:
         {
             return length;
         }
+
     private:
         void getNextLength()
         {
@@ -522,7 +535,7 @@ private:
             // If number after 'length' is 0
             while (thisHalfByte == 0)
             {
-                length <<= 4; // Multiply length by 16 and
+                length <<= 4;           // Multiply length by 16 and
                 length += nextHalfByte; // add the number after 0
                 // We have used the next two half bytes, read two new ones
                 thisHalfByte = getNextHalfByte();
@@ -540,20 +553,35 @@ private:
                 rleByte = *data++;
             }
             uint8_t length = rleByte & 0xF; // Read lower half
-            rleByte >>= 4; // Shift upper half down to make it ready
+            rleByte >>= 4;                  // Shift upper half down to make it ready
             firstHalfByte = !firstHalfByte; // Toggle 'start of byte'
             return length;
         }
-        const uint8_t* data; // Pointer to compressed data (BW_RLE)
+        const uint8_t* data;  // Pointer to compressed data (BW_RLE)
         uint8_t thisHalfByte; // The next half byte from the input
         uint8_t nextHalfByte; // The next half byte after 'thisHalfByte'
-        uint8_t rleByte; // Byte read from compressed data
-        bool firstHalfByte; // Are we about to process first half byte of rleByte?
-        uint8_t color; // Current color
-        uint32_t length; // Number of pixels with the given color
+        uint8_t rleByte;      // Byte read from compressed data
+        bool firstHalfByte;   // Are we about to process first half byte of rleByte?
+        uint8_t color;        // Current color
+        uint32_t length;      // Number of pixels with the given color
     };
 
     friend class PainterBWBitmap;
+};
+
+/**
+ * @class LCD1DebugPrinter LCD1bpp.hpp platform/driver/lcd/LCD1bpp.hpp
+ *
+ * @brief The class LCD1DebugPrinter implements the DebugPrinter interface for printing debug messages on top of 24bit framebuffer.
+ *
+ *        The class LCD1DebugPrinter implements the DebugPrinter interface for printing debug messages on top of 24bit framebuffer.
+ *
+ * @see DebugPrinter
+ */
+class LCD1DebugPrinter : public DebugPrinter
+{
+public:
+    virtual void draw(const Rect& rect) const;
 };
 } // namespace touchgfx
 #endif // LCD1BPP_HPP

@@ -48602,43 +48602,51 @@
     "Skin": "Blue",
     "TouchGfxPath": "touchgfx",
     "UIPath": ".",
-    "ApplicationTemplate": {
-      "Name": "STM32F469I_DISCO",
-      "Version": "1.1.0",
-      "Description": "ST STM32F469I DISCO",
-      "AvailableColorDepths": [
-        16,
-        24
-      ],
-      "AvailableSections": [
-        "ExtFlashSection",
-        "IntFlashSection"
-      ],
-      "AvailableResolutions": [
-        {
-          "Width": 800,
-          "Height": 480
-        }
-      ],
-      "PhysicalButtons": [
-        {
-          "Key": 1,
-          "Name": "User Key"
-        }
-      ],
-      "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j10",
-      "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj && touchgfx update_project --project-file=target/IAR/application.ewp && touchgfx update_project --project-file=target/IAR8.x/application.ewp && touchgfx update_project --project-file=target/Keil/application.uvproj",
-      "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j10",
-      "RunSimulatorCommand": "build\\bin\\simulator.exe",
-      "CompileTargetCommand": "make -f target/gcc/Makefile -j10",
-      "FlashTargetCommand": "make -f target/gcc/Makefile -j10 flash"
+    "ApplicationTemplateName": "STM32F469I_DISCO",
+    "ApplicationTemplateVersion": "1.1.0",
+    "ApplicationTemplateDescription": "ST STM32F469I DISCO",
+    "AvailableColorDepths": [
+      16,
+      24
+    ],
+    "AvailableLCDs": {
+      "16": "LCD16bpp",
+      "24": "LCD24bpp"
     },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 800,
+        "Height": 480
+      }
+    ],
+    "PhysicalButtons": [
+      {
+        "Key": 1,
+        "Name": "User Key"
+      }
+    ],
+    "FrameworkFeatures": {
+      "LCD16bpp": {
+        "Id": "LCD16bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j10",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj && touchgfx update_project --project-file=target/IAR/application.ewp && touchgfx update_project --project-file=target/IAR8.x/application.ewp && touchgfx update_project --project-file=target/Keil/application.uvproj",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j10",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommand": "make -f target/gcc/Makefile -j10",
+    "FlashTargetCommand": "make -f target/gcc/Makefile -j10 flash",
     "LandscapeSkinX": 0,
     "LandscapeSkinY": 0,
     "PortraitSkinX": 0,
     "PortraitSkinY": 0,
     "DisplayOrientation": "Landscape"
   },
-  "Version": "4.12.3",
+  "Version": "4.13.0",
   "CreatedBy": "4.10.0"
 }

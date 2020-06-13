@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -33,7 +33,6 @@ namespace touchgfx
 class AnimatedImage : public Image
 {
 public:
-
     /**
      * @fn AnimatedImage::AnimatedImage(const BitmapId& start, const BitmapId& end, const uint8_t& updateInterval = 1)
      *
@@ -150,7 +149,7 @@ public:
     bool isRunning()
     {
         return isAnimatedImageRunning();
-    };
+    }
 
     /**
      * @fn bool AnimatedImage::isAnimatedImageRunning()
@@ -164,7 +163,7 @@ public:
     bool isAnimatedImageRunning()
     {
         return running;
-    };
+    }
 
     /**
      * @fn bool AnimatedImage::isReverse()
@@ -178,7 +177,7 @@ public:
     bool isReverse()
     {
         return reverse;
-    };
+    }
 
     /**
      * @fn void AnimatedImage::setBitmaps(BitmapId start, BitmapId end);
@@ -206,20 +205,6 @@ public:
      *                       results in a slower animation.
      */
     void setUpdateTicksInterval(uint8_t updateInterval);
-
-    /**
-     * @fn virtual uint16_t AnimatedImage::getType() const
-     *
-     * @brief For GUI testing only.
-     *
-     *        For GUI testing only. Returns type of this drawable.
-     *
-     * @return TYPE_ANIMATEDIMAGE.
-     */
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_ANIMATEDIMAGE;
-    }
 
 protected:
     GenericCallback<const AnimatedImage&>* animationDoneAction; ///< Pointer to the callback being executed when animation is done.

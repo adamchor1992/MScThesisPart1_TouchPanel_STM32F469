@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -45,8 +45,11 @@ namespace touchgfx
 class LCD8bpp_ABGR2222 : public LCD
 {
 public:
+    LCD8bpp_ABGR2222();
 
-    virtual ~LCD8bpp_ABGR2222() {}
+    virtual ~LCD8bpp_ABGR2222()
+    {
+    }
 
     /**
      * @fn virtual void LCD8bpp_ABGR2222::init();
@@ -341,41 +344,136 @@ public:
         return ((color & 0x30) >> 4) * 0x55;
     }
 
-protected:
-    static const uint16_t TRANSPARENT_COL = 0xABCD; ///< Transparency color. Deprecated, do not use.
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperAll();
+     *
+     * @brief Enables the texture mappers for all image formats.
+     *
+     *        Enables the texture mappers for all image formats. This allows drawing any image
+     *        using Bilinear Interpolation and Nearest Neighbor algorithms, but might use a
+     *        lot of memory for the drawing algorithms.
+     */
+    void enableTextureMapperAll();
 
     /**
-     * @fn virtual void LCD8bpp_ABGR2222::drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize);
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperABGR2222();
      *
-     * @brief Draw scan line. Draw one horizontal line of the texture map on screen. The scan line
-     *        will be drawn using perspective correct texture mapping. The appearance of the
-     *        line is determined by the left and right edge and the gradients structure. The
-     *        edges contain the information about the x,y,z coordinates of the left and right
-     *        side respectively and also information about the u,v coordinates of the texture
-     *        map used. The gradients structure contains information about how to interpolate
-     *        all the values across the scan line. The data drawn should be present in the
-     *        texture argument.
+     * @brief Enables the texture mappers for ABGR2222 image format.
      *
-     *        The scan line will be drawn using the additional arguments. The scan line will be
-     *        placed and clipped using the absolute and dirty rectangles The alpha will
-     *        determine how the scan line should be alpha blended. The subDivisionSize will
-     *        determine the size of the piecewise affine texture mapped lines.
+     *        Enables the texture mappers for ABGR2222 image format. This allows drawing
+     *        ABGR2222 images using Bilinear Interpolation and Nearest Neighbor algorithms.
      *
-     * @param dest              The description of where the texture is drawn - can be used to
-     *                          issue a draw off screen.
-     * @param gradients         The gradients using in interpolation across the scan line.
-     * @param leftEdge          The left edge of the scan line.
-     * @param rightEdge         The right edge of the scan line.
-     * @param texture           The texture.
-     * @param absoluteRect      The containing rectangle in absolute coordinates.
-     * @param dirtyAreaAbsolute The dirty area in absolute coordinates.
-     * @param renderVariant     The render variant - includes the algorithm and the pixel format.
-     * @param alpha             The alpha.
-     * @param subDivisionSize   The size of the subdivisions of the scan line. A value of 1 will
-     *                          give a completely perspective correct texture mapped scan line. A
-     *                          large value will give an affine texture mapped scan line.
+     * @see enableTextureMapperABGR2222_BilinearInterpolation
+     * @see enableTextureMapperABGR2222_NearestNeighbor
      */
-    virtual void drawTextureMapScanLine(const DrawingSurface& dest, const Gradients& gradients, const Edge* leftEdge, const Edge* rightEdge, const TextureSurface& texture, const Rect& absoluteRect, const Rect& dirtyAreaAbsolute, RenderingVariant renderVariant, uint8_t alpha, uint16_t subDivisionSize);
+    void enableTextureMapperABGR2222();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperABGR2222_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for ABGR2222 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for ABGR2222 image format. This allows drawing
+     *        ABGR2222 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperABGR2222
+     * @see enableTextureMapperABGR2222_NearestNeighbor
+     */
+    void enableTextureMapperABGR2222_BilinearInterpolation();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperABGR2222_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for ABGR2222 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for ABGR2222 image format. This allows drawing
+     *        ABGR2222 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperABGR2222
+     * @see enableTextureMapperABGR2222_BilinearInterpolation
+     */
+    void enableTextureMapperABGR2222_NearestNeighbor();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperARGB8888();
+     *
+     * @brief Enables the texture mappers for ARGB8888 image format.
+     *
+     *        Enables the texture mappers for ARGB8888 image format. This allows drawing
+     *        ARGB8888 images using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperARGB8888_BilinearInterpolation
+     * @see enableTextureMapperARGB8888_NearestNeighbor
+     */
+    void enableTextureMapperARGB8888();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperARGB8888_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for ARGB8888 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for ARGB8888 image format. This allows drawing
+     *        ARGB8888 images using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperARGB8888
+     * @see enableTextureMapperARGB8888_NearestNeighbor
+     */
+    void enableTextureMapperARGB8888_BilinearInterpolation();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperARGB8888_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for ARGB8888 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for ARGB8888 image format. This allows drawing
+     *        ARGB8888 images using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperARGB8888
+     * @see enableTextureMapperARGB8888_BilinearInterpolation
+     */
+    void enableTextureMapperARGB8888_NearestNeighbor();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperA4();
+     *
+     * @brief Enables the texture mappers for A4 image format.
+     *
+     *        Enables the texture mappers for A4 image format. This allows drawing A4 images
+     *        using Bilinear Interpolation and Nearest Neighbor algorithms.
+     *
+     * @see enableTextureMapperA4_BilinearInterpolation
+     * @see enableTextureMapperA4_NearestNeighbor
+     */
+    void enableTextureMapperA4();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperA4_BilinearInterpolation();
+     *
+     * @brief Enables the texture mappers for A4 image format for Bilinear Interpolation algorithm.
+     *
+     *        Enables the texture mappers for A4 image format. This allows drawing A4 images
+     *        using Bilinear Interpolation algorithm.
+     *
+     * @see enableTextureMapperA4
+     * @see enableTextureMapperA4_NearestNeighbor
+     */
+    void enableTextureMapperA4_BilinearInterpolation();
+
+    /**
+     * @fn void LCD8bpp_ABGR2222::enableTextureMapperA4_NearestNeighbor();
+     *
+     * @brief Enables the texture mappers for A4 image format for Nearest Neighbor algorithm.
+     *
+     *        Enables the texture mappers for A4 image format. This allows drawing A4 images
+     *        using Nearest Neighbor algorithm.
+     *
+     * @see enableTextureMapperA4
+     * @see enableTextureMapperA4_BilinearInterpolation
+     */
+    void enableTextureMapperA4_NearestNeighbor();
+
+protected:
+    virtual DrawTextureMapScanLineBase* getTextureMapperDrawScanLine(const TextureSurface& texture, RenderingVariant renderVariant, uint8_t alpha);
 
     /**
      * @fn static int LCD8bpp_ABGR2222::nextPixel(bool rotatedDisplay, TextRotation textRotation);
@@ -465,26 +563,178 @@ protected:
     static void blitCopyAlphaPerPixel(const uint16_t* sourceData16, const Rect& source, const Rect& blitRect, uint8_t alpha);
 
 private:
-    FORCE_INLINE_FUNCTION uint8_t bilinearInterpolation8(uint8_t tl, uint8_t tr, uint8_t bl, uint8_t br, int x, int y) const
+    DrawTextureMapScanLineBase* textureMapper_ABGR2222_NonOpaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_ABGR2222_Opaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_ABGR2222_NonOpaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_ABGR2222_Opaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_ARGB8888_NonOpaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_ARGB8888_Opaque_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_ARGB8888_NonOpaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_ARGB8888_Opaque_BilinearInterpolation_GA;
+    DrawTextureMapScanLineBase* textureMapper_A4_NearestNeighbor_GA;
+    DrawTextureMapScanLineBase* textureMapper_A4_BilinearInterpolation_GA;
+
+    FORCE_INLINE_FUNCTION static uint8_t bilinearInterpolate8(uint8_t c00, uint8_t c10, uint8_t x)
     {
-        int xy = (x * y) >> 3;
-        return (tl * (32 - 2 * y - 2 * x + xy) + tr * (2 * x - xy) + bl * (2 * y - xy) + br * xy) >> 5;
+        assert(x < 16);
+        const uint16_t xy10 = 16 * x;
+        const uint16_t xy00 = 256 - xy10;
+
+        return (c00 * xy00 + c10 * xy10) >> 8;
     }
 
-    FORCE_INLINE_FUNCTION float bilinearInterpolate1D(float s, float e, float t) const
+    FORCE_INLINE_FUNCTION static uint8_t bilinearInterpolate8(uint8_t c00, uint8_t c10, uint8_t c01, uint8_t c11, uint8_t x, uint8_t y)
     {
-        return s + (e - s) * t;
+        assert(x < 16 && y < 16);
+        const uint16_t xy11 = x * y;
+        const uint16_t xy10 = 16 * x - xy11;
+        const uint16_t xy01 = 16 * y - xy11;
+        const uint16_t xy00 = 256 - (xy11 + xy10 + xy01);
+
+        return (c00 * xy00 + c10 * xy10 + c01 * xy01 + c11 * xy11) >> 8;
     }
 
-    FORCE_INLINE_FUNCTION uint8_t bilinearInterpolate2D(uint8_t c00, uint8_t c10, uint8_t c01, uint8_t c11, float tx, float ty) const
+    FORCE_INLINE_FUNCTION uint32_t convertABGR2222toARGB8888(uint8_t col) const
     {
-        return (uint8_t)(bilinearInterpolate1D(bilinearInterpolate1D((float)c00, (float)c10, tx), bilinearInterpolate1D((float)c01, (float)c11, tx), ty) + .5f);
+        return (((col & 0xC0) << 18) | ((col & 0x03) << 16) | ((col & 0x0C) << 6) | ((col & 0x30) >> 4)) * 0x55;
     }
 
-    FORCE_INLINE_FUNCTION uint32_t abgr2222to32bit(colortype col) const
+    FORCE_INLINE_FUNCTION static uint32_t convertABGR2222toRGB888(uint8_t val)
     {
-        return ((((int)col >> 6) * 0x55) << 24) | (LCD8bpp_ABGR2222::getRedFromColor((col)) << 16) | (LCD8bpp_ABGR2222::getGreenFromColor(col) << 8) | LCD8bpp_ABGR2222::getBlueFromColor(col);
+        return (((val & 0x03) << 16) | ((val & 0x0C) << 6) | ((val & 0x30) >> 4)) * 0x55;
     }
+
+    FORCE_INLINE_FUNCTION static uint8_t convertRGB888toXBGR2222(uint32_t val)
+    {
+        val &= 0xC0C0C0;
+        return (val >> 2) | (val >> 12) | (val >> 22);
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t bilinearInterpolate888(uint32_t c00, uint32_t c10, uint32_t c01, uint32_t c11, uint8_t x, uint8_t y)
+    {
+        assert(x < 16 && y < 16);
+        const uint16_t xy11 = x * y;
+        const uint16_t xy10 = 16 * x - xy11;
+        const uint16_t xy01 = 16 * y - xy11;
+        const uint16_t xy00 = 256 - (xy11 + xy10 + xy01);
+
+        return ((((c00 & 0xFF00FF) * xy00 + (c10 & 0xFF00FF) * xy10 + (c01 & 0xFF00FF) * xy01 + (c11 & 0xFF00FF) * xy11) >> 8) & 0xFF00FF)
+               | ((((c00 & 0x00FF00) * xy00 + (c10 & 0x00FF00) * xy10 + (c01 & 0x00FF00) * xy01 + (c11 & 0x00FF00) * xy11) >> 8) & 0x00FF00);
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div255_888(uint32_t val, uint8_t factor)
+    {
+        return div255rb((val & 0xFF00FF) * factor) | div255g((val & 0x00FF00) * factor);
+    }
+
+    FORCE_INLINE_FUNCTION static uint32_t div255_888_FFcheck(uint32_t val, uint8_t factor)
+    {
+        return factor < 0xFF ? div255_888(val, factor) : val;
+    }
+
+    FORCE_INLINE_FUNCTION static uint8_t alphaBlend(const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t alpha, const uint8_t fbr, const uint8_t fbg, const uint8_t fbb, const uint8_t ialpha)
+    {
+        return static_cast<uint8_t>(getColorFromRGB(div255(r * alpha + fbr * ialpha), div255(g * alpha + fbg * ialpha), div255(b * alpha + fbb * ialpha)));
+    }
+
+    class DrawTextureMapScanLineBase8 : public DrawTextureMapScanLineBase
+    {
+    protected:
+        FORCE_INLINE_FUNCTION bool overrunCheckNearestNeighbor(uint8_t*& destBits, int& pixelsToDraw, fixed16_16& U, fixed16_16& V, fixed16_16 deltaU, fixed16_16 deltaV, const int16_t maxWidth, const int16_t maxHeight);
+        FORCE_INLINE_FUNCTION bool overrunCheckBilinearInterpolation(uint8_t*& destBits, int& pixelsToDraw, fixed16_16& U, fixed16_16& V, fixed16_16 deltaU, fixed16_16 deltaV, const int16_t maxWidth, const int16_t maxHeight);
+    };
+
+    class TextureMapper_ABGR2222_NonOpaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint8_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_ABGR2222_Opaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint8_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_ABGR2222_NonOpaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint8_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint8_t* const destBits, const uint8_t* const textureBits, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_ABGR2222_Opaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint8_t* const textureBits, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint8_t* const destBits, const uint8_t* const textureBits, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_ARGB8888_NonOpaque_NearestNeighbor_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint32_t* const textureBits32, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t alpha);
+    };
+
+    class TextureMapper_ARGB8888_NonOpaque_BilinearInterpolation_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint32_t* const textureBits32, const int16_t bitmapWidth, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint8_t* const destBits, const uint32_t* const textureBits32, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
+
+    class TextureMapper_A4_NearestNeighbor_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint8_t a4, const uint8_t alpha);
+    };
+
+    class TextureMapper_A4_BilinearInterpolation_GA : public DrawTextureMapScanLineBase8
+    {
+    public:
+        virtual void drawTextureMapScanLineSubdivisions(int subdivisions, const int widthModLength, int pixelsToDraw, const int affineLength, float oneOverZRight, float UOverZRight, float VOverZRight, fixed16_16 U, fixed16_16 V, fixed16_16 deltaU, fixed16_16 deltaV, float ULeft, float VLeft, float URight, float VRight, float ZRight, const DrawingSurface& dest, const int destX, const int destY, const int16_t bitmapWidth, const int16_t bitmapHeight, const TextureSurface& texture, uint8_t alpha, const float dOneOverZdXAff, const float dUOverZdXAff, const float dVOverZdXAff);
+
+    private:
+        FORCE_INLINE_FUNCTION void writePixel(uint8_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapStride, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+        void writePixelOnEdge(uint8_t* const destBits, const uint16_t* const textureBits, const int16_t bitmapStride, const int16_t bitmapWidth, const int16_t bitmapHeight, const int UInt, const int VInt, const uint8_t UFrac, const uint8_t VFrac, const uint8_t alpha);
+    };
 };
+
+/**
+ * @class LCD8ABGR2222DebugPrinter LCD8bpp_ABGR2222.hpp platform/driver/lcd/LCD8bpp_ABGR2222.hpp
+ *
+ * @brief The class LCD8ABGR2222DebugPrinter implements the DebugPrinter interface for printing debug messages on top of 8bit framebuffer.
+ *
+ *        The class LCD8ABGR2222DebugPrinter implements the DebugPrinter interface for printing debug messages on top of 8bit framebuffer.
+ *
+ * @see DebugPrinter
+ */
+class LCD8ABGR2222DebugPrinter : public DebugPrinter
+{
+public:
+    virtual void draw(const Rect& rect) const;
+};
+
 } // namespace touchgfx
 #endif // LCD8BPP_ABGR2222_HPP

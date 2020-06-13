@@ -317,14 +317,14 @@
         </option>
         <option>
           <name>CCIncludePath2</name>
-          <state>$PROJ_DIR$\..\..\generated\images\include</state>
-          <state>$PROJ_DIR$\..\..\generated\fonts\include</state>
-          <state>$PROJ_DIR$\..\..\generated\texts\include</state>
-          <state>$PROJ_DIR$\..\..\generated\gui_generated\include</state>
+          <state>$PROJ_DIR$/../../generated/images/include</state>
+          <state>$PROJ_DIR$/../../generated/fonts/include</state>
+          <state>$PROJ_DIR$/../../generated/texts/include</state>
+          <state>$PROJ_DIR$/../../generated/gui_generated/include</state>
           <state>$PROJ_DIR$\..\..\platform\os</state>
-          <state>$PROJ_DIR$\..\..\gui\include</state>
+          <state>$PROJ_DIR$/../../gui/include</state>
           <state>$PROJ_DIR$\..\..\target\include</state>
-          <state>$PROJ_DIR$\..\..\touchgfx\framework\include</state>
+          <state>$PROJ_DIR$/../../touchgfx/framework/include</state>
           <state>$PROJ_DIR$\..\bsp\include\platform\cortex-m</state>
           <state>$PROJ_DIR$\..\bsp\include\platform\cortex-m\CMSIS</state>
           <state>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube</state>
@@ -799,7 +799,7 @@
         </option>
         <option>
           <name>IlinkAdditionalLibs</name>
-          <state>$PROJ_DIR$\..\..\touchgfx\lib\core\cortex_m4f\IAR\touchgfx_core.a</state>
+          <state>$PROJ_DIR$/../../touchgfx/lib/core/cortex_m4f/IAR/touchgfx_core.a</state>
         </option>
         <option>
           <name>IlinkOverrideProgramEntryLabel</name>
@@ -998,61 +998,61 @@
       <group>
         <name>fonts</name>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\ApplicationFontProvider.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/ApplicationFontProvider.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\CachedFont.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/CachedFont.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_20_4bpp_0.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Font_verdana_20_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_30_4bpp_0.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Font_verdana_30_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_40_4bpp_0.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Font_verdana_40_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_60_4bpp_0.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Font_verdana_60_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Font_verdana_8_4bpp_0.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Font_verdana_8_4bpp_0.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\FontCache.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/FontCache.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\GeneratedFont.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/GeneratedFont.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_20_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Kerning_verdana_20_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_30_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Kerning_verdana_30_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_40_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Kerning_verdana_40_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_60_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Kerning_verdana_60_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Kerning_verdana_8_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Kerning_verdana_8_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_20_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Table_verdana_20_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_30_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Table_verdana_30_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_40_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Table_verdana_40_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_60_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Table_verdana_60_4bpp.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\fonts\src\Table_verdana_8_4bpp.cpp</name>
+          <name>$PROJ_DIR$/../../generated/fonts/src/Table_verdana_8_4bpp.cpp</name>
         </file>
       </group>
       <group>
@@ -1060,109 +1060,109 @@
         <group>
           <name>common</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\common\FrontendApplicationBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/common/FrontendApplicationBase.cpp</name>
           </file>
         </group>
         <group>
           <name>containers</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\containers\DigitTemplateBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/containers/DigitTemplateBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_main_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_main_screen\Screen_MainViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_main_screen/Screen_MainViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module1_data_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_data_screen\Screen_Module1_DataViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module1_data_screen/Screen_Module1_DataViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module1_graph_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_graph_screen\Screen_Module1_GraphViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module1_graph_screen/Screen_Module1_GraphViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module1_info_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_info_screen\Screen_Module1_InfoViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module1_info_screen/Screen_Module1_InfoViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module1_settings_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_settings_screen\Screen_Module1_SettingsViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module1_settings_screen/Screen_Module1_SettingsViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module1_signals_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module1_signals_screen\Screen_Module1_SignalsViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module1_signals_screen/Screen_Module1_SignalsViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module2_data_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_data_screen\Screen_Module2_DataViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module2_data_screen/Screen_Module2_DataViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module2_graph_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_graph_screen\Screen_Module2_GraphViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module2_graph_screen/Screen_Module2_GraphViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module2_info_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_info_screen\Screen_Module2_InfoViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module2_info_screen/Screen_Module2_InfoViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module2_settings_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_settings_screen\Screen_Module2_SettingsViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module2_settings_screen/Screen_Module2_SettingsViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module2_signals_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module2_signals_screen\Screen_Module2_SignalsViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module2_signals_screen/Screen_Module2_SignalsViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module3_data_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_data_screen\Screen_Module3_DataViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module3_data_screen/Screen_Module3_DataViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module3_graph_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_graph_screen\Screen_Module3_GraphViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module3_graph_screen/Screen_Module3_GraphViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module3_info_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_info_screen\Screen_Module3_InfoViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module3_info_screen/Screen_Module3_InfoViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module3_settings_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_settings_screen\Screen_Module3_SettingsViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module3_settings_screen/Screen_Module3_SettingsViewBase.cpp</name>
           </file>
         </group>
         <group>
           <name>screen_module3_signals_screen</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\gui_generated\src\screen_module3_signals_screen\Screen_Module3_SignalsViewBase.cpp</name>
+            <name>$PROJ_DIR$/../../generated/gui_generated/src/screen_module3_signals_screen/Screen_Module3_SignalsViewBase.cpp</name>
           </file>
         </group>
       </group>
@@ -1171,74 +1171,74 @@
         <group>
           <name>__designer</name>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_buttons_round_edge_medium.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_medium_pressed.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_buttons_round_edge_medium_pressed.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_buttons_round_edge_small.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_edge_small_pressed.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_buttons_round_edge_small_pressed.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_buttons_round_icon_button.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_buttons_round_icon_button_pressed.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_buttons_round_icon_button_pressed.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_active.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_check_buttons_check_mark_active.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_inactive.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_check_buttons_check_mark_inactive.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_normal.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_check_buttons_check_mark_normal.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_check_buttons_check_mark_pressed.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_check_buttons_check_mark_pressed.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Check_buttons_custom_Check_mark_fill_minus.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/Blue_Check_buttons_custom_Check_mark_fill_minus.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Check_buttons_custom_Check_mark_fill_plus.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/Blue_Check_buttons_custom_Check_mark_fill_plus.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_knob.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/Blue_Slider_Horizontal_Small_Indicators_slider_horizontal_small_round_knob.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_slider_horizontal_small_round_back.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/Blue_Slider_Horizontal_Small_slider_horizontal_small_round_back.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\Blue_Slider_Horizontal_Small_slider_horizontal_small_round_fill.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/Blue_Slider_Horizontal_Small_slider_horizontal_small_round_fill.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_off.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_off.cpp</name>
           </file>
           <file>
-            <name>$PROJ_DIR$\..\..\generated\images\src\__designer\blue_togglebars_toggle_round_small_button_on.cpp</name>
+            <name>$PROJ_DIR$/../../generated/images/src/__designer/blue_togglebars_toggle_round_small_button_on.cpp</name>
           </file>
         </group>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\images\src\background.cpp</name>
+          <name>$PROJ_DIR$/../../generated/images/src/background.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\images\src\BitmapDatabase.cpp</name>
+          <name>$PROJ_DIR$/../../generated/images/src/BitmapDatabase.cpp</name>
         </file>
       </group>
       <group>
         <name>texts</name>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\texts\src\LanguageGb.cpp</name>
+          <name>$PROJ_DIR$/../../generated/texts/src/LanguageGb.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\texts\src\Texts.cpp</name>
+          <name>$PROJ_DIR$/../../generated/texts/src/Texts.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\generated\texts\src\TypedTextDatabase.cpp</name>
+          <name>$PROJ_DIR$/../../generated/texts/src/TypedTextDatabase.cpp</name>
         </file>
       </group>
     </group>
@@ -1247,183 +1247,174 @@
       <group>
         <name>common</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\common\AbstractGraph.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/common/AbstractGraph.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\common\FrontendApplication.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/common/FrontendApplication.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\common\Graph.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/common/Graph.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\common\GraphLine.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/common/GraphLine.cpp</name>
         </file>
       </group>
       <group>
         <name>containers</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\containers\DigitTemplate.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/containers/DigitTemplate.cpp</name>
         </file>
       </group>
-      <file>
-        <name>$PROJ_DIR$\..\..\gui\src\init.cpp</name>
-      </file>
       <group>
         <name>model</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\model\Model.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/model/Model.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_main_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_main_screen\Screen_MainPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_main_screen/Screen_MainPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_main_screen\Screen_MainView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_main_screen/Screen_MainView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module1_data_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_data_screen/Screen_Module1_DataPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_data_screen\Screen_Module1_DataView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_data_screen/Screen_Module1_DataView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module1_graph_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_graph_screen/Screen_Module1_GraphPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_graph_screen\Screen_Module1_GraphView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_graph_screen/Screen_Module1_GraphView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module1_info_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_info_screen/Screen_Module1_InfoPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_info_screen\Screen_Module1_InfoView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_info_screen/Screen_Module1_InfoView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module1_settings_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_settings_screen/Screen_Module1_SettingsPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_settings_screen\Screen_Module1_SettingsView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_settings_screen/Screen_Module1_SettingsView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module1_signals_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_signals_screen/Screen_Module1_SignalsPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module1_signals_screen\Screen_Module1_SignalsView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module1_signals_screen/Screen_Module1_SignalsView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module2_data_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_data_screen/Screen_Module2_DataPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_data_screen\Screen_Module2_DataView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_data_screen/Screen_Module2_DataView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module2_graph_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_graph_screen/Screen_Module2_GraphPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_graph_screen\Screen_Module2_GraphView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_graph_screen/Screen_Module2_GraphView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module2_info_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_info_screen\Screen_Module2_InfoPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_info_screen/Screen_Module2_InfoPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_info_screen\Screen_Module2_InfoView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_info_screen/Screen_Module2_InfoView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module2_settings_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_settings_screen/Screen_Module2_SettingsPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_settings_screen\Screen_Module2_SettingsView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_settings_screen/Screen_Module2_SettingsView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module2_signals_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_signals_screen\Screen_Module2_SignalsPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_signals_screen/Screen_Module2_SignalsPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module2_signals_screen\Screen_Module2_SignalsView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module2_signals_screen/Screen_Module2_SignalsView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module3_data_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_data_screen\Screen_Module3_DataPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_data_screen/Screen_Module3_DataPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_data_screen\Screen_Module3_DataView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_data_screen/Screen_Module3_DataView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module3_graph_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_graph_screen\Screen_Module3_GraphPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_graph_screen/Screen_Module3_GraphPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_graph_screen\Screen_Module3_GraphView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_graph_screen/Screen_Module3_GraphView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module3_info_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_info_screen\Screen_Module3_InfoPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_info_screen/Screen_Module3_InfoPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_info_screen\Screen_Module3_InfoView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_info_screen/Screen_Module3_InfoView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module3_settings_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_settings_screen\Screen_Module3_SettingsPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_settings_screen/Screen_Module3_SettingsPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_settings_screen\Screen_Module3_SettingsView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_settings_screen/Screen_Module3_SettingsView.cpp</name>
         </file>
       </group>
       <group>
         <name>screen_module3_signals_screen</name>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsPresenter.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_signals_screen/Screen_Module3_SignalsPresenter.cpp</name>
         </file>
         <file>
-          <name>$PROJ_DIR$\..\..\gui\src\screen_module3_signals_screen\Screen_Module3_SignalsView.cpp</name>
+          <name>$PROJ_DIR$/../../gui/src/screen_module3_signals_screen/Screen_Module3_SignalsView.cpp</name>
         </file>
       </group>
-      <file>
-        <name>$PROJ_DIR$\..\..\gui\src\uart_packet.cpp</name>
-      </file>
-      <file>
-        <name>$PROJ_DIR$\..\..\gui\src\utilities.cpp</name>
-      </file>
     </group>
     <group>
       <name>main</name>

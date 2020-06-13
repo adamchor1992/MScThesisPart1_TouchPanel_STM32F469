@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -44,7 +44,6 @@ class UIEventListener;
 class HAL
 {
 public:
-
     /**
      * @fn HAL::HAL(DMA_Interface& dmaInterface, LCD& display, TouchController& touchCtrl, uint16_t width, uint16_t height)
      *
@@ -101,7 +100,9 @@ public:
      *
      *        Destructor.
      */
-    virtual ~HAL() { }
+    virtual ~HAL()
+    {
+    }
 
     /**
      * @fn static HAL* HAL::getInstance()
@@ -333,39 +334,6 @@ public:
     }
 
     /**
-     * @fn virtual void HAL::registerTextCache(Unicode::UnicodeChar* str, uint16_t length);
-     *
-     * @brief Configures HAL to use the supplied buffer as text string cache.
-     *
-     *        Configures HAL to use the supplied buffer as text string cache. The buffer must
-     *        be large enough to hold the longest string in the system. Setting this buffer is
-     *        only required if cacheTextString() is actually used and its implementation
-     *        requires a buffer.
-     *
-     * @param [in] str Pointer to buffer location.
-     * @param length   Buffer length (in UnicodeChar's)
-     *
-     * @see cacheTextString
-     */
-    virtual void registerTextCache(Unicode::UnicodeChar* str, uint16_t length);
-
-    /**
-     * @fn virtual const Unicode::UnicodeChar* HAL::cacheTextString(const Unicode::UnicodeChar* str);
-     *
-     * @brief This function can be used to cache a given string.
-     *
-     *        This function can be used to cache a given string in a platform specific way to
-     *        e.g. speed up access or in case the string is placed in a memory type that does
-     *        not support random access such as NAND flash.
-     *
-     * @param str A pointer to the string which may be in external memory.
-     *
-     * @return A pointer to an identical string which is guaranteed to be directly readable (ie.
-     *         a copy if the original string was placed in NAND flash).
-     */
-    virtual const Unicode::UnicodeChar* cacheTextString(const Unicode::UnicodeChar* str);
-
-    /**
      * @fn virtual bool HAL::blockCopy(void* RESTRICT dest, const void* RESTRICT src, uint32_t numBytes);
      *
      * @brief This function performs a platform-specific memcpy.
@@ -394,20 +362,7 @@ public:
     virtual BlitOperations getBlitCaps()
     {
         return dma.getBlitCaps();
-    };
-
-    /**
-     * @fn virtual void HAL::blitSetTransparencyKey(uint16_t key);
-     *
-     * @brief Deprecated function which can be ignored.
-     *
-     *        Only present for backwards compatibility in TouchGFX 4.x. Will be removed in
-     *        TouchGFX 5.
-     *
-     * @param key The "transparent" color value.
-     * @deprecated
-     */
-    virtual void blitSetTransparencyKey(uint16_t key);
+    }
 
     /**
      * @fn virtual void HAL::blitCopy(const uint16_t* pSrc, const uint8_t* pClut, uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint16_t srcWidth, uint8_t alpha, bool hasTransparentPixels, uint16_t dstWidth, Bitmap::BitmapFormat srcFormat, Bitmap::BitmapFormat dstFormat)
@@ -680,7 +635,7 @@ public:
     uint32_t getLCDRefreshCount()
     {
         return vSyncForFrame;
-    };
+    }
 
     /**
      * @fn void HAL::setFrameRateCompensation(bool enabled)
@@ -694,7 +649,7 @@ public:
     void setFrameRateCompensation(bool enabled)
     {
         vSyncCompensationEnabled = enabled;
-    };
+    }
 
     /**
      * @fn void HAL::vSync()
@@ -706,7 +661,7 @@ public:
     void vSync()
     {
         vSyncCnt++;
-    };
+    }
 
     /**
      * @fn virtual void HAL::backPorchExited()
@@ -1320,7 +1275,6 @@ public:
     }
 
 protected:
-
     /**
      * @fn virtual void HAL::tick();
      *

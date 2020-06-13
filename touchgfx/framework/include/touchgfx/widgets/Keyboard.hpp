@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -57,7 +57,6 @@ namespace touchgfx
 class Keyboard : public Container
 {
 public:
-
     /**
      * @struct Key Keyboard.hpp touchgfx/widgets/Keyboard.hpp
      *
@@ -247,7 +246,7 @@ public:
     uint16_t getBufferPosition()
     {
         return bufferPosition;
-    };
+    }
 
     /**
      * @fn Unicode::UnicodeChar* Keyboard::getBuffer() const
@@ -319,20 +318,6 @@ public:
     void setKeyListener(GenericCallback<Unicode::UnicodeChar>& callback)
     {
         keyListener = &callback;
-    }
-
-    /**
-     * @fn virtual uint16_t Keyboard::getType() const
-     *
-     * @brief For GUI testing only.
-     *
-     *        For GUI testing only. Returns type of this drawable.
-     *
-     * @return TYPE_KEYBOARD.
-     */
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_KEYBOARD;
     }
 
 protected:

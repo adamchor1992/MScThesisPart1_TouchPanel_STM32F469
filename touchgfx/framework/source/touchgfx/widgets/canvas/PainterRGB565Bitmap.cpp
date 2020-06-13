@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -261,8 +261,8 @@ bool PainterRGB565Bitmap::renderNext(uint8_t& red, uint8_t& green, uint8_t& blue
         red |= red >> 5; // To get full range 0-0xFF, not just 0-0xF8
         green = (argb8888 >> 8) & 0xFC;
         green |= green >> 6; // To get full range 0-0xFF, not just 0-0xFC
-        blue = (argb8888) & 0xF8;
-        blue |= (blue >> 5); // To get full range 0-0xFF, not just 0-0xF8
+        blue = argb8888 & 0xF8;
+        blue |= blue >> 5; // To get full range 0-0xFF, not just 0-0xF8
     }
     else if (bitmapRGB565Pointer != 0)
     {
@@ -272,7 +272,7 @@ bool PainterRGB565Bitmap::renderNext(uint8_t& red, uint8_t& green, uint8_t& blue
         green = (rgb565 & GMASK) >> 3;
         green |= green >> 6; // To get full range 0-0xFF, not just 0-0xFC
         blue = (rgb565 & BMASK) << 3;
-        blue |= (blue >> 5); // To get full range 0-0xFF, not just 0-0xF8
+        blue |= blue >> 5; // To get full range 0-0xFF, not just 0-0xF8
         if (bitmapAlphaPointer)
         {
             alpha = *bitmapAlphaPointer++;

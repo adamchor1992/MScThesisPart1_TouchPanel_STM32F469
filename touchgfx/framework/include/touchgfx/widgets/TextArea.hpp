@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -16,13 +16,13 @@
 #ifndef TEXTAREA_HPP
 #define TEXTAREA_HPP
 
-#include <touchgfx/hal/Types.hpp>
 #include <touchgfx/Font.hpp>
 #include <touchgfx/FontManager.hpp>
-#include <touchgfx/widgets/Widget.hpp>
-#include <touchgfx/Unicode.hpp>
-#include <touchgfx/lcd/LCD.hpp>
 #include <touchgfx/TypedText.hpp>
+#include <touchgfx/Unicode.hpp>
+#include <touchgfx/hal/Types.hpp>
+#include <touchgfx/lcd/LCD.hpp>
+#include <touchgfx/widgets/Widget.hpp>
 
 namespace touchgfx
 {
@@ -53,8 +53,10 @@ public:
      *
      *        Create an empty TextArea. Default color is black.
      */
-    TextArea() : Widget(), typedText(TYPED_TEXT_INVALID), color(0), linespace(0), alpha(255), indentation(0), rotation(TEXT_ROTATE_0), wideTextAction(WIDE_TEXT_NONE)
-    { }
+    TextArea()
+        : Widget(), typedText(TYPED_TEXT_INVALID), color(0), linespace(0), alpha(255), indentation(0), rotation(TEXT_ROTATE_0), wideTextAction(WIDE_TEXT_NONE)
+    {
+    }
 
     /**
      * @fn virtual Rect TextArea::getSolidRect() const
@@ -424,18 +426,20 @@ public:
     }
 
     /**
-     * @fn virtual uint16_t TextArea::getType() const
+     * @fn int16_t TextArea::calculateTextHeight(const Unicode::UnicodeChar* format, ...) const;
      *
-     * @brief For GUI testing only.
+     * @brief Gets the total height needed by the text.
      *
-     *        For GUI testing only. Returns type of this drawable.
+     *        Gets the total height needed by the text. Determined by number of lines and
+     *        linespace. The number of wildcards in the text should match the number of values
+     *        for the wildcards.
      *
-     * @return TYPE_TEXTAREA.
+     * @param format The text containing %s wildcards.
+     * @param ...    Variable arguments providing additional information.
+     *
+     * @return the total height needed by the text.
      */
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_TEXTAREA;
-    }
+    virtual int16_t calculateTextHeight(const Unicode::UnicodeChar* format, ...) const;
 
 protected:
     TypedText      typedText;      ///< The TypedText to display
@@ -445,9 +449,6 @@ protected:
     uint8_t        indentation;    ///< The indentation of the text inside the text area
     TextRotation   rotation;       ///< The text rotation to use
     WideTextAction wideTextAction; ///< What to do if the text is wider than the text area
-
-private:
-    int16_t getTextHeightInternal(const Unicode::UnicodeChar* format, ...) const;
 };
 } // namespace touchgfx
 

@@ -210,23 +210,13 @@ endif
 
 assets: images texts
 
-alpha_dither ?= no
-dither_algorithm ?= 2
-
-ifeq "$(text_data_format)" "A4"
-text_converter_options := $(filter-out A4,$(text_converter_options)) A4
-endif
-ifeq "$(remap_identical_texts)" "yes"
-text_converter_options := $(filter-out remap,$(text_converter_options)) remap
-endif
-
 .PHONY: images
 images:
 	@$(imageconvert_executable) -r $(asset_images_input) -w $(asset_images_output)
 
 .PHONY: texts
 texts:
-	@ruby $(textconvert_script_path)/main.rb $(text_database) $(fontconvert_executable) $(asset_fonts_output) $(asset_texts_output) $(asset_fonts_input) . $(text_converter_options)
+	@ruby $(textconvert_script_path)/main.rb $(text_database) $(fontconvert_executable) $(asset_fonts_output) $(asset_texts_output) $(asset_fonts_input) .
 
 clean:
 	@echo Cleaning

@@ -8,6 +8,7 @@
 #include <texts/TextKeysAndLanguages.hpp>
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
+#include <platform/driver/lcd/LCD16bpp.hpp>
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 #include <gui/screen_main_screen/Screen_MainPresenter.hpp>
 #include <gui/screen_module1_data_screen/Screen_Module1_DataView.hpp>
@@ -43,7 +44,6 @@
 
 using namespace touchgfx;
 
-
 FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
     : touchgfx::MVPApplication(),
       transitionCallback(),
@@ -52,11 +52,13 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
 {
     touchgfx::HAL::getInstance()->setDisplayOrientation(touchgfx::ORIENTATION_LANDSCAPE);
     touchgfx::Texts::setLanguage(GB);
+    reinterpret_cast<touchgfx::LCD16bpp&>(touchgfx::HAL::lcd()).enableTextureMapperAll();
 }
 
 /*
  * Screen Transition Declarations
  */
+
 // Screen_Main
 
 void FrontendApplicationBase::gotoScreen_MainScreenNoTransition()
@@ -264,4 +266,3 @@ void FrontendApplicationBase::gotoScreen_Module3_InfoScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<Screen_Module3_InfoView, Screen_Module3_InfoPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
-

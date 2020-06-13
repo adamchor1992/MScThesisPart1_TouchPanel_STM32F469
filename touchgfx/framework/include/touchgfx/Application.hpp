@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -44,7 +44,6 @@ class Screen;
 class Application : public UIEventListener
 {
 public:
-
     /**
      * @fn static Application* Application::getInstance();
      *
@@ -283,11 +282,12 @@ public:
     static const uint16_t TICK_INTERVAL_MS = 10; ///< Deprecated, do not use this constant. Tick interval depends on VSYNC of your target platform.
 
     /**
-     * @fn static void setDebugPrinter(DebugPrinter* printer);
+     * @fn static void Application::setDebugPrinter(DebugPrinter* printer)
      *
      * @brief Sets the DebugPrinter object to be used by the application.
      *
-     *        Sets the DebugPrinter object to be used by the application to print debug messages.
+     *        Sets the DebugPrinter object to be used by the application to print debug
+     *        messages.
      *
      * @param [in] printer The debug printer to configure.
      */
@@ -297,7 +297,7 @@ public:
     }
 
     /**
-     * @fn static const DebugPrinter* getDebugPrinter();
+     * @fn static DebugPrinter* Application::getDebugPrinter()
      *
      * @brief Returns the DebugPrinter object associated with the application.
      *
@@ -311,7 +311,22 @@ public:
     }
 
     /**
-     * @fn static void setDebugString(const char* string);
+     * @fn static void Application::invalidateDebugRegion()
+     *
+     * @brief Sets the debug string to be displayed onscreen.
+     *
+     *        Sets the debug string to be displayed onscreen on top of the framebuffer.
+     */
+    static void invalidateDebugRegion()
+    {
+        if (debugPrinter)
+        {
+            debugRegionInvalidRect.expandToFit(debugPrinter->getRegion());
+        }
+    }
+
+    /**
+     * @fn static void Application::setDebugString(const char* string)
      *
      * @brief Sets the debug string to be displayed onscreen.
      *
@@ -323,13 +338,12 @@ public:
     {
         if (debugPrinter)
         {
-            debugPrinter->setDebugString(string);
-            getInstance()->invalidateArea(debugPrinter->region());
+            debugPrinter->setString(string);
+            invalidateDebugRegion();
         }
     }
 
 protected:
-
     /**
      * @fn void Application::invalidateArea(Rect area);
      *
@@ -344,9 +358,9 @@ protected:
     /**
      * @fn Application::Application();
      *
-     * @brief Procected constructor
+     * @brief Protected constructor
      *
-     *        Procected constructor.
+     *        Protected constructor.
      */
     Application();
 
@@ -358,9 +372,9 @@ protected:
     bool transitionHandled;                            ///< True if the transition is done and Screen::afterTransition has been called.
     static Screen* currentScreen;                      ///< Pointer to currently displayed Screen.
     static Transition* currentTransition;              ///< Pointer to current transition.
-    static Application* instance;                      ///< Pointer to the instance of the Application-derived subclass.
-    ///< @note Must be set by subclass constructor!
+    static Application* instance;                      ///< Pointer to the instance of the Application-derived subclass. @note Must be set by subclass constructor!
     static DebugPrinter* debugPrinter;                 ///< Pointer to the DebugPrinter instance.
+    static Rect debugRegionInvalidRect;                ///< Invalidated Debug Region
 };
 } // namespace touchgfx
 #endif // APPLICATION_HPP

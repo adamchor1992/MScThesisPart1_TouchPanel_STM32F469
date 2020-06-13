@@ -4,6 +4,7 @@
 #define BITMAPDATABASE_HPP
 
 #include <touchgfx/hal/Types.hpp>
+#include <touchgfx/lcd/LCD.hpp>
 #include <touchgfx/Bitmap.hpp>
 
 const uint16_t BITMAP_BACKGROUND_ID = 0;
@@ -27,7 +28,6 @@ const uint16_t BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID = 17;
 
 namespace BitmapDatabase
 {
-class BitmapData;
 const touchgfx::Bitmap::BitmapData* getInstance();
 uint16_t getInstanceSize();
 }

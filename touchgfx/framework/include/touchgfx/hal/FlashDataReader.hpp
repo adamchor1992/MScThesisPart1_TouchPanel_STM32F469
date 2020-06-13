@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -32,8 +32,9 @@ namespace touchgfx
 class FlashDataReader
 {
 public:
-
-    virtual ~FlashDataReader() {}
+    virtual ~FlashDataReader()
+    {
+    }
 
     /**
      * @fn virtual bool addressIsAddressable(const void* address) = 0;
@@ -65,7 +66,7 @@ public:
     virtual void copyData(const void* src, void* dst, uint32_t bytes) = 0;
 
     /**
-     * @fn virtual void startFlashLineRead(const void* src, uint32_t bytes);
+     * @fn virtual void startFlashLineRead(const void* src, uint32_t bytes) = 0;
      *
      * @brief Initiate a read operation from flash to a buffer.
      *
@@ -78,10 +79,10 @@ public:
      * @param src   Address of source data in the flash
      * @param bytes Number of bytes to copy.
      */
-    virtual void startFlashLineRead(const void* src, uint32_t bytes);
+    virtual void startFlashLineRead(const void* src, uint32_t bytes) = 0;
 
     /**
-     * @fn virtual const uint8_t* waitFlashReadComplete();
+     * @fn virtual const uint8_t* waitFlashReadComplete() = 0;
      *
      * @brief Waits until the previous startFlashLineRead operation is complete.
      *
@@ -92,7 +93,7 @@ public:
      *
      * @return The address of a buffer containing the read data.
      */
-    virtual const uint8_t* waitFlashReadComplete();
+    virtual const uint8_t* waitFlashReadComplete() = 0;
 };
 } // namespace touchgfx
 #endif // FLASHDATAREADER_HPP

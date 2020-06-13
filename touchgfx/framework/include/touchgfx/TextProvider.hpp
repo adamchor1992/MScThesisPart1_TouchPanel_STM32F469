@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -49,17 +49,32 @@ public:
     TextProvider();
 
     /**
-     * @fn void TextProvider::initialize(const Unicode::UnicodeChar* format, va_list pArg);
+     * @fn void TextProvider::initialize(const Unicode::UnicodeChar* stringFormat, va_list pArg, const uint16_t* gsubTable = 0);
      *
      * @brief Initializes the TextProvider.
      *
-     *        Initializes the TextProvider. Each '\2' character in the format is replaced by one UnicodeChar* argument from pArg.
+     *        Initializes the TextProvider. Each '\2' character in the format is replaced by
+     *        one UnicodeChar* argument from pArg.
      *
      * @param stringFormat The string to format.
      * @param pArg         Format arguments in the form of a va_list.
-     * @param gsubTable    Pointer to GSUB table with unicode substitution rules.
+     * @param gsubTable    (Optional) Pointer to GSUB table with unicode substitution rules.
      */
     void initialize(const Unicode::UnicodeChar* stringFormat, va_list pArg, const uint16_t* gsubTable = 0);
+
+    /**
+     * @fn void TextProvider::initialize(const Unicode::UnicodeChar* stringFormat, const uint16_t* gsubTable = 0, ...);
+     *
+     * @brief Initializes the TextProvider.
+     *
+     *        Initializes the TextProvider. Each '\2' character in the format is replaced by
+     *        one UnicodeChar* argument from pArg.
+     *
+     * @param stringFormat The string to format.
+     * @param gsubTable    (Optional) Pointer to GSUB table with unicode substitution rules.
+     * @param ...          Variable arguments providing additional information.
+     */
+    void initialize(const Unicode::UnicodeChar* stringFormat, const uint16_t* gsubTable = 0, ...);
 
     /**
      * @fn Unicode::UnicodeChar TextProvider::getNextChar(TextDirection direction = TEXT_DIRECTION_LTR);

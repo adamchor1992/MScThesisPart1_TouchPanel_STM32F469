@@ -15,8 +15,8 @@
 #include <touchgfx/containers/Slider.hpp>
 #include <touchgfx/containers/scrollers/ScrollWheel.hpp>
 #include <gui/containers/DigitTemplate.hpp>
-
 #include <touchgfx/mixins/ClickListener.hpp>
+
 class Screen_Module2_SignalsViewBase : public touchgfx::View<Screen_Module2_SignalsPresenter>
 {
 public:
@@ -190,64 +190,44 @@ protected:
     touchgfx::ClickListener< touchgfx::TextAreaWithOneWildcard > textArea_Parameter1Name;
     touchgfx::ScrollWheel scrollWheel_MaxDigit10;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit10ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit9;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit9ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit8;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit8ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit7;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit7ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit6;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit6ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit5;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit5ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit4;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit4ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit3;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit3ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit2;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit2ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MaxDigit1;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MaxDigit1ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit10;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit10ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit9;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit9ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit8;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit8ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit7;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit7ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit6;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit6ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit5;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit5ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit4;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit4ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit3;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit3ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit2;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit2ListItems;
-
     touchgfx::ScrollWheel scrollWheel_MinDigit1;
     touchgfx::DrawableListItems<DigitTemplate, 3> scrollWheel_MinDigit1ListItems;
-
     touchgfx::ButtonWithLabel buttonWithLabel_SetRanges;
     touchgfx::ToggleButton toggleButton_SignMax;
     touchgfx::ToggleButton toggleButton_SignMin;

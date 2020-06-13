@@ -11,6 +11,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     sliderValueChangedCallback(this, &Screen_Module1_SignalsViewBase::sliderValueChangedCallbackHandler),
     updateItemCallback(this, &Screen_Module1_SignalsViewBase::updateItemCallbackHandler)
 {
+
     backgroundBox_Black.setPosition(0, 0, 800, 480);
     backgroundBox_Black.setColor(touchgfx::Color::getColorFrom24BitRGB(0, 0, 0));
 

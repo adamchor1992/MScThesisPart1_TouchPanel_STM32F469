@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -17,8 +17,9 @@
 
 namespace touchgfx
 {
-Canvas::Canvas(const CanvasWidget* _widget, const Rect& invalidatedArea) : widget(_widget),
-    enoughMemory(false), penUp(true), penHasBeenDown(false), previousOutside(0), penDownOutside(0)
+Canvas::Canvas(const CanvasWidget* _widget, const Rect& invalidatedArea)
+    : widget(_widget),
+      enoughMemory(false), penUp(true), penHasBeenDown(false), previousOutside(0), penDownOutside(0)
 {
     assert(CanvasWidgetRenderer::hasBuffer() && "No buffer allocated for CanvasWidgetRenderer drawing");
     assert(Rasterizer::POLY_BASE_SHIFT == 5 && "CanvasWidget assumes Q5 but Rasterizer uses a different setting");
@@ -81,6 +82,7 @@ Canvas::Canvas(const CanvasWidget* _widget, const Rect& invalidatedArea) : widge
         buf += dirtyAreaAbsolute.x * 4 + dirtyAreaAbsolute.y * stride;
         break;
     case Bitmap::BW_RLE:
+    case Bitmap::A4:
         assert(0 && "Unsupported bit depth");
         break;
     }
@@ -205,7 +207,7 @@ bool Canvas::render()
 
     close();
 
-    widget->getPainter().setOffset(offsetX/*+widget->getX()*/, offsetY/*+widget->getY()*/);
+    widget->getPainter().setOffset(offsetX /*+widget->getX()*/, offsetY /*+widget->getY()*/);
     widget->getPainter().setWidgetAlpha(widget->getAlpha());
     Renderer renderer(rbuf, widget->getPainter());
     return ras.render(renderer);
@@ -270,4 +272,4 @@ void Canvas::close()
     }
     penUp = false;
 }
-}
+} // namespace touchgfx

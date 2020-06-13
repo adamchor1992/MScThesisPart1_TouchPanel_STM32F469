@@ -47,6 +47,20 @@ public:
         return fontId;
     }
 
+    virtual const uint16_t* getGSUBTable() const
+    {
+        if (gsubTable != 0)
+        {
+            return gsubTable;
+        }
+        return flashFont->getGSUBTable();
+    }
+
+    virtual void setGSUBTable(const uint16_t* table)
+    {
+        gsubTable = table;
+    }
+
 private:
     FontId fontId;
     FontCache* cache;

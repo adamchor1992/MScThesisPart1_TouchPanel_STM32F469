@@ -353,14 +353,14 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>$PROJ_DIR$\..\..\generated\images\include</state>
-                    <state>$PROJ_DIR$\..\..\generated\fonts\include</state>
-                    <state>$PROJ_DIR$\..\..\generated\texts\include</state>
-                    <state>$PROJ_DIR$\..\..\generated\gui_generated\include</state>
+                    <state>$PROJ_DIR$/../../generated/images/include</state>
+                    <state>$PROJ_DIR$/../../generated/fonts/include</state>
+                    <state>$PROJ_DIR$/../../generated/texts/include</state>
+                    <state>$PROJ_DIR$/../../generated/gui_generated/include</state>
                     <state>$PROJ_DIR$\..\..\platform\os</state>
-                    <state>$PROJ_DIR$\..\..\gui\include</state>
+                    <state>$PROJ_DIR$/../../gui/include</state>
                     <state>$PROJ_DIR$\..\..\target\include</state>
-                    <state>$PROJ_DIR$\..\..\touchgfx\framework\include</state>
+                    <state>$PROJ_DIR$/../../touchgfx/framework/include</state>
                     <state>$PROJ_DIR$\..\bsp\include\platform\cortex-m</state>
                     <state>$PROJ_DIR$\..\bsp\include\platform\cortex-m\CMSIS</state>
                     <state>$PROJ_DIR$\..\bsp\include\platform\hal\mcu\stm32f4cube</state>
@@ -371,7 +371,7 @@
                     <state>$PROJ_DIR$\..\bsp\source\vendor\STM32469I-Discovery</state>
                     <state>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\include</state>
                     <state>$PROJ_DIR$\..\os\FreeRTOS7.6.0\Source\portable\IAR\ARM_CM4F</state>
-                    <state>C:\Users\Adam\Desktop\Repozytoria - dyplomowa\DiplomaThesis\target\inc</state>
+                    <state>$PROJ_DIR$\..\inc</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -839,7 +839,7 @@
                 </option>
                 <option>
                     <name>IlinkAdditionalLibs</name>
-                    <state>$PROJ_DIR$\..\..\touchgfx\lib\core\cortex_m4f\IAR8.x\touchgfx_core.a</state>
+                    <state>$PROJ_DIR$/../../touchgfx/lib/core/cortex_m4f/IAR8.x/touchgfx_core.a</state>
                 </option>
                 <option>
                     <name>IlinkOverrideProgramEntryLabel</name>

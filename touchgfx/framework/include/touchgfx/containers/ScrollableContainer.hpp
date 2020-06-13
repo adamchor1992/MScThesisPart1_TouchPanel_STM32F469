@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -42,7 +42,6 @@ namespace touchgfx
 class ScrollableContainer : public Container
 {
 public:
-
     /**
      * @fn ScrollableContainer::ScrollableContainer();
      *
@@ -282,7 +281,7 @@ public:
     void setMaxVelocity(uint16_t max)
     {
         maxVelocity = max;
-    };
+    }
 
     /**
      * @fn void ScrollableContainer::setScrollThreshold(int16_t t)
@@ -368,21 +367,6 @@ public:
      * @return the distance scrolled for the y-axis.
      */
     int16_t getScrolledY() const;
-
-    /**
-    * @fn virtual uint16_t ScrollableContainer::getType() const
-    *
-    * @brief For GUI testing only.
-    *
-    *        For GUI testing only. Returns type of this drawable.
-    *
-    * @return TYPE_SCROLLABLECONTAINER.
-    */
-
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_SCROLLABLECONTAINER;
-    }
 
 protected:
     uint8_t   scrollbarPadding;                           ///< The amount of padding. The scrollbar will have a bit of space to the borders of the container.

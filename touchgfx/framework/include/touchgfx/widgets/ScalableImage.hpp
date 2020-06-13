@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -39,7 +39,6 @@ namespace touchgfx
 class ScalableImage : public Widget
 {
 public:
-
     /**
      * @enum ScalingAlgorithm
      *
@@ -177,20 +176,6 @@ public:
      * @see Drawable::getSolidRect()
      */
     virtual Rect getSolidRect() const;
-
-    /**
-     * @fn virtual uint16_t ScalableImage::getType() const
-     *
-     * @brief For GUI testing only.
-     *
-     *        For GUI testing only. Returns type of this drawable.
-     *
-     * @return TYPE_SCALABLEIMAGE.
-     */
-    virtual uint16_t getType() const
-    {
-        return (uint16_t)TYPE_SCALABLEIMAGE;
-    }
 
 protected:
     ScalingAlgorithm currentScalingAlgorithm; ///< The current scaling algorithm.

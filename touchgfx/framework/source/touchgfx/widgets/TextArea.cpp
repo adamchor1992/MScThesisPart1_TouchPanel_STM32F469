@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -20,19 +20,12 @@ namespace touchgfx
 {
 int16_t TextArea::getTextHeight()
 {
-    if (typedText.hasValidId())
-    {
-        return getTextHeightInternal(typedText.getText());
-    }
-    else
-    {
-        return 0;
-    }
+    return typedText.hasValidId() ? calculateTextHeight(typedText.getText(), 0, 0) : 0;
 }
 
 uint16_t TextArea::getTextWidth() const
 {
-    return typedText.hasValidId() ? typedText.getFont()->getStringWidth(typedText.getTextDirection(), typedText.getText()) : 0;
+    return typedText.hasValidId() ? typedText.getFont()->getStringWidth(typedText.getTextDirection(), typedText.getText(), 0, 0) : 0;
 }
 
 void TextArea::draw(const Rect& area) const
@@ -154,8 +147,13 @@ void TextArea::resizeHeightToCurrentText()
     }
 }
 
-int16_t TextArea::getTextHeightInternal(const Unicode::UnicodeChar* format, ...) const
+int16_t TextArea::calculateTextHeight(const Unicode::UnicodeChar* format, ...) const
 {
+    if (!typedText.hasValidId())
+    {
+        return 0;
+    }
+
     va_list pArg;
     va_start(pArg, format);
 

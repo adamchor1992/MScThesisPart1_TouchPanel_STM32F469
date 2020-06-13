@@ -35,7 +35,7 @@ const GlyphNode* CachedFont::getGlyph(Unicode::UnicodeChar unicode, const uint8_
     {
         Unicode::UnicodeChar fallbackChar = flashFont->getFallbackChar();
         n = flashFont->find(fallbackChar);
-        if(n == 0)
+        if (n == 0)
         {
             n = cache->getGlyph(fallbackChar, fontId);
         }

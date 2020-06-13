@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -32,7 +32,6 @@ namespace touchgfx
 class DisplayTransformation
 {
 public:
-
     /**
      * @fn static void DisplayTransformation::transformDisplayToFrameBuffer(int16_t& x, int16_t& y);
      *
@@ -107,6 +106,17 @@ public:
      * @param [in,out] r the rectangle to translate.
      */
     static void transformDisplayToFrameBuffer(Rect& r);
+
+    /**
+     * @fn static void DisplayTransformation::transformFrameBufferToDisplay(Rect& r);
+     *
+     * @brief Transform rectangle from frame buffer to display coordinates.
+     *
+     *        Transform rectangle from frame buffer to display coordinates.
+     *
+     * @param [in,out] r the rectangle to translate.
+     */
+    static void transformFrameBufferToDisplay(Rect& r);
 
     /**
      * @fn static void DisplayTransformation::transformDisplayToFrameBuffer(Rect& r, const Rect& in);

@@ -1,5 +1,5 @@
 ##############################################################################
-# This file is part of the TouchGFX 4.12.3 distribution.
+# This file is part of the TouchGFX 4.13.0 distribution.
 #
 # <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
 # All rights reserved.</center></h2>

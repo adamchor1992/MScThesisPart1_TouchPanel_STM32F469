@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * This file is part of the TouchGFX 4.12.3 distribution.
+  * This file is part of the TouchGFX 4.13.0 distribution.
   *
   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
   * All rights reserved.</center></h2>
@@ -16,8 +16,6 @@
 #ifndef SCROLLLIST_HPP
 #define SCROLLLIST_HPP
 
-//#include <touchgfx/Callback.hpp>
-//#include <touchgfx/Drawable.hpp>
 #include <touchgfx/containers/scrollers/ScrollBase.hpp>
 
 namespace touchgfx

@@ -19,16 +19,6 @@
     <LCDOption/>
   </PropertyGroup>
   
-  <!-- Text converter options -->
-  <!-- Remap identical texts -->
-  <PropertyGroup Condition="'$(RemapIdenticalTexts)'=='yes' AND !$([System.Text.RegularExpressions.Regex]::IsMatch('$(TextConverterOptions)', '\bremap\b'))">
-    <TextConverterOptions>$(TextConverterOptions) remap</TextConverterOptions>
-  </PropertyGroup>
-  <!-- Text Data format option -->
-  <PropertyGroup Condition="'$(TextDataFormat)'=='A4' AND !$([System.Text.RegularExpressions.Regex]::IsMatch('$(TextConverterOptions)', '\bA4\b'))">
-    <TextConverterOptions>$(TextConverterOptions) A4</TextConverterOptions>
-  </PropertyGroup>
-
   <PropertyGroup>
     <touchgfx_env Condition="'$(TouchGFXEnvPath)'==''">$(TouchGFXReleasePath)\..\env</touchgfx_env>
     <touchgfx_env Condition="'$(TouchGFXEnvPath)'!=''">$(TouchGFXEnvPath)</touchgfx_env>
@@ -43,7 +33,7 @@
   <Target Name="GenerateTextsAndFontsFiles" BeforeTargets="ClCompile">
     <Message Text="Converting texts and fonts" />
     <Exec Command="echo Converting texts and fonts"/>
-    <Exec Command="&quot;$(touchgfx_env)\MinGW\msys\1.0\ruby193\bin\ruby.exe&quot; &quot;$(TouchGFXReleasePath)\framework\tools\textconvert\main.rb&quot; &quot;$(ApplicationRoot)\assets\texts\texts.xlsx&quot; &quot;$(TouchGFXReleasePath)\framework\tools\fontconvert\build\win\fontconvert.out&quot; &quot;$(ApplicationRoot)\generated\fonts&quot; &quot;$(ApplicationRoot)\generated\texts&quot; &quot;$(ApplicationRoot)\assets\fonts&quot; &quot;$(ApplicationRoot)&quot; $(TextConverterOptions)"/>
+    <Exec Command="&quot;$(touchgfx_env)\MinGW\msys\1.0\ruby193\bin\ruby.exe&quot; &quot;$(TouchGFXReleasePath)\framework\tools\textconvert\main.rb&quot; &quot;$(ApplicationRoot)\assets\texts\texts.xlsx&quot; &quot;$(TouchGFXReleasePath)\framework\tools\fontconvert\build\win\fontconvert.out&quot; &quot;$(ApplicationRoot)\generated\fonts&quot; &quot;$(ApplicationRoot)\generated\texts&quot; &quot;$(ApplicationRoot)\assets\fonts&quot; &quot;$(ApplicationRoot)&quot;"/>
   </Target>
 
   <Target Name="CompileAllGeneratedFiles" BeforeTargets="ClCompile">
