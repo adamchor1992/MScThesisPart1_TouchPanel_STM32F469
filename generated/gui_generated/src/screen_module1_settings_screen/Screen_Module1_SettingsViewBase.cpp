@@ -50,7 +50,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     textArea_ParameterToSet.setLinespacing(0);
     textArea_ParameterToSet.setTypedText(touchgfx::TypedText(T_SINGLEUSEID136));
 
-    textArea_Title.setXY(219, 0);
+    textArea_Title.setXY(248, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Title.setLinespacing(0);
     textArea_Title.setTypedText(touchgfx::TypedText(T_SINGLEUSEID137));

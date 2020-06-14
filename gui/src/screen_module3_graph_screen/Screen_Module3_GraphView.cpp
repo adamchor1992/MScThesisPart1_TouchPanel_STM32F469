@@ -1,6 +1,9 @@
 #include <gui/screen_module3_graph_screen/Screen_Module3_GraphView.hpp>
 #include <string>
+
+#ifndef SIMULATOR
 #include "stm32469i_discovery.h"
+#endif
 
 /*Real graph range minimum value which is used for graph drawing. 
 Values to be drawn on graph are scaled in terms of this value*/

@@ -31,7 +31,7 @@ Screen_Module1_SignalsViewBase::Screen_Module1_SignalsViewBase() :
     toggleButton_Parameter1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
     toggleButton_Parameter1.setAction(buttonCallback);
 
-    textArea_Title.setXY(328, 0);
+    textArea_Title.setXY(258, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Title.setLinespacing(0);
     textArea_Title.setTypedText(touchgfx::TypedText(T_SINGLEUSEID285));

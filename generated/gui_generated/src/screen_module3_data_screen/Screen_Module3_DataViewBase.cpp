@@ -123,7 +123,7 @@ Screen_Module3_DataViewBase::Screen_Module3_DataViewBase() :
     textArea_ShowAll.setTypedText(touchgfx::TypedText(T_SINGLEUSEID9583));
     textAreaContainer.add(textArea_ShowAll);
 
-    textArea_Title.setXY(309, 0);
+    textArea_Title.setXY(338, 0);
     textArea_Title.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Title.setLinespacing(0);
     textArea_Title.setTypedText(touchgfx::TypedText(T_SINGLEUSEID4866));

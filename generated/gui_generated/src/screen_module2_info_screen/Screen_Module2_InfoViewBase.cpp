@@ -20,7 +20,7 @@ Screen_Module2_InfoViewBase::Screen_Module2_InfoViewBase() :
     textArea_InitParameter1Name.setWildcard(textArea_InitParameter1NameBuffer);
     textArea_InitParameter1Name.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1947));
 
-    textArea_Info.setXY(262, 0);
+    textArea_Info.setXY(290, 0);
     textArea_Info.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_Info.setLinespacing(0);
     textArea_Info.setTypedText(touchgfx::TypedText(T_SINGLEUSEID1949));
