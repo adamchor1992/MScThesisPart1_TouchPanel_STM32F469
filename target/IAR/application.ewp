@@ -1223,10 +1223,25 @@
           </file>
         </group>
         <file>
-          <name>$PROJ_DIR$/../../generated/images/src/background.cpp</name>
+          <name>$PROJ_DIR$/../../generated/images/src/ac_dc_off_button.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$/../../generated/images/src/ac_dc_on_button.cpp</name>
         </file>
         <file>
           <name>$PROJ_DIR$/../../generated/images/src/BitmapDatabase.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$/../../generated/images/src/dc_ac_off_button.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$/../../generated/images/src/dc_ac_on_button.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$/../../generated/images/src/dc_dc_off_button.cpp</name>
+        </file>
+        <file>
+          <name>$PROJ_DIR$/../../generated/images/src/dc_dc_on_button.cpp</name>
         </file>
       </group>
       <group>

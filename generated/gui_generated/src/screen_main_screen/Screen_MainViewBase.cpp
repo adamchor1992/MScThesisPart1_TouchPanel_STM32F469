@@ -20,21 +20,21 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_CPU_Usage.setWildcard(textArea_CPU_UsageBuffer);
     textArea_CPU_Usage.setTypedText(touchgfx::TypedText(T_SINGLEUSEID39));
 
-    buttonWithLabel_Module2.setXY(315, 210);
-    buttonWithLabel_Module2.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Module2.setXY(314, 150);
+    buttonWithLabel_Module2.setBitmaps(touchgfx::Bitmap(BITMAP_AC_DC_OFF_BUTTON_ID), touchgfx::Bitmap(BITMAP_AC_DC_OFF_BUTTON_ID));
     buttonWithLabel_Module2.setLabelText(touchgfx::TypedText(T_SINGLEUSEID42));
     buttonWithLabel_Module2.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module2.setAction(buttonCallback);
 
-    buttonWithLabel_Module1.setXY(0, 210);
-    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
-    buttonWithLabel_Module1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID41));
+    buttonWithLabel_Module1.setXY(0, 150);
+    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_DC_DC_OFF_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_DC_OFF_BUTTON_ID));
+    buttonWithLabel_Module1.setLabelText(touchgfx::TypedText(T_SINGLEUSEID9584));
     buttonWithLabel_Module1.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module1.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module1.setAction(buttonCallback);
 
-    textArea_MainMenu.setXY(292, 0);
+    textArea_MainMenu.setXY(234, 0);
     textArea_MainMenu.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     textArea_MainMenu.setLinespacing(0);
     textArea_MainMenu.setTypedText(touchgfx::TypedText(T_SINGLEUSEID44));
@@ -46,8 +46,8 @@ Screen_MainViewBase::Screen_MainViewBase() :
     textArea_ActiveModule.setWildcard(textArea_ActiveModuleBuffer);
     textArea_ActiveModule.setTypedText(touchgfx::TypedText(T_SINGLEUSEID129));
 
-    buttonWithLabel_Module3.setXY(630, 210);
-    buttonWithLabel_Module3.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_EDGE_SMALL_PRESSED_ID));
+    buttonWithLabel_Module3.setXY(629, 150);
+    buttonWithLabel_Module3.setBitmaps(touchgfx::Bitmap(BITMAP_DC_AC_OFF_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_AC_OFF_BUTTON_ID));
     buttonWithLabel_Module3.setLabelText(touchgfx::TypedText(T_SINGLEUSEID408));
     buttonWithLabel_Module3.setLabelColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_Module3.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));

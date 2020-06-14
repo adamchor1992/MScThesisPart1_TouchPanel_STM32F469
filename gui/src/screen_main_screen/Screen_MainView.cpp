@@ -1,5 +1,6 @@
 #include <gui/screen_main_screen/Screen_MainView.hpp>
 #include <cstring>
+#include "BitmapDatabase.hpp"
 
 #ifndef SIMULATOR
 #include "stm32469i_discovery.h"
@@ -16,6 +17,7 @@ void Screen_MainView::setupScreen()
   {
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
+    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_DC_DC_ON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_DC_ON_BUTTON_ID));
     
     strcat(activeModuleString, "1 ");
   }
@@ -23,12 +25,14 @@ void Screen_MainView::setupScreen()
   {
     buttonWithLabel_Module1.setAlpha(100);
     buttonWithLabel_Module1.setTouchable(false);
+    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_DC_DC_OFF_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_DC_OFF_BUTTON_ID));
   }
   
   if(Model::IsModuleActive(ModuleID::MODULE2) == true)
   {
     buttonWithLabel_Module2.setAlpha(255);
     buttonWithLabel_Module2.setTouchable(true);
+    buttonWithLabel_Module2.setBitmaps(touchgfx::Bitmap(BITMAP_AC_DC_ON_BUTTON_ID), touchgfx::Bitmap(BITMAP_AC_DC_ON_BUTTON_ID));
     
     strcat(activeModuleString, "2 ");
   }
@@ -36,12 +40,14 @@ void Screen_MainView::setupScreen()
   {
     buttonWithLabel_Module2.setAlpha(100);
     buttonWithLabel_Module2.setTouchable(false);
+    buttonWithLabel_Module2.setBitmaps(touchgfx::Bitmap(BITMAP_AC_DC_OFF_BUTTON_ID), touchgfx::Bitmap(BITMAP_AC_DC_OFF_BUTTON_ID));
   }
   
   if(Model::IsModuleActive(ModuleID::MODULE3) == true)
   {
     buttonWithLabel_Module3.setAlpha(255);
     buttonWithLabel_Module3.setTouchable(true);
+    buttonWithLabel_Module3.setBitmaps(touchgfx::Bitmap(BITMAP_DC_AC_ON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_AC_ON_BUTTON_ID));
     
     strcat(activeModuleString, "3 ");
   }
@@ -49,6 +55,7 @@ void Screen_MainView::setupScreen()
   {
     buttonWithLabel_Module3.setAlpha(100);
     buttonWithLabel_Module3.setTouchable(false);
+    buttonWithLabel_Module3.setBitmaps(touchgfx::Bitmap(BITMAP_DC_AC_OFF_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_AC_OFF_BUTTON_ID));
   }
   
   /*If no modules active*/
@@ -93,6 +100,7 @@ void Screen_MainView::ProcessInitPacket(UartPacket& uartPacket)
   case ModuleID::MODULE1:
     buttonWithLabel_Module1.setAlpha(255);
     buttonWithLabel_Module1.setTouchable(true);
+    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_DC_DC_ON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_DC_ON_BUTTON_ID));
     
     Model::ActivateModule(ModuleID::MODULE1);
     break;
@@ -100,6 +108,7 @@ void Screen_MainView::ProcessInitPacket(UartPacket& uartPacket)
   case ModuleID::MODULE2:
     buttonWithLabel_Module2.setAlpha(255);
     buttonWithLabel_Module2.setTouchable(true);
+    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_AC_DC_ON_BUTTON_ID), touchgfx::Bitmap(BITMAP_AC_DC_ON_BUTTON_ID));
     
     Model::ActivateModule(ModuleID::MODULE2);
     break;
@@ -107,6 +116,7 @@ void Screen_MainView::ProcessInitPacket(UartPacket& uartPacket)
   case ModuleID::MODULE3:
     buttonWithLabel_Module3.setAlpha(255);
     buttonWithLabel_Module3.setTouchable(true);
+    buttonWithLabel_Module1.setBitmaps(touchgfx::Bitmap(BITMAP_DC_AC_ON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DC_AC_ON_BUTTON_ID));
     
     Model::ActivateModule(ModuleID::MODULE3);
     break;

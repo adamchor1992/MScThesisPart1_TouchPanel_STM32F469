@@ -51,8 +51,8 @@
             "Moveable": false
           },
           {
-            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Pressed": "ac_dc_off_button.png",
+            "Released": "ac_dc_off_button.png",
             "Alpha": 255,
             "TextId": "SingleUseId42",
             "ReleasedColor": {
@@ -66,12 +66,11 @@
               "Blue": 255
             },
             "TextRotation": "0",
-            "Style": "Style4",
             "Name": "buttonWithLabel_Module2",
-            "X": 315,
-            "Y": 210,
-            "Width": 170,
-            "Height": 60,
+            "X": 314,
+            "Y": 150,
+            "Width": 173,
+            "Height": 173,
             "Type": "ButtonWithLabel",
             "Visible": true,
             "Draggable": false,
@@ -80,10 +79,10 @@
             "Moveable": false
           },
           {
-            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Pressed": "dc_dc_off_button.png",
+            "Released": "dc_dc_off_button.png",
             "Alpha": 255,
-            "TextId": "SingleUseId41",
+            "TextId": "SingleUseId9584",
             "ReleasedColor": {
               "Red": 255,
               "Green": 255,
@@ -95,12 +94,11 @@
               "Blue": 255
             },
             "TextRotation": "0",
-            "Style": "Style4",
             "Name": "buttonWithLabel_Module1",
             "X": 0,
-            "Y": 210,
-            "Width": 170,
-            "Height": 60,
+            "Y": 150,
+            "Width": 173,
+            "Height": 173,
             "Type": "ButtonWithLabel",
             "Visible": true,
             "Draggable": false,
@@ -120,9 +118,9 @@
             "AutoSize": true,
             "LineSpacing": 0,
             "Name": "textArea_MainMenu",
-            "X": 292,
+            "X": 234,
             "Y": 0,
-            "Width": 216,
+            "Width": 333,
             "Height": 49,
             "Type": "TextArea",
             "Visible": true,
@@ -160,8 +158,8 @@
             "Moveable": false
           },
           {
-            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
-            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Pressed": "dc_ac_off_button.png",
+            "Released": "dc_ac_off_button.png",
             "Alpha": 255,
             "TextId": "SingleUseId408",
             "ReleasedColor": {
@@ -175,12 +173,11 @@
               "Blue": 255
             },
             "TextRotation": "0",
-            "Style": "Style4",
             "Name": "buttonWithLabel_Module3",
-            "X": 630,
-            "Y": 210,
-            "Width": 170,
-            "Height": 60,
+            "X": 629,
+            "Y": 150,
+            "Width": 173,
+            "Height": 173,
             "Type": "ButtonWithLabel",
             "Visible": true,
             "Draggable": false,
@@ -11256,10 +11253,6 @@
       },
       {
         "TextEntryId": "SingleUseId40",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId41",
         "IsResource": false
       },
       {
@@ -48588,6 +48581,10 @@
       },
       {
         "TextEntryId": "SingleUseId9583",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9584",
         "IsResource": false
       }
     ],

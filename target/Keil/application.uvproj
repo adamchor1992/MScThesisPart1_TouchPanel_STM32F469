@@ -909,14 +909,19 @@
           <GroupName>generated</GroupName>
           <Files>
             <File>
+              <FileName>ac_dc_off_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/ac_dc_off_button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ac_dc_on_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/ac_dc_on_button.cpp</FilePath>
+            </File>
+            <File>
               <FileName>ApplicationFontProvider.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/applicationfontprovider.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>background.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>../../generated/images/src/background.cpp</FilePath>
             </File>
             <File>
               <FileName>BitmapDatabase.cpp</FileName>
@@ -1012,6 +1017,26 @@
               <FileName>CachedFont.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>../../generated/fonts/src/cachedfont.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>dc_ac_off_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/dc_ac_off_button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>dc_ac_on_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/dc_ac_on_button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>dc_dc_off_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/dc_dc_off_button.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>dc_dc_on_button.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../../generated/images/src/dc_dc_on_button.cpp</FilePath>
             </File>
             <File>
               <FileName>DigitTemplateBase.cpp</FileName>
