@@ -202,14 +202,14 @@ void Screen_Module3_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
     return;
   }
   
-  long long int rawValue;
+  double rawValue;
   int scaledValue;
   
   static uint8_t numericValueBuffer[PAYLOAD_SIZE];
   
   uartPacket.GetPayload(numericValueBuffer);
   
-  rawValue = std::stoll(reinterpret_cast<const char*>(numericValueBuffer));
+  rawValue = std::stod(reinterpret_cast<const char*>(numericValueBuffer));
   
   if (uartPacket.GetSign() == Sign::NEGATIVE_SIGN)
   {
@@ -222,14 +222,14 @@ void Screen_Module3_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
     /*Check if raw value is higher than graph's top range*/
     if (rawValue > m_GraphRangeTop)
     { 
-      m_GraphRangeTop = rawValue;
+      m_GraphRangeTop = static_cast<long long>(rawValue);
       
       SetGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
     }
     /*Check if raw value is lower than graph bottom range*/
     else if (rawValue < m_GraphRangeBottom)
     {
-      m_GraphRangeBottom = rawValue;
+      m_GraphRangeBottom = static_cast<long long>(rawValue);
       
       SetGraphRangeTextAreas(m_GraphRangeBottom, m_GraphRangeTop, m_GraphRangeRight);
     }
