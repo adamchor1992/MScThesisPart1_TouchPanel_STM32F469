@@ -237,7 +237,9 @@ void Screen_Module1_GraphView::AddNewValueToGraphFromUart(UartPacket& uartPacket
   
   scaledValue = int((((1 - (double(m_GraphRangeTop - rawValue) / double(m_GraphRangeTop - m_GraphRangeBottom)))) * GRAPH_CONSTANT_MAX_MIN_INTERVAL) - GRAPH_CONSTANT_RANGE_TOP);
   
+#if DEBUG == 1
   printf("Value after scaling: %d\n", scaledValue);
+#endif
   
   /*If autorange is not enabled the scaled value must be constrained within constant upper and lower graph range*/
   if(m_AutoRangeEnabled == false)

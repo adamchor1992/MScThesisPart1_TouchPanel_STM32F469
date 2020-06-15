@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_it.h"
+#include "stm32469i_discovery.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -70,6 +71,7 @@ extern UART_HandleTypeDef huart6;
 void NMI_Handler(void)
 {
   /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+  BSP_LED_On(LED3);
     printf("NON-MASKABLE INTERRUPT OCCURED (NMI_Handler)\n");
   /* USER CODE END NonMaskableInt_IRQn 0 */
   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
@@ -83,6 +85,7 @@ void NMI_Handler(void)
 void HardFault_Handler(void)
 {
   /* USER CODE BEGIN HardFault_IRQn 0 */
+  BSP_LED_On(LED3);
   printf("HARD FAULT INTERRUPT OCCURED (HardFault_Handler)\n");
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
@@ -98,6 +101,7 @@ void HardFault_Handler(void)
 void MemManage_Handler(void)
 {
   /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+  BSP_LED_On(LED3);
   printf("MEMORY MANAGEMENT FAULT INTERRUPT OCCURED (MemManage_Handler)\n");
   /* USER CODE END MemoryManagement_IRQn 0 */
   while (1)
@@ -113,6 +117,7 @@ void MemManage_Handler(void)
 void BusFault_Handler(void)
 {
   /* USER CODE BEGIN BusFault_IRQn 0 */
+  BSP_LED_On(LED3);
   printf("BUS FAULT INTERRUPT OCCURED (BusFault_Handler)\n");
   /* USER CODE END BusFault_IRQn 0 */
   while (1)
@@ -128,6 +133,7 @@ void BusFault_Handler(void)
 void UsageFault_Handler(void)
 {
   /* USER CODE BEGIN UsageFault_IRQn 0 */
+  BSP_LED_On(LED3);
   printf("USAGE FAULT INTERRUPT OCCURED (UsageFault_Handler)\n");
   /* USER CODE END UsageFault_IRQn 0 */
   while (1)
@@ -143,6 +149,7 @@ void UsageFault_Handler(void)
 void DebugMon_Handler(void)
 {
   /* USER CODE BEGIN DebugMonitor_IRQn 0 */
+  BSP_LED_On(LED3);
   printf("DEBUG MONITOR INTERRUPT OCCURED (DebugMon_Handler)\n");
   /* USER CODE END DebugMonitor_IRQn 0 */
   /* USER CODE BEGIN DebugMonitor_IRQn 1 */

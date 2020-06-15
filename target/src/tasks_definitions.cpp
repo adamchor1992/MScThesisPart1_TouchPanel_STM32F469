@@ -43,8 +43,10 @@ void uartRxTask(void* params)
       if(uartPacket.CheckCrc32() == true)
       {
         /*Packet is correct and can be further processed*/
+#if DEBUG == 1
         printf("Rx packet:\n");
         uartPacket.PrintPacket(false);
+#endif
         
         xQueueSendToBack(msgQueueUartRx, &uartPacket, NO_WAITING);
       }
@@ -79,8 +81,10 @@ void uartTxTask(void* params)
       
       xQueueReceive(msgQueueUartTx, &uartTxPacket, NO_WAITING);
       
+#if DEBUG == 1
       printf("Tx packet:\n");
       uartTxPacket.PrintPacket(false);
+#endif
       
       uartTxPacket.AppendCrcToPacket();
       

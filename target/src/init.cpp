@@ -5,19 +5,12 @@
 
 extern UART_HandleTypeDef huart3;
 
-#if DEBUG == 1
 int fputc(int ch, FILE *f)
 {
   HAL_UART_Transmit(&huart3, reinterpret_cast<uint8_t*>(&ch), 1, UART_TX_WAITING);
   
   return ch;
 }
-#else
-int fputc(int ch, FILE *f)
-{
-  return 0;
-}
-#endif
 
 void Error_Handler()
 {
