@@ -60,21 +60,6 @@ Screen_MainViewBase::Screen_MainViewBase() :
     buttonWithLabel_ClearLeds.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonWithLabel_ClearLeds.setAction(buttonCallback);
 
-    textArea1.setXY(31, 323);
-    textArea1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID9585));
-
-    textArea1_1.setXY(345, 323);
-    textArea1_1.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea1_1.setLinespacing(0);
-    textArea1_1.setTypedText(touchgfx::TypedText(T_SINGLEUSEID9586));
-
-    textArea1_2.setXY(660, 323);
-    textArea1_2.setColor(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
-    textArea1_2.setLinespacing(0);
-    textArea1_2.setTypedText(touchgfx::TypedText(T_SINGLEUSEID9587));
-
     add(backgroundBox_Black);
     add(textArea_CPU_Usage);
     add(buttonWithLabel_Module2);
@@ -83,9 +68,6 @@ Screen_MainViewBase::Screen_MainViewBase() :
     add(textArea_ActiveModule);
     add(buttonWithLabel_Module3);
     add(buttonWithLabel_ClearLeds);
-    add(textArea1);
-    add(textArea1_1);
-    add(textArea1_2);
 }
 
 void Screen_MainViewBase::setupScreen()

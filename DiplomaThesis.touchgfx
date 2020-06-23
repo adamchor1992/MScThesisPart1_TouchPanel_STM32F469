@@ -213,75 +213,6 @@
             "Clickable": false,
             "Fadeable": false,
             "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId9585",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea1",
-            "X": 31,
-            "Y": 323,
-            "Width": 111,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId9586",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea1_1",
-            "X": 345,
-            "Y": 323,
-            "Width": 111,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
-          },
-          {
-            "TextId": "SingleUseId9587",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "Alpha": 255,
-            "AutoSize": true,
-            "LineSpacing": 0,
-            "Name": "textArea1_2",
-            "X": 660,
-            "Y": 323,
-            "Width": 111,
-            "Height": 49,
-            "Type": "TextArea",
-            "Visible": true,
-            "Draggable": false,
-            "Clickable": false,
-            "Fadeable": false,
-            "Moveable": false
           }
         ],
         "Interactions": [
@@ -48654,18 +48585,6 @@
       },
       {
         "TextEntryId": "SingleUseId9584",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId9585",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId9586",
-        "IsResource": false
-      },
-      {
-        "TextEntryId": "SingleUseId9587",
         "IsResource": false
       }
     ],

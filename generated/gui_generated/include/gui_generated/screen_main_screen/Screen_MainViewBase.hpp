@@ -43,9 +43,6 @@ protected:
     touchgfx::TextAreaWithOneWildcard textArea_ActiveModule;
     touchgfx::ButtonWithLabel buttonWithLabel_Module3;
     touchgfx::ButtonWithLabel buttonWithLabel_ClearLeds;
-    touchgfx::TextArea textArea1;
-    touchgfx::TextArea textArea1_1;
-    touchgfx::TextArea textArea1_2;
 
     /*
      * Wildcard Buffers
