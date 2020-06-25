@@ -98,6 +98,10 @@ int main(void)
   
   printf("System initialized, starting FreeRTOS Scheduler\n");
   
+#if DEBUG == 1
+  printf("Debug mode active\n");
+#endif
+  
   vTaskStartScheduler();
   
   /*Control never reaches here*/

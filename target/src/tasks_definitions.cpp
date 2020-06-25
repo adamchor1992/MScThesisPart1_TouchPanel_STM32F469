@@ -2,6 +2,7 @@
 #include "stm32f4xx_hal_uart.h"
 #include "stm32469i_discovery.h"
 #include "uart_packet.h"
+#include "init.h"
 
 /* FreeRTOS Kernel includes. */
 #include "FreeRTOS.h"
@@ -44,7 +45,7 @@ void uartRxTask(void* params)
       {
         /*Packet is correct and can be further processed*/
 #if DEBUG == 1
-        printf("Rx packet:\n");
+        printf("Received packet: ");
         uartPacket.PrintPacket(false);
 #endif
         
@@ -82,7 +83,7 @@ void uartTxTask(void* params)
       xQueueReceive(msgQueueUartTx, &uartTxPacket, NO_WAITING);
       
 #if DEBUG == 1
-      printf("Tx packet:\n");
+      printf("Sent packet: ");
       uartTxPacket.PrintPacket(false);
 #endif
       
