@@ -93,6 +93,56 @@ public:
         // Override and implement this function in Screen_Module1_Settings
     }
 
+    virtual void RadioButtonParameter1Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter2Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter3Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter4Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter5Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter6Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter7Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter8Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter9Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
+    virtual void RadioButtonParameter10Selected()
+    {
+        // Override and implement this function in Screen_Module1_Settings
+    }
+
 protected:
     FrontendApplication& application() {
         return *static_cast<FrontendApplication*>(touchgfx::Application::getInstance());
@@ -191,12 +241,14 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::AbstractButton&> buttonCallback;
+    touchgfx::Callback<Screen_Module1_SettingsViewBase, const touchgfx::AbstractButton&> radioButtonSelectedCallback;
     touchgfx::Callback<Screen_Module1_SettingsViewBase, touchgfx::DrawableListItemsInterface*, int16_t, int16_t> updateItemCallback;
 
     /*
      * Callback Handler Declarations
      */
     void buttonCallbackHandler(const touchgfx::AbstractButton& src);
+    void radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src);
     void updateItemCallbackHandler(touchgfx::DrawableListItemsInterface* items, int16_t containerIndex, int16_t itemIndex);
 
     /*

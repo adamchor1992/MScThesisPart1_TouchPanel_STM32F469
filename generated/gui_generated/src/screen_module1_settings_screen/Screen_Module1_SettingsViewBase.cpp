@@ -8,6 +8,7 @@
 
 Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     buttonCallback(this, &Screen_Module1_SettingsViewBase::buttonCallbackHandler),
+    radioButtonSelectedCallback(this, &Screen_Module1_SettingsViewBase::radioButtonSelectedCallbackHandler),
     updateItemCallback(this, &Screen_Module1_SettingsViewBase::updateItemCallbackHandler)
 {
 
@@ -390,6 +391,7 @@ Screen_Module1_SettingsViewBase::Screen_Module1_SettingsViewBase() :
     radioButtonGroup_Parameter.add(radioButtonParameter10);
     radioButtonGroup_Sign.add(radioButton_Plus);
     radioButtonGroup_Sign.add(radioButton_Minus);
+    radioButtonGroup_Parameter.setRadioButtonSelectedHandler(radioButtonSelectedCallback);
 }
 
 void Screen_Module1_SettingsViewBase::setupScreen()
@@ -475,6 +477,80 @@ void Screen_Module1_SettingsViewBase::buttonCallbackHandler(const touchgfx::Abst
         //When buttonWithLabel_DisableParameter clicked call virtual function
         //Call DisableParameterButtonPushed
         DisableParameterButtonPushed();
+    }
+}
+
+void Screen_Module1_SettingsViewBase::radioButtonSelectedCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &radioButtonParameter1)
+    {
+        //Interaction_RadioButtonParameter1Selected
+        //When radioButtonParameter1 selected call virtual function
+        //Call RadioButtonParameter1Selected
+        RadioButtonParameter1Selected();
+    }
+    else if (&src == &radioButtonParameter2)
+    {
+        //Interaction_RadioButtonParameter2Selected
+        //When radioButtonParameter2 selected call virtual function
+        //Call RadioButtonParameter2Selected
+        RadioButtonParameter2Selected();
+    }
+    else if (&src == &radioButtonParameter3)
+    {
+        //Interaction_RadioButtonParameter3Selected
+        //When radioButtonParameter3 selected call virtual function
+        //Call RadioButtonParameter3Selected
+        RadioButtonParameter3Selected();
+    }
+    else if (&src == &radioButtonParameter4)
+    {
+        //Interaction_RadioButtonParameter4Selected
+        //When radioButtonParameter4 selected call virtual function
+        //Call RadioButtonParameter4Selected
+        RadioButtonParameter4Selected();
+    }
+    else if (&src == &radioButtonParameter5)
+    {
+        //Interaction_RadioButtonParameter5Selected
+        //When radioButtonParameter5 selected call virtual function
+        //Call RadioButtonParameter5Selected
+        RadioButtonParameter5Selected();
+    }
+    else if (&src == &radioButtonParameter6)
+    {
+        //Interaction_RadioButtonParameter6Selected
+        //When radioButtonParameter6 selected call virtual function
+        //Call RadioButtonParameter6Selected
+        RadioButtonParameter6Selected();
+    }
+    else if (&src == &radioButtonParameter7)
+    {
+        //Interaction_RadioButtonParameter7Selected
+        //When radioButtonParameter7 selected call virtual function
+        //Call RadioButtonParameter7Selected
+        RadioButtonParameter7Selected();
+    }
+    else if (&src == &radioButtonParameter8)
+    {
+        //Interaction_RadioButtonParameter8Selected
+        //When radioButtonParameter8 selected call virtual function
+        //Call RadioButtonParameter8Selected
+        RadioButtonParameter8Selected();
+    }
+    else if (&src == &radioButtonParameter9)
+    {
+        //Interaction_RadioButtonParameter9Selected
+        //When radioButtonParameter9 selected call virtual function
+        //Call RadioButtonParameter9Selected
+        RadioButtonParameter9Selected();
+    }
+    else if (&src == &radioButtonParameter10)
+    {
+        //Interaction_RadioButtonParameter10Selected
+        //When radioButtonParameter10 selected call virtual function
+        //Call RadioButtonParameter10Selected
+        RadioButtonParameter10Selected();
     }
 }
 

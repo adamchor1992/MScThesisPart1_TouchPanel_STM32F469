@@ -14,6 +14,16 @@ public:
 	virtual void SetNewValue() override;
 	virtual void EnableParameterButtonPushed() override;
 	virtual void DisableParameterButtonPushed() override;
+        virtual void RadioButtonParameter1Selected() override;
+        virtual void RadioButtonParameter2Selected() override;
+        virtual void RadioButtonParameter3Selected() override;
+        virtual void RadioButtonParameter4Selected() override;
+        virtual void RadioButtonParameter5Selected() override;
+        virtual void RadioButtonParameter6Selected() override;
+        virtual void RadioButtonParameter7Selected() override;
+        virtual void RadioButtonParameter8Selected() override;
+        virtual void RadioButtonParameter9Selected() override;
+        virtual void RadioButtonParameter10Selected() override;
 
 	void UpdateCpuUsage(uint8_t value);
 
@@ -29,5 +39,12 @@ public:
 	virtual void scrollWheel_Digit7UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
 	virtual void scrollWheel_Digit8UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
 	virtual void scrollWheel_Digit9UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
-	virtual void scrollWheel_Digit10UpdateItem(DigitTemplate& item, int16_t itemIndex) override;	
+	virtual void scrollWheel_Digit10UpdateItem(DigitTemplate& item, int16_t itemIndex) override;
+        
+private:
+  void SetScrollWheelValues(int parameterIndex);
+  void TranslateAsciiValuesToScrollWheelPositionsToAsciiValues(const uint8_t values[], int positions[]);
+  void SetValueSign(const uint8_t value[]);
+  
+  uint8_t m_SettableParameterValues[SETTABLE_PARAMETER_VALUE_COUNT][PAYLOAD_SIZE] = { 0 };
 };

@@ -2026,6 +2026,126 @@
               "FunctionName": "DisableParameterButtonPushed",
               "Type": "ActionCustom"
             }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter1Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter1",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter1Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter2Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter2",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter2Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter3Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter3",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter3Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter4Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter4",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter4Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter5Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter5",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter5Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter6Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter6",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter6Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter7Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter7",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter7Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter8Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter8",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter8Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter9Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter9",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter9Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter10Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter10",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter10Selected",
+              "Type": "ActionCustom"
+            }
           }
         ],
         "Name": "Screen_Module1_Settings",
@@ -5664,6 +5784,126 @@
               "FunctionName": "DisableParameterButtonPushed",
               "Type": "ActionCustom"
             }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter1Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter1",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter1Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter2Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter2",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter2Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter3Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter3",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter3Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter4Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter4",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter4Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter5Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter5",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter5Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter6Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter6",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter6Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter7Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter7",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter7Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter8Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter8",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter8Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter9Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter9",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter9Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter10Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter10",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter10Selected",
+              "Type": "ActionCustom"
+            }
           }
         ],
         "Name": "Screen_Module2_Settings",
@@ -9300,6 +9540,126 @@
             },
             "Action": {
               "FunctionName": "DisableParameterButtonPushed",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter1Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter1",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter1Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter2Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter2",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter2Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter3Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter3",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter3Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter4Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter4",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter4Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter5Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter5",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter5Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter6Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter6",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter6Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter7Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter7",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter7Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter8Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter8",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter8Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter9Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter9",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter9Selected",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction_RadioButtonParameter10Selected",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "radioButtonParameter10",
+              "Type": "TriggerRadioButtonSelected"
+            },
+            "Action": {
+              "FunctionName": "RadioButtonParameter10Selected",
               "Type": "ActionCustom"
             }
           }
